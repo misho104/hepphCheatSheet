@@ -1,0 +1,131 @@
+
+\newif\ifDebug\Debugfalse
+\DeclareOption{debug}{\Debugtrue}
+\ProcessOptions\relax
+
+
+% * means mu-nu-rho-sigma
+% 
+% G*   : Dirac's Gamma matrix     [GREEK: abmnrs]
+% H**  : Minkowski metric         [GREEK: mnrs]
+% H**d : Minkowski metric         [GREEK: mnrs]
+% S*   : Weyl's Sigma matrix      [GREEK: mnrs]
+% bS*  : Weyl's Sigma BAR matrix  [GREEK: mnrs]
+% bS*d : (its downer ver.)
+
+
+
+\newcommand{\RED}{\color{red}}
+\newcommand{\BLUE}{\color{blue}}
+
+
+\ifDebug
+\newcommand{\g}{}
+\newcommand{\g@d}{}
+\newcommand{\g@u}{}
+\fi
+
+%%% Mathematical Symbols
+\newcommand{\Real}{\mathbb R}
+\newcommand{\Complex}{\mathbb C}
+\newcommand{\Grassmann}{\mathbb G}
+\newcommand{\RealGrassmann}{\Grassmann^\Real}
+
+\newcommand{\minkow}[2]{{\eta^{#1#2}}}
+
+%%% Group Theory
+\renewcommand{\gSU}[1]{\mathrm{SU}(#1)}
+\newcommand{\gU}[1]{\mathrm{U}(#1)}
+
+
+%%% QFT
+\newcommand\intP[1]{\int\frac{\dd^{#1}p}{(2\pi)^{#1}}}
+
+
+\def\G{\@ifnextchar5{\G@d}{\G@u}}
+\def\G@d#1{{\gamma_{#1}}}
+\def\G@u#1{{\gamma^{#1}}}
+\newcommand{\Ga}{\gamma^{\alpha}}
+\newcommand{\Gb}{\gamma^{\beta}}
+\newcommand{\Gm}{\gamma^{\mu}}
+\newcommand{\Gn}{\gamma^{\nu}}
+\newcommand{\Gr}{\gamma^{\rho}}
+\newcommand{\Gs}{\gamma^{\sigma}}
+\newcommand{\Gad}{\gamma_{\alpha}}
+\newcommand{\Gbd}{\gamma_{\beta}}
+\newcommand{\Gmd}{\gamma_{\mu}}
+\newcommand{\Gnd}{\gamma_{\nu}}
+\newcommand{\Grd}{\gamma_{\rho}}
+\newcommand{\Gsd}{\gamma_{\sigma}}
+
+\newcommand{\Sm}{\sigma^\mu}
+\newcommand{\Sn}{\sigma^\nu}
+\newcommand{\Sr}{\sigma^\rho}
+\newcommand{\Ss}{\sigma^\sigma}
+\newcommand{\bSm}{\bar\sigma^\mu}
+\newcommand{\bSn}{\bar\sigma^\nu}
+\newcommand{\bSr}{\bar\sigma^\rho}
+\newcommand{\bSs}{\bar\sigma^\sigma}
+\newcommand{\bSmd}{\bar\sigma_\mu}
+\newcommand{\bSnd}{\bar\sigma_\nu}
+\newcommand{\bSrd}{\bar\sigma_\rho}
+\newcommand{\bSsd}{\bar\sigma_\sigma}
+
+\newcommand{\Pm}{\partial_\mu}
+\newcommand{\Pn}{\partial_\nu}
+\renewcommand{\Pr}{\partial_\rho}
+\newcommand{\Ps}{\partial_\sigma}
+\newcommand{\Pmu}{\partial^\mu}
+\newcommand{\Pnu}{\partial^\nu}
+\newcommand{\Pru}{\partial^\rho}
+\newcommand{\Psq}{\partial^2}
+
+\newcommand{\btheta}{\bar\theta}
+\newcommand{\thth}{\theta\theta}
+\newcommand{\bthth}{\bar\theta\bar\theta}
+
+\newcommand{\Minkow}[1]{\eta^{#1}}
+\newcommand{\Hmn}{\Minkow{\mu\nu}}
+\newcommand{\Hmr}{\Minkow{\mu\rho}}
+\newcommand{\Hms}{\Minkow{\mu\sigma}}
+\newcommand{\Hnm}{\Minkow{\nu\mu}}
+\newcommand{\Hnr}{\Minkow{\nu\rho}}
+\newcommand{\Hns}{\Minkow{\nu\sigma}}
+\newcommand{\Hrm}{\Minkow{\rho\mu}}
+\newcommand{\Hrn}{\Minkow{\rho\nu}}
+\newcommand{\Hrs}{\Minkow{\rho\sigma}}
+\newcommand{\Hsm}{\Minkow{\sigma\mu}}
+\newcommand{\Hsn}{\Minkow{\sigma\nu}}
+\newcommand{\Hsr}{\Minkow{\sigma\rho}}
+\newcommand{\Minkowd}[1]{\eta_{#1}}
+\newcommand{\Hmnd}{\Minkowd{\mu\nu}}
+\newcommand{\Hmrd}{\Minkowd{\mu\rho}}
+\newcommand{\Hmsd}{\Minkowd{\mu\sigma}}
+\newcommand{\Hnmd}{\Minkowd{\nu\mu}}
+\newcommand{\Hnrd}{\Minkowd{\nu\rho}}
+\newcommand{\Hnsd}{\Minkowd{\nu\sigma}}
+\newcommand{\Hrmd}{\Minkowd{\rho\mu}}
+\newcommand{\Hrnd}{\Minkowd{\rho\nu}}
+\newcommand{\Hrsd}{\Minkowd{\rho\sigma}}
+\newcommand{\Hsmd}{\Minkowd{\sigma\mu}}
+\newcommand{\Hsnd}{\Minkowd{\sigma\nu}}
+\newcommand{\Hsrd}{\Minkowd{\sigma\rho}}
+
+\newcommand{\PL}{P\s L}
+\newcommand{\PR}{P\s R}
+
+\newcommand{\Lag}{{\mathcal L}}
+\newcommand{\bein}[2]{{e\T_#1^#2}}
+%%% SUSY
+\newcommand{\dalpha}{{\dot\alpha}}
+\newcommand{\dbeta}{{\dot\beta}}
+\newcommand{\dgamma}{{\dot\gamma}}
+\newcommand{\ddelta}{{\dot\delta}}
+\newcommand{\depsilon}{{\dot\epsilon}}
+
+
+% others (to be moved)
+\renewcommand{\then}{\mbox{$\Longrightarrow$\ }}
+
+\newcommand{\Hc}{\text{H. c.}}
+\newcommand{\note}[1]{{\footnotesize\text{\color{Orange}Åy#1Åz}}}

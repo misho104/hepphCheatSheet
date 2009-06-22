@@ -1,0 +1,448 @@
+%#!latexmk CheatSheet.tex
+%%% Time-Stamp: <2009-06-22 17:44:01>
+
+
+\section{Supersymmetry}
+\subsection{Superfields}
+\paragraph{Coordinates}
+\begin{align}
+ y   &:= x + \ii\theta\sigma\theta,&
+ y^+ &:= x - \ii\theta\sigma\theta
+\end{align}
+\paragraph{Chiral Superfield}
+\begin{align}
+\Phi
+={}& \phi(y) + \sqrt2\theta\psi(y)+\thth F(y)\\
+={}& \phi(x) + i\theta\Sm\btheta\Pm\phi(x)
+               + \frac14\thth\bthth\Psq\phi(x)
+     + \sqrt2\theta\psi(x) - \frac\ii{\sqrt2}\thth\Pm\psi(x)\Sm\btheta
+     + \thth F(x)\\
+\Phi^\dagger
+={}& \phi^*(x) - i\theta\Sm\btheta\Pm\phi^*(x)
+               + \frac14\thth\bthth\Psq\phi^*(x)
+   + \sqrt2\btheta\bar\psi(x) + \frac\ii{\sqrt2}\bthth\theta\Sm\Pm\bar\psi(x)
+   + \bthth F^*(x)
+\end{align}
+\paragraph{Vector Superfield}
+\begin{align}
+ V
+={}& C(x) + \ii\theta\chi(x) - \ii\btheta\bar\chi(x)\notag
+ \\& + \frac\ii2\thth\left[M(x)+\ii N(x)\right]
+     - \frac\ii2\bthth\left[M(x)-\ii N(x)\right]
+     - \theta\Sm\btheta A_\mu(x)\notag
+ \\& + \ii\thth\btheta\left[\bar\lambda(x)+\frac\ii2\bSm\Pm\chi(x)\right]
+     - \ii\bthth\theta\left[\lambda(x)+\frac\ii2\Sm\Pm\bar\chi(x)\right]\notag
+ \\& + \frac12\thth\bthth\left[D(x)+\frac12\Psq C(x)\right]\\
+\dashrightarrow{}&
+   - \theta\Sm\btheta A_\mu(x)
+   + \ii\thth\btheta\bar\lambda(x)
+   - \ii\bthth\theta\lambda(x)
+   + \frac12\thth\bthth D(x)\\
+={}& -\theta\Sm\btheta A_\mu(y)
+     + \ii\thth\btheta\bar\lambda(y) - \ii\bthth\theta\lambda(y)
+     +\frac12\thth\bthth\left[D(y)-\ii\Pm A^\mu(y)\right]\\
+={}& -\theta\Sm\btheta A_\mu(y^+)
+     + \ii\thth\btheta\bar\lambda(y^+) - \ii\bthth\theta\lambda(y^+)
+     +\frac12\thth\bthth\left[D(y^+)+\ii\Pm A^\mu(y^+)\right]
+\end{align}
+\paragraph{Field Strength}
+\begin{align}
+ W_\alpha
+={}& -\frac14\bar D\bar D\ee^{2gV}D_\alpha\ee^{-2gV}
+\where V = V^aT^a
+\end{align}
+
+\newpage
+\subsubsection{Some Useful Results}
+\paragraph{Changing Bases}
+\begin{align}
+ \phi(y)
+={}& \phi(x) + \ii\theta\Sm\btheta\Pm\phi(x)+\frac14\thth\bthth\Psq\phi(x)\\
+={}& \phi(y^+) + 2\ii\theta\Sm\btheta\Pm\phi(y^+)+\thth\bthth\Psq\phi(y^+)\\
+ \phi(y^+)
+={}& \phi(x) - \ii\theta\Sm\btheta\Pm\phi(x)+\frac14\thth\bthth\Psq\phi(x)\\
+={}& \phi(y) - 2\ii\theta\Sm\btheta\Pm\phi(y)+\thth\bthth\Psq\phi(y)\\
+ \phi(x)
+={}& \phi(y) - \ii\theta\Sm\btheta\Pm\phi(y)+\frac14\thth\bthth\Psq\phi(y)\\
+={}& \phi(y^+) + \ii\theta\Sm\btheta\Pm\phi(y^+)+\frac14\thth\bthth\Psq\phi(y^+)
+\end{align}
+
+\paragraph{Product of Chiral Superfields}
+\begin{align}
+\Phi^\dagger_i\Phi_j\text{(in $x$-basis)}
+={}& \phi^*_i\phi_j
+       + \sqrt2\phi^*_i\theta\psi_j + \sqrt2\btheta\bar\psi_i\phi_j
+       + \thth \phi^*_iF_j + \bthth F^*_i\phi_j\notag\\
+   & + \ii\theta\Sm\btheta\left(\phi^*_i\Pm\phi_j-\Pm\phi^*_i\phi_j\right)
+       + 2\btheta\bar\psi_i\theta\psi_j\notag\\
+   & - \frac\ii{\sqrt2}\thth
+         \left(\phi^*_i\Pm\psi_j-\Pm\phi^*_i\psi_j\right)\Sm\btheta
+       + \sqrt2\thth \btheta\bar\psi_i F_j\notag\\
+   & + \frac\ii{\sqrt2}\bthth\theta\Sm
+         \left(\Pm\bar\psi_i\phi_j-\bar\psi_i\Pm\phi_j\right)
+       + \sqrt2\bthth F^*_i\theta\psi_j\\
+   & + \thth\bthth\left[
+        F^*_iF_j+\frac14\phi^*_i\Psq\phi_j+\frac14\Psq\phi^*_i\phi_j
+        -\frac12\Pm\phi^*_i\Pm\phi_j
+        + \frac\ii2\Pm\bar\psi_i\bSm\psi_j
+        - \frac\ii2\bar\psi_i\bSm\Pm\psi_j\right]\notag\\
+\leadsto{}
+   & \phi^*_i\phi_j
+       + \sqrt2\phi^*_i\theta\psi_j + \sqrt2\btheta\bar\psi_i\phi_j
+       + \thth \phi^*_iF_j + \bthth F^*_i\phi_j\notag\\
+   & + \ii\theta\Sm\btheta\left(\phi^*_i\Pm\phi_j-\Pm\phi^*_i\phi_j\right)
+       + 2\btheta\bar\psi_i\theta\psi_j\notag\\
+   & + \sqrt2\thth \btheta\left( \bar\psi_i F_j -\ii\bSm\psi_j\Pm\phi^*_i\right)
+     + \sqrt2\bthth\theta \left( \psi_j F^*_i   -\ii\Sm\bar\psi_i\Pm\phi_j\right)\notag\\
+   & + \thth\bthth\left[
+        F^*_iF_j
+        -\Pm\phi^*_i\Pm\phi_j
+        - \ii\bar\psi_i\bSm\Pm\psi_j\right]
+\end{align}
+\begin{align}
+\Phi_i\Phi_j\text{(in $y$-basis)}
+={}& \phi_i\phi_j+\sqrt2\theta\left[\psi_i\phi_j+\phi_i\psi_j\right]
+     +\thth\left[\phi_iF_j+F_i\phi_j-\psi_i\psi_j\right]\\
+\Phi_i\Phi_j\Phi_k\text{(in $y$-basis)}
+={}& \phi_i\phi_j\phi_k
+     + \sqrt2\theta\left[\psi_i\phi_j\phi_k
+                        +\phi_i\psi_j\phi_k
+                        +\phi_i\phi_j\psi_k\right]\notag\\
+   & +\thth\left[
+      F_i\phi_j\phi_k+\phi_iF_j\phi_k+\phi_i\phi_jF_k
+      -\psi_i\psi_j\phi_k-\psi_i\phi_j\psi_k
+      -\phi_i\psi_j\psi_k
+      \right]
+\end{align}
+
+\paragraph{Superpotential}
+\begin{align}
+  W
+={}& \int\dd^2\theta
+     \left[\lambda_i\Phi_i + \frac12m_{ij} \Phi_i\Phi_j
+                           + \frac13y_{ijk}\Phi_i\Phi_j\Phi_k\right]\\
+={}& \lambda_iF_i + \frac12m_{ij}\left(\phi_iF_j+F_i\phi_j-\psi_i\psi_j\right)\notag\\
+   & +\frac13y_{ijk}\left(
+      F_i\phi_j\phi_k+\phi_iF_j\phi_k+\phi_i\phi_jF_k
+      -\psi_i\psi_j\phi_k-\psi_i\phi_j\psi_k
+      -\phi_i\psi_j\psi_k\right)\\
+   & \text{(In $x$-basis, since we have omitted all $\btheta$s.)}\notag
+\end{align}
+\newpage
+\Paragraph{Field Strength}
+Defining all component fields as including generators and coupling
+constants,
+\begin{align}
+ \ee^{\pm2gV^aT^a}
+\to{}& \ee^{\pm2V}\notag\\
+  ={}& 1 \mp 2\theta\Sm\btheta A_\mu(x)
+         \mp 2\ii\left[\bthth\theta\lambda(x)-\thth\btheta\bar\lambda(x)\right]
+         + \thth\bthth\left[{\RED -}A^\mu(x) A_\mu(x) - D(x)\right]
+\end{align}
+Therefore, in $y^+$-basis,
+\begin{align}
+ D_\alpha\ee^{-2V}
+={}&\pbib{}{\theta^\alpha}\Bigl\{
+ 1 + 2\theta\Sm\btheta A_\mu
+   + 2\ii\left[\bthth\theta\lambda-\thth\btheta\bar\lambda\right]
+   + \thth\bthth\left[A^\mu A_\mu - D - \ii\Pm
+ A^\mu\right]\Bigr\}\notag\\
+={}& 2(\Sm\btheta)_\alpha A_\mu
+   + 2\ii\bthth\lambda_\alpha - 4\ii\theta_\alpha\btheta\bar\lambda
+   + 2\theta_\alpha\bthth\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
+\end{align}
+\begin{align}
+ \ee^{2V}D_\alpha\ee^{-2V}
+={}&\Bigl\{
+ 1 - 2\theta\Sm\btheta A_\mu
+   - 2\ii\left[\bthth\theta\lambda-\thth\btheta\bar\lambda\right]\Bigr\}D_\alpha\ee^{-2V}\notag\\
+={}&
+     2(\Sm\btheta)_\alpha A_\mu
+   + 2\ii\bthth\lambda_\alpha - 4\ii\theta_\alpha\btheta\bar\lambda
+   + 2\theta_\alpha\bthth\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]\notag\\
+   & - 2\theta\Sm\btheta A_\mu\left[
+     2(\Sm\btheta)_\alpha A_\mu - 4\ii\theta_\alpha\btheta\bar\lambda
+     \right]\notag\\
+   & + 2\ii \theta\theta\btheta\bar\lambda\cdot2(\Sm\btheta)_\alpha A_\mu\notag\\
+={}& {\RED 2(\Sm\btheta)_\alpha A_\mu - 4\ii\theta_\alpha\btheta\bar\lambda}
+     + 2\theta_\alpha\bthth\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
+     + 2\ii\bthth\lambda_\alpha\notag\\
+  &  - 2A_\mu A_\nu\bthth\epsilon_{\alpha\gamma}(\theta\Sm\bSn)^\gamma
+     - 4\ii A_\mu\thth\bthth(\Sm\bar\lambda)_\alpha
+       \quad\text{\RED (in $y^+$-basis)}\\
+={}& {\BLUE 2(\Sm\btheta)_\alpha A_\mu
+     - 2\ii\bthth\epsilon_{\alpha\gamma}(\theta\Sn\bSm)^\gamma\Pn A_\mu
+     - 4\ii\theta_\alpha\btheta\bar\lambda-2\thth\bthth(\Sm\Pm\bar\lambda)_\alpha}\notag\\
+   & + 2\theta_\alpha\bthth\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
+     + 2\ii\bthth\lambda_\alpha\notag\\
+  &  - 2A_\mu A_\nu\bthth\epsilon_{\alpha\gamma}(\theta\Sm\bSn)^\gamma
+     - 4\ii A_\mu\thth\bthth(\Sm\bar\lambda)_\alpha\quad\text{\BLUE(in $y$-basis)}
+\end{align}
+In $y$-basis, $\bar D\bar D = 4\cdot\pbib{}{(\bthth)}$. Therefore,
+\begin{align}
+ W_\alpha
+={}& -\frac14\bar D\bar D\ee^{2V}D_\alpha\ee^{-2V}\\
+={}&   2(A_\mu A_\nu+\ii\Pn A_\mu)(\Sn\bSm\theta)_\alpha
+     + 2\thth(\Sm\Pm\bar\lambda)_\alpha\notag\\
+   & - 2\theta_\alpha\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
+     - 2\ii\lambda_\alpha + 4\ii A_\mu\thth(\Sm\bar\lambda)_\alpha\quad\text{\BLUE(in $y$-basis)}\\
+={}&   2(A_\mu A_\nu+\ii\Pn A_\mu)(\Sn\bSm\theta)_\alpha
+     + 2\thth(\Sm\Pm\bar\lambda)_\alpha\notag\\
+   & - 2\theta_\alpha\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
+     - 2\ii\lambda_\alpha + 4\ii A_\mu\thth(\Sm\bar\lambda)_\alpha\notag\\
+   & - \ii\thth (\Sn\bSm\Sr\btheta)_\alpha
+       (\Pr A_\mu A_\nu + A_\mu\Pr A_\nu + \ii\Pn\Pr A_\mu)\notag\\
+   & + \ii\thth (\Sr\btheta)_\alpha
+       (\Pr A^\mu A_\mu + A^\mu\Pr A_\mu - \Pr D -\ii\Pm\Pr A^\mu)
+       \quad\text{(in $x$-basis)}\\
+ W^\alpha
+={}&   2(A_\mu A_\nu+\ii\Pn A_\mu)(\theta\Sm\bSn)^\alpha
+     - 2\thth(\Pm\bar\lambda\bSm)^\alpha\notag\\
+   & - 2\theta^\alpha\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
+     - 2\ii\lambda^\alpha - 4\ii A_\mu\thth(\bar\lambda\bSm)^\alpha\quad\text{\BLUE(in $y$-basis)}
+\end{align}
+\newpage
+\begin{align}
+ W^\alpha W_\alpha\Big|_{\thth}
+={}&
+4(A_\mu A_\nu+\ii\Pn A_\mu)(A_\rho A_\sigma+\ii\Ps A_\rho)(\theta\Sm\bSn\Ss\bSr\theta)
+\notag\\&-4(A_\mu A_\nu+\ii\Pn A_\mu)[A^\mu A_\mu - D - \ii\Pm A^\mu](\theta\Sm\bSn\theta)
+\notag\\&+4\ii\thth(\Pm\bar\lambda\bSm\lambda)
+\notag\\&-4[A^\mu A_\mu - D - \ii\Pm A^\mu](A_\mu A_\nu+\ii\Pn A_\mu)(\theta\Sn\bSm\theta)
+\notag\\&+4\thth[A^\mu A_\mu - D - \ii\Pm A^\mu][A^\mu A_\mu - D - \ii\Pm A^\mu]
+\notag\\&+4\ii[A^\mu A_\mu - D - \ii\Pm A^\mu]\theta\lambda
+\notag\\&-4\ii(\lambda\Sn\bSm\theta)(A_\mu A_\nu+\ii\Pn A_\mu)
+\notag\\&-4\ii\thth(\lambda\Sm\Pm\bar\lambda)
+\notag\\&+8\thth\lambda^\alpha A_\mu(\Sm\bar\lambda)_\alpha
+\notag\\&-8\thth A_\mu(\bar\lambda\bSm\lambda)\notag\\
+={}& 4(\theta\Sm\bSn\Ss\bSr\theta)
+     [A_\mu A_\nu+\ii\Pn A_\mu][A_\rho A_\sigma+\ii\Ps A_\rho]
+\notag\\&-4(\theta\Sm\bSn\theta)
+    \Bigl\{A^\mu A_\mu - D - \ii\Pm A^\mu,A_\mu A_\nu+\ii\Pn A_\mu\Bigr\}
+\notag\\&+4\ii\thth(\Pm\bar\lambda\bSm\lambda - \lambda\Sm\Pm\bar\lambda)
+\notag\\&+4\thth[A^\mu A_\mu - D - \ii\Pm A^\mu][A^\mu A_\mu - D - \ii\Pm A^\mu]
+\notag\\&+8\thth\lambda^\alpha A_\mu(\Sm\bar\lambda)_\alpha
+\notag\\&-8\thth A_\mu(\bar\lambda\bSm\lambda)\quad\text{\BLUE(in $y$-basis)}\notag\\
+\leadsto{}
+  & 4(\Hmn\Hsr-\Hms\Hnr+\Hmr\Hns)
+     [A_\mu A_\nu+\ii\Pn A_\mu][A_\rho A_\sigma+\ii\Ps A_\rho]
+\notag\\&-4
+    \Bigl\{A^\mu A_\mu - D - \ii\Pm A^\mu,A^\nu A_\nu+\ii\Pn A^\nu\Bigr\}
+\notag\\&+4[A^\mu A_\mu - D - \ii\Pm A^\mu][A^\mu A_\mu - D - \ii\Pm A^\mu]
+\notag\\&+4\ii(\Pm\bar\lambda\bSm\lambda - \lambda\Sm\Pm\bar\lambda)
+         + 8\lambda^\alpha A_\mu(\Sm\bar\lambda)_\alpha
+         - 8 A_\mu(\bar\lambda\bSm\lambda)\notag\\
+={}& -2F^{\mu\nu}F_{\mu\nu} + 4(D+2\ii\Pm A^\mu)(D+2\ii\Pm A^\mu)\notag\\
+   & +4\ii(\Pm\bar\lambda\bSm\lambda - \lambda\Sm\Pm\bar\lambda)
+     +8\lambda^\alpha A_\mu(\Sm\bar\lambda)_\alpha -8 A_\mu(\bar\lambda\bSm\lambda),\\
+\bar W_\dalpha\bar W^\dalpha\Big|_{\bthth}
+={}& -2F^{\mu\nu}F_{\mu\nu} + 4(D-2\ii\Pm A^\mu)(D-2\ii\Pm A^\mu)\notag\\
+   & +4\ii(\Pm\lambda\Sm\bar\lambda - \bar\lambda\bSm\Pm\lambda)
+     +8\bar\lambda^\alpha A_\mu(\bSm\lambda)_\alpha -8 A_\mu(\lambda\Sm\bar\lambda),
+\end{align}
+where
+\begin{equation}
+ F_{\mu\nu} = \Pm A_\nu - \Pn A_\mu + \ii[A_\mu,A_\nu]
+\end{equation}
+Defining the generators as
+\footnote{The last one is anomaly-free condition, yielding $\Tr T^aT^bT^c = \ii kgf^{abc}/2$.}
+\begin{align}
+  {T^a}^\dagger &= T^a,&
+  [T^a,T^b] &= \ii f^{abc}T^c,&
+  \Tr T^aT^b &= k\delta^{ab}\quad(k>0),&
+  \Tr(\{T^a,T^b\}T^c)&=0,
+\end{align}
+\begin{align}
+ \frac{1}{16kg^2}\Tr\left(
+ W^\alpha W_\alpha\Big|_{\thth}+\bar W_\dalpha\bar W^\dalpha\Big|_{\bthth}
+ \right)
+={}& - \frac14 F^{a\mu\nu}F^a_{\mu\nu}
+     + \frac12 D^aD^a-2\Pm A^{a\mu}\Pn A^{a\nu}\notag\\
+   & - \frac12\ii\left(\lambda\Sm D_\mu\bar\lambda+\bar\lambda\bSm D_\mu\lambda\right)
+\end{align}
+Here
+\begin{align}
+  F^a_{\mu\nu} &= \Pm A^a_\nu - \Pn A^a_\mu - f^{abc}A^b_\mu A^c_\nu\\
+  D_\mu\lambda^a &= \Pm\lambda^a-gf^{abc}A^b_\mu\lambda^c\\
+  D_\mu\bar\lambda^a &= \Pm\bar\lambda^a-gf^{abc}A^b_\mu\bar\lambda^c
+\end{align}
+\newpage
+\paragraph{Interaction Terms}
+\begin{equation}
+ \ee^{-2gV^aT^a}
+  = 1 + 2g\theta\Sm\btheta A^a_\mu T^a
+         + 2\ii g\bthth\theta\lambda^aT^a
+         - 2\ii g\thth\btheta\bar\lambda^aT^a
+         - \thth\bthth\left[g^2A^{a\mu} A^b_\mu T^aT^b + gD^aT^a\right]
+\end{equation}
+\begin{align}
+\Phi^\dagger\ee^{-2gV^aT^a}\Phi\Big|_{\theta^4}
+={}& \phi^*\thth\bthth\left[-g^2A^{a\mu} A^b_\mu T^aT^b - gD^aT^a\right]\phi\notag\\
+   &   + \sqrt2\phi^*\left[2\ii g\bthth\theta\lambda^aT^a\right]\theta\psi
+       + \sqrt2\btheta\bar\psi\left[- 2\ii g\thth\btheta\bar\lambda^aT^a\right]\phi\notag\\
+   &   + \ii\theta\Sm\btheta\left[\phi^*(2g\theta\Sm\btheta A^a_\mu T^a)\Pm\phi
+        -\Pm\phi^*(2g\theta\Sm\btheta A^a_\mu T^a)\phi\right]\notag\\
+   &   + 2\btheta\bar\psi\left[2g\theta\Sm\btheta A^a_\mu T^a\right]\theta\psi\notag\\
+   & + \thth\bthth\left[
+        F^*F+\frac14\phi^*\Psq\phi+\frac14\Psq\phi^*\phi
+        -\frac12\Pm\phi^*\Pm\phi
+        + \frac\ii2\Pm\bar\psi\bSm\psi
+        - \frac\ii2\bar\psi\bSm\Pm\psi\right]\notag\\
+\leadsto{}
+   &  F^*F - D_\mu\phi^* D^\mu\phi - \ii\bar\psi\bSm D_\mu\psi\notag\\
+   &  -gD^a(\phi^*T^a\phi) - \sqrt2\ii g\lambda^a(\phi^*T^a\psi)
+       + \sqrt2\ii g\bar\lambda^a(\bar\psi T^a\phi)
+\end{align}
+
+\begin{align}
+ D_\mu\phi   &= (\Pm-\ii gA^{a\mu}T^a)\phi\\
+ D_\mu\phi^* &= \Pm\phi^*+\ii gA^a_\mu(\phi^*T^a)\\
+ D_\mu\psi   &= (\Pm-\ii gA^a_\mu T^a)\psi
+\end{align}
+
+\clearpage
+\section{Supergravity}
+\subsection{Minimal SUGRA Lagrangian}
+Minimal SUGRA Lagrangian is constructed from supergravity multiplet
+$(\bein a\mu,\psi^\alpha_\mu, B_\mu, F_\phi)$.
+\begin{equation}
+ \Lag = -\frac{M^2}{2}eR+e\epsilon^{\mu\nu\rho\sigma}\bar\psi_\mu\bSnd\DD_\rho\psi_\sigma
+\end{equation}
+where
+\begin{align}
+ \DD_\mu\psi_\nu
+  &:=\Pm\psi_\nu+\frac12\omega\T_\mu^a^b\sigma_{ab}\psi_\nu\qquad
+  \left[\omega\T_\mu^a^b : {\text{``spinê⁄ë±''}}\right]\\
+ e&:=\det \bein a\mu\\
+ M&:=1/\sqrt{8\pi G} \quad \text{(Reduced Planck mass)}\\
+ R&:={\bein a\mu}{\bein b\nu}R\T_\mu_\nu^a^b\\
+ R\T_\mu_\nu^a^b
+  &:=\Pm\omega\T_\nu^a^b-\Pn\omega\T_\mu^a^b
+     -\omega\T_\mu^a^c\omega\T_\nu_c^b+\omega\T_\nu^a^c\omega\T_\mu_c^b.
+\end{align}
+\subsection{General SUGRA Lagrangian}
+The components of general SUGRA Lagrangian is
+\begin{equation}
+ \Phi_i = (\psi_i,\chi^\alpha_i,F_i),\qquad
+ V^{(a)}=(A^{(a)}_\mu,\lambda^{\alpha(a)},D^{(a)}),\qquad
+ G=(\bein \mu a,\psi_\mu^\alpha,B_\mu,F_\phi),
+\end{equation}
+and described with following functions:
+\begin{itemize}
+ \item K\"ahler potential $K(\Phi,\Phi^*)$
+\begin{itemize}
+ \item Real function of chiral multiplets.
+ \item In global SUSY, $\int\dd^4\theta K$ yields kinetic terms of the
+       chiral multiplet.
+ \item ``Minimal K\"ahler'' is (if no gauge interaction)
+       $K=\Phi\Phi^\dagger$, which is
+\begin{equation}
+ \int\dd^4\theta\ \Phi\Phi^*=\Pm \phi^*\Pm\phi+\ii\bar\chi\bSm\Pm
+  \chi + F^*F.
+\end{equation}
+\end{itemize}
+ \item Super Potential $W(\Phi)$
+ \item Gauge kinetic term $f_{(a)(b)}(\Phi)$
+\begin{itemize}
+ \item Some function which satisfies $f_{(a)(b)} = f_{(b)(a)}$.
+ \item $(a), (b), ...$ are indices for adjoint representation of gauge
+       group.
+ \item Minimal one is $f_{(a)(b)} \propto \delta_{(a)(b)}.$
+\end{itemize}
+\end{itemize}
+
+\def\epsmnrs{\epsilon^{\mu\nu\rho\sigma}}
+\def\fR{{f\suprm{R}}}
+\def\fI{{f\suprm{I}}}
+\begin{align}
+ \Lag
+={}&
+ -\frac12eR
+ +eg_{ij^*}\DD_\mu\phi^i\DD^\mu\phi^{*j}
+ -\frac12eg^2D_{(a)}D^{(a)}
+\notag\\&
+ +\ii eg_{ij^*}\bar\chi^j\bSm\DD_\mu\chi^i
+ +e\epsmnrs\bar\psi_\mu\bSnd\DD_\rho\psi_\sigma
+\notag\\&
+ -\frac14e\fR_{(ab)}F^{(a)}_{\mu\nu}F^{\mu\nu(b)}
+ +\frac18e\epsmnrs\fI_{(ab)}f^{(a)}_{\mu\nu}f^{(b)}_{\rho\sigma}
+\notag\\&
+ +\frac\ii2e\left[\lambda_{(a)}\Sm\DD_\mu\bar\lambda^{(a)}
+                + \bar\lambda_{(a)}\bSm\DD_\mu\lambda^{(a)}\right]
+ -\frac12\fI_{(ab)}\DD_\mu\left[e\lambda^{(a)}\Sm\bar\lambda^{(b)}\right]
+\notag\\&
+ +\sqrt2egg_{ij^*}X^{*j}_{(a)}\chi^i\lambda^{(a)}
+ +\sqrt2egg_{ij^*}X^{i}_{(a)}\bar\chi^j\bar\lambda^{(a)}
+\notag\\&
+ -\frac\ii4\sqrt2 eg\partial_if_{(ab)}D^{(a)}\chi^i\lambda^{(b)}
+ +\frac\ii4\sqrt2 eg\partial_{i*}f^*_{(ab)}D^{(a)}\bar\chi^i\bar\lambda^{(b)}
+\notag\\&
+ -\frac14\sqrt2e\partial_if_{(ab)}\chi^i\sigma^{\mu\nu}\lambda^{(a)}F^{(b)}_{\mu\nu}
+ -\frac14\sqrt2e\partial_{i^*}f^*_{(ab)}\bar\chi^i\bar\sigma^{\mu\nu}\bar\lambda^{(a)}F^{(b)}_{\mu\nu}
+\notag\\&
+ +\frac12egD_{(a)}\psi_\mu\Sm\bar\lambda^{(a)}
+ -\frac12egD_{(a)}\bar\psi_\mu\bSm\lambda^{(a)}
+\notag\\&
+ -\frac12\sqrt2eg_{ij^*}\DD_\nu\phi^{*j}\chi^i\Sm\bSn\psi_\mu
+ -\frac12\sqrt2eg_{ij^*}\DD_\nu\phi^i\bar\chi^j\bSm\Sn\bar\psi_\mu
+\notag\\&
+-\frac\ii4e\left[\psi_\mu\sigma^{\nu\rho}\Sm\bar\lambda_{(a)}
+               + \bar\psi_\mu\bar\sigma^{\nu\rho}\bSm\lambda_{(a)}\right]
+           \left[F^{(a)}_{\nu\rho}+\hat F^{(a)}_{\nu\rho}\right]
+\notag\\&
++\frac14eg_{ij^*}\left[\ii\epsmnrs\psi_\mu\sigma_\nu\bar\psi_\rho
+                     + \psi_\mu\Ss\bar\psi^\mu\right]
+                 \chi^i\sigma_\sigma\bar\chi^i
+\notag\\&
+-\frac18e\left[g_{ij^*}g_{kl^*}-2R_{ij^*kl^*}\right]\chi^i\chi^k\bar\chi^j\bar\chi^l
+\notag\\&
++\frac1{16}e\left[2g_{ij^*}\fR_{(ab)}
+                + {\fR^{(cd)}}^{-1}\partial_if_{(bc)}\partial_{j^*}f^*_{(ad)}\right]
+            \bar\chi^j\bSm\chi^i\bar\lambda^{(a)}\bar\sigma_\mu\lambda^{(b)}
+\notag\\&
++\frac18e\nabla_i\partial_jf_{(ab)}\chi^i\chi^j\lambda^{(a)}\lambda^{(b)}
++\frac18e\nabla_{i^*}\partial_{j^*}f^*_{(ab)}\bar\chi^i\bar\chi^j\bar\lambda^{(a)}\bar\lambda^{(b)}
+\notag\\&
++\frac1{16}e{\fR^{(cd)}}^{-1}\partial_if_{(ac)}\partial_jf_{(bd)}
+             \chi^i\lambda^{(a)}\chi^j\lambda^{(b)}
+\notag\\&
++\frac1{16}e{\fR^{(cd)}}^{-1}\partial_{i^*}f^*_{(ac)}\partial_{j^*}f^*_{(bd)}
+             \bar\chi^i\bar\lambda^{(a)}\bar\chi^j\bar\lambda^{(b)}
+\notag\\&
+-\frac1{16}eg^{ij^*}\partial_if_{(ab)}\partial_{j^*}f^*_{(cd)}
+             \lambda^{(a)}\lambda^{(b)}\bar\lambda^{c}\bar\lambda^{(d)}
+\notag\\&
++\frac3{16}e\lambda_{(a)}\Sm\bar\lambda^{(a)}\lambda_{(b)}\sigma_\mu\bar\lambda^{(b)}
+\notag\\&
++\frac\ii4\sqrt2 e\partial_{i}f_{(ab)}\left[
+                \chi^i\sigma^{\mu\nu}\lambda^{(a)}\psi_\mu\sigma_\nu\bar\lambda^{(b)}
+              - \frac14\bar\psi_\mu\bSm\chi^i\lambda^{(a)}\lambda^{(b)}\right]
+\notag\\&
++\frac\ii4\sqrt2 e\partial_{i^*}f^*_{(ab)}\left[
+              \bar\chi^i\bar\sigma^{\mu\nu}\bar\lambda^{(a)}\bar\psi_\mu\bar\sigma_\nu\lambda^{(b)}
+            - \frac14\psi_\mu\Sm\bar\chi^i\bar\lambda^{(a)}\bar\lambda^{(b)}\right]
+\notag\\&
+-e\ee^{K/2}\left[W^*\psi_\mu\sigma^{\mu\nu}\psi_\nu
+               + W  \bar\psi_\mu\bar\sigma^{\mu\nu}\bar\psi_\nu\right]
+\notag\\&
++\frac\ii2\sqrt2e\ee^{K/2}\left[D_iW\chi^i\Sm\bar\psi_\mu
+                              + D_{i^*}W^*\bar\chi^i\bSm\psi_\mu\right]
+\notag\\&
+-\frac12e\ee^{K/2}\left[\DD_i D_jW\chi^i\chi^j+\DD_{i^*}D_{j^*}W^*\bar\chi^i\bar\chi^j\right]
+\notag\\&
++\frac14e\ee^{K/2}g^{ij^*}\left[ D_{j^*}W^*\partial_if_{(ab)}\lambda^{(a)}\lambda^{(b)}
+                               + D_iW\partial_{j^*}f^*_{(ab)}\bar\lambda^{(a)}\bar\lambda^{(b)}
+                          \right]
+\notag\\&
+-e\ee^{K}\left[g^{ij^*}(D_iW)(D_{j^*}W^*)-3W^*W\right]
+\end{align}
+
+%%% Local Variables:
+%%% TeX-master: CheatSheet.tex
+%%% End:
+
+
+
+
+
+
