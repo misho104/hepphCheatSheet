@@ -1,8 +1,8 @@
 %#!latexmk
-%%% Time-Stamp: <2009-06-22 17:44:39>
+%%% Time-Stamp: <2009-08-03 05:16:38>
 \documentclass[a4j,10pt,notitlepage]{jsarticle}
 %\usepackage[backref=true,bookmarksnumbered=false,bookmarksopen=true,hyperfootnotes=false,dvipdfm]{hyperref}
-\usepackage[EqNumWithSec,Ver.1.00,Deutsch]{MyPhysPaperM}
+\usepackage[EqNumWithSec,Ver.1.00,Deutsch]{../MyPhysPaperM}
 %\usepackage[greek,japanese]{babel}\usepackage{ngerman}
 \title{High Energy Physics Cheat Sheet}
 %\date{\today}
@@ -21,12 +21,16 @@
 \usepackage{amsmath}	% required for `\align' (yatex added)
 \begin{document}
 
+
 \input{General.tex}
 \clearpage
 \input{StandardModel.tex}
 \clearpage
 \input{SUSY.tex}
 \clearpage
+\input{SUGRA.tex}
+\clearpage
+
 \appendix
 \input{VerboseNotes.tex}
 \end{document}

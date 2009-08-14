@@ -1,8 +1,9 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2009-06-22 15:37:56>
+%%% Time-Stamp: <2009-07-05 14:08:17>
 \section{General Definitions and Tools}
 \subsection{Notations and Conventions}
 \subsubsection{Metric etc.}
+
 \begin{tabular}{l@{ :\ \ \ }l}
 Minkowski Metric   & $\Hmn = \diag(+,-,-,-)$\\
 Coordinates        & $\displaystyle x^\mu = (t,x,y,z)$; \quad Therefore $\Pm = \left(\pbib{}t,\vgrad\right)$\\
@@ -36,10 +37,22 @@ Gamma Matrices & $\Gm=\pmat{0&\Sm\\\bSm&0};\quad \G5=\pmat{-1&0\\0&1}$\\
 Dirac Field    & $\psi    =\pmat{\psi\s L\\\psi\s R}; \quad
                   \bar\psi=\psi^\dagger\G0=\pmat{\psi\s R^\dagger&\psi\s L^\dagger}$\\
  & $u^s(p)=\pmat{\sqrt{p\cdot\sigma}\xi^s\\\sqrt{p\cdot\bar\sigma}\xi^s};\quad
-    v^s(p)=\pmat{\sqrt{p\cdot\sigma}\eta^s\\-\sqrt{p\cdot\bar\sigma}\eta^s}$\\
+    v^s(p)=\pmat{\sqrt{p\cdot\sigma}\eta^s\\-\sqrt{p\cdot\bar\sigma}\eta^s}$
+  $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$\\
+
 Weyl Equations & $\ii\bar\sigma\cdot\partial\psi_L=m\psi_R;\quad
                   \ii\sigma\cdot\partial\psi_L=m\psi_L$\\
-CPT transf.     &\TODO{ÇΩÇ‘ÇÒÇ±Ç±Ç≈$u$Ç∆$v$ÇÃä‘Ç…CPïœä∑Ç…î∫Ç§ä÷åWéÆÇ™ìæÇÁÇÍÇÈÅB}\\
+
+
+CPT transf.
+ & $P\psi(t,\vc x) P = \eta\G0\psi(t,-\vc x)\quad(|\eta|^2=1)$\\
+ & $T\psi(t,\vc x) T = \G1\G3\psi(-t,\vc x)\quad\text{(ignoring intrinsic phase)}$\\
+ & $C\psi(t,\vc x) C = -\ii\G2\psi^*(t,\vc x) = -\ii\trans{(\bar\psi\G0\G2)}\quad
+                       \text{(ÅV)}$\\
+ & $\bar\psi\longrightarrow
+     P: \eta^*\bar\psi\G0\quad
+     T: -\bar\psi\G1\G3\quad
+     C: \ii\bar\psi^*\G2=-\ii\trans{(\G0\G2\psi)}$\\
 \end{tabular}
 \end{rightnote}
 
@@ -50,8 +63,10 @@ Electromagnetic Fields & $A^\mu=(\phi,\vc A)$
 & $F_{\mu\nu}F^{\mu\nu} = -2\left(\vnorm E^2-\vnorm B^2\right)$
 \end{tabular}
 
-\subsubsection{Field Calculation}
+\subsubsection{Dirac Field Techniques}
 \begin{tabular}{l@{ :\ \ \ }l}
+Dirac Equations & $(\slashed p-m)u^s(p)=0;\quad(\slashed p+m)v^s(p)=0$\\
+&$\bar u^s(p)(\slashed p-m)=0;\quad \bar v^s(p)(\slashed p+m)=0$\\
 Dirac Components &
    $\bar u^r(p)u^s(p)=2m\delta^{rs};\quad
     u^{r\dagger}(p) u^s(p)=2E_\vc p\delta^{rs}$\\
@@ -62,6 +77,25 @@ Spin Sums & $\displaystyle
              \sum\s{spin}u^s(p)\bar u^s(p)=\slashed p+m;\quad
              \sum\s{spin}v^s(p)\bar v^s(p)=\slashed p-m$\\
 \end{tabular}
+
+\subsubsection{CPT Table}
+\begin{tabular}[t]{c|c|c|cccccc}
+ & $\phi$ & $A^\mu$
+ & $\bar\psi\psi$ & $\bar\psi\Gm\psi$ & $\bar\psi\Smn\psi$
+ & $\bar\psi\Gm\G5\psi$ & $\ii\bar\psi\G5\psi$ & $\Pm$\\\hline
+$P$
+  & $\eta\phi$ & $\eta$$-$$+$$+$$+$$A^\mu$
+  &$+$&$+$$-$$-$$-$&($+$$-$$-$$-$)($+$$-$$-$$-$)&$-$$+$$+$$+$&$-$&$+$$-$$-$$-$\\
+$T$
+  & $\zeta\phi$ & $\zeta$$+$$-$$-$$-$$A^\mu$
+  &$+$&$+$$-$$-$$-$&$-$($+$$-$$-$$-$)($+$$-$$-$$-$)&$+$$-$$-$$-$&$-$&$-$$+$$+$$+$\\
+$C$
+  & $\xi\phi^*$ & $\xi$$+$$A^{\mu*}$
+  &$+$&$-$&$-$&$+$&$+$&$+$\\
+\end{tabular}\vspace{.5zw}
+
+($\eta\zeta\xi=1$;
+ especially, photon $A^\mu$ is $(\eta,\zeta,\xi)=(-,+,-)$. )
 
 \subsubsection{Polarization Sum}
 

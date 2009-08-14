@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2009-06-22 15:50:38>
+%%% Time-Stamp: <2009-07-26 21:44:25>
 
 \section{Standard Model}
 \paragraph{Gauge Fields}
@@ -44,6 +44,11 @@ We use following notations for the Gauge Group $\gSU3\times\gSU2\times\gU1$:
  L + \Hc
 \end{align}
 の形となる。
+
+ただし
+$F_{\mu\nu}=\Pm A_\nu-\Pn A_\mu-\ii g[A_\mu,A_\nu]
+  =\left(\Pm A^a_\nu- \Pn A^a_\mu + gf^{abc}A^b_\mu A^c_\nu\right)T^a$
+である。
 
 \begin{rightnote}
 \Subparagraph{これ以外の項が加わらない理由}
@@ -113,16 +118,17 @@ A_\mu:=\frac1{\sqrt{{g_1}^2+{g_2}^2}}(g_1 W^3_\mu+g_2B_\mu)
  \Lag\s{Higgs}
 = & \frac12(\partial_\mu h)^2+\frac{(v+h)^2}8\Bigl[{g_2}^2W^+ W^- + {g_2}^2W^- W^+ + ({g_1}^2+{g_2}^2)(Z^0)^2\Bigr],\\
  g_1B_\mu
-= & e A-\frac{es}c Z,\\
+= & |e| A-\frac{|e|s}c Z,\\
  g_2W_\mu
 = & \frac{g_2}{\sqrt2}\left(W^+_\mu T^+ + W^-_\mu T^-\right)
-   +\left(\frac{ec}sZ^0_\mu+eA_\mu\right)T^3
+   +\left(\frac{|e|c}sZ^0_\mu+|e|A_\mu\right)T^3
 \end{align}
-となる。ここでWeinberg角$\theta\s w$と素電荷$e$を導入した：
+となる。ここで$T^\pm=T^1\pm\ii T^2$であり，またWeinberg角$\theta\s w$と
+素電荷$e$を導入した：
 \begin{equation}
- e := \frac{g_1g_2}{\sqrt{{g_1}^2+{g_2}^2}};\qquad
+ |e| := \frac{g_1g_2}{\sqrt{{g_1}^2+{g_2}^2}};\qquad
  s :=\sin\theta\s w,\quad c:=\cos\theta\s w;\qquad
- g_1=\frac{e}{c},\quad g_2=\frac{e}{s}.
+ g_1=\frac{|e|}{c},\quad g_2=\frac{|e|}{s}.
 \end{equation}
 
 \Paragraph{Higgs potential}
@@ -162,17 +168,17 @@ Gauge項は
 (\partial Z^0)(\partial Z^0)+(\partial A)(\partial A)+2(\partial W^+)(\partial W^-)
 +G^{a\mu\nu}G^a_{\mu\nu}
 \right]\\
-&+\frac{\ii ec}{2s}\Bigl[
+&+\frac{\ii |e|c}{2s}\Bigl[
 W^+W^-(\partial Z^0)
 +Z^0W^+(\partial W^-)
 +W^-Z^0(\partial W^+)\Bigr]\\
-&+\frac{\ii e}2\Bigl[
+&+\frac{\ii |e|}2\Bigl[
 W^+W^-(\partial A)
 +AW^+(\partial W^-)
 +W^-A(\partial W^+)\Bigr]\\
-&+\frac{e^2}{4s^2} W^+W^+W^-W^- +\frac{e^2c^2}{2s^2}W^+W^-Z^0Z^0\\
-&+\frac{e^2c}{s}W^+W^-Z^0A
-+\frac{e^2}{2}W^+W^-AA
+&+\frac{|e|^2}{4s^2} W^+W^+W^-W^- +\frac{|e|^2c^2}{2s^2}W^+W^-Z^0Z^0\\
+&+\frac{|e|^2c}{s}W^+W^-Z^0A
++\frac{|e|^2}{2}W^+W^-AA
 \end{align}
 となる。
 
@@ -230,17 +236,17 @@ W^+W^-(\partial A)
 {\quad+\quad}\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)L\\
 \note{$A$\&$Z^0$ boson}&
 {\quad+\quad}\bar Q\left[
-    \left(T^3+\frac16\right)e\slashed A
-   +\left(\frac{ec}{s}T^3-\frac{es}{6c}\right)\slashed Z^0
+    \left(T^3+\frac16\right)|e|\slashed A
+   +\left(\frac{|e|c}{s}T^3-\frac{|e|s}{6c}\right)\slashed Z^0
   \right] Q\\
-&{\quad+\quad}\bar U\left(\frac23 e\slashed A-\frac{2es}{3c}\slashed Z\right) U\\
-&{\quad+\quad}\bar D\left(-\frac13 e\slashed A+\frac{es}{3c}\slashed Z\right) D\\
+&{\quad+\quad}\bar U\left(\frac23 |e|\slashed A-\frac{2|e|s}{3c}\slashed Z\right) U\\
+&{\quad+\quad}\bar D\left(-\frac13 |e|\slashed A+\frac{|e|s}{3c}\slashed Z\right) D\\
 &{\quad+\quad}\bar L\left[
-    \left(T^3-\frac12\right)e\slashed A
-   +\left(\frac{ec}{s}T^3+\frac{es}{2c}\right)\slashed Z^0
+    \left(T^3-\frac12\right)|e|\slashed A
+   +\left(\frac{|e|c}{s}T^3+\frac{|e|s}{2c}\right)\slashed Z^0
   \right] L\\
 & 
-{\quad+\quad}\bar E\left(-e\slashed A+\frac{es}{c}\slashed Z\right) E\\[.5zw]
+{\quad+\quad}\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) E\\[.5zw]
 \note{湯川項}& % Yukawa
 {\quad+\quad}v\bar U y_u Q^1
 {\quad+\quad}v\bar D y_d Q^2
@@ -364,17 +370,17 @@ $\Lag_{QQW}$以外の項は，例えば
 {\quad+\quad}\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)\PL L\\
 \note{$A$\&$Z^0$ boson}&
 {\quad+\quad}\bar Q\left[
-    \left(T^3+\frac16\right)e\slashed A
-   +\left(\frac{ec}{s}T^3-\frac{es}{6c}\right)\slashed Z^0
+    \left(T^3+\frac16\right)|e|\slashed A
+   +\left(\frac{|e|c}{s}T^3-\frac{|e|s}{6c}\right)\slashed Z^0
   \right]\PL  Q\\
-&{\quad+\quad}\bar U\left(\frac23 e\slashed A-\frac{2es}{3c}\slashed Z\right) \PR U\\
-&{\quad+\quad}\bar D\left(-\frac13 e\slashed A+\frac{es}{3c}\slashed Z\right) \PR D\\
+&{\quad+\quad}\bar U\left(\frac23 |e|\slashed A-\frac{2|e|s}{3c}\slashed Z\right) \PR U\\
+&{\quad+\quad}\bar D\left(-\frac13 |e|\slashed A+\frac{|e|s}{3c}\slashed Z\right) \PR D\\
 &{\quad+\quad}\bar L\left[
-    \left(T^3-\frac12\right)e\slashed A
-   +\left(\frac{ec}{s}T^3+\frac{es}{2c}\right)\slashed Z^0
+    \left(T^3-\frac12\right)|e|\slashed A
+   +\left(\frac{|e|c}{s}T^3+\frac{|e|s}{2c}\right)\slashed Z^0
   \right] \PL L\\
 & 
-{\quad+\quad}\bar E\left(-e\slashed A+\frac{es}{c}\slashed Z\right) \PR E
+{\quad+\quad}\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) \PR E
 \end{align}
 となる。
 
@@ -457,7 +463,7 @@ $\Lag_{QQW}$以外の項は，例えば
 \nu_e^\dagger\bar\sigma^\mu W^+_\mu e\s L + e\s L^\dagger\bar\sigma^\mu W^-_\mu \nu_e
 \right]\\
 &
-+e\left[
++|e|\left[
   \frac23 u\s L^\dagger \bar\sigma^\mu A_\mu u\s L
 - \frac13 d\s L^\dagger \bar\sigma^\mu A_\mu d\s L
 + \frac23 u\s R^\dagger     \sigma^\mu A_\mu u\s R
@@ -468,7 +474,7 @@ $\Lag_{QQW}$以外の項は，例えば
 - e\s R^\dagger     \sigma^\mu A_\mu e\s R
 + \text{(leptons)}\right]\\
 &%
-+\frac{es}{c}\left[
++\frac{|e|s}{c}\left[
   \left(\frac{c^2}{2s^2}-\frac16\right)u\s L^\dagger \bar\sigma^\mu Z_\mu u\s L
 - \left(\frac{c^2}{2s^2}+\frac16\right)d\s L^\dagger \bar\sigma^\mu Z_\mu d\s L
 - \frac23 u\s R^\dagger     \sigma^\mu Z_\mu u\s R
@@ -481,7 +487,12 @@ $\Lag_{QQW}$以外の項は，例えば
 \end{align}
 となる。
 
-\newpage
+\Paragraph{実験値}
+実験値としては，$v=(\sqrt2G\s F)^(-1/2)\sim246\un{GeV}\sim174\sqrt2\un{GeV} $
+および$M_w\sim37.3\un{GeV}/\sin\theta\s w$が知られている。
+\TODO{拡充}
+
+%\newpage
 
 
 \section{楊-Mills Theory}
