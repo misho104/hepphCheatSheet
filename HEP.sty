@@ -41,7 +41,7 @@
 
 
 %%% QFT
-\newcommand\intP[1]{\int\frac{\dd^{#1}p}{(2\pi)^{#1}}}
+\newcommand\intP[2]{\int\!\!\frac{\dd^{#1}{#2}}{(2\pi)^{#1}}}
 
 
 \def\G{\@ifnextchar5{\G@d}{\G@u}}
@@ -64,6 +64,10 @@
 \newcommand{\Sn}{\sigma^\nu}
 \newcommand{\Sr}{\sigma^\rho}
 \newcommand{\Ss}{\sigma^\sigma}
+\newcommand{\Smd}{\sigma_\mu}
+\newcommand{\Snd}{\sigma_\nu}
+\newcommand{\Srd}{\sigma_\rho}
+\newcommand{\Ssd}{\sigma_\sigma}
 \newcommand{\bSm}{\bar\sigma^\mu}
 \newcommand{\bSn}{\bar\sigma^\nu}
 \newcommand{\bSr}{\bar\sigma^\rho}
