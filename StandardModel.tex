@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2009-08-23 00:22:08>
+%%% Time-Stamp: <2009-09-21 01:19:20 misho>
 
 \section{Standard Model}
 \paragraph{Gauge Fields}
@@ -14,11 +14,13 @@ We use following notations for the Gauge Group $\gSU3\times\gSU2\times\gU1$:
 \gU1&:\quad B_\mu.
 \end{align*}
 
-以下では射影演算子$P\genfrac{}{}{0pt}{1}{\text{R}}{\text{L}}:=\dfrac{1\pm\G5}2$をあら
-わに書くことにする。
+We will denotes projection operators
+$P\genfrac{}{}{0pt}{1}{\text{R}}{\text{L}}:=\dfrac{1\pm\G5}2$ explicitly
+in following expressions.
+
 \subsection{Full Lagrangian}
-標準模型の構成粒子から作られる，$\gSU3\times\gSU2\times\gU1$ gauge対称
-性を保つLagrangianは，
+The Lagrangian of the Standard Model, which conserves
+$\gSU3\times\gSU2\times\gU1$ gauge symmetry, is
 \begin{align}
  \Lag =
 & % Gauge Boson Kinetic
@@ -40,15 +42,12 @@ We use following notations for the Gauge Group $\gSU3\times\gSU2\times\gU1$:
 & % Right Electron
  + \bar E\ii\gamma^\mu\left(\partial_\mu+\ii g_1B_\mu\right)\PR E\notag\\
 & % Yukawa
- + \bar U y_uH\PL Q + \bar D y_dH^\dagger\PL Q + \bar E y_eH^\dagger\PL
- L + \Hc
+ - \bar U y_uH\PL Q + \bar D y_dH^\dagger\PL Q + \bar E y_eH^\dagger\PL
+ L + \Hc.
 \end{align}
-の形となる。
-
-ただし
+(Note that
 $F_{\mu\nu}=\Pm A_\nu-\Pn A_\mu-\ii g[A_\mu,A_\nu]
-  =\left(\Pm A^a_\nu- \Pn A^a_\mu + gf^{abc}A^b_\mu A^c_\nu\right)T^a$
-である。
+  =\left(\Pm A^a_\nu- \Pn A^a_\mu + gf^{abc}A^b_\mu A^c_\nu\right)T^a$.)
 
 \begin{rightnote}
 \Subparagraph{これ以外の項が加わらない理由}
@@ -77,11 +76,12 @@ $\psi\s R\mapsto\ee^{\ii\alpha(x)}\psi\s R$の変換によって打ち消すこ
 \end{rightnote}
 \newpage
 
-\Paragraph{Gauge場の運動項}
+\Paragraph{Gauge Kinetic Terms}
+Using an abridged notation
 \begin{equation}
- (\partial A)_{\mu\nu}:=\partial_\mu A_\nu-\partial_\nu A_\mu
+ (\partial A)_{\mu\nu}:=\partial_\mu A_\nu-\partial_\nu A_\mu,
 \end{equation}
-と略記することにすると，Gauge場の運動項は
+the gauge kinetic terms is
 \begin{align}
  \Lag_{B;\text{kin}}
 =&-\frac14(\partial B)(\partial B)\\
@@ -94,20 +94,24 @@ $\psi\s R\mapsto\ee^{\ii\alpha(x)}\psi\s R$の変換によって打ち消すこ
 =&-\frac14(\partial G^a)(\partial G^a)
 -g_3f^{abc}(\partial_\mu G_\nu^a)G^{\mu b}G^{\nu c}
 -\frac{{g_3}^2}4
- \left(f^{eab}G_\mu^aG_\nu^b\right)\left(f^{ecd}G^{c\mu}G^{d\nu}\right)
+ \left(f^{eab}G_\mu^aG_\nu^b\right)\left(f^{ecd}G^{c\mu}G^{d\nu}\right).
 \end{align}
-となる。
 
 \subsection{Higgs Mechanism}
-Higgs場が真空期待値$\vev\phi=\frac1{\sqrt2}\binom {0}{v+h(x)}$
-$(v, h\in\Real)$を持つよう，$\gSU2$をgauge固定する。
+Higgs場を，真空期待値が$\vev\phi=\frac1{\sqrt2}\binom {0}{v}$
+$(v\in\Real)$となるように再定義する。このときHiggs場の4自由度のうち3つは
+南部-Goldstone粒子となり，Higgs場は
+\begin{equation}
+ \phi=\frac1{\sqrt2}\pmat{0\\v+h(x)}\qquad\text{($h(x)$ is a real scalar field.)}
+\end{equation}
+と書ける。Lagrangianは
 \begin{align}
  \Lag\s{Higgs}
 = & \left|\left(\partial_\mu-\ii g_2W_\mu-\frac12\ii g_1B_\mu\right)
           \frac1{\sqrt2}\pmat{0\\v+h}\right|^2\notag\\
 = & \frac12(\partial_\mu h)^2+\frac{(v+h)^2}8\Bigl[{g_2}^2{W_1}^2+{g_2}^2{W_2}^2+(g_1B-g_2W_3)^2\Bigr]
 \end{align}
-場のnormに注意しながらgauge場を再定義する。
+となる。更に場のnormに注意しながらgauge場を再定義する。
 \begin{equation}
  W^\pm_\mu:=\frac1{\sqrt2}(W^1_\mu\mp\ii W^2_\mu),\quad
 Z^0_\mu:=\frac1{\sqrt{{g_1}^2+{g_2}^2}}(g_2 W^3_\mu-g_1B_\mu),\quad
@@ -132,18 +136,16 @@ A_\mu:=\frac1{\sqrt{{g_1}^2+{g_2}^2}}(g_1 W^3_\mu+g_2B_\mu)
 \end{equation}
 
 \Paragraph{Higgs potential}
-Higgs項は，$\gSU2$対称性より
+$\gSU2\s L$ restricts Higgs term as
 \begin{equation}
- V(\phi) = -\mu^2(\phi^\dagger\phi) + \lambda|\phi^\dagger\phi|^2
+ V(\phi) = -\mu^2(\phi^\dagger\phi) + \lambda|\phi^\dagger\phi|^2.
 \end{equation}
-の形に限られる。故に先述のように$\gSU2$を固定すると
-\begin{align}
-  V(h) 
-&= \frac14\lambda h^4 + v\lambda h^3 + \mu^2h^2\notag\\
-&= \frac14\lambda h^4 + \sqrt{\frac\lambda2}m_h h^3 + \frac12\mu^2h^2
-\end{align}
-となり，Higgsの質量は$m_h = \frac{\mu}{\sqrt2}$で与えられる。
-
+Therefore, using the VEV relation $v^2=\mu^2/\lambda$, the potential
+after Higgs gets VEV is
+\begin{equation}
+   V(h) = \frac{\mu^2}{4v^2}h^4 + \frac{\mu^2}v h^3 + \mu^2h^2,
+\end{equation}
+and Higgs mass is given by $m_h=\sqrt2 \mu$.
 
 \Paragraph{Gauge項}
 Gauge項は
@@ -186,20 +188,20 @@ W^+W^-(\partial A)
 湯川項は，$\gSU2$の脚を露わに書くと
 \begin{align}
  \Lag\s{湯川}=
-&\bar U y_uH\PL Q + \bar D y_dH^\dagger\PL Q + \bar E y_eH^\dagger\PL L
+&-\bar U y_uH\PL Q + \bar D y_dH^\dagger\PL Q + \bar E y_eH^\dagger\PL L
  + \Hc\notag\\
 =
-&  \bar U y_u\epsilon^{\alpha\beta}H^{\alpha}\PL Q^{\beta}
+&- \bar U y_u\epsilon^{\alpha\beta}H^{\alpha}\PL Q^{\beta}
  + \bar D y_d{H^\dagger}^{\alpha}\PL Q^\alpha
  + \bar E y_e{H^\dagger}^{\alpha}\PL L^\alpha + \Hc\notag\\
 =
-&(v+h)\left(
+&\frac{v+h}{\sqrt2}\left(
    \bar U y_u\PL Q^1
  + \bar D y_d\PL Q^2
  + \bar E y_e\PL L^2
 \right) + \Hc
 \end{align}
-となる（ただし$\epsilon^{\alpha\beta}$の符号は$y_u$に吸収させた）。
+となる。
 \subsection{Full Lagrangian After Higgs Mechanism}
 ここでは簡単のため$\PL$などを省略する。全Lagrangianは
 \begin{align}
@@ -220,9 +222,9 @@ W^+W^-(\partial A)
 {\quad+\quad}\frac{{g_2}^2}{4}W^+W^-h^2
 {\quad+\quad}\frac{{g_1}^2+{g_2}^2}{8}Z^2h^2\notag\\
 &
-{\quad+\quad}h\bar U y_u Q^1
-{\quad+\quad}h\bar D y_d Q^2
-{\quad+\quad}h\bar E y_e L^2\quad +\quad \Hc\notag\\[1zw]
+{\quad+\quad}\frac{1}{\sqrt2}h\bar U y_u Q^1
+{\quad+\quad}\frac{1}{\sqrt2}h\bar D y_d Q^2
+{\quad+\quad}\frac{1}{\sqrt2}h\bar E y_e L^2\quad +\quad \Hc\notag\\[1zw]
 %SU(3) Interactions
 \note{$\gSU3$および微分項}&
 {\quad+\quad}\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) Q
@@ -248,9 +250,9 @@ W^+W^-(\partial A)
 & 
 {\quad+\quad}\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) E\notag\\[.5zw]
 \note{湯川項}& % Yukawa
-{\quad+\quad}v\bar U y_u Q^1
-{\quad+\quad}v\bar D y_d Q^2
-{\quad+\quad}v\bar E y_e L^2\quad+\quad \Hc
+{\quad+\quad}\frac{1}{\sqrt2}v\bar U y_u Q^1
+{\quad+\quad}\frac{1}{\sqrt2}v\bar D y_d Q^2
+{\quad+\quad}\frac{1}{\sqrt2}v\bar E y_e L^2\quad+\quad \Hc
 \end{align}
 である。ただしここで
 \begin{equation}
@@ -261,7 +263,7 @@ W^+W^-(\partial A)
 \subsection{Mass Eigenstates}
 湯川行列を対角化し，質量の固有状態を得ることを考える。
 
-湯川行列$Y:=vy$に対して特異値分解
+湯川行列$Y:=vy/\sqrt2$に対して特異値分解
 \footnote{$A^\dagger A$および$AA^\dagger$はHermite行列であるため，
 unitary行列により対角化可能であり，固有値は全て非負である。}
 を行う。即ち，2つのunitary行列$\Psi, \Phi$および$m_i\ge0$によって
@@ -516,7 +518,7 @@ $\Lag_{QQW}$以外の項は，例えば
  \pi^\pm &: 139.57018(35)\un{MeV}&
  K^\pm   &: 493.677(16)  \un{MeV}&
  p       &: 938.27203(8) \un{MeV}\\
- \pi^0   &: 13.9766(6)   \un{MeV}&
+ \pi^0   &: 139.766(6)   \un{MeV}&
  K^0     &: 497.614(24)  \un{MeV}&
  n       &: 939.56536(8) \un{MeV}
 \end{align*}
@@ -559,7 +561,7 @@ Therefore 湯川 matrices are (after diagonalization)
  y_e&\sim \pmat{10^{-6}&0&0\\0&0.0004&0\\0&0&0.007}.&
 \end{align}
 
-Also, for $m_h\sim 120\un{GeV}$, we can estimate the Higgs potential as $\mu\sim170\un{GeV}$ and $\lambda \sim 0.48$.
+Also, for $m_h\sim 120\un{GeV}$, we can estimate the Higgs potential as $\mu\sim85\un{GeV}$ and $\lambda \sim 0.12$.
 %\newpage
 
 
