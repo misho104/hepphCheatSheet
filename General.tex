@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2009-09-21 00:42:40 misho>
+%%% Time-Stamp: <2009-09-22 00:06:56 misho>
 % ï∂éöÉRÅ[ÉhÇ…íçà”ÇµÇ‹ÇµÇÂÇ§
 \section{General Definitions and Tools}
 \subsection{Notations and Conventions}
@@ -198,6 +198,15 @@ Here we can create another equations using
  (\bSm)_{\alpha\beta}(\bSmd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta}.
 \end{equation}
 
+\subsubsection{Gordon identity}
+For  $P:=p'+p$ and $q:=p'-p$,
+\begin{align}
+ \bar u(p')\Gm u(p) &=  \bar u(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] u(p)&
+ \bar u(p')\Gm v(p) &=  \bar u(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] v(p)\\
+ \bar v(p')\Gm v(p) &= -\bar v(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] v(p)&
+ \bar v(p')\Gm u(p) &= -\bar v(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] u(p)
+\end{align}
+
 \subsubsection{Gauge group algebra}
 For a gauge group $G$ s.t.
 \begin{equation}
@@ -315,7 +324,6 @@ To compute the $S$-matrix in a physical region choose the correct branch
 \begin{itemize}
  \item Fierz Transf.
  \item Noether current
- \item Gordon Id.
  \item Majorana Ferminos
  \item Feynman Rules(A.1)
 \end{itemize}
