@@ -1,14 +1,15 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2009-09-22 00:06:56 misho>
+%%% Time-Stamp: <2010-01-28 15:18:20 misho>
 % ï∂éöÉRÅ[ÉhÇ…íçà”ÇµÇ‹ÇµÇÂÇ§
 \section{General Definitions and Tools}
 \subsection{Notations and Conventions}
 \subsubsection{Metric etc.}
 
 \begin{tabular}{l@{ :\ \ \ }l}
-Minkowski Metric   & $\Hmn = \diag(+,-,-,-)$\\
+Minkowski Metric   & $\Hmn = \diag(+,-,-,-);\quad\epsilon_{0123}^{0123}:=\pm1$\\
 Coordinates        & $\displaystyle x^\mu = (t,x,y,z)$; \quad Therefore $\Pm = \left(\pbib{}t,\vgrad\right)$\\
-Gamma Matrices     & $\{\Gm,\Gn\}=2\Hmn;\quad \G5=\ii\G0\G1\G2\G3$\\[1zw]
+Gamma Matrices     & $\{\Gm,\Gn\}=2\Hmn;\quad \G5=\ii\G0\G1\G2\G3=
+                      \dfrac{-\ii}{4!}\epsilon_{\mu\nu\rho\sigma}\Gm\Gn\Gr\Gs$\\[1zw]
 Gamma Combinations & $1, \{\Gm\}, \{\sigma^{\mu\nu}\}, \{\Gm\G5\}, \G5;\quad
                       \sigma^{\mu\nu}=\frac\ii2[\Gm,\Gn]=0\Big/\ii\Gm\Gn$\\
 \end{tabular}
@@ -58,8 +59,8 @@ CPT transf.
 \begin{tabular}{l@{ :\ \ \ }l}
 Electromagnetic Fields & $A^\mu=(\phi,\vc A)$
  \note{We can invert the signs, but cannot lower the index.}\\
-& $F_{\mu\nu} =\pmat{0 & & \vc E & \\ & 0 & -B_3 & B_2 \\ -\vc E&B_3&0&-B_1\\&-B_2&B_1&0}$\\
-& $F_{\mu\nu}F^{\mu\nu} = -2\left(\vnorm E^2-\vnorm B^2\right)$
+& $F_{\mu\nu} =\pmat{0 & & \vc E & \\ & 0 & -B_3 & B_2 \\ -\vc E&B_3&0&-B_1\\&-B_2&B_1&0};\quad
+   F_{\mu\nu}F^{\mu\nu} = -2\left(\vnorm E^2-\vnorm B^2\right)$
 \end{tabular}
 
 \subsubsection{CPT Table}
@@ -80,6 +81,12 @@ $C$
 
 ($\eta\zeta\xi=1$;
  especially, photon $A^\mu$ is $(\eta,\zeta,\xi)=(-,+,-)$. )
+
+\twocolumn
+\subsection{Feynman Rules}
+\input{feynman/feynman.tex}
+\onecolumn
+
 
 \newpage
 \subsection{Dirac's Gamma Algebras}
