@@ -1,11 +1,9 @@
-
 \newif\ifDebug\Debugfalse
 \DeclareOption{debug}{\Debugtrue}
 \ProcessOptions\relax
 
-
 % * means mu-nu-rho-sigma
-% 
+%
 % G*   : Dirac's Gamma matrix     [GREEK: abmnrs]
 % H**  : Minkowski metric         [GREEK: mnrs]
 % H**d : Minkowski metric         [GREEK: mnrs]
@@ -13,17 +11,36 @@
 % bS*  : Weyl's Sigma BAR matrix  [GREEK: mnrs]
 % bS*d : (its downer ver.)
 
-
-
-\newcommand{\RED}{\color{red}}
-\newcommand{\BLUE}{\color{blue}}
-
-
 \ifDebug
 \newcommand{\g}{}
 \newcommand{\g@d}{}
 \newcommand{\g@u}{}
 \fi
+
+\hyphenation{super-potential}
+
+
+
+
+
+
+\def\GF{G\s F}
+\def\babar{\mbox{\slshape B\kern-0.1em{\footnotesize A}\kern-0.1em B\kern-0.1em{\footnotesize A\kern-0.2em R}}}
+
+\def\PLR{P{}^{\rm L}_{\rm R}}
+\def\PRL{P{}^{\rm R}_{\rm L}}
+
+\def\tilde{\expandafter\widetilde}
+\def\hat  {\expandafter\widehat}
+\def\check\Check
+\def\acute\Acute
+\def\grave\Grave
+\def\dot\Dot
+\def\ddot\Ddot
+\def\breve\Breve
+\def\vec{\Vec}
+
+\def\@@un#1{\mbox{$\,\mathrm{#1}$}}
 
 %%% Mathematical Symbols
 \newcommand{\Real}{\mathbb R}
@@ -32,10 +49,14 @@
 \newcommand{\RealGrassmann}{\Grassmann^\Real}
 
 \newcommand{\minkow}[2]{{\eta^{#1#2}}}
+\newcommand{\thetaW}{\theta\s W}
+
+%%% Group Theory
+
 
 %%% QFT
-\newcommand\intP[2]{\int\!\!\frac{\dd^{#1}{#2}}{(2\pi)^{#1}}}
-
+\newcommand\dP[2][3]{\frac{\dd^{#1}{#2}}{(2\pi)^{#1}}}
+\def\intdP{\int\!\!\dP}
 
 \def\G{\@ifnextchar5{\G@d}{\G@u}}
 \def\G@d#1{{\gamma_{#1}}}
@@ -136,8 +157,33 @@
 \newcommand{\depsilon}{{\dot\epsilon}}
 
 
+%%% Particles
+% SM
+\newcommand{\uL}{u\s L} \newcommand{\cL}{c\s L}    \newcommand{\tL}{t\s L}
+\newcommand{\uR}{u\s R} \newcommand{\cR}{c\s R}    \newcommand{\tR}{t\s R}
+\newcommand{\dL}{d\s L} \newcommand{\sL}{s\s L}    \newcommand{\bL}{b\s L}
+\newcommand{\dR}{d\s R} \newcommand{\sR}{s\s R}    \newcommand{\bR}{b\s R}
+\newcommand{\eL}{e\s L} \newcommand{\muL}{\mu\s L} \newcommand{\tauL}{\tau\s L}
+\newcommand{\eR}{e\s R} \newcommand{\muR}{\mu\s R} \newcommand{\tauR}{\tau\s R}
+\newcommand{\nue}{\nu_e}\newcommand{\numu}{\nu_\mu}\newcommand{\nutau}{\nu_\tau}
+
+% MSSM
+\newcommand{\Hu}{H\s u} \newcommand{\HuP}{{H\s u^+}{}} \newcommand{\HdZ}{{H\s d^0}{}}
+\newcommand{\Hd}{H\s d} \newcommand{\HuZ}{{H\s u^0}{}} \newcommand{\HdM}{{H\s d^-}{}}
+
+\newcommand{\bU}{{\bar U}} \newcommand{\bD}{{\bar D}} \newcommand{\bE}{{\bar E}}
+\newcommand{\bN}{{\bar N}}
+
+% Experiment
+\newcommand{\keV}{\un{keV}}
+\newcommand{\MeV}{\un{MeV}}
+\newcommand{\GeV}{\un{GeV}}
+\newcommand{\TeV}{\un{TeV}}
+
 % others (to be moved)
 \renewcommand{\then}{\mbox{$\Longrightarrow$\ }}
 
-\newcommand{\Hc}{\text{H. c.}}
+\newcommand{\Hc}{\text{H.~c.}}
 \newcommand{\note}[1]{{\footnotesize\text{\color{Orange}Åy#1Åz}}}
+\newcommand{\RED}{\color{red}}
+\newcommand{\BLUE}{\color{blue}}
