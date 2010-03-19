@@ -1,148 +1,1 @@
-%#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2009-08-01 00:54:55>
-
-\section{Supergravity}
-\subsection{Minimal SUGRA Lagrangian}
-Minimal SUGRA Lagrangian is constructed from supergravity multiplet
-$(\bein a\mu,\psi^\alpha_\mu, B_\mu, F_\phi)$.
-\begin{equation}
- \Lag = -\frac{M^2}{2}eR+e\epsilon^{\mu\nu\rho\sigma}\bar\psi_\mu\bSnd\DD_\rho\psi_\sigma
-\end{equation}
-where
-\begin{align}
- \DD_\mu\psi_\nu
-  &:=\Pm\psi_\nu+\frac12\omega\T_\mu^a^b\sigma_{ab}\psi_\nu\qquad
-  \left[\omega\T_\mu^a^b : {\text{``spinê⁄ë±''}}\right]\\
- e&:=\det \bein a\mu\\
- M&:=1/\sqrt{8\pi G} \quad \text{(Reduced Planck mass)}\\
- R&:={\bein a\mu}{\bein b\nu}R\T_\mu_\nu^a^b\\
- R\T_\mu_\nu^a^b
-  &:=\Pm\omega\T_\nu^a^b-\Pn\omega\T_\mu^a^b
-     -\omega\T_\mu^a^c\omega\T_\nu_c^b+\omega\T_\nu^a^c\omega\T_\mu_c^b.
-\end{align}
-\subsection{General SUGRA Lagrangian}
-The components of general SUGRA Lagrangian is
-\begin{equation}
- \Phi_i = (\psi_i,\chi^\alpha_i,F_i),\qquad
- V^{(a)}=(A^{(a)}_\mu,\lambda^{\alpha(a)},D^{(a)}),\qquad
- G=(\bein \mu a,\psi_\mu^\alpha,B_\mu,F_\phi),
-\end{equation}
-and described with following functions:
-\begin{itemize}
- \item K\"ahler potential $K(\Phi,\Phi^*)$
-\begin{itemize}
- \item Real function of chiral multiplets.
- \item In global SUSY, $\int\dd^4\theta K$ yields kinetic terms of the
-       chiral multiplet.
- \item ``Minimal K\"ahler'' is (if no gauge interaction)
-       $K=\Phi\Phi^\dagger$, which is
-\begin{equation}
- \int\dd^4\theta\ \Phi\Phi^*=\Pm \phi^*\Pm\phi+\ii\bar\chi\bSm\Pm
-  \chi + F^*F.
-\end{equation}
-\end{itemize}
- \item Super Potential $W(\Phi)$
- \item Gauge kinetic term $f_{(a)(b)}(\Phi)$
-\begin{itemize}
- \item Some function which satisfies $f_{(a)(b)} = f_{(b)(a)}$.
- \item $(a), (b), ...$ are indices for adjoint representation of gauge
-       group.
- \item Minimal one is $f_{(a)(b)} \propto \delta_{(a)(b)}.$
-\end{itemize}
-\end{itemize}
-
-\def\epsmnrs{\epsilon^{\mu\nu\rho\sigma}}
-\def\fR{{f\suprm{R}}}
-\def\fI{{f\suprm{I}}}
-\begin{align}
- \Lag
-={}&
- -\frac12eR
- +eg_{ij^*}\DD_\mu\phi^i\DD^\mu\phi^{*j}
- -\frac12eg^2D_{(a)}D^{(a)}
-\notag\\&
- +\ii eg_{ij^*}\bar\chi^j\bSm\DD_\mu\chi^i
- +e\epsmnrs\bar\psi_\mu\bSnd\DD_\rho\psi_\sigma
-\notag\\&
- -\frac14e\fR_{(ab)}F^{(a)}_{\mu\nu}F^{\mu\nu(b)}
- +\frac18e\epsmnrs\fI_{(ab)}f^{(a)}_{\mu\nu}f^{(b)}_{\rho\sigma}
-\notag\\&
- +\frac\ii2e\left[\lambda_{(a)}\Sm\DD_\mu\bar\lambda^{(a)}
-                + \bar\lambda_{(a)}\bSm\DD_\mu\lambda^{(a)}\right]
- -\frac12\fI_{(ab)}\DD_\mu\left[e\lambda^{(a)}\Sm\bar\lambda^{(b)}\right]
-\notag\\&
- +\sqrt2egg_{ij^*}X^{*j}_{(a)}\chi^i\lambda^{(a)}
- +\sqrt2egg_{ij^*}X^{i}_{(a)}\bar\chi^j\bar\lambda^{(a)}
-\notag\\&
- -\frac\ii4\sqrt2 eg\partial_if_{(ab)}D^{(a)}\chi^i\lambda^{(b)}
- +\frac\ii4\sqrt2 eg\partial_{i*}f^*_{(ab)}D^{(a)}\bar\chi^i\bar\lambda^{(b)}
-\notag\\&
- -\frac14\sqrt2e\partial_if_{(ab)}\chi^i\sigma^{\mu\nu}\lambda^{(a)}F^{(b)}_{\mu\nu}
- -\frac14\sqrt2e\partial_{i^*}f^*_{(ab)}\bar\chi^i\bar\sigma^{\mu\nu}\bar\lambda^{(a)}F^{(b)}_{\mu\nu}
-\notag\\&
- +\frac12egD_{(a)}\psi_\mu\Sm\bar\lambda^{(a)}
- -\frac12egD_{(a)}\bar\psi_\mu\bSm\lambda^{(a)}
-\notag\\&
- -\frac12\sqrt2eg_{ij^*}\DD_\nu\phi^{*j}\chi^i\Sm\bSn\psi_\mu
- -\frac12\sqrt2eg_{ij^*}\DD_\nu\phi^i\bar\chi^j\bSm\Sn\bar\psi_\mu
-\notag\\&
--\frac\ii4e\left[\psi_\mu\sigma^{\nu\rho}\Sm\bar\lambda_{(a)}
-               + \bar\psi_\mu\bar\sigma^{\nu\rho}\bSm\lambda_{(a)}\right]
-           \left[F^{(a)}_{\nu\rho}+\hat F^{(a)}_{\nu\rho}\right]
-\notag\\&
-+\frac14eg_{ij^*}\left[\ii\epsmnrs\psi_\mu\sigma_\nu\bar\psi_\rho
-                     + \psi_\mu\Ss\bar\psi^\mu\right]
-                 \chi^i\sigma_\sigma\bar\chi^i
-\notag\\&
--\frac18e\left[g_{ij^*}g_{kl^*}-2R_{ij^*kl^*}\right]\chi^i\chi^k\bar\chi^j\bar\chi^l
-\notag\\&
-+\frac1{16}e\left[2g_{ij^*}\fR_{(ab)}
-                + {\fR^{(cd)}}^{-1}\partial_if_{(bc)}\partial_{j^*}f^*_{(ad)}\right]
-            \bar\chi^j\bSm\chi^i\bar\lambda^{(a)}\bar\sigma_\mu\lambda^{(b)}
-\notag\\&
-+\frac18e\nabla_i\partial_jf_{(ab)}\chi^i\chi^j\lambda^{(a)}\lambda^{(b)}
-+\frac18e\nabla_{i^*}\partial_{j^*}f^*_{(ab)}\bar\chi^i\bar\chi^j\bar\lambda^{(a)}\bar\lambda^{(b)}
-\notag\\&
-+\frac1{16}e{\fR^{(cd)}}^{-1}\partial_if_{(ac)}\partial_jf_{(bd)}
-             \chi^i\lambda^{(a)}\chi^j\lambda^{(b)}
-\notag\\&
-+\frac1{16}e{\fR^{(cd)}}^{-1}\partial_{i^*}f^*_{(ac)}\partial_{j^*}f^*_{(bd)}
-             \bar\chi^i\bar\lambda^{(a)}\bar\chi^j\bar\lambda^{(b)}
-\notag\\&
--\frac1{16}eg^{ij^*}\partial_if_{(ab)}\partial_{j^*}f^*_{(cd)}
-             \lambda^{(a)}\lambda^{(b)}\bar\lambda^{c}\bar\lambda^{(d)}
-\notag\\&
-+\frac3{16}e\lambda_{(a)}\Sm\bar\lambda^{(a)}\lambda_{(b)}\sigma_\mu\bar\lambda^{(b)}
-\notag\\&
-+\frac\ii4\sqrt2 e\partial_{i}f_{(ab)}\left[
-                \chi^i\sigma^{\mu\nu}\lambda^{(a)}\psi_\mu\sigma_\nu\bar\lambda^{(b)}
-              - \frac14\bar\psi_\mu\bSm\chi^i\lambda^{(a)}\lambda^{(b)}\right]
-\notag\\&
-+\frac\ii4\sqrt2 e\partial_{i^*}f^*_{(ab)}\left[
-              \bar\chi^i\bar\sigma^{\mu\nu}\bar\lambda^{(a)}\bar\psi_\mu\bar\sigma_\nu\lambda^{(b)}
-            - \frac14\psi_\mu\Sm\bar\chi^i\bar\lambda^{(a)}\bar\lambda^{(b)}\right]
-\notag\\&
--e\ee^{K/2}\left[W^*\psi_\mu\sigma^{\mu\nu}\psi_\nu
-               + W  \bar\psi_\mu\bar\sigma^{\mu\nu}\bar\psi_\nu\right]
-\notag\\&
-+\frac\ii2\sqrt2e\ee^{K/2}\left[D_iW\chi^i\Sm\bar\psi_\mu
-                              + D_{i^*}W^*\bar\chi^i\bSm\psi_\mu\right]
-\notag\\&
--\frac12e\ee^{K/2}\left[\DD_i D_jW\chi^i\chi^j+\DD_{i^*}D_{j^*}W^*\bar\chi^i\bar\chi^j\right]
-\notag\\&
-+\frac14e\ee^{K/2}g^{ij^*}\left[ D_{j^*}W^*\partial_if_{(ab)}\lambda^{(a)}\lambda^{(b)}
-                               + D_iW\partial_{j^*}f^*_{(ab)}\bar\lambda^{(a)}\bar\lambda^{(b)}
-                          \right]
-\notag\\&
--e\ee^{K}\left[g^{ij^*}(D_iW)(D_{j^*}W^*)-3W^*W\right]
-\end{align}
-
-%%% Local Variables:
-%%% TeX-master: CheatSheet.tex
-%%% End:
-
-
-
-
-
-
+%#!latexmk CheatSheet.tex%%% Time-Stamp: <2010-03-19 22:46:54 misho>\section{Supergravity}\subsection{Minimal SUGRA Lagrangian}Minimal SUGRA Lagrangian is constructed from supergravity multiplet$(\bein a\mu,\psi^\alpha_\mu, B_\mu, F_\phi)$.\begin{equation} \Lag = -\frac{M^2}{2}eR+e\epsilon^{\mu\nu\rho\sigma}\bar\psi_\mu\bSnd\DD_\rho\psi_\sigma\end{equation}where\begin{align} \DD_\mu\psi_\nu  &:=\Pm\psi_\nu+\frac12\omega\T_\mu^a^b\sigma_{ab}\psi_\nu\qquad  \left[\omega\T_\mu^a^b : {\text{``spinê⁄ë±''}}\right]\\ e&:=\det \bein a\mu\\ M&:=1/\sqrt{8\pi G} \quad \text{(Reduced Planck mass)}\\ R&:={\bein a\mu}{\bein b\nu}R\T_\mu_\nu^a^b\\ R\T_\mu_\nu^a^b  &:=\Pm\omega\T_\nu^a^b-\Pn\omega\T_\mu^a^b     -\omega\T_\mu^a^c\omega\T_\nu_c^b+\omega\T_\nu^a^c\omega\T_\mu_c^b.\end{align}\subsection{General SUGRA Lagrangian}The components of general SUGRA Lagrangian is\begin{equation} \Phi_i = (\phi_i,\chi^\alpha_i,F_i),\qquad V^{(a)}=(A^{(a)}_\mu,\lambda^{\alpha(a)},D^{(a)}),\qquad G=(\bein \mu a,\psi_\mu^\alpha,B_\mu,F_\phi),\end{equation}and described with following functions:\begin{itemize} \item K\"ahler potential $K(\Phi,\Phi^*)$\begin{itemize} \item Real function of chiral multiplets. \item In global SUSY, $\int\dd^4\theta K$ yields kinetic terms of the       chiral multiplet. \item ``Minimal K\"ahler'' is (if no gauge interaction)       $K=\Phi\Phi^\dagger$, which is\begin{equation} \int\dd^4\theta\ \Phi\Phi^*=\Pm \phi^*\Pm\phi+\ii\bar\chi\bSm\Pm  \chi + F^*F.\end{equation}\end{itemize} \item Super Potential $W(\Phi)$ \item Gauge kinetic term $f_{(a)(b)}(\Phi)$\begin{itemize} \item Some function which satisfies $f_{(a)(b)} = f_{(b)(a)}$. \item $(a), (b), ...$ are indices for adjoint representation of gauge       group. \item Minimal one is $f_{(a)(b)} \propto \delta_{(a)(b)}.$\end{itemize}\end{itemize}\def\epsmnrs{\epsilon^{\mu\nu\rho\sigma}}\def\fR{{f\suprm{R}}}\def\fI{{f\suprm{I}}}\begin{align} \Lag={}& -\frac12eR +eg_{ij^*}\DD_\mu\phi^i\DD^\mu\phi^{*j} -\frac12eg^2D_{(a)}D^{(a)}\notag\\& +\ii eg_{ij^*}\bar\chi^j\bSm\DD_\mu\chi^i +e\epsmnrs\bar\psi_\mu\bSnd\DD_\rho\psi_\sigma\notag\\& -\frac14e\fR_{(ab)}F^{(a)}_{\mu\nu}F^{\mu\nu(b)} +\frac18e\epsmnrs\fI_{(ab)}f^{(a)}_{\mu\nu}f^{(b)}_{\rho\sigma}\notag\\& +\frac\ii2e\left[\lambda_{(a)}\Sm\DD_\mu\bar\lambda^{(a)}                + \bar\lambda_{(a)}\bSm\DD_\mu\lambda^{(a)}\right] -\frac12\fI_{(ab)}\DD_\mu\left[e\lambda^{(a)}\Sm\bar\lambda^{(b)}\right]\notag\\& +\sqrt2egg_{ij^*}X^{*j}_{(a)}\chi^i\lambda^{(a)} +\sqrt2egg_{ij^*}X^{i}_{(a)}\bar\chi^j\bar\lambda^{(a)}\notag\\& -\frac\ii4\sqrt2 eg\partial_if_{(ab)}D^{(a)}\chi^i\lambda^{(b)} +\frac\ii4\sqrt2 eg\partial_{i*}f^*_{(ab)}D^{(a)}\bar\chi^i\bar\lambda^{(b)}\notag\\& -\frac14\sqrt2e\partial_if_{(ab)}\chi^i\sigma^{\mu\nu}\lambda^{(a)}F^{(b)}_{\mu\nu} -\frac14\sqrt2e\partial_{i^*}f^*_{(ab)}\bar\chi^i\bar\sigma^{\mu\nu}\bar\lambda^{(a)}F^{(b)}_{\mu\nu}\notag\\& +\frac12egD_{(a)}\psi_\mu\Sm\bar\lambda^{(a)} -\frac12egD_{(a)}\bar\psi_\mu\bSm\lambda^{(a)}\notag\\& -\frac12\sqrt2eg_{ij^*}\DD_\nu\phi^{*j}\chi^i\Sm\bSn\psi_\mu -\frac12\sqrt2eg_{ij^*}\DD_\nu\phi^i\bar\chi^j\bSm\Sn\bar\psi_\mu\notag\\&-\frac\ii4e\left[\psi_\mu\sigma^{\nu\rho}\Sm\bar\lambda_{(a)}               + \bar\psi_\mu\bar\sigma^{\nu\rho}\bSm\lambda_{(a)}\right]           \left[F^{(a)}_{\nu\rho}+\hat F^{(a)}_{\nu\rho}\right]\notag\\&+\frac14eg_{ij^*}\left[\ii\epsmnrs\psi_\mu\sigma_\nu\bar\psi_\rho                     + \psi_\mu\Ss\bar\psi^\mu\right]                 \chi^i\sigma_\sigma\bar\chi^i\notag\\&-\frac18e\left[g_{ij^*}g_{kl^*}-2R_{ij^*kl^*}\right]\chi^i\chi^k\bar\chi^j\bar\chi^l\notag\\&+\frac1{16}e\left[2g_{ij^*}\fR_{(ab)}                + {\fR^{(cd)}}^{-1}\partial_if_{(bc)}\partial_{j^*}f^*_{(ad)}\right]            \bar\chi^j\bSm\chi^i\bar\lambda^{(a)}\bar\sigma_\mu\lambda^{(b)}\notag\\&+\frac18e\nabla_i\partial_jf_{(ab)}\chi^i\chi^j\lambda^{(a)}\lambda^{(b)}+\frac18e\nabla_{i^*}\partial_{j^*}f^*_{(ab)}\bar\chi^i\bar\chi^j\bar\lambda^{(a)}\bar\lambda^{(b)}\notag\\&+\frac1{16}e{\fR^{(cd)}}^{-1}\partial_if_{(ac)}\partial_jf_{(bd)}             \chi^i\lambda^{(a)}\chi^j\lambda^{(b)}\notag\\&+\frac1{16}e{\fR^{(cd)}}^{-1}\partial_{i^*}f^*_{(ac)}\partial_{j^*}f^*_{(bd)}             \bar\chi^i\bar\lambda^{(a)}\bar\chi^j\bar\lambda^{(b)}\notag\\&-\frac1{16}eg^{ij^*}\partial_if_{(ab)}\partial_{j^*}f^*_{(cd)}             \lambda^{(a)}\lambda^{(b)}\bar\lambda^{c}\bar\lambda^{(d)}\notag\\&+\frac3{16}e\lambda_{(a)}\Sm\bar\lambda^{(a)}\lambda_{(b)}\sigma_\mu\bar\lambda^{(b)}\notag\\&+\frac\ii4\sqrt2 e\partial_{i}f_{(ab)}\left[                \chi^i\sigma^{\mu\nu}\lambda^{(a)}\psi_\mu\sigma_\nu\bar\lambda^{(b)}              - \frac14\bar\psi_\mu\bSm\chi^i\lambda^{(a)}\lambda^{(b)}\right]\notag\\&+\frac\ii4\sqrt2 e\partial_{i^*}f^*_{(ab)}\left[              \bar\chi^i\bar\sigma^{\mu\nu}\bar\lambda^{(a)}\bar\psi_\mu\bar\sigma_\nu\lambda^{(b)}            - \frac14\psi_\mu\Sm\bar\chi^i\bar\lambda^{(a)}\bar\lambda^{(b)}\right]\notag\\&-e\ee^{K/2}\left[W^*\psi_\mu\sigma^{\mu\nu}\psi_\nu               + W  \bar\psi_\mu\bar\sigma^{\mu\nu}\bar\psi_\nu\right]\notag\\&+\frac\ii2\sqrt2e\ee^{K/2}\left[D_iW\chi^i\Sm\bar\psi_\mu                              + D_{i^*}W^*\bar\chi^i\bSm\psi_\mu\right]\notag\\&-\frac12e\ee^{K/2}\left[\DD_i D_jW\chi^i\chi^j+\DD_{i^*}D_{j^*}W^*\bar\chi^i\bar\chi^j\right]\notag\\&+\frac14e\ee^{K/2}g^{ij^*}\left[ D_{j^*}W^*\partial_if_{(ab)}\lambda^{(a)}\lambda^{(b)}                               + D_iW\partial_{j^*}f^*_{(ab)}\bar\lambda^{(a)}\bar\lambda^{(b)}                          \right]\notag\\&-e\ee^{K}\left[g^{ij^*}(D_iW)(D_{j^*}W^*)-3W^*W\right]\end{align}%%% Local Variables:%%% TeX-master: "CheatSheet.tex"%%% End:
