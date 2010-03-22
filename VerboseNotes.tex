@@ -1,93 +1,1 @@
-%#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2009-06-22 08:11:22>
-
-\section{Verbose Notes}
-\subsection{Polarization Sum}\label{Sec:Verbose:PolarizationSum}
-Firstly we focus on the single photon case $M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$.
-Here we set $k=(E,0,0,E)$, and $\epsilon=(0,1,0,0)\oplus(0,0,1,0)$. Then
-\begin{equation}
-  \sum\s{pol.}\left|M\right|^2
-= \sum\s{pol.}\epsilon_\mu^*(k)\epsilon_\nu(k)M^{\mu}M^{\nu*}
-= |M^1|^2+|M^2|^2,
-\end{equation}
-while
-\begin{equation}
- \Hmnd M^{\mu}M^{\nu*} = |M^1|^2+|M^2|^2
-\end{equation}
-for Ward identity $k_\mu M^\mu=0$. Therefore the replacement
-\begin{equation}
- \sum\s{pol.}\epsilon_\mu\epsilon'_\nu \to \Hmnd
-\end{equation}
-is valid.
-
-Secondly we think about the double photons case
-\footnote{This part is derived from ‡_å˚çKàÍ's notebook.}
-$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$.
-Here we set
-\begin{align}
- k &=(E,0,0, E) & \epsilon &=(0,1,0,0)\oplus(0,0,1,0)\\
- k'&=(E,0,0,-E) & \epsilon'&=(0,\cos\theta,\sin\theta,0)\oplus(0,-\sin\theta,\cos\theta,0).
-\end{align}
-Then doing some simple calculations, we can get
-\begin{equation}
-  \sum\s{pol.}\left|M\right|^2 = |M^{11}|^2+|M^{12}|^2+|M^{21}|^2+|M^{22}|^2.
-\end{equation}
-Nevertheless, na\"ive replacement does not work, because our Ward identities
-\begin{equation}
- k_\mu\epsilon_\nu'^*(k')M^{\mu\nu} =
- \epsilon_\mu^*(k)k'_\nu M^{\mu\nu} = 0 \label{eq:WardIdentities}
-\end{equation}
-obviously does not help us. If we can omit $\epsilon$s from these
-identities, that is if
-\begin{equation}
- k_\mu M^{\mu\nu} = k'_\nu M^{\mu\nu} = 0,\label{eq:TrueIdentities}
-\end{equation}
-we can recover validity of the replacement:
-\begin{align}
- \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}
-&= -\Hnsd\left(
-M^{1\nu}M^{1\sigma*}+M^{2\nu}M^{2\sigma*}
-\right)\\
-&= |M^{11}|^2+|M^{12}|^2+|M^{21}|^2+|M^{22}|^2.
-\end{align}
-
-Then what's happening? Why this replacement is not valid?
-Actually our new conditions \eqref{eq:TrueIdentities} seem to guarantee
-that we are summing not only ``physical'' but also ``unphysical'' polarizations.
-Meanwhile if we use some physical condition such as $\epsilon\cdot k=0$,
-\eqref{eq:TrueIdentities} break down while Ward identities
-\eqref{eq:WardIdentities} are still valid.
-
-Now let's check what is happening from another viewpoint. First we suppose
-$M$ satisfies our new conditions \eqref{eq:TrueIdentities}, and define
-$\tilde M^{\mu\nu}$ and $\tilde M$ as
-\begin{align}
- \tilde M^{\mu\nu}& := M^{\mu\nu} + k^\mu p^\nu + p'^\mu k'^\nu,\\
- \tilde M         & := \epsilon_\mu^*(k)\epsilon_\nu'^*(k')\tilde M^{\mu\nu}.
-\end{align}
-This alternative amplitude satisfies Ward identities (since photon is
-massless and $\epsilon\cdot k=0$), and furthermore $\tilde M = M$.
-Therefore $\tilde M$ is physically identical to $M$.
-However technically these are very different, just because we cannot
-perform our ``na\"ive replacement'' for this $\tilde M$:
-\begin{align}
- \Hmrd\Hnsd \tilde M^{\mu\nu}\tilde M^{\rho\sigma*}
- &=  \Hmrd\Hnsd
-\left(M^{\mu\nu} + k^\mu p^\nu + p'^\mu k'^\nu \right)
-\left(M^{\rho\sigma*} + k^{\rho} p^{\sigma*} + p'^{\rho*}k'^{\sigma} \right)\\
- &= \sum\s{pol.}|M|^2 + \left[(k\cdot p'^*)(k'\cdot p) + \Hc\right].
-\end{align}
-After all, we have obtained following expression:
-\begin{align}
- \sum\s{pol.}|\tilde M|^2 &=
- \sum\s{pol.}|M|^2\qquad \text{(Furthermore $\tilde M=M$)}\notag\\
-&= \sum\s{pol.}|\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}|^2
- = \sum\s{pol.}|\epsilon_\mu^*(k)\epsilon_\nu'^*(k')\tilde M^{\mu\nu}|^2\\
-&= \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}\notag\\
-&\ne \Hmrd\Hnsd \tilde M^{\mu\nu}\tilde M^{\rho\sigma*}
- = \sum\s{pol.}|\tilde M|^2 + \left[(k\cdot p'^*)(k'\cdot p) + \Hc\right].\notag
-\end{align}
-
-%%% Local Variables:
-%%% TeX-master: CheatSheet.tex
-%%% End:
+%#!latexmk CheatSheet.tex%%% Time-Stamp: <2010-03-23 00:38:46 misho>\section{Verbose Notes}\subsection{Polarization Sum}\label{Sec:Verbose:PolarizationSum}Firstly we focus on the single photon case $M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$.Here we set $k=(E,0,0,E)$, and $\epsilon=(0,1,0,0)\oplus(0,0,1,0)$. Then\begin{equation}  \sum\s{pol.}\left|M\right|^2= \sum\s{pol.}\epsilon_\mu^*(k)\epsilon_\nu(k)M^{\mu}M^{\nu*}= |M^1|^2+|M^2|^2,\end{equation}while\begin{equation} \Hmnd M^{\mu}M^{\nu*} = |M^1|^2+|M^2|^2\end{equation}for Ward identity $k_\mu M^\mu=0$. Therefore the replacement\begin{equation} \sum\s{pol.}\epsilon_\mu\epsilon'_\nu \to \Hmnd\end{equation}is valid.Secondly we think about the double photons case\footnote{This part is derived from ‡_å˚çKàÍ's notebook.}$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$.Here we set\begin{align} k &=(E,0,0, E) & \epsilon &=(0,1,0,0)\oplus(0,0,1,0)\\ k'&=(E,0,0,-E) & \epsilon'&=(0,\cos\theta,\sin\theta,0)\oplus(0,-\sin\theta,\cos\theta,0).\end{align}Then doing some simple calculations, we can get\begin{equation}  \sum\s{pol.}\left|M\right|^2 = |M^{11}|^2+|M^{12}|^2+|M^{21}|^2+|M^{22}|^2.\end{equation}Nevertheless, na\"ive replacement does not work, because our Ward identities\begin{equation} k_\mu\epsilon_\nu'^*(k')M^{\mu\nu} = \epsilon_\mu^*(k)k'_\nu M^{\mu\nu} = 0 \label{eq:WardIdentities}\end{equation}obviously does not help us. If we can omit $\epsilon$s from theseidentities, that is if\begin{equation} k_\mu M^{\mu\nu} = k'_\nu M^{\mu\nu} = 0,\label{eq:TrueIdentities}\end{equation}we can recover validity of the replacement:\begin{align} \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}&= -\Hnsd\left(M^{1\nu}M^{1\sigma*}+M^{2\nu}M^{2\sigma*}\right)\\&= |M^{11}|^2+|M^{12}|^2+|M^{21}|^2+|M^{22}|^2.\end{align}Then what's happening? Why this replacement is not valid?Actually our new conditions \eqref{eq:TrueIdentities} seem to guaranteethat we are summing not only ``physical'' but also ``unphysical'' polarizations.Meanwhile if we use some physical condition such as $\epsilon\cdot k=0$,\eqref{eq:TrueIdentities} break down while Ward identities\eqref{eq:WardIdentities} are still valid.Now let's check what is happening from another viewpoint. First we suppose$M$ satisfies our new conditions \eqref{eq:TrueIdentities}, and define$\tilde M^{\mu\nu}$ and $\tilde M$ as\begin{align} \tilde M^{\mu\nu}& := M^{\mu\nu} + k^\mu p^\nu + p'^\mu k'^\nu,\\ \tilde M         & := \epsilon_\mu^*(k)\epsilon_\nu'^*(k')\tilde M^{\mu\nu}.\end{align}This alternative amplitude satisfies Ward identities (since photon ismassless and $\epsilon\cdot k=0$), and furthermore $\tilde M = M$.Therefore $\tilde M$ is physically identical to $M$.However technically these are very different, just because we cannotperform our ``na\"ive replacement'' for this $\tilde M$:\begin{align} \Hmrd\Hnsd \tilde M^{\mu\nu}\tilde M^{\rho\sigma*} &=  \Hmrd\Hnsd\left(M^{\mu\nu} + k^\mu p^\nu + p'^\mu k'^\nu \right)\left(M^{\rho\sigma*} + k^{\rho} p^{\sigma*} + p'^{\rho*}k'^{\sigma} \right)\\ &= \sum\s{pol.}|M|^2 + \left[(k\cdot p'^*)(k'\cdot p) + \Hc\right].\end{align}After all, we have obtained following expression:\begin{align} \sum\s{pol.}|\tilde M|^2 &= \sum\s{pol.}|M|^2\qquad \text{(Furthermore $\tilde M=M$)}\notag\\&= \sum\s{pol.}|\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}|^2 = \sum\s{pol.}|\epsilon_\mu^*(k)\epsilon_\nu'^*(k')\tilde M^{\mu\nu}|^2\\&= \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}\notag\\&\ne \Hmrd\Hnsd \tilde M^{\mu\nu}\tilde M^{\rho\sigma*} = \sum\s{pol.}|\tilde M|^2 + \left[(k\cdot p'^*)(k'\cdot p) + \Hc\right].\notag\end{align}\subsection{Phantom Terms in the Gauge Theory}\label{sec:no-other-term}You may think we forget to introduce$\ol\psi\G5\psi$ÅC$\ol\psi\G5\slashed D\psi$ÅC$\epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}$ÅC$\epsilon^{\mu\nu\rho\sigma}D_\mu D_\nu F^a_{\rho\sigma}$terms, but being a bit careful,\begin{itemize} \item the first two terms are nonsense, for now we use $\PL$ and $\PR$, \item the last term is equivalent to the third term as\\[.5zw]\qquad$\epsilon^{\mu\nu\rho\sigma}D_\mu D_\nu F^a_{\rho\sigma}=\epsilon^{\mu\nu\rho\sigma}\dfrac12[D_\mu,D_\nu]F^a_{\rho\sigma}=\dfrac12\epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}$.\end{itemize}\vspace{.5zw}Therefore, we have to discuss only the $\epsilon FF$ terms.If the gauge group is simple, we can take the structure constant as totally antisymmetric, which leads these terms to fall into surface terms as:\begin{align} \epsilon^{\mu\nu\rho\sigma}f^{abc}f^{ade}A^b_\mu A^c_\nu A^d_\rho A^e_\sigma &= \epsilon^{\mu\nu\rho\sigma}\left(-f^{acd}f^{abe}-f^{adb}f^{ace}\right)     A^b_\mu A^c_\nu A^d_\rho A^e_\sigma\notag\\ &= -2\epsilon^{\mu\nu\rho\sigma}f^{abc}f^{ade}A^b_\mu A^c_\nu A^d_\rho A^e_\sigma\\ &=  0,\notag\end{align}\begin{align} \therefore\ \epsilon^{\nu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}&= 4\epsilon^{\mu\nu\rho\sigma}\Pm A^a_\nu\Pr A^a_\sigma + 4g\epsilon^{\mu\nu\rho\sigma}f^{abc}A^a_\mu A^b_\nu\Pr A^c_\sigma\notag\\&= 2\Pm G^\mu,&\end{align}where $G^\mu$ is the Chern--Simons term which is defined as\begin{equation}  G^\mu:= 2\epsilon^{\mu\nu\rho\sigma}\left( A^a_\nu\Pr A^a_\sigma+\frac13gf^{abc}A^a_\nu A^b_\rho A^c_\sigma \right)= \epsilon^{\mu\nu\rho\sigma}\left( A^a_\nu F^a_{\rho\sigma}-\frac13gf^{abc}A^a_\nu A^b_\rho A^c_\sigma \right).\end{equation}See Appendix~\ref{sec:cs-instanton} for the instanton effect.\subsection{Instanton}\label{sec:cs-instanton}\TODO{Postpone...}%%% Local Variables:%%% TeX-master: "CheatSheet.tex"%%% End:
