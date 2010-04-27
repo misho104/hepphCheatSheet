@@ -1,1 +1,56 @@
-%#!latexmk cheatsheet%%% Time-Stamp: <2010-03-19 22:32:50 misho>\section{Cherry on the Cake}\paragraph{Conversion of Units}\begin{align} 1\GeV &= \frac1{6.5821\EE{-25}\un{s}} = \frac1{2.086\EE{-32}\un{yr}}        = \frac1{0.19733\un{fm}}  = 1.2244\EE{13}\un{K} = 1.7827\EE{-24}\un{g}\notag\\       &= \frac{1.519268\EE{24}}{1\un{s}} = \frac{4.79\EE{31}}{1\un{yr}}        = \frac{5.0677}{1\un{fm}}\\1\un{K}&= 8.167\EE-5\un{eV} = \frac1{8.0591\EE{-21}\un{s}} = \frac{1.2408\EE{20}}{1\un{s}}\\1\GeV^2&= \frac1{0.38938\un{mbarn}} = \frac{2568.2}{1\un{barn}}\qquad(1\un{barn}=10^{-28}\un{m^2} = 100\un{fm^2})\end{align}\vspace{-2zw}\begin{equation}\begin{split} &1\un{\text{tropical yr}} = 3.1557\EE7\un{s},\quad 1\un{\text{sidereal yr}} = 3.1558\EE7\un{s};\\ &1\un{s} = 3.1689\EE-8\un{\text{tr-yr}} = 3.1688\EE-8\un{\text{sr-yr}}.\end{split}\end{equation}\paragraph{Physical Constants}\begin{align} G\s F &= \frac{1}{\sqrt2v^2} = 1.16637(1)\EE-5\un{GeV^{-2}},\qquad G\s N = 6.70881(67)\EE{-39}\un{GeV^{-2}}\\ \sqrt{G\s N} &= 1.61624(8)\EE{-35}\un{m} = \frac1{1.22089(6)\EE{19}\un{GeV}}               = \frac1{2.17644(11)\EE-8\un{kg}}\\ \sqrt{8\pi G\s N}&= 8.1026(4)\EE{-35}\un{m} = \frac1{2.4353(1)\EE{18}\un{GeV}}                   = \frac1{4.3413(2)\EE-9\un{kg}}\end{align}%%% Local Variables:%%% TeX-master: "CheatSheet.tex"%%% End:
+%#!latexmk cheatsheet
+%%% Time-Stamp: <2010-04-23 17:43:06 misho>
+\section{Cherry on the Cake}
+\paragraph{Conversion of Units}
+\begin{align}
+ 1\GeV &= \frac1{6.5821\EE{-25}\un{s}} = \frac1{2.086\EE{-32}\un{yr}}
+        = \frac1{0.19733\un{fm}}  = 1.2244\EE{13}\un{K} = 1.7827\EE{-24}\un{g}\notag\\
+       &= \frac{1.519268\EE{24}}{1\un{s}} = \frac{4.79\EE{31}}{1\un{yr}}
+        = \frac{5.0677}{1\un{fm}}\\
+1\un{K}&= 8.167\EE-5\un{eV} = \frac1{8.0591\EE{-21}\un{s}} = \frac{1.2408\EE{20}}{1\un{s}}\\
+1\GeV^2&= \frac1{0.38938\un{mbarn}} = \frac{2568.2}{1\un{barn}}\qquad(1\un{barn}=10^{-28}\un{m^2} = 100\un{fm^2})
+\end{align}
+\vspace{-2zw}
+\begin{equation}\begin{split}
+ &1\un{\text{tropical yr}} = 3.1557\EE7\un{s},\quad 1\un{\text{sidereal yr}} = 3.1558\EE7\un{s};\\
+ &1\un{s} = 3.1689\EE-8\un{\text{tr-yr}} = 3.1688\EE-8\un{\text{sr-yr}}.
+\end{split}\end{equation}
+\paragraph{Physical Constants}
+\begin{align}
+ G\s F &= \frac{1}{\sqrt2v^2} = 1.16637(1)\EE-5\un{GeV^{-2}},\qquad
+ G\s N = 6.70881(67)\EE{-39}\un{GeV^{-2}}\\
+ \sqrt{G\s N} &= 1.61624(8)\EE{-35}\un{m} = \frac1{1.22089(6)\EE{19}\un{GeV}}
+               = \frac1{2.17644(11)\EE-8\un{kg}}\\
+ \sqrt{8\pi G\s N}&= 8.1026(4)\EE{-35}\un{m} = \frac1{2.4353(1)\EE{18}\un{GeV}}
+                   = \frac1{4.3413(2)\EE-9\un{kg}}
+\end{align}
+\Paragraph{Component of Spinor in Weyl Representation}
+$(\chi_\alpha=\epsilon_{\alpha\beta}\chi^\beta,\
+  \chi^\alpha=\epsilon^{\alpha\beta}\chi_\beta,\
+  \chi_\dalpha=\epsilon_{\dalpha\dbeta}\chi^\dbeta,\
+  \chi^\dalpha=\epsilon^{\dalpha\dbeta}\chi_\dbeta;\quad
+  \epsilon^{12}=\epsilon^{\dot1\dot2}=1, \
+  \epsilon_{12}=\epsilon_{\dot1\dot2}=-1.)$
+
+\begin{align}
+\psi&=\pmat{\psi\s L\\\psi\s R}=\pmat{\xi_\alpha\\\bar\chi^\dalpha}
+     =\spmat{\xi_1\\\xi_2\\\bar\chi^{\dot1}\\\bar\chi^{\dot2}}&
+&\buildrel{C}\over{\longrightarrow}&
+\psi\cc &=
+-\ii\G2\psi^*=\spmat{-\!\!&(\bar\chi^{\dot2})^*\\&(\bar\chi^{\dot1})^*\\&(\xi_2)^*\\-\!\!&(\xi_1)^*}
+             =\spmat{-\!\!&\chi^2 \\ &\chi^1\\&\bar\xi_{\dot2}\\ -\!\!&\bar\xi_{\dot1}}
+             =\pmat{\chi_\alpha \\ \bar\xi^\dalpha}\\
+\ol\psi&=\pmat{\chi^\alpha&\bar\xi_\dalpha}
+        =\spmat{\chi^1&\chi^2&\bar\xi_{\dot 1}&\bar\xi_{\dot 2}}&
+&\buildrel{C}\over{\longrightarrow}&
+\ol{\psi\cc} &=\ii\trans\psi\G0\G2
+              =\spmat{\xi_2&-\xi_1&-\bar\chi^{\dot2}&\bar\chi^{\dot1}}
+              =\pmat{\xi^\alpha&\bar\chi_{\dalpha}}
+\end{align}
+\begin{align}
+ A^\alpha B_\alpha &= \ol\psi_{A\cc}\PL\psi_{B} = \ol\psi_{B\cc}\PL\psi_{A}&
+ \bar A_\dalpha\bar B^\dalpha &= \ol\psi_A\PR\psi_{B\cc} = \ol\psi_B\PR\psi_{A\cc}
+\end{align}
+%%% Local Variables:
+%%% TeX-master: "CheatSheet.tex"
+%%% End:

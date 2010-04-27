@@ -1,1 +1,257 @@
-%#!latexmk CheatSheet.tex%%% Time-Stamp: <2010-03-25 01:33:22 misho>\section{Verbose Notes}\subsection{Spinor Fields}\subsubsection{Lorentz group and Lorentz algebra}\begin{tabular}{l@{ :\ \ \ }l}Metric &  $\eta^\% = \diag(+1, -1, -1, -1),\qquad \eta^\# = \diag(-1,+1,+1,+1).$\\Lorentz transf. in $\mathbb R^{1,3}$ & Linear transf. $x^\mu \mapsto \Lambda\T^\mu_\nu x^\nu$ which conserve $x^2$.\\ & \then $\Hrsd = \Hmnd \Lambda\T^\mu_\rho \Lambda\T^\nu_\sigma.$ and form a group $L$.\\[.8zw]Disconnected parts of $L$ &  $L_0 := \left\{ \det\Lambda = +1 \land \Lambda\T_0^0 >0\right\} \quad   L_P := \left\{ \det\Lambda = -1 \land \Lambda\T_0^0 >0\right\}$\\& $L_T := \left\{ \det\Lambda = +1 \land \Lambda\T_0^0 <0\right\} \quad   L_{PT} := \left\{ \det\Lambda = -1 \land \Lambda\T_0^0 <0\right\}$\\& \qquad ($L_0$ is identical with $\%\gSO(1,3) / \#\gSO(3,1)$. )\\[1zw]Infinitesimal one in $L_0$& $\Lambda\T^\mu_\nu = \delta^\mu_\nu + \epsilon\T^\mu_\nu$ where $\epsilon_{\mu\nu}=-\epsilon_{\nu\mu}$ (for $\eta=\eta\Lambda\Lambda$)\\[1zw]Generators & $x'^\mu =  x^\mu + \epsilon\T^\mu_\nu x^\nu   =: \left(\delta^\mu_\nu\mp\frac\ii2\epsilon_{\rho\sigma}(J^{\rho\sigma})\T^\mu_\nu\right)x^\nu$   \quad with $J^{\rho\sigma} = -J^{\sigma\rho}$\\&\then $ (J_{\rho\sigma})\T^\mu_\nu = \mp\ii\left(                                     \delta^\mu_\rho\Hsnd-\delta^\mu_\sigma\Hrnd                                    \right),$\\Lorentz algebra & therefore $[J_{\mu\nu},J_{\rho\sigma}] = \pm\ii(    \Hmrd J_{\nu\sigma} + \Hnsd J_{\mu\rho} - \Hmsd J_{\nu\rho} - \Hnrd J_{\mu\sigma})$\\\end{tabular}\vspace{1zw}Here we physicists derive the algebra from the property of the Lorentz transformation, but we can start from the albegra like mathematicians.\TODO{Jの符号確認}\subsubsection{Lorentz group and $\gSL(2,\Complex)$}Here we will explain that $L_0$ is isomorphic to $\gSL(2,\Complex)/\gZ_2$, which is defined as\begin{align} \aSL(2,\Complex) :=& \{a\in \aGL(2,\Complex)\ |\ \Tr(a)=0\},& \gSL(2,\Complex) :=& \{g\in \gGL(2,\Complex) |\ \det(g)=1\}.\end{align}We can build a one-to-one correspondent between $x^\mu$ and an Hermitian matrix\begin{equation} A := t\cdot1+\vipro x \sigma = \pmat{t+z&x-\ii y\\x+\ii y&t-z}.\end{equation}Then, we can define Lorentz transformations $f^g$ from $g\in\gSL(2,\Complex)$ as\begin{equation} f^g: A\mapsto g^\dagger Ag,\end{equation}and thus we can induce Lorentz transformations $\Lambda(g)$ from $g$.Actually, $\Lambda(g)$ covers only $L_0$, not whole $L$. I do not provide the proof, but since $\gSL(2,\Complex)$ is a connected group,it is clear that it can cover only the connected part of Lorentz group.\begin{rightnote}I omit the proof here, but in principle, it can be done by direct calculation. For instance, $\Lambda\T^0_0>0$ can be proved as follows:Since $t = \frac12\Tr(t\cdot1+\vipro x\sigma)$,$\Lambda\T^0_0$ is nothing but$\frac1{2t}\Tr\left[g^\dagger\left({t\atop0}{0\atop t}\right)g\right]$.Therefore\begin{equation} \Lambda\T^0_0 = \frac12\Tr\left(g^\dagger g\right) = \frac12\left(|g_{11}|+|g_{12}|+|g_{21}|+|g_{22}|\right)>0.\end{equation}This shows $\Lambda(g)$ are orthochronous.\end{rightnote}As an element of $\aSU(2)$ can be expressed by the 3 bases known as Pauli matrices, The Lorentz group has 6 generators $J_{\rho\sigma}$, and these corresponds tothe 6 elements of $\aSL(2,\Complex)$.These can be broken down into three ``rotation generators'' $\vc J$, and three ``boost generators'' $\vc K$ as follows:\begin{align} J_i &:= (J_{23}, J_{31}, J_{12}) &  K_i &:= (J_{10},J_{20},J_{30}) &\for i=1,2,3.\footnotemark\end{align}\footnotetext{For your information, $J_{23} = J^{23}$ and $K_{01} = -K^{01}$, regardless of the definition of the metic.}With this definition, the algebra is, regardless of signature of the metric, as follows:\begin{align} [J_i, J_j]&= \ii\epsilon_{ijk}J_k,& [J_i, K_j]&= \ii\epsilon_{ijk}K_k,& [K_i, K_j]&= -\ii\epsilon_{ijk}J_k.\end{align}Then, we define $\vc A$ and $\vc B$ as\begin{align} \vc A&:=\frac12(\vc J+\ii\vc K), & \vc B &:= \frac12(\vc J-\ii\vc K).\end{align}Now the commutation relations are\begin{align} [A_i, A_j] &= \ii\epsilon_{ijk}A_k,& [B_i, B_j] &= \ii\epsilon_{ijk}B_k,& [A_i, B_j] &= 0,\end{align}which means we have reduced the Lorentz group into $\gSU(2)\times\gSU(2)$.\starlineIn some neighborhood of the identity, the elements $\Lambda$ of Lorentz group can be described as\begin{equation} \Lambda = \exp(\mp\frac\ii2\epsilon_{\rho\sigma}J^{\rho\sigma}),\end{equation}using the (antisymmetric) generators $J^{\rho\sigma}$.Here, defining $\vc \theta$ and $\vc \beta$ as\begin{align} \pm\theta_i&:= (\epsilon_{23},\epsilon_{31},\epsilon_{12})& \pm\beta_i &:= (\epsilon_{10},\epsilon_{20},\epsilon_{30})& \for i=1,2,3,\end{align}the element is denoted as:\begin{equation} \Lambda = \exp\left[\ii\left(\vipro\theta J + \vipro \omega K\right)\right].\end{equation}\subsection{Weyl Spinor}Now we introduce Weyl spinors. First, I de%%% Local Variables:%%% TeX-master: t%%% End:\subsection{Polarization Sum}\label{Sec:Verbose:PolarizationSum}Firstly we focus on the single photon case $M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$.Here we set $k=(E,0,0,E)$, and $\epsilon=(0,1,0,0)\oplus(0,0,1,0)$. Then\begin{equation}  \sum\s{pol.}\left|M\right|^2= \sum\s{pol.}\epsilon_\mu^*(k)\epsilon_\nu(k)M^{\mu}M^{\nu*}= |M^1|^2+|M^2|^2,\end{equation}while\begin{equation} \Hmnd M^{\mu}M^{\nu*} = |M^1|^2+|M^2|^2\end{equation}for Ward identity $k_\mu M^\mu=0$. Therefore the replacement\begin{equation} \sum\s{pol.}\epsilon_\mu\epsilon'_\nu \to \Hmnd\end{equation}is valid.Secondly we think about the double photons case\footnote{This part is derived from 濱口幸一's notebook.}$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$.Here we set\begin{align} k &=(E,0,0, E) & \epsilon &=(0,1,0,0)\oplus(0,0,1,0)\\ k'&=(E,0,0,-E) & \epsilon'&=(0,\cos\theta,\sin\theta,0)\oplus(0,-\sin\theta,\cos\theta,0).\end{align}Then doing some simple calculations, we can get\begin{equation}  \sum\s{pol.}\left|M\right|^2 = |M^{11}|^2+|M^{12}|^2+|M^{21}|^2+|M^{22}|^2.\end{equation}Nevertheless, na\"ive replacement does not work, because our Ward identities\begin{equation} k_\mu\epsilon_\nu'^*(k')M^{\mu\nu} = \epsilon_\mu^*(k)k'_\nu M^{\mu\nu} = 0 \label{eq:WardIdentities}\end{equation}obviously does not help us. If we can omit $\epsilon$s from theseidentities, that is if\begin{equation} k_\mu M^{\mu\nu} = k'_\nu M^{\mu\nu} = 0,\label{eq:TrueIdentities}\end{equation}we can recover validity of the replacement:\begin{align} \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}&= -\Hnsd\left(M^{1\nu}M^{1\sigma*}+M^{2\nu}M^{2\sigma*}\right)\\&= |M^{11}|^2+|M^{12}|^2+|M^{21}|^2+|M^{22}|^2.\end{align}Then what's happening? Why this replacement is not valid?Actually our new conditions \eqref{eq:TrueIdentities} seem to guaranteethat we are summing not only ``physical'' but also ``unphysical'' polarizations.Meanwhile if we use some physical condition such as $\epsilon\cdot k=0$,\eqref{eq:TrueIdentities} break down while Ward identities\eqref{eq:WardIdentities} are still valid.Now let's check what is happening from another viewpoint. First we suppose$M$ satisfies our new conditions \eqref{eq:TrueIdentities}, and define$\tilde M^{\mu\nu}$ and $\tilde M$ as\begin{align} \tilde M^{\mu\nu}& := M^{\mu\nu} + k^\mu p^\nu + p'^\mu k'^\nu,\\ \tilde M         & := \epsilon_\mu^*(k)\epsilon_\nu'^*(k')\tilde M^{\mu\nu}.\end{align}This alternative amplitude satisfies Ward identities (since photon ismassless and $\epsilon\cdot k=0$), and furthermore $\tilde M = M$.Therefore $\tilde M$ is physically identical to $M$.However technically these are very different, just because we cannotperform our ``na\"ive replacement'' for this $\tilde M$:\begin{align} \Hmrd\Hnsd \tilde M^{\mu\nu}\tilde M^{\rho\sigma*} &=  \Hmrd\Hnsd\left(M^{\mu\nu} + k^\mu p^\nu + p'^\mu k'^\nu \right)\left(M^{\rho\sigma*} + k^{\rho} p^{\sigma*} + p'^{\rho*}k'^{\sigma} \right)\\ &= \sum\s{pol.}|M|^2 + \left[(k\cdot p'^*)(k'\cdot p) + \Hc\right].\end{align}After all, we have obtained following expression:\begin{align} \sum\s{pol.}|\tilde M|^2 &= \sum\s{pol.}|M|^2\qquad \text{(Furthermore $\tilde M=M$)}\notag\\&= \sum\s{pol.}|\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}|^2 = \sum\s{pol.}|\epsilon_\mu^*(k)\epsilon_\nu'^*(k')\tilde M^{\mu\nu}|^2\\&= \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}\notag\\&\ne \Hmrd\Hnsd \tilde M^{\mu\nu}\tilde M^{\rho\sigma*} = \sum\s{pol.}|\tilde M|^2 + \left[(k\cdot p'^*)(k'\cdot p) + \Hc\right].\notag\end{align}\subsection{Phantom Terms in the Gauge Theory}\label{sec:no-other-term}You may think we forget to introduce$\ol\psi\G5\psi$，$\ol\psi\G5\slashed D\psi$，$\epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}$，$\epsilon^{\mu\nu\rho\sigma}D_\mu D_\nu F^a_{\rho\sigma}$terms, but being a bit careful,\begin{itemize} \item the first two terms are nonsense, for now we use $\PL$ and $\PR$, \item the last term is equivalent to the third term as\\[.5zw]\qquad$\epsilon^{\mu\nu\rho\sigma}D_\mu D_\nu F^a_{\rho\sigma}=\epsilon^{\mu\nu\rho\sigma}\dfrac12[D_\mu,D_\nu]F^a_{\rho\sigma}=\dfrac12\epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}$.\end{itemize}\vspace{.5zw}Therefore, we have to discuss only the $\epsilon FF$ terms.If the gauge group is simple, we can take the structure constant as totally antisymmetric, which leads these terms to fall into surface terms as:\begin{align} \epsilon^{\mu\nu\rho\sigma}f^{abc}f^{ade}A^b_\mu A^c_\nu A^d_\rho A^e_\sigma &= \epsilon^{\mu\nu\rho\sigma}\left(-f^{acd}f^{abe}-f^{adb}f^{ace}\right)     A^b_\mu A^c_\nu A^d_\rho A^e_\sigma\notag\\ &= -2\epsilon^{\mu\nu\rho\sigma}f^{abc}f^{ade}A^b_\mu A^c_\nu A^d_\rho A^e_\sigma\\ &=  0,\notag\end{align}\begin{align} \therefore\ \epsilon^{\nu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}&= 4\epsilon^{\mu\nu\rho\sigma}\Pm A^a_\nu\Pr A^a_\sigma + 4g\epsilon^{\mu\nu\rho\sigma}f^{abc}A^a_\mu A^b_\nu\Pr A^c_\sigma\notag\\&= 2\Pm G^\mu,&\end{align}where $G^\mu$ is the Chern--Simons term which is defined as\begin{equation}  G^\mu:= 2\epsilon^{\mu\nu\rho\sigma}\left( A^a_\nu\Pr A^a_\sigma+\frac13gf^{abc}A^a_\nu A^b_\rho A^c_\sigma \right)= \epsilon^{\mu\nu\rho\sigma}\left( A^a_\nu F^a_{\rho\sigma}-\frac13gf^{abc}A^a_\nu A^b_\rho A^c_\sigma \right).\end{equation}See Appendix~\ref{sec:cs-instanton} for the instanton effect.\subsection{Instanton}\label{sec:cs-instanton}\TODO{Postpone...}%%% Local Variables:%%% TeX-master: "CheatSheet.tex"%%% End:
+%#!latexmk CheatSheet.tex
+%%% Time-Stamp: <2010-04-27 22:42:12 misho>
+\section{Verbose Notes}
+\subsection{Spinor Fields}
+\subsubsection{Lorentz group and Lorentz algebra}
+\begin{tabular}{l@{ :\ \ \ }l}
+Metric &  ${\RED\eta} = \diag(+1, -1, -1, -1),\qquad {\BLUE \eta} = \diag(-1,+1,+1,+1).$\\
+Lorentz transf. in $\mathbb R^{1,3}$ & Linear transf. $x^\mu \mapsto \Lambda\T^\mu_\nu x^\nu$ which conserve $x^2$.\\
+ & \then $\Hrsd = \Hmnd \Lambda\T^\mu_\rho \Lambda\T^\nu_\sigma.$
+ and form a group $L$.\\[.8zw]
+
+Disconnected parts of $L$ &
+  $L_0 := \left\{ \det\Lambda = +1 \land \Lambda\T_0^0 >0\right\} \quad
+   L_P := \left\{ \det\Lambda = -1 \land \Lambda\T_0^0 >0\right\}$\\
+& $L_T := \left\{ \det\Lambda = +1 \land \Lambda\T_0^0 <0\right\} \quad
+   L_{PT} := \left\{ \det\Lambda = -1 \land \Lambda\T_0^0 <0\right\}$\\
+& \qquad ($L_0$ is identical with ${\RED\gSO(1,3)} / {\BLUE\gSO(3,1)}$. )\\[1zw]
+
+Infinitesimal one in $L_0$& $\Lambda\T^\mu_\nu = \delta^\mu_\nu + \epsilon\T^\mu_\nu$ where $\epsilon_{\mu\nu}=-\epsilon_{\nu\mu}$ (for $\eta=\eta\Lambda\Lambda$)\\[1zw]
+
+Generators &
+ $x'^\mu =  x^\mu + \epsilon\T^\mu_\nu x^\nu
+   =: \left(\delta^\mu_\nu\mp\frac\ii2\epsilon_{\rho\sigma}(J^{\rho\sigma})\T^\mu_\nu\right)x^\nu$
+   \quad with $J^{\rho\sigma} = -J^{\sigma\rho}$\\
+&\then 
+$ (J_{\rho\sigma})\T^\mu_\nu = \pm\ii\left(
+                                     \delta^\mu_\rho\Hsnd-\delta^\mu_\sigma\Hrnd
+                                    \right),$\\
+Lorentz algebra & therefore
+ $[J_{\mu\nu},J_{\rho\sigma}] = \mp\ii(
+    \Hmrd J_{\nu\sigma} + \Hnsd J_{\mu\rho} - \Hmsd J_{\nu\rho} - \Hnrd J_{\mu\sigma})$\\
+\end{tabular}
+
+\vspace{1zw}
+Here we physicists derive the algebra from the property of the Lorentz transformation, but we can start from the albegra like mathematicians.
+
+\TODO{Jの符号確認}
+
+\subsubsection{Lorentz group and $\gSL(2,\Complex)$}
+Here we will explain that $L_0$ is isomorphic to $\gSL(2,\Complex)/\gZ_2$, which is defined as
+\begin{align}
+ \aSL(2,\Complex) :=& \{a\in \aGL(2,\Complex)\ |\ \Tr(a)=0\},&
+ \gSL(2,\Complex) :=& \{g\in \gGL(2,\Complex) |\ \det(g)=1\}.
+\end{align}
+
+We can build a one-to-one correspondent between $x^\mu$ and an Hermitian matrix
+\begin{equation}
+ A := t\cdot1+\vipro x \sigma = \pmat{t+z&x-\ii y\\x+\ii y&t-z}.
+\end{equation}
+Then, we can define Lorentz transformations $f^g$ from $g\in\gSL(2,\Complex)$ as
+\begin{equation}
+ f^g: A\mapsto g^\dagger Ag,
+\end{equation}
+and thus we can induce Lorentz transformations $\Lambda(g)$ from $g$.
+
+Actually, $\Lambda(g)$ covers only $L_0$, not whole $L$. I do not provide the proof, but since $\gSL(2,\Complex)$ is a connected group,
+it is clear that it can cover only the connected part of Lorentz group.
+\begin{rightnote}
+I omit the proof here, but in principle, it can be done by direct calculation. For instance, $\Lambda\T^0_0>0$ can be proved as follows:
+
+Since $t = \frac12\Tr(t\cdot1+\vipro x\sigma)$,
+$\Lambda\T^0_0$ is nothing but
+$\frac1{2t}\Tr\left[g^\dagger\left({t\atop0}{0\atop t}\right)g\right]$.
+Therefore
+\begin{equation}
+ \Lambda\T^0_0
+ = \frac12\Tr\left(g^\dagger g\right)
+ = \frac12\left(|g_{11}|+|g_{12}|+|g_{21}|+|g_{22}|\right)>0.
+\end{equation}
+This shows $\Lambda(g)$ are orthochronous.
+\end{rightnote}
+
+
+As an element of $\aSU(2)$ can be expressed by the 3 bases known as Pauli matrices, 
+
+The Lorentz group has 6 generators $J_{\rho\sigma}$, and these corresponds to
+the 6 elements of $\aSL(2,\Complex)$.
+These can be broken down into three ``rotation generators'' $\vc J$, and three ``boost generators'' $\vc K$ as follows:
+\begin{align}
+ J_i &:= (J_{23}, J_{31}, J_{12}) &  K_i &:= (J_{10},J_{20},J_{30}) &\for i=1,2,3.\footnotemark
+\end{align}
+\footnotetext{For your information, $J_{23} = J^{23}$ and $K_{01} = -K^{01}$, regardless of the definition of the metic.}
+With this definition, the algebra is, regardless of signature of the metric, as follows:
+\begin{align}
+ [J_i, J_j]&= \ii\epsilon_{ijk}J_k,&
+ [J_i, K_j]&= \ii\epsilon_{ijk}K_k,&
+ [K_i, K_j]&= -\ii\epsilon_{ijk}J_k.
+\end{align}
+
+Then, we define $\vc A$ and $\vc B$ as
+\begin{align}
+ \vc A&:=\frac12(\vc J+\ii\vc K), & \vc B &:= \frac12(\vc J-\ii\vc K).
+\end{align}
+Now the commutation relations are
+\begin{align}
+ [A_i, A_j] &= \ii\epsilon_{ijk}A_k,&
+ [B_i, B_j] &= \ii\epsilon_{ijk}B_k,&
+ [A_i, B_j] &= 0,
+\end{align}
+which means we have reduced the Lorentz group into $\gSU(2)\times\gSU(2)$.
+\starline
+
+In some neighborhood of the identity, the elements $\Lambda$ of Lorentz group can be described as
+\begin{equation}
+ \Lambda = \exp(\mp\frac\ii2\epsilon_{\rho\sigma}J^{\rho\sigma}),
+\end{equation}
+using the (antisymmetric) generators $J^{\rho\sigma}$.
+Here, defining $\vc \theta$ and $\vc \beta$ as
+\begin{align}
+ \pm\theta_i&:= (\epsilon_{23},\epsilon_{31},\epsilon_{12})&
+ \pm\beta_i &:= (\epsilon_{10},\epsilon_{20},\epsilon_{30})&
+ \for i=1,2,3,
+\end{align}
+the element is denoted as:
+\begin{equation}
+ \Lambda = \exp\left[\ii\left(\vipro\theta J + \vipro \omega K\right)\right].
+\end{equation}
+
+\subsection{Weyl Spinor}
+
+%%% Local Variables:
+%%% TeX-master: t
+%%% End:
+
+
+\subsection{Polarization Sum}\label{Sec:Verbose:PolarizationSum}
+Firstly we focus on the single photon case $M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$.
+Here we set $k=(E,0,0,E)$, and $\epsilon=(0,1,0,0)\oplus(0,0,1,0)$. Then
+\begin{equation}
+  \sum\s{pol.}\left|M\right|^2
+= \sum\s{pol.}\epsilon_\mu^*(k)\epsilon_\nu(k)M^{\mu}M^{\nu*}
+= |M^1|^2+|M^2|^2,
+\end{equation}
+while
+\begin{equation}
+ \Hmnd M^{\mu}M^{\nu*} = |M^1|^2+|M^2|^2
+\end{equation}
+for Ward identity $k_\mu M^\mu=0$. Therefore the replacement
+\begin{equation}
+ \sum\s{pol.}\epsilon_\mu\epsilon'_\nu \to \Hmnd
+\end{equation}
+is valid.
+
+Secondly we think about the double photons case
+\footnote{This part is derived from 濱口幸一's notebook.}
+$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$.
+Here we set
+\begin{align}
+ k &=(E,0,0, E) & \epsilon &=(0,1,0,0)\oplus(0,0,1,0)\\
+ k'&=(E,0,0,-E) & \epsilon'&=(0,\cos\theta,\sin\theta,0)\oplus(0,-\sin\theta,\cos\theta,0).
+\end{align}
+Then doing some simple calculations, we can get
+\begin{equation}
+  \sum\s{pol.}\left|M\right|^2 = |M^{11}|^2+|M^{12}|^2+|M^{21}|^2+|M^{22}|^2.
+\end{equation}
+Nevertheless, na\"ive replacement does not work, because our Ward identities
+\begin{equation}
+ k_\mu\epsilon_\nu'^*(k')M^{\mu\nu} =
+ \epsilon_\mu^*(k)k'_\nu M^{\mu\nu} = 0 \label{eq:WardIdentities}
+\end{equation}
+obviously does not help us. If we can omit $\epsilon$s from these
+identities, that is if
+\begin{equation}
+ k_\mu M^{\mu\nu} = k'_\nu M^{\mu\nu} = 0,\label{eq:TrueIdentities}
+\end{equation}
+we can recover validity of the replacement:
+\begin{align}
+ \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}
+&= -\Hnsd\left(
+M^{1\nu}M^{1\sigma*}+M^{2\nu}M^{2\sigma*}
+\right)\\
+&= |M^{11}|^2+|M^{12}|^2+|M^{21}|^2+|M^{22}|^2.
+\end{align}
+
+Then what's happening? Why this replacement is not valid?
+Actually our new conditions \eqref{eq:TrueIdentities} seem to guarantee
+that we are summing not only ``physical'' but also ``unphysical'' polarizations.
+Meanwhile if we use some physical condition such as $\epsilon\cdot k=0$,
+\eqref{eq:TrueIdentities} break down while Ward identities
+\eqref{eq:WardIdentities} are still valid.
+
+Now let's check what is happening from another viewpoint. First we suppose
+$M$ satisfies our new conditions \eqref{eq:TrueIdentities}, and define
+$\tilde M^{\mu\nu}$ and $\tilde M$ as
+\begin{align}
+ \tilde M^{\mu\nu}& := M^{\mu\nu} + k^\mu p^\nu + p'^\mu k'^\nu,\\
+ \tilde M         & := \epsilon_\mu^*(k)\epsilon_\nu'^*(k')\tilde M^{\mu\nu}.
+\end{align}
+This alternative amplitude satisfies Ward identities (since photon is
+massless and $\epsilon\cdot k=0$), and furthermore $\tilde M = M$.
+Therefore $\tilde M$ is physically identical to $M$.
+However technically these are very different, just because we cannot
+perform our ``na\"ive replacement'' for this $\tilde M$:
+\begin{align}
+ \Hmrd\Hnsd \tilde M^{\mu\nu}\tilde M^{\rho\sigma*}
+ &=  \Hmrd\Hnsd
+\left(M^{\mu\nu} + k^\mu p^\nu + p'^\mu k'^\nu \right)
+\left(M^{\rho\sigma*} + k^{\rho} p^{\sigma*} + p'^{\rho*}k'^{\sigma} \right)\\
+ &= \sum\s{pol.}|M|^2 + \left[(k\cdot p'^*)(k'\cdot p) + \Hc\right].
+\end{align}
+After all, we have obtained following expression:
+\begin{align}
+ \sum\s{pol.}|\tilde M|^2 &=
+ \sum\s{pol.}|M|^2\qquad \text{(Furthermore $\tilde M=M$)}\notag\\
+&= \sum\s{pol.}|\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}|^2
+ = \sum\s{pol.}|\epsilon_\mu^*(k)\epsilon_\nu'^*(k')\tilde M^{\mu\nu}|^2\\
+&= \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}\notag\\
+&\ne \Hmrd\Hnsd \tilde M^{\mu\nu}\tilde M^{\rho\sigma*}
+ = \sum\s{pol.}|\tilde M|^2 + \left[(k\cdot p'^*)(k'\cdot p) + \Hc\right].\notag
+\end{align}
+
+\subsection{Phantom Terms in the Gauge Theory}
+\label{sec:no-other-term}
+You may think we forget to introduce
+$\ol\psi\G5\psi$，
+$\ol\psi\G5\slashed D\psi$，
+$\epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}$，
+$\epsilon^{\mu\nu\rho\sigma}D_\mu D_\nu F^a_{\rho\sigma}$
+terms, but being a bit careful,
+\begin{itemize}
+ \item the first two terms are nonsense, for now we use $\PL$ and $\PR$,
+ \item the last term is equivalent to the third term as\\[.5zw]\qquad
+$\epsilon^{\mu\nu\rho\sigma}D_\mu D_\nu F^a_{\rho\sigma}
+=\epsilon^{\mu\nu\rho\sigma}\dfrac12[D_\mu,D_\nu]F^a_{\rho\sigma}
+=\dfrac12\epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}$.
+\end{itemize}\vspace{.5zw}
+Therefore, we have to discuss only the $\epsilon FF$ terms.
+If the gauge group is simple, we can take the structure constant as totally antisymmetric, which leads these terms to fall into surface terms as:
+\begin{align}
+ \epsilon^{\mu\nu\rho\sigma}f^{abc}f^{ade}A^b_\mu A^c_\nu A^d_\rho A^e_\sigma
+ &= \epsilon^{\mu\nu\rho\sigma}\left(-f^{acd}f^{abe}-f^{adb}f^{ace}\right)
+     A^b_\mu A^c_\nu A^d_\rho A^e_\sigma\notag\\
+ &= -2\epsilon^{\mu\nu\rho\sigma}f^{abc}f^{ade}A^b_\mu A^c_\nu A^d_\rho A^e_\sigma\\
+ &=  0,\notag
+\end{align}
+\begin{align}
+ \therefore\ \epsilon^{\nu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
+&= 4\epsilon^{\mu\nu\rho\sigma}\Pm A^a_\nu\Pr A^a_\sigma
+ + 4g\epsilon^{\mu\nu\rho\sigma}f^{abc}A^a_\mu A^b_\nu\Pr A^c_\sigma\notag\\
+&= 2\Pm G^\mu,&
+\end{align}
+where $G^\mu$ is the Chern--Simons term which is defined as
+\begin{equation}
+  G^\mu
+:= 2\epsilon^{\mu\nu\rho\sigma}
+\left( A^a_\nu\Pr A^a_\sigma+\frac13gf^{abc}A^a_\nu A^b_\rho A^c_\sigma \right)
+= \epsilon^{\mu\nu\rho\sigma}
+\left( A^a_\nu F^a_{\rho\sigma}-\frac13gf^{abc}A^a_\nu A^b_\rho A^c_\sigma \right).
+\end{equation}
+See Appendix~\ref{sec:cs-instanton} for the instanton effect.
+
+\subsection{Instanton}
+\label{sec:cs-instanton}
+\TODO{Postpone...}
+%%% Local Variables:
+%%% TeX-master: "CheatSheet.tex"
+%%% End:

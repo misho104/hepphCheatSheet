@@ -1,0 +1,199 @@
+%#!latexmk CheatSheet
+%%% Time-Stamp: <2010-04-15 17:33:49 misho>
+
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}}
+\section{Mathematics}
+\subsection{Algebra}
+\subsubsection{Algebraic Structure}
+\begin{tabular}{l@{ :\ \ \ }l}
+Semigroup     & For $a,b\in A\stx{set}$, $ab\in A$; Associative.\\
+Monoid        & For $a,b\in A\stx{set}$, $ab\in A$; Associative, Unit.\\
+Group         & For $a,b\in A\stx{set}$, $ab\in A$; Associative, Unit, Inverse.\\
+Module {\tiny (加群/可換群)}
+              & For $a,b\in A\stx{set}$, $a+b\in A$; Commutative, Associative, Unit, Inverse.\\
+Semimodule    & For $a,b\in A\stx{set}$, $a+b\in A$; Commutative, Associative, Unit.\\
+Ring   {\tiny (環)}
+              & $+$: Module, $\times$: Semigroup{\footnotesize (Monoid)}, Distributive.\\
+Semiring      & $+$: Semimodule, $\times$: Monoid, $0\neq1$, Distributive, $0\times a = a\times 0 = 0$.\\
+Field         & $+$: Module, $\times$: Commutative Monoid, $a^{-1}$ but $0$, $1\neq0$, Distributive.
+\end{tabular}
+
+\vspace{.5zw}
+
+\Paragraph{Vector Space}
+\begin{tabular}{l@{ :\ \ \ }l}
+Vector space on $K$  & For $v\in(V,+)\stx{module}$ and $k\in K\stx{field}$,\\
+\hfill ($K$-module)  & \qquad $k v\in (V,+)$; Compatible, Distributive, $1v=v$.\\
+Norm &
+    $\norm x\ge0$, $\norm x=0\Leftrightarrow x=0$, $\norm{kx}=k\norm x$,
+    $\norm{x+y}\le \norm x+\norm y$\\
+Inner product & $\braket xx\ge0$, $\braket xx=0\Leftrightarrow x=0$,$\braket{x}{y}=\braket{y}{x}$,\\
+              & \qquad $\braket{x+y}z=\braket xz + \braket yz$, $\braket{kx}y =k\braket xy$
+
+\end{tabular}
+
+\vspace{.5zw}
+
+\Paragraph{$K$-algebra}
+$K$-algebra $C(V)$とは，vector空間$V$に，distributiveな乗法を入れたもの：\\
+\qquad$xy\in C(V);$\quad $(xy)z=x(yz)$, $(x+y)z=xz+yz$, $x(y+z)=xy+xz$, $k(xy)=(kx)y=x(ky)$.
+
+\subsubsection{Lie Algebra}
+\begin{tabular}{l@{ :\ \ \ }l}
+Lie Algebra & For a Finite-dimensional $K$-module $(A,+)$ and $x,y,z\in(A,+)$, $a,b\in K$,\\
+            & \quad $[u,v]\in (A,+)$ (Lie product), and\\
+            & \quad Bilinear: $[ax+by, z] = a[x,z]+b[y,z]$, $[x, ay+bz] = a[x,y]+b[x,z]$,\\
+            & \quad Alternating: $[x,x]=0$ \quad ($\then [x,y]=-[y,x]$),\\
+            & \quad Jacobi id.: $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$.\\
+\end{tabular}
+
+\subsubsection{Clifford Algebra}
+Here $V$ is a vector space on $K$ with inner product which need not be positive definite.
+
+For $C(V)$, {\bf Clifford algebra} $(C(V),\theta)$ is defined as
+\begin{itemize}
+ \item $C(V)$: $K$-algebra with $1$ \quad ($1x=x1=x$),
+ \item $\theta: V\to C(V)$, homomorphism, $\theta(x)^2 = \braket xx1$,
+ \item Any $C'$: $K$-algebra with 1 and any homomorphism $\phi: V\to C'$ with $\phi(x)^2=\braket xx1$, there's unique $\bar\phi: C\to C'$, homomorphism, $\bar\phi(1)=1$.
+\end{itemize}
+\begin{rightnote}
+The Gamma matrices form Clifford Algebra:
+\[
+  V: \Real^4 \text{ with } \{G_0, G_1, G_2, G_3\},\quad
+  \braket{G_0}{G_0}=1, \braket{G_i}{G_i}=-1; \qquad
+  C(V): M(n,\Complex).
+\]\vspace{-2zw}
+\end{rightnote}
+
+\subsubsection{Multilinear Algebra}
+可換環$K$上のvector空間$V$とその双対空間$V^*$について：\vspace{.6zw}\par
+\begin{tabular}{l@{ :\ \ \ }l}
+{\bf Tensor Algebra} $T(V)$
+    & \begin{minipage}[t]{280pt}
+       線形写像$f: V\to T(V)$ を持つ$K$-algebra であり，別の$K$-algebra $A$への線型写像 $g: V\to A$が与えられたときに可換な準同型$h:T(V)\to A$ s.t. $h\circ f=g$が一意に存在するもの。
+      \end{minipage}\vspace{.5zw}\\
+{\bf Symmetric Algebra} $S(V)$
+    & 上の定義で，$C(V)$ （および $A$）を可換$K$-algebraとしたもの。\\
+{\bf Exterior Algebra} $\wedge(V)$
+    & 上の定義で，$g(\cdots vv\cdots)=0$を要請したもの。
+\end{tabular}
+
+\vspace{1zw}
+
+\Paragraph{Tensor and Tensor Space}
+\begin{tabular}{l@{ :\ \ \ }l}
+$p$次反変Tensor積 & $T^p(V):=V^{\otimes p} = V\otimes V\otimes \cdots \otimes V$\\
+$q$次共変Tensor積 & $T_q(V):=(V^*)^{\otimes q} = V^*\otimes V^*\otimes \cdots \otimes V^*$\\
+混合Tensor積      & $T^p_q(V):=T^p(V)\otimes T_q(V)$ （ただし$V$と$V^*$の順序を変えたものは同型）\\
+{\bf Tensor Space}& $T(V):=\oplus T^p_q(V)$
+\end{tabular}\vspace{.5zw}
+
+Tensor spaceの代数$(+,\otimes)$は環を為しており，また更に：\vspace{.2zw}\par
+\begin{tabular}{l@{ :\ \ \ }l}
+Contraction    & $V^*$は$V\to K$なので，$T^p_q(V)\to T^{p-1}_{q-1}(V)$が定義される。\\
+内積           & $T_2(V)\ni g_{ij}: V\times V\to \Real$ （通常は対称にする。正定値としてもよい。）\\
+添字の上げ下げ & $T_2(V)\cong\Hom(V,V^*)$（同型）なので，内積から誘導される。\\
+               & 同型なので，$g^{ij}: \Hom(V^*,V)$は逆写像になる。
+\end{tabular}
+
+
+\Paragraph{Grassmann Operator}
+台集合$V$をHilbert空間であるとする。$V\ni v$について
+\begin{equation}
+ \|\psi v\|^2=(\psi_{ab}v_b)^*(\psi_{ac}v_c) = v_b^*v_c(\psi_{ab})^*\psi_{ac}\ge 0
+\qquad\therefore
+(\psi_{ab})^*\psi_{ac}
+ = -\left(\psi_{ab}(\psi_{ac})^*\right)^*
+\end{equation}
+即ち反可換な作用素について
+$(ab)^\dagger = a^\dagger b^\dagger$,
+$\trans{(ab)} = -\trans a \trans b$,
+$(ab)^* = b^*a^*$ である。
+
+\TODO{$\psi$の正体がわからない……。。。}
+
+
+\subsubsection{Lie Group and Lie Algebra}
+\begin{itemize}
+ \item 群$G$が{\bf Lie group}である … $G$が同時に$C^\infty$多様
+       体であり，積演算と逆元写像が共に$C^\infty$級である。
+ \item Lie群$G$が{\bf COMPLEX Lie group}である … 積演算と逆元写像が共に正則写像である。
+\end{itemize}
+\begin{itemize}
+ \item Lie群$G$の単位元における接空間を，{\bf $G$のLie algebra}
+       $\mathfrak g$という。
+\begin{itemize}
+ \item $\mathfrak g$は$G$の左不変なvector場全体である。
+ \item $\mathfrak g$はvector場の括弧積の下でLie algebraとなる。
+\end{itemize}
+ \item $G$として有限次元Lie群を考えると，
+\begin{itemize}
+ \item そのLie代数の基底$B_i$に対して{\bf structure
+       constant} $c$が$[B_i,B_j]=c^{k}_{ij}B_k$として定義できる。
+\end{itemize}
+\end{itemize}
+\starline
+\begin{itemize}
+ \item Compact Lie群は線型Lie群である。
+ \item $G$として{\bf Linear group} $\gGL(n;\Real)$を考えると，
+ \begin{itemize}
+  \item そのLie代数は$n$次実正方行列全体となる。
+  \item Vector場の括弧積は{\bf commutation relation} $[X,Y]=XY-YX$となる。
+ \end{itemize}
+ \item Lie群は，$\gGL(n;\Complex)$の部分Lie群と局所同型になるような位相群
+       でかつ連結成分が高々可算個であるものである。
+\end{itemize}
+
+以下では，Lie群として$\gGL(n;\Real)$の部分群を考えることにし，Lie代数の
+元を行列により表現する。
+
+\subsubsection{Matrix Representation}
+\begin{itemize}
+ \item Lie群$G$のLie代数の基底の組を，$G$の{\bf generators}と言う。
+ \item $\gGL(n;\Real)$の元は$n$次元行列で表せる。
+ \item Lie群$G$の生成子$\{T_i\}$に対し，
+       以下の2つは共に$G$の単位元近傍の局所座標系を与える。
+\begin{align}
+ (x_1,\cdots,x_m)&\mapsto\ee^{x_1T_1+\cdots+x_mT_m}&
+(x_1,\cdots,x_m)&\mapsto\ee^{x_1T_1}\cdots\ee^{x_mT_m}
+\end{align}
+\end{itemize}
+
+\begin{itemize}
+ \item Lie群$G$がcompactである …
+\begin{enumerate}
+ \item 多様体$G$がcompactである。       \TODO{これは何故同値なのか？}
+ \item $G$の生成子$\{T_i\}$を，
+       $\Tr(T_iT_j)=k\,\delta_{ij}$かつ$k>0$となるように取り替える
+       ことができる。\\【この基底の下では構造定数が完全反対称になる。】
+\end{enumerate}
+ \item Compact群$G$は，{\bf unitary representation}を持つ。\\
+       故に，単位元の近傍では有限個の{\bf Hermitian matrix} $T^i$と
+       parameters $x^i\in\Real$により，$G$の元を
+       \begin{equation}
+        \ee^{\ii x^iT^i}
+       \end{equation}
+       と表すことが出来る。
+\end{itemize}
+\subsubsection{結論}
+Compact Lie群の元のうち，単位元近傍にあるもの$V$は，
+\subparagraph{Hermitian Representation}
+\begin{align*}
+ V=\exp(\ii x^iT^i)
+ \where
+& T^i:\text{Hermitian Matrix},\quad x^i\in\Real,\\
+&[T^i,T^j]=\ii f^{ijk}T^k,\quad \Tr(T^iT^j)=\lambda\,\delta^{ij}>0;\qquad f\in\Real
+\end{align*}
+\subparagraph{Real Representation}
+\begin{align*}
+ V=\exp(x^iR^i)
+ \where
+& R^i:\text{Real Matrix},\quad x^i\in\Real,\\
+&[R^i,R^j]=-f^{ijk}R^k,\quad \Tr(R^iR^j)=-\lambda\,\delta^{ij}<0;\qquad f\in\Real
+\end{align*}
+と表すことが出来る。
+
+
+%%% Local Variables:
+%%% TeX-master: "CheatSheet.tex"
+%%% End:
