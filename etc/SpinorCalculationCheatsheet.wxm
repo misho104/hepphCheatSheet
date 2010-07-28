@@ -1,0 +1,124 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.2 ] */
+
+/* [wxMaxima: input   start ] */
+''HEPMODE$
+xa:1 $ xb:1 $ eta: [1,-1,-1,-1]$
+eps(m,n,r,s) := Epsilon(m,n,r,s)$
+
+epsu(x,y):=if(x=y)then(0)else(y-x)$epsd(x,y):=-epsu(x,y)$
+sm: [xa*s0,xb*s1,xb*s2,xb*s3]$
+s(x):= sm[x+1]$
+bs(x):= if(x=0)then(sm[x+1])else(-sm[x+1])$
+smn(m,n):=(s(m).bs(n)-s(n).bs(m))/4$
+bsmn(m,n):=(bs(m).s(n)-bs(n).s(m))/4$
+h(m,n):=if(m=n)then(eta[m+1])else(0)$
+delta(m,n):=if(m=n)then(1)else(0)$
+E: s0$
+forallmnr(exp):=
+for m:0 thru 3 do (for n:0 thru 3 do (for r:0 thru 3 do (
+if(not(ev(exp)))then(print(concat("ERR: m=",m," n=",n," r=",r))))))$
+forallmnru(exp):=
+for m:0 thru 3 do (for n:0 thru 3 do (for r:0 thru 3 do (for u:0 thru 3 do(
+if(not(ev(exp)))then(print(concat("ERR: m=",m," n=",n," r=",r," u=",u)))))))$
+
+forallmnru2(exp):=
+for m:1 thru 2 do (for n:1 thru 2 do (for r:1 thru 2 do (for u:1 thru 2 do(
+if(not(ev(exp)))then(print(concat("ERR: m=",m," n=",n," r=",r," u=",u)))))))$
+
+sumab(exp):=sumabsub(exp,3,3)$
+sumabsub(exp,Sa,Sb):=
+if(Sa=-1)then(sumabsub(exp,3,Sb-1))else(
+if(Sa=0 and Sb=0)then(ev(exp))else(ev(exp)+sumabsub(exp,Sa-1,Sb)))$
+
+sumabcd4(exp,Sd):=sumabcd4sub(exp,3,3,3,Sd)$
+sumabcd4sub(exp,Sa,Sb,Sc,Sd):=
+if(Sa=-1)then(sumabcd4sub(exp,3,Sb-1,Sc,Sd))else(
+if(Sb=-1)then(sumabcd4sub(exp,3,3,Sc-1,Sd))else(
+if(Sa=0 and Sb=0 and Sc=0)then(ev(exp))else(ev(exp)+sumabcd4sub(exp,Sa-1,Sb,Sc,Sd))))$
+
+sumabcd2(exp):=sumabcd2sub(exp,1,1,1,1)$
+sumabcd2sub(exp,Sa,Sb,Sc,Sd):=
+if(Sa=-1)then(sumabcd2sub(exp,1,Sb-1,Sc,Sd))else(
+if(Sb=-1)then(sumabcd2sub(exp,1,1,Sc-1,Sd))else(
+if(Sc=-1)then(sumabcd2sub(exp,1,1,1,Sd-1))else(
+if(Sa=0 and Sb=0 and Sc=0 and Sd=0)then(ev(exp))else(ev(exp)+sumabcd2sub(exp,Sa-1,Sb,Sc,Sd)))))$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+forallmnr('( s(m).bs(n) = h(m,n)*E+2*smn(m,n) ))$
+forallmnr('( bs(m).s(n) = h(m,n)*E+2*bsmn(m,n) ))$
+forallmnr('( smn(m,n) = -smn(n,m) ))$
+forallmnr('( bsmn(m,n) = -bsmn(n,m) ))$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+forallmnr('( s(m).bs(r).s(n)+s(n).bs(r).s(m) = 2*(h(m,r)*s(n)+h(n,r)*s(m)-h(m,n)*s(r)) ));
+forallmnr('( bs(m).s(r).bs(n)+bs(n).s(r).bs(m) = 2*(h(m,r)*bs(n)+h(n,r)*bs(m)-h(m,n)*bs(r)) ));
+forallmnr('( s(m).bs(n).s(r)-s(r).bs(n).s(m)   = sumab('(2*%i*eps(m,n,r,Sa)*h(Sa,Sb)*s(Sb))) ));
+forallmnr('( bs(m).s(n).bs(r)-bs(r).s(n).bs(m) = sumab('(-2*%i*eps(m,n,r,Sa)*h(Sa,Sb)*bs(Sb))) ));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+forallmnr('( mattrace(bs(m).s(n)) = 2*h(m,n)))$
+forallmnr('( mattrace(s(m).bs(n)) = 2*h(m,n)))$
+forallmnr('( mattrace(smn(m,n)) = 0))$
+forallmnr('( mattrace(bsmn(m,n)) = 0))$
+forallmnru('( mattrace(smn(m,n).smn(r,u)) = -1/2*(h(m,r)*h(n,u)-h(m,u)*h(n,r))+%i/2*eps(m,n,r,u)))$
+forallmnru('( mattrace(bsmn(m,n).bsmn(r,u)) = -1/2*(h(m,r)*h(n,u)-h(m,u)*h(n,r))-%i/2*eps(m,n,r,u)))$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+forallmnru2('( sumab('(h(Sa,Sb)*(s(Sa)[m][n]*bs(Sb)[r][u]))) = 2*delta(m,u)*delta(n,r) ))$
+forallmnru2('( sumab('(h(Sa,Sb)*(s(Sa)[m][n]*s(Sb)[r][u]))) = 2*epsd(m,r)*epsd(n,u) ))$
+forallmnru2('( sumab('(h(Sa,Sb)*(bs(Sa)[m][n]*bs(Sb)[r][u]))) = 2*epsu(m,r)*epsu(n,u) ))$
+forallmnr('( (smn(m,n).matrix([0,-1],[1,0]))[1][2]=(smn(m,n).matrix([0,-1],[1,0]))[2][1] ))$
+forallmnr('( (bsmn(m,n).matrix([0,-1],[1,0]))[1][2]=(bsmn(m,n).matrix([0,-1],[1,0]))[2][1] ))$
+forallmnr('( smn(m,n)=conjugate(transpose(bsmn(n,m)))))$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for x:0 thru 3 do(for y:0 thru 3 do(
+forallmnru2('(s(x)[m][n]*s(y)[r][u] - s(y)[m][n]*s(x)[r][u] = 2*((smn(x,y).matrix([0,-1],[1,0]))[m][r]*epsd(n,u)+(matrix([0,-1],[1,0]).bsmn(x,y))[n][u]*epsd(m,r))))
+));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for x:0 thru 3 do(for y:0 thru 3 do(
+forallmnru2('(s(x)[m][n]*s(y)[r][u] + s(y)[m][n]*s(x)[r][u] = 
+h(x,y)*epsd(m,r)*epsd(n,u)
+-
+4*sumab('(
+h(Sa,Sb)*((smn(Sa,x).matrix([0,-1],[1,0]))[m][r]*(matrix([0,-1],[1,0]).bsmn(Sb,y))[n][u])
+))
+))));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+forallmnru2('(
+matrix([0,-1],[1,0]).bs(m) = transpose(
+matrix([0,1],[-1,0]).s(m))
+));
+forallmnru2('(
+matrix([0,-1],[1,0]).transpose(bs(m)) = transpose(
+matrix([0,1],[-1,0]).transpose(s(m)))
+));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+forallmnr('(
+sumabcd4('(eps(m,n,Sa,Sb)*h(Sa,Sc)*h(Sb,Sd)*smn(Sc,Sd)),3)+
+sumabcd4('(eps(m,n,Sa,Sb)*h(Sa,Sc)*h(Sb,Sd)*smn(Sc,Sd)),2)+
+sumabcd4('(eps(m,n,Sa,Sb)*h(Sa,Sc)*h(Sb,Sd)*smn(Sc,Sd)),1)+
+sumabcd4('(eps(m,n,Sa,Sb)*h(Sa,Sc)*h(Sb,Sd)*smn(Sc,Sd)),0) = 2*%i*smn(m,n)
+));
+forallmnr('(
+sumabcd4('(eps(m,n,Sa,Sb)*h(Sa,Sc)*h(Sb,Sd)*bsmn(Sc,Sd)),3)+
+sumabcd4('(eps(m,n,Sa,Sb)*h(Sa,Sc)*h(Sb,Sd)*bsmn(Sc,Sd)),2)+
+sumabcd4('(eps(m,n,Sa,Sb)*h(Sa,Sc)*h(Sb,Sd)*bsmn(Sc,Sd)),1)+
+sumabcd4('(eps(m,n,Sa,Sb)*h(Sa,Sc)*h(Sb,Sd)*bsmn(Sc,Sd)),0) = -2*%i*bsmn(m,n)
+));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-04-23 21:15:28 misho>
+%%% Time-Stamp: <2010-05-01 21:33:23 misho>
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
 \subsection{Spinor Convention}
@@ -22,13 +22,35 @@ Lorentz•ÏŠ·&
 $\sigma$ matrices& $
  (\Sm)_{\alpha\dbeta} := (1,\vc\sigma)_{\alpha\dbeta},\quad
  (\bSm)^{\dalpha\beta} :=\epsilon^{\dalpha\dbeta}\epsilon^{\beta\alpha}(\Sm)_{\alpha\dbeta}
- =(1,-\vc\sigma)^{\dalpha\beta},
- $\\&$
- (\Smn)\T_\alpha^\beta:=\tfrac14\left(\Sm\bSn-\Sn\bSm\right)\T_{\alpha}^\beta,\quad
- (\bSmn)\T^\dalpha_\dbeta:=\tfrac14\left(\bSm\Sn-\bSn\Sm\right)\T^{\dalpha}_\dbeta.$
+ =(1,-\vc\sigma)^{\dalpha\beta}$.
 \end{tabular}
+\begin{flushright}
+{\footnotesize (See App.~\ref{sec:verbose-lorentz-group} for a verbose explanation.)}
+\end{flushright}
+\vspace{-2zw}
+
 \subsection{Spinor Calculation Cheatsheet}
-\vspace{-2.5zw}
+\begin{preposition}{}
+\begin{align*}
+ \eta = (+,-,-,-),\qquad\epsilon^{0123}=-\epsilon_{0123} = 1
+\end{align*}\vspace{-2.8zw}
+\begin{align*}
+  \epsilon^{12}=\epsilon_{21}=\epsilon^{\dot1\dot2}=\epsilon_{\dot2\dot1}&=1,&
+\xi^\alpha&:=\epsilon^{\alpha\beta}\xi_\beta,& \xi_\alpha&=\epsilon_{\alpha\beta}\xi^\beta,&
+\bar\xi^\dalpha&:=\epsilon^{\dalpha\dbeta}\bar\xi_\dbeta,& \bar\xi_\dalpha&=\epsilon_{\dalpha\dbeta}\bar\xi^\dbeta
+\end{align*}\vspace{-2.8zw}
+\begin{align*}
+  \bSm{}^{\dalpha\alpha} &:= \epsilon^{\alpha\beta}\epsilon^{\dalpha\dbeta}\Sm_{\beta\dbeta}&
+ \Sm_{\alpha\dalpha}&= \epsilon_{\alpha\beta}\epsilon_{\dalpha\dbeta}\bSm{}^{\dbeta\beta},&
+ \Sm:=(1,\vc\sigma),\quad\bSm:=(1,-\vc\sigma)
+\end{align*}\vspace{-2.8zw}
+\begin{align*}
+  (\Smn)\T_\alpha^\beta:=\tfrac14\left(\Sm\bSn-\Sn\bSm\right)\T_{\alpha}^\beta,\quad
+ (\bSmn)\T^\dalpha_\dbeta:=\tfrac14\left(\bSm\Sn-\bSn\Sm\right)\T^{\dalpha}_\dbeta =
+(\Snm)^\dagger{}\T^\dalpha_\dbeta.
+\end{align*}
+\end{preposition}\vspace{-1zw}
+
 \begin{align*}
 \theta^\alpha\theta^\beta&=-\tfrac12\epsilon^{\alpha\beta}\thth&
 \theta_\alpha\theta_\beta&=\tfrac12\epsilon_{\alpha\beta}\thth&
@@ -59,12 +81,12 @@ $\sigma$ matrices& $
    = 2\left[(\Smn\epsilon)_{\alpha\beta}\epsilon_{\dalpha\dbeta}
            +(\epsilon\bSmn)_{\dalpha\dbeta}\epsilon_{\alpha\beta}\right]&
 \\
-&\Sm_{\alpha\dalpha}\Smd{}_{\dbeta\beta}=2\epsilon_{\alpha\beta}\epsilon_{\dalpha\dbeta}&
+&\Sm_{\alpha\dalpha}\Smd{}_{\beta\dbeta}=2\epsilon_{\alpha\beta}\epsilon_{\dalpha\dbeta}&
 &\Sm_{\alpha\dalpha}\Sn_{\beta\dbeta}+\Sn_{\alpha\dalpha}\Sm_{\beta\dbeta}
    = \Hmn\epsilon_{\alpha\beta}\epsilon_{\dalpha\dbeta}
       - 4\Hrsd(\Srm\epsilon)_{\alpha\beta}(\epsilon\bSsn)_{\dalpha\dbeta}&
 \\
-&\bSm{}^{\dalpha\dalpha}\bSmd^{\dbeta\beta}=2\epsilon^{\alpha\beta}\epsilon^{\dalpha\dbeta}&
+&\bSm{}^{\dalpha\alpha}\bSmd^{\dbeta\beta}=2\epsilon^{\alpha\beta}\epsilon^{\dalpha\dbeta}&
 &\epsilon_{\dbeta\dalpha}\bSm{}^{\dalpha\alpha}=\epsilon^{\alpha\beta}\Sm_{\beta\dbeta}
 \qquad\qquad
 \epsilon^{\mu\nu\rho\sigma}\sigma_{\rho\sigma}=2\ii\Smn&
@@ -83,7 +105,7 @@ $\sigma$ matrices& $
  \xi\Sm\bSn\chi&=\chi\Sn\bSm\xi=(\bar\chi\bSn\Sm\bar\xi)^*=(\bar\xi\bSm\Sn\bar\chi)^*&
  (\psi\phi)\bar\chi_\dalpha&=\tfrac12(\phi\Sm\bar\chi)(\psi\Sm)_\dalpha
 \end{align*}
-The differential is defined as the left differential:
+In the following equations, we chose left-differential notation.
 \begin{align*}
  \epsilon^{\alpha\beta}\pbib{}{\theta^\beta}&=-\pbib{}{\theta_\alpha}&
  \pbib{}{\theta^\alpha}\thth&=2\theta_\alpha&
@@ -100,11 +122,27 @@ The differential is defined as the left differential:
 \end{align*}
 
 \subsection{General Relations}
-\paragraph{Coordinates}
-\begin{align}
- y   &:= x + \ii\theta\sigma\btheta,&
- y^+ &:= x - \ii\theta\sigma\btheta
-\end{align}
+\vspace{-2zw}
+\begin{align*}
+ Q_\alpha       &:=\pbib{}{\theta^\alpha}-\ii(\Sm\btheta)_\alpha\Pm,&
+ D_\alpha       &:=\pbib{}{\theta^\alpha}+\ii(\Sm\btheta)_\alpha\Pm,&
+ y   &:= x + \ii\theta\sigma\btheta,\\
+ \bar Q_\dalpha &=-\pbib{}{\btheta^\dalpha}+\ii(\theta\Sm)_\dalpha\Pm,&
+ \bar D_\dalpha &=-\pbib{}{\btheta^\dalpha}-\ii(\theta\Sm)_\dalpha\Pm,&
+ y^\dagger      &= x - \ii\theta\sigma\btheta
+\end{align*}\vspace{-2zw}
+\begin{align*}
+ \{Q_\alpha,\bar Q_\dalpha\}&= 2\ii\Sm_{\alpha\dalpha}\Pm,&
+ \{D_\alpha,\bar D_\dalpha\}&= -2\ii\Sm_{\alpha\dalpha}\Pm,&
+ \text{(others)} &=0.
+\end{align*}\vspace{-2zw}
+\begin{align*}
+&\bar D_\alpha (y,\theta,\btheta)        = -\pbib{}{\btheta^\dalpha}&
+&     D_\alpha (y,\theta,\btheta)        = \pbib{}{\theta^\alpha} + 2\ii(\Sm\btheta)\pbib{}{y^\mu}\\
+&     D_\alpha(y^\dagger,\theta,\btheta) = \pbib{}{\theta^\alpha}&
+&\bar D_\dalpha(y^\dagger,\theta,\btheta)= -\pbib{}{\btheta^\dalpha}-2\ii(\theta\Sm)\pbib{}{(y^\dagger)^\mu}\\
+\end{align*}
+
 
 \subsection{Conventions}
 \begin{center}
@@ -124,6 +162,7 @@ The differential is defined as the left differential:
  \end{tabular}
 \end{center}
 
+\newpage
 \subsection{Chiral Superfields}
 \paragraph{Definition}
 \begin{equation}
@@ -133,33 +172,33 @@ The differential is defined as the left differential:
 \begin{align}
 \Phi
 ={}& \phi(y) + \sqrt2\theta\psi(y)+\thth F(y)\\
-={}& \phi(x) + i\theta\Sm\btheta\Pm\phi(x)
-               + \frac14\thth\bthth\Psq\phi(x)
-     + \sqrt2\theta\psi(x) - \frac\ii{\sqrt2}\thth\Pm\psi(x)\Sm\btheta
+={}& \phi(x) + \ii\theta\Sm\btheta\Pm\phi(x)
+               - \frac14\thth\bthth\Psq\phi(x)
+     + \sqrt2\theta\psi(x) + \frac\ii{\sqrt2}\thth\btheta\bSm\Pm\psi(x)
      + \thth F(x)\\
 \Phi^\dagger
 ={}& \phi^*(x) - i\theta\Sm\btheta\Pm\phi^*(x)
-               + \frac14\thth\bthth\Psq\phi^*(x)
+               - \frac14\thth\bthth\Psq\phi^*(x)
    + \sqrt2\btheta\bar\psi(x) + \frac\ii{\sqrt2}\bthth\theta\Sm\Pm\bar\psi(x)
    + \bthth F^*(x)
 \end{align}
 
-\paragraph{Changing Bases}
-\begin{align}
- \phi(y)
-={}& \phi(x) + \ii\theta\Sm\btheta\Pm\phi(x)+\frac14\thth\bthth\Psq\phi(x)\\
-={}& \phi(y^+) + 2\ii\theta\Sm\btheta\Pm\phi(y^+)+\thth\bthth\Psq\phi(y^+)\\
- \phi(y^+)
-={}& \phi(x) - \ii\theta\Sm\btheta\Pm\phi(x)+\frac14\thth\bthth\Psq\phi(x)\\
-={}& \phi(y) - 2\ii\theta\Sm\btheta\Pm\phi(y)+\thth\bthth\Psq\phi(y)\\
- \phi(x)
-={}& \phi(y) - \ii\theta\Sm\btheta\Pm\phi(y)+\frac14\thth\bthth\Psq\phi(y)\\
-={}& \phi(y^+) + \ii\theta\Sm\btheta\Pm\phi(y^+)+\frac14\thth\bthth\Psq\phi(y^+)
-\end{align}
+%\paragraph{Changing Bases}
+%\begin{align}
+% \phi(y)
+%={}& \phi(x) + \ii\theta\Sm\btheta\Pm\phi(x)+\frac14\thth\bthth\Psq\phi(x)\\
+%={}& \phi(y^+) + 2\ii\theta\Sm\btheta\Pm\phi(y^+)+\thth\bthth\Psq\phi(y^+)\\
+% \phi(y^+)
+%={}& \phi(x) - \ii\theta\Sm\btheta\Pm\phi(x)+\frac14\thth\bthth\Psq\phi(x)\\
+%={}& \phi(y) - 2\ii\theta\Sm\btheta\Pm\phi(y)+\thth\bthth\Psq\phi(y)\\
+% \phi(x)
+%={}& \phi(y) - \ii\theta\Sm\btheta\Pm\phi(y)+\frac14\thth\bthth\Psq\phi(y)\\
+%={}& \phi(y^+) + \ii\theta\Sm\btheta\Pm\phi(y^+)+\frac14\thth\bthth\Psq\phi(y^+)
+%\end{align}
 
 \paragraph{Product of Chiral Superfields}
 \begin{align}
-\Phi^\dagger_i\Phi_j\text{(in $x$-basis)}
+\Phi^\dagger_i\Phi_j(x,\theta,\btheta)
 ={}& \phi^*_i\phi_j
        + \sqrt2\phi^*_i\theta\psi_j + \sqrt2\btheta\bar\psi_i\phi_j
        + \thth \phi^*_iF_j + \bthth F^*_i\phi_j\notag\\
@@ -172,8 +211,8 @@ The differential is defined as the left differential:
          \left(\Pm\bar\psi_i\phi_j-\bar\psi_i\Pm\phi_j\right)
        + \sqrt2\bthth F^*_i\theta\psi_j\\
    & + \thth\bthth\left[
-        F^*_iF_j+\frac14\phi^*_i\Psq\phi_j+\frac14\Psq\phi^*_i\phi_j
-        -\frac12\Pm\phi^*_i\Pm\phi_j
+        F^*_iF_j-\frac14\phi^*_i\Psq\phi_j-\frac14\Psq\phi^*_i\phi_j
+        +\frac12\Pm\phi^*_i\Pm\phi_j
         + \frac\ii2\Pm\bar\psi_i\bSm\psi_j
         - \frac\ii2\bar\psi_i\bSm\Pm\psi_j\right]\notag\\
 \leadsto{}
@@ -186,7 +225,7 @@ The differential is defined as the left differential:
      + \sqrt2\bthth\theta \left( \psi_j F^*_i   -\ii\Sm\bar\psi_i\Pm\phi_j\right)\notag\\
    & + \thth\bthth\left[
         F^*_iF_j
-        -\Pm\phi^*_i\Pm\phi_j
+        +\Pm\phi^*_i\Pm\phi_j
         - \ii\bar\psi_i\bSm\Pm\psi_j\right]
 \end{align}
 \begin{align}
