@@ -1,0 +1,199 @@
+%#!latexmk CheatSheet.tex
+%%% Time-Stamp: <2010-11-02 23:13:44 misho>
+
+\section{Supersymmetry in the text by Wess \& Bagger}
+\subsection{Spinor Convention}
+\begin{tabular}{l@{ :\ \ \ }l}
+$\epsilon$ tensor
+  &$\epsilon^{12}=\epsilon^{\dot1\dot2}=\epsilon_{21}=\epsilon_{\dot2\dot1}=1$
+   \qquad{\footnotesize (definition)}\\
+Sum Rule & ${}^\alpha{}_{\alpha}$ and ${}_\dalpha{}^{\dalpha}$, except for
+  \quad
+  $\xi_\alpha=\epsilon_{\alpha\beta}\xi^\beta,\quad
+   \xi^\alpha=\epsilon^{\alpha\beta}\xi_\beta,\quad
+   \xi_\dalpha=\epsilon_{\dalpha\dbeta}\xi^\dbeta,\quad
+   \xi^\dalpha=\epsilon^{\dalpha\dbeta}\xi_\dbeta$.\\[.5zw]
+Lorentz�ϊ�&
+  $\psi'_\alpha = \Lambda\T_\alpha^\beta\psi_\beta,\quad
+   \bar\psi'_\dalpha = \bar\psi_\dbeta\Lambda^\dagger\T^\dbeta_\dalpha,\quad
+   \psi'^\alpha = \psi^\beta\Lambda^{-1}\T_\beta^\alpha,\quad
+   \bar\psi'^\dalpha = (\Lambda^{-1})^\dagger\T^\dalpha_\dbeta\bar\psi'^\dbeta.
+  $\\[.5zw]
+$\sigma$ matrices& $
+ (\Sm)_{\alpha\dbeta} := ({\RED-1},\vc\sigma)_{\alpha\dbeta},\quad
+ (\bSm)^{\dalpha\alpha} :=\epsilon^{\dalpha\dbeta}\epsilon^{\alpha\beta}(\Sm)_{\beta\dbeta}
+ =({\RED-1},-\vc\sigma)^{\dalpha\beta}$.
+\end{tabular}
+\begin{flushright}
+{\footnotesize (See App.~\ref{sec:verbose-lorentz-group} for a verbose explanation.)}
+\end{flushright}
+\vspace{-3zw}
+
+\subsection{Spinor Calculation Cheatsheet}
+\begin{preposition}{}\vspace{-.5zw}
+\begin{align*}
+ \eta = {\RED(-,+,+,+)},\qquad\epsilon^{0123}=-\epsilon_{0123} = 1
+\end{align*}\vspace{-2.8zw}
+\begin{align*}
+  \epsilon^{12}=\epsilon_{21}=\epsilon^{\dot1\dot2}=\epsilon_{\dot2\dot1}&=1,&
+\xi^\alpha&:=\epsilon^{\alpha\beta}\xi_\beta,& \xi_\alpha&=\epsilon_{\alpha\beta}\xi^\beta,&
+\bar\xi^\dalpha&:=\epsilon^{\dalpha\dbeta}\bar\xi_\dbeta,& \bar\xi_\dalpha&=\epsilon_{\dalpha\dbeta}\bar\xi^\dbeta
+\end{align*}\vspace{-2.8zw}
+\begin{align*}
+  \bSm{}^{\dalpha\alpha} &:= \epsilon^{\alpha\beta}\epsilon^{\dalpha\dbeta}\Sm_{\beta\dbeta}&
+ \Sm_{\alpha\dalpha}&= \epsilon_{\alpha\beta}\epsilon_{\dalpha\dbeta}\bSm{}^{\dbeta\beta},&
+ \Sm:=({\RED-1},\vc\sigma),\quad\bSm:=({\RED-1},-\vc\sigma)
+\end{align*}\vspace{-2.8zw}
+\begin{align*}
+  (\Smn)\T_\alpha^\beta:=\tfrac14\left(\Sm\bSn-\Sn\bSm\right)\T_{\alpha}^\beta,\quad
+ (\bSmn)\T^\dalpha_\dbeta:=\tfrac14\left(\bSm\Sn-\bSn\Sm\right)\T^{\dalpha}_\dbeta =
+(\Snm)^\dagger{}\T^\dalpha_\dbeta.
+\end{align*}\vspace{-2.7zw}
+\end{preposition}\vspace{-1.2zw}
+
+\begin{align*}
+&\theta^\alpha\theta^\beta=-\tfrac12\epsilon^{\alpha\beta}\thth&
+&\theta_\alpha\theta_\beta=\tfrac12\epsilon_{\alpha\beta}\thth&
+(\theta\phi)(\theta\psi)&=-\tfrac12(\psi\phi)(\thth)&
+(\theta\Sm\btheta)(\theta\Sn\btheta)&={\RED-\tfrac12}\thth\bthth\eta^{\mu\nu}
+\\
+&\btheta^\dalpha\btheta^\dbeta=\tfrac12\epsilon^{\dalpha\dbeta}\bthth&
+&\btheta_\dalpha\btheta_\dbeta=-\tfrac12\epsilon_{\dalpha\dbeta}\bthth&
+(\btheta\bar\phi)(\btheta\bar\psi)&=-\tfrac12(\bar\psi\bar\phi)(\bthth)&
+ (\Sm\btheta)_\alpha(\theta\Sn\btheta) &= \tfrac12(\Sm\bSn\theta)_\alpha\bthth
+\\
+&\theta\Sm\bSn\theta={\RED-\Hmn}\thth&
+&\btheta\bSm\Sn\btheta={\RED-\Hmn}\bthth&
+&&
+ (\theta\Sm)_\dalpha(\theta\Sn\btheta) &= \tfrac12(\btheta\bSn\Sm)_\dalpha\thth
+\end{align*}
+\vspace{-2zw}
+\begin{align*}
+ &\Sm\bSn={\RED-\Hmn}+2\Smn&
+ &\Sm\bSr\Sn+\Sn\bSr\Sm={\RED-2}\left(\Hmr\Sn+\Hnr\Sm-\Hmn\Sr\right)\\
+ &\bSm\Sn={\RED-\Hmn}+2\bSmn&
+ &\bSm\Sr\bSn+\bSn\Sr\bSm={\RED-2}\left(\Hmr\bSn+\Hnr\bSm-\Hmn\bSr\right)\\
+ &\Smn=-\Snm&
+ &\Sm\bSn\Sr-\Sr\bSn\Sm=2\ii\epsilon^{\mu\nu\rho\sigma}\Ssd\\
+ &\bSmn=-\bSnm&
+ &\bSm\Sn\bSr-\bSr\Sn\bSm=-2\ii\epsilon^{\mu\nu\rho\sigma}\bSsd\\
+ &\Tr\bSm\Sn=\Tr\Sm\bSn={\RED-2}\Hmn&
+ &\Tr\Smn\Srs=-\tfrac12\left(\Hmr\Hns-\Hms\Hnr\right){\RED-\tfrac\ii2}\epsilon^{\mu\nu\rho\sigma}\\
+ &\Tr\Smn=\Tr\bSmn=0&
+&\Tr\bSmn\bSrs=-\tfrac12\left(\Hmr\Hns-\Hms\Hnr\right){\RED+\tfrac\ii2}\epsilon^{\mu\nu\rho\sigma}&
+\\
+&\Sm_{\alpha\dalpha}\bSmd^{\dbeta\beta}={\RED-2}\delta^\beta_\alpha\delta^\dbeta_\dalpha&
+&\Sm_{\alpha\dalpha}\Sn_{\beta\dbeta}-\Sn_{\alpha\dalpha}\Sm_{\beta\dbeta}
+   = 2\left[(\Smn\epsilon)_{\alpha\beta}\epsilon_{\dalpha\dbeta}
+           +(\epsilon\bSmn)_{\dalpha\dbeta}\epsilon_{\alpha\beta}\right]&
+\\
+&\Sm_{\alpha\dalpha}\Smd{}_{\beta\dbeta}={\RED-2}\epsilon_{\alpha\beta}\epsilon_{\dalpha\dbeta}&
+&\Sm_{\alpha\dalpha}\Sn_{\beta\dbeta}+\Sn_{\alpha\dalpha}\Sm_{\beta\dbeta}
+   = {\RED-\Hmn}\epsilon_{\alpha\beta}\epsilon_{\dalpha\dbeta}
+      {\RED+4\Hrsd}(\Srm\epsilon)_{\alpha\beta}(\epsilon\bSsn)_{\dalpha\dbeta}&
+\\
+&\bSm{}^{\dalpha\alpha}\bSmd^{\dbeta\beta}={\RED-2}\epsilon^{\alpha\beta}\epsilon^{\dalpha\dbeta}&
+&\epsilon_{\dbeta\dalpha}\bSm{}^{\dalpha\alpha}=\epsilon^{\alpha\beta}\Sm_{\beta\dbeta}
+\qquad\qquad
+\epsilon^{\mu\nu\rho\sigma}\sigma_{\rho\sigma}={\RED-2}\ii\Smn&
+\\
+&\sigma\T^\mu^\nu_\alpha^\beta\epsilon_{\beta\gamma} =
+ \sigma\T^\mu^\nu_\gamma^\beta\epsilon_{\beta\alpha}&
+&\epsilon_{\beta\alpha}\bSm{}^{\dalpha\alpha}=\epsilon^{\dalpha\dbeta}\Sm_{\beta\dbeta}
+\qquad\qquad
+\epsilon^{\mu\nu\rho\sigma}\bar\sigma_{\rho\sigma}={\RED2}\ii\bSmn&
+\end{align*}
+\vspace{-2.5zw}
+\begin{align*}
+ \bar\xi\bSm\chi&=-\chi\Sm\bar\xi=(\bar\chi\bSm\xi)^*=-(\xi\Sm\bar\chi)^*&
+ (\psi\phi)\chi_\alpha&=-(\phi\chi)\psi_\alpha-(\chi\psi)\phi_\alpha
+\\
+ \xi\Sm\bSn\chi&=\chi\Sn\bSm\xi=(\bar\chi\bSn\Sm\bar\xi)^*=(\bar\xi\bSm\Sn\bar\chi)^*&
+ (\psi\phi)\bar\chi_\dalpha&={\RED-\tfrac12}(\phi\Sm\bar\chi)(\psi\Smd)_\dalpha
+\end{align*}
+In the following equations, we chose left-differential notation.
+\begin{align*}
+ \epsilon^{\alpha\beta}\pbib{}{\theta^\beta}&=-\pbib{}{\theta_\alpha}&
+ \pbib{}{\theta^\alpha}\thth&=2\theta_\alpha&
+ \epsilon^{\alpha\beta}\pbib{}{\theta^\alpha}\pbib{}{\theta^\beta}\thth &= 4\\
+ \epsilon_{\alpha\beta}\pbib{}{\theta_\beta}&=-\pbib{}{\theta^\alpha}&
+ \pbib{}{\theta_\alpha}\thth&=-2\theta^\alpha&
+ \epsilon_{\alpha\beta}\pbib{}{\theta_\alpha}\pbib{}{\theta_\beta}\thth &= -4\\
+ \epsilon^{\dalpha\dbeta}\pbib{}{\btheta^\dbeta}&=-\pbib{}{\btheta_\dalpha}&
+ \pbib{}{\btheta^\dalpha}\bthth&=-2\btheta_\dalpha&
+ \epsilon_{\dalpha\dbeta}\pbib{}{\btheta_\dalpha}\pbib{}{\btheta_\dbeta}\bthth &= 4\\
+ \epsilon_{\dalpha\dbeta}\pbib{}{\btheta_\dbeta}&=-\pbib{}{\btheta^\dalpha}&
+ \pbib{}{\btheta_\dalpha}\bthth&=2\btheta^\dalpha&
+ \epsilon^{\dalpha\dbeta}\pbib{}{\btheta^\dalpha}\pbib{}{\btheta^\dbeta}\bthth &= -4
+\end{align*}
+
+
+\newpage
+\subsection{Chiral Superfields : $\bar D_\dalpha \Phi = 0$}
+\paragraph{Explicit Expression}
+\begin{align}
+\Phi
+={}& \phi(y) + \sqrt2\theta\psi(y)+\thth F(y)\\
+={}& \phi(x){\RED\,+\,} \ii\theta\Sm\btheta\Pm\phi(x)
+               {\RED\,+\,} \frac14\thth\bthth\Psq\phi(x)
+     + \sqrt2\theta\psi(x){\RED\,+\,}\frac\ii{\sqrt2}\thth\btheta\bSm\Pm\psi(x)
+     + \thth F(x)\\
+\Phi^\dagger
+={}& \phi^*(x){\RED\,-\,} \ii\theta\Sm\btheta\Pm\phi^*(x)
+              {\RED\,+\,} \frac14\thth\bthth\Psq\phi^*(x)
+   + \sqrt2\btheta\bar\psi(x){\RED\,-\,} \frac\ii{\sqrt2}\bthth\theta\Sm\Pm\bar\psi(x)
+   + \bthth F^*(x)
+\end{align}
+
+%\paragraph{Changing Bases}
+%\begin{align}
+% \phi(y)
+%={}& \phi(x) + \ii\theta\Sm\btheta\Pm\phi(x)+\frac14\thth\bthth\Psq\phi(x)\\
+%={}& \phi(y^+) + 2\ii\theta\Sm\btheta\Pm\phi(y^+)+\thth\bthth\Psq\phi(y^+)\\
+% \phi(y^+)
+%={}& \phi(x) - \ii\theta\Sm\btheta\Pm\phi(x)+\frac14\thth\bthth\Psq\phi(x)\\
+%={}& \phi(y) - 2\ii\theta\Sm\btheta\Pm\phi(y)+\thth\bthth\Psq\phi(y)\\
+% \phi(x)
+%={}& \phi(y) - \ii\theta\Sm\btheta\Pm\phi(y)+\frac14\thth\bthth\Psq\phi(y)\\
+%={}& \phi(y^+) + \ii\theta\Sm\btheta\Pm\phi(y^+)+\frac14\thth\bthth\Psq\phi(y^+)
+%\end{align}
+
+\paragraph{Product of Chiral Superfields}
+\begin{align}
+\Phi^\dagger_i\Phi_j(x,\theta,\btheta)
+\leadsto{}
+   & \phi^*_i\phi_j
+       + \sqrt2\phi^*_i\theta\psi_j + \sqrt2\btheta\bar\psi_i\phi_j
+       + \thth \phi^*_iF_j + \bthth F^*_i\phi_j\notag\\
+   & {\RED\,+\,} 2\ii(\theta\Sm\btheta)(\phi^*_i\Pm\phi_j)
+       {\RED\,-\,} \sqrt2\ii\thth(\Pm\phi^*_i)\btheta\bSm\psi_j
+       {\RED\,-\,} \sqrt2\ii\bthth\theta\Sm\bar\psi_i\Pm\phi_j\notag\\
+   & + 2\btheta\bar\psi_i\theta\psi_j
+       + \sqrt2\thth \btheta\bar\psi_i F_j
+       + \sqrt2\bthth F^*_i\theta\psi_j\notag\\
+   & + \thth\bthth\left[
+        F^*_iF_j {\RED\,-\,} \Pm\phi^*_i\Pmd\phi_j {\RED\,-\,} \ii\bar\psi_i\bSm\Pm\psi_j\right]
+\end{align}
+\begin{align}
+\Phi_i\Phi_j\text{(in $y$-basis)}
+={}& \phi_i\phi_j+\sqrt2\theta\left[\psi_i\phi_j+\phi_i\psi_j\right]
+     +\thth\left[\phi_iF_j+F_i\phi_j-\psi_i\psi_j\right]\\
+\Phi_i\Phi_j\Phi_k\text{(in $y$-basis)}
+={}& \phi_i\phi_j\phi_k
+     + \sqrt2\theta\left[\psi_i\phi_j\phi_k
+                        +\phi_i\psi_j\phi_k
+                        +\phi_i\phi_j\psi_k\right]\notag\\
+   & +\thth\left[
+      F_i\phi_j\phi_k+\phi_iF_j\phi_k+\phi_i\phi_jF_k
+      -\psi_i\psi_j\phi_k-\psi_i\phi_j\psi_k
+      -\phi_i\psi_j\psi_k
+      \right]
+\end{align}
+
+Note that products of chiral superfields $\Phi_1\Phi_2\cdots$ are again
+chiral superfields.
+
+
+%%% Local Variables:
+%%% TeX-master: "CheatSheet.tex"
+%%% End:
