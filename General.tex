@@ -1,1 +1,391 @@
-%#!latexmk CheatSheet.tex%%% Time-Stamp: <2010-03-24 13:50:15 misho>% ï∂éöÉRÅ[ÉhÇ…íçà”ÇµÇ‹ÇµÇÂÇ§\section{General Definitions and Tools}\subsection{Notations and Conventions}\subsubsection{Metric etc.}\begin{tabular}{l@{ :\ \ \ }l}Minkowski Metric   & $\Hmn := \diag(+,-,-,-);\quad\epsilon_{0123}^{0123}:=\pm1$\\Coordinates        & $\displaystyle x^\mu := (t,x,y,z)$; \quad therefore $\Pm = \left(\tfrac{\partial}{\partial t},\vgrad\right)$.\\Gamma Matrices     & $\{\Gm,\Gn\}:=2\Hmn;\quad \G5:=\ii\G0\G1\G2\G3=                      \dfrac{-\ii}{4!}\epsilon_{\mu\nu\rho\sigma}\Gm\Gn\Gr\Gs$\\                   & therefore $\{\Gm,\G5\}=0,(\G5)^2=1$.\\[1zw]Gamma Combinations & $1, \{\Gm\}, \{\sigma^{\mu\nu}\}, \{\Gm\G5\}, \G5;\quad                      \sigma^{\mu\nu}:=\frac\ii2[\Gm,\Gn]=0\Big/\ii\Gm\Gn$\\\end{tabular}\begin{rightnote}\begin{tabular}{l@{ :\ \ \ }l} Pauli Matrices & $\sigma_0 = \spmat{1&0\\0&1},\quad\sigma_1 = \spmat{0&1\\1&0},\quad\sigma_2 = \spmat{0&-\ii\\\ii&0},\quad\sigma_3 = \spmat{1&0\\0&-1},$\\ & $\sigma_+ = \tfrac12(\sigma_1+\ii\sigma_2) = \spmat{0&1\\0&0},\quad    \sigma_- = \tfrac12(\sigma_1-\ii\sigma_2) = \spmat{0&0\\1&0},$\\[.5zw] & $\Sm:=(1,\vc\sigma),\quad \bSm:=(1,-\vc\sigma)$.\end{tabular}\vspace{-.5zw}\end{rightnote}\begin{tabular}{l@{ :\ \ \ }l}Fourier Transformation & $\displaystyle \tilde f(k) := \int\dd^4x\ \ee^{\ii kx}f(x); \qquad        f(x) = \intdP[4]{k}\ \ee^{-\ii kx}\tilde f(k).$\end{tabular}\subsubsection{Fields}\begin{tabular}{l@{ :\ \ \ }l@{\quad}l}Scalar  & $(\partial^2+m^2)\phi=0;$&    $\displaystyle\phi(x)=\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}            \Bigl[a_\vc p\ee^{-\ii px} + b^\dagger_\vc p \ee^{\ii px}\Bigr]$\\[1.5zw]Dirac   & $(i\slashed\partial-m)\psi=0$;&    $\displaystyle\psi(x)=\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}     \sum_{s=1,2}\Bigl[a^s_\vc p u^s(p)\ee^{-\ii px}                     + b^{s\dagger}_\vc p v^s(p)\ee^{\ii px}\Bigr]$\\[1.5zw]Vector & $\Psq A^\mu=0;$&    $\displaystyle A^\mu(x)=\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}     \sum_{r=0..3}\Bigl[a^r_\vc p \epsilon^r(p)\ee^{-\ii px}                     + a^{r\dagger}_\vc p \epsilon^{r*}(p)\ee^{\ii px}\Bigr]$\\[1.5zw]\end{tabular}\par\TODO{ìÏïî--Goldstone; Gravitino}\subsubsection{Electromagnetism}\begin{tabular}{l@{ :\ \ \ }l}Electromagnetic Fields & $A^\mu=(\phi,\vc A)$ \note{We can invert the signs, but cannot lower the index.}\\Maxwell Equations& $F_{\mu\nu}:=\Pm A_\nu-\Pn A_\mu;\qquad                    \epsilon^{\mu\nu\rho\sigma}\Pn F_{\rho\sigma}=0,\quad                    \Pm F^{\mu\nu}=e j^\nu$\\[1zw]Our Old Language& $\vdiv\vc B=0,\     \vrot\vc E+\pbib{}{t}\vc B=0;\quad   \vdiv\vc E= ej^0,\ (\vrot\vc B)_i-\pbib{}{t}E_i=e j^{i}.$\\& $F_{\mu\nu} =\pmat{0 & & \vc E & \\ & 0 & -B_3 & B_2 \\ -\vc E&B_3&0&-B_1\\&-B_2&B_1&0};\quad   F_{\mu\nu}F^{\mu\nu} = -2\left(\vnorm E^2-\vnorm B^2\right)$\end{tabular}\subsection{Spinor Fields}\subsection{Chiral Notation}\begin{tabular}{l@{ :\ \ \ }l}Gamma Matrices & $\Gm=\pmat{0&\Sm\\\bSm&0},\quad \G5=\pmat{-1&0\\0&1};\quad                  P{}\s{L}\suprm{R}=\dfrac{1\pm\G5}2.$\\Dirac Field    & $\psi    =\pmat{\psi\s L\\\psi\s R}; \quad                  \bar\psi=\psi^\dagger\G0=\pmat{\psi\s R^\dagger&\psi\s L^\dagger}$\\ & $u^s(p)=\pmat{\sqrt{p\cdot\sigma}\xi^s\\\sqrt{p\cdot\bar\sigma}\xi^s};\    v^s(p)=\pmat{\sqrt{p\cdot\sigma}\eta^s\\-\sqrt{p\cdot\bar\sigma}\eta^s}$\\ & $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$\\Weyl Equations & $\ii\bar\sigma\cdot\partial\psi_L=m\psi_R;\quad                  \ii\sigma\cdot\partial\psi_L=m\psi_L$\\\end{tabular}\begin{rightnote}\Subparagraph{Chiral Notation}\begin{tabular}{l@{ :\ \ \ }l}CPT transf. & $P\psi(t,\vc x) P = \eta\G0\psi(t,-\vc x)\quad(|\eta|^2=1)$\\ & $T\psi(t,\vc x) T = \G1\G3\psi(-t,\vc x)\quad\text{(ignoring intrinsic phase)}$\\ & $C\psi(t,\vc x) C = -\ii\G2\psi^*(t,\vc x) = -\ii\trans{(\bar\psi\G0\G2)}\quad                       \text{(ÅV)}$\\ & $\bar\psi\longrightarrow     P: \eta^*\bar\psi\G0\quad     T: -\bar\psi\G1\G3\quad     C: \ii\bar\psi^*\G2=-\ii\trans{(\G0\G2\psi)}$\\\end{tabular}\end{rightnote}\subsubsection{CPT Table}\begin{tabular}[t]{c|c|c|cccccc} & $\phi$ & $A^\mu$ & $\bar\psi\psi$ & $\bar\psi\Gm\psi$ & $\bar\psi\Smn\psi$ & $\bar\psi\Gm\G5\psi$ & $\ii\bar\psi\G5\psi$ & $\Pm$\\\hline$P$  & $\eta\phi$ & $\eta$$-$$+$$+$$+$$A^\mu$  &$+$&$+$$-$$-$$-$&($+$$-$$-$$-$)($+$$-$$-$$-$)&$-$$+$$+$$+$&$-$&$+$$-$$-$$-$\\$T$  & $\zeta\phi$ & $\zeta$$+$$-$$-$$-$$A^\mu$  &$+$&$+$$-$$-$$-$&$-$($+$$-$$-$$-$)($+$$-$$-$$-$)&$+$$-$$-$$-$&$-$&$-$$+$$+$$+$\\$C$  & $\xi\phi^*$ & $\xi$$+$$A^{\mu*}$  &$+$&$-$&$-$&$+$&$+$&$+$\\\end{tabular}\vspace{.5zw}($\eta\zeta\xi=1$; especially, photon $A^\mu$ is $(\eta,\zeta,\xi)=(-,+,-)$. )\twocolumn[\subsection{Feynman Rules}]\input{feynman.tex}\onecolumn\newpage\subsection{Dirac's Gamma Algebras}\subsubsection{Traces}\vspace{-2.5zw}\begin{align} \Tr(\text{any odd \# of $\gamma$'s})&=0\\ \Tr(\Gm\Gn)&= 4\Hmn\\ \Tr(\Gm\Gn\Gr\Gs) &= 4(\Hmn\Hrs-\Hmr\Hns+\Hms\Hnr)\\ \Tr(\text{$\G5$ and any odd \# of $\gamma$'s})&=0\\ \Tr(\Gm\Gn\G5)&= 0\\ \Tr(\Gm\Gn\Gr\Gs\G5) &= -4\ii\epsilon^{\mu\nu\rho\sigma}\\\intertext{Generally, for some $\gamma$-matrices $A,B,C,\dots$,}\quad\Tr(ABCDEF\cdots) &=\Minkow{AB}\Tr(CDEF\cdots) - \Minkow{AC}\Tr(BDEF\cdots)\notag\\& + \Minkow{AD}\Tr(BCEF\cdots) - \Minkow{AE}\Tr(BCDF\cdots) + \cdots,\\[1.5zw]\Tr(ABCDEF\cdots\G5) &= \text{\emp{Not Established.}}\end{align}To prove the second equation, we use following technique:\begin{equation} \Tr(\Gm\Gn\Gr\Gs\cdots)=\Tr(\cdots\Gs\Gr\Gn\Gm);\qquad \Tr(\Gm\Gn\Gr\Gs\cdots\G5)=\Tr(\G5\cdots\Gs\Gr\Gn\Gm).\end{equation}\subsubsection{Contractions}\vspace{-2.5zw}\begin{align} \Gm\Gmd&=4\\ \Gm\Gn\Gmd&=-2\Gn\\ \Gm\Gn\Gr\Gmd&=4\Hnr\\ \Gm\Gn\Gr\Gs\Gmd&=-2\Gs\Gr\Gn\end{align}Generally, for some $\gamma$-matrices $A,B,C,\dots$,\begin{align}\text{ODD \# :\quad}&\Gm ABC\cdots \Gmd = -2(\cdots CBA),\\\text{EVEN \# :\quad}&\Gm ABC\cdots \Gmd = \Tr(ABC\cdots)-\Tr(ABC\cdots\G5)\cdot\G5.\end{align}\subparagraph{Contractions in $d$-dimension}\begin{align} \Gm\Gmd&=d\\ \Gm\Gn\Gmd&=-(d-2)\Gn\\ \Gm\Gn\Gr\Gmd&=4\Hnr-(4-d)\Gn\Gr\\ \Gm\Gn\Gr\Gs\Gmd&=-2\Gs\Gr\Gn + (4-d)\Gn\Gr\Gs\end{align}\subparagraph{Contractions of $\epsilon$'s}\begin{align}& \epsilon^{\alpha\beta\gamma\delta}\epsilon_{\alpha\beta\gamma\delta}=-24;\quad \epsilon^{\alpha\beta\gamma\mu}\epsilon_{\alpha\beta\gamma\nu}=-6\delta^\mu_\nu;\quad \epsilon^{\alpha\beta\mu\nu}\epsilon_{\alpha\beta\rho\sigma}=-2(\delta^\mu_\rho\delta^\nu_\sigma-\delta^\mu_\sigma\delta^\nu_\rho)\\&\epsilon^{\mu\alpha\beta\gamma}\epsilon_{\mu\alpha'\beta'\gamma'}=-\left(\delta^\alpha_{\alpha'}\delta^\beta_{\beta'}\delta^\gamma_{\gamma'}+\delta^\alpha_{\beta'}\delta^\beta_{\gamma'}\delta^\gamma_{\alpha'}+\delta^\alpha_{\gamma'}\delta^\beta_{\alpha'}\delta^\gamma_{\beta'}-\delta^\alpha_{\alpha'}\delta^\beta_{\gamma'}\delta^\gamma_{\beta'}-\delta^\alpha_{\beta'}\delta^\beta_{\alpha'}\delta^\gamma_{\gamma'}-\delta^\alpha_{\gamma'}\delta^\beta_{\beta'}\delta^\gamma_{\alpha'}\right)\end{align}\subsection{Miscellaneous Techniques}$(p\cdot\sigma)(p\cdot\bar\sigma)=p^2$$\epsilon^{ab}\epsilon^{cd}=\delta^{ac}\delta^{bd}-\delta^{ad}\delta^{bc}$$\sqrt{p_\mu\Sm}=\dfrac{p_\mu\Sm+m}{\sqrt{2(m+p^0)}}$\subsubsection{Dirac Field Techniques}\begin{tabular}{l@{ :\ \ \ }l}Dirac Equations & $(\slashed p-m)u^s(p)=0;\quad(\slashed p+m)v^s(p)=0$\\&$\bar u^s(p)(\slashed p-m)=0;\quad \bar v^s(p)(\slashed p+m)=0$\\Dirac Components &   $u^{r\dagger}(p) u^s(p)=2E_\vc p\delta^{rs};\quad    v^{r\dagger}(p) v^s(p)=2E_\vc p\delta^{rs}$\\ & $\bar u^r(p)u^s(p)=2m\delta^{rs};\quad    \bar v^r(p)v^s(p)=-2m\delta^{rs};\quad    \bar u^r(p)v^s(p)=\bar v^r(p)u^s(p)=0$\\Spin Sums & $\displaystyle             \sum\s{spin}u^s(p)\bar u^s(p)=\slashed p+m;\quad             \sum\s{spin}v^s(p)\bar v^s(p)=\slashed p-m$\\\end{tabular}\subsubsection{Polarization Sum}\subparagraph{Single photon case}$M=\epsilon_\mu^*(k)M^{\mu}$\parWhen Ward identity $k_\mu M^\mu=0$ is valid,\begin{equation}   \sum\s{pol.}\left|M\right|^2= \sum\s{pol.}\epsilon_\mu^*(k)\epsilon_\nu(k)M^{\mu}M^{\nu*}=             \Hmnd M^{\mu}M^{\nu*}.\end{equation}\subparagraph{Double photons case}$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$\parWhen $k_\mu M^{\mu\nu}=k'_\nu M^{\mu\nu}=0$ is valid,\begin{equation}  \sum\s{pol.}\left|M\right|^2= \sum\s{pol.}\epsilon_\mu^*(k)\epsilon_\rho(k)\epsilon_\nu'^*(k')\epsilon_\sigma'(k')M^{\mu\nu}M^{\rho\sigma*}= \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}.\end{equation}\note{See Sec.~\ref{Sec:Verbose:PolarizationSum} for verbose information.}\subsubsection{Fierz identities}For Dirac spinors $a,b,c,d$ and their left-handed projections $a\s L:=P\s La$ etc.,\begin{equation}  (\bar a\s L\Gm b\s L)(\bar c\s L\Gmd d\s L)= -(\bar a\s L\Gm d\s L)(\bar c\s L\Gmd b\s L)\end{equation}Here we can create another equations using\begin{equation} (\Sm)_{\alpha\beta}(\Smd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta};\qquad (\bSm)_{\alpha\beta}(\bSmd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta}.\end{equation}\subsubsection{Gordon identity}For  $P:=p'+p$ and $q:=p'-p$,\begin{align} \bar u(p')\Gm u(p) &=  \bar u(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] u(p)& \bar u(p')\Gm v(p) &=  \bar u(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] v(p)\\ \bar v(p')\Gm v(p) &= -\bar v(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] v(p)& \bar v(p')\Gm u(p) &= -\bar v(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] u(p)\end{align}\subsubsection{Gauge group algebra}For a gauge group $G$ s.t.\begin{equation} [t^a,t^b]=\ii f^{abc}t^c,\end{equation}we have two constants which {\bf depend on representation $r$}.\begin{align}  \Tr(t^at^b) =: C(r)\delta^{ab};\qquad  \Tr(t^at^a) =: C_2(r)\cdot\vc 1\quad \text{\footnotesize(quadratic Casimir operator)}\end{align}They satisfy\begin{align} C(r) &= \dfrac{d(r)}{d(\text{Adj.})}C_2(r),& t^at^bt^a&=\left[C_2(r)-\frac12 C_2(\text{Adj.})\right]t^b.\\ f^{acd}f^{bcd} &= C_2(\text{Adj.})\delta^{ab},& f^{abc}t^bt^c &= \frac12\ii C_2(\text{Adj.})t^a.\end{align}\subparagraph{For $\gSU(N)$}For $\gSU(N)$ groups and its fundamental representation $N$, we have\begin{align*}  C(N)&=\frac12, & C_2(N)&= \frac{N^2-1}{2N}, & C(\text{Adj.}) = C_2(\text{Adj.}) &= N;&  (t^a)_{ij}(t^a)_{kj} &= \frac12\left(\delta_{il}\delta_{kj}-\frac{\delta_{ij}\delta_{kl}}{N}\right).\end{align*}\newpage\subsection{Loop Integrals and Dimensional Regularization}\subsubsection{Feynman Parameters}\vspace{-2.5zw}\begin{align} \frac{1}{A_1A_2\cdots A_n}&=\int_0^1\dd x_1\cdots x_n\ \delta\left(\sum x_i-1\right)\frac{(n-1)!}{[x_1A_1+x_2A_2+\cdots+x_nA_n]^n}\\ \frac{1}{A_1A_2}&=\int_0^1\dd x\frac{1}{[xA_1+(1-x)A_2]^2}\end{align}\subsubsection{$d$-dimensional integrals in Minkowski space}\vspace{-2.5zw}\begin{align} \intdP[d]{l}\frac1{(l^2-\Delta)^n}&=\frac{(-1)^n\ii}{(4\pi)^{d/2}}\frac{\Gamma(n-\frac d2)}{\Gamma(n)}\left(\frac1\Delta\right)^{n-\frac d2}\\ \intdP[d]{l}\frac{l^2}{(l^2-\Delta)^n}&=\frac{(-1)^{n-1}\ii}{(4\pi)^{d/2}}\frac d2\frac{\Gamma(n-\frac d2-1)}{\Gamma(n)}\left(\frac1\Delta\right)^{n-\frac d2-1}\\ \intdP[d]{l}\frac{l^\mu l^\nu}{(l^2-\Delta)^n}&=\frac{(-1)^{n-1}\ii}{(4\pi)^{d/2}}\frac {\Hmn}2\frac{\Gamma(n-\frac d2-1)}{\Gamma(n)}\left(\frac1\Delta\right)^{n-\frac d2-1}\\ \intdP[d]{l}\frac{(l^2)^2}{(l^2-\Delta)^n}&=\frac{(-1)^n\ii}{(4\pi)^{d/2}}\frac{d(d+2)}4\frac{\Gamma(n-\frac d2-2)}{\Gamma(n)}\left(\frac1\Delta\right)^{n-\frac d2-2}\\ \intdP[d]{l}\frac{l^\mu l^\nu l^\rho l^\sigma}{(l^2-\Delta)^n}&=\frac{(-1)^n\ii}{(4\pi)^{d/2}}\frac{\Gamma(n-\frac d2-2)}{\Gamma(n)}\left(\frac1\Delta\right)^{n-\frac d2-2}\frac{\Hmn\Hrs+\Hmr\Hns+\Hms\Hnr}4\end{align}Here we can use following expansions: \qquad $(\gamma\simeq 0.5772)$\begin{align} \left(\frac{1}{\Delta}\right)^{2-\frac d2} &= 1 - (d-4)\frac{\log\Delta}{2} + \Order\left((d-4)^2\right)\quad\text{around $d=4$},\\ \Gamma(x)&= \frac{1}{x} - \gamma + \Order(x)\quad\text{around $x=0$},\\ \Gamma(x)&= \frac{(-1)^n}{n!}\left[ \frac{1}{x+n} - \gamma + \sum_{k=1}^{n}\frac{1}{k} + \Order(x+n)\right]\quad\text{around $x=-n$}.\end{align}and we get following expansion:\begin{equation} \frac{\Gamma(2-\frac  d2)}{(4\pi)^{d/2}}\left(\frac1\Delta\right)^{2-\frac d2}= \frac1{(4\pi)^2}\left[\left(\frac{2}{4-d} - \gamma + \log4\pi \right)                   - \log \Delta + \Order(4-d) \right].\end{equation}Usually this $\Delta$ is positive, but when $\Delta$ contains sometimelike momenta, it becomes negative. Then these integrals acquireimaginary parts, which give the discontinuities of $S$-matrix elements.To compute the $S$-matrix in a physical region choose the correct branch\begin{equation} \left(\frac1\Delta\right)^{n-\frac d2}\to \left(\frac1{\Delta-\ii\epsilon}\right)^{n-\frac d2}.\end{equation}\newpage\subsection{Cross Sections and Decay Rates}\paragraph{General expression}{\small (The mass dimension of $\mathcal M$ is $2-N\s f$ for $\dd\sigma$ and $3-N\s f$ for $\dd\Gamma$.)}\begin{align} \dd\sigma &=\frac{1}{2E_A2E_B|v_A-v_B|}\Biggl[\prod_f\frac{\dd^3p_f}{(2\pi)^3}\frac{1}{2E_f}\Biggr]\Bigl|\mathcal M(p_A,p_B\to\{p_f\})\Bigr|^2(2\pi)^4\delta^{(4)}\left(p_A+p_B-\{p_f\}\right)\\ \dd\Gamma &=\frac{1}{2m_A}\Biggl[\prod_f\frac{\dd^3p_f}{(2\pi)^3}\frac{1}{2E_f}\Biggr]\Bigl|\mathcal M(m_A\to\{p_f\})\Bigr|^2(2\pi)^4\delta^{(4)}\left(m_A-\{p_f\}\right)\quad \text{(in $A$-rest frame.)} \end{align}\paragraph{2-body phase space in center-of-mass frame}\begin{align} \int\Pi_2&:=\intdP{p_1}\intdP{p_2}\frac{1}{2E_1}\frac{1}{2E_2}(2\pi)^4\delta^{(4)}\left(E\s{cm}-(p_1+p_2)\right)\qquad\text{(in center-of-mass frame)}\\&= \int\frac{\dd\Omega}{4\pi}\frac1{8\pi}\frac{2\vnorm{p_1}}{E\s{cm}}\\&= \frac{1}{8\pi}   \sqrt{1-\frac{2({m_1}^2+{m_2}^2)}{E\s{cm}^2}+\frac{({m_1}^2-{m_2}^2)^2}{E\s{cm}^4}}\quad \too[m_2=0]\ \frac{1}{8\pi}\left(1-\frac{{m_1}^2}{{E\s{cm}}^2}\right)\end{align}\paragraph{Kinematics of Decay}\begin{align} K\to p_1 + p_2 &\qquad\text{or}\qquad \pmat{M\\\vc 0}\to\pmat{\sqrt{p^2+{m_1}^2}\\\vc p}+\pmat{\sqrt{p^2+{m_2}^2}\\-\vc p};\\ & \vnorm p^2=\frac14\left[M^2-2\left({m_1}^2+{m_2}^2\right)+\frac{\left({m_1}^2-{m_2}^2\right)^2}{M^2}\right] \approx \left(\frac{M^2-{m_1}^2}{2M}\right)^2\notag\\ &E_1=\frac{M^2+{m_1}^2-{m_2}^2}{2M},\qquad  E_2=\frac{M^2+{m_2}^2-{m_1}^2}{2M};\notag\\ &K\cdot p_1  = \frac{M^2+{m_1}^2-{m_2}^2}{2},\qquad  p_1\cdot p_2= \frac{M^2-\left({m_1}^2+{m_2}^2\right)}2.\notag\end{align}\begin{itemize} \item Fierz Transf. \item Noether current \item Majorana Ferminos \item Feynman Rules(A.1)\end{itemize}%%% Local Variables:%%% TeX-master: "CheatSheet.tex"%%% End:
+%#!latexmk CheatSheet.tex
+%%% Time-Stamp: <2010-11-02 23:58:22 misho>
+%%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
+
+\section{General Definitions and Tools}
+\subsection{Notations and Conventions}
+\subsubsection{Metric etc.}
+\begin{tabular}{l@{ :\ \ \ }l}
+Minkowski Metric   & $\Hmn := \diag(+,-,-,-);\quad\epsilon_{0123}^{0123}:=\pm1$\\
+Coordinates        & $\displaystyle x^\mu := (t,x,y,z)$; \quad therefore $\Pm = \left(\tfrac{\partial}{\partial t},\vgrad\right)$.\\
+Gamma Matrices     & $\{\Gm,\Gn\}:=2\Hmn;\quad \G5:=\ii\G0\G1\G2\G3=
+                      \dfrac{-\ii}{4!}\epsilon_{\mu\nu\rho\sigma}\Gm\Gn\Gr\Gs$\\
+                   & therefore $\{\Gm,\G5\}=0,(\G5)^2=1$.\\[1zw]
+Gamma Combinations & $1, \{\Gm\}, \{\sigma^{\mu\nu}\}, \{\Gm\G5\}, \G5;\quad
+                      \sigma^{\mu\nu}:=\frac\ii2[\Gm,\Gn]=0\Big/\ii\Gm\Gn$\\
+\end{tabular}
+\begin{rightnote}
+\begin{tabular}{l@{ :\ \ \ }l}
+ Pauli Matrices & $
+\sigma_0 = \spmat{1&0\\0&1},\quad
+\sigma_1 = \spmat{0&1\\1&0},\quad
+\sigma_2 = \spmat{0&-\ii\\\ii&0},\quad
+\sigma_3 = \spmat{1&0\\0&-1},$\\
+ & $\sigma_+ = \tfrac12(\sigma_1+\ii\sigma_2) = \spmat{0&1\\0&0},\quad
+    \sigma_- = \tfrac12(\sigma_1-\ii\sigma_2) = \spmat{0&0\\1&0},$\\[.5zw]
+ & $\Sm:=(1,\vc\sigma),\quad \bSm:=(1,-\vc\sigma)$.
+\end{tabular}\vspace{-.5zw}
+\end{rightnote}
+\begin{tabular}{l@{ :\ \ \ }l}
+Fourier Transformation & 
+$\displaystyle
+ \tilde f(k) := \int\dd^4x\ \ee^{\ii kx}f(x); \qquad
+        f(x) = \intdP[4]{k}\ \ee^{-\ii kx}\tilde f(k).$
+\end{tabular}
+
+\subsubsection{Fields}
+\begin{tabular}{l@{ :\ \ \ }l@{\quad}l}
+Scalar  & $(\partial^2+m^2)\phi=0;$&
+    $\displaystyle\phi(x)=\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}
+            \Bigl[a_\vc p\ee^{-\ii px} + b^\dagger_\vc p \ee^{\ii px}\Bigr]$\\[1.5zw]
+Dirac   & $(i\slashed\partial-m)\psi=0$;&
+    $\displaystyle\psi(x)=\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}
+     \sum_{s=1,2}\Bigl[a^s_\vc p u^s(p)\ee^{-\ii px}
+                     + b^{s\dagger}_\vc p v^s(p)\ee^{\ii px}\Bigr]$\\[1.5zw]
+Vector & $\Psq A^\mu=0;$&
+    $\displaystyle A^\mu(x)=\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}
+     \sum_{r=0..3}\Bigl[a^r_\vc p \epsilon^r(p)\ee^{-\ii px}
+                     + a^{r\dagger}_\vc p \epsilon^{r*}(p)\ee^{\ii px}\Bigr]$\\[1.5zw]
+\end{tabular}
+\par\TODO{ìÏïî--Goldstone; Gravitino}
+
+\subsubsection{Electromagnetism}
+\begin{tabular}{l@{ :\ \ \ }l}
+Electromagnetic Fields & $A^\mu=(\phi,\vc A)$
+ \note{We can invert the signs, but cannot lower the index.}\\
+Maxwell Equations& $F_{\mu\nu}:=\Pm A_\nu-\Pn A_\mu;\qquad
+                    \epsilon^{\mu\nu\rho\sigma}\Pn F_{\rho\sigma}=0,\quad
+                    \Pm F^{\mu\nu}=e j^\nu$\\[1zw]
+Our Old Language
+& $\vdiv\vc B=0,\     \vrot\vc E+\pbib{}{t}\vc B=0;\quad
+   \vdiv\vc E= ej^0,\ (\vrot\vc B)_i-\pbib{}{t}E_i=e j^{i}.$\\
+& $F_{\mu\nu} =\pmat{0 & & \vc E & \\ & 0 & -B_3 & B_2 \\ -\vc E&B_3&0&-B_1\\&-B_2&B_1&0};\quad
+   F_{\mu\nu}F^{\mu\nu} = -2\left(\vnorm E^2-\vnorm B^2\right)$
+\end{tabular}
+
+\subsection{Spinor Fields}
+
+
+\subsection{Chiral Notation}
+\begin{tabular}{l@{ :\ \ \ }l}
+Gamma Matrices & $\Gm=\pmat{0&\Sm\\\bSm&0},\quad \G5=\pmat{-1&0\\0&1};\quad
+                  P{}\s{L}\suprm{R}=\dfrac{1\pm\G5}2.$\\
+Dirac Field    & $\psi    =\pmat{\psi\s L\\\psi\s R}; \quad
+                  \bar\psi=\psi^\dagger\G0=\pmat{\psi\s R^\dagger&\psi\s L^\dagger}$\\
+ & $u^s(p)=\pmat{\sqrt{p\cdot\sigma}\xi^s\\\sqrt{p\cdot\bar\sigma}\xi^s};\
+    v^s(p)=\pmat{\sqrt{p\cdot\sigma}\eta^s\\-\sqrt{p\cdot\bar\sigma}\eta^s}$\\
+ & $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$\\
+
+Weyl Equations & $\ii\bar\sigma\cdot\partial\psi_L=m\psi_R;\quad
+                  \ii\sigma\cdot\partial\psi_L=m\psi_L$\\
+\end{tabular}
+
+\begin{rightnote}
+\Subparagraph{Chiral Notation}
+\begin{tabular}{l@{ :\ \ \ }l}
+CPT transf.
+ & $P\psi(t,\vc x) P = \eta\G0\psi(t,-\vc x)\quad(|\eta|^2=1)$\\
+ & $T\psi(t,\vc x) T = \G1\G3\psi(-t,\vc x)\quad\text{(ignoring intrinsic phase)}$\\
+ & $C\psi(t,\vc x) C = -\ii\G2\psi^*(t,\vc x) = -\ii\trans{(\bar\psi\G0\G2)}\quad
+                       \text{(ÅV)}$\\
+ & $\bar\psi\longrightarrow
+     P: \eta^*\bar\psi\G0\quad
+     T: -\bar\psi\G1\G3\quad
+     C: \ii\bar\psi^*\G2=-\ii\trans{(\G0\G2\psi)}$\\
+\end{tabular}
+\end{rightnote}
+
+
+\subsubsection{CPT Table}
+\begin{tabular}[t]{c|c|c|cccccc}
+ & $\phi$ & $A^\mu$
+ & $\bar\psi\psi$ & $\bar\psi\Gm\psi$ & $\bar\psi\Smn\psi$
+ & $\bar\psi\Gm\G5\psi$ & $\ii\bar\psi\G5\psi$ & $\Pm$\\\hline
+$P$
+  & $\eta\phi$ & $\eta$$-$$+$$+$$+$$A^\mu$
+  &$+$&$+$$-$$-$$-$&($+$$-$$-$$-$)($+$$-$$-$$-$)&$-$$+$$+$$+$&$-$&$+$$-$$-$$-$\\
+$T$
+  & $\zeta\phi$ & $\zeta$$+$$-$$-$$-$$A^\mu$
+  &$+$&$+$$-$$-$$-$&$-$($+$$-$$-$$-$)($+$$-$$-$$-$)&$+$$-$$-$$-$&$-$&$-$$+$$+$$+$\\
+$C$
+  & $\xi\phi^*$ & $\xi$$+$$A^{\mu*}$
+  &$+$&$-$&$-$&$+$&$+$&$+$\\
+\end{tabular}\vspace{.5zw}
+
+($\eta\zeta\xi=1$;
+ especially, photon $A^\mu$ is $(\eta,\zeta,\xi)=(-,+,-)$. )
+
+\twocolumn[
+\subsection{Feynman Rules}
+]
+\input{feynman.tex}
+\TODO{vertexÇÕlagrangianÇÃ$\ii$î{}
+\onecolumn
+
+
+\newpage
+\subsection{Dirac's Gamma Algebras}
+\subsubsection{Traces}\vspace{-2.5zw}
+\begin{align}
+ \Tr(\text{any odd \# of $\gamma$'s})&=0\\
+ \Tr(\Gm\Gn)&= 4\Hmn\\
+ \Tr(\Gm\Gn\Gr\Gs) &= 4(\Hmn\Hrs-\Hmr\Hns+\Hms\Hnr)\\
+ \Tr(\text{$\G5$ and any odd \# of $\gamma$'s})&=0\\
+ \Tr(\Gm\Gn\G5)&= 0\\
+ \Tr(\Gm\Gn\Gr\Gs\G5) &= -4\ii\epsilon^{\mu\nu\rho\sigma}\\
+\intertext{Generally, for some $\gamma$-matrices $A,B,C,\dots$,}\quad
+\Tr(ABCDEF\cdots) &=
+\Minkow{AB}\Tr(CDEF\cdots) - \Minkow{AC}\Tr(BDEF\cdots)\notag\\
+& + \Minkow{AD}\Tr(BCEF\cdots) - \Minkow{AE}\Tr(BCDF\cdots) + \cdots,\\[1.5zw]
+\Tr(ABCDEF\cdots\G5) &= \text{\emp{Not Established.}}
+\end{align}
+To prove the second equation, we use following technique:
+\begin{equation}
+ \Tr(\Gm\Gn\Gr\Gs\cdots)=\Tr(\cdots\Gs\Gr\Gn\Gm);\qquad
+ \Tr(\Gm\Gn\Gr\Gs\cdots\G5)=\Tr(\G5\cdots\Gs\Gr\Gn\Gm).
+\end{equation}
+
+\subsubsection{Contractions}\vspace{-2.5zw}
+\begin{align}
+ \Gm\Gmd&=4\\
+ \Gm\Gn\Gmd&=-2\Gn\\
+ \Gm\Gn\Gr\Gmd&=4\Hnr\\
+ \Gm\Gn\Gr\Gs\Gmd&=-2\Gs\Gr\Gn
+\end{align}
+Generally, for some $\gamma$-matrices $A,B,C,\dots$,
+\begin{align}
+\text{ODD \# :\quad}&\Gm ABC\cdots \Gmd = -2(\cdots CBA),\\
+\text{EVEN \# :\quad}&\Gm ABC\cdots \Gmd = \Tr(ABC\cdots)-\Tr(ABC\cdots\G5)\cdot\G5.
+\end{align}
+
+\subparagraph{Contractions in $d$-dimension}
+\begin{align}
+ \Gm\Gmd&=d\\
+ \Gm\Gn\Gmd&=-(d-2)\Gn\\
+ \Gm\Gn\Gr\Gmd&=4\Hnr-(4-d)\Gn\Gr\\
+ \Gm\Gn\Gr\Gs\Gmd&=-2\Gs\Gr\Gn + (4-d)\Gn\Gr\Gs
+\end{align}
+
+
+\subparagraph{Contractions of $\epsilon$'s}
+\begin{align}
+& \epsilon^{\alpha\beta\gamma\delta}\epsilon_{\alpha\beta\gamma\delta}=-24;\quad
+ \epsilon^{\alpha\beta\gamma\mu}\epsilon_{\alpha\beta\gamma\nu}=-6\delta^\mu_\nu;\quad
+ \epsilon^{\alpha\beta\mu\nu}\epsilon_{\alpha\beta\rho\sigma}=-2(
+\delta^\mu_\rho\delta^\nu_\sigma-\delta^\mu_\sigma\delta^\nu_\rho
+)\\
+&\epsilon^{\mu\alpha\beta\gamma}\epsilon_{\mu\alpha'\beta'\gamma'}=-
+\left
+(\delta^\alpha_{\alpha'}\delta^\beta_{\beta'}\delta^\gamma_{\gamma'}
++\delta^\alpha_{\beta'}\delta^\beta_{\gamma'}\delta^\gamma_{\alpha'}
++\delta^\alpha_{\gamma'}\delta^\beta_{\alpha'}\delta^\gamma_{\beta'}
+-\delta^\alpha_{\alpha'}\delta^\beta_{\gamma'}\delta^\gamma_{\beta'}
+-\delta^\alpha_{\beta'}\delta^\beta_{\alpha'}\delta^\gamma_{\gamma'}
+-\delta^\alpha_{\gamma'}\delta^\beta_{\beta'}\delta^\gamma_{\alpha'}
+\right)
+\end{align}
+
+\subsection{Miscellaneous Techniques}
+$(p\cdot\sigma)(p\cdot\bar\sigma)=p^2$
+
+$\epsilon^{ab}\epsilon^{cd}=\delta^{ac}\delta^{bd}-\delta^{ad}\delta^{bc}$
+
+$\sqrt{p_\mu\Sm}=\dfrac{p_\mu\Sm+m}{\sqrt{2(m+p^0)}}$
+
+\subsubsection{Dirac Field Techniques}
+\begin{tabular}{l@{ :\ \ \ }l}
+Dirac Equations & $(\slashed p-m)u^s(p)=0;\quad(\slashed p+m)v^s(p)=0$\\
+&$\bar u^s(p)(\slashed p-m)=0;\quad \bar v^s(p)(\slashed p+m)=0$\\
+Dirac Components &
+   $u^{r\dagger}(p) u^s(p)=2E_\vc p\delta^{rs};\quad
+    v^{r\dagger}(p) v^s(p)=2E_\vc p\delta^{rs}$\\
+ & $\bar u^r(p)u^s(p)=2m\delta^{rs};\quad
+    \bar v^r(p)v^s(p)=-2m\delta^{rs};\quad
+    \bar u^r(p)v^s(p)=\bar v^r(p)u^s(p)=0$\\
+Spin Sums & $\displaystyle
+             \sum\s{spin}u^s(p)\bar u^s(p)=\slashed p+m;\quad
+             \sum\s{spin}v^s(p)\bar v^s(p)=\slashed p-m$\\
+$u$ \& $v$ & $u^*=-\ii\G2v;\quad \trans{v}=-\ii u^\dagger\G2;\qquad \ol u\s A {P\s H} u\s B = -\ol v\s B{P\s H}v\s A$\\
+           & $v^*=-\ii\G2u;\quad \trans{u}=-\ii v^\dagger\G2;\qquad \ol v\s A {P\s H} u\s B = -\ol v\s B{P\s H}u\s A$\\
+\end{tabular}
+
+\subsubsection{Polarization Sum}
+
+\subparagraph{Single photon case}$M=\epsilon_\mu^*(k)M^{\mu}$\par
+When Ward identity $k_\mu M^\mu=0$ is valid,
+\begin{equation}
+   \sum\s{pol.}\left|M\right|^2
+= \sum\s{pol.}\epsilon_\mu^*(k)\epsilon_\nu(k)M^{\mu}M^{\nu*}
+=             \Hmnd M^{\mu}M^{\nu*}.
+\end{equation}
+
+\subparagraph{Double photons case}$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$\par
+When $k_\mu M^{\mu\nu}=k'_\nu M^{\mu\nu}=0$ is valid,
+\begin{equation}
+  \sum\s{pol.}\left|M\right|^2
+= \sum\s{pol.}
+\epsilon_\mu^*(k)\epsilon_\rho(k)\epsilon_\nu'^*(k')\epsilon_\sigma'(k')
+M^{\mu\nu}M^{\rho\sigma*}
+= \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}.
+\end{equation}
+\note{See Sec.~\ref{Sec:Verbose:PolarizationSum} for verbose information.}
+
+
+\subsubsection{Fierz identities}
+For Dirac spinors $a,b,c,d$ and their left-handed projections $a\s L:=
+P\s La$ etc.,
+\begin{equation}
+  (\bar a\s L\Gm b\s L)(\bar c\s L\Gmd d\s L)=
+ -(\bar a\s L\Gm d\s L)(\bar c\s L\Gmd b\s L)
+\end{equation}
+Here we can create another equations using
+\begin{equation}
+ (\Sm)_{\alpha\beta}(\Smd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta};
+\qquad
+ (\bSm)_{\alpha\beta}(\bSmd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta}.
+\end{equation}
+
+\subsubsection{Gordon identity}
+For  $P:=p'+p$ and $q:=p'-p$,
+\begin{align}
+ \bar u(p')\Gm u(p) &=  \bar u(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] u(p)&
+ \bar u(p')\Gm v(p) &=  \bar u(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] v(p)\\
+ \bar v(p')\Gm v(p) &= -\bar v(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] v(p)&
+ \bar v(p')\Gm u(p) &= -\bar v(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] u(p)
+\end{align}
+
+\subsubsection{Gauge group algebra}
+For a gauge group $G$ s.t.
+\begin{equation}
+ [t^a,t^b]=\ii f^{abc}t^c,
+\end{equation}
+we have two constants which {\bf depend on representation $r$}.
+\begin{align}
+  \Tr(t^at^b) =: C(r)\delta^{ab};\qquad  \Tr(t^at^a) =: C_2(r)\cdot\vc 1\quad
+ \text{\footnotesize(quadratic Casimir operator)}
+\end{align}
+They satisfy
+\begin{align}
+ C(r) &= \dfrac{d(r)}{d(\text{Adj.})}C_2(r),&
+ t^at^bt^a&=\left[C_2(r)-\frac12 C_2(\text{Adj.})\right]t^b.\\
+ f^{acd}f^{bcd} &= C_2(\text{Adj.})\delta^{ab},&
+ f^{abc}t^bt^c &= \frac12\ii C_2(\text{Adj.})t^a.
+\end{align}
+
+\subparagraph{For $\gSU(N)$}
+For $\gSU(N)$ groups and its fundamental representation $N$, we have
+\begin{align*}
+  C(N)&=\frac12, & C_2(N)&= \frac{N^2-1}{2N}, & C(\text{Adj.}) =
+ C_2(\text{Adj.}) &= N;&
+  (t^a)_{ij}(t^a)_{kj} &= \frac12\left(\delta_{il}\delta_{kj}-\frac{\delta_{ij}\delta_{kl}}{N}\right).
+\end{align*}
+
+\newpage
+\subsection{Loop Integrals and Dimensional Regularization}
+\subsubsection{Feynman Parameters}\vspace{-2.5zw}
+\begin{align}
+ \frac{1}{A_1A_2\cdots A_n}&=
+\int_0^1\dd x_1\cdots x_n\ \delta\left(\sum x_i-1\right)
+\frac{(n-1)!}{[x_1A_1+x_2A_2+\cdots+x_nA_n]^n}\\
+ \frac{1}{A_1A_2}&=
+\int_0^1\dd x\frac{1}{[xA_1+(1-x)A_2]^2}
+\end{align}
+\subsubsection{$d$-dimensional integrals in Minkowski space}\vspace{-2.5zw}
+\begin{align}
+ \intdP[d]{l}\frac1{(l^2-\Delta)^n}&=
+\frac{(-1)^n\ii}{(4\pi)^{d/2}}\frac{\Gamma(n-\frac d2)}{\Gamma(n)}
+\left(\frac1\Delta\right)^{n-\frac d2}
+\\
+ \intdP[d]{l}\frac{l^2}{(l^2-\Delta)^n}&=
+\frac{(-1)^{n-1}\ii}{(4\pi)^{d/2}}\frac d2\frac{\Gamma(n-\frac d2-1)}{\Gamma(n)}
+\left(\frac1\Delta\right)^{n-\frac d2-1}
+\\
+ \intdP[d]{l}\frac{l^\mu l^\nu}{(l^2-\Delta)^n}&=
+\frac{(-1)^{n-1}\ii}{(4\pi)^{d/2}}\frac {\Hmn}2\frac{\Gamma(n-\frac d2-1)}{\Gamma(n)}
+\left(\frac1\Delta\right)^{n-\frac d2-1}
+\\
+ \intdP[d]{l}\frac{(l^2)^2}{(l^2-\Delta)^n}&=
+\frac{(-1)^n\ii}{(4\pi)^{d/2}}\frac{d(d+2)}4\frac{\Gamma(n-\frac d2-2)}{\Gamma(n)}
+\left(\frac1\Delta\right)^{n-\frac d2-2}
+\\
+ \intdP[d]{l}\frac{l^\mu l^\nu l^\rho l^\sigma}{(l^2-\Delta)^n}&=
+\frac{(-1)^n\ii}{(4\pi)^{d/2}}\frac{\Gamma(n-\frac d2-2)}{\Gamma(n)}
+\left(\frac1\Delta\right)^{n-\frac d2-2}
+\frac{\Hmn\Hrs+\Hmr\Hns+\Hms\Hnr}4
+\end{align}
+
+Here we can use following expansions: \qquad $(\gamma\simeq 0.5772)$
+\begin{align}
+ \left(\frac{1}{\Delta}\right)^{2-\frac d2} &=
+ 1 - (d-4)\frac{\log\Delta}{2} + \Order\left((d-4)^2\right)\quad\text{around $d=4$},
+\\
+ \Gamma(x)&=
+ \frac{1}{x} - \gamma + \Order(x)\quad\text{around $x=0$},
+\\
+ \Gamma(x)&=
+ \frac{(-1)^n}{n!}\left[ \frac{1}{x+n} - \gamma +
+ \sum_{k=1}^{n}\frac{1}{k} + \Order(x+n)\right]
+\quad\text{around $x=-n$}.
+\end{align}
+and we get following expansion:
+\begin{equation}
+ \frac{\Gamma(2-\frac  d2)}{(4\pi)^{d/2}}\left(\frac1\Delta\right)^{2-\frac d2}
+= \frac1{(4\pi)^2}\left[\left(\frac{2}{4-d} - \gamma + \log4\pi \right)
+                   - \log \Delta + \Order(4-d) \right].
+\end{equation}
+Usually this $\Delta$ is positive, but when $\Delta$ contains some
+timelike momenta, it becomes negative. Then these integrals acquire
+imaginary parts, which give the discontinuities of $S$-matrix elements.
+To compute the $S$-matrix in a physical region choose the correct branch
+\begin{equation}
+ \left(\frac1\Delta\right)^{n-\frac d2}\to
+ \left(\frac1{\Delta-\ii\epsilon}\right)^{n-\frac d2}.
+\end{equation}
+
+
+\newpage
+
+\subsection{Cross Sections and Decay Rates}
+\paragraph{General expression}
+{\small (The mass dimension of $\mathcal M$ is $2-N\s f$ for $\dd\sigma$ and $3-N\s f$ for $\dd\Gamma$.)}
+\begin{align}
+ \dd\sigma &=
+\frac{1}{2E_A2E_B|v_A-v_B|}\Biggl[\prod_f\frac{\dd^3p_f}{(2\pi)^3}\frac{1}{2E_f}\Biggr]
+\Bigl|\mathcal M(p_A,p_B\to\{p_f\})\Bigr|^2(2\pi)^4\delta^{(4)}\left(p_A+p_B-\{p_f\}\right)\\
+ \dd\Gamma &=
+\frac{1}{2m_A}\Biggl[\prod_f\frac{\dd^3p_f}{(2\pi)^3}\frac{1}{2E_f}\Biggr]
+\Bigl|\mathcal M(m_A\to\{p_f\})\Bigr|^2(2\pi)^4\delta^{(4)}\left(m_A-\{p_f\}\right)
+\quad \text{(in $A$-rest frame.)} 
+\end{align}
+\paragraph{2-body phase space in center-of-mass frame}
+\begin{align}
+ \int\Pi_2&:=
+\intdP{p_1}\intdP{p_2}\frac{1}{2E_1}\frac{1}{2E_2}
+(2\pi)^4\delta^{(4)}\left(E\s{cm}-(p_1+p_2)\right)\qquad\text{(in
+ center-of-mass frame)}\\
+&= \int\frac{\dd\Omega}{4\pi}\frac1{8\pi}\frac{2\vnorm{p_1}}{E\s{cm}}\\
+&= \frac{1}{8\pi}
+   \sqrt{1-\frac{2({m_1}^2+{m_2}^2)}{E\s{cm}^2}+\frac{({m_1}^2-{m_2}^2)^2}{E\s{cm}^4}}
+\quad \too[m_2=0]\ \frac{1}{8\pi}\left(1-\frac{{m_1}^2}{{E\s{cm}}^2}\right)
+\end{align}
+\paragraph{Kinematics of Decay}
+\begin{align}
+ K\to p_1 + p_2 &\qquad\text{or}\qquad
+ \pmat{M\\\vc 0}\to\pmat{\sqrt{p^2+{m_1}^2}\\\vc p}+\pmat{\sqrt{p^2+{m_2}^2}\\-\vc p};\\
+ & \vnorm p^2=\frac14\left[M^2-2\left({m_1}^2+{m_2}^2\right)+\frac{\left({m_1}^2-{m_2}^2\right)^2}{M^2}\right]
+ \approx \left(\frac{M^2-{m_1}^2}{2M}\right)^2\notag\\
+ &E_1=\frac{M^2+{m_1}^2-{m_2}^2}{2M},\qquad
+  E_2=\frac{M^2+{m_2}^2-{m_1}^2}{2M};\notag\\
+ &K\cdot p_1  = \frac{M^2+{m_1}^2-{m_2}^2}{2},\qquad
+  p_1\cdot p_2= \frac{M^2-\left({m_1}^2+{m_2}^2\right)}2.\notag
+\end{align}
+\begin{itemize}
+ \item Fierz Transf.
+ \item Noether current
+ \item Majorana Ferminos
+ \item Feynman Rules(A.1)
+\end{itemize}
+
+%%% Local Variables:
+%%% TeX-master: "CheatSheet.tex"
+%%% End:
