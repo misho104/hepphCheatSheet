@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-05 01:58:21 misho>
+%%% Time-Stamp: <2010-11-05 02:03:09 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
@@ -443,35 +443,44 @@ We do not present the transformations of the components; note that $\lambda$ and
  Note that the lowest order term of the gauge transformation is independent of $V$, which guarantees that we can still take the Wess-Zumino gauge.
 
 Here the gauge transformation is restricted as
-$\Lambda=\lambda(y) = \lambda(x)-\ii\theta\Sm\btheta\Pm\lambda(x)-\frac14\thth\bthth\Psq\lambda(x)$
-: $\lambda\in\Real$.
+$\Lambda=\xi(y) = \xi(x)-\ii\theta\Sm\btheta\Pm\xi(x)-\frac14\thth\bthth\Psq\xi(x)$
+: $\xi\in\Real$.
 \begin{align}
  2gV^e&\to
 2g\left(
 V^e
--f^{eab}\lambda^aV^b
-+6f^{abc}f^{ade}V^b\lambda^c\lambda^d
+-f^{eab}\xi^aV^b
++6f^{abc}f^{ade}V^b\xi^c\xi^d
 \right)\notag\\
 &\qquad\qquad
 +\theta\Sm\btheta\left(
--2\Pm\lambda^e
-+f^{eab}\lambda^a\Pm\lambda^b
-+4f^{acd}f^{abe}\lambda^b\lambda^c\Pm\lambda^d
+-2\Pm\xi^e
++f^{eab}\xi^a\Pm\xi^b
++4f^{acd}f^{abe}\xi^b\xi^c\Pm\xi^d
 \right)+\cdots
 \\[.5zw]
  A_\mu^e&\to
 A_\mu^e
-+f^{eab}A_\mu^a\lambda^b
-+6f^{abc}f^{ade}A_\mu^b\lambda^c\lambda^d\notag\\
++f^{eab}A_\mu^a\xi^b
++6f^{abc}f^{ade}A_\mu^b\xi^c\xi^d\notag\\
 &\qquad\qquad
 +\frac1g\left(
-\Pm\lambda^e
--\frac12f^{eab}\lambda^a\Pm\lambda^b
--2f^{acd}f^{abe}\lambda^b\lambda^c\Pm\lambda^d
+\Pm\xi^e
+-\frac12f^{eab}\xi^a\Pm\xi^b
+-2f^{acd}f^{abe}\xi^b\xi^c\Pm\xi^d
 \right)+\cdots
-%\\[.5zw]
+\\[.5zw]
+ \lambda^e&\to
+\lambda^e
++f^{eab}\lambda^a\xi^b
++6f^{abc}f^{ade}\lambda^b\xi^c\xi^d+\cdots
+\\[.5zw]
+ D^e&\to
+D^e
++f^{eab}D^a\xi^b
++6f^{abc}f^{ade}D^b\xi^c\xi^d+\cdots
 \end{align}
-Note that $C,\chi, M$ and $N$ are kept invariant automatically, for the transformation is held within Wess-Zumino gauge.
+Note that $C,\chi, M$ and $N$ are kept invariant automatically, for now we are under Wess-Zumino gauge.
 
 \subsection{Gauge Theory}
 
