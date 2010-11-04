@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-03 17:11:02 misho>
+%%% Time-Stamp: <2010-11-05 01:58:21 misho>
 %%% •¶ŽšƒR[ƒh‚ÍShift-JIS‚Å‚·‚æ‚Ë
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
@@ -286,8 +286,8 @@ In the following equations, we chose left-differential notation.
 
 
 
-\subsection{Vector Superfields : $V=V^\dagger$}
-\subsubsection{Abelian Case}
+\subsection{Vector Superfields and Gauge Theory : $V=V^\dagger$}
+\subsubsection{Abelian Case --- Field Construction}
 \subparagraph{Explicit Expression}
 \begin{align}
  V
@@ -377,9 +377,7 @@ V^3 &= 0
    + \frac{m^2}2 A^\mu A_\mu -  m(\lambda\chi'+\bar\lambda\bar\chi') + mC'D + \frac{m^2}{2}(M^2+N^2)
 \end{align}
 
-
-\subsection{Gauge Theory}
-\subsubsection{Abelian Case}\vspace{-2.4zw}
+\subsubsection{Abelian Case --- Gauge Theory}\vspace{-2.4zw}
 \begin{align}
 \Lag&\ni\Phi^\dagger\ee^{2gqV}\Phi;&
  \Phi\to \ee^{\ii q \Lambda}\Phi,\quad& \Phi^\dagger\to \Phi^\dagger\ee^{-\ii q \Lambda^\dagger};& 2gV&\to 2gV-\ii(\Lambda-\Lambda^\dagger)
@@ -387,13 +385,16 @@ V^3 &= 0
 For gauge transformation $\Lambda=\lambda(y)+\sqrt2\theta\xi(y)+\thth K(y)$,
 \begin{align*}
   \phi&\to \ee^{\ii q\lambda}\phi&
-  C   &\to C+\tfrac1g\nIm\lambda\\
+  C   &\to C+\tfrac1g\nIm\lambda&
+M+\ii N&\to M+\ii N-\tfrac1g K
+\\
   \psi&\to \ee^{\ii q\lambda}\left(\psi+\ii q\phi\cdot \xi\right)&
-  \chi&\to \chi-\tfrac{1}{\sqrt2g} \xi\\
-  F   &\to \ee^{\ii q\lambda}\left(F+\ii q\phi K-\ii q \xi\psi +\frac{q^2}{2}\xi\xi\phi\right)&
-M+\ii N&\to M+\ii N-\tfrac1g K\\
-&&
+  \chi&\to \chi-\tfrac{1}{\sqrt2g} \xi&
 A_\mu &\to A_\mu+\tfrac1g \Pm(\nRe\lambda)
+\\
+  F   &\to \ee^{\ii q\lambda}\left(F+\ii q\phi K-\ii q \xi\psi +\frac{q^2}{2}\xi\xi\phi\right)&
+\lambda&\to\lambda&
+D&\to D\\
 \end{align*}\vspace{-3.1zw}
 
 Note that $\Dm\phi=(\Pm-\ii g q A_\mu)\phi$ yields from these definitions.\vspace{.8zw}
@@ -405,6 +406,74 @@ Note that $\Dm\phi=(\Pm-\ii g q A_\mu)\phi$ yields from these definitions.\vspac
  \Lag\s{chiral}&=\Phi^\dagger\ee^{2gqV}\Phi\Big|_{\thth\bthth}&&
 =F^*F+\Dm\phi^*\Dmu\phi+\ii\bar\Psi\bSm\Dm\psi + qg D\phi^*\phi+\ii\sqrt2gq\left(\phi^*\lambda\psi-\phi\bar\lambda\bar\psi\right)
 \end{align}
+
+
+\subsubsection{Non-Abelian Case}
+\begin{preposition}{}\vspace{-.5zw}
+\begin{align*}
+ &T^a:\text{generators (Hermitian)};\\
+ &\Tr T^aT^b = k\delta^{ab}\ (k>0),&
+ &[T^a,T^b]=\ii f^{abc}T^c\ \text{($f$ is anti-symmetric)}
+\end{align*}\vspace{-3zw}
+\end{preposition}\vspace{.7zw}
+
+Expclicit expression is the same as the Abelian case.
+
+\subparagraph{Supersymmetric Gauge Transformation}
+\begin{align}
+\Lag\ni\Phi^\dagger\ee^{2g\tilde V}\Phi;
+\qquad
+ \Phi\to \ee^{\ii\tilde\Lambda}\Phi,\quad
+ \Phi^\dagger&\to \Phi^\dagger\ee^{-\ii\tilde\Lambda^\dagger};\qquad
+\ee^{2g\tilde V} \to \ee^{-\ii \tilde\Lambda^\dagger}\ee^{2g\tilde V}\ee^{\ii\tilde\Lambda}\\
+ &\text{with}\ \tilde V:=V^aT^a,\quad
+ \tilde \Lambda := \Lambda^aT^a,\quad
+ \tilde \Lambda^\dagger := (\Lambda^a)^\dagger T^a\notag
+\end{align}
+\begin{align}
+ 2g\tilde V&\to 2g\tilde V-\ii(\tilde\Lambda-\tilde\Lambda^\dagger)-\frac12\left(
+ [\tilde\Lambda,\tilde\Lambda^\dagger]+\ii[2g\tilde V,\tilde\Lambda+\tilde\Lambda^\dagger]\right)+\cdots\\
+ &=\left[
+ 2gV^a-\ii(\Lambda^a-\Lambda^{\dagger a})+\frac12\Bigl(
+-\ii\Lambda^b\Lambda^{\dagger c}+2gV^b(\Lambda^c+\Lambda^{\dagger c})\Bigr)f^{abc}+\cdots\right]T^a
+\end{align}
+We do not present the transformations of the components; note that $\lambda$ and $D$ are transformed in non-Abelian theories.
+
+\Subparagraph{Wess-Zumino Gauge}
+ Note that the lowest order term of the gauge transformation is independent of $V$, which guarantees that we can still take the Wess-Zumino gauge.
+
+Here the gauge transformation is restricted as
+$\Lambda=\lambda(y) = \lambda(x)-\ii\theta\Sm\btheta\Pm\lambda(x)-\frac14\thth\bthth\Psq\lambda(x)$
+: $\lambda\in\Real$.
+\begin{align}
+ 2gV^e&\to
+2g\left(
+V^e
+-f^{eab}\lambda^aV^b
++6f^{abc}f^{ade}V^b\lambda^c\lambda^d
+\right)\notag\\
+&\qquad\qquad
++\theta\Sm\btheta\left(
+-2\Pm\lambda^e
++f^{eab}\lambda^a\Pm\lambda^b
++4f^{acd}f^{abe}\lambda^b\lambda^c\Pm\lambda^d
+\right)+\cdots
+\\[.5zw]
+ A_\mu^e&\to
+A_\mu^e
++f^{eab}A_\mu^a\lambda^b
++6f^{abc}f^{ade}A_\mu^b\lambda^c\lambda^d\notag\\
+&\qquad\qquad
++\frac1g\left(
+\Pm\lambda^e
+-\frac12f^{eab}\lambda^a\Pm\lambda^b
+-2f^{acd}f^{abe}\lambda^b\lambda^c\Pm\lambda^d
+\right)+\cdots
+%\\[.5zw]
+\end{align}
+Note that $C,\chi, M$ and $N$ are kept invariant automatically, for the transformation is held within Wess-Zumino gauge.
+
+\subsection{Gauge Theory}
 
 \newpage
 
