@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-05 02:03:09 misho>
+%%% Time-Stamp: <2010-11-06 02:13:26 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
@@ -376,6 +376,7 @@ V^3 &= 0
 &= \frac12{\Pm C'\Pmu C'}+ \ii \bar\chi'\bSm\Pm\chi'
    + \frac{m^2}2 A^\mu A_\mu -  m(\lambda\chi'+\bar\lambda\bar\chi') + mC'D + \frac{m^2}{2}(M^2+N^2)
 \end{align}
+\TODO{$\epsilon FF$Ç‡ì¸ÇÍÇÈ}
 
 \subsubsection{Abelian Case --- Gauge Theory}\vspace{-2.4zw}
 \begin{align}
@@ -440,6 +441,16 @@ Expclicit expression is the same as the Abelian case.
 We do not present the transformations of the components; note that $\lambda$ and $D$ are transformed in non-Abelian theories.
 
 \Subparagraph{Wess-Zumino Gauge}
+\begin{align}
+V^a  &= - \theta\Sm\btheta A^a_\mu(x) + \ii\thth\btheta\bar\lambda^a(x)
+       - \ii\bthth\theta\lambda^a(x) + \dfrac12\thth\bthth D^a(x)
+\\
+ \ee^{kV^aT^a}&=1- 
+      \left[k\theta\Sm\btheta A^a_\mu(x) + k\ii\thth\btheta\bar\lambda^a
+       - k\ii\bthth\theta\lambda^a + \thth\bthth\frac{k}2 D^a\right]T^a
+       + \frac{k^2}4\thth\bthth A^a_\mu A^{b\mu} T^aT^b
+\end{align}
+
  Note that the lowest order term of the gauge transformation is independent of $V$, which guarantees that we can still take the Wess-Zumino gauge.
 
 Here the gauge transformation is restricted as
@@ -482,7 +493,9 @@ D^e
 \end{align}
 Note that $C,\chi, M$ and $N$ are kept invariant automatically, for now we are under Wess-Zumino gauge.
 
-\subsection{Gauge Theory}
+
+\subparagraph{Field Strength}
+\subparagraph{Lagrangian Block}
 
 \newpage
 
