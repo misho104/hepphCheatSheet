@@ -1,6 +1,47 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-04 18:11:22 misho>
-%%% •¶šƒR[ƒh‚ÍShift-JIS‚Å‚·‚æ‚Ë
+%%% Time-Stamp: <2010-11-14 19:46:06 misho>
+%%% $BJ8;z%3!<%I$O(BShift-JIS$B$G$9$h$M(B
+
+\section{$BML(B-Mills Theory}
+\subsection{$\gU(1)$ Theory}
+
+\subsubsection{General $\gSU(N)$}
+\begin{align}
+ \Lag &= \\
+ F_{\mu\nu} &= \partial_\mu A_\nu - \partial_\nu A_\mu + \frac{g}{\ii}[A_\mu,A_\nu]\\
+\end{align}
+\Paragraph{Gauge Transformation}
+For any Lie group $G$,
+\begin{align}
+  V &: {\mathbb R}^{1,3}\to G,&
+  A_\mu & \mapsto V\left(A_\mu + \frac\ii g \partial_\mu\right)V^{-1},&
+  F_{\mu\nu} & \mapsto VF_{\mu\nu}V^{-1};&
+  \phi &\mapsto \tilde V\phi,
+\end{align}
+where $\tilde V$ is in arbitrary representation. The covariant derivative can be expressed as
+\begin{equation}
+ \Dm = \Pm - X_\mu;\where \Pm V=[X_\mu,V].
+\end{equation}
+
+If the gauge group $G$ is {\bf compact}, it has a finite-dimensional
+unitary representation. The generators $t_a$ can be taken as Hermitian, and $V = \exp\left[\ii \alpha^a t^a\right]$ for $\alpha^a\in\Real$;
+\begin{align}
+ [t^a,t^b] &= \ii f\T^a^b_c t^c\quad(f\in\Real)&
+ 0 &=f\T^D_a_b f\T^E_D_c + f\T^D_c_a f\T^E_D_b  + f\T^D_b_c f\T^E_D_a
+\end{align}
+Here we can normalize the generators as $\Tr T^aT^b=\frac12\delta^{ab}$, and the structure constant $f^{abc}$ would be totally antisymmetric.
+\begin{align}
+ A_\mu&\mapsto V\left(A_\mu+\frac1g (\partial_\mu\alpha^a) T^a\right)V^{-1}\\
+    &\simeq A_\mu + \frac1g(\partial_\mu\alpha^a)T^a+i\alpha^a A_\mu^b[T^a,T^b]\\
+ D_\mu&=\partial_\mu -\ii g A_\mu^aT^a \qquad
+        \text{\footnotesize(for appropriate representation)}
+\end{align}
+
+
+Note that we have no charge-freedom.
+ if we assign charge $q$, gauge transformtaion of $A_\mu^a$ would be $\frac1g\Pm\alpha^a + qf^{abc}A_\mu^b\alpha^c$.
+
+
 
 \section{Standard Model}
 We use the following notations for the gauge group.
@@ -55,7 +96,7 @@ F_{\mu\nu}
  \Lag = \Lag\s{gauge}
        + \Lag\s{Higgs}&
        + \Lag\s{matter}
-       + \Lag\s{“’ì},\\
+       + \Lag\s{$BEr@n(B},\\
 \text{where\quad}
 %%% Gauge Boson Kinetic
 \Lag\s{gauge} =&\
@@ -82,7 +123,7 @@ F_{\mu\nu}
  + \ol E_i\ii\gamma^\mu\left(\partial_\mu+\ii g_1B_\mu\right)\PR E_i,
 \end{split}\\
 %%% YUKAWA
-\Lag\s{“’ì} =&\
+\Lag\s{$BEr@n(B} =&\
  - \ol U_i(y_u)_{ij}H\PL Q_j + \ol D_i (y_d)_{ij}H^\dagger\PL Q_j + \ol E_i(y_e)_{ij}H^\dagger\PL
  L_j + \Hc
 \end{align}
@@ -116,7 +157,7 @@ To discuss this clearly, let us {\em redefine} the Higgs field as
 \begin{equation}
  H = \frac1{\sqrt2}\pmat{\phi_1+\ii\phi_2\\v+(h+\ii\phi_3)}, \where v=\sqrt{\frac{\mu^2}{\lambda}}.
 \end{equation}
-Here $h$ is the ``Higgs boson,'' and $\phi_i$ are “ì•”--Goldstone bosons.
+Here $h$ is the ``Higgs boson,'' and $\phi_i$ are $BFnIt(B--Goldstone bosons.
 
 The Higgs potential becomes
 \begin{equation}
@@ -151,7 +192,7 @@ We obtain the following terms in $\Lag\s{Higgs}$:
   \Lag\s{Higgs}
 \supset \frac12(\partial_\mu h)^2+\frac{(v+h)^2}4\Bigl[{g_2}^2{W^+}^\mu W^-_\mu + \frac{{g_Z}^2}{2}Z^\mu Z_\mu\Bigr].
 \end{equation}
-Here we have omitted the “ì•”--Goldstone bosons.
+Here we have omitted the $BFnIt(B--Goldstone bosons.
 
 
 \begin{rightnote}
@@ -214,9 +255,9 @@ G^{a\mu\nu}G^a_{\mu\nu} + (\partial Z)^{\mu\nu}(\partial Z)_{\mu\nu}+(\partial A
 \end{split}
 \end{equation}
 
-\paragraph{“’ì Term}
+\paragraph{$BEr@n(B Term}
 \begin{align}
- \Lag\s{“’ì}=
+ \Lag\s{$BEr@n(B}=
 &-\ol U y_uH\PL Q + \ol D y_dH^\dagger\PL Q + \ol E y_eH^\dagger\PL L
  + \Hc\notag\\
 =
@@ -275,13 +316,13 @@ Now we have the following Lagrangian (with omitting $\PL$ etc.):
   \right] L\notag\\
 &
 {\ +\ }\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) E\notag\\[.5zw]
-\note{“’ì€}& % Yukawa
+\note{$BEr@n9`(B}& % Yukawa
 {\ +\ }\frac{1}{\sqrt2}v\bar U y_u Q^1
 {\ +\ }\frac{1}{\sqrt2}v\bar D y_d Q^2
 {\ +\ }\frac{1}{\sqrt2}v\bar E y_e L^2\quad+\quad \Hc
 \end{align}
 \subsection{Mass Eigenstates}
-Here we will obtain the mass eigenstates of the fermions, by diagonalizing the “’ì matrices.
+Here we will obtain the mass eigenstates of the fermions, by diagonalizing the $BEr@n(B matrices.
 
 We use the singular value decomposition method to mass matrices $Y_\bullet:=vy_\bullet/\sqrt2$.
 Generally, any matrices can be transformed with two unitary matrices $\Psi$ and $\Phi$ as
@@ -297,9 +338,9 @@ Using this $\Psi$ and $\Phi$, we can rotate the basis as
  D\mapsto \Phi_d^\dagger D,\quad
  E\mapsto \Phi_e^\dagger E,\label{eq:gaugeeig_to_masseig}
 \end{align}
-and now we have the “’ì terms in mass eigenstates as
+and now we have the $BEr@n(B terms in mass eigenstates as
 \begin{equation}
-  \Lag\s{“’ì}
+  \Lag\s{$BEr@n(B}
 = \left(1+\frac{1}{v}h\right)\left[
    {(m_u)_i} \ol U_i \PL Q_i^1
  + {(m_d)_i} \ol D_i \PL Q_i^2
@@ -320,7 +361,7 @@ However, only the terms of quark--quark--$W$ interactions do change drastically,
 \pmat{0&\slashed W^+\\\slashed W^-&0}\PL\pmat{\Psi_u^\dagger Q^1\\\Psi_d^\dagger Q^2} + (\quad{\cdots}\quad)\\
 &=\frac{g_2}{\sqrt2}\left[\ol Q^2\slashed W^-X \PL Q^1+ \ol Q^1\slashed W^+X^\dagger\PL Q^2\right]+(\quad{\cdots}\quad),
 \end{align}
-where $X:=\Psi_d\Psi_u^\dagger$ is a matrix, so-called the Cabbibo--¬—Ñ--‰vì~(CKM) matrix, which is {\em not} diagonal, and {\em not} real, generally.
+where $X:=\Psi_d\Psi_u^\dagger$ is a matrix, so-called the Cabbibo--$B>.NS(B--$B1W@n(B~(CKM) matrix, which is {\em not} diagonal, and {\em not} real, generally.
 These terms violate the flavor symmetry of quarks, and even the $CP$-symmetry.
 \begin{rightnote}
 In our notation, $CP$-transformation of a spinor is described as
@@ -340,11 +381,11 @@ Under this transformation, those terms are transformed as, e.g.,
 Therefore, we can see that the $CP$-symmetry is maintained if and only if $\trans X=X^\dagger$, that is, if and only if $X$ is a real matrix.
 \end{rightnote}
 
-ˆÈã‚æ‚èC•W€–ÍŒ^‚ÌLagrangian‚Í
+$B0J>e$h$j!$I8=`LO7?$N(BLagrangian$B$O(B
 \begin{align}
  \Lag =
 & \Lag\s{gauge}\notag\\
-\note{¿—Ê€}& % Yukawa
+\note{$B<ANL9`(B}& % Yukawa
 {\quad+\quad}{m_W}^2W^+W^-
 {\quad+\quad}\frac{{m_Z}^2}2Z^2
 \notag\\&
@@ -358,7 +399,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 {\quad-}\frac12\mu^2h^2
 {-}\sqrt{\frac\lambda2}m_h h^3
 {-}\frac14\lambda h^4\notag\\
-\note{Higgs‚Æ‚ÌŒ‹‡}&
+\note{Higgs$B$H$N7k9g(B}&
 {\quad+\quad}\frac{v{g_2}^2}{4}W^+W^-h
 {\quad+\quad}\frac{v({g_1}^2+{g_2}^2)}{8}Z^2h\notag\\&
 {\quad+\quad}\frac{{g_2}^2}{4}W^+W^-h^2
@@ -368,7 +409,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 {\quad+\quad}\frac1v\bar D M_d \PL Q^2h
 {\quad+\quad}\frac1v\bar E M_e \PL L^2h\quad +\quad \Hc\notag\\[1zw]
 %SU(3) Interactions
-\note{$\gSU(3)$‚¨‚æ‚Ñ”÷•ª€}&
+\note{$\gSU(3)$$B$*$h$SHyJ,9`(B}&
 {\quad+\quad}\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) \PL Q
 {\quad+\quad}\bar U\left(\ii\slashed\partial+g_3\slashed G\right) \PR U
 {\quad+\quad}\bar D\left(\ii\slashed\partial+g_3\slashed G\right) \PR D\notag\\
@@ -378,7 +419,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 \note{$W$ boson}&
 {\quad+\quad}\frac{g_2}{\sqrt2}\left[
 \bar Q^2\slashed W^-X \PL Q^1+ \bar Q^1\slashed W^+X^\dagger \PL Q^2\right]
-\qquad\note{© $CP$ and flavor violating!}
+\qquad\note{$B"+(B $CP$ and flavor violating!}
 \notag\\
 &
 {\quad+\quad}\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)\PL L\notag\\
@@ -396,10 +437,10 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 & 
 {\quad+\quad}\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) \PR E
 \end{align}
-‚Æ‚È‚éB
+$B$H$J$k!#(B
 
 \subsection{Chiral Notation}
-ˆÈã‚ÌLagrangian‚ğchiral•\¦‚Å•\‚·‚ÆC‚Ü‚¸Å‰‚Í
+$B0J>e$N(BLagrangian$B$r(Bchiral$BI=<($GI=$9$H!$$^$::G=i$O(B
 \begin{align}
  \mathcal L
 =& \text{(Higgs terms)} + \text{(Gauge fields strength)}\notag\\
@@ -441,7 +482,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
  + U^\dagger\s R y_uHQ\s L + D^\dagger\s R y_dH^\dagger Q\s L +
  E^\dagger \s R y_eH^\dagger L\s L + \Hc
 \end{align}
-‚Å‚ ‚èC‚»‚µ‚ÄÅI“I‚É‚Í
+$B$G$"$j!$$=$7$F:G=*E*$K$O(B
 \begin{align}
  \Lag =
 & \text{(Gauge bosons and Higgs)}\notag\\
@@ -499,7 +540,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 + e\s R^\dagger     \sigma^\mu Z_\mu e\s R
 + \text{(others)}\right]
 \end{align}
-‚Æ‚È‚éB
+$B$H$J$k!#(B
 
 \subsection{Values of SM Parameters}
 \subsubsection{Experimental Values}
@@ -566,7 +607,7 @@ For EW scale, we can estimate the values as
  e&\sim 0.313,& g_1 &\sim 0.358, & g_2 &\sim 0.651; &
   v=\sqrt{\frac{\mu^2}\lambda} &\sim 246\un{GeV}
 \end{align}
-Therefore “’ì matrices are (after diagonalization), since $vy/\sqrt2=M$,
+Therefore $BEr@n(B matrices are (after diagonalization), since $vy/\sqrt2=M$,
 \begin{align}
  y_u&\sim \pmat{10^{-5}&0&0\\0&0.007&0\\0&0&0.98},&
  y_d&\sim \pmat{3\times10^{-5}&0&0\\0&0.0006&0\\0&0&0.02},&
@@ -575,43 +616,6 @@ Therefore “’ì matrices are (after diagonalization), since $vy/\sqrt2=M$,
 
 Also, for $m_h\sim 120\un{GeV}$, we can estimate the Higgs potential as $\mu\sim85\un{GeV}$ and $\lambda \sim 0.12$.
 %\newpage
-
-
-\section{—k-Mills Theory}
-\subsection{$\gU(1)$ Theory}
-
-\subsubsection{General $\gSU(N)$}
-\begin{align}
- \Lag &= \\
- F_{\mu\nu} &= \partial_\mu A_\nu - \partial_\nu A_\mu + \frac{g}{\ii}[A_\mu,A_\nu]\\
-\end{align}
-\Paragraph{Gauge Transformation}
-For any Lie group $G$,
-\begin{align}
-  V &: {\mathbb R}^{1,3}\to G\\
-  A_\mu & \mapsto V\left(A_\mu + \frac\ii g \partial_\mu\right)V^{-1}\\
-  F_{\mu\nu} & \mapsto VF_{\mu\nu}V^{-1}
-\end{align}
-If the gauge group $G$ is {\bf compact}, it has a finite-dimensional
-unitary representation.
-\begin{align}
- \text{For}\quad t^a &: \text{hermitian representation},\\
- [t^a,t^b] &= \ii f\T^a^b_c t^c\quad\text{and}\quad f\in\Real\\
- 0&=f\T^D_a_b f\T^E_D_c + f\T^D_c_a f\T^E_D_b  + f\T^D_b_c f\T^E_D_a\\
- V &= \exp\left[\ii \alpha^a T^a\right] \for \alpha^a\in\Real\\
-\end{align}
- with generators $\{T^a\}$ written
-in an hermitian representation,
-\begin{align}
- A_\mu&\mapsto V\left(A_\mu+\frac1g (\partial_\mu\alpha^a) T^a\right)V^{-1}\\
-    &\simeq A_\mu + \frac1g(\partial_\mu\alpha^a)T^a+i\alpha^a A_\mu^b[T^a,T^b]\\
- D_\mu&=\partial_\mu -\ii g A_\mu^aT^a \qquad
-        \text{\footnotesize(for appropriate representation)}
-\end{align}
-
-
-Note that we have no charge-freedom.
- if we assign charge $q$, gauge transformtaion of $A_\mu^a$ would be $\frac1g\Pm\alpha^a + qf^{abc}A_\mu^b\alpha^c$.
 
 
 \newpage

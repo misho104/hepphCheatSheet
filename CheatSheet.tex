@@ -1,6 +1,6 @@
 %#!latexmk
-%%% Time-Stamp: <2010-11-03 03:27:13 misho>
-%%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
+%%% Time-Stamp: <2010-11-14 19:27:30 misho>
+%%% $BJ8;z%3!<%I$O(BShift-JIS$B$G$9$h$M(B
 
 \documentclass[a4j,10pt,notitlepage]{jsarticle}
 \usepackage[backref=page,bookmarksnumbered=false,bookmarksopen=true,hyperfootnotes=false,hypertex]{hyperref}
@@ -16,28 +16,28 @@
 \usepackage{HEP}
 %\maketitle
 \makeatletter
-\def\myoption@subsubsection{\normalfont\normalsize\headfont\bf Åü}
-\def\myoption@paragraph    {\normalfont\normalsize\headfont Å°}
+\def\myoption@subsubsection{\normalfont\normalsize\headfont\bf $B"!(B}
+\def\myoption@paragraph    {\normalfont\normalsize\headfont $B"#(B}
 \def\myoption@section      {\bf\Large\headfont\raggedright}
 \def\myoption@subsection   {\normalfont\large\headfont\sc}
 \def\myoption@subparagraph {\normalfont\normalsize\headfont\underline}
 \makeatother
 
 \begin{document}
-\input{General.tex}
-\clearpage
+%\input{General.tex}
+%\clearpage
 \input{StandardModel.tex}
 \clearpage
-\input{SUSY.tex}
-\clearpage
-\input{SUGRA.tex}
-\clearpage
+%\input{SUSY.tex}
+%\clearpage
+%\input{SUGRA.tex}
+%\clearpage
 \appendix
 \input{Math.tex}
 \clearpage
 \input{VerboseNotes.tex}
 \clearpage
-\input{SUSY-WB.tex}
-\clearpage\ifodd\arabic{page}\mbox{}\clearpage\fi
-\input{frequent.tex}
+%\input{SUSY-WB.tex}
+%\clearpage\ifodd\arabic{page}\mbox{}\clearpage\fi
+%\input{frequent.tex}
 \end{document}
