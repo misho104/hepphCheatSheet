@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-06 02:13:26 misho>
+%%% Time-Stamp: <2010-11-12 21:47:23 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
@@ -445,10 +445,7 @@ We do not present the transformations of the components; note that $\lambda$ and
 V^a  &= - \theta\Sm\btheta A^a_\mu(x) + \ii\thth\btheta\bar\lambda^a(x)
        - \ii\bthth\theta\lambda^a(x) + \dfrac12\thth\bthth D^a(x)
 \\
- \ee^{kV^aT^a}&=1- 
-      \left[k\theta\Sm\btheta A^a_\mu(x) + k\ii\thth\btheta\bar\lambda^a
-       - k\ii\bthth\theta\lambda^a + \thth\bthth\frac{k}2 D^a\right]T^a
-       + \frac{k^2}4\thth\bthth A^a_\mu A^{b\mu} T^aT^b
+ \ee^{kV^aT^a}&=1+kV^aT^a + \frac{k^2}4\thth\bthth A^a_\mu A^{b\mu} T^aT^b
 \end{align}
 
  Note that the lowest order term of the gauge transformation is independent of $V$, which guarantees that we can still take the Wess-Zumino gauge.
@@ -495,6 +492,18 @@ Note that $C,\chi, M$ and $N$ are kept invariant automatically, for now we are u
 
 
 \subparagraph{Field Strength}
+\begin{align}
+W_\alpha
+&= -\frac14\bar D\bar D\ee^{2gV}D_\alpha\ee^{-2gV}\\
+&= 2\ii g\lambda_\alpha
+  + \theta_\alpha(-2gD+2g^2A^\mu A_\mu)
+  + (\Sm\bSn\theta)_\alpha(-\ii g\Pm A_\nu-2g^2A_\nu A_\mu)
+  \notag\\&\qquad
+  + g\thth\left[(\Sm\Pm\bar\lambda)_\alpha
+                -\frac12(\Sm\btheta)_\alpha\Psq A_\mu
+                -\frac\ii2\bthth\Psq \lambda_\alpha\right]
+\end{align}
+
 \subparagraph{Lagrangian Block}
 
 \newpage
