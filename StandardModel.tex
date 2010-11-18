@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-14 19:46:06 misho>
+%%% Time-Stamp: <2010-11-18 22:58:50 misho>
 %%% 文字コードはShift-JISですよね
 
 \section{楊-Mills Theory}
@@ -10,26 +10,33 @@
  \Lag &= \\
  F_{\mu\nu} &= \partial_\mu A_\nu - \partial_\nu A_\mu + \frac{g}{\ii}[A_\mu,A_\nu]\\
 \end{align}
+
+
 \Paragraph{Gauge Transformation}
-For any Lie group $G$,
+For any Lie group $G$, we can consider ``gauge transformation'' $\phi(x) \mapsto V(x)\phi(x)$, where $V:\Real^{1,3}\to G$. Also we can define a ``connection field'' $A_\mu(x)$ as:
 \begin{align}
-  V &: {\mathbb R}^{1,3}\to G,&
-  A_\mu & \mapsto V\left(A_\mu + \frac\ii g \partial_\mu\right)V^{-1},&
-  F_{\mu\nu} & \mapsto VF_{\mu\nu}V^{-1};&
-  \phi &\mapsto \tilde V\phi,
+ \phi_\parallel (x+\dd x):= \phi(x)+\ii g A_\mu(x)\phi(x)\dd x^\mu
+\qquad\text{s.t.}\quad \phi_\parallel(x+\dd x)\mapsto V(x+\dd x)\phi_\parallel(x+\dd x).
 \end{align}
-where $\tilde V$ is in arbitrary representation. The covariant derivative can be expressed as
-\begin{equation}
- \Dm = \Pm - X_\mu;\where \Pm V=[X_\mu,V].
-\end{equation}
+Then the covariant derivative $\Dm$ can be defined as $\Dm = \Pm - \ii g A_\mu$. Here we can see immediately
+\begin{align}
+ \phi&\mapsto V\phi,&
+  A_\mu&\mapsto V\left(A_\mu + \frac\ii g \partial_\mu\right)V^{-1},&
+ \Dm&\mapsto V\Dm V^{-1}.\label{eq:gaugetransf}
+\end{align}
+This discussion can be turned around: we can define the covariant derivative, a kind of derivative which satisfy \eqref{eq:gaugetransf}, as $\Dm=:\Pm-\ii g A_\mu$.
 
 If the gauge group $G$ is {\bf compact}, it has a finite-dimensional
-unitary representation. The generators $t_a$ can be taken as Hermitian, and $V = \exp\left[\ii \alpha^a t^a\right]$ for $\alpha^a\in\Real$;
+unitary representation. The generators $T_a$ can be taken to be Hermitian, and $V(x) = \exp\left[\ii \alpha^a(x) T^a\right]$ for $\alpha^a(x)\in\Real$;
 \begin{align}
- [t^a,t^b] &= \ii f\T^a^b_c t^c\quad(f\in\Real)&
+ [T^a,T^b] &= \ii f\T^a^b_c T^c\quad(f\in\Real)&
  0 &=f\T^D_a_b f\T^E_D_c + f\T^D_c_a f\T^E_D_b  + f\T^D_b_c f\T^E_D_a
 \end{align}
-Here we can normalize the generators as $\Tr T^aT^b=\frac12\delta^{ab}$, and the structure constant $f^{abc}$ would be totally antisymmetric.
+For the sake of the compactness Killing form is positive-definite, where we can normalize the generators as $\Tr T^aT^b=\frac12\delta^{ab}$, and the structure constant $f^{abc}$ would be totally antisymmetric.
+
+
+\TODO{ここまで}
+
 \begin{align}
  A_\mu&\mapsto V\left(A_\mu+\frac1g (\partial_\mu\alpha^a) T^a\right)V^{-1}\\
     &\simeq A_\mu + \frac1g(\partial_\mu\alpha^a)T^a+i\alpha^a A_\mu^b[T^a,T^b]\\
