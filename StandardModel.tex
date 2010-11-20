@@ -1,111 +1,18 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-19 20:45:27 misho>
-%%% $BJ8;z%3!<%I$O(BShift-JIS$B$G$9$h$M(B
-
-\section{$BML(B-Mills Theory}
-\subsection{$\gU(1)$ Theory}
-
-\subsubsection{General $\gSU(N)$}
-\Paragraph{Gauge Transformation in General Gauge Group}
-For any Lie group $G$, we can consider ``gauge transformation'' $\phi(x) \mapsto V(x)\phi(x)$, where $V:\Real^{1,3}\to G$. Also we can define a ``connection field'' $A_\mu(x)$ as:
-\begin{align}
- \phi_\parallel (x+\dd x):= \phi(x)+\ii g A_\mu(x)\phi(x)\dd x^\mu
-\qquad\text{s.t.}\quad \phi_\parallel(x+\dd x)\mapsto V(x+\dd x)\phi_\parallel(x+\dd x).
-\end{align}
-Then the covariant derivative $\Dm$ can be defined as $\Dm = \Pm - \ii g A_\mu$. Here we can see immediately
-\begin{align}
- \phi&\mapsto V\phi,&
-  A_\mu&\mapsto V\left(A_\mu + \frac\ii g \partial_\mu\right)V^{-1},&
- \Dm&\mapsto V\Dm V^{-1}.\label{eq:gaugetransf}
-\end{align}
-This discussion can be turned around: we can define the covariant derivative, a kind of derivative which satisfy \eqref{eq:gaugetransf}, as $\Dm=:\Pm-\ii g A_\mu$.
-
-Next we introduce the curvature tensor, or ``field strength'' as
-\begin{align}
-& \Delta\phi(x):=\phi_{\parallel}^{x,y}(x+\dd x+\dd y)-\phi_{\parallel}^{y,x}(x+\dd x+\dd y)
-= \left[\Dm,\Dn\right]\phi(x)\dd x^\mu\dd y^\nu
-=: -\ii g F_{\mu\nu}\phi(x)\dd x^\mu\dd y^\nu;\\
-&F_{\mu\nu}(x):=\frac{\ii}g\left[\Dm,\Dn\right]
- = \Pm A_\nu(x)-\Pn A_\mu(x)-\ii g\left[A_\mu(x),A_\nu(x)\right].
-\end{align}
-$\Delta\phi(x)$ is transformed in terms of $V(x+\dd x+\dd y)\simeq V(x)$, thus $F_{\mu\nu}(x)\mapsto V(x)F_{\mu\nu}(x)V^{-1}(x)$.
-
-\Paragraph{Gauge Transformation in Compact Gauge Group}
-If the gauge group $G$ is {\bf compact}, it has a finite-dimensional
-unitary representation. The generators $T_a$ can be taken to be Hermitian, and $V(x) = \exp\left[\ii g\theta^a(x) T^a\right]$ for $\theta^a(x)\in\Real$;
-\begin{align}
- [T^a,T^b] &= \ii f\T^a^b_c T^c\quad(f\in\Real)&
- 0 &=f\T^D_a_b f\T^E_D_c + f\T^D_c_a f\T^E_D_b  + f\T^D_b_c f\T^E_D_a
-\end{align}
-For the sake of the compactness Killing form is positive-definite, where we can normalize the generators as $\Tr T^aT^b=\frac12\delta^{ab}$, and the structure constant $f^{abc}$ would be totally antisymmetric.
-Then we can define ``adjoint representation'' as
-\begin{align}
-[T^{{\rm ad}\ a}]\T_i^j&:=-\ii f^{aij};&
-[\Dm\suprm{ad}]\T_i^j&:=\delta_i^j\Pm+gf^{iaj}A^a_\mu.
-\end{align}
-
-In this normalized Hermitian generator basis, we can write down the relations as
-\begin{align*}
-\Dm          &:=\Pm-\ii g A^a_\mu T^a,&
- \phi'&=\ee^{\ii gT^a\theta^a}\phi;\\
-F_{\mu\nu}^a&= \Pm A_\nu^a-\Pn A_\mu^a + gf^{abc}A_\mu^bA_\nu^c,&
-A_\mu'&\simeq \left[A_\mu^a+\Pm\theta^a+gf^{abc}A_\mu^b\theta^c\right]T^a
-         =A_\mu+\Dm\suprm{ad}\theta\\
-&&F^a_{\mu\nu}{}'&\simeq F_{\mu\nu}^a+gf^{abc}F^b_{\mu\nu}\theta^c
-\end{align*}
-Note that $A_\mu$ is spanned by $T^a$ because it is induced by the gauge transformation, and so $F_{\mu\nu}$ is. This expansion is justified under any representation.
-
-%\begin{align}
-% F_{\mu\nu}&=F^a_{\mu\nu}T^a_{ij};\\
-%F^a_{\mu\nu}T^a_{ij}&\mapsto F^a\ee^{\ii g \theta^bT^b}{}_{il}
-%T^a_{lm}\ee^{-\ii g \theta^bT^b}{}_{mj}\\
-%&=F^aT^a_{ij}+\ii g \theta^b[T^b,T^a]_{ij}+...\\
-%&=F^aT^a_{ij}+\ii g \theta^bf^{bac}T^c_{ij}+...\\
-%\end{align}
-%
-%It is useful to expand $A_\mu$ and $F_{\mu\nu}$ in adjoint representation.
-\TODO{$B$3$3$^$G(B}
-%
-%$F^a[\tilde T^a]_{ij}\mapsto F^a \ee^{\ii g \theta}T^a\ee^{-\ii g\theta}=F^a\ee^{\ii g\theta^b[T^b,%}T^a$
-%
-%$[T^b,T^a]_{ij}=f^{abc}f^{cij}=$
-%\newpage
-Note that we have no charge-freedom.
- if we assign charge $q$, gauge transformtaion of $A_\mu^a$ would be $\frac1g\Pm\alpha^a + qf^{abc}A_\mu^b\alpha^c$.
-
-
+%%% Time-Stamp: <2010-11-20 21:53:28 misho>
+%%% •¶šƒR[ƒh‚ÍShift-JIS‚Å‚·‚æ‚Ë
 
 \section{Standard Model}
-We use the following notations for the gauge group.
-\paragraph{Representation}\mbox{}\par\vskip-3.5zw
-\begin{align*}
- \gSU(3)&:\quad G_\mu=G_\mu^a \tau^a\ ;\quad
-\left[\tau^a,\tau^b\right]=\ii f^{abc}\tau^c,\quad
-\Tr\left(\tau^a\tau^b\right)=\frac12\delta^{ab},\\
-\gSU(2)&:\quad W_\mu=W_\mu^a T^a\ ;\quad
-\left[T^a,T^b\right]=\ii \epsilon^{abc}T^c,\quad
-\Tr\left(T^aT^b\right)=\frac12\delta^{ab},\\
-%&\qquad T^{\pm} := T_1 \pm \ii T_2 = \left(\genfrac{}{0}{0}\right)\pmat{0&1\\0&0}, \pmat{0&0\\1&0},\\
-\gU(1)&:\quad B_\mu
-\end{align*}
-\vskip-1zw
-\paragraph{Field Strength}\mbox{}\par\vskip-3.5zw
-\begin{align*}
-F_{\mu\nu}
-  &:=\Pm A_\nu-\Pn A_\mu-\ii g[A_\mu,A_\nu]\\
-  & = \left(\Pm A^a_\nu- \Pn A^a_\mu + gf^{abc}A^b_\mu A^c_\nu\right)T^a
-\end{align*}
-\paragraph{Abridged Notation}
-\begin{align*}
-  (\partial A)_{\mu\nu}&:=\partial_\mu A_\nu-\partial_\nu A_\mu,&
-  F_{\mu\nu}^a &:= \Pm A^a_\nu- \Pn A^a_\mu + gf^{abc}A^b_\mu A^c_\nu
-\end{align*}
-\subsection{Symmetries and Fields}
-\paragraph{Gauge Group}
+Any representations assumed to be {\it normalized Hermitian}. Note that the $SU(2)$ {\bf 2} representation is
 \begin{equation}
- \gSU(3)\stx{strong}\times\gSU(2)\stx{weak}\times\gU(1)_Y
+ T^a=\frac12\sigma^a;\qquad  \left[T^a,T^b\right]=\ii \epsilon^{abc}T^c;\qquad T^\pm := T^1\pm\ii T^2.
 \end{equation}
-\paragraph{Field Content}
+We use the following abridged notations:
+\begin{align}
+  (\partial A)_{\mu\nu}&:=\partial_\mu A_\nu-\partial_\nu A_\mu,&
+  F_{\mu\nu}^a &:= \Pm A^a_\nu- \Pn A^a_\mu + gf^{abc}A^b_\mu A^c_\nu.
+\end{align}
+\subsection{Symmetries and Fields}
 \begin{center}
  \begin{tabular}[b]{@{\Vrule\ }c@{\ }l|c|c|c@{\ \Vrule}}\Hrule
    & & $\gSU(3)\s{strong}$ & $\gSU(2)\s{weak} $ & $\gU(1)_Y$ \\\Hline
@@ -124,11 +31,11 @@ F_{\mu\nu}
 \end{tabular}
 \end{center}
 \paragraph{Full Lagrangian}
-\begin{align}
- \Lag = \Lag\s{gauge}
-       + \Lag\s{Higgs}&
+$ \Lag = \Lag\s{gauge}
+       + \Lag\s{Higgs}
        + \Lag\s{matter}
-       + \Lag\s{$BEr@n(B},\\
+       + \Lag\s{“’ì}$
+\begin{align}
 \text{where\quad}
 %%% Gauge Boson Kinetic
 \Lag\s{gauge} =&\
@@ -155,7 +62,7 @@ F_{\mu\nu}
  + \ol E_i\ii\gamma^\mu\left(\partial_\mu+\ii g_1B_\mu\right)\PR E_i,
 \end{split}\\
 %%% YUKAWA
-\Lag\s{$BEr@n(B} =&\
+\Lag\s{“’ì} =&\
  - \ol U_i(y_u)_{ij}H\PL Q_j + \ol D_i (y_d)_{ij}H^\dagger\PL Q_j + \ol E_i(y_e)_{ij}H^\dagger\PL
  L_j + \Hc
 \end{align}
@@ -189,7 +96,7 @@ To discuss this clearly, let us {\em redefine} the Higgs field as
 \begin{equation}
  H = \frac1{\sqrt2}\pmat{\phi_1+\ii\phi_2\\v+(h+\ii\phi_3)}, \where v=\sqrt{\frac{\mu^2}{\lambda}}.
 \end{equation}
-Here $h$ is the ``Higgs boson,'' and $\phi_i$ are $BFnIt(B--Goldstone bosons.
+Here $h$ is the ``Higgs boson,'' and $\phi_i$ are “ì•”--Goldstone bosons.
 
 The Higgs potential becomes
 \begin{equation}
@@ -224,7 +131,7 @@ We obtain the following terms in $\Lag\s{Higgs}$:
   \Lag\s{Higgs}
 \supset \frac12(\partial_\mu h)^2+\frac{(v+h)^2}4\Bigl[{g_2}^2{W^+}^\mu W^-_\mu + \frac{{g_Z}^2}{2}Z^\mu Z_\mu\Bigr].
 \end{equation}
-Here we have omitted the $BFnIt(B--Goldstone bosons.
+Here we have omitted the “ì•”--Goldstone bosons.
 
 
 \begin{rightnote}
@@ -287,9 +194,9 @@ G^{a\mu\nu}G^a_{\mu\nu} + (\partial Z)^{\mu\nu}(\partial Z)_{\mu\nu}+(\partial A
 \end{split}
 \end{equation}
 
-\paragraph{$BEr@n(B Term}
+\paragraph{“’ì Term}
 \begin{align}
- \Lag\s{$BEr@n(B}=
+ \Lag\s{“’ì}=
 &-\ol U y_uH\PL Q + \ol D y_dH^\dagger\PL Q + \ol E y_eH^\dagger\PL L
  + \Hc\notag\\
 =
@@ -348,13 +255,13 @@ Now we have the following Lagrangian (with omitting $\PL$ etc.):
   \right] L\notag\\
 &
 {\ +\ }\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) E\notag\\[.5zw]
-\note{$BEr@n9`(B}& % Yukawa
+\note{“’ì€}& % Yukawa
 {\ +\ }\frac{1}{\sqrt2}v\bar U y_u Q^1
 {\ +\ }\frac{1}{\sqrt2}v\bar D y_d Q^2
 {\ +\ }\frac{1}{\sqrt2}v\bar E y_e L^2\quad+\quad \Hc
 \end{align}
 \subsection{Mass Eigenstates}
-Here we will obtain the mass eigenstates of the fermions, by diagonalizing the $BEr@n(B matrices.
+Here we will obtain the mass eigenstates of the fermions, by diagonalizing the “’ì matrices.
 
 We use the singular value decomposition method to mass matrices $Y_\bullet:=vy_\bullet/\sqrt2$.
 Generally, any matrices can be transformed with two unitary matrices $\Psi$ and $\Phi$ as
@@ -370,9 +277,9 @@ Using this $\Psi$ and $\Phi$, we can rotate the basis as
  D\mapsto \Phi_d^\dagger D,\quad
  E\mapsto \Phi_e^\dagger E,\label{eq:gaugeeig_to_masseig}
 \end{align}
-and now we have the $BEr@n(B terms in mass eigenstates as
+and now we have the “’ì terms in mass eigenstates as
 \begin{equation}
-  \Lag\s{$BEr@n(B}
+  \Lag\s{“’ì}
 = \left(1+\frac{1}{v}h\right)\left[
    {(m_u)_i} \ol U_i \PL Q_i^1
  + {(m_d)_i} \ol D_i \PL Q_i^2
@@ -393,7 +300,7 @@ However, only the terms of quark--quark--$W$ interactions do change drastically,
 \pmat{0&\slashed W^+\\\slashed W^-&0}\PL\pmat{\Psi_u^\dagger Q^1\\\Psi_d^\dagger Q^2} + (\quad{\cdots}\quad)\\
 &=\frac{g_2}{\sqrt2}\left[\ol Q^2\slashed W^-X \PL Q^1+ \ol Q^1\slashed W^+X^\dagger\PL Q^2\right]+(\quad{\cdots}\quad),
 \end{align}
-where $X:=\Psi_d\Psi_u^\dagger$ is a matrix, so-called the Cabbibo--$B>.NS(B--$B1W@n(B~(CKM) matrix, which is {\em not} diagonal, and {\em not} real, generally.
+where $X:=\Psi_d\Psi_u^\dagger$ is a matrix, so-called the Cabbibo--¬—Ñ--‰vì~(CKM) matrix, which is {\em not} diagonal, and {\em not} real, generally.
 These terms violate the flavor symmetry of quarks, and even the $CP$-symmetry.
 \begin{rightnote}
 In our notation, $CP$-transformation of a spinor is described as
@@ -413,11 +320,11 @@ Under this transformation, those terms are transformed as, e.g.,
 Therefore, we can see that the $CP$-symmetry is maintained if and only if $\trans X=X^\dagger$, that is, if and only if $X$ is a real matrix.
 \end{rightnote}
 
-$B0J>e$h$j!$I8=`LO7?$N(BLagrangian$B$O(B
+ˆÈã‚æ‚èC•W€–ÍŒ^‚ÌLagrangian‚Í
 \begin{align}
  \Lag =
 & \Lag\s{gauge}\notag\\
-\note{$B<ANL9`(B}& % Yukawa
+\note{¿—Ê€}& % Yukawa
 {\quad+\quad}{m_W}^2W^+W^-
 {\quad+\quad}\frac{{m_Z}^2}2Z^2
 \notag\\&
@@ -431,7 +338,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 {\quad-}\frac12\mu^2h^2
 {-}\sqrt{\frac\lambda2}m_h h^3
 {-}\frac14\lambda h^4\notag\\
-\note{Higgs$B$H$N7k9g(B}&
+\note{Higgs‚Æ‚ÌŒ‹‡}&
 {\quad+\quad}\frac{v{g_2}^2}{4}W^+W^-h
 {\quad+\quad}\frac{v({g_1}^2+{g_2}^2)}{8}Z^2h\notag\\&
 {\quad+\quad}\frac{{g_2}^2}{4}W^+W^-h^2
@@ -441,7 +348,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 {\quad+\quad}\frac1v\bar D M_d \PL Q^2h
 {\quad+\quad}\frac1v\bar E M_e \PL L^2h\quad +\quad \Hc\notag\\[1zw]
 %SU(3) Interactions
-\note{$\gSU(3)$$B$*$h$SHyJ,9`(B}&
+\note{$\gSU(3)$‚¨‚æ‚Ñ”÷•ª€}&
 {\quad+\quad}\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) \PL Q
 {\quad+\quad}\bar U\left(\ii\slashed\partial+g_3\slashed G\right) \PR U
 {\quad+\quad}\bar D\left(\ii\slashed\partial+g_3\slashed G\right) \PR D\notag\\
@@ -451,7 +358,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 \note{$W$ boson}&
 {\quad+\quad}\frac{g_2}{\sqrt2}\left[
 \bar Q^2\slashed W^-X \PL Q^1+ \bar Q^1\slashed W^+X^\dagger \PL Q^2\right]
-\qquad\note{$B"+(B $CP$ and flavor violating!}
+\qquad\note{© $CP$ and flavor violating!}
 \notag\\
 &
 {\quad+\quad}\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)\PL L\notag\\
@@ -469,10 +376,10 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 & 
 {\quad+\quad}\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) \PR E
 \end{align}
-$B$H$J$k!#(B
+‚Æ‚È‚éB
 
 \subsection{Chiral Notation}
-$B0J>e$N(BLagrangian$B$r(Bchiral$BI=<($GI=$9$H!$$^$::G=i$O(B
+ˆÈã‚ÌLagrangian‚ğchiral•\¦‚Å•\‚·‚ÆC‚Ü‚¸Å‰‚Í
 \begin{align}
  \mathcal L
 =& \text{(Higgs terms)} + \text{(Gauge fields strength)}\notag\\
@@ -514,7 +421,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
  + U^\dagger\s R y_uHQ\s L + D^\dagger\s R y_dH^\dagger Q\s L +
  E^\dagger \s R y_eH^\dagger L\s L + \Hc
 \end{align}
-$B$G$"$j!$$=$7$F:G=*E*$K$O(B
+‚Å‚ ‚èC‚»‚µ‚ÄÅI“I‚É‚Í
 \begin{align}
  \Lag =
 & \text{(Gauge bosons and Higgs)}\notag\\
@@ -572,7 +479,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 + e\s R^\dagger     \sigma^\mu Z_\mu e\s R
 + \text{(others)}\right]
 \end{align}
-$B$H$J$k!#(B
+‚Æ‚È‚éB
 
 \subsection{Values of SM Parameters}
 \subsubsection{Experimental Values}
@@ -639,7 +546,7 @@ For EW scale, we can estimate the values as
  e&\sim 0.313,& g_1 &\sim 0.358, & g_2 &\sim 0.651; &
   v=\sqrt{\frac{\mu^2}\lambda} &\sim 246\un{GeV}
 \end{align}
-Therefore $BEr@n(B matrices are (after diagonalization), since $vy/\sqrt2=M$,
+Therefore “’ì matrices are (after diagonalization), since $vy/\sqrt2=M$,
 \begin{align}
  y_u&\sim \pmat{10^{-5}&0&0\\0&0.007&0\\0&0&0.98},&
  y_d&\sim \pmat{3\times10^{-5}&0&0\\0&0.0006&0\\0&0&0.02},&
@@ -647,35 +554,6 @@ Therefore $BEr@n(B matrices are (after diagonalization), since $vy/\sqrt2=M$,
 \end{align}
 
 Also, for $m_h\sim 120\un{GeV}$, we can estimate the Higgs potential as $\mu\sim85\un{GeV}$ and $\lambda \sim 0.12$.
-%\newpage
-
-
-\newpage
-
-
-
-
-
-
-
-\section{Spinor}
-\Paragraph{$\eta^{\mu\nu}=(-,+,+,+)$ case}
-\begin{tabular}[t]{l@{\ :\ }l}
- Grassmann Number
-& $(ab)^\dagger=b^\dagger a^\dagger$ for $a,b\in\Grassmann$\\
-& \then for $a,b\in\RealGrassmann$, $ab\in\ii\RealGrassmann$\\
- $\gamma$ matrix
-& $\displaystyle\{\Gm,\Gn\}=2\minkow\mu\nu\cdot\vc1$\\
-& $\displaystyle\G{\mu\nu} = \frac12\left(\Gm\Gn-\Gn\Gm\right)$
-  \quad etc...\\
-& $\displaystyle(\ii\G0)^\dagger:=\ii\G0,\quad\G i^\dagger:=\G i$\\
- Dirac Conjugate
-& $\bar\psi=\ii\psi^\dagger\G0$
-\end{tabular}
-
-
-
-
 
 %%% Local Variables:
 %%% TeX-master: "CheatSheet.tex"
