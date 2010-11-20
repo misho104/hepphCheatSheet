@@ -1,18 +1,12 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-18 22:58:50 misho>
+%%% Time-Stamp: <2010-11-19 20:45:27 misho>
 %%% 文字コードはShift-JISですよね
 
 \section{楊-Mills Theory}
 \subsection{$\gU(1)$ Theory}
 
 \subsubsection{General $\gSU(N)$}
-\begin{align}
- \Lag &= \\
- F_{\mu\nu} &= \partial_\mu A_\nu - \partial_\nu A_\mu + \frac{g}{\ii}[A_\mu,A_\nu]\\
-\end{align}
-
-
-\Paragraph{Gauge Transformation}
+\Paragraph{Gauge Transformation in General Gauge Group}
 For any Lie group $G$, we can consider ``gauge transformation'' $\phi(x) \mapsto V(x)\phi(x)$, where $V:\Real^{1,3}\to G$. Also we can define a ``connection field'' $A_\mu(x)$ as:
 \begin{align}
  \phi_\parallel (x+\dd x):= \phi(x)+\ii g A_\mu(x)\phi(x)\dd x^\mu
@@ -26,25 +20,56 @@ Then the covariant derivative $\Dm$ can be defined as $\Dm = \Pm - \ii g A_\mu$.
 \end{align}
 This discussion can be turned around: we can define the covariant derivative, a kind of derivative which satisfy \eqref{eq:gaugetransf}, as $\Dm=:\Pm-\ii g A_\mu$.
 
+Next we introduce the curvature tensor, or ``field strength'' as
+\begin{align}
+& \Delta\phi(x):=\phi_{\parallel}^{x,y}(x+\dd x+\dd y)-\phi_{\parallel}^{y,x}(x+\dd x+\dd y)
+= \left[\Dm,\Dn\right]\phi(x)\dd x^\mu\dd y^\nu
+=: -\ii g F_{\mu\nu}\phi(x)\dd x^\mu\dd y^\nu;\\
+&F_{\mu\nu}(x):=\frac{\ii}g\left[\Dm,\Dn\right]
+ = \Pm A_\nu(x)-\Pn A_\mu(x)-\ii g\left[A_\mu(x),A_\nu(x)\right].
+\end{align}
+$\Delta\phi(x)$ is transformed in terms of $V(x+\dd x+\dd y)\simeq V(x)$, thus $F_{\mu\nu}(x)\mapsto V(x)F_{\mu\nu}(x)V^{-1}(x)$.
+
+\Paragraph{Gauge Transformation in Compact Gauge Group}
 If the gauge group $G$ is {\bf compact}, it has a finite-dimensional
-unitary representation. The generators $T_a$ can be taken to be Hermitian, and $V(x) = \exp\left[\ii \alpha^a(x) T^a\right]$ for $\alpha^a(x)\in\Real$;
+unitary representation. The generators $T_a$ can be taken to be Hermitian, and $V(x) = \exp\left[\ii g\theta^a(x) T^a\right]$ for $\theta^a(x)\in\Real$;
 \begin{align}
  [T^a,T^b] &= \ii f\T^a^b_c T^c\quad(f\in\Real)&
  0 &=f\T^D_a_b f\T^E_D_c + f\T^D_c_a f\T^E_D_b  + f\T^D_b_c f\T^E_D_a
 \end{align}
 For the sake of the compactness Killing form is positive-definite, where we can normalize the generators as $\Tr T^aT^b=\frac12\delta^{ab}$, and the structure constant $f^{abc}$ would be totally antisymmetric.
-
-
-\TODO{ここまで}
-
+Then we can define ``adjoint representation'' as
 \begin{align}
- A_\mu&\mapsto V\left(A_\mu+\frac1g (\partial_\mu\alpha^a) T^a\right)V^{-1}\\
-    &\simeq A_\mu + \frac1g(\partial_\mu\alpha^a)T^a+i\alpha^a A_\mu^b[T^a,T^b]\\
- D_\mu&=\partial_\mu -\ii g A_\mu^aT^a \qquad
-        \text{\footnotesize(for appropriate representation)}
+[T^{{\rm ad}\ a}]\T_i^j&:=-\ii f^{aij};&
+[\Dm\suprm{ad}]\T_i^j&:=\delta_i^j\Pm+gf^{iaj}A^a_\mu.
 \end{align}
 
+In this normalized Hermitian generator basis, we can write down the relations as
+\begin{align*}
+\Dm          &:=\Pm-\ii g A^a_\mu T^a,&
+ \phi'&=\ee^{\ii gT^a\theta^a}\phi;\\
+F_{\mu\nu}^a&= \Pm A_\nu^a-\Pn A_\mu^a + gf^{abc}A_\mu^bA_\nu^c,&
+A_\mu'&\simeq \left[A_\mu^a+\Pm\theta^a+gf^{abc}A_\mu^b\theta^c\right]T^a
+         =A_\mu+\Dm\suprm{ad}\theta\\
+&&F^a_{\mu\nu}{}'&\simeq F_{\mu\nu}^a+gf^{abc}F^b_{\mu\nu}\theta^c
+\end{align*}
+Note that $A_\mu$ is spanned by $T^a$ because it is induced by the gauge transformation, and so $F_{\mu\nu}$ is. This expansion is justified under any representation.
 
+%\begin{align}
+% F_{\mu\nu}&=F^a_{\mu\nu}T^a_{ij};\\
+%F^a_{\mu\nu}T^a_{ij}&\mapsto F^a\ee^{\ii g \theta^bT^b}{}_{il}
+%T^a_{lm}\ee^{-\ii g \theta^bT^b}{}_{mj}\\
+%&=F^aT^a_{ij}+\ii g \theta^b[T^b,T^a]_{ij}+...\\
+%&=F^aT^a_{ij}+\ii g \theta^bf^{bac}T^c_{ij}+...\\
+%\end{align}
+%
+%It is useful to expand $A_\mu$ and $F_{\mu\nu}$ in adjoint representation.
+\TODO{ここまで}
+%
+%$F^a[\tilde T^a]_{ij}\mapsto F^a \ee^{\ii g \theta}T^a\ee^{-\ii g\theta}=F^a\ee^{\ii g\theta^b[T^b,%}T^a$
+%
+%$[T^b,T^a]_{ij}=f^{abc}f^{cij}=$
+%\newpage
 Note that we have no charge-freedom.
  if we assign charge $q$, gauge transformtaion of $A_\mu^a$ would be $\frac1g\Pm\alpha^a + qf^{abc}A_\mu^b\alpha^c$.
 
