@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-20 21:53:31 misho>
+%%% Time-Stamp: <2010-11-23 02:24:24 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{General Definitions and Tools}
@@ -354,6 +354,19 @@ To compute the $S$-matrix in a physical region choose the correct branch
   p_1\cdot p_2= \frac{M^2-\left({m_1}^2+{m_2}^2\right)}2.\notag
 \end{align}
 
+
+
+
+\TODO{TODO:}
+\begin{itemize}
+ \item Fierz Transf.
+ \item Noether current
+ \item Majorana Ferminos
+ \item Feynman Rules(A.1)
+\end{itemize}
+
+
+
 \newpage
 \subsection{ók-Mills Theory}
 \vskip-24pt\hskip160pt{\small(See App.~\ref{sec:yang-mills-theory} for verbose notes.)}
@@ -419,23 +432,22 @@ In Abelian gauge theory, $V$ and fields are always commutative, and thus we have
  &F_{\mu\nu}        =       \frac\ii g\left[\Dm,\Dn\right] = \Pm A_\nu-\Pn A_\mu\\
  \Dm\lambda^a     &=       \Pm\lambda^a&
  &A_\mu             \mapsto  A_\mu + \Pm\theta&
- &F_{\mu\nu}        \mapsto  F_{\mu\nu}\\
+ &F_{\mu\nu}        \mapsto  F_{\mu\nu}
 \end{align*}
 
-\subsubsection{Lagrangian Block}
-\TODO{TODO}
-
-
-
-
-\TODO{TODO:}
-\begin{itemize}
- \item Fierz Transf.
- \item Noether current
- \item Majorana Ferminos
- \item Feynman Rules(A.1)
-\end{itemize}
-
+\subsubsection{Lagrangian Block}\vskip-30pt
+\begin{align}
+ &\Lag \ni \left|\Dm\phi\right|^2-m^2|\phi|^2, \quad
+          \ol\psi(\ii\slashed\DD-m)\psi,\quad
+          -\frac14F_a^{\mu\nu}F^a_{\mu\nu}\ \Bigl(=-\frac12\Tr F^{\mu\nu}F_{\mu\nu}\Bigr),\quad
+          \theta\epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}\\
+ &-\frac14F_a^{\mu\nu}F^a_{\mu\nu}
+  = -\frac12\left[
+       (\Pm A^a_\nu)^2 +A^a_\mu\Pmu\Pnu A^a_\nu
+ \right]
+    - gf^{abc}A_\mu^a A_\nu^b \Pmu A^{c\nu}
+    - \frac{g^2}4 f^{abc}f^{ade}A^b_\mu A^c_\nu A^{d\mu}A^{e\nu}
+\end{align}
 
 %%% Local Variables:
 %%% TeX-master: "CheatSheet.tex"

@@ -1,9 +1,13 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-12 21:47:23 misho>
+%%% Time-Stamp: <2010-11-23 03:19:50 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
 \subsection{Spinor Convention}
+\vspace{-26pt}
+\begin{flushright}
+{\footnotesize (See App.~\ref{sec:verbose-lorentz-group} for a verbose explanation.)}
+\end{flushright}
 \begin{tabular}{l@{ :\ \ \ }l}
 $\epsilon$ tensor
   &$\epsilon^{12}=\epsilon^{\dot1\dot2}=\epsilon_{21}=\epsilon_{\dot2\dot1}=1$
@@ -25,15 +29,12 @@ $\sigma$ matrices& $
  (\bSm)^{\dalpha\alpha} :=\epsilon^{\dalpha\dbeta}\epsilon^{\alpha\beta}(\Sm)_{\beta\dbeta}
  =(1,-\vc\sigma)^{\dalpha\beta}$.
 \end{tabular}
-\begin{flushright}
-{\footnotesize (See App.~\ref{sec:verbose-lorentz-group} for a verbose explanation.)}
-\end{flushright}
-\vspace{-3zw}
+
 
 \subsection{Spinor Calculation Cheatsheet}
 \begin{preposition}{}\vspace{-.5zw}
 \begin{align*}
- \eta = (+,-,-,-),\qquad\epsilon^{0123}=-\epsilon_{0123} = 1
+ \eta = (+,-,-,-),\qquad\epsilon^{0123}=-\epsilon_{0123} = 1;\qquad \text{\bf Left Differential};
 \end{align*}\vspace{-3zw}
 \begin{align*}
   \epsilon^{12}=\epsilon_{21}=\epsilon^{\dot1\dot2}=\epsilon_{\dot2\dot1}&=1,&
@@ -54,19 +55,22 @@ $\sigma$ matrices& $
 
 \begin{align*}
 &\theta^\alpha\theta^\beta=-\tfrac12\epsilon^{\alpha\beta}\thth&
-&\theta_\alpha\theta_\beta=\tfrac12\epsilon_{\alpha\beta}\thth&
+&\btheta^\dalpha\btheta^\dbeta=\tfrac12\epsilon^{\dalpha\dbeta}\bthth&
 &(\theta\phi)(\theta\psi)=-\tfrac12(\psi\phi)(\thth)&
 (\theta\Sn\btheta)\theta^\alpha &= \tfrac12\thth(\btheta\bSn)^\alpha
 \\
-&\btheta^\dalpha\btheta^\dbeta=\tfrac12\epsilon^{\dalpha\dbeta}\bthth&
+&\theta_\alpha\theta_\beta=\tfrac12\epsilon_{\alpha\beta}\thth&
 &\btheta_\dalpha\btheta_\dbeta=-\tfrac12\epsilon_{\dalpha\dbeta}\bthth&
 &(\btheta\bar\phi)(\btheta\bar\psi)=-\tfrac12(\bar\psi\bar\phi)(\bthth)&
  (\theta\Sn\btheta)\btheta_\dalpha&= -\tfrac12\bthth(\theta\Sm)_\dalpha
 \\
-&\theta\Sm\bSn\theta=\Hmn\thth&
-&\btheta\bSm\Sn\btheta=\Hmn\bthth&
+&\theta^\alpha\theta_\beta=\tfrac12\delta^\alpha_\beta\thth&
+&\btheta_\dalpha\btheta^\dbeta=\tfrac12\delta^\dbeta_\dalpha\bthth&
 &(\theta\Sm\btheta)(\theta\Sn\btheta)=\tfrac12\thth\bthth\eta^{\mu\nu}&
  (\Sm\btheta)_\alpha(\theta\Sn\btheta) &= \tfrac12(\Sm\bSn\theta)_\alpha\bthth
+\\
+&\theta\Sm\bSn\theta=\Hmn\thth&
+&\btheta\bSm\Sn\btheta=\Hmn\bthth&
 \end{align*}
 \vspace{-2zw}
 \begin{align*}
@@ -112,20 +116,23 @@ $\sigma$ matrices& $
  \xi\Sm\bSn\chi&=\chi\Sn\bSm\xi=(\bar\chi\bSn\Sm\bar\xi)^*=(\bar\xi\bSm\Sn\bar\chi)^*&
  (\psi\phi)\bar\chi_\dalpha&=\tfrac12(\phi\Sm\bar\chi)(\psi\Smd)_\dalpha
 \end{align*}
-In the following equations, we chose left-differential notation.
 \begin{align*}
  \epsilon^{\alpha\beta}\pbib{}{\theta^\beta}&=-\pbib{}{\theta_\alpha}&
  \pbib{}{\theta^\alpha}\thth&=2\theta_\alpha&
- \epsilon^{\alpha\beta}\pbib{}{\theta^\alpha}\pbib{}{\theta^\beta}\thth &= 4\\
+ \epsilon^{\alpha\beta}\pbib{}{\theta^\alpha}\pbib{}{\theta^\beta}\thth &=
+ \pbib{}{\theta_\alpha}\pbib{}{\theta^\alpha}\thth = 4\\
  \epsilon_{\alpha\beta}\pbib{}{\theta_\beta}&=-\pbib{}{\theta^\alpha}&
  \pbib{}{\theta_\alpha}\thth&=-2\theta^\alpha&
- \epsilon_{\alpha\beta}\pbib{}{\theta_\alpha}\pbib{}{\theta_\beta}\thth &= -4\\
+ \epsilon_{\alpha\beta}\pbib{}{\theta_\alpha}\pbib{}{\theta_\beta}\thth &=
+ \pbib{}{\theta^\alpha}\pbib{}{\theta_\alpha}\thth = -4\\
  \epsilon^{\dalpha\dbeta}\pbib{}{\btheta^\dbeta}&=-\pbib{}{\btheta_\dalpha}&
  \pbib{}{\btheta^\dalpha}\bthth&=-2\btheta_\dalpha&
- \epsilon_{\dalpha\dbeta}\pbib{}{\btheta_\dalpha}\pbib{}{\btheta_\dbeta}\bthth &= 4\\
+ \epsilon_{\dalpha\dbeta}\pbib{}{\btheta_\dalpha}\pbib{}{\btheta_\dbeta}\bthth &=
+ \pbib{}{\btheta^\dalpha}\pbib{}{\btheta_\dalpha}\bthth = 4\\
  \epsilon_{\dalpha\dbeta}\pbib{}{\btheta_\dbeta}&=-\pbib{}{\btheta^\dalpha}&
  \pbib{}{\btheta_\dalpha}\bthth&=2\btheta^\dalpha&
- \epsilon^{\dalpha\dbeta}\pbib{}{\btheta^\dalpha}\pbib{}{\btheta^\dbeta}\bthth &= -4
+ \epsilon^{\dalpha\dbeta}\pbib{}{\btheta^\dalpha}\pbib{}{\btheta^\dbeta}\bthth &=
+ \pbib{}{\btheta_\dalpha}\pbib{}{\btheta^\dalpha}\bthth = -4
 \end{align*}
 
 \subsection{General Relations}
@@ -147,18 +154,28 @@ In the following equations, we chose left-differential notation.
  \{D_\alpha,\bar D_\dalpha\}&= 2\ii\Sm_{\alpha\dalpha}\Pm,&
  \text{(others)} &=0.
 \end{align*}\vspace{-2zw}
-\begin{align*}
-&\bar D_\dalpha(y,\theta,\btheta)        = -\pbib{}{\btheta^\dalpha}&
-&     D_\alpha (y,\theta,\btheta)        = \pbib{}{\theta^\alpha} - 2\ii(\Sm\btheta)_\alpha\pbib{}{y^\mu}
-\\
-&     D_\alpha(y^\dagger,\theta,\btheta) = \pbib{}{\theta^\alpha}&
-&\bar D_\dalpha(y^\dagger,\theta,\btheta)= -\pbib{}{\btheta^\dalpha}+2\ii(\theta\Sm)_\dalpha\pbib{}{(y^\dagger)^\mu}
-\\
-&\bar D^\dalpha(y,\theta,\btheta) = \pbib{}{\btheta_\dalpha}&
-\\
-&     D^\alpha(y^\dagger,\theta,\btheta) = -\pbib{}{\theta_\alpha}&
-&     D^\alpha(y,\theta,\btheta)         = -\pbib{}{\theta_\alpha}+2\ii(\btheta\bSm)^\alpha\pbib{}{y^\mu}
-\end{align*}
+
+\begin{align}
+ \bar D\bar D=-\pbib{}{\btheta^\dalpha}\pbib{}{\btheta_\dalpha}\bthth +\thth\Psq
+\end{align}
+
+\begin{align}
+&&& \notag
+ && \qquad\text{< $x$-basis >} && \qquad\text{< $y$-basis >}&&\qquad\text{< $y^\dagger$-basis >}\\
+&&&D_\alpha      &&=\pbib{}{\theta^\alpha}-\ii(\Sm\btheta)_\alpha\Pm
+                 &&=\pbib{}{\theta^\alpha} - 2\ii(\Sm\btheta)_\alpha\pbib{}{y^\mu}
+                 &&=\pbib{}{\theta^\alpha}&&\\
+&&&\bar D_\dalpha&&=-\pbib{}{\btheta^\dalpha}+\ii(\theta\Sm)_\dalpha\Pm
+                 &&=-\pbib{}{\btheta^\dalpha}
+                 &&=-\pbib{}{\btheta^\dalpha}+2\ii(\theta\Sm)_\dalpha\pbib{}{(y^\dagger)^\mu}&&\\
+&&&D^\alpha      &&=-\pbib{}{\theta_\alpha}+\ii(\btheta\bSm)^\alpha\Pm
+                 &&=-\pbib{}{\theta_\alpha}+2\ii(\btheta\bSm)^\alpha\pbib{}{y^\mu}
+                 &&=-\pbib{}{\theta_\alpha}&&\\
+&&&\bar D^\dalpha&&=\pbib{}{\btheta_\dalpha}-\ii(\bSm\theta)^\dalpha\Pm
+                 &&=\pbib{}{\btheta_\dalpha}
+                 &&=\pbib{}{\btheta_\dalpha}-2\ii(\bSm\theta)^\dalpha\pbib{}{(y^\dagger)^\mu}
+\end{align}
+
 
 \begin{align}
  \phi(y)
@@ -367,16 +384,16 @@ V^3 &= 0
 \end{flushright}\vspace{-1.2zw}
 \begin{align}
  \mathcal L\s{inv}
-&= \frac14\left( W^\alpha W_\alpha\Big|_\thth + \bar W_\dalpha \bar W^\dalpha\Big|_\bthth\right)
- = \frac14\left( W^\alpha D_\alpha V+\bar W_\dalpha \bar D^\dalpha V\right)\Big|_{\thth\bthth}\notag\\
-&= -\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2\\
+&= \frac\tau4 W^\alpha W_\alpha\Big|_\thth + \frac{\tau^*}4 \bar W_\dalpha\bar W^\dalpha\Big|_\bthth
+ \qquad\left(\text{with}\quad \tau:=1+\frac{\ii\theta}{8\pi^2}\right)\notag\\
+&= -\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2
+   -\frac{\theta}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}\\
  \mathcal L\s{mass}
 &= m^2 V^2\Big|_{\thth\bthth}\notag\\
 &= m^2\left(\frac12 A^\mu A_\mu + \ii\bar\chi\bSm\Pm\chi - (\lambda\chi+\bar\lambda\bar\chi) + \frac12(M^2+N^2) + CD + \frac12{\Pm C\Pmu C}\right)\notag\\
 &= \frac12{\Pm C'\Pmu C'}+ \ii \bar\chi'\bSm\Pm\chi'
    + \frac{m^2}2 A^\mu A_\mu -  m(\lambda\chi'+\bar\lambda\bar\chi') + mC'D + \frac{m^2}{2}(M^2+N^2)
 \end{align}
-\TODO{$\epsilon FF$Ç‡ì¸ÇÍÇÈ}
 
 \subsubsection{Abelian Case --- Gauge Theory}\vspace{-2.4zw}
 \begin{align}
@@ -405,7 +422,7 @@ Note that $\Dm\phi=(\Pm-\ii g q A_\mu)\phi$ yields from these definitions.\vspac
  \Lag\s{gauge}&= \frac14 W^\alpha W_\alpha\Big|_\thth + \Hc&&
 =-\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2\\
  \Lag\s{chiral}&=\Phi^\dagger\ee^{2gqV}\Phi\Big|_{\thth\bthth}&&
-=F^*F+\Dm\phi^*\Dmu\phi+\ii\bar\Psi\bSm\Dm\psi + qg D\phi^*\phi+\ii\sqrt2gq\left(\phi^*\lambda\psi-\phi\bar\lambda\bar\psi\right)
+=F^*F+\Dm\phi^*\Dmu\phi+\ii\bar\psi\bSm\Dm\psi + qg D\phi^*\phi+\ii\sqrt2gq\left(\phi^*\lambda\psi-\phi\bar\lambda\bar\psi\right)
 \end{align}
 
 
