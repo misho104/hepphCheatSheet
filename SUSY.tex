@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-24 00:38:34 misho>
+%%% Time-Stamp: <2010-11-24 01:27:50 misho>
 %%% 文字コードはShift-JISですよね
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
@@ -441,19 +441,19 @@ Expclicit expression is the same as the Abelian case.
 \begin{align}
 \Lag\ni\Phi^\dagger\ee^{2g\tilde V}\Phi;
 \qquad
- \Phi\mapsto \ee^{\ii\tilde\Lambda}\Phi,\quad
- \Phi^\dagger&\mapsto \Phi^\dagger\ee^{-\ii\tilde\Lambda^\dagger};\qquad
-\ee^{2g\tilde V} \mapsto \ee^{-\ii \tilde\Lambda^\dagger}\ee^{2g\tilde V}\ee^{\ii\tilde\Lambda}\\
+ \Phi\mapsto \ee^{\ii g\tilde\Lambda}\Phi,\quad
+ \Phi^\dagger&\mapsto \Phi^\dagger\ee^{-\ii g\tilde\Lambda^\dagger};\qquad
+\ee^{2g\tilde V} \mapsto \ee^{\ii g\tilde\Lambda^\dagger}\ee^{2g\tilde V}\ee^{-\ii g\tilde\Lambda}\\
  &\text{with}\ \tilde V:=V^aT^a,\quad
  \tilde \Lambda := \Lambda^aT^a,\quad
  \tilde \Lambda^\dagger := (\Lambda^a)^\dagger T^a\notag
 \end{align}
 \begin{align}
- 2g\tilde V&\mapsto 2g\tilde V-\ii(\tilde\Lambda-\tilde\Lambda^\dagger)-\frac12\left(
- [\tilde\Lambda,\tilde\Lambda^\dagger]+\ii[2g\tilde V,\tilde\Lambda+\tilde\Lambda^\dagger]\right)+\cdots\\
+ 2\tilde V&\mapsto 2\tilde V-\ii(\tilde\Lambda-\tilde\Lambda^\dagger)-\frac g2\left(
+ [\tilde\Lambda,\tilde\Lambda^\dagger]+\ii[2\tilde V,\tilde\Lambda+\tilde\Lambda^\dagger]\right)+\cdots\\
  &=\left[
- 2gV^a-\ii(\Lambda^a-\Lambda^{\dagger a})+\frac12\Bigl(
--\ii\Lambda^b\Lambda^{\dagger c}+2gV^b(\Lambda^c+\Lambda^{\dagger c})\Bigr)f^{abc}+\cdots\right]T^a
+ 2V^a-\ii(\Lambda^a-\Lambda^{\dagger a})+\frac g2\Bigl(
+-\ii\Lambda^b\Lambda^{\dagger c}+2V^b(\Lambda^c+\Lambda^{\dagger c})\Bigr)f^{abc}+\cdots\right]T^a
 \end{align}
 We do not present the transformations of the components; note that $\lambda$ and $D$ are transformed in non-Abelian theories.
 
@@ -511,29 +511,28 @@ Note that $C,\chi, M$ and $N$ are kept invariant automatically, for now we are u
 \subparagraph{Field Strength}
 \begin{align}
 \tilde W_\alpha
-&= -\frac14\bar D\bar D\ee^{-2g\tilde V}D_\alpha\ee^{2g\tilde V}\\
-&= 2g\left[-\ii\lambda_\alpha(y)
+&= -\frac1{8g}\bar D\bar D\ee^{-2g\tilde V}D_\alpha\ee^{2g\tilde V}
+= -\ii\lambda_\alpha(y)
  + \theta_\alpha D(y)+\ii(\Smn\theta)_\alpha F_{\mu\nu}(y)
--\thth(\Sm\Dm\bar\lambda(y))_\alpha
-\right]
-\\
-&\qquad\qquad\text{where}\quad
-F_{\mu\nu}= \Pm A_\nu-\Pn A_\mu-\ii g[A_\mu,A_\nu],
-\quad
-\Dm\bar\lambda^\dalpha =\Pm\bar\lambda^\dalpha-\ii g[A_\mu,\bar\lambda^\dalpha]\notag
-\end{align}
-\TODO{$W$がGauge invであることを確認？っていうか$g$の符号勝手に反転させていいんだっけ。これまでと一貫してるかな。}
+-\thth(\Sm\Dm\bar\lambda(y))_\alpha\ \footnotemark
+\end{align}\vspace{-24pt}
+\footnotetext{Note the signs. $\bar D\bar D\ee^{2gV}D_\alpha\ee^{-2gV}$ is not gauge invariant!
+Also the curvature tensor and the covariant derivative is well-known ones:
+$F_{\mu\nu}= \Pm A_\nu-\Pn A_\mu-\ii g[A_\mu,A_\nu]$, and
+$\Dm\bar\lambda
+  =\Pm\bar\lambda-\ii g[A_\mu,\bar\lambda]
+  =\Pm\bar\lambda+gf^{abc}A^b_\mu\bar\lambda^cT^a$.}
 \begin{align}
  \Tr\tilde W^\alpha\tilde W_\alpha\Big|_\thth
-&=4g^2\Tr\left[
+&=\Tr\left[
 DD+\ii\lambda\Sm\Dm\bar\lambda+\ii\Dm\bar\lambda\bSm\lambda
 -\frac12F^{\mu\nu}F_{\mu\nu}+\frac\ii4\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
 \right]\\
-&=4Kg^2\left[
+&=K\left[
 D^aD^a+\ii\lambda^a\Sm\Dm\bar\lambda^a+\ii\Dm\bar\lambda^a\bSm\lambda^a
 -\frac12F^{\mu\nu\,a}F_{\mu\nu}^a+\frac\ii4\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}^aF_{\rho\sigma}^a
 \right]\\
-&\leadsto 8Kg^2\left[
+&\leadsto 2K\left[
 \frac12D^aD^a+\ii\bar\lambda^a\bSm\Dm\lambda^a
 -\frac14F^{\mu\nu\,a}F_{\mu\nu}^a+\frac\ii8\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}^aF_{\rho\sigma}^a
 \right]
