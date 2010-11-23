@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-23 03:19:50 misho>
+%%% Time-Stamp: <2010-11-24 00:38:34 misho>
 %%% 文字コードはShift-JISですよね
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
@@ -290,7 +290,7 @@ $\sigma$ matrices& $
 \begin{align}
  \mathcal L\s{kin.}
 ={}& \Phi^\dagger_i\Phi_j\Big|_{\thth\bthth}
-=  F^*_iF_j + \Pmu\phi^*_i\Pm\phi_j + \ii\bar\psi_i\bSm\Pm\psi_j\\
+\leadsto  F^*_iF_j + \Pmu\phi^*_i\Pm\phi_j + \ii\bar\psi_i\bSm\Pm\psi_j\\
  \mathcal L\s{super}
 ={}& W\Big|_{\thth} + W^*\Big|_{\bthth}
 = \int\dd^2\theta
@@ -332,15 +332,15 @@ $\sigma$ matrices& $
 \end{align}
 \subparagraph{Supersymmetric Gauge Transformation :  $V \rightarrow V+\Phi + \Phi^\dagger$}
 \begin{align}
-C       &\to C+(\phi+\phi^*)      & A_\mu  &\to A_\mu + \ii\Pm(\phi-\phi^*)\notag\\
-\chi    &\to \chi - \ii\sqrt2\psi & \lambda&\to \lambda\\
-M+\ii N &\to M + \ii N - 2\ii F   & D      &\to D\notag
+C       &\mapsto C+(\phi+\phi^*)      & A_\mu  &\mapsto A_\mu + \ii\Pm(\phi-\phi^*)\notag\\
+\chi    &\mapsto \chi - \ii\sqrt2\psi & \lambda&\mapsto \lambda\\
+M+\ii N &\mapsto M + \ii N - 2\ii F   & D      &\mapsto D\notag
 \end{align}
 
 \subparagraph{Wess-Zumino Gauge} $C=\chi=M=N=0$\par
 Fixing this gauge breaks SUSY, but still allows the usual gauge transformation
 \begin{equation}
- A_\mu \to A_\mu + \Pm \alpha,\ \ \lambda\to\lambda,\ \ D\to D.
+ A_\mu \mapsto A_\mu + \Pm \alpha,\ \ \lambda\mapsto\lambda,\ \ D\mapsto D.
 \end{equation}
 \begin{align*}
  V  &= - \theta\Sm\btheta A_\mu(x) + \ii\thth\btheta\bar\lambda(x)
@@ -360,7 +360,7 @@ V^3 &= 0
 \begin{align}
 &W_\alpha       =-\frac14\bar D\bar D D_\alpha V,\quad
 \bar W_\dalpha =-\frac14 D D \bar D_\dalpha V;\qquad
- W_\alpha \to W_\alpha \quad\text{\footnotesize(gauge invariant)}\\
+ W_\alpha \mapsto W_\alpha \quad\text{\footnotesize(gauge invariant)}\\
 & \bar D_\dbeta W_\alpha  = D_\beta \bar W_\dalpha = 0;\qquad
   D^\alpha W_\alpha =  \bar D_\dalpha \bar W^\dalpha
 \end{align}
@@ -375,7 +375,7 @@ V^3 &= 0
 \begin{align}
  W^\alpha W_\alpha \big|_{\thth}
 =  -\frac14\bar D\bar D W^\alpha D_\alpha V
-=  -\frac12F^{\mu\nu}F_{\mu\nu}+\frac\ii4\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}+2\ii\lambda\Sm\Pm\bar\lambda + D^2
+\leadsto  -\frac12F^{\mu\nu}F_{\mu\nu}+\frac\ii4\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}+2\ii\lambda\Sm\Pm\bar\lambda + D^2
 \end{align}
 
 \Subparagraph{Lagrangian Blocks}\vspace{-1.1zw}
@@ -386,7 +386,7 @@ V^3 &= 0
  \mathcal L\s{inv}
 &= \frac\tau4 W^\alpha W_\alpha\Big|_\thth + \frac{\tau^*}4 \bar W_\dalpha\bar W^\dalpha\Big|_\bthth
  \qquad\left(\text{with}\quad \tau:=1+\frac{\ii\theta}{8\pi^2}\right)\notag\\
-&= -\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2
+&\leadsto -\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2
    -\frac{\theta}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}\\
  \mathcal L\s{mass}
 &= m^2 V^2\Big|_{\thth\bthth}\notag\\
@@ -398,21 +398,21 @@ V^3 &= 0
 \subsubsection{Abelian Case --- Gauge Theory}\vspace{-2.4zw}
 \begin{align}
 \Lag&\ni\Phi^\dagger\ee^{2gqV}\Phi;&
- \Phi\to \ee^{\ii q \Lambda}\Phi,\quad& \Phi^\dagger\to \Phi^\dagger\ee^{-\ii q \Lambda^\dagger};& 2gV&\to 2gV-\ii(\Lambda-\Lambda^\dagger)
+ \Phi\mapsto \ee^{\ii q \Lambda}\Phi,\quad& \Phi^\dagger\mapsto \Phi^\dagger\ee^{-\ii q \Lambda^\dagger};& 2gV&\mapsto 2gV-\ii(\Lambda-\Lambda^\dagger)
 \end{align}
 For gauge transformation $\Lambda=\lambda(y)+\sqrt2\theta\xi(y)+\thth K(y)$,
 \begin{align*}
-  \phi&\to \ee^{\ii q\lambda}\phi&
-  C   &\to C+\tfrac1g\nIm\lambda&
-M+\ii N&\to M+\ii N-\tfrac1g K
+  \phi&\mapsto \ee^{\ii q\lambda}\phi&
+  C   &\mapsto C+\tfrac1g\nIm\lambda&
+M+\ii N&\mapsto M+\ii N-\tfrac1g K
 \\
-  \psi&\to \ee^{\ii q\lambda}\left(\psi+\ii q\phi\cdot \xi\right)&
-  \chi&\to \chi-\tfrac{1}{\sqrt2g} \xi&
-A_\mu &\to A_\mu+\tfrac1g \Pm(\nRe\lambda)
+  \psi&\mapsto \ee^{\ii q\lambda}\left(\psi+\ii q\phi\cdot \xi\right)&
+  \chi&\mapsto \chi-\tfrac{1}{\sqrt2g} \xi&
+A_\mu &\mapsto A_\mu+\tfrac1g \Pm(\nRe\lambda)
 \\
-  F   &\to \ee^{\ii q\lambda}\left(F+\ii q\phi K-\ii q \xi\psi +\frac{q^2}{2}\xi\xi\phi\right)&
-\lambda&\to\lambda&
-D&\to D\\
+  F   &\mapsto \ee^{\ii q\lambda}\left(F+\ii q\phi K-\ii q \xi\psi +\frac{q^2}{2}\xi\xi\phi\right)&
+\lambda&\mapsto\lambda&
+D&\mapsto D\\
 \end{align*}\vspace{-3.1zw}
 
 Note that $\Dm\phi=(\Pm-\ii g q A_\mu)\phi$ yields from these definitions.\vspace{.8zw}
@@ -420,9 +420,9 @@ Note that $\Dm\phi=(\Pm-\ii g q A_\mu)\phi$ yields from these definitions.\vspac
 \Subparagraph{Lagrangian block}\vspace{-2zw}
 \begin{align}
  \Lag\s{gauge}&= \frac14 W^\alpha W_\alpha\Big|_\thth + \Hc&&
-=-\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2\\
+\leadsto -\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2\\
  \Lag\s{chiral}&=\Phi^\dagger\ee^{2gqV}\Phi\Big|_{\thth\bthth}&&
-=F^*F+\Dm\phi^*\Dmu\phi+\ii\bar\psi\bSm\Dm\psi + qg D\phi^*\phi+\ii\sqrt2gq\left(\phi^*\lambda\psi-\phi\bar\lambda\bar\psi\right)
+\leadsto F^*F+\Dm\phi^*\Dmu\phi+\ii\bar\psi\bSm\Dm\psi + qg D\phi^*\phi+\ii\sqrt2gq\left(\phi^*\lambda\psi-\phi\bar\lambda\bar\psi\right)
 \end{align}
 
 
@@ -430,7 +430,7 @@ Note that $\Dm\phi=(\Pm-\ii g q A_\mu)\phi$ yields from these definitions.\vspac
 \begin{preposition}{}\vspace{-.5zw}
 \begin{align*}
  &T^a:\text{generators (Hermitian)};\\
- &\Tr T^aT^b = k\delta^{ab}\ (k>0),&
+ &\Tr T^aT^b = K\delta^{ab}\ (K>0),&
  &[T^a,T^b]=\ii f^{abc}T^c\ \text{($f$ is anti-symmetric)}
 \end{align*}\vspace{-3zw}
 \end{preposition}\vspace{.7zw}
@@ -441,15 +441,15 @@ Expclicit expression is the same as the Abelian case.
 \begin{align}
 \Lag\ni\Phi^\dagger\ee^{2g\tilde V}\Phi;
 \qquad
- \Phi\to \ee^{\ii\tilde\Lambda}\Phi,\quad
- \Phi^\dagger&\to \Phi^\dagger\ee^{-\ii\tilde\Lambda^\dagger};\qquad
-\ee^{2g\tilde V} \to \ee^{-\ii \tilde\Lambda^\dagger}\ee^{2g\tilde V}\ee^{\ii\tilde\Lambda}\\
+ \Phi\mapsto \ee^{\ii\tilde\Lambda}\Phi,\quad
+ \Phi^\dagger&\mapsto \Phi^\dagger\ee^{-\ii\tilde\Lambda^\dagger};\qquad
+\ee^{2g\tilde V} \mapsto \ee^{-\ii \tilde\Lambda^\dagger}\ee^{2g\tilde V}\ee^{\ii\tilde\Lambda}\\
  &\text{with}\ \tilde V:=V^aT^a,\quad
  \tilde \Lambda := \Lambda^aT^a,\quad
  \tilde \Lambda^\dagger := (\Lambda^a)^\dagger T^a\notag
 \end{align}
 \begin{align}
- 2g\tilde V&\to 2g\tilde V-\ii(\tilde\Lambda-\tilde\Lambda^\dagger)-\frac12\left(
+ 2g\tilde V&\mapsto 2g\tilde V-\ii(\tilde\Lambda-\tilde\Lambda^\dagger)-\frac12\left(
  [\tilde\Lambda,\tilde\Lambda^\dagger]+\ii[2g\tilde V,\tilde\Lambda+\tilde\Lambda^\dagger]\right)+\cdots\\
  &=\left[
  2gV^a-\ii(\Lambda^a-\Lambda^{\dagger a})+\frac12\Bigl(
@@ -471,7 +471,7 @@ Here the gauge transformation is restricted as
 $\Lambda=\xi(y) = \xi(x)-\ii\theta\Sm\btheta\Pm\xi(x)-\frac14\thth\bthth\Psq\xi(x)$
 : $\xi\in\Real$.
 \begin{align}
- 2gV^e&\to
+ 2gV^e&\mapsto
 2g\left(
 V^e
 -f^{eab}\xi^aV^b
@@ -484,7 +484,7 @@ V^e
 +4f^{acd}f^{abe}\xi^b\xi^c\Pm\xi^d
 \right)+\cdots
 \\[.5zw]
- A_\mu^e&\to
+ A_\mu^e&\mapsto
 A_\mu^e
 +f^{eab}A_\mu^a\xi^b
 +6f^{abc}f^{ade}A_\mu^b\xi^c\xi^d\notag\\
@@ -495,12 +495,12 @@ A_\mu^e
 -2f^{acd}f^{abe}\xi^b\xi^c\Pm\xi^d
 \right)+\cdots
 \\[.5zw]
- \lambda^e&\to
+ \lambda^e&\mapsto
 \lambda^e
 +f^{eab}\lambda^a\xi^b
 +6f^{abc}f^{ade}\lambda^b\xi^c\xi^d+\cdots
 \\[.5zw]
- D^e&\to
+ D^e&\mapsto
 D^e
 +f^{eab}D^a\xi^b
 +6f^{abc}f^{ade}D^b\xi^c\xi^d+\cdots
@@ -510,16 +510,35 @@ Note that $C,\chi, M$ and $N$ are kept invariant automatically, for now we are u
 
 \subparagraph{Field Strength}
 \begin{align}
-W_\alpha
-&= -\frac14\bar D\bar D\ee^{2gV}D_\alpha\ee^{-2gV}\\
-&= 2\ii g\lambda_\alpha
-  + \theta_\alpha(-2gD+2g^2A^\mu A_\mu)
-  + (\Sm\bSn\theta)_\alpha(-\ii g\Pm A_\nu-2g^2A_\nu A_\mu)
-  \notag\\&\qquad
-  + g\thth\left[(\Sm\Pm\bar\lambda)_\alpha
-                -\frac12(\Sm\btheta)_\alpha\Psq A_\mu
-                -\frac\ii2\bthth\Psq \lambda_\alpha\right]
+\tilde W_\alpha
+&= -\frac14\bar D\bar D\ee^{-2g\tilde V}D_\alpha\ee^{2g\tilde V}\\
+&= 2g\left[-\ii\lambda_\alpha(y)
+ + \theta_\alpha D(y)+\ii(\Smn\theta)_\alpha F_{\mu\nu}(y)
+-\thth(\Sm\Dm\bar\lambda(y))_\alpha
+\right]
+\\
+&\qquad\qquad\text{where}\quad
+F_{\mu\nu}= \Pm A_\nu-\Pn A_\mu-\ii g[A_\mu,A_\nu],
+\quad
+\Dm\bar\lambda^\dalpha =\Pm\bar\lambda^\dalpha-\ii g[A_\mu,\bar\lambda^\dalpha]\notag
 \end{align}
+\TODO{$W$がGauge invであることを確認？っていうか$g$の符号勝手に反転させていいんだっけ。これまでと一貫してるかな。}
+\begin{align}
+ \Tr\tilde W^\alpha\tilde W_\alpha\Big|_\thth
+&=4g^2\Tr\left[
+DD+\ii\lambda\Sm\Dm\bar\lambda+\ii\Dm\bar\lambda\bSm\lambda
+-\frac12F^{\mu\nu}F_{\mu\nu}+\frac\ii4\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
+\right]\\
+&=4Kg^2\left[
+D^aD^a+\ii\lambda^a\Sm\Dm\bar\lambda^a+\ii\Dm\bar\lambda^a\bSm\lambda^a
+-\frac12F^{\mu\nu\,a}F_{\mu\nu}^a+\frac\ii4\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}^aF_{\rho\sigma}^a
+\right]\\
+&\leadsto 8Kg^2\left[
+\frac12D^aD^a+\ii\bar\lambda^a\bSm\Dm\lambda^a
+-\frac14F^{\mu\nu\,a}F_{\mu\nu}^a+\frac\ii8\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}^aF_{\rho\sigma}^a
+\right]
+\end{align}
+
 
 \subparagraph{Lagrangian Block}
 
@@ -531,7 +550,7 @@ Defining all component fields as including generators and coupling
 constants,
 \begin{align}
  \ee^{\pm2gV^aT^a}
-\to{}& \ee^{\pm2V}\notag\\
+\mapsto{}& \ee^{\pm2V}\notag\\
   ={}& 1 \mp 2\theta\Sm\btheta A_\mu(x)
          \mp 2\ii\left[\bthth\theta\lambda(x)-\thth\btheta\bar\lambda(x)\right]
          + \thth\bthth\left[{\RED -}A^\mu(x) A_\mu(x) - D(x)\right]
