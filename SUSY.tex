@@ -1,5 +1,5 @@
 %#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-24 01:27:50 misho>
+%%% Time-Stamp: <2010-11-24 15:26:00 misho>
 %%% 文字コードはShift-JISですよね
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
@@ -381,7 +381,7 @@ V^3 &= 0
 \Subparagraph{Lagrangian Blocks}\vspace{-1.1zw}
 \begin{flushright}\footnotesize
  ($\Lag\s{inv}$ is SUSY- and gauge-invariant, while $\Lag\s{mass}$ is not gauge-invariant.)
-\end{flushright}\vspace{-1.2zw}
+\end{flushright}\vspace{-2.3zw}
 \begin{align}
  \mathcal L\s{inv}
 &= \frac\tau4 W^\alpha W_\alpha\Big|_\thth + \frac{\tau^*}4 \bar W_\dalpha\bar W^\dalpha\Big|_\bthth
@@ -395,35 +395,43 @@ V^3 &= 0
    + \frac{m^2}2 A^\mu A_\mu -  m(\lambda\chi'+\bar\lambda\bar\chi') + mC'D + \frac{m^2}{2}(M^2+N^2)
 \end{align}
 
-\subsubsection{Abelian Case --- Gauge Theory}\vspace{-2.4zw}
+\subsubsection{Abelian Case --- Gauge Theory}\vspace{-6pt}
+Here we turn on the coupling constant $g$. When $\Lambda=\lambda(y)+\sqrt2\theta\xi(y)+\thth K(y)$,
 \begin{align}
 \Lag&\ni\Phi^\dagger\ee^{2gqV}\Phi;&
- \Phi\mapsto \ee^{\ii q \Lambda}\Phi,\quad& \Phi^\dagger\mapsto \Phi^\dagger\ee^{-\ii q \Lambda^\dagger};& 2gV&\mapsto 2gV-\ii(\Lambda-\Lambda^\dagger)
+ \Phi\mapsto \ee^{\ii qg \Lambda}\Phi,\quad& \Phi^\dagger\mapsto \Phi^\dagger\ee^{-\ii qg \Lambda^\dagger};& 2V&\mapsto 2V-\ii(\Lambda-\Lambda^\dagger)
 \end{align}
-For gauge transformation $\Lambda=\lambda(y)+\sqrt2\theta\xi(y)+\thth K(y)$,
 \begin{align*}
-  \phi&\mapsto \ee^{\ii q\lambda}\phi&
-  C   &\mapsto C+\tfrac1g\nIm\lambda&
-M+\ii N&\mapsto M+\ii N-\tfrac1g K
+  \phi&\mapsto \ee^{\ii qg\lambda}\phi&
+  C   &\mapsto C+\nIm\lambda&
+M+\ii N&\mapsto M+\ii N-K
 \\
-  \psi&\mapsto \ee^{\ii q\lambda}\left(\psi+\ii q\phi\cdot \xi\right)&
-  \chi&\mapsto \chi-\tfrac{1}{\sqrt2g} \xi&
-A_\mu &\mapsto A_\mu+\tfrac1g \Pm(\nRe\lambda)
+  \psi&\mapsto \ee^{\ii qg\lambda}\left(\psi+\ii qg\phi\cdot \xi\right)&
+  \chi&\mapsto \chi-\tfrac{1}{\sqrt2} \xi&
+A_\mu &\mapsto A_\mu+ \Pm(\nRe\lambda)
 \\
-  F   &\mapsto \ee^{\ii q\lambda}\left(F+\ii q\phi K-\ii q \xi\psi +\frac{q^2}{2}\xi\xi\phi\right)&
+  F   &\mapsto \ee^{\ii qg\lambda}\left(F+\ii qg\phi K-\ii qg \xi\psi +\frac{(qg)^2}{2}\xi\xi\phi\right)&
 \lambda&\mapsto\lambda&
 D&\mapsto D\\
-\end{align*}\vspace{-3.1zw}
+\end{align*}\vspace{-45pt}
+\begin{flushright}
+\footnotesize
+(Very similar to the gauge transformations in Sec.~\ref{sec:abelian-gauge-theory}.)
+\end{flushright}\vspace{-10pt}
 
-Note that $\Dm\phi=(\Pm-\ii g q A_\mu)\phi$ yields from these definitions.\vspace{.8zw}
-
-\Subparagraph{Lagrangian block}\vspace{-2zw}
-\begin{align}
+\Subparagraph{Lagrangian block}\vspace{-14pt}
+\begin{align*}
  \Lag\s{gauge}&= \frac14 W^\alpha W_\alpha\Big|_\thth + \Hc&&
 \leadsto -\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2\\
  \Lag\s{chiral}&=\Phi^\dagger\ee^{2gqV}\Phi\Big|_{\thth\bthth}&&
-\leadsto F^*F+\Dm\phi^*\Dmu\phi+\ii\bar\psi\bSm\Dm\psi + qg D\phi^*\phi+\ii\sqrt2gq\left(\phi^*\lambda\psi-\phi\bar\lambda\bar\psi\right)
-\end{align}
+\leadsto F^*F+\Dm\phi^*\Dmu\phi+\ii\bar\psi\bSm\Dm\psi + qg D\phi^*\phi+\ii\sqrt2gq\left(\phi^*\lambda\psi-\phi\bar\lambda\bar\psi\right)\\
+ \Lag\s{\cancel{CP}}&= \frac{\ii\theta}{32\pi^2}W^\alpha W_\alpha\Big|_\thth + \Hc&&
+\leadsto -\frac{\theta}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
+\end{align*}\vspace{-10pt}
+\begin{equation*}
+\hspace{100pt}
+ \text{with\ }\quad \Dm[\phi,\psi]=(\Pm-\ii g q A_\mu)[\phi,\psi], \qquad\Dm\lambda=\Pm\lambda,
+\end{equation*}
 
 
 \subsubsection{Non-Abelian Case}
@@ -435,7 +443,7 @@ Note that $\Dm\phi=(\Pm-\ii g q A_\mu)\phi$ yields from these definitions.\vspac
 \end{align*}\vspace{-3zw}
 \end{preposition}\vspace{.7zw}
 
-Expclicit expression is the same as the Abelian case.
+\subparagraph{Explicit Expression} Same as the Abelian case.
 
 \subparagraph{Supersymmetric Gauge Transformation}
 \begin{align}
@@ -466,62 +474,65 @@ V^a  &= - \theta\Sm\btheta A^a_\mu(x) + \ii\thth\btheta\bar\lambda^a(x)
 \end{align}
 
  Note that the lowest order term of the gauge transformation is independent of $V$, which guarantees that we can still take the Wess-Zumino gauge.
-
-Here the gauge transformation is restricted as
-$\Lambda=\xi(y) = \xi(x)-\ii\theta\Sm\btheta\Pm\xi(x)-\frac14\thth\bthth\Psq\xi(x)$
+The gauge transformation is restricted as $\ee^{\ii g \tilde\Lambda}$, where
+$\Lambda^a=\xi^a(y) =\xi^a(x)-\ii\theta\Sm\btheta\Pm\xi^a(x)-\frac14\thth\bthth\Psq\xi^a(x)$
 : $\xi\in\Real$.
 \begin{align}
- 2gV^e&\mapsto
-2g\left(
+ 2V^e&\mapsto
+2\left(
 V^e
--f^{eab}\xi^aV^b
-+6f^{abc}f^{ade}V^b\xi^c\xi^d
+-gf^{eab}\xi^aV^b
++6g^2f^{abc}f^{ade}V^b\xi^c\xi^d
 \right)\notag\\
 &\qquad\qquad
 +\theta\Sm\btheta\left(
 -2\Pm\xi^e
-+f^{eab}\xi^a\Pm\xi^b
-+4f^{acd}f^{abe}\xi^b\xi^c\Pm\xi^d
++gf^{eab}\xi^a\Pm\xi^b
++4g^2f^{acd}f^{abe}\xi^b\xi^c\Pm\xi^d
 \right)+\cdots
 \\[.5zw]
  A_\mu^e&\mapsto
 A_\mu^e
-+f^{eab}A_\mu^a\xi^b
-+6f^{abc}f^{ade}A_\mu^b\xi^c\xi^d\notag\\
++gf^{eab}A_\mu^a\xi^b
++6g^2f^{abc}f^{ade}A_\mu^b\xi^c\xi^d\notag\\
 &\qquad\qquad
-+\frac1g\left(
++\left(
 \Pm\xi^e
--\frac12f^{eab}\xi^a\Pm\xi^b
--2f^{acd}f^{abe}\xi^b\xi^c\Pm\xi^d
+-\frac g2f^{eab}\xi^a\Pm\xi^b
+-2g^2f^{acd}f^{abe}\xi^b\xi^c\Pm\xi^d
 \right)+\cdots
 \\[.5zw]
  \lambda^e&\mapsto
 \lambda^e
-+f^{eab}\lambda^a\xi^b
-+6f^{abc}f^{ade}\lambda^b\xi^c\xi^d+\cdots
++gf^{eab}\lambda^a\xi^b
++6g^2f^{abc}f^{ade}\lambda^b\xi^c\xi^d+\cdots
 \\[.5zw]
  D^e&\mapsto
 D^e
-+f^{eab}D^a\xi^b
-+6f^{abc}f^{ade}D^b\xi^c\xi^d+\cdots
++gf^{eab}D^a\xi^b
++6g^2f^{abc}f^{ade}D^b\xi^c\xi^d+\cdots
 \end{align}
 Note that $C,\chi, M$ and $N$ are kept invariant automatically, for now we are under Wess-Zumino gauge.
 
 
-\subparagraph{Field Strength}
-\begin{align}
-\tilde W_\alpha
-&= -\frac1{8g}\bar D\bar D\ee^{-2g\tilde V}D_\alpha\ee^{2g\tilde V}
-= -\ii\lambda_\alpha(y)
- + \theta_\alpha D(y)+\ii(\Smn\theta)_\alpha F_{\mu\nu}(y)
--\thth(\Sm\Dm\bar\lambda(y))_\alpha\ \footnotemark
-\end{align}\vspace{-24pt}
-\footnotetext{Note the signs. $\bar D\bar D\ee^{2gV}D_\alpha\ee^{-2gV}$ is not gauge invariant!
+\subparagraph{Field Strength}%
+\footnote{Note the signs. $\bar D\bar D\ee^{2gV}D_\alpha\ee^{-2gV}$ is not gauge invariant!
 Also the curvature tensor and the covariant derivative is well-known ones:
 $F_{\mu\nu}= \Pm A_\nu-\Pn A_\mu-\ii g[A_\mu,A_\nu]$, and
 $\Dm\bar\lambda
   =\Pm\bar\lambda-\ii g[A_\mu,\bar\lambda]
-  =\Pm\bar\lambda+gf^{abc}A^b_\mu\bar\lambda^cT^a$.}
+  =\Pm\bar\lambda+gf^{abc}A^b_\mu\bar\lambda^cT^a$.
+}
+\begin{align}
+\tilde W_\alpha
+&= -\frac1{8g}\bar D\bar D\ee^{-2g\tilde V}D_\alpha\ee^{2g\tilde V}
+& \bar D_\dbeta W_\alpha &= 0 & W_\alpha\mapsto \ee^{\ii g\tilde \Lambda}W_\alpha\ee^{-\ii g\lambda^\dagger}
+\end{align}\vspace{-10pt}
+\begin{equation}
+ W_\alpha^a= -\ii\lambda^a_\alpha(y)
+ + \theta_\alpha D^a(y)+\ii(\Smn\theta)_\alpha F^a_{\mu\nu}(y)
+-\thth(\Sm\Dm\bar\lambda^a(y))_\alpha
+\end{equation}\vspace{-24pt}
 \begin{align}
  \Tr\tilde W^\alpha\tilde W_\alpha\Big|_\thth
 &=\Tr\left[
@@ -531,189 +542,32 @@ DD+\ii\lambda\Sm\Dm\bar\lambda+\ii\Dm\bar\lambda\bSm\lambda
 &=K\left[
 D^aD^a+\ii\lambda^a\Sm\Dm\bar\lambda^a+\ii\Dm\bar\lambda^a\bSm\lambda^a
 -\frac12F^{\mu\nu\,a}F_{\mu\nu}^a+\frac\ii4\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}^aF_{\rho\sigma}^a
-\right]\\
-&\leadsto 2K\left[
-\frac12D^aD^a+\ii\bar\lambda^a\bSm\Dm\lambda^a
--\frac14F^{\mu\nu\,a}F_{\mu\nu}^a+\frac\ii8\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}^aF_{\rho\sigma}^a
 \right]
 \end{align}
 
-
 \subparagraph{Lagrangian Block}
+\begin{align}
+ \Lag\s{gauge}&= \frac1{4K}\Tr\tilde W^\alpha\tilde W_\alpha\Big|_\thth + \Hc
+&&\leadsto
+-\frac14F^{\mu\nu\,a}F_{\mu\nu}^a + \ii\bar\lambda^a\bSm\Dm\lambda^a + \frac12D^aD^a
+\\\Lag\s{\cancel{CP}} &= \frac\ii{32K\pi^2}\Tr\tilde W^\alpha\tilde W_\alpha\Big|_\thth + \Hc
+&&\leadsto-\frac1{64\pi^2}\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}^aF_{\rho\sigma}^a
+\\\Lag\s{matter}&=\Phi^\dagger_i[\ee^{2gV^aT^a}]_{ij}\Phi_j\Big|_{\thth\bthth}
+&&\leadsto
+ \Dmu\phi_i^*\Dm\phi_i+\ii\bar\psi_i\bSm\Dm\psi_i+F^*_iF_i
+\notag\\&&&\qquad+ gD^a(\phi^*T^a\phi)+\sqrt2g\left(\ii\phi^*T^a\phi\lambda-\ii\bar\psi\bar\lambda T^a\phi\right)
+\end{align}
 
-\newpage
+\begin{align*}
+ \Dm\phi_i &=\Pm\phi-\ii gA_\mu^a(T^a\phi)_i&
+ F_{\mu\nu}&= \Pm A_\nu-\Pn A_\mu-\ii g[A_\mu,A_\nu],\\
+ \Dm\phi^*_i&=\Pm\phi+\ii gA_\mu^a(\phi^*T^a)_i&
+ \Dm\lambda^a&=\Pm\lambda^a+gf^{abc}A^b_\mu\lambda^c,\\
+ \Dm\psi_i &=\Pm\psi-\ii gA_\mu^a(T^a\psi)_i&
+ \Dm\bar\lambda^a&=\Pm\bar\lambda^a+gf^{abc}A^b_\mu\bar\lambda^c,\\
+\end{align*}
 
 
-\Paragraph{Field Strength}
-Defining all component fields as including generators and coupling
-constants,
-\begin{align}
- \ee^{\pm2gV^aT^a}
-\mapsto{}& \ee^{\pm2V}\notag\\
-  ={}& 1 \mp 2\theta\Sm\btheta A_\mu(x)
-         \mp 2\ii\left[\bthth\theta\lambda(x)-\thth\btheta\bar\lambda(x)\right]
-         + \thth\bthth\left[{\RED -}A^\mu(x) A_\mu(x) - D(x)\right]
-\end{align}
-Therefore, in $y^+$-basis,
-\begin{align}
- D_\alpha\ee^{-2V}
-={}&\pbib{}{\theta^\alpha}\Bigl\{
- 1 + 2\theta\Sm\btheta A_\mu
-   + 2\ii\left[\bthth\theta\lambda-\thth\btheta\bar\lambda\right]
-   + \thth\bthth\left[A^\mu A_\mu - D - \ii\Pm
- A^\mu\right]\Bigr\}\notag\\
-={}& 2(\Sm\btheta)_\alpha A_\mu
-   + 2\ii\bthth\lambda_\alpha - 4\ii\theta_\alpha\btheta\bar\lambda
-   + 2\theta_\alpha\bthth\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
-\end{align}
-\begin{align}
- \ee^{2V}D_\alpha\ee^{-2V}
-={}&\Bigl\{
- 1 - 2\theta\Sm\btheta A_\mu
-   - 2\ii\left[\bthth\theta\lambda-\thth\btheta\bar\lambda\right]\Bigr\}D_\alpha\ee^{-2V}\notag\\
-={}&
-     2(\Sm\btheta)_\alpha A_\mu
-   + 2\ii\bthth\lambda_\alpha - 4\ii\theta_\alpha\btheta\bar\lambda
-   + 2\theta_\alpha\bthth\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]\notag\\
-   & - 2\theta\Sm\btheta A_\mu\left[
-     2(\Sm\btheta)_\alpha A_\mu - 4\ii\theta_\alpha\btheta\bar\lambda
-     \right]\notag\\
-   & + 2\ii \theta\theta\btheta\bar\lambda\cdot2(\Sm\btheta)_\alpha A_\mu\notag\\
-={}& {\RED 2(\Sm\btheta)_\alpha A_\mu - 4\ii\theta_\alpha\btheta\bar\lambda}
-     + 2\theta_\alpha\bthth\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
-     + 2\ii\bthth\lambda_\alpha\notag\\
-  &  - 2A_\mu A_\nu\bthth\epsilon_{\alpha\gamma}(\theta\Sm\bSn)^\gamma
-     - 4\ii A_\mu\thth\bthth(\Sm\bar\lambda)_\alpha
-       \quad\text{\RED (in $y^+$-basis)}\\
-={}& {\BLUE 2(\Sm\btheta)_\alpha A_\mu
-     - 2\ii\bthth\epsilon_{\alpha\gamma}(\theta\Sn\bSm)^\gamma\Pn A_\mu
-     - 4\ii\theta_\alpha\btheta\bar\lambda-2\thth\bthth(\Sm\Pm\bar\lambda)_\alpha}\notag\\
-   & + 2\theta_\alpha\bthth\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
-     + 2\ii\bthth\lambda_\alpha\notag\\
-  &  - 2A_\mu A_\nu\bthth\epsilon_{\alpha\gamma}(\theta\Sm\bSn)^\gamma
-     - 4\ii A_\mu\thth\bthth(\Sm\bar\lambda)_\alpha\quad\text{\BLUE(in $y$-basis)}
-\end{align}
-In $y$-basis, $\bar D\bar D = 4\cdot\pbib{}{(\bthth)}$. Therefore,
-\begin{align}
- W_\alpha
-={}& -\frac14\bar D\bar D\ee^{2V}D_\alpha\ee^{-2V}\\
-={}&   2(A_\mu A_\nu+\ii\Pn A_\mu)(\Sn\bSm\theta)_\alpha
-     + 2\thth(\Sm\Pm\bar\lambda)_\alpha\notag\\
-   & - 2\theta_\alpha\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
-     - 2\ii\lambda_\alpha + 4\ii A_\mu\thth(\Sm\bar\lambda)_\alpha\quad\text{\BLUE(in $y$-basis)}\\
-={}&   2(A_\mu A_\nu+\ii\Pn A_\mu)(\Sn\bSm\theta)_\alpha
-     + 2\thth(\Sm\Pm\bar\lambda)_\alpha\notag\\
-   & - 2\theta_\alpha\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
-     - 2\ii\lambda_\alpha + 4\ii A_\mu\thth(\Sm\bar\lambda)_\alpha\notag\\
-   & - \ii\thth (\Sn\bSm\Sr\btheta)_\alpha
-       (\Pr A_\mu A_\nu + A_\mu\Pr A_\nu + \ii\Pn\Pr A_\mu)\notag\\
-   & + \ii\thth (\Sr\btheta)_\alpha
-       (\Pr A^\mu A_\mu + A^\mu\Pr A_\mu - \Pr D -\ii\Pm\Pr A^\mu)
-       \quad\text{(in $x$-basis)}\\
- W^\alpha
-={}&   2(A_\mu A_\nu+\ii\Pn A_\mu)(\theta\Sm\bSn)^\alpha
-     - 2\thth(\Pm\bar\lambda\bSm)^\alpha\notag\\
-   & - 2\theta^\alpha\left[A^\mu A_\mu - D - \ii\Pm A^\mu\right]
-     - 2\ii\lambda^\alpha - 4\ii A_\mu\thth(\bar\lambda\bSm)^\alpha\quad\text{\BLUE(in $y$-basis)}
-\end{align}
-\newpage
-\begin{align}
- W^\alpha W_\alpha\Big|_{\thth}
-={}&
-4(A_\mu A_\nu+\ii\Pn A_\mu)(A_\rho A_\sigma+\ii\Ps A_\rho)(\theta\Sm\bSn\Ss\bSr\theta)
-\notag\\&-4(A_\mu A_\nu+\ii\Pn A_\mu)[A^\mu A_\mu - D - \ii\Pm A^\mu](\theta\Sm\bSn\theta)
-\notag\\&+4\ii\thth(\Pm\bar\lambda\bSm\lambda)
-\notag\\&-4[A^\mu A_\mu - D - \ii\Pm A^\mu](A_\mu A_\nu+\ii\Pn A_\mu)(\theta\Sn\bSm\theta)
-\notag\\&+4\thth[A^\mu A_\mu - D - \ii\Pm A^\mu][A^\mu A_\mu - D - \ii\Pm A^\mu]
-\notag\\&+4\ii[A^\mu A_\mu - D - \ii\Pm A^\mu]\theta\lambda
-\notag\\&-4\ii(\lambda\Sn\bSm\theta)(A_\mu A_\nu+\ii\Pn A_\mu)
-\notag\\&-4\ii\thth(\lambda\Sm\Pm\bar\lambda)
-\notag\\&+8\thth\lambda^\alpha A_\mu(\Sm\bar\lambda)_\alpha
-\notag\\&-8\thth A_\mu(\bar\lambda\bSm\lambda)\notag\\
-={}& 4(\theta\Sm\bSn\Ss\bSr\theta)
-     [A_\mu A_\nu+\ii\Pn A_\mu][A_\rho A_\sigma+\ii\Ps A_\rho]
-\notag\\&-4(\theta\Sm\bSn\theta)
-    \Bigl\{A^\mu A_\mu - D - \ii\Pm A^\mu,A_\mu A_\nu+\ii\Pn A_\mu\Bigr\}
-\notag\\&+4\ii\thth(\Pm\bar\lambda\bSm\lambda - \lambda\Sm\Pm\bar\lambda)
-\notag\\&+4\thth[A^\mu A_\mu - D - \ii\Pm A^\mu][A^\mu A_\mu - D - \ii\Pm A^\mu]
-\notag\\&+8\thth\lambda^\alpha A_\mu(\Sm\bar\lambda)_\alpha
-\notag\\&-8\thth A_\mu(\bar\lambda\bSm\lambda)\quad\text{\BLUE(in $y$-basis)}\notag\\
-\leadsto{}
-  & 4(\Hmn\Hsr-\Hms\Hnr+\Hmr\Hns)
-     [A_\mu A_\nu+\ii\Pn A_\mu][A_\rho A_\sigma+\ii\Ps A_\rho]
-\notag\\&-4
-    \Bigl\{A^\mu A_\mu - D - \ii\Pm A^\mu,A^\nu A_\nu+\ii\Pn A^\nu\Bigr\}
-\notag\\&+4[A^\mu A_\mu - D - \ii\Pm A^\mu][A^\mu A_\mu - D - \ii\Pm A^\mu]
-\notag\\&+4\ii(\Pm\bar\lambda\bSm\lambda - \lambda\Sm\Pm\bar\lambda)
-         + 8\lambda^\alpha A_\mu(\Sm\bar\lambda)_\alpha
-         - 8 A_\mu(\bar\lambda\bSm\lambda)\notag\\
-={}& -2F^{\mu\nu}F_{\mu\nu} + 4(D+2\ii\Pm A^\mu)(D+2\ii\Pm A^\mu)\notag\\
-   & +4\ii(\Pm\bar\lambda\bSm\lambda - \lambda\Sm\Pm\bar\lambda)
-     +8\lambda^\alpha A_\mu(\Sm\bar\lambda)_\alpha -8 A_\mu(\bar\lambda\bSm\lambda),\\
-\bar W_\dalpha\bar W^\dalpha\Big|_{\bthth}
-={}& -2F^{\mu\nu}F_{\mu\nu} + 4(D-2\ii\Pm A^\mu)(D-2\ii\Pm A^\mu)\notag\\
-   & +4\ii(\Pm\lambda\Sm\bar\lambda - \bar\lambda\bSm\Pm\lambda)
-     +8\bar\lambda^\alpha A_\mu(\bSm\lambda)_\alpha -8 A_\mu(\lambda\Sm\bar\lambda),
-\end{align}
-where
-\begin{equation}
- F_{\mu\nu} = \Pm A_\nu - \Pn A_\mu + \ii[A_\mu,A_\nu]
-\end{equation}
-Defining the generators as
-\footnote{The last one is anomaly-free condition, yielding $\Tr T^aT^bT^c = \ii kgf^{abc}/2$.}
-\begin{align}
-  {T^a}^\dagger &= T^a,&
-  [T^a,T^b] &= \ii f^{abc}T^c,&
-  \Tr T^aT^b &= k\delta^{ab}\quad(k>0),&
-  \Tr(\{T^a,T^b\}T^c)&=0,
-\end{align}
-\begin{align}
- \frac{1}{16kg^2}\Tr\left(
- W^\alpha W_\alpha\Big|_{\thth}+\bar W_\dalpha\bar W^\dalpha\Big|_{\bthth}
- \right)
-={}& - \frac14 F^{a\mu\nu}F^a_{\mu\nu}
-     + \frac12 D^aD^a-2\Pm A^{a\mu}\Pn A^{a\nu}\notag\\
-   & - \frac12\ii\left(\lambda\Sm D_\mu\bar\lambda+\bar\lambda\bSm D_\mu\lambda\right)
-\end{align}
-Here
-\begin{align}
-  F^a_{\mu\nu} &= \Pm A^a_\nu - \Pn A^a_\mu - f^{abc}A^b_\mu A^c_\nu\\
-  D_\mu\lambda^a &= \Pm\lambda^a-gf^{abc}A^b_\mu\lambda^c\\
-  D_\mu\bar\lambda^a &= \Pm\bar\lambda^a-gf^{abc}A^b_\mu\bar\lambda^c
-\end{align}
-\newpage
-\paragraph{Interaction Terms}
-\begin{equation}
- \ee^{-2gV^aT^a}
-  = 1 + 2g\theta\Sm\btheta A^a_\mu T^a
-         + 2\ii g\bthth\theta\lambda^aT^a
-         - 2\ii g\thth\btheta\bar\lambda^aT^a
-         - \thth\bthth\left[g^2A^{a\mu} A^b_\mu T^aT^b + gD^aT^a\right]
-\end{equation}
-\begin{align}
-\Phi^\dagger\ee^{-2gV^aT^a}\Phi\Big|_{\theta^4}
-={}& \phi^*\thth\bthth\left[-g^2A^{a\mu} A^b_\mu T^aT^b - gD^aT^a\right]\phi\notag\\
-   &   + \sqrt2\phi^*\left[2\ii g\bthth\theta\lambda^aT^a\right]\theta\psi
-       + \sqrt2\btheta\bar\psi\left[- 2\ii g\thth\btheta\bar\lambda^aT^a\right]\phi\notag\\
-   &   + \ii\theta\Sm\btheta\left[\phi^*(2g\theta\Sm\btheta A^a_\mu T^a)\Pm\phi
-        -\Pm\phi^*(2g\theta\Sm\btheta A^a_\mu T^a)\phi\right]\notag\\
-   &   + 2\btheta\bar\psi\left[2g\theta\Sm\btheta A^a_\mu T^a\right]\theta\psi\notag\\
-   & + \thth\bthth\left[
-        F^*F+\frac14\phi^*\Psq\phi+\frac14\Psq\phi^*\phi
-        -\frac12\Pm\phi^*\Pm\phi
-        + \frac\ii2\Pm\bar\psi\bSm\psi
-        - \frac\ii2\bar\psi\bSm\Pm\psi\right]\notag\\
-\leadsto{}
-   &  F^*F - D_\mu\phi^* D^\mu\phi - \ii\bar\psi\bSm D_\mu\psi\notag\\
-   &  -gD^a(\phi^*T^a\phi) - \sqrt2\ii g\lambda^a(\phi^*T^a\psi)
-       + \sqrt2\ii g\bar\lambda^a(\bar\psi T^a\phi)
-\end{align}
-\TODO{計量により符号が異なるという噂……}
-\begin{align}
- D_\mu\phi   &= (\Pm-\ii gA^{a\mu}T^a)\phi\\
- D_\mu\phi^* &= \Pm\phi^*+\ii gA^a_\mu(\phi^*T^a)\\
- D_\mu\psi   &= (\Pm-\ii gA^a_\mu T^a)\psi
-\end{align}
 
 
 \clearpage
