@@ -1,0 +1,86 @@
+%#!platexmk CheatSheet.tex
+%%% Time-Stamp: <2011-03-05 19:04:02 misho>
+%%% 文字コードはShift-JISですよね
+
+\newcommand\ev{\expval}
+
+\section{Statistics}
+
+Histogram の階級数についてのSturgesの公式 $k\approx 1+\log_2 n$ （$n$:観測値の数）
+
+\paragraph{分布の代表値}
+\begin{align}
+ &\text{算術平均}\ \ol x := \frac1n\sum x_i,\quad
+  \text{幾何平均}\ x_G   := \left(\prod x_i\right)^{1/n},\quad
+  \text{調和平均}\ x_H   := n\left(\sum \frac1{x_i}\right)^{-1};\\
+ &\text{中央値，$n$分位点，最頻値，mid-range，……}
+\end{align}
+\paragraph{分布の散らばり}
+\begin{align}
+ &\text{平均偏差}\ d := \frac1n\sum\left|x_i-\ol x\right|, \quad
+  \text{標準偏差（分散）}\ S^2 := \frac1n\sum(x_i-\ol x)^2, \quad
+  \text{変動係数}\ C.V. := S_x/\ol x;\\
+ &\text{平均差}\ M.D. := \frac1{n^2}\sum_i\sum_j\left|x_i-x_j\right|, \quad
+  \text{Gini係数}\ G.I.:= \frac{M.D.}{2\ol x} = \frac1{2n^2\ol x}\sum_i\sum_j\left|x_i-x_j\right|;\\
+ &\text{Entropy}\ H = -\sum p_i\log p_i \quad\text{（$p$:相対頻度）}\quad
+  \text{… 一ヶ所集中$=0\le H \le 1=$等確率}\\
+ &\text{範囲，四分位偏差，……}
+\end{align}
+\paragraph{相関を表す量}
+\begin{align}
+ &\text{共分散}\    C_{xy}  :=\frac1n\sum(x_i-\ol x)(y_i-\ol y)&
+ &\text{相関係数}\   r_{xy}  :=\frac{C_{xy}}{S_xS_y}  \quad -1\le r_{xy} \le 1, \text{線型不変}\\
+ &\text{偏相関関数}\ r_{12;3}:=\frac{r_{12}-r_{13}r_{23}}{\sqrt{1-{r_{13}}^2}\sqrt{1-{r_{23}}^2}}&
+ &\text{系列相関関数}\ r_h:=\frac1{S_x}\sum_{i=1}^{n-h}\frac{(x_i-\ol x)(x_i+h-\ol x)}{n-h}
+\end{align}
+ \text{順位相関関数 … 順位の組 $\{R_i\}$，$\{R_i'\}$ の間の相関}
+\begin{align}
+ &\qquad \text{Spearman}:\
+     r\s S := 1 - \frac6{n(n^2-1)}\sum(R_i-R_i')^2\quad\text{（通常の相関関数）}\\
+ &\qquad \text{Kendall}:\ 
+     r\s K := \frac{\sum G_{ij}}{n(n-1)/2}\where
+       \text{$G_{ij}:=(i,j)$に対して同順なら$+1$，逆順なら$-1$}
+\end{align}
+
+\paragraph{条件付き確率}
+\begin{equation}
+  P(A|B)=\frac{P(A\cap B)}{P(B)}
+\end{equation}
+Bayesの定理: 事象$\{H_i\}$が互いに排反かつ全体を尽くしているとき，
+\begin{equation}
+ P(A)=\sum P(A\cap H_i) \quad \text{によって} \quad
+  P(H_i|A)=\frac{P(H_i)P(A|H_i)}{\sum_{k}P(H_k)P(A|H_k)}.
+\end{equation}
+
+相関係数の分布 （$\rho$:母集団の（真の）相関係数）
+\begin{equation}
+ f(r)=
+  \frac{ \left(1-\rho^2\right)^{(n-1)/2}\left(1-r^2\right)^{(n-4)/2}}
+       { \Gamma\left(\frac12\right) \Gamma\left(\frac{n-1}2\right) \Gamma\left(\frac{n-2}2\right) }
+\sum_{i=0}^\infty\frac{(2\rho r)^i}{i!}\left[\Gamma\left(\frac{n-1+i}2\right)\right]^2
+\end{equation}
+
+\paragraph{確率分布に対する Moment}
+\begin{align}
+ &\text{Moment }\mu_r:=\ev{X^r};\quad \mu'_r:=\left\langle(X-\mu)^r \right\rangle \qquad\quad
+  \text{標準化 moment }\alpha_r :=\left\langle(X-\mu)^r \right\rangle/\sigma^r\\
+ & \text{Moment母関数 }  M_X(t):=\ev{\exp(tX)}\then\mu_r=\nbib{}{t}{n}M_X(t)
+\end{align}
+\begin{align}
+ \text{期待値}  \ &\mu:=\mu_1;& \text{計算の便法}\colon\  \mu'_2&=\ev{X^2}-\mu^2\\
+ \text{分散}    \ &\sigma^2:=\mu'_2;\quad \text{標準偏差}\ \sigma:=\sqrt{\sigma^2};&
+ \mu'_3&=\ev{X^3}-3\mu\mu_2+2\mu^3\\
+ \text{歪度}    \ &C\s{skew}:=\alpha_3;\quad \text{尖度}    \ C\s{kurt}:=\alpha_4 - 3&
+ \mu'_4&=\ev{X^4}-4\mu\mu_3+6\mu^2\mu_2-3\mu^4
+\end{align}
+\paragraph{Chebyshevの不等式}
+いかなる確率変数に対しても，$\displaystyle P\Bigl(|X-\mu|\ge k\sigma\Bigr)\le\frac1{k^2}$.
+
+\paragraph{Stirlingの公式}
+\begin{equation}
+ \log n! = \left(n+\frac12\right)\log n - n + \frac{\log2\pi}2
+         + \frac1{12n}-\frac1{360n^3}+\frac1{1260n^5}-\frac1{1680n^7}+\frac1{1188n^9}+\Order(n^{-11})
+\end{equation}
+%%% Local Variables:
+%%% TeX-master: "CheatSheet.tex"
+%%% End:

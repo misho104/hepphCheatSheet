@@ -1,5 +1,5 @@
-%#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-23 03:51:59 misho>
+%#!platexmk CheatSheet.tex
+%%% Time-Stamp: <2011-03-08 06:49:01 misho>
 %%% •¶ŽšƒR[ƒh‚ÍShift-JIS‚Å‚·‚æ‚Ë
 
 \section{General Definitions and Tools}
@@ -13,6 +13,11 @@ Gamma Matrices     & $\{\Gm,\Gn\}:=2\Hmn;\quad \G5:=\ii\G0\G1\G2\G3=
                    & therefore $\{\Gm,\G5\}=0,(\G5)^2=1$.\\[1zw]
 Gamma Combinations & $1, \{\Gm\}, \{\sigma^{\mu\nu}\}, \{\Gm\G5\}, \G5;\quad
                       \sigma^{\mu\nu}:=\frac\ii2[\Gm,\Gn]=0\Big/\ii\Gm\Gn$\\
+Spinor $\epsilon$ and $\sigma$ matrices
+                   &$\epsilon^{12}=\epsilon^{\dot1\dot2}=\epsilon_{21}=\epsilon_{\dot2\dot1}=1$\\
+& $(\Sm)_{\alpha\dbeta} := (1,\vc\sigma)_{\alpha\dbeta},\quad
+ (\bSm)^{\dalpha\alpha} :=\epsilon^{\dalpha\dbeta}\epsilon^{\alpha\beta}(\Sm)_{\beta\dbeta}
+ =(1,-\vc\sigma)^{\dalpha\beta}$.\\
 \end{tabular}
 \begin{rightnote}
 \begin{tabular}{l@{ :\ \ \ }l}
@@ -49,6 +54,7 @@ Vector & $\Psq A^\mu=0;$&
 \end{tabular}
 \par\TODO{“ì•”--Goldstone; Gravitino}
 
+
 \subsubsection{Electromagnetism}
 \begin{tabular}{l@{ :\ \ \ }l}
 Electromagnetic Fields & $A^\mu=(\phi,\vc A)$
@@ -66,54 +72,138 @@ Our Old Language
 \subsection{Spinor Fields}
 
 
-\subsection{Chiral Notation}
+
+\begin{tabular}{l@{ :\ \ \ }ll@{\qquad}l@{ :\ \ \ }ll}
+Spinor      & $\xi_\alpha$,
+            & $  \xi^\alpha:=\epsilon^{\alpha\beta}\xi_\beta$; &
+Lorentz tr. & $\xi_\alpha \mapsto \Lambda\T_\alpha^\beta\xi_\beta$,
+            & $\xi^\alpha \mapsto \xi^\beta \Lambda^{-1}\T_\beta^\alpha$;
+\\
+            & $\bar\eta^\dalpha :=(\eta^\alpha)^*$
+            & $\bar\eta_\dalpha :=(\eta_\alpha)^*$
+           && $\bar\eta^\dalpha \mapsto \Lambda^\dagger{}^{-1}\T^\dalpha_\dbeta\bar\eta^\dbeta$,
+            & $\bar\eta_\dalpha \mapsto \bar\eta_\dbeta\Lambda^\dagger\T^\dbeta_\dalpha$.\\
+Kinetic term& \multicolumn{2}{@{}l}{$\ii\,\bar\xi\bSm\Pm\xi\quad (=\ii\,\eta\Sm\Pm\bar\eta\;)$}\\
+Mass term   & \multicolumn{4}{@{}l}{%
+               [Majorana] $-\frac12(m\s M\xi\xi+m\s M^*\bar\xi\bar\xi)$\qquad%
+               [Dirac]    $-(m\s D\xi\eta+m^*\s D\bar\xi\bar\eta)$}
+\end{tabular}
+
+\begin{tabular}{l@{ :\ \ \ }l}
+Dirac fermion    & $\Lag\s{Dirac}= \ii\,\bar\xi\bSm\Pm\xi + \ii\,\eta\Sm\Pm\bar\eta
+                               -m(\xi\eta+\bar\xi\bar\eta) = \ol\psi(\ii\Gm\Pm-m)\psi$\\
+Majorana fermion & $\Lag\s{Majorana}= \ii\,\bar\xi\bSm\Pm\xi -\frac m2(\xi\xi+\bar\xi\bar\xi)
+                         =\frac12\ol\psi\s M(\ii\Gm\Pm-m)\psi\s M$\\
+\end{tabular}
+
+\begin{tabular}{l@{ :\ \ \ }l}
+Charge conjugate & $\psi\suprm C:=C\trans{(\ol\psi)}$\quad[$(\psi\s M)\suprm C=\psi\s M$]\\
+\end{tabular}
+
+\subsubsection{Chiral Notation (Peskin)}
 \begin{tabular}{l@{ :\ \ \ }l}
 Gamma Matrices & $\Gm=\pmat{0&\Sm\\\bSm&0},\quad \G5=\pmat{-1&0\\0&1};\quad
                   P{}\s{L}\suprm{R}=\dfrac{1\pm\G5}2.$\\
-Dirac Field    & $\psi    =\pmat{\psi\s L\\\psi\s R}; \quad
-                  \bar\psi=\psi^\dagger\G0=\pmat{\psi\s R^\dagger&\psi\s L^\dagger}$\\
+Fields         & $\psi    =\pmat{\xi_\alpha\\\bar\eta^\dalpha}=\pmat{\psi\s L\\\psi\s R};$\quad
+                 $\ol\psi=\psi^\dagger\G0=\pmat{\eta^\alpha&\bar\xi_\dalpha}
+                          =\pmat{\psi\s R^\dagger&\psi\s L^\dagger}$;\quad
+                 $\psi\s M=\pmat{\xi_\alpha\\\bar\xi^\dalpha}$.\\
  & $u^s(p)=\pmat{\sqrt{p\cdot\sigma}\xi^s\\\sqrt{p\cdot\bar\sigma}\xi^s};\
     v^s(p)=\pmat{\sqrt{p\cdot\sigma}\eta^s\\-\sqrt{p\cdot\bar\sigma}\eta^s}$\\
- & $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$\\
-
-Weyl Equations & $\ii\bar\sigma\cdot\partial\psi_L=m\psi_R;\quad
-                  \ii\sigma\cdot\partial\psi_L=m\psi_L$\\
+ & $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$.\\
 \end{tabular}
 
-\begin{rightnote}
-\Subparagraph{Chiral Notation}
 \begin{tabular}{l@{ :\ \ \ }l}
-CPT transf.
- & $P\psi(t,\vc x) P = \eta\G0\psi(t,-\vc x)\quad(|\eta|^2=1)$\\
- & $T\psi(t,\vc x) T = \G1\G3\psi(-t,\vc x)\quad\text{(ignoring intrinsic phase)}$\\
- & $C\psi(t,\vc x) C = -\ii\G2\psi^*(t,\vc x) = -\ii\trans{(\bar\psi\G0\G2)}\quad
-                       \text{(V)}$\\
- & $\bar\psi\longrightarrow
-     P: \eta^*\bar\psi\G0\quad
-     T: -\bar\psi\G1\G3\quad
-     C: \ii\bar\psi^*\G2=-\ii\trans{(\G0\G2\psi)}$\\
+Charge conj.  & $C:=-\ii\G2\G0=\pmat{\epsilon_{\alpha\beta}&0\\0&\epsilon^{\dalpha\dbeta}}$\qquad
+                 with $C=-C^{-1}=-C^\dagger$,\quad $C^{-1}\Gm C=-\trans{\Gm}$.\\
+              & $\psi\suprm C=C\trans{(\ol\psi)}=-\ii\G2\psi^*=\pmat{\eta_\alpha\\\bar\xi^\dalpha}$,\quad
+$\ol\psi{}\suprm C=\trans\psi C=\ii\ol\psi{}^*\G2$\\
+Weyl Equations & $\ii\bar\sigma\cdot\partial\psi\s L=m\psi\s R;\quad
+                  \ii\sigma\cdot\partial\psi\s R=m\psi\s L$\\
+$z$-boost limit &
+Halt: $u^s=\sqrt{m}\spmat{\xi^s\\\xi^s}$, $v^s=\sqrt{m}\spmat{\eta^s\\-\eta^s}$;\\
+&Slow:
+$\sqrt{p\cdot\sigma}\simeq \sqrt m(1-\vipro v\sigma/2)$,
+$\sqrt{p\cdot\bar\sigma}\simeq \sqrt m(1+\vipro v\sigma/2)$;\\
+&Extreme:
+ $u^s=\sqrt{2E}\pmat{\spmat{0&0\\0&1}\xi^s\\\spmat{1&0\\0&0}\xi^s}$,
+ $v^s=\sqrt{2E}\pmat{\spmat{0&0\\0&1}\eta^s\\-\spmat{1&0\\0&0}\eta^s}$.
 \end{tabular}
-\end{rightnote}
+
+\subsubsection{Dirac Notation}
+\begin{tabular}{l@{ :\ \ \ }l}
+Gamma Matrices & $\hat\gamma^0=\pmat{1&0\\0&-1},\quad
+                  \hat\gamma^i=\pmat{0&\vc\sigma\\-\vc\sigma&0},\quad
+                  \hat\gamma_5=\pmat{0&1\\1&0}$;\qquad
+                  $\hat P{}\s{L}\suprm{R}=\dfrac{1\pm\G5}2.$\\
+Fields         &
+     $\hat\psi = \pmat{\psi\s A\\\psi\s B}
+     = \dfrac1{\sqrt2}\pmat{1&1\\-1&1}\psi
+     = \dfrac1{\sqrt2}\pmat{\psi\s L+\psi\s R\\-\psi\s L+\psi\s R}$;\quad
+      $\hat\psi\s M = \pmat{\psi\s A\\(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix})\psi\s A^*}$.\\
+     &$\hat{\ol\psi} = \hat\psi^\dagger\G0 = \pmat{\psi\s A^\dagger&-\psi\s B^\dagger}$\\
+ & $\hat u^s(p)=\pmat{\sqrt{p^0+m}\>\xi^s\\\frac{\vipro p\sigma}{\sqrt{p^0+m}}\xi^s};\
+    \hat v^s(p)=\pmat{-\frac{\vipro p\sigma}{\sqrt{p^0+m}}\eta^s\\-\sqrt{p^0+m}\>\eta^s}$\\
+ & $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$\\
+\end{tabular}
+
+\begin{tabular}{l@{ :\ \ \ }l}
+Charge conj. & $\hat C=-\ii\hat\gamma^2\hat\gamma^0
+ = \spmat{0&0&0&1\\0&0&-1&0\\0&-1&0&0\\1&0&0&0}$\qquad
+                 with $C=-C^{-1}=-C^\dagger$,\quad $C^{-1}\Gm C=-\trans{\Gm}$.\\
+$z$-boost limit &
+Halt: $\hat u^s=\sqrt{2m}\spmat{\xi^s\\0}$,\ $\hat v^s=-\sqrt{2m}\spmat{0\\\eta^s}$;\\
+&Slow:
+$\sqrt{p^0+m}\simeq\sqrt{2m}(1+\frac{v^2}8)$,\
+$\frac{\vipro p\sigma}{\sqrt{p^0+m}}\simeq\sqrt{\frac m2}(\vipro v\sigma)$;\\
+&Extreme: 
+  $\hat u^s=\sqrt E\pmat{\xi^s\\\spmat{1&0\\0&-1}\xi^s},\
+   \hat v^s=-\sqrt E\pmat{\spmat{1&0\\0&-1}\eta^s\\\eta^s}$\\
+\end{tabular}
 
 
-\subsubsection{CPT Table}
+\subsubsection{CPT transformations}
+\vspace{-24pt}
+\begin{flushright}
+{\note{Note that these expressions are valid under the above frameworks.}}
+\end{flushright}
+In the following, $CP$ means ``$P$, then $C$\ '' {\bf in algebraic sense}. Be careful to the order.
+\begin{align*}
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{P} \eta_P  \G0\psi(t,-\vc x)&
+ \ol\psi       &\xrightarrow[\hskip30pt]{P} \eta_P^* \ol\psi\G0\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{T} \eta_T C\G5\psi(-t,\vc x)&
+ \ol\psi       &\xrightarrow[\hskip30pt]{T} -\eta_T^* \ol\psi C\G5\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{C} \eta_C   C\ol\psi\trans{}(t,\vc x)=C\G0\psi^*&
+ \ol\psi       &\xrightarrow[\hskip30pt]{C} \eta_C^* \ol\psi^*\G0C = -\eta_C^*\trans{(C\psi)}\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CP} \eta_{CP}\trans{(\ol\psi \G0C)}&
+ \ol\psi       &\xrightarrow[\hskip30pt]{CP} \eta_{CP}^*\trans{(C\G0\psi)}\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CPT} \trans{(\ol\psi\G0\G5)}&
+ \ol\psi       &\xrightarrow[\hskip30pt]{CPT} \trans{(\G0\G5\psi)}&
+\end{align*}
+Note that $T$-transformation is anti-unitary, and $\eta_{CPT}=1$.
+Especially, photon is $(P,T,C)=(-,+,-)$.
+
+\hspace{1zw}
+
 \begin{tabular}[t]{c|c|c|cccccc}
  & $\phi$ & $A^\mu$
  & $\bar\psi\psi$ & $\bar\psi\Gm\psi$ & $\bar\psi\Smn\psi$
  & $\bar\psi\Gm\G5\psi$ & $\ii\bar\psi\G5\psi$ & $\Pm$\\\hline
 $P$
-  & $\eta\phi$ & $\eta$$-$$+$$+$$+$$A^\mu$
+  & $\phi$ & $-$$+$$+$$+$$A^\mu$
   &$+$&$+$$-$$-$$-$&($+$$-$$-$$-$)($+$$-$$-$$-$)&$-$$+$$+$$+$&$-$&$+$$-$$-$$-$\\
 $T$
-  & $\zeta\phi$ & $\zeta$$+$$-$$-$$-$$A^\mu$
+  & $\phi$ & $+$$-$$-$$-$$A^\mu$
   &$+$&$+$$-$$-$$-$&$-$($+$$-$$-$$-$)($+$$-$$-$$-$)&$+$$-$$-$$-$&$-$&$-$$+$$+$$+$\\
 $C$
-  & $\xi\phi^*$ & $\xi$$+$$A^{\mu*}$
+  & $\phi^*$ & $+$$A^{\mu*}$
   &$+$&$-$&$-$&$+$&$+$&$+$\\
+$CPT$
+  & $\phi^*$ & $-$$A^{\mu*}$
+  &$+$&$-$&$+$&$-$&$+$&$-$\\
 \end{tabular}\vspace{.5zw}
 
-($\eta\zeta\xi=1$;
- especially, photon $A^\mu$ is $(\eta,\zeta,\xi)=(-,+,-)$. )
+\newpage
 
 \twocolumn[
 \subsection{Feynman Rules}
@@ -192,6 +282,14 @@ $\epsilon^{ab}\epsilon^{cd}=\delta^{ac}\delta^{bd}-\delta^{ad}\delta^{bc}$
 
 $\sqrt{p_\mu\Sm}=\dfrac{p_\mu\Sm+m}{\sqrt{2(m+p^0)}}$
 
+$\sigma^i\sigma^j=\delta_{ij}\sigma^0+\ii\epsilon_{ijk}\sigma^k$
+
+$\Sm\Sn=\ii\epsilon^{0\mu\nu\rho}\Sr+\delta^\mu_0\Sn+\delta^\nu_0\Sm-\Hmn\sigma^0$
+
+$[\sigma^i,\sigma^j]=2\ii\epsilon_{ijk}\sigma^k$
+
+${\sigma^i,\sigma^j}=2\delta_{ij}$
+
 \subsubsection{Dirac Field Techniques}
 \begin{tabular}{l@{ :\ \ \ }l}
 Dirac Equations & $(\slashed p-m)u^s(p)=0;\quad(\slashed p+m)v^s(p)=0$\\
@@ -254,7 +352,7 @@ For  $P:=p'+p$ and $q:=p'-p$,
  \bar v(p')\Gm u(p) &= -\bar v(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] u(p)
 \end{align}
 
-\newpage
+
 \subsection{Loop Integrals and Dimensional Regularization}
 \subsubsection{Feynman Parameters}\vspace{-2.5zw}
 \begin{align}
