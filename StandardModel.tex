@@ -1,5 +1,5 @@
-%#!latexmk CheatSheet.tex
-%%% Time-Stamp: <2010-11-23 02:26:46 misho>
+%#!platexmk CheatSheet.tex
+%%% Time-Stamp: <2011-03-14 18:50:40 misho>
 %%% 文字コードはShift-JISですよね
 
 \section{Standard Model}
@@ -63,7 +63,7 @@ $ \Lag = \Lag\s{gauge}
 \end{split}\\
 %%% YUKAWA
 \Lag\s{湯川} =&\
- - \ol U_i(y_u)_{ij}H\PL Q_j + \ol D_i (y_d)_{ij}H^\dagger\PL Q_j + \ol E_i(y_e)_{ij}H^\dagger\PL
+ \ol U_i(y_u)_{ij}H\PL Q_j - \ol D_i (y_d)_{ij}H^\dagger\PL Q_j - \ol E_i(y_e)_{ij}H^\dagger\PL
  L_j + \Hc
 \end{align}
 We have no freedom to add other terms into this Lagrangian of the gauge theory. See Appendix~\ref{sec:no-other-term}.
@@ -197,14 +197,14 @@ G^{a\mu\nu}G^a_{\mu\nu} + (\partial Z)^{\mu\nu}(\partial Z)_{\mu\nu}+(\partial A
 \paragraph{湯川 Term}
 \begin{align}
  \Lag\s{湯川}=
-&-\ol U y_uH\PL Q + \ol D y_dH^\dagger\PL Q + \ol E y_eH^\dagger\PL L
+&\ol U y_uH\PL Q - \ol D y_dH^\dagger\PL Q - \ol E y_eH^\dagger\PL L
  + \Hc\notag\\
 =
-&- \ol U y_u\epsilon^{\alpha\beta}H^{\alpha}\PL Q^{\beta}
- + \ol D y_d{H^\dagger}^{\alpha}\PL Q^\alpha
- + \ol E y_e{H^\dagger}^{\alpha}\PL L^\alpha + \Hc\notag\\
+& \ol U y_u\epsilon^{\alpha\beta}H^{\alpha}\PL Q^{\beta}
+ -\ol D y_d{H^\dagger}^{\alpha}\PL Q^\alpha
+ -\ol E y_e{H^\dagger}^{\alpha}\PL L^\alpha + \Hc\notag\\
 =
-&\frac{v+h}{\sqrt2}\left(
+&-\frac{v+h}{\sqrt2}\left(
    \ol U y_u\PL Q^1
  + \ol D y_d\PL Q^2
  + \ol E y_e\PL L^2
@@ -220,7 +220,7 @@ Now we have the following Lagrangian (with omitting $\PL$ etc.):
 %Higgs
 \note{Higgs}&
 {\ +\ }\frac12(\partial_\mu h)^2
-{\ -}\frac12\mu^2h^2
+{\ -}\frac12{m_h}^2h^2
 {-}\sqrt{\frac\lambda2}m_h h^3
 {-}\frac14\lambda h^4
 \notag\\&
@@ -229,9 +229,9 @@ Now we have the following Lagrangian (with omitting $\PL$ etc.):
 {\ +\ }\frac{{g_2}^2}{4}W^+W^-h^2
 {\ +\ }\frac{{g_1}^2+{g_2}^2}{8}Z^2h^2\notag\\
 &
-{\ +\ }\frac{1}{\sqrt2}h\bar U y_u Q^1
+{\ -\ }\left(\frac{1}{\sqrt2}h\bar U y_u Q^1
 {\ +\ }\frac{1}{\sqrt2}h\bar D y_d Q^2
-{\ +\ }\frac{1}{\sqrt2}h\bar E y_e L^2\  +\  \Hc\notag\\[1zw]
+{\ +\ }\frac{1}{\sqrt2}h\bar E y_e L^2 \ +\ \Hc\right)\notag\\[1zw]
 %SU(3) Interactions
 \note{$\gSU(3)$}&
 {\ +\ }\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) Q
@@ -256,9 +256,9 @@ Now we have the following Lagrangian (with omitting $\PL$ etc.):
 &
 {\ +\ }\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) E\notag\\[.5zw]
 \note{湯川項}& % Yukawa
-{\ +\ }\frac{1}{\sqrt2}v\bar U y_u Q^1
+{\ -\ }\left(\frac{1}{\sqrt2}v\bar U y_u Q^1
 {\ +\ }\frac{1}{\sqrt2}v\bar D y_d Q^2
-{\ +\ }\frac{1}{\sqrt2}v\bar E y_e L^2\quad+\quad \Hc
+{\ +\ }\frac{1}{\sqrt2}v\bar E y_e L^2\ +\ \Hc\right)
 \end{align}
 \subsection{Mass Eigenstates}
 Here we will obtain the mass eigenstates of the fermions, by diagonalizing the 湯川 matrices.
@@ -280,7 +280,7 @@ Using this $\Psi$ and $\Phi$, we can rotate the basis as
 and now we have the 湯川 terms in mass eigenstates as
 \begin{equation}
   \Lag\s{湯川}
-= \left(1+\frac{1}{v}h\right)\left[
+= -\left(1+\frac{1}{v}h\right)\left[
    {(m_u)_i} \ol U_i \PL Q_i^1
  + {(m_d)_i} \ol D_i \PL Q_i^2
  + {(m_e)_i} \ol E_i \PL L_i^2 + \Hc\right].
@@ -328,14 +328,14 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 {\quad+\quad}{m_W}^2W^+W^-
 {\quad+\quad}\frac{{m_Z}^2}2Z^2
 \notag\\&
-{\quad+\quad}\bar U M_u \PL Q^1
-{\quad+\quad}\bar D M_d \PL Q^2
-{\quad+\quad}\bar E M_e \PL L^2\quad+\quad \Hc
+{\quad-\quad}\left(\bar U M_u \PL Q^1
+{\ +\ }\bar D M_d \PL Q^2
+{\ +\ }\bar E M_e \PL L^2\ +\ \Hc\right)
 \notag\\[.5zw]
 %Higgs
 \note{Higgs Field}&
 {\quad+\quad}\frac12(\partial_\mu h)^2
-{\quad-}\frac12\mu^2h^2
+{\quad-}\frac12{m_h}^2h^2
 {-}\sqrt{\frac\lambda2}m_h h^3
 {-}\frac14\lambda h^4\notag\\
 \note{Higgsとの結合}&
@@ -344,9 +344,9 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 {\quad+\quad}\frac{{g_2}^2}{4}W^+W^-h^2
 {\quad+\quad}\frac{{g_1}^2+{g_2}^2}{8}Z^2h^2\notag\\
 &
-{\quad+\quad}\frac1v\bar U M_u \PL Q^1h
-{\quad+\quad}\frac1v\bar D M_d \PL Q^2h
-{\quad+\quad}\frac1v\bar E M_e \PL L^2h\quad +\quad \Hc\notag\\[1zw]
+{\quad-\quad}\left(\frac1v\bar U M_u \PL Q^1h
+{\ +\ }\frac1v\bar D M_d \PL Q^2h
+{\ +\ }\frac1v\bar E M_e \PL L^2h\ +\ \Hc\right)\notag\\[1zw]
 %SU(3) Interactions
 \note{$\gSU(3)$および微分項}&
 {\quad+\quad}\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) \PL Q
@@ -390,8 +390,8 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 & + L\s L^\dagger\ii\bar\sigma^\mu\left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right)L\s L\notag\\
 & + E\s R^\dagger\ii\sigma^\mu\left(\partial_\mu+\ii g_1B_\mu\right)E\s R\notag\\
 & % Yukawa
- + U^\dagger\s R y_uHQ\s L + D^\dagger\s R y_dH^\dagger Q\s L +
- E^\dagger \s R y_eH^\dagger L\s L + \Hc\notag\\
+ -\left(U^\dagger\s R y_uHQ\s L + D^\dagger\s R y_dH^\dagger Q\s L +
+ E^\dagger \s R y_eH^\dagger L\s L + \Hc\right)\notag\\
 =& \text{(Higgs terms)} + \text{(Gauge fields strength)}\notag\\
 &
 + \ii Q\s L^\dagger\bar\sigma^\mu\partial_\mu Q\s L
@@ -418,8 +418,8 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 -        E\s R^\dagger\bar\sigma^\mu B_\mu E\s R
 \right)\notag\\
 & % Yukawa
- + U^\dagger\s R y_uHQ\s L + D^\dagger\s R y_dH^\dagger Q\s L +
- E^\dagger \s R y_eH^\dagger L\s L + \Hc
+ - \left(U^\dagger\s R y_uHQ\s L + D^\dagger\s R y_dH^\dagger Q\s L +
+ E^\dagger \s R y_eH^\dagger L\s L + \Hc\right)
 \end{align}
 であり，そして最終的には
 \begin{align}
@@ -438,11 +438,11 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 +D\s R^\dagger\bar\sigma^\mu G_\mu D\s R
 \right)\notag\\
 &
-+m_u(u\s R^\dagger u\s L+u\s L^\dagger u\s R)+\text{(quarks)}
-+m_e(e\s R^\dagger e\s L+e\s L^\dagger e\s R)+\text{(leptons)}
+-m_u(u\s R^\dagger u\s L+u\s L^\dagger u\s R)-\text{(quarks)}
+-m_e(e\s R^\dagger e\s L+e\s L^\dagger e\s R)-\text{(leptons)}
 \notag\\&
-+\frac{m_u}v(u\s R^\dagger u\s L+u\s L^\dagger u\s R)h + \text{(quarks)}
-+\frac{m_e}v(e\s R^\dagger e\s L+e\s L^\dagger e\s R)h + \text{(leptons)}
+-\frac{m_u}v(u\s R^\dagger u\s L+u\s L^\dagger u\s R)h - \text{(quarks)}
+-\frac{m_e}v(e\s R^\dagger e\s L+e\s L^\dagger e\s R)h - \text{(leptons)}
 \notag\\
 &+
 \frac{g_2}{\sqrt2}\left[
