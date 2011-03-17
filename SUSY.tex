@@ -1,5 +1,5 @@
 %#!platexmk CheatSheet.tex
-%%% Time-Stamp: <2011-03-14 21:00:45 misho>
+%%% Time-Stamp: <2011-03-16 20:42:09 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
@@ -610,7 +610,7 @@ V\suprm{RPV}_{\text{\cancel{SUSY}}}&=
  \left(B_i\Hu L_i + \frac12A_{ijk}L_iL_j\bE_k+A'_{ijk}L_iQ_j\bD_k
        +\frac12A''_{ijk}\bU_i\bD_j\bD_k+\Hc\right) 
 \\&\qquad + \left(C^1_{ijk}L_i^*Q_j\bU_k + C^2_i\Hu^*\Hd\bE_i + C^3_{ijk}\bD^*_i\bU_j\bE_k+\frac12C^4_{ijk}\bD^*_iQ_jQ_k+\Hc\right)
-\notag\\&\qquad + \left(m^2_{Li}\Hd^*L_i+\Hc\right)\hspace{200pt}
+\notag\\&\qquad + \left(M^2_{Li}\Hd^*L_i+\Hc\right)\hspace{200pt}
 \text{\small with $C^4_{ijk}=C^4_{ikj}$.}\notag
 \end{align}
 
@@ -808,33 +808,77 @@ V\suprm{RPV}_{\text{\cancel{SUSY}}}&=
  \left(B_i\Hu L_i + \frac12A_{ijk}L_iL_j\bE_k+A'_{ijk}L_iQ_j\bD_k
        +\frac12A''_{ijk}\bU_i\bD_j\bD_k+\Hc\right) 
 \\&\qquad + \left(C^1_{ijk}L_i^*Q_j\bU_k + C^2_i\Hu^*\Hd\bE_i + C^3_{ijk}\bD^*_i\bU_j\bE_k+\frac12C^4_{ijk}\bD^*_iQ_jQ_k+\Hc\right)
-\notag\\&\qquad + \left(m^2_{Li}\Hd^*L_i+\Hc\right)\notag
+\notag\\&\qquad + \left(M^2_{Li}\Hd^*L_i+\Hc\right)\notag
 \end{align}
 
 
 
-\paragraph{$F$-term Scalar Potential with $R$-parity}
+\paragraph{Full Potential (Verbose)}
+\subparagraph{With $R$-parity}
 \begin{align}
- V^F_{\Hu}&=
- |\mu|^2\left(|\Hd|^2+|\Hu|^2\right)
-\notag\\&\qquad
- - \left(\mu^*\Hd^*Qy^u\bU + \mu^*\Hu^*Qy^d\bD + \mu^*\Hu^*Ly^e\bE + \Hc\right)
-\notag\\&\qquad
- + |\Hu|^2|y^u_{ij}\bU_j|^2 +|\Hd|^2|y^d_{ij}\bD_j|^2 +|\Hd|^2(\bE^*y^{e\dagger}y^e\bE)
-\\&\qquad
- + \sum_a\Bigl(|Q^ay^u\bU|^2 + |Q^ay^d\bD|^2+|L^ay^e\bE|^2\Bigr)
-\notag\\&\qquad
-+\Bigl[
-(Qy^d\bD)^*(Ly^e\bE) - y^{u*}_{ij}y^d_{ik} \Hu^*\Hd\bU_j^*\bD_k +\Hc
-\Bigr]
-\notag\\&\qquad
-+\epsilon^{ab}\epsilon^{cd}\left[
- y^{u*}_{ji}y^u_{ki}H\s u^{a*}H\s u^cQ_j^{b*}Q_k^d
-+y^{d*}_{ji}y^d_{li}H\s d^{a*}H\s d^cQ_j^{b*}Q_l^d
-+y^{e*}_{ji}y^e_{li}H\s d^{a*}H\s d^cL^{*b}_jL_l^d
-+\Hc\right]
-\notag
+\begin{split}
+ V\s{full}\suprm{RPC}&=
+    \frac12\left(M_3\tilde g\tilde g+M_2\tilde W\tilde W+M_1\tilde B\tilde B+\Hc\right)
+\\&\quad
++\left(Q^*m_Q^2Q+L^*m_L^2L+\bU^* m_\bU^2\bU + \bD^* m_\bD^2\bD + \bE^* m_\bE^2\bE\right)
+\\&\quad
++\left(|\mu|^2 + m^2_\Hu \right) |\Hu|^2 + \left(|\mu|^2+m^2_\Hd\right)|\Hd|^2
++\left( B\Hu\Hd+\Hc\right)
+\\&\quad
++\left[\left(-\mu^*y^u\Hd^*-A^u\Hu-C^u\Hd^*\right)_{ij}Q_i\bU_j+\Hc\right]
+\\&\quad
++\left[\left(-\mu^*y^d\Hu^*+A^d\Hd+C^d\Hu^*\right)_{ij}Q_i\bD_j+\Hc\right]
+\\&\quad
++\left[\left(-\mu^*y^e\Hu^*+A^e\Hd+C^e\Hu^*\right)_{ij}L_i\bE_j+\Hc\right]
+\\&\quad
+ + |\Hu|^2|y^u_{ij}\bU_j|^2 +|\Hd|^2|y^d_{ij}\bD_j|^2 +|\Hd|^2|y^e_{ij}\bE_j|^2
+ + |\Hu|^2|Qy^u|^2 + |\Hd|^2|Qy^d|^2 + |\Hd|^2|Ly^e|^2
+\\&\quad
+  + \sum_a\Bigl(|Q^ay^u\bU|^2 + |Q^ay^d\bD|^2+|L^ay^e\bE|^2\Bigr)
+\\&\quad
++\Bigl[(Qy^d\bD)^*(Ly^e\bE) - y^{u*}_{ij}y^d_{ik} \Hu^*\Hd\bU_j^*\bD_k +\Hc\Bigr]
+\\&\quad
+-\left[
+ y^{u*}_{ik}y^u_{jk}(H\s u^* Q_j)(Q_i^* \Hu)
++y^{d*}_{ik}y^d_{jk}(H\s d^* Q_j)(Q_i^* \Hd)
++y^{e*}_{ik}y^e_{jk}(H\s d^* L_j)(L_i^* \Hd)
+\right]
+\\&\quad
++\frac{g_3^2}2\left\{
+ \sum_{\alpha=1}^8\sum_{i=1}^3\left[
+  \sum_{a=1,2}Q_i^{a*}(t^\alpha)Q_i^{a}
+- \bU_i^{*}(t^\alpha)\bU_i
+- \bD_i^{*}(t^\alpha)\bD_i
+\right]\right\}^2
+\\&\quad
++\frac{g_2^2}2
+ \left[
+  \sum_{i=1}^3\sum_{x=1}^3 Q_i^{x*}(T^\alpha)Q_i^{x}
++ \sum_{i=1}^3 L_i^{*}(T^\alpha) L_i
++ \Hu^{*}(T^\alpha)\Hu
++ \Hd^{*}(T^\alpha)\Hd
+\right]^2
+\\&\quad
++\frac{g_1^2}2\left[
+  \sum_i\left(\frac16|  Q_i |^2
+- \frac12|  L_i |^2
+- \frac23|\bU_i |^2
++ \frac13|\bD_i |^2
++        |\bE_i |^2\right)
++ \frac12|\Hu   |^2
+- \frac12|\Hd   |^2
+\right]^2
+\end{split}
 \end{align}
+
+\subparagraph{With Bilinear $R$-parity Violation}
+\begin{align}
+ V^F_{\Hu} &  +\!\! = \sum_a|\mu_iL_i^a|^2 + \Bigl[\mu^*\mu_i\Hd^*L_i +\Hc \Bigr]\\
+ V^F_{L}   &  +\!\! = |\mu_i|^2|\Hu|^2 + \Bigl[\mu_i^*y^e_{ij}\bE_j\Hu^*\Hd+\Hc\Bigr]\\
+V\suprm{RPV}_{\text{\cancel{SUSY}}}&= \left(B_i\Hu L_i + M^2_{Li}\Hd^*L_i + \Hc\right)
+\end{align}
+
+
 
 
 
