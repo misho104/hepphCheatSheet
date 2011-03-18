@@ -1,5 +1,5 @@
 %#!platexmk CheatSheet.tex
-%%% Time-Stamp: <2011-03-16 20:42:09 misho>
+%%% Time-Stamp: <2011-03-18 11:56:12 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{Supersymmetry for $\eta=\diag(+,-,-,-)$}
@@ -290,22 +290,22 @@ $\sigma$ matrices& $
  \\& + \frac\ii2\thth\left[M(x)+\ii N(x)\right]
      - \frac\ii2\bthth\left[M(x)-\ii N(x)\right]
      - \theta\Sm\btheta A_\mu(x)\notag
- \\& + \ii\thth\btheta\left[\bar\lambda(x)-\frac\ii2\bSm\Pm\chi(x)\right]
-     - \ii\bthth\theta\left[\lambda(x)-\frac\ii2\Sm\Pm\bar\chi(x)\right]
+ \\& + \thth\btheta\left[\bar\lambda(x)+\frac12\bSm\Pm\chi(x)\right]
+     + \bthth\theta\left[\lambda(x)-\frac12\Sm\Pm\bar\chi(x)\right]
      + \frac12\thth\bthth\left[D(x)-\frac12\Psq C(x)\right] \\
 ={}& C(y) + \ii\theta\chi(y) - \ii\btheta\bar\chi(y)\notag
  \\& + \frac\ii2\thth\left[M(y)+\ii N(y)\right]
      - \frac\ii2\bthth\left[M(y)-\ii N(y)\right]
      - \theta\Sm\btheta \left[A_\mu(y)-\ii\Pm C(y)\right]\notag
- \\& + \ii\thth\btheta\bar\lambda(y)
-     - \ii\bthth\theta\left[\lambda(y)-\ii\Sm\Pm\bar\chi(y)\right]
+ \\& + \thth\btheta\bar\lambda(y)
+     + \bthth\theta\left[\lambda(y)-\Sm\Pm\bar\chi(y)\right]
      + \frac12\thth\bthth\left[D(y)-\Psq C(y)-\ii\Pm A^\mu(y)\right] \\
 ={}& C(y^\dagger) + \ii\theta\chi(y^\dagger) - \ii\btheta\bar\chi(y^\dagger)\notag
  \\& + \frac\ii2\thth\left[M(y^\dagger)+\ii N(y^\dagger)\right]
      - \frac\ii2\bthth\left[M(y^\dagger)-\ii N(y^\dagger)\right]
      - \theta\Sm\btheta \left[A_\mu(y^\dagger)+\ii\Pm C(y^\dagger)\right]\notag
- \\& + \ii\thth\btheta\left[\bar\lambda(y^\dagger)-\ii\bSm\Pm\chi(y^\dagger)\right]
-     - \ii\bthth\theta\lambda(y^\dagger)
+ \\& + \thth\btheta\left[\bar\lambda(y^\dagger)+\bSm\Pm\chi(y^\dagger)\right]
+     + \bthth\theta\lambda(y^\dagger)
      + \frac12\thth\bthth\left[D(y^\dagger)-\Psq C(y^\dagger)+\ii\Pm A^\mu(y^\dagger)\right]
 \end{align}
 \subparagraph{Supersymmetric Gauge Transformation :  $V \rightarrow V+\Phi + \Phi^\dagger$}
@@ -321,17 +321,17 @@ Fixing this gauge breaks SUSY, but still allows the usual gauge transformation
  A_\mu \mapsto A_\mu + \Pm \alpha,\ \ \lambda\mapsto\lambda,\ \ D\mapsto D.
 \end{equation}
 \begin{align*}
- V  &= - \theta\Sm\btheta A_\mu(x) + \ii\thth\btheta\bar\lambda(x)
-       - \ii\bthth\theta\lambda(x) + \dfrac12\thth\bthth D(x) &
+ V  &= - \theta\Sm\btheta A_\mu(x) + \thth\btheta\bar\lambda(x)
+       + \bthth\theta\lambda(x) + \dfrac12\thth\bthth D(x) &
 V^2 &=\dfrac12\thth\bthth A_\mu A^\mu
 \\
-    &= - \theta\Sm\btheta A_\mu(y) + \ii\thth\btheta\bar\lambda(y) - \ii\bthth\theta\lambda(y) + \dfrac12\thth\bthth \left[D(y)-\ii\Pm A^\mu(y)\right]&
+    &= - \theta\Sm\btheta A_\mu(y) + \thth\btheta\bar\lambda(y) + \bthth\theta\lambda(y) + \dfrac12\thth\bthth \left[D(y)-\ii\Pm A^\mu(y)\right]&
 V^3 &= 0
 \\
-    &= - \theta\Sm\btheta A_\mu(y^\dagger) + \ii\thth\btheta\bar\lambda(y^\dagger) - \ii\bthth\theta\lambda(y^\dagger) + \dfrac12\thth\bthth \left[D(y^\dagger)+\ii\Pm A^\mu(y^\dagger)\right]
+    &= - \theta\Sm\btheta A_\mu(y^\dagger) + \thth\btheta\bar\lambda(y^\dagger) + \bthth\theta\lambda(y^\dagger) + \dfrac12\thth\bthth \left[D(y^\dagger)+\ii\Pm A^\mu(y^\dagger)\right]
 \\
- \ee^{kV}&=1- k\theta\Sm\btheta A_\mu(x) + k\ii\thth\btheta\bar\lambda
-       - k\ii\bthth\theta\lambda + \thth\bthth\left[\frac{k}2 D + \frac{k^2}4A_\mu A^\mu\right]
+ \ee^{kV}&=1- k\theta\Sm\btheta A_\mu(x) + k\thth\btheta\bar\lambda
+       + k\bthth\theta\lambda + \thth\bthth\left[\frac{k}2 D + \frac{k^2}4A_\mu A^\mu\right]
 \end{align*}
 
 \subparagraph{Field Strength}
@@ -345,9 +345,9 @@ V^3 &= 0
 \vspace{-4.5zw}\par
 \begin{align}
  W_{\alpha}
-&=  -\ii\lambda_\alpha(y) + \theta_\alpha D(y) + \ii(\Smn\theta)_\alpha F_{\mu\nu}(y) - \thth\left[\Sm\Pm\bar\lambda(y)\right]_\alpha\\
+&=  \lambda_\alpha(y) + \theta_\alpha D(y) + \ii(\Smn\theta)_\alpha F_{\mu\nu}(y) +\ii \thth\left[\Sm\Pm\bar\lambda(y)\right]_\alpha\\
  \bar W_{\dalpha}
-&=  \ii\bar\lambda_\dalpha(y^\dagger) + \btheta_\dalpha D(y^\dagger) + \ii(\btheta\bSmn)_\dalpha F_{\mu\nu}(y^\dagger) - \bthth\left[\Pm\lambda(y^\dagger)\Sm\right]_\dalpha
+&=  \bar\lambda_\dalpha(y^\dagger) + \btheta_\dalpha D(y^\dagger) + \ii(\btheta\bSmn)_\dalpha F_{\mu\nu}(y^\dagger) -\ii \bthth\left[\Pm\lambda(y^\dagger)\Sm\right]_\dalpha
 \end{align}
 \vspace{-4.5zw}\par
 \begin{align}
@@ -374,21 +374,21 @@ V^3 &= 0
 \end{align}
 
 \subsubsection{Abelian Case --- Gauge Theory}\vspace{-6pt}
-Here we turn on the coupling constant $g$. When $\Lambda=\lambda(y)+\sqrt2\theta\xi(y)+\thth K(y)$,
+Here we turn on the coupling constant $g$. When $\Lambda=\ii\lambda(y)+\sqrt2\theta\xi(y)+\thth K(y)$,
 \begin{align}
 \Lag&\ni\Phi^\dagger\ee^{2gqV}\Phi;&
  \Phi\mapsto \ee^{\ii qg \Lambda}\Phi,\quad& \Phi^\dagger\mapsto \Phi^\dagger\ee^{-\ii qg \Lambda^\dagger};& 2V&\mapsto 2V-\ii(\Lambda-\Lambda^\dagger)
 \end{align}
 \begin{align*}
-  \phi&\mapsto \ee^{\ii qg\lambda}\phi&
-  C   &\mapsto C+\nIm\lambda&
+  \phi&\mapsto \ee^{- qg\lambda}\phi&
+  C   &\mapsto C+\nRe \lambda&
 M+\ii N&\mapsto M+\ii N-K
 \\
-  \psi&\mapsto \ee^{\ii qg\lambda}\left(\psi+\ii qg\phi\cdot \xi\right)&
+  \psi&\mapsto \ee^{- qg\lambda}\left(\psi+\ii qg\phi\cdot \xi\right)&
   \chi&\mapsto \chi-\tfrac{1}{\sqrt2} \xi&
-A_\mu &\mapsto A_\mu+ \Pm(\nRe\lambda)
+A_\mu &\mapsto A_\mu- \Pm(\nIm\lambda)
 \\
-  F   &\mapsto \ee^{\ii qg\lambda}\left(F+\ii qg\phi K-\ii qg \xi\psi +\frac{(qg)^2}{2}\xi\xi\phi\right)&
+  F   &\mapsto \ee^{- qg\lambda}\left(F+\ii qg\phi K-\ii qg \xi\psi +\frac{(qg)^2}{2}\xi\xi\phi\right)&
 \lambda&\mapsto\lambda&
 D&\mapsto D\\
 \end{align*}\vspace{-45pt}
@@ -402,7 +402,7 @@ D&\mapsto D\\
  \Lag\s{gauge}&= \frac14 W^\alpha W_\alpha\Big|_\thth + \Hc&&
 \leadsto -\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2\\
  \Lag\s{chiral}&=\Phi^\dagger\ee^{2gqV}\Phi\Big|_{\thth\bthth}&&
-\leadsto F^*F+\Dm\phi^*\Dmu\phi+\ii\bar\psi\bSm\Dm\psi + qg D\phi^*\phi+\ii\sqrt2gq\left(\phi^*\lambda\psi-\phi\bar\lambda\bar\psi\right)\\
+\leadsto F^*F+\Dm\phi^*\Dmu\phi+\ii\bar\psi\bSm\Dm\psi + qg D\phi^*\phi-\sqrt2gq\left(\phi^*\lambda\psi+\phi\bar\lambda\bar\psi\right)\\
  \Lag\s{\cancel{CP}}&= \frac{\ii\theta}{32\pi^2}W^\alpha W_\alpha\Big|_\thth + \Hc&&
 \leadsto -\frac{\theta}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
 \end{align*}\vspace{-10pt}
@@ -445,8 +445,8 @@ We do not present the transformations of the components; note that $\lambda$ and
 
 \Subparagraph{Wess-Zumino Gauge}
 \begin{align}
-V^a  &= - \theta\Sm\btheta A^a_\mu(x) + \ii\thth\btheta\bar\lambda^a(x)
-       - \ii\bthth\theta\lambda^a(x) + \dfrac12\thth\bthth D^a(x)
+V^a  &= - \theta\Sm\btheta A^a_\mu(x) + \thth\btheta\bar\lambda^a(x)
+       + \bthth\theta\lambda^a(x) + \dfrac12\thth\bthth D^a(x)
 \\
  \ee^{kV^aT^a}&=1+kV^aT^a + \frac{k^2}4\thth\bthth A^a_\mu A^{b\mu} T^aT^b
 \end{align}
@@ -504,12 +504,12 @@ $\Dm\bar\lambda
 \begin{align}
 \tilde W_\alpha
 &= -\frac1{8g}\bar D\bar D\ee^{-2g\tilde V}D_\alpha\ee^{2g\tilde V}
-& \bar D_\dbeta W_\alpha &= 0 & W_\alpha\mapsto \ee^{\ii g\tilde \Lambda}W_\alpha\ee^{-\ii g\lambda^\dagger}
+& \bar D_\dbeta W_\alpha &= 0 & W_\alpha\mapsto \ee^{\ii g\tilde \Lambda}W_\alpha\ee^{-\ii g\Lambda^\dagger}
 \end{align}\vspace{-10pt}
 \begin{equation}
- W_\alpha^a= -\ii\lambda^a_\alpha(y)
+ W_\alpha^a= \lambda^a_\alpha(y)
  + \theta_\alpha D^a(y)+\ii(\Smn\theta)_\alpha F^a_{\mu\nu}(y)
--\thth(\Sm\Dm\bar\lambda^a(y))_\alpha
++\ii\thth(\Sm\Dm\bar\lambda^a(y))_\alpha
 \end{equation}\vspace{-24pt}
 \begin{align}
  \Tr\tilde W^\alpha\tilde W_\alpha\Big|_\thth
@@ -533,7 +533,7 @@ D^aD^a+\ii\lambda^a\Sm\Dm\bar\lambda^a+\ii\Dm\bar\lambda^a\bSm\lambda^a
 \\\Lag\s{matter}&=\Phi^\dagger_i[\ee^{2gV^aT^a}]_{ij}\Phi_j\Big|_{\thth\bthth}
 &&\leadsto
  \Dmu\phi_i^*\Dm\phi_i+\ii\bar\psi_i\bSm\Dm\psi_i+F^*_iF_i
-\notag\\&&&\qquad+ gD^a(\phi^*T^a\phi)+\sqrt2g\left(\ii\phi^*T^a\psi\lambda-\ii\bar\psi\bar\lambda T^a\phi\right)
+\notag\\&&&\qquad+ gD^a(\phi^*T^a\phi)-\sqrt2g\left(\phi^*T^a\psi\lambda+\bar\psi\bar\lambda T^a\phi\right)
 \end{align}
 
 \begin{align*}
@@ -695,7 +695,7 @@ V\suprm{RPV}_{\text{\cancel{SUSY}}}&=
 + \Dmu\phi_i^*\Dm\phi_i
 + \ii\bar\psi_i\bSm\Dm\psi_i
 + \ii\bar\lambda^a\bSm\Dm\lambda^a
- +\sqrt2g\left(\ii\phi^*T^a\psi\lambda-\ii\bar\psi\bar\lambda T^a\phi\right)
+- \sqrt2g\left(\phi^*T^a\psi\lambda+\bar\psi\bar\lambda T^a\phi\right)
 \\\Lag_{\text{K;\,\cancel{CP}}} &=
 -\frac1{64\pi^2}\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}^aF_{\rho\sigma}^a
 \\\Lag\s{scalar}&=-\left(\sum V^F+\sum V^D+\sum V^{\cancel{SUSY}}\right)
