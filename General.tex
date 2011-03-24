@@ -1,5 +1,5 @@
 %#!platexmk CheatSheet.tex
-%%% Time-Stamp: <2011-03-08 06:49:01 misho>
+%%% Time-Stamp: <2011-03-25 04:04:45 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{General Definitions and Tools}
@@ -328,14 +328,32 @@ M^{\mu\nu}M^{\rho\sigma*}
 \end{equation}
 \note{See Sec.~\ref{Sec:Verbose:PolarizationSum} for verbose information.}
 
+\subsubsection{Fierz transformations}
+For Dirac spinors $a,b,c,d$,\par
+\begin{minipage}{0.32\textwidth}
+\begin{align*}
+S(a,b;c,d) &:= (\bar a b)(\bar c d);\\
+V(a,b;c,d) &:= (\bar a \Gm b)(\bar c \Gmd d);\\
+T(a,b;c,d) &:= \frac12(\bar a \Smn b)(\bar c \sigma_{\mu\nu} d);\\
+A(a,b;c,d) &:= (\bar a \Gm\G5 b)(\bar c\Gmd\G5 d);\\
+P(a,b;c,d) &:= (\bar a \G5 b)(\bar c \G5 d);\\
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.654\textwidth}
+\begin{align*}
+ \pmat{S(a,b;c,d)\\V(a,b;c,d)\\T(a,b;c,d)\\A(a,b;c,d)\\P(a,b;c,d)}&=
+\frac14\pmat{1&1&1&-1&-1\\4&-2&0&-2&4\\6&0&-2&0&-6\\-4&-2&0&-2&-4\\-1&1&-1&-1&1}
+ \pmat{S(a,d;c,b)\\V(a,d;c,b)\\T(a,d;c,b)\\A(a,d;c,b)\\P(a,d;c,b)}
+\end{align*}
+\end{minipage}
 
-\subsubsection{Fierz identities}
-For Dirac spinors $a,b,c,d$ and their left-handed projections $a\s L:=
-P\s La$ etc.,
-\begin{equation}
-  (\bar a\s L\Gm b\s L)(\bar c\s L\Gmd d\s L)=
- -(\bar a\s L\Gm d\s L)(\bar c\s L\Gmd b\s L)
-\end{equation}
+Also defining $V\s{LR}(a,b;c,d) := (\bar a \Gm\PL b)(\bar c\Gmd\PR d)$ and so on,
+\begin{align}
+ V\s{LL}(a,b;c,d) &= - V\s{LL}(a,d;c,b)&
+ S\s{RL}(a,b;c,d) &= \frac14\left[V\s{LR}(a,d;b,c)-A\s{LR}(a,d;b,c)\right]\\
+ V\s{RR}(a,b;c,d) &= - V\s{RR}(a,d;c,b)&
+ S\s{LR}(a,b;c,d) &= \frac14\left[V\s{RL}(a,d;b,c)-A\s{RL}(a,d;b,c)\right]
+\end{align}
 Here we can create another equations using
 \begin{equation}
  (\Sm)_{\alpha\beta}(\Smd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta};
@@ -352,6 +370,19 @@ For  $P:=p'+p$ and $q:=p'-p$,
  \bar v(p')\Gm u(p) &= -\bar v(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] u(p)
 \end{align}
 
+\subsubsection{Noether current}
+\begin{tabular}{l@{ :\ \ \ }l}
+Infinitesimal transformation & $\phi(x)\mapsto \phi'(x):=\phi(x)+\alpha\Delta\phi(x)$\\
+Correspondent transformation & $\alpha\Delta\Lag = \alpha\Pm\left(\pdiff{\Lag}{(\Pm\phi)}\Delta\phi\right)+\cancel{\alpha\left[\pdiff\Lag\phi-\Pm\left(\pdiff\Lag{(\Pm\phi)}\right)\right]\Delta\phi}$\\
+                             & So, defining\quad $\alpha\Pm\mathcal J^\mu(x):=\Lag'(x)-\Lag(x)$,\\
+Noether current              & $j^\mu(x):=\pbib\Lag{(\Pm\phi)}\Delta\phi-\mathcal J^\mu$;\qquad
+                               $\Pm j^\mu(x)=0$\\
+Noether charge               & $Q:=\int j^0\dd^3x$\\
+Energy-momentum tensor       & $T\T^\mu_\nu=\Pm\Lag{(\Pm\phi)}\Pn\phi-\Lag\delta^\mu_\nu$;\quad
+$\mathcal H=T^{00}$,\quad $\mathcal P^i =T^{0i}$.\\
+&$T\T^\mu_\nu$ is the variation along $\mu$ in respect to the modification $a^\nu$.\\
+\end{tabular}
+\newpage
 
 \subsection{Loop Integrals and Dimensional Regularization}
 \subsubsection{Feynman Parameters}\vspace{-2.5zw}
@@ -457,8 +488,6 @@ To compute the $S$-matrix in a physical region choose the correct branch
 
 \TODO{TODO:}
 \begin{itemize}
- \item Fierz Transf.
- \item Noether current
  \item Majorana Ferminos
  \item Feynman Rules(A.1)
 \end{itemize}
