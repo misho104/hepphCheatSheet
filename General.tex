@@ -1,5 +1,5 @@
 %#!platexmk CheatSheet.tex
-%%% Time-Stamp: <2011-03-25 04:04:45 misho>
+%%% Time-Stamp: <2011-03-30 20:43:35 Misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{General Definitions and Tools}
@@ -483,8 +483,25 @@ To compute the $S$-matrix in a physical region choose the correct branch
   p_1\cdot p_2= \frac{M^2-\left({m_1}^2+{m_2}^2\right)}2.\notag
 \end{align}
 
-
-
+\Paragraph{Kinematics of Collision (Same Mass)}
+\begin{minipage}{155pt}
+\mygraphicinc{graphics/collision.eps}{150pt}
+\end{minipage}
+\begin{minipage}{280pt}
+\begin{align*}
+ \vnorm p ^2 &= E^2-m_A^2 & \vipro pk &=\vnorm p \vnorm k\cos\theta\\
+ \vnorm k ^2 &= E^2-m_B^2\\
+ p_1 \cdot p_2&=2E^2-m_A^2 & p_1\cdot k_1  &= p_2 \cdot k_2 = E^2-\vipro pk\\
+ k_1 \cdot k_2&=2E^2-m_B^2 & p_1 \cdot k_2 &= p_1 \cdot k_2 = E^2+\vipro pk\\
+\end{align*}
+\end{minipage}\vskip-20pt
+\begin{align*}
+&& (p_1+p_2)^2&= (k_1+k_2)^2=4E^2\\
+ (p_1-p_2)^2&=-4(E^2-m_A^2)&
+ (p_1-k_1)^2&=(p_2-k_2)^2 = -(2E^2-m_A^2-m_B^2)+2\vipro pk\\
+ (k_1-k_2)^2&=-4(E^2-m_B^2)&
+ (p_1-k_2)^2&=(p_2-k_1)^2 = -(2E^2-m_A^2-m_B^2)-2\vipro pk
+\end{align*}
 
 \TODO{TODO:}
 \begin{itemize}
