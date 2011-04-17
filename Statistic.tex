@@ -1,8 +1,9 @@
 %#!platexmk CheatSheet.tex
-%%% Time-Stamp: <2011-03-05 19:04:02 misho>
+%%% Time-Stamp: <2011-04-17 21:55:50 misho>
 %%% 文字コードはShift-JISですよね
 
 \newcommand\ev{\expval}
+\newcommand\func[2]{\mathop{\mathrm{#1}}{}_{[#2]}}
 
 \section{Statistics}
 
@@ -81,6 +82,68 @@ Bayesの定理: 事象$\{H_i\}$が互いに排反かつ全体を尽くしているとき，
  \log n! = \left(n+\frac12\right)\log n - n + \frac{\log2\pi}2
          + \frac1{12n}-\frac1{360n^3}+\frac1{1260n^5}-\frac1{1680n^7}+\frac1{1188n^9}+\Order(n^{-11})
 \end{equation}
+
+\subsection{離散型確率分布}
+\paragraph{超幾何分布}
+(A,B)が$(M,N-M)$個あるとき，$n$個取り出して$(k,n-k)$個である確率。非復元捕獲。
+\begin{align}
+P_k&=\frac{\combi MCk\ \combi {N-M}C{n-k}}{\combi NCn}&
+E=np,\quad&V=np(1-p)\frac{N-n}{N-1}&(p:=M/N)
+\end{align}
+\paragraph{二項分布}
+確率$p$で起きる事象が，$n$回のうち$k$回起こる確率。復元捕獲，Bernoulli試行。
+\begin{align}
+ P_k&=\combi nCk\cdot p^k(1-p)^{n-k}&
+E=np,\quad&V=np(1-p)&
+&\text{($n=1$\ :\ Bernoulli分布)}
+\end{align}
+\paragraph{Poisson分布}
+二項分布において$np=\lambda$一定で$n\to\infty,\ p\to0$として，
+$\displaystyle P_k=\frac{\ee^{-\lambda}\lambda^k}{k!}$,\quad$E=V=\lambda$.
+
+\paragraph{幾何分布}
+確率$p$の事象が起こるまでの{\bf 失敗}回数$k$の分布。
+\begin{align}
+ P_k&=p(1-p)^k&
+ E=\frac{1-p}{p},&\quad V=\frac{1-p}{p^2}.
+\end{align}
+\paragraph{負の二項分布(Pascal分布)}
+確率$p$の事象が$n$回起こるまでの{\bf 失敗}回数$k$の分布。(試行は$n+k$回)
+\begin{align}
+ P_k&=\combi{n+k-1}Ck\ p^n(1-p)^k&
+ E=\frac{k(1-p)}{p},&\quad V=\frac{k(1-p)}{p^2}.
+\end{align}
+\paragraph{一様分布}
+\begin{equation}
+ P_k=\frac{1}{N},\qquad
+ E=\frac{N+1}{2},\quad V=\frac{N^2-1}{12}.
+\end{equation}
+\newpage
+\subsection{連続型確率分布}
+\paragraph{正規分布}
+\begin{equation}
+ \func N{\mu,\sigma}(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[-\frac{(x-\mu)^2}{2\sigma^2}\right];
+  \qquad E=\mu,\quad V=\sigma^2.
+\end{equation}
+\paragraph{Gamma分布}
+\begin{equation}
+ \func{Ga}{\lambda,\alpha}(x)=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}\ee^{-\lambda x}\quad(x\ge0);
+  \qquad E=\frac{\alpha}{\lambda},\quad V=\frac{\alpha}{\lambda^2}.
+\end{equation}
+\paragraph{指数分布}
+\begin{equation}
+ \func{Ex}{\lambda}(x)=\func{Ga}{\lambda,1}(x)=
+\lambda\ee^{-\lambda x}\quad(x\ge0);
+  \qquad E=\frac1\lambda,\quad V=\frac1{\lambda^2}.
+\end{equation}
+\paragraph{$\chi^2$分布}
+\begin{equation}
+ \func{\chi^2}{n}(x)=\func{Ga}{1/2,n/2}(x)=\frac{1}{\Gamma(n/2)}
+\sqrt{\frac{x^{n-2}\ee^{-x}}{2^n}}
+\quad(x\ge0);
+  \qquad E=n,\quad V=2n.
+\end{equation}
+Sec.6.8までおわり。
 %%% Local Variables:
 %%% TeX-master: "CheatSheet.tex"
 %%% End:
