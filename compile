@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+our $TARGET = 'CheatSheet.tex';
+
+my $revision = `LANG=C svn info | grep "^Revision"`;
+chomp($revision);
+
+my @status = `LANG=C svn st | grep "tex\$" | grep "^M"`;
+if(@status > 0){ $revision .= "+"; }
+
+my $date = `date +%Y.%m.%d`;
+chomp($date);
+
+my $text = "\\\\def\\\\headermark{$date \\/ $revision}";
+
+my $before = `grep '\\\\def\\\\headermark' $TARGET`;
+unless($before =~ /$text/){
+   `sed -i .bak 's/\\\\def\\\\headermark.*/$text/' $TARGET`;
+}
+print `./compile
+
+exit 0;
