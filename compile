@@ -1,8 +1,12 @@
 #!/usr/bin/perl
 
 our $TARGET = 'CheatSheet.tex';
+$|=1;
 
-my $revision = `LANG=C svn info | grep "^Revision"`;
+my @revisionlist = `LANG=C svn info -R | grep "^Revision"`;
+my @revisionlist = sort(@revisionlist);
+my $revision = pop(@revisionlist);
+
 chomp($revision);
 
 my @status = `LANG=C svn st | grep "tex\$" | grep "^M"`;
@@ -17,6 +21,6 @@ my $before = `grep '\\\\def\\\\headermark' $TARGET`;
 unless($before =~ /$text/){
    `sed -i .bak 's/\\\\def\\\\headermark.*/$text/' $TARGET`;
 }
-print `./compile
+print `platexmk $TARGET`;
 
 exit 0;
