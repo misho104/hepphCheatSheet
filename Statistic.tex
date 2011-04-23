@@ -1,9 +1,9 @@
 %#!platexmk CheatSheet.tex
-%%% Time-Stamp: <2011-04-17 21:55:50 misho>
+%%% Time-Stamp: <2011-04-23 11:35:03 misho>
 %%% 文字コードはShift-JISですよね
 
 \newcommand\ev{\expval}
-\newcommand\func[2]{\mathop{\mathrm{#1}}{}_{[#2]}}
+\newcommand\func[1]{\mathop{\mathrm{#1}}}
 
 \section{Statistics}
 
@@ -122,28 +122,58 @@ $\displaystyle P_k=\frac{\ee^{-\lambda}\lambda^k}{k!}$,\quad$E=V=\lambda$.
 \subsection{連続型確率分布}
 \paragraph{正規分布}
 \begin{equation}
- \func N{\mu,\sigma}(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[-\frac{(x-\mu)^2}{2\sigma^2}\right];
+ \func N[\mu,\sigma]=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[-\frac{(x-\mu)^2}{2\sigma^2}\right];
   \qquad E=\mu,\quad V=\sigma^2.
-\end{equation}
-\paragraph{Gamma分布}
-\begin{equation}
- \func{Ga}{\lambda,\alpha}(x)=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}\ee^{-\lambda x}\quad(x\ge0);
-  \qquad E=\frac{\alpha}{\lambda},\quad V=\frac{\alpha}{\lambda^2}.
 \end{equation}
 \paragraph{指数分布}
 \begin{equation}
- \func{Ex}{\lambda}(x)=\func{Ga}{\lambda,1}(x)=
+ \func{Ex}[\lambda]=\func{Ga}[\lambda,1]=
 \lambda\ee^{-\lambda x}\quad(x\ge0);
   \qquad E=\frac1\lambda,\quad V=\frac1{\lambda^2}.
 \end{equation}
+\paragraph{Gamma分布}
+\begin{equation}
+ \func{Ga}[\lambda,\alpha]=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}\ee^{-\lambda x}\quad(x\ge0);
+  \qquad E=\frac{\alpha}{\lambda},\quad V=\frac{\alpha}{\lambda^2}.
+\end{equation}
 \paragraph{$\chi^2$分布}
 \begin{equation}
- \func{\chi^2}{n}(x)=\func{Ga}{1/2,n/2}(x)=\frac{1}{\Gamma(n/2)}
+ \func{\chi^2}[n]=\func{Ga}[1/2,n/2]=\frac{1}{\Gamma(n/2)}
 \sqrt{\frac{x^{n-2}\ee^{-x}}{2^n}}
 \quad(x\ge0);
   \qquad E=n,\quad V=2n.
 \end{equation}
-Sec.6.8までおわり。
+\paragraph{Beta分布}
+\begin{align}
+  \func{Be}[\alpha,\beta]=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}
+\quad(0<x<1),
+  \qquad E=\frac{\alpha}{\alpha+\beta},\quad V=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}.
+\\
+\where B(\alpha,\beta)=\int_0^1x^{\alpha-1}(1-x)^{\beta-1}\dd x=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
+\end{align}
+\paragraph{Cauchy分布}
+\begin{equation}
+ f[\alpha,\lambda]=\frac{\alpha}{\pi}\left[(x-\lambda)^2+\alpha^2\right];\qquad
+  \text{$E$と$V$は定義されない。}
+\end{equation}
+\paragraph{対数正規分布}所得の分布。$\log x$が正規分布$N[\mu,\sigma]$に従うとき，
+\begin{equation}
+ f[\mu,\sigma]=\frac1{\sqrt{2\pi}\sigma}\frac1x\exp\frac{-(\log x-\mu)^2}{2\sigma^2};\qquad
+E=\ee^{\mu+\sigma^2/2},\quad
+V=\ee^{2\mu+2\sigma^2}-\ee^{2\mu+\sigma^2}.
+\end{equation}
+\paragraph{Pareto分布}高額所得の分布。$E$と$V$はそれぞれ$a>1$, $a>2$でのみ定義される。
+\begin{equation}
+  f_{[a,x_0]}=\frac{a}{x_0}\left(\frac{x_0}{x}\right)^{a+1}\quad(x\ge x_0;\quad a>0);\qquad
+E=\frac{a x_0}{a-1},\qquad
+V=\frac{a x_0^2}{a-2}-\left(\frac{a x_0}{a-1}\right)^2.
+\end{equation}
+\paragraph{Weibull分布}$a>0$, $b>0$とする。
+\begin{equation}
+ f[a,b]=\frac{b}{a^b}x^{b-1}\exp\left[-\left(\frac xa\right)^b\right]\quad(x\ge0);\qquad
+E=a\Gamma\left(1+\frac1b\right),\quad
+V=a^2\left[\Gamma\Bigl(1+\frac2b\Bigr)-\left[\Gamma\Bigl(1+\frac1b\Bigr)\right]^2\right]
+\end{equation}
 %%% Local Variables:
 %%% TeX-master: "CheatSheet.tex"
 %%% End:
