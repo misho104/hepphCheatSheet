@@ -1,25 +1,34 @@
 #!/usr/bin/perl
 
-our $TARGET = 'CheatSheet.tex';
 $|=1;
 
-my @revisionlist = `LANG=C svn info -R | grep "^Revision"`;
-my @revisionlist = sort(@revisionlist);
-my $revision = pop(@revisionlist);
+our $TARGET = $ARGV[0];
 
-chomp($revision);
+$TARGET =~ s/\.tex$//im;
+$TARGET .= ".tex";
+if($TARGET eq '' or not -f "$TARGET"){ print "TARGET NOT FOUND."; exit 1; }
 
-my @status = `LANG=C svn st | grep "tex\$" | grep "^M"`;
-if(@status > 0){ $revision .= "+"; }
+# 30ï™à»ì‡Ç»ÇÁâΩÇ‡ÇµÇ»Ç¢ÅI
+my @stat = stat $TARGET;
+if($stat[9] + 60*30 < time()){
+  my @revisionlist = `LANG=C svn info -R | grep "^Revision"`;
+  my @revisionlist = sort(@revisionlist);
+  my $revision = pop(@revisionlist);
 
-my $date = `date +%Y.%m.%d`;
-chomp($date);
+  chomp($revision);
 
-my $text = "\\\\def\\\\headermark{$date \\/ $revision}";
+  my @status = `LANG=C svn st | grep "tex\$" | grep "^M"`;
+  if(@status > 0){ $revision .= "+"; }
 
-my $before = `grep '\\\\def\\\\headermark' $TARGET`;
-unless($before =~ /$text/){
-   `sed -i .bak 's/\\\\def\\\\headermark.*/$text/' $TARGET`;
+  my $date = `date +%Y.%m.%d`;
+  chomp($date);
+
+  my $text = "\\\\def\\\\headermark{$date \\/ $revision}";
+
+  my $before = `grep '\\\\def\\\\headermark' $TARGET`;
+  unless($before =~ /$text/){
+     `sed -i.bak 's/\\\\def\\\\headermark.*/$text/' $TARGET`;
+  }
 }
 print `platexmk $TARGET`;
 
