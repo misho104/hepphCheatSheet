@@ -1,5 +1,5 @@
 %#!./compile CheatSheet
-%%% Time-Stamp: <2011-03-30 20:43:35 Misho>
+%%% Time-Stamp: <2011-05-10 09:19:35 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{General Definitions and Tools}
@@ -115,7 +115,7 @@ Fields         & $\psi    =\pmat{\xi_\alpha\\\bar\eta^\dalpha}=\pmat{\psi\s L\\\
 
 \begin{tabular}{l@{ :\ \ \ }l}
 Charge conj.  & $C:=-\ii\G2\G0=\pmat{\epsilon_{\alpha\beta}&0\\0&\epsilon^{\dalpha\dbeta}}$\qquad
-                 with $C=-C^{-1}=-C^\dagger$,\quad $C^{-1}\Gm C=-\trans{\Gm}$.\\
+                 $\begin{cases}-C=C^{-1}=C^\dagger=\trans{C}\\\phantom{-}C=C^*\end{cases}$, $C^{-1}\Gm C=-\trans{\Gm}$.\\
               & $\psi\suprm C=C\trans{(\ol\psi)}=-\ii\G2\psi^*=\pmat{\eta_\alpha\\\bar\xi^\dalpha}$,\quad
 $\ol\psi{}\suprm C=\trans\psi C=\ii\ol\psi{}^*\G2$\\
 Weyl Equations & $\ii\bar\sigma\cdot\partial\psi\s L=m\psi\s R;\quad
@@ -203,17 +203,141 @@ $CPT$
   &$+$&$-$&$+$&$-$&$+$&$-$\\
 \end{tabular}\vspace{.5zw}
 
+\subsubsection{Noether current}
+\begin{tabular}{l@{ :\ \ \ }l}
+Infinitesimal transformation & $\phi(x)\mapsto \phi'(x):=\phi(x)+\alpha\Delta\phi(x)$\\
+Correspondent transformation & $\alpha\Delta\Lag = \alpha\Pm\left(\pdiff{\Lag}{(\Pm\phi)}\Delta\phi\right)+\cancel{\alpha\left[\pdiff\Lag\phi-\Pm\left(\pdiff\Lag{(\Pm\phi)}\right)\right]\Delta\phi}$\\
+                             & So, defining\quad $\alpha\Pm\mathcal J^\mu(x):=\Lag'(x)-\Lag(x)$,\\
+Noether current              & $j^\mu(x):=\pbib\Lag{(\Pm\phi)}\Delta\phi-\mathcal J^\mu$;\qquad
+                               $\Pm j^\mu(x)=0$\\
+Noether charge               & $Q:=\int j^0\dd^3x$\\
+Energy-momentum tensor       & $T\T^\mu_\nu=\Pm\Lag{(\Pm\phi)}\Pn\phi-\Lag\delta^\mu_\nu$;\quad
+$\mathcal H=T^{00}$,\quad $\mathcal P^i =T^{0i}$.\\
+&$T\T^\mu_\nu$ is the variation along $\mu$ in respect to the modification $a^\nu$.\\
+\end{tabular}
+
 \newpage
 
 \twocolumn[
 \subsection{Feynman Rules}
 ]
 \input{feynman.tex}
-\TODO{vertexÇÕlagrangianÇÃ$\ii$î{}
+\vspace{5pt}\TODO{vertexÇÕlagrangianÇÃ$(n!)\ii$î{)}
 \onecolumn
 
 
 \newpage
+\subsection{Field Calculation Techniques}
+\subsubsection{Dirac Field Techniques}
+\begin{tabular}{l@{ :\ \ \ }l}
+Dirac Equations & $(\slashed p-m)u^s(p)=0;\quad(\slashed p+m)v^s(p)=0$\\
+&$\bar u^s(p)(\slashed p-m)=0;\quad \bar v^s(p)(\slashed p+m)=0$\\
+Dirac Components &
+   $u^{r\dagger}(p) u^s(p)=2E_\vc p\delta^{rs};\quad
+    v^{r\dagger}(p) v^s(p)=2E_\vc p\delta^{rs}$\\
+ & $\bar u^r(p)u^s(p)=2m\delta^{rs};\quad
+    \bar v^r(p)v^s(p)=-2m\delta^{rs};\quad
+    \bar u^r(p)v^s(p)=\bar v^r(p)u^s(p)=0$\\
+Spin Sums & $\displaystyle
+             \sum\s{spin}u^s(p)\bar u^s(p)=\slashed p+m;\quad
+             \sum\s{spin}v^s(p)\bar v^s(p)=\slashed p-m$\\
+Chage Conj.    & $-C=C^{-1}=C^\dagger=\trans{C}$,   \quad $C^{-1}\Gm C=-C\Gm C=-\trans{\Gm}$,\quad $C^{-1}\G0C=-\G0$\\
+               & $\phantom{-}C=C^*$\hspace{57.6pt}, \quad $\psi\suprm C=C\trans{(\ol\psi)}$,\quad$\ol\psi{}\suprm C=\trans\psi C$\\
+ $u$ \& $v$    & $u^*=-\ii\G2v;\quad \trans{v}=-\ii u^\dagger\G2;\qquad \ol u\s A {P\s H} u\s B = -\ol v\s B{P\s H}v\s A$\\
+               & $v^*=-\ii\G2u;\quad \trans{u}=-\ii v^\dagger\G2;\qquad \ol v\s A {P\s H} u\s B = -\ol v\s B{P\s H}u\s A$\\
+\end{tabular}
+
+\subsubsection{Polarization Sum}
+
+\subparagraph{Single photon case}$M=\epsilon_\mu^*(k)M^{\mu}$\par
+When Ward identity $k_\mu M^\mu=0$ is valid,
+\begin{equation}
+   \sum\s{pol.}\left|M\right|^2
+= \sum\s{pol.}\epsilon_\mu^*(k)\epsilon_\nu(k)M^{\mu}M^{\nu*}
+=             \Hmnd M^{\mu}M^{\nu*}.
+\end{equation}
+
+\subparagraph{Double photons case}$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$\par
+When $k_\mu M^{\mu\nu}=k'_\nu M^{\mu\nu}=0$ is valid,
+\begin{equation}
+  \sum\s{pol.}\left|M\right|^2
+= \sum\s{pol.}
+\epsilon_\mu^*(k)\epsilon_\rho(k)\epsilon_\nu'^*(k')\epsilon_\sigma'(k')
+M^{\mu\nu}M^{\rho\sigma*}
+= \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}.
+\end{equation}
+\note{See Sec.~\ref{Sec:Verbose:PolarizationSum} for verbose information.}
+
+\subsubsection{Fierz transformations}
+For Dirac spinors $a,b,c,d$,\par
+\begin{minipage}{0.32\textwidth}
+\begin{align*}
+S(a,b;c,d) &:= (\bar a b)(\bar c d);\\
+V(a,b;c,d) &:= (\bar a \Gm b)(\bar c \Gmd d);\\
+T(a,b;c,d) &:= \frac12(\bar a \Smn b)(\bar c \sigma_{\mu\nu} d);\\
+A(a,b;c,d) &:= (\bar a \Gm\G5 b)(\bar c\Gmd\G5 d);\\
+P(a,b;c,d) &:= (\bar a \G5 b)(\bar c \G5 d);\\
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.654\textwidth}
+\begin{align*}
+ \pmat{S(a,b;c,d)\\V(a,b;c,d)\\T(a,b;c,d)\\A(a,b;c,d)\\P(a,b;c,d)}&=
+\frac14\pmat{1&1&1&-1&-1\\4&-2&0&-2&4\\6&0&-2&0&-6\\-4&-2&0&-2&-4\\-1&1&-1&-1&1}
+ \pmat{S(a,d;c,b)\\V(a,d;c,b)\\T(a,d;c,b)\\A(a,d;c,b)\\P(a,d;c,b)}
+\end{align*}
+\end{minipage}
+
+Also defining $V\s{LR}(a,b;c,d) := (\bar a \Gm\PL b)(\bar c\Gmd\PR d)$ and so on,
+\begin{align}
+ V\s{LL}(a,b;c,d) &= - V\s{LL}(a,d;c,b)&
+ S\s{RL}(a,b;c,d) &= \frac14\left[V\s{LR}(a,d;b,c)-A\s{LR}(a,d;b,c)\right]\\
+ V\s{RR}(a,b;c,d) &= - V\s{RR}(a,d;c,b)&
+ S\s{LR}(a,b;c,d) &= \frac14\left[V\s{RL}(a,d;b,c)-A\s{RL}(a,d;b,c)\right]
+\end{align}
+Here we can create another equations using
+\begin{equation}
+ (\Sm)_{\alpha\beta}(\Smd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta};
+\qquad
+ (\bSm)_{\alpha\beta}(\bSmd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta}.
+\end{equation}
+
+\subsubsection{Gordon identity}
+For  $P:=p'+p$ and $q:=p'-p$,
+\begin{align}
+ \bar u(p')\Gm u(p) &=  \bar u(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] u(p)&
+ \bar u(p')\Gm v(p) &=  \bar u(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] v(p)\\
+ \bar v(p')\Gm v(p) &= -\bar v(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] v(p)&
+ \bar v(p')\Gm u(p) &= -\bar v(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] u(p)
+\end{align}
+
+\subsubsection{Color Sum}
+\vspace{-24pt}
+\begin{flushright}
+{\footnotesize (Here $T^a$ is $\vc 3$ of $\gSU(3)$. For other representations or gauge groups, see Sec.~\ref{sec:yang-mills-general}.)}
+\end{flushright}\vskip-10pt
+\begin{equation}
+  \Tr(T^aT^b):=\frac12\delta^{ab}\qquad\qquad \text{\footnotesize (That is, $T^a$'s are $\tfrac12\times$Gell-Mann matrices.)}
+\end{equation}\vskip-20pt
+\begin{align}
+\sum_a T^aT^a    &= \frac43\cdot\vc 1, &
+\sum_{c,d} f^{acd}f^{bcd} &= 3\delta^{ab}&
+\sum_a T^a_{ij}T^a_{kl}   &= \frac12{\delta_{il}\delta_{kj}} - \frac16{\delta_{ij}\delta_{kl}}\\
+\sum_a T^aT^bT^a &= -\frac16T^b &
+\sum_{b,c} f^{abc}T^bT^c  &= \frac{3\ii}{2}T^a&
+ f^{Dab}f^{EDc}+&f^{Dca}f^{EDb}+f^{Dbc}f^{EDa}=0
+\end{align}
+
+\vspace{50pt}
+
+\TODO{TODO:}
+\begin{itemize}
+ \item Majorana Ferminos
+ \item Feynman Rules(A.1)
+\end{itemize}
+
+
+\newpage
+
 \subsection{Dirac's Gamma Algebras}
 \subsubsection{Traces}\vspace{-2.5zw}
 \begin{align}
@@ -290,98 +414,6 @@ $[\sigma^i,\sigma^j]=2\ii\epsilon_{ijk}\sigma^k$
 
 ${\sigma^i,\sigma^j}=2\delta_{ij}$
 
-\subsubsection{Dirac Field Techniques}
-\begin{tabular}{l@{ :\ \ \ }l}
-Dirac Equations & $(\slashed p-m)u^s(p)=0;\quad(\slashed p+m)v^s(p)=0$\\
-&$\bar u^s(p)(\slashed p-m)=0;\quad \bar v^s(p)(\slashed p+m)=0$\\
-Dirac Components &
-   $u^{r\dagger}(p) u^s(p)=2E_\vc p\delta^{rs};\quad
-    v^{r\dagger}(p) v^s(p)=2E_\vc p\delta^{rs}$\\
- & $\bar u^r(p)u^s(p)=2m\delta^{rs};\quad
-    \bar v^r(p)v^s(p)=-2m\delta^{rs};\quad
-    \bar u^r(p)v^s(p)=\bar v^r(p)u^s(p)=0$\\
-Spin Sums & $\displaystyle
-             \sum\s{spin}u^s(p)\bar u^s(p)=\slashed p+m;\quad
-             \sum\s{spin}v^s(p)\bar v^s(p)=\slashed p-m$\\
-$u$ \& $v$ & $u^*=-\ii\G2v;\quad \trans{v}=-\ii u^\dagger\G2;\qquad \ol u\s A {P\s H} u\s B = -\ol v\s B{P\s H}v\s A$\\
-           & $v^*=-\ii\G2u;\quad \trans{u}=-\ii v^\dagger\G2;\qquad \ol v\s A {P\s H} u\s B = -\ol v\s B{P\s H}u\s A$\\
-\end{tabular}
-
-\subsubsection{Polarization Sum}
-
-\subparagraph{Single photon case}$M=\epsilon_\mu^*(k)M^{\mu}$\par
-When Ward identity $k_\mu M^\mu=0$ is valid,
-\begin{equation}
-   \sum\s{pol.}\left|M\right|^2
-= \sum\s{pol.}\epsilon_\mu^*(k)\epsilon_\nu(k)M^{\mu}M^{\nu*}
-=             \Hmnd M^{\mu}M^{\nu*}.
-\end{equation}
-
-\subparagraph{Double photons case}$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$\par
-When $k_\mu M^{\mu\nu}=k'_\nu M^{\mu\nu}=0$ is valid,
-\begin{equation}
-  \sum\s{pol.}\left|M\right|^2
-= \sum\s{pol.}
-\epsilon_\mu^*(k)\epsilon_\rho(k)\epsilon_\nu'^*(k')\epsilon_\sigma'(k')
-M^{\mu\nu}M^{\rho\sigma*}
-= \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}.
-\end{equation}
-\note{See Sec.~\ref{Sec:Verbose:PolarizationSum} for verbose information.}
-
-\subsubsection{Fierz transformations}
-For Dirac spinors $a,b,c,d$,\par
-\begin{minipage}{0.32\textwidth}
-\begin{align*}
-S(a,b;c,d) &:= (\bar a b)(\bar c d);\\
-V(a,b;c,d) &:= (\bar a \Gm b)(\bar c \Gmd d);\\
-T(a,b;c,d) &:= \frac12(\bar a \Smn b)(\bar c \sigma_{\mu\nu} d);\\
-A(a,b;c,d) &:= (\bar a \Gm\G5 b)(\bar c\Gmd\G5 d);\\
-P(a,b;c,d) &:= (\bar a \G5 b)(\bar c \G5 d);\\
-\end{align*}
-\end{minipage}
-\begin{minipage}{0.654\textwidth}
-\begin{align*}
- \pmat{S(a,b;c,d)\\V(a,b;c,d)\\T(a,b;c,d)\\A(a,b;c,d)\\P(a,b;c,d)}&=
-\frac14\pmat{1&1&1&-1&-1\\4&-2&0&-2&4\\6&0&-2&0&-6\\-4&-2&0&-2&-4\\-1&1&-1&-1&1}
- \pmat{S(a,d;c,b)\\V(a,d;c,b)\\T(a,d;c,b)\\A(a,d;c,b)\\P(a,d;c,b)}
-\end{align*}
-\end{minipage}
-
-Also defining $V\s{LR}(a,b;c,d) := (\bar a \Gm\PL b)(\bar c\Gmd\PR d)$ and so on,
-\begin{align}
- V\s{LL}(a,b;c,d) &= - V\s{LL}(a,d;c,b)&
- S\s{RL}(a,b;c,d) &= \frac14\left[V\s{LR}(a,d;b,c)-A\s{LR}(a,d;b,c)\right]\\
- V\s{RR}(a,b;c,d) &= - V\s{RR}(a,d;c,b)&
- S\s{LR}(a,b;c,d) &= \frac14\left[V\s{RL}(a,d;b,c)-A\s{RL}(a,d;b,c)\right]
-\end{align}
-Here we can create another equations using
-\begin{equation}
- (\Sm)_{\alpha\beta}(\Smd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta};
-\qquad
- (\bSm)_{\alpha\beta}(\bSmd)_{\gamma\delta} =  2\epsilon_{\alpha\gamma}\epsilon_{\beta\delta}.
-\end{equation}
-
-\subsubsection{Gordon identity}
-For  $P:=p'+p$ and $q:=p'-p$,
-\begin{align}
- \bar u(p')\Gm u(p) &=  \bar u(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] u(p)&
- \bar u(p')\Gm v(p) &=  \bar u(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] v(p)\\
- \bar v(p')\Gm v(p) &= -\bar v(p') \left[\frac{P^\mu + \ii\Smn q_\nu}{2m}\right] v(p)&
- \bar v(p')\Gm u(p) &= -\bar v(p') \left[\frac{q^\mu + \ii\Smn P_\nu}{2m}\right] u(p)
-\end{align}
-
-\subsubsection{Noether current}
-\begin{tabular}{l@{ :\ \ \ }l}
-Infinitesimal transformation & $\phi(x)\mapsto \phi'(x):=\phi(x)+\alpha\Delta\phi(x)$\\
-Correspondent transformation & $\alpha\Delta\Lag = \alpha\Pm\left(\pdiff{\Lag}{(\Pm\phi)}\Delta\phi\right)+\cancel{\alpha\left[\pdiff\Lag\phi-\Pm\left(\pdiff\Lag{(\Pm\phi)}\right)\right]\Delta\phi}$\\
-                             & So, defining\quad $\alpha\Pm\mathcal J^\mu(x):=\Lag'(x)-\Lag(x)$,\\
-Noether current              & $j^\mu(x):=\pbib\Lag{(\Pm\phi)}\Delta\phi-\mathcal J^\mu$;\qquad
-                               $\Pm j^\mu(x)=0$\\
-Noether charge               & $Q:=\int j^0\dd^3x$\\
-Energy-momentum tensor       & $T\T^\mu_\nu=\Pm\Lag{(\Pm\phi)}\Pn\phi-\Lag\delta^\mu_\nu$;\quad
-$\mathcal H=T^{00}$,\quad $\mathcal P^i =T^{0i}$.\\
-&$T\T^\mu_\nu$ is the variation along $\mu$ in respect to the modification $a^\nu$.\\
-\end{tabular}
 \newpage
 
 \subsection{Loop Integrals and Dimensional Regularization}
@@ -483,36 +515,41 @@ To compute the $S$-matrix in a physical region choose the correct branch
   p_1\cdot p_2= \frac{M^2-\left({m_1}^2+{m_2}^2\right)}2.\notag
 \end{align}
 
+\Paragraph{Mandelstam Variables}
+\vspace{-20pt}
+\begin{align*}
+\text{For $p_1 + p_2 \to k_1 + k_2$ collision,}\qquad
+&s=(p_1+p_2)^2=(k_1+k_2)^2,\\
+&t=(p_1-k_1)^2=(p_2-k_2)^2,\\
+&u=(p_1-k_2)^2=(p_2-k_1)^2,\\
+\text{and}\qquad&s+t+u=p_1^2+p_2^2+k_1^2+k_2^2=\sum m^2.
+\end{align*}
+
 \Paragraph{Kinematics of Collision (Same Mass)}
-\begin{minipage}{155pt}
-\mygraphicinc{graphics/collision.eps}{150pt}
+\vspace{10pt}
+\begin{minipage}{167pt}
+\mygraphicinc{graphics/collision.eps}{165pt}
 \end{minipage}
-\begin{minipage}{280pt}
+\begin{minipage}{270pt}
 \begin{align*}
  \vnorm p ^2 &= E^2-m_A^2 & \vipro pk &=\vnorm p \vnorm k\cos\theta\\
- \vnorm k ^2 &= E^2-m_B^2\\
- p_1 \cdot p_2&=2E^2-m_A^2 & p_1\cdot k_1  &= p_2 \cdot k_2 = E^2-\vipro pk\\
- k_1 \cdot k_2&=2E^2-m_B^2 & p_1 \cdot k_2 &= p_1 \cdot k_2 = E^2+\vipro pk\\
-\end{align*}
-\end{minipage}\vskip-20pt
+ \vnorm k ^2 &= E^2-m_B^2
+\end{align*}\vspace{-27pt}
 \begin{align*}
-&& (p_1+p_2)^2&= (k_1+k_2)^2=4E^2\\
+ p_1 \cdot p_2&=s/2-m_A^2 & p_1\cdot k_1  &= p_2 \cdot k_2 = \tfrac12(m_A^2+m_B^2-t);\\
+ k_1 \cdot k_2&=s/2-m_B^2 & p_1 \cdot k_2 &= p_1 \cdot k_2 = \tfrac12(m_A^2+m_B^2-u);
+\end{align*}\vskip-10pt
+\end{minipage}
+\begin{align*}
+&&  s&= 4E^2,\\
  (p_1-p_2)^2&=-4(E^2-m_A^2)&
- (p_1-k_1)^2&=(p_2-k_2)^2 = -(2E^2-m_A^2-m_B^2)+2\vipro pk\\
+ t&= -(2E^2-m_A^2-m_B^2)+2\vipro pk\\
  (k_1-k_2)^2&=-4(E^2-m_B^2)&
- (p_1-k_2)^2&=(p_2-k_1)^2 = -(2E^2-m_A^2-m_B^2)-2\vipro pk
+ u&= -(2E^2-m_A^2-m_B^2)-2\vipro pk\\
 \end{align*}
-
-\TODO{TODO:}
-\begin{itemize}
- \item Majorana Ferminos
- \item Feynman Rules(A.1)
-\end{itemize}
-
-
 
 \newpage
-\subsection{ók-Mills Theory}
+\subsection{ók-Mills Theory}\label{sec:yang-mills-general}
 \vskip-24pt\hskip160pt{\small(See App.~\ref{sec:yang-mills-theory} for verbose notes.)}
 \subsubsection{Non-Abelian gauge theory}\vskip-24pt
 \begin{align*}

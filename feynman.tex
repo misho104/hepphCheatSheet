@@ -1,5 +1,5 @@
 %#!./compile CheatSheet
-%%% Time-Stamp: <2010-11-03 03:56:09 misho>
+%%% Time-Stamp: <2011-05-10 07:47:24 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \Paragraph{Scalar Boson}
@@ -22,7 +22,7 @@ $\begC1{\phi^*}\conC{\ }\endC1{\phi}=$&
 \end{fmfgraph*}\end{tabular}
 &$= \dfrac{\ii}{p^2-m^2+\ii\epsilon}$\\
 \end{tabular}\end{fmffile}
-(External lines equal to 1 in both cases.)
+\\(External lines equal to 1 in both cases.)
 
 \Paragraph{Dirac Fermion}\vspace{0.7zw}
 \begin{fmffile}{feynman/dirac}\begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
@@ -68,9 +68,21 @@ $\begC1{\psi}\conC{\ }\endC1{\ol\psi}=$&
 &$= \dfrac{\ii(\slashed{p}+m)}{p^2-m^2+\ii\epsilon}$\\
 \end{tabular}\end{fmffile}
 
-\Paragraph{Photon}\vspace{0.7zw}
+\Paragraph{Majorana Fermion}\vspace{0.7zw}
+%\begin{fmffile}{feynman/dirac}
+\begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
+\multicolumn{3}{l}{$\Lag \supset \tfrac12\ol\psi(\ii\slashed{\partial}-m)\psi$}\\
+\multicolumn{3}{l}{\ \ \ $=\ii\bar\lambda\bSm\Pm\lambda-\frac{m}2(\lambda\lambda+\bar\lambda\bar\lambda)$}\\
+\multicolumn{3}{l}{{\bf Initial state}}\\
+\end{tabular}
+
+\newpage
+\phantom{ }\par
+\vspace{-24.5pt}
+\Paragraph{Abelian Gauge Theory (Photon)}\vspace{0.7zw}
 \begin{fmffile}{feynman/photon}\begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
-\multicolumn{3}{l}{$\Lag \supset -\dfrac14F^{\mu\nu}F_{\mu\nu}$}\\
+\multicolumn{3}{l}{$\Lag \supset -\dfrac14F^{\mu\nu}F_{\mu\nu} + \ii\ol\psi\slashed{D}\psi + |\Dm\phi|^2$}\\
+\multicolumn{3}{l}{\qquad($\Dm = \Pm - \ii Q A_\mu$)}\\
 $\begC1{A_\mu}\conC{\ }\endC1{\ket{\vc p;Ç†}}=$&
 \begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
 \fmfleft{da,a4,db}\fmfright{dc,a1,dd}
@@ -92,13 +104,110 @@ $\begC1{A_\mu}\conC{\ }\endC1{A_\nu}=$&
 \fmf{phantom,tension=8}{a1,a2}\fmf{phantom,tension=8}{a3,a4}\fmfblob{10pt}{a3}\fmfblob{10pt}{a2}
 \end{fmfgraph*}\end{tabular}
 &$= \dfrac{-\ii \Hmnd}{p^2+\ii\epsilon}$\\
+$Q\ol\psi\slashed{A}\psi=$&
+\begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
+\fmfset{dash_len}{1.5mm}\fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{20}
+\fmfv{l=$\mu$,l.d=2}{p2}
+\fmfleft{f1,da,f2}\fmfright{db,p1,dc}
+\fmf{fermion,width=0.6}{c,f1}
+\fmf{fermion,width=0.6}{f2,c}
+\fmfdot{c}
+\fmf{photon,tension=1.8,width=0.6}{c,p2}
+\fmf{phantom,tension=5}{p2,p1}
+\end{fmfgraph*}\end{tabular}
+&$= \ii Q\Gm$\\
+$\begin{matrix}\ii QA^\mu\phi^*\Pm\phi\\\quad+\Hc\end{matrix}=$&
+\begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,40)
+\fmfset{dash_len}{1.5mm}\fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{20}
+\fmftop{g}
+\fmfleft{dc,f1,da,df}\fmfright{dd,f2,db,de}
+\fmf{scalar,label=$p\rightarrow$,width=0.6}{f1,c}
+\fmf{scalar,label=$q\rightarrow$,width=0.6}{c,f2}
+\fmffreeze
+\fmf{photon,width=0.6}{g2,c}
+\fmf{phantom,tension=2}{g,g2}
+\fmfv{l=$\mu$,l.d=2,l.a=90}{g2}
+\end{fmfgraph*}\end{tabular}
+&$= \ii Q(p^\mu+q^\mu)$\\[-5pt]
+\multicolumn{3}{l}{\hfill\footnotesize(Momentum must be taken along the arrow)}\\[8pt]
+$Q^2A^2|\phi|^2=$&
+\begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,40)
+\fmfset{dash_len}{1.5mm}\fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{20}
+\fmfleft{s2,s1}\fmfright{v2,v1}
+\fmf{phantom,tension=12}{s1,s1r}\fmf{phantom,tension=12}{v1,v1r}
+\fmf{phantom,tension=12}{s2,s2r}\fmf{phantom,tension=12}{v2,v2r}
+\fmf{photon,width=0.6}{v1r,c,v2r}
+\fmf{scalar,width=0.6}{s1r,c,s2r}
+\fmfv{l=$\mu$,l.a=-20,l.d=2}{v1r}
+\fmfv{l=$\nu$,l.a=+20,l.d=2}{v2r}
+\end{fmfgraph*}\end{tabular}
+&$= 2\ii Q^2\Hmn$\\
+\end{tabular}\end{fmffile}
+\vspace{10pt}
+\Paragraph{Non-Abelian Gauge Theory (Gluon)}\vspace{0.7zw}
+\begin{fmffile}{feynman/gluon}\begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
+\multicolumn{3}{l}{$\Lag \supset -\dfrac14F^{\mu\nu}F_{\mu\nu} + \ii\ol\psi\slashed{D}\psi + |\Dm\phi|^2$}\\
+\multicolumn{3}{l}{\qquad($\Dm = \Pm - \ii g A_\mu$)}\\
+$\begC1{A^b_\mu}\conC{\ }\endC1{\ket{\vc p;Ç†,a}}=$&
+\begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
+\fmfleft{da,a4,db}\fmfright{dc,a1,dd}\fmfset{curly_len}{2mm}
+\fmf{gluon,label=$\longleftarrow p$,label.side=right}{a2,a3}
+\fmf{phantom,tension=8}{a1,a2}\fmf{phantom,tension=8}{a3,a4}\fmfblob{10pt}{a3}
+\end{fmfgraph*}\end{tabular}
+&$=\epsilon_\mu^Ç†(p)\delta^{ab}$\\
+$\begC1{\bra{\vc p;Ç†,a}}\conC{\ }\endC1{A^b_\mu}=$&
+\begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
+\fmfleft{da,a1,db}\fmfright{dc,a4,dd}\fmfset{curly_len}{2mm}
+\fmf{gluon,label=$\longleftarrow p$,label.side=right}{a3,a2}
+\fmf{phantom,tension=8}{a1,a2}\fmf{phantom,tension=8}{a3,a4}\fmfblob{10pt}{a3}
+\end{fmfgraph*}\end{tabular}
+&$= \epsilon_\mu^{Ç†*}(p)\delta^{ab}$\\
+%
+\multicolumn{3}{l}{\hskip-10pt$-gf^{abc}A^{\mu a}A^{\nu b}(\Pm A_\nu^c)=$}\\
+\multicolumn{3}{l}{
+\begin{minipage}{100pt}\begin{fmfgraph*}(80,90)
+\fmfset{dash_len}{1.5mm}\fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{20}\fmfset{curly_len}{2mm}
+\fmftop{g1c}
+\fmfleft{dc,g2c,da,df}\fmfright{dd,g3c,db,de}
+\fmf{gluon,label=\rotatebox{90} {$\leftarrow p$},l.s=left,l.d=5,width=0.6}{g1,c}
+\fmf{gluon,label=\rotatebox{28} {$q\rightarrow$},l.s=left,l.d=0.6,width=0.6}{g2,c}
+\fmf{gluon,label=\rotatebox{-28}{$\leftarrow r$},l.s=left,l.d=0.6,width=0.6}{g3,c}
+\fmf{phantom,tension=8}{g1c,g1}
+\fmf{phantom,tension=8}{g2c,g2}
+\fmf{phantom,tension=8}{g3c,g3}
+\fmfv{l=$a;\mu$,l.a=200,l.d=8}{g1}
+\fmfv{l=$b;\nu$,l.d=2}{g2}
+\fmfv{l=$c;\rho$,l.d=3}{g3}
+\end{fmfgraph*}\end{minipage}
+\begin{minipage}{92pt}
+$= gf^{abc}\big[\Hmn(p-q)^\rho$\\
+$\quad\qquad+\Hnr(q-r)^\mu$\\
+$\quad\qquad+\Hrm(r-p)^\nu\big]$\\[10pt]
+\end{minipage}
+}\\[-25pt]
+\multicolumn{3}{l}{\hfill\footnotesize(Momentum are in incoming directions)}\\[8pt]
+\multicolumn{3}{l}{\hskip-10pt$-\dfrac14g^2(f^{abe}A_\mu^aA_\nu^b)(f^{cde}A_\rho^cA_\sigma^d)=$}\\
+\multicolumn{3}{l}{
+\begin{minipage}{68pt}\vspace{-5pt}\begin{fmfgraph*}(60,50)
+\fmfset{dash_len}{1.5mm}\fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{20}\fmfset{curly_len}{2mm}
+\fmfleft{g2c,g1c}\fmfright{g4c,g3c}
+\fmf{gluon,width=0.6}{g1,c}\fmf{phantom,tension=8}{g1c,g1}
+\fmf{gluon,width=0.6}{g2,c}\fmf{phantom,tension=8}{g2c,g2}
+\fmf{gluon,width=0.6}{g3,c}\fmf{phantom,tension=8}{g3c,g3}
+\fmf{gluon,width=0.6}{g4,c}\fmf{phantom,tension=8}{g4c,g4}
+\fmfv{l=$a;\mu$,   l.d=1}{g1}
+\fmfv{l=$b;\nu$,   l.d=1}{g2}
+\fmfv{l=$c;\rho$  ,l.d=1}{g3}
+\fmfv{l=$d;\sigma$,l.d=1}{g4}
+\end{fmfgraph*}\end{minipage}
+\begin{minipage}{124pt}
+\vspace{10pt}
+$\!\!\!\!\!\!=-\ii g^2\big[$\\
+$\phantom{+}f^{abe}f^{cde}(\Hmr\Hns-\Hms\Hnr)$\\
+$+f^{ace}f^{bde}(\Hmn\Hrs-\Hms\Hnr)$\\
+$+f^{ade}f^{bce}(\Hmn\Hsr-\Hmr\Hns)\big]$
+\end{minipage}
+}\\
 \end{tabular}\end{fmffile}
 
-\Paragraph{Majorana Fermion}\vspace{0.7zw}
-%\begin{fmffile}{feynman/dirac}
-\begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
-\multicolumn{3}{l}{$\Lag \supset \tfrac12\ol\psi(\ii\slashed{\partial}-m)\psi$}\\
-\multicolumn{3}{l}{\ \ \ $=\ii\bar\lambda\bSm\Pm\lambda-\frac{m}2(\lambda\lambda+\bar\lambda\bar\lambda)$}\\
-\multicolumn{3}{l}{{\bf Initial state}}\\
-\end{tabular}
 \par
