@@ -1,5 +1,5 @@
-%#!./compile CheatSheet
-%%% Time-Stamp: <2011-05-10 09:25:32 misho>
+%#!./compile CheatSheet sjis
+%%% Time-Stamp: <2011-09-20 11:18:15 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \section{General Definitions and Tools}
@@ -136,6 +136,8 @@ Gamma Matrices & $\hat\gamma^0=\pmat{1&0\\0&-1},\quad
                   \hat\gamma^i=\pmat{0&\vc\sigma\\-\vc\sigma&0},\quad
                   \hat\gamma_5=\pmat{0&1\\1&0}$;\qquad
                   $\hat P{}\s{L}\suprm{R}=\dfrac{1\pm\G5}2.$\\
+               & $\hat\sigma^{0i}=\pmat{0&\sigma^i\\\sigma^i&0},\quad
+                  \hat\sigma^{ij}=\epsilon^{ijk}\pmat{\sigma^k&0\\0&\sigma^k}.$\\
 Fields         &
      $\hat\psi = \pmat{\psi\s A\\\psi\s B}
      = \dfrac1{\sqrt2}\pmat{1&1\\-1&1}\psi
@@ -243,8 +245,8 @@ Spin Sums & $\displaystyle
              \sum\s{spin}v^s(p)\bar v^s(p)=\slashed p-m$\\
 Chage Conj.    & $-C=C^{-1}=C^\dagger=\trans{C}$,   \quad $C^{-1}\Gm C=-C\Gm C=-\trans{\Gm}$,\quad $C^{-1}\G0C=-\G0$\\
                & $\phantom{-}C=C^*$\hspace{57.6pt}, \quad $\psi\suprm C=C\trans{(\ol\psi)}$,\quad$\ol\psi{}\suprm C=\trans\psi C$\\
- $u$ \& $v$    & $u^*=-\ii\G2v;\quad \trans{v}=-\ii u^\dagger\G2;\qquad \ol u\s A {P\s H} u\s B = -\ol v\s B{P\s H}v\s A$\\
-               & $v^*=-\ii\G2u;\quad \trans{u}=-\ii v^\dagger\G2;\qquad \ol v\s A {P\s H} u\s B = -\ol v\s B{P\s H}u\s A$\\
+ $u$ \& $v$    & $u^*=-\ii\G2v,\quad \trans{v}=-\ii u^\dagger\G2 = \ol u C^{-1}, \quad v=C\trans{\ol u};  \qquad \ol u\s A {P\s H} u\s B = -\ol v\s B{P\s H}v\s A$\\
+               & $v^*=-\ii\G2u,\quad \trans{u}=-\ii v^\dagger\G2 = \ol v C^{-1}, \quad u=C\trans{\ol v}; \qquad \ol v\s A {P\s H} u\s B = -\ol v\s B{P\s H}u\s A$\\
 \end{tabular}
 
 \subsubsection{Polarization Sum}

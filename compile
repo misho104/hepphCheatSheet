@@ -3,6 +3,8 @@
 $|=1;
 
 our $TARGET = $ARGV[0];
+our $KANJI = "";
+if($ARGV[1] =~ /(euc|sjis|jis|utf8)/) { $KANJI = "-kanji=$1"; }
 
 $TARGET =~ s/\.tex$//im;
 $TARGET .= ".tex";
@@ -30,6 +32,6 @@ if($stat[9] + 60*30 < time()){
      `sed -i.bak 's/\\\\def\\\\headermark.*/$text/' $TARGET`;
   }
 }
-print `platexmk $TARGET`;
+print `platexmk $TARGET -pvc $KANJI`;
 
 exit 0;
