@@ -1,0 +1,658 @@
+%#!platexmake -kanji=sjis -pvc CheatSheet
+%%% Time-Stamp: <2012-04-04 01:35:21 misho>
+
+\def\HnouP{\tilde{h\s u^+}}
+\def\HnouZ{\tilde{h\s u^0}}
+\def\HnodZ{\tilde{h\s d^0}}
+\def\HnodM{\tilde{h\s d^-}}
+\def\uL{u\s L{}}
+\def\dL{d\s L{}}
+\def\eL{e\s L{}}
+\def\eR{e\s R{}}
+\def\uR{u\s R{}}
+\def\dR{d\s R{}}
+
+\subsection{Minimal Supersymmetric Standard Model}
+
+\subsubsection{Definitions}
+\subparagraph{Gauge Group}
+\begin{equation}
+\gSU(3)\s{color}\times\gSU(2)\s{weak}\times\gU(1)\s{Y}\quad(\times{\gZ_2}_R\text{\ :\ $R$-parity})
+\end{equation}
+\subparagraph{Fields}
+\begin{center}\vspace{-1.7zw}
+\begin{tabular}[t]{|c|ccc|c|c|}\hline
+ Field      & $\gSU(3)$     & $\gSU(2)$ & $\gU(1)$ & $B$    & $L$  \\\hline
+ $Q_i$      & $\vc 3$       & $\vc2$  & $ 1/6$ &  $1/3$ &      \\\hline
+ $L_i$      &               & $\vc2$  & $-1/2$ &        &  $1$ \\\hline
+ $\bar U_i$\footnotemark & $\bar{\vc 3}$ &         & $-2/3$ & $-1/3$ &      \\\hline
+ $\bar D_i$ & $\bar{\vc 3}$ &         & $ 1/3$ & $-1/3$ &      \\\hline
+ $\bar E_i$ &               &         & $ 1  $ &        & $-1$ \\\hline
+ $H\s u$    &               & $\vc2$  & $ 1/2$ &        &      \\\hline
+ $H\s d$    &               & $\vc2$  & $-1/2$ &        &      \\\hline
+\end{tabular}\hspace{2zw}
+\begin{tabular}[t]{|c|ccc|}\hline
+ Field      & $\gSU(3)$       & $\gSU(2)$ & $\gU(1)$ \\\hline
+ $g$        & $\vc 8$       &         &        \\\hline
+ $W$        &               & $\vc3$  &        \\\hline
+ $B$        &               &         &        \\\hline
+\end{tabular}
+\end{center}
+
+\footnotetext{
+For left-handed fermions such as $Q$, the superfield will be written as $Q$, and it contains a scalar component $\tilde q$ and a chiral fermion $Q_\alpha$.
+Their complex conjugates will be shown as $\tilde q^*$ and $\bar Q_\dalpha$ as is done in the previous section.
+
+For right-handed fermions such as $\bar U$, the superfield will be written as $\bar U$. Its scalar component is written as (or, in other words, equivalent to) $\tilde u^*$, and its fermionic one is $U_\alpha\suprm c$. {\em c is just a label;} does not mean charge or complex conjugation.
+Their complex conjugates are $\tilde u$ and $\bar U_\dalpha\suprm c$.
+
+They form a Dirac fermion as $U=\pmat {Q_u{}_\alpha\\\bar U\suprm c{}^\dalpha} =: \pmat{U\s L\\U\s R}$; its {\em charge} conjugate is $U\suprm c=\pmat {U\suprm pc_\alpha\\\bar Q_u^\dalpha}$.
+
+Majorana fermions, such as $b$ (bino), will be written as
+$b=b\suprm c=\pmat{b_\alpha\\\bar b^{\dalpha}}$. Here $\bar b_\dalpha$ is the complex conjugate of $b_\alpha$.
+}
+
+
+\def\Hu{{H\s u}}
+\def\Hd{{H\s d}}
+\def\bU{{\bar U}}
+\def\bD{{\bar D}}
+\def\bE{{\bar E}}
+
+\subparagraph{Superpotential}
+\begin{align}
+ W\s{RPC} &= \mu\Hu\Hd
+           - {y\s u}_{ij} \bU_i\Hu Q_j
+           + {y\s d}_{ij} \bD_i\Hd Q_j
+           + {y\s e}_{ij} \bE_i\Hd L_j\\
+ W\s{RPV} &= \mu_i\Hu L_i
+           + \frac12{\lambda  }_{ijk} L_i L_j \bE_k
+           + {\lambda' }_{ijk} L_i Q_j \bD_k
+           + \frac12{\lambda''}_{ijk} \bU_i \bD_j \bD_k\\
+&\hspace{13zw}
+\text{(Here we define $\lambda_{ijk}=-\lambda_{jik}$ and $\lambda''_{ijk}=-\lambda''_{ikj}$.)}\notag
+\end{align}
+
+\subparagraph{\cancel{SUSY}-terms}
+\begin{align}
+ \Lag_{\text{\cancel{SUSY}}}&=
+- \frac12\left(M_3\tilde g\tilde g+M_2\tilde W\tilde W+M_1\tilde B\tilde B+\Hc\right)
+-V_{\text{\cancel{SUSY}}};\\
+%
+ V\suprm{RPC}_{\text{\cancel{SUSY}}}&=
+\left(Q^*m_Q^2Q+L^*m_L^2L+\bU^* m_\bU^2\bU + \bD^* m_\bD^2\bD + \bE^* m_\bE^2\bE
+       +m^2_\Hu|\Hu|^2 + m^2_\Hd|\Hd|^2\right)
+\notag\\&\qquad
++\left(-\bU \Hu A^uQ + \bD \Hd A^d Q+ \bE \Hd A^e L + B\Hu\Hd+\Hc\right)
+m\\&\qquad
++\left(-\bU\Hd^*C^uQ+\bD \Hu^*C^dQ+\bE\Hu^*C^eL+\Hc\right)
+\notag\\
+V\suprm{RPV}_{\text{\cancel{SUSY}}}&=
+ \left(B_i\Hu L_i + \frac12A_{ijk}L_iL_j\bE_k+A'_{ijk}L_iQ_j\bD_k
+       +\frac12A''_{ijk}\bU_i\bD_j\bD_k+\Hc\right) 
+\\&\qquad + \left(C^1_{ijk}L_i^*Q_j\bU_k + C^2_i\Hu^*\Hd\bE_i + C^3_{ijk}\bD^*_i\bU_j\bE_k+\frac12C^4_{ijk}\bD^*_iQ_jQ_k+\Hc\right)
+\notag\\&\qquad + \left(M^2_{Li}\Hd^*L_i+\Hc\right)\hspace{200pt}
+\text{\small with $C^4_{ijk}=C^4_{ikj}$.}\notag
+\end{align}
+
+\newpage
+\subsubsection{Lagrangian Build Block}
+\vspace{-25pt}
+\begin{align}
+ \Lag_{\text{K;\,CP}}&=
+- \frac14F^{\mu\nu\,a}F_{\mu\nu}^a
++ \Dmu\phi_i^*\Dm\phi_i
++ \ii\bar\psi_i\bSm\Dm\psi_i
++ \ii\bar\lambda^a\bSm\Dm\lambda^a
+- \sqrt2g\left(\phi^*T^a\psi\lambda+\bar\psi\bar\lambda T^a\phi\right)
+\\\Lag\s{gaugino}^{\text{\cancel{SUSY}}}&=
+- \frac12\left(M_3\tilde g\tilde g+M_2\tilde W\tilde W+M_1\tilde B\tilde B+\Hc\right)
+\\\Lag\s{scalar}&=-\left(\sum V^F+\sum V^D+\sum V_{\cancel{SUSY}}\right)
+\\\Lag\s{S;\,fermi}\suprm{RPC}&=
+-\left(
+   \mu\tilde\Hu\tilde\Hd
+ - {y\s u}_{ij} \bU_i\Hu Q_j
+ + {y\s d}_{ij} \bD_i\Hd Q_j
+ + {y\s e}_{ij} \bE_i\Hd L_j+\cdots
++\Hc
+\right)
+\\\Lag\s{S;\,fermi}\suprm{RPV}&=
+-\left(
+ \mu_i\tilde \Hu L_i
+ + \frac12{\lambda  }_{ijk} L_i L_j \bE_k
+ + {\lambda' }_{ijk} L_i Q_j \bD_k
+ + \frac12{\lambda''}_{ijk} \bU_i \bD_j \bD_k
+ + \cdots + \Hc\right)
+\\\Lag_{\text{K;\,\cancel{CP}}} &=
+-\frac1{64\pi^2}\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}^aF_{\rho\sigma}^a
+\end{align}
+\subparagraph{$F$-terms}
+\begin{align}
+-{{F_{\Hu}}^a}^*&= \epsilon^{ab}\left(
+  \mu\Hd^b
+- {y\s u}_{ij} \bU_i^xQ_j^{bx}
++ \mu_i L_i^b
+\right)\\
+-{{F_{\Hd}}^a}^*&= \epsilon^{ab}\left(
+- \mu\Hu^b
++ {y\s d}_{ij} \bD_i^x Q_j^{bx}
++ {y\s e}_{ij} \bE_i   L_j^{b} 
+\right)\\
+-{{F_{Q}}^{ax}_i}^*&= \epsilon^{ab}\left(
+{y\s u}_{ji} \Hu^{b} \bU_j^x
+- {y\s d}_{ji} \Hd^{b} \bD_j^x
+- {\lambda'}_{jik} L_i^b\bD_j^x
+\right)\\
+-{{F_{L}}^a_i}^*&= \epsilon^{ab}\left(
+- \mu_i \Hu^b
+- {y\s e}_{ji} \Hd^{b} \bE_j
++ \lambda_{ijk}L^b_j\bE_k
++ \lambda'_{ijk}Q_j^{bx}\bD_k^x
+\right)\\
+-{{F_{\bU}}^x_i}^*&=\left(
+- \epsilon^{ab}{y\s u}_{ij}\Hu^a Q_j^{bx}
++ \frac12\epsilon^{xyz}\lambda''_{ijk}\bD_j^y\bD_k^z
+\right)\\
+-{{F_{\bD}}^x_i}^*&=\left(
+  \epsilon^{ab}{y\s d}_{ij}\Hd^a Q_j^{bx}
++ \epsilon^{ab}{\lambda'}_{jki}L^a_j Q_k^{bx}
++ \epsilon^{yzx}\lambda''_{jki}\bU_j^y\bD_k^z
+\right)\\
+-{{F_{\bE}}_i}^*&=\left(
+  \epsilon^{ab}{y\s e}_{ij}\Hd^a L_j^{b}
++ \frac12\epsilon^{ab}\lambda_{jki}L_j^aL_k^b
+\right)
+\end{align}
+\subparagraph{$D$-terms}
+\begin{align}
+ {D_{g}}^\alpha &= -g_3\sum_{i=1}^3\left[
+  \sum_{a=1,2}Q_i^{ax*}(T^\alpha)_{xy}Q_i^{ay}
+- \bU_i^{x*}(T^\alpha)_{xy}\bU_i^{y}
+- \bD_i^{x*}(T^\alpha)_{xy}\bD_i^{y}
+\right]\\
+%
+ {D_{W}}^\alpha &= -g_2\left[
+  \sum_{i=1}^3\sum_{x=1}^3 Q_i^{ax*}(T^\alpha)_{ab}Q_i^{by}
++ \sum_{i=1}^3 L_i^{a*}(T^\alpha)_{ab} L_i^{b}
++ \Hu^{a*}(T^\alpha)_{ab}\Hu^b
++ \Hd^{a*}(T^\alpha)_{ab}\Hd^b
+\right]\\
+%
+ {D_{B}} &= -g_1\left[
+  \frac16|  Q_i^{ax}|^2
+- \frac12|  L_i^{a} |^2
+- \frac23|\bU_i^{x} |^2
++ \frac13|\bD_i^{x} |^2
++        |\bE_i     |^2
++ \frac12|\Hu  ^{a} |^2
+- \frac12|\Hd  ^{a} |^2
+\right]
+\end{align}
+
+
+\subsubsection{Scalar Potential (Verbose)}
+\vspace{-25pt}
+\begin{align}
+ V^F_{\Hu}&=
+ |\mu|^2|\Hd|^2+\sum_a\Bigl(|\bU y^u Q^a|^2+|\mu_iL_i^a|^2\Bigr)
+\\[-6pt]&\qquad\notag
++\Bigl[
+ \mu^*\mu_i\Hd^*L_i - \mu^*\Hd^*\bU y^u Q - \mu_i^*L_i^*\bU y^u Q+\Hc
+\Bigr]\\[8pt]
+ V^F_{\Hd}&=
+ |\mu|^2|\Hu|^2+\sum_a\Bigl(|\bD y^dQ^a|^2+|\bE y^e L^a|^2\Bigr)
+\\[-6pt]&\qquad\notag
++\Bigl[
+ -\mu^*\Hu^*\bD y^d Q-\mu^*\Hu^* \bE y^e L+(\bD y^d Q)^*(\bE y^e L)+\Hc
+\Bigr]\\[8pt]
+ V^F_{Q}&=
+ |\Hu|^2|\bU_iy^u_{ij}|^2
++|\Hd|^2|\bD_iy^d_{ij}|^2
++\lambda'^*_{jik}\lambda'_{lim}L^*_jL_l\bD_k^*\bD_m
+\\&\qquad\notag
++\Bigl[
+-y^{u*}_{ji}y^d_{ki} \Hu^*\Hd\bU_j^*\bD_k
+-y^{u*}_{ji}\lambda'_{lim}\Hu^*L_l\bU^*_j\bD_m
++y^{d*}_{ji}\lambda'_{lim}\Hd^*L_l\bD^*_j\bD_m+\Hc
+\Bigr]\\[8pt]
+ V^F_{L}&=
+|\mu_i|^2|\Hu|^2+|\Hd|^2(\bE y^e y^{e\dagger}\bE^*)+\lambda'_{ijk}\lambda'_{ilm}(Q_j^*\bD^*_k)Q_l\bD_m
++\lambda^*_{ijk}\lambda_{ilm}L_j^*L_l\bE_k^*\bE_m
+\notag\\&\qquad
++\Bigl[
+\mu_i^*y^e_{ji}\bE_j\Hu^*\Hd-\mu^*_i\lambda'_{ijk}\Hu^*Q_j\bD_k-\mu_i^*\lambda_{ijk}\Hu^*L_j\bE_k
+\Bigr.\\&\qquad\qquad\Bigl.\notag
+-y^{e*}_{ji}\lambda'_{ilm}\bE^*_j\Hd^*Q_l\bD_m
+-y^{e*}_{ji}\lambda_{ilm} \bE^*_j\Hd^*L_l\bE_m
++\lambda'^*_{ijk}\lambda_{ilm}\bD_k^*Q_j^*L_l\bE_m+\Hc
+\Bigr]\\[8pt]
+ V^F_{\bU}&=
+ y^{u*}_{ij}y^u_{ik}\epsilon^{ab}\epsilon^{cd}H\s u^{a*}\Hu^cQ_j^{b*}Q_k^d
++\frac12\lambda''^*_{ijk}\lambda''_{ilm}(\bD^*_j\bD_l)(\bD^*_k\bD_m)
+-\Bigl[y^{u*}_{il}\lambda''_{ijk}H\s u^*Q^*_l\bD_j\bD_k+\Hc\Bigr]\\[8pt]
+ V^F_{\bD}&=
+ \epsilon^{ab}\epsilon^{cd}
+ \left(y^d_{ij}\Hd^a+\lambda'_{kji}L_k^a\right)^*\left(y^d_{il}\Hd^c+\lambda'_{mli}L^c_m\right)Q_j^{b*}Q_l^d
++\lambda''^*_{jki}\lambda''_{lmi}\left(\bU^*_j\bU_l\ \bD^*_k\bD_m-\bU^*_j\bD_m\ \bD^*_k\bU_l\right)
+\notag\\&\qquad
++\Bigl[\lambda''_{lmi}(y^{d*}_{ij}\Hd^*+\lambda'^*_{kji}L_k^*)Q_j^*\bU_l\bD_m+\Hc\Bigr]\\[8pt]
+ V^F_{\bE}&=
+\epsilon^{ab}\epsilon^{cd}
+\left(y^e_{ij}\Hd^a+\frac12\lambda_{kji}L_k^a\right)^*L^{*b}_j
+\left(y^e_{il}\Hd^c+\frac12\lambda_{mli}L_m^c\right)L_l^d
+\\[30pt]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ V^D_g &= \frac{g_3^2}2\left\{
+ \sum_{\alpha=1}^8\sum_{i=1}^3\left[
+  \sum_{a=1,2}Q_i^{a*}(t^\alpha)Q_i^{a}
+- \bU_i^{*}(t^\alpha)\bU_i
+- \bD_i^{*}(t^\alpha)\bD_i
+\right]\right\}^2\\
+%
+ V^D_W &= \frac{g_2^2}2
+ \left[
+  \sum_{i=1}^3\sum_{x=1}^3 Q_i^{x*}(T^\alpha)Q_i^{x}
++ \sum_{i=1}^3 L_i^{*}(T^\alpha) L_i
++ \Hu^{*}(T^\alpha)\Hu
++ \Hd^{*}(T^\alpha)\Hd
+\right]^2\\
+%
+ V^D_B &= \frac{g_1^2}2\left[
+  \sum_i\left(\frac16|  Q_i |^2
+- \frac12|  L_i |^2
+- \frac23|\bU_i |^2
++ \frac13|\bD_i |^2
++        |\bE_i |^2\right)
++ \frac12|\Hu   |^2
+- \frac12|\Hd   |^2
+\right]^2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\[30pt]
+ V\suprm{RPC}_{\text{\cancel{SUSY}}}&=
+\left(Q^*m_Q^2Q+L^*m_L^2L+\bU^* m_\bU^2\bU + \bD^* m_\bD^2\bD + \bE^* m_\bE^2\bE
+       +m^2_\Hu|\Hu|^2 + m^2_\Hd|\Hd|^2\right)
+\notag\\&\qquad
++\left(-\bU \Hu A^uQ + \bD\Hd A^dQ+\bE \Hd A^e L + B\Hu\Hd+\Hc\right)
+\\&\qquad
++\left(-\bU \Hd^*C^u Q+\bD \Hu^*C^dQ+\bE\Hu^*C^eL+\Hc\right)
+\notag\\
+V\suprm{RPV}_{\text{\cancel{SUSY}}}&=
+ \left(B_i\Hu L_i + \frac12A_{ijk}L_iL_j\bE_k+A'_{ijk}L_iQ_j\bD_k
+       +\frac12A''_{ijk}\bU_i\bD_j\bD_k+\Hc\right) 
+\\&\qquad + \left(C^1_{ijk}L_i^*Q_j\bU_k + C^2_i\Hu^*\Hd\bE_i + C^3_{ijk}\bD^*_i\bU_j\bE_k+\frac12C^4_{ijk}\bD^*_iQ_jQ_k+\Hc\right)
+\notag\\&\qquad + \left(M^2_{Li}\Hd^*L_i+\Hc\right)\notag
+\end{align}
+
+
+
+\subparagraph{With $R$-parity}
+\begin{align}\label{eq:ScaPoteFullRPC}
+\begin{split}
+ V\s{full}\suprm{RPC}&=
+\left(Q^*m_Q^2Q+L^*m_L^2L+\bU^* m_\bU^2\bU + \bD^* m_\bD^2\bD + \bE^* m_\bE^2\bE\right)
+\\&\quad
++\left(|\mu|^2 + m^2_\Hu \right) |\Hu|^2 + \left(|\mu|^2+m^2_\Hd\right)|\Hd|^2
++\left( B\Hu\Hd+\Hc\right)
+\\&\quad
++\left[\left(-\mu^*y^u\Hd^*-A^u\Hu-C^u\Hd^*\right)_{ij}\bU_iQ_j+\Hc\right]
+\\&\quad
++\left[\left(-\mu^*y^d\Hu^*+A^d\Hd+C^d\Hu^*\right)_{ij}\bD_iQ_j+\Hc\right]
+\\&\quad
++\left[\left(-\mu^*y^e\Hu^*+A^e\Hd+C^e\Hu^*\right)_{ij}\bE_iL_j+\Hc\right]
+\\&\quad
+ + |\Hu|^2|\bU y^u|^2 +|\Hd|^2|\bD y^d|^2 +|\Hd|^2|\bE y^e|^2
+ + |\Hu|^2|y^uQ|^2 + |\Hd|^2|y^dQ|^2 + |\Hd|^2|y^eL|^2
+\\&\quad
+  + \sum_a\Bigl(|\bU y^u Q^a|^2 + |\bD y^dQ^a|^2+|\bE y^eL^a|^2\Bigr)
+\\&\quad
++\Bigl[(\bD y^d Q)^*(\bE y^e L) - y^{u*}_{ji}y^d_{ki} \Hu^*\Hd\bU_j^*\bD_k +\Hc\Bigr]
+\\&\quad
+-\left[
+ y^{u*}_{ki}y^u_{kj}(H\s u^* Q_j)(Q_i^* \Hu)
++y^{d*}_{ki}y^d_{kj}(H\s d^* Q_j)(Q_i^* \Hd)
++y^{e*}_{ki}y^e_{kj}(H\s d^* L_j)(L_i^* \Hd)
+\right]
+\\&\quad
++\frac{g_3^2}2\left\{
+ \sum_{\alpha=1}^8\sum_{i=1}^3\left[
+  \sum_{a=1,2}Q_i^{a*}(t^\alpha)Q_i^{a}
+- \bU_i^{*}(t^\alpha)\bU_i
+- \bD_i^{*}(t^\alpha)\bD_i
+\right]\right\}^2
+\\&\quad
++\frac{g_2^2}2
+ \left[
+  \sum_{i=1}^3\sum_{x=1}^3 Q_i^{x*}(T^\alpha)Q_i^{x}
++ \sum_{i=1}^3 L_i^{*}(T^\alpha) L_i
++ \Hu^{*}(T^\alpha)\Hu
++ \Hd^{*}(T^\alpha)\Hd
+\right]^2
+\\&\quad
++\frac{g_1^2}2\left[
+  \sum_i\left(\frac16|  Q_i |^2
+- \frac12|  L_i |^2
+- \frac23|\bU_i |^2
++ \frac13|\bD_i |^2
++        |\bE_i |^2\right)
++ \frac12|\Hu   |^2
+- \frac12|\Hd   |^2
+\right]^2
+\end{split}
+\end{align}
+
+\subparagraph{With Bilinear $R$-parity Violation}
+\begin{align}
+ V^F_{\Hu} &  +\!\! = \sum_a|\mu_iL_i^a|^2 + \Bigl[\mu^*\mu_i\Hd^*L_i - \mu_i^*L_i^*\bU y^u Q + \Hc \Bigr]\\
+ V^F_{L}   &  +\!\! = |\mu_i|^2|\Hu|^2 + \Bigl[\mu_i^*y^e_{ji}\bE_j\Hu^*\Hd+\Hc\Bigr]\\
+V\suprm{RPV}_{\text{\cancel{SUSY}}}&= \left(B_i\Hu L_i + M^2_{Li}\Hd^*L_i + \Hc\right)
+\end{align}
+
+\subparagraph{With Trilinear leptonic $R$-parity Violation}
+\begin{align}
+ V^F_{Q}   &  +\!\! =
+|\lambda'_{jik}L_j\bD_k|^2
++\Bigl[
+-y^{u*}_{ji}\lambda'_{lim}\Hu^*L_l\bU^*_j\bD_m
++y^{d*}_{ji}\lambda'_{lim}\Hd^*L_l\bD^*_j\bD_m+\Hc
+\Bigr]\\[8pt]
+ V^F_{L}& +\!\!=
+|\lambda'_{ijk}Q_j\bD_k|^2+|\lambda_{ijk}L_j\bE_k|^2
+\notag\\&\qquad
++\Bigl[
+-y^{e*}_{mi}\lambda'_{ijk}\bE^*_m\Hd^*Q_j\bD_k
+-y^{e*}_{mi}\lambda_{ijk} \bE^*_m\Hd^*L_j\bE_k
++\lambda'^*_{ijk}\lambda_{ilm}\bD_k^*Q_j^*L_l\bE_m+\Hc
+\Bigr]\\[8pt]
+ V^F_{\bD}&+\!\!=
+\lambda'^*_{kji}\lambda'_{mli}\Bigl[(L_k^*L_m)(Q_j^*Q_l) -(L_k^*Q_l)(Q_j^*L_m)\Bigr]
+\notag\\&\qquad
++\Bigl\{y^d_{ij}{}^*\lambda'_{mli}\left[(\Hd^*L_m)(Q_jQ_l)-(\Hd^*Q_l)(Q_j^*L_m)\right]+\Hc\Bigr\}
+\\[8pt]
+ V^F_{\bE}&=
+\frac12\lambda_{kji}^*\lambda_{mli}(L_k^*L_m)(L_j^*L_l)+
+\lambda_{kji}^*y^e_{ilp}\Bigl[(L_k^*\Hd)(L^*_jL_l)+\Hc\Bigr]
+\end{align}
+
+
+\subsubsection{Full Lagrangian (in Gauge eigenstates)}
+\vspace{-25pt}
+\begin{align}
+  \Lag\s{gauge}
+&=
+-\frac14B^{\mu\nu}B_{\mu\nu}
+-\frac14W^{\mu\nu\,a}W_{\mu\nu}^a
+-\frac14G^{\mu\nu\,a}G_{\mu\nu}^a\quad\footnotemark
+\\
+\begin{split}
+ \Lag\s{gaugino}&=
+-\frac12\left(M_3 gg + M_2 ww + M_1 bb + \Hc\right)
+\\&\qquad
++ \ii\bar b^a\bSm\Pm b^a 
++ \ii\bar w^a\bSm\Pm w^a 
++ \ii\bar g^a\bSm\Pm g^a 
++
+\ii g_2\epsilon^{abc}\bar w^a\bSm W_\mu^b w^c
++
+\ii g_3f^{abc}\bar g^a\bSm G_\mu^b g^c
+\end{split}
+\\
+\Lag\s{\cancel{CP}}
+&=
+-\frac1{64\pi^2}\epsilon^{\mu\nu\rho\sigma}B_{\mu\nu}B_{\rho\sigma}
+-\frac1{64\pi^2}\epsilon^{\mu\nu\rho\sigma}W^a_{\mu\nu}W_{\rho\sigma}^a
+-\frac1{64\pi^2}\epsilon^{\mu\nu\rho\sigma}G^a_{\mu\nu}G_{\rho\sigma}^a
+\\
+\begin{split}
+\Lag\s{scalar} &=
+           \Bigl[\bigl(\partial^\mu+\ii g_3G^\mu+\ii g_2W^\mu+\tfrac16\ii g_1B^\mu\bigr)\tilde q_i^*\Bigr]\Bigl[\bigl(\partial_\mu-\ii g_3G_\mu-\ii g_2W_\mu-\tfrac16\ii g_1B_\mu\bigr)\tilde q_i\Bigr]
+\\&\quad + \Bigl[\bigl(\partial^\mu+\ii g_3G^\mu+\tfrac23\ii g_1B^\mu\bigr)\tilde \uR_i^*\Bigr]\Bigl[\bigl(\partial_\mu-\ii g_3G_\mu-\tfrac23\ii g_1B_\mu\bigr)\tilde \uR_i\Bigr]
+\\&\quad + \Bigl[\bigl(\partial^\mu+\ii g_3G^\mu-\tfrac13\ii g_1B^\mu\bigr)\tilde \dR_i^*\Bigr]\Bigl[\bigl(\partial_\mu-\ii g_3G_\mu+\tfrac13\ii g_1B_\mu\bigr)\tilde \dR_i\Bigr]
+\\&\quad + \Bigl[\bigl(\partial^\mu+\ii g_2W^\mu-\tfrac12\ii g_1B^\mu\bigr)\tilde l_i^*\Bigr]\Bigl[\bigl(\partial_\mu-\ii g_2W_\mu+\tfrac12\ii g_1B_\mu\bigr)\tilde l_i\Bigr]
+\\&\quad + \Bigl[\bigl(\partial^\mu-\ii g_1B^\mu\bigr)\tilde \eR_i^*\Bigr]\Bigl[\bigl(\partial_\mu+\ii g_1B_\mu\bigr)\tilde \eR_i\Bigr]
+\\&\quad + \Bigl[\bigl(\partial^\mu+\ii g_2W^\mu+\tfrac12\ii g_1B^\mu\bigr)\Hu^*\Bigr]\Bigl[\bigl(\partial_\mu-\ii g_2W_\mu-\tfrac12\ii g_1B_\mu\bigr)\Hu\Bigr]
+\\&\quad + \Bigl[\bigl(\partial^\mu+\ii g_2W^\mu-\tfrac12\ii g_1B^\mu\bigr)\Hd^*\Bigr]\Bigl[\bigl(\partial_\mu-\ii g_2W_\mu+\tfrac12\ii g_1B_\mu\bigr)\Hd\Bigr],
+\end{split}
+\\
+%\begin{split}
+%\Lag\s{fermion}&=
+%           \ol Q_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu-\ii g_2W_\mu-\frac16\ii g_1B_\mu\right)\PL Q_i
+%\\&\quad + \ol U_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu-\frac23\ii g_1B_\mu\right)\PR U_i
+%\\&\quad + \ol D_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu+\frac13\ii g_1B_\mu\right)\PR D_i
+%\\&\quad + \ol L_i\ii\gamma^\mu\left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right)\PL L_i
+%\\&\quad + \ol E_i\ii\gamma^\mu\left(\partial_\mu+\ii g_1B_\mu\right)\PR E_i,
+%\end{split}
+\begin{split}
+\Lag\s{fermion}&=
+           \ii\bar Q_i         \bSm \left(\partial_\mu-\ii g_3G_\mu-\ii g_2W_\mu-\frac16\ii g_1B_\mu\right) Q_i
+\\&\quad + \ii\bar U_i\suprm c \bSm \left(\partial_\mu-\ii g_3[-G_\mu\suprm T]+\frac23\ii g_1B_\mu\right) U_i\suprm c
+         + \ii\bar D_i\suprm c \bSm \left(\partial_\mu-\ii g_3[-G_\mu\suprm T]-\frac13\ii g_1B_\mu\right) D_i\suprm c
+\\&\quad + \ii\bar L_i         \bSm \left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right) L_i
+         + \ii\bar E_i\suprm c \bSm \left(\partial_\mu             -       \ii g_1B_\mu\right) E_i\suprm c
+\\&\quad + \ii\bar{\tilde h}\s u \bSm \left(\partial_\mu-\ii g_2W_\mu-\frac12\ii g_1B_\mu\right) \tilde h\s u
+         + \ii\bar{\tilde h}\s d \bSm \left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right) \tilde h\s d,
+\end{split}
+\\
+ \begin{split}
+\Lag\s{SFG}&=
+-\sqrt2 g_3\Bigl[\bigl(
+   \tilde q_i^*\tau^a Q_i
+ + \tilde \uR_i  [-\tau^a{}\suprm T]U_i\suprm c
+ + \tilde \dR_i  [-\tau^a{}\suprm T]D_i\suprm c
+\bigr)g^a
+\\&\qquad\qquad\qquad+
+\bar w^a\bigl(
+   \bar Q_i        \tau^a \tilde q_i
+ + \bar U_i\suprm c[-\tau^a{}\suprm T] \tilde \uR_i^*
+ + \bar D_i\suprm c[-\tau^a{}\suprm T] \tilde \dR_i^*
+\bigr)\Bigr]
+\\
+&\quad -\sqrt2 g_2\Bigl[
+\bigl(
+   \tilde q_i^*T^a Q_i
+ + \tilde l_i^*T^a L_i
+ + \Hu^*T^a \tilde h\s u
+ + \Hd^*T^a \tilde h\s d
+\bigr)w^a
+\\&\qquad\qquad\qquad+
+\bar w^a\bigl(
+   \bar Q_i        T^a \tilde q_i
+ + \bar L_i        T^a \tilde l_i
+ + \bar {\tilde h}\s u T^a \Hu
+ + \bar {\tilde h}\s d T^a \Hd
+\bigr)
+\Bigr]
+\\
+&\quad -\sqrt2 g_1\Bigl[
+\bigl(
+   \tfrac16\tilde q_i^*Q_i
+ + \tfrac23\tilde \uR_i  U_i\suprm c
+ - \tfrac13\tilde \dR_i  D_i\suprm c
+ - \tfrac12\tilde l_i^*L_i
+ -         \tilde \eR_i  E_i\suprm c
+ + \tfrac12\Hu^* \tilde h\s u
+ - \tfrac12\Hd^* \tilde h\s d
+\bigr)b^a
+\\&\qquad\qquad\qquad+
+\bar b^a\bigl(
+   \tfrac16\bar Q_i         \tilde q_i
+ + \tfrac23\bar U_i\suprm c \tilde \uR_i^*
+ - \tfrac13\bar D_i\suprm c \tilde \dR_i^*
+ - \tfrac12\bar L_i         \tilde l_i
+ -         \bar E_i\suprm c \tilde \eR_i^*
+ + \tfrac12\bar {\tilde h}\s u \Hu
+ - \tfrac12\bar {\tilde h}\s d \Hd
+\bigr)
+\Bigr]
+ \end{split}
+\\
+ \begin{split}
+\Lag\s{super}\suprm{RPC}&=
+-\mu \tilde h\s u\tilde h\s d
++y\s u{}_{ij} U\suprm c_i \Hu Q_j
+-y\s d{}_{ij} D\suprm c_i \Hd Q_j
+-y\s e{}_{ij} E\suprm c_i \Hd L_j
+\\&\quad
++y\s u{}_{ij} U\suprm c_i  \tilde h\s u \tilde q_j
++y\s u{}_{ij} \tilde \uR_i^* \tilde h\s u Q_j
+-y\s d{}_{ij} D\suprm c_i \tilde h\s d \tilde q_j
+-y\s d{}_{ij} \tilde \dR_i^* \tilde h\s d Q_j
+\\&\quad
+-y\s e{}_{ij} E\suprm c_i \tilde h\s d \tilde l_j
+-y\s e{}_{ij} \tilde \eR_i^* \tilde h\s d L_j
++\Hc
+\end{split}
+\\
+ \Lag\s{pot.}\suprm{RPC}&= -\text {\eqref{eq:ScaPoteFullRPC}} \Bigl[V\s{full}\suprm{RPC}\Bigr]
+\end{align}
+
+\footnotetext{
+Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqref{eq:SMGaugeKineticBWG} and \eqref{eq:SMGaugeKineticGZG}.
+}
+
+\subparagraph{Fermion Composition}
+\begin{align}
+ \Lag\s {gaugino}
+&=
+ \frac12\ol b(\ii \slashed\partial-M_1)b
++\frac12\ol w(\ii \slashed D-M_2)w
++\frac12\ol g(\ii \slashed D-M_3)g
+\\ 
+\begin{split}
+\Lag\s{fermion}&= \text {\eqref{eq:SMLagMatter}} \Bigl[\Lag\s{matter}\suprm{SM}\Bigr]
+\\&\quad - (\mu\tilde h\s u\tilde h\s d+\Hc)
++ \ii\bar{\tilde h}\s u \bSm \left(\partial_\mu-\ii g_2W_\mu-\frac12\ii g_1B_\mu\right) \tilde h\s u
++ \ii\bar{\tilde h}\s d \bSm \left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right) \tilde h\s d,
+\notag
+\end{split}
+\\
+ \begin{split}
+&=
+\Lag\s{matter}\suprm{SM}
+\\&\qquad
++\ii\bar{\tilde h}\s u\bSm\Pm\tilde h\s u
++\ii\bar{\tilde h}\s d\bSm\Pm\tilde h\s d
+-\left[\mu\left(
+ \tilde h\s u^+\tilde h\s d^-
+-\tilde h\s u^0\tilde h\s d^0
+\right)+\Hc
+\right]
+\\&\qquad
++ \bar{\tilde h}\s u \bSm \left(g_2W_\mu+\frac12 g_1B_\mu\right) \tilde h\s u
++ \bar{\tilde h}\s d \bSm \left(g_2W_\mu-\frac12 g_1B_\mu\right) \tilde h\s d,
+ \end{split}
+\\
+ \begin{split}
+\Lag\s{SFG}&=
+-\sqrt2 g_3\Bigl[
+  \tilde q_i^*\tau^a \left(\ol g^a\PL Q_i\right)
+ - \tilde \uR_i^*\tau^a \left(\ol g\PR U_i\right)
+ - \tilde \dR_i^*\tau^a \left(\ol g\PR D_i\right)
+\\&\qquad\qquad+
+   \left(\ol Q_i\PR g^a\right)\tau^a \tilde q_i
+ - \left(\ol U_i\PL g^a\right)\tau^a \tilde \uR_i
+ - \left(\ol D_i\PL g^a\right)\tau^a \tilde \dR_i
+\bigr)\Bigr]
+\\
+&\quad- g_2\Bigl[
+  \tilde \uL_i^* \left(\ol w^+\PL \dL_i\right)
++ \tilde \nu_i^* \left(\ol w^+\PL l_i\right)
++ \HuP^* \left(\ol w^+\PL \tilde h_u^0\right)
++ \HdZ^* \left(\ol w^+\PL \tilde h_d^-\right)
+\\&\qquad\qquad+
+   \tilde \uL_i \left(\ol \dL_i\PR w^-\right)
++  \tilde \nu_i \left(\ol l_i\PR w^-\right)
++  \HuP \left(\ol {\tilde h\s u^0}\PR w^-\right)
++  \HdZ \left(\ol {\tilde h\s d^-}\PR w^-\right)
+\\&\qquad\qquad+
+  \tilde \dL_i^* \left(\ol w^-\PL \uL_i\right)
++ \tilde l_i^* \left(\ol w^-\PL \nu_i\right)
++ \HuZ^* \left(\ol w^-\PL \tilde h\s u^+\right)
++ \HdM^* \left(\ol w^-\PL \tilde h\s d^0\right)
+\\&\qquad\qquad+
+   \tilde \dL_i \left(\ol \uL_i\PR w^+\right)
++  \tilde l_i \left(\ol \nu_i\PR w^+\right)
++  \HuZ \left(\ol {\tilde h\s u^+}\PR w^+\right)
++  \HdM \left(\ol {\tilde h\s d^0}\PR w^+\right)
+\Bigr]
+\\
+&\quad-\sqrt2 g_2\Bigl[
+  \tilde q_i^*T^3 \left(\ol w^3\PL Q_i\right)
++ \tilde l_i^*T^3 \left(\ol w^3\PL L_i\right)
++ H\s u^*T^3 \left(\ol w^3\PL \tilde h_u\right)
++ H\s d^*T^3 \left(\ol w^3\PL \tilde h_d\right)
+\\&\qquad\qquad+
+   \left(\ol Q_i\PR g^3\right)T^3 \tilde q_i
++  \left(\ol L_i\PR g^3\right)T^3 \tilde l_i
++  \left(\ol {\tilde h\s u}\PR w^3\right)T^3 H\s u
++  \left(\ol {\tilde h\s d}\PR w^3\right)T^3 H\s d
+\bigr)\Bigr]
+\\
+&\quad -\sqrt2 g_1\Bigl[
+   \tfrac16\tilde q_i^* \ol b\PL Q_i
+ + \tfrac23\tilde \uR_i   \ol U_i\PL b
+ - \tfrac13\tilde \dR_i   \ol D_i\PL b
+ - \tfrac12\tilde l_i^* \ol b\PL L_i
+ -         \tilde \eR_i   \ol E_i\PL b
+\\&\qquad\qquad\qquad
+ + \tfrac16\ol Q_i\PR b \tilde q_i
+ + \tfrac23\ol b\PR U_i \tilde \uR_i^*
+ - \tfrac13\ol b\PR D_i \tilde \dR_i^*
+ - \tfrac12\ol L_i\PR b \tilde l_i
+ -         \ol b\PR E_i \tilde \eR_i^*
+\\&\qquad\qquad\qquad
+ + \tfrac12\Hu^* \ol b\PL\tilde h\s u
+ - \tfrac12\Hd^* \ol b\PL\tilde h\s d
+ + \tfrac12\ol {\tilde h\s u}\PR b \Hu
+ - \tfrac12\ol {\tilde h\s d}\PR b \Hd
+\Bigr]
+ \end{split}
+\\
+ \begin{split}
+\Lag\s{ìíêÏ}
+&=
+-y\s u{}_{ij} \HuZ\left(\ol U_i \PL \uL_j\right)
+-y\s d{}_{ij} \HdZ\left(\ol D_i \PL \dL_j\right)
+-y\s e{}_{ij} \HdZ\left(\ol E_i \PL l_j\right)
+\\&\quad
++y\s u{}_{ij} \HuP\left(\ol U_i\PL \dL_j\right)
++y\s d{}_{ij} \HdM\left(\ol D_i\PL \uL_j\right)
++y\s e{}_{ij} \HdM\left(\ol E_i\PL \nu_j\right)
+\\&\quad
++ \tilde \uL_j\left(
+y\s d{}_{ij} D\suprm c_i \tilde h\s d^-
+-y\s u{}_{ij} U\suprm c_i  \tilde h\s u^0
+\right)
++\tilde \dL_j \left(
+  y\s u{}_{ij} U\suprm c_i  \tilde h\s u^+ 
+ -y\s d{}_{ij} D\suprm c_i \tilde h\s d^0
+\right)
+\\&\quad
++\tilde \uR_i^* \left(
+ y\s u{}_{ij} \tilde h\s u^+ \dL_j
+-y\s u{}_{ij} \tilde h\s u^0 \uL_j
+\right)
++\tilde \dR_i^* \left(
+y\s d{}_{ij}  \tilde h\s d^- \uL_j
+-y\s d{}_{ij}  \tilde h\s d^0 \dL_j
+\right)
+\\&\quad
++\tilde \eR_i^* \left(
+y\s e{}_{ij}  \tilde h\s d^- \nu_j
+-y\s e{}_{ij}  \tilde h\s d^0 l_j
+\right)
++y\s e{}_{ij} E\suprm c_i \tilde h\s d^- \tilde \nu_j
+-y\s e{}_{ij} E\suprm c_i \tilde h\s d^0 \tilde l_j
+ \end{split}
+\end{align}
+and the rest part is
+ $\Lag\s{gauge}+\Lag\s{scalar} + \Lag\s{pot.}\suprm{RPC}$.
+
+
+
+
+%%% Local Variables:
+%%% TeX-master: "CheatSheet.tex"
+%%% End:
+
+
+

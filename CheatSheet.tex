@@ -1,5 +1,5 @@
-%#!./compile CheatSheet sjis
-%%% Time-Stamp: <2011-09-20 11:12:04 misho>
+%#!platexmake -kanji=sjis CheatSheet
+%%% Time-Stamp: <2012-04-03 21:43:11 misho>
 %%% ï∂éöÉRÅ[ÉhÇÕShift-JISÇ≈Ç∑ÇÊÇÀ
 
 \documentclass[a4j,10pt,notitlepage]{jsarticle}
@@ -23,15 +23,17 @@
 \def\myoption@subsection   {\normalfont\large\headfont\sc}
 \def\myoption@subparagraph {\normalfont\normalsize\headfont\underline}
 \makeatother
-\def\headermark{2011.09.20 / Revision: 629+}
+\IfFileExists{\jobname.rev}{
+  \usepackage{fancybox}\fancyput(330pt,10pt){{\color[rgb]{0.2,0.2,0.2}\input{\jobname.rev}}}}
 
 \begin{document}
-\fancyput(330pt,10pt){\color[rgb]{0.2,0.2,0.2}{\headermark}}
 \input{General.tex}
 \clearpage
 \input{StandardModel.tex}
 \clearpage
 \input{SUSY.tex}
+\clearpage
+\input{MSSM.tex}
 \clearpage
 \input{SUGRA.tex}
 \clearpage
