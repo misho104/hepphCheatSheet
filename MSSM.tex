@@ -1,5 +1,5 @@
 %#!platexmake -kanji=sjis -pvc CheatSheet
-%%% Time-Stamp: <2012-04-08 18:57:53 misho>
+%%% Time-Stamp: <2012-04-09 10:17:05 misho>
 
 \def\uL{u\s L{}}%obsolete
 \def\dL{d\s L{}}
@@ -30,8 +30,8 @@
 \newcommand\HnouP{\tilde h\s u^+{}}\newcommand\HnodZ{\tilde h\s d^0{}}\newcommand\wno{\tilde w}
 \newcommand\HnouZ{\tilde h\s u^0{}}\newcommand\HnodM{\tilde h\s d^-{}}\newcommand\gno{\tilde g}
 \newcommand\bHnou{\bar{\tilde h}\s u{}}   \newcommand\bHnod{\bar{\tilde h}\s d{}}   \newcommand\bbno{\bar{\tilde b}{}}
-\newcommand\bHnouP{\bar{\tilde h}\s u^+{}}\newcommand\bHnodZ{\bar{\tilde h}\s d^0{}}\newcommand\bwno{\bar{\tilde w}{}}
-\newcommand\bHnouZ{\bar{\tilde h}\s u^0{}}\newcommand\bHnodM{\bar{\tilde h}\s d^-{}}\newcommand\bgno{\bar{\tilde g}{}}
+\newcommand\bHnouP{\bar{\tilde h}{}\s u^+}\newcommand\bHnodZ{\bar{\tilde h}{}\s d^0}\newcommand\bwno{\bar{\tilde w}{}}
+\newcommand\bHnouZ{\bar{\tilde h}{}\s u^0}\newcommand\bHnodM{\bar{\tilde h}{}\s d^-}\newcommand\bgno{\bar{\tilde g}{}}
 
 \subsection{Minimal Supersymmetric Standard Model}
 
@@ -80,11 +80,11 @@ $\bno=\bno\suprm C=\pmat{\bno_\alpha\\\bbno{}^{\dalpha}}$. Here $\bbno_{\dalpha}
 \sqL\,(\suL,\sdL), \suR^*, \sdR^*, \slL\,(\seL,\snu), \seR^*, \Hu\,(\HuP,\HuZ), \Hd\,(\HdZ,\HdM)
 &
 \text{Weyls : }&
-Q\,(U,D), \Uc, \Dc, L\,(\nu,e), \Ec
+Q\,(u,d), \Uc, \Dc, L\,(\nu,e), \Ec
 \\
 &\sqL^*\,(\suL^*,\sdL^*), \suR, \sdR, \slL^*\,(\seL^*,\snu^*), \seR, \Hu^*, \Hd^*
 &
-&\bQ\,(\bU,\bD), \bUc, \bDc, \bL\,(\bar \nu, \bar e), \bEc
+&\bQ\,(\bar u,\bar d), \bUc, \bDc, \bL\,(\bar \nu, \bar e), \bEc
 \\
 \text{Diracs : }&
 U\,(U\s L,U\s R), D\,(D\s L, D\s R), E\,(E\s L, E\s R), \nu
@@ -478,7 +478,7 @@ V\suprm{RPV}_{\text{\cancel{SUSY}}}&= \left(B_i\Hu L_i + M^2_{Li}\Hd^*L_i + \Hc\
    \sqL_i^*T^a Q_i
  + \slL_i^*T^a L_i
  + \Hu^*   T^a \Hnou
- + \Hd^*   T^a \Hnou
+ + \Hd^*   T^a \Hnod
 \bigr)\wno^a
 \\&\qquad\qquad\qquad+
 \bwno^a\bigl(
@@ -498,9 +498,9 @@ V\suprm{RPV}_{\text{\cancel{SUSY}}}&= \left(B_i\Hu L_i + M^2_{Li}\Hd^*L_i + \Hc\
  +         \seR{}_i  \Ec_i
  + \tfrac12\Hu^* \Hnou
  - \tfrac12\Hd^* \Hnod
-\bigr)\bno^a
+\bigr)\bno
 \\&\qquad\qquad\qquad+
-\bbno^a\bigl(
+\bbno\bigl(
    \tfrac16\bQ_i \sqL  _i
  - \tfrac23\bUc_i\suR^*{}_i
  + \tfrac13\bDc_i\sdR^*{}_i
@@ -540,135 +540,138 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 \begin{align}
  \Lag\s {gaugino}
 &=
- \frac12\ol b(\ii \slashed\partial-M_1)b
-+\frac12\ol w(\ii \slashed D-M_2)w
-+\frac12\ol g(\ii \slashed D-M_3)g
+ \frac12\ol \bno\left(\ii \slashed\partial-M_1\right)\bno
++\frac12\ol \wno\left(\ii \slashed\DD-M_2\right)\wno
++\frac12\ol \gno\left(\ii \slashed\DD-M_3\right)\gno
 \\ 
 \begin{split}
 \Lag\s{fermion}&= \text {\eqref{eq:SMLagMatter}} \Bigl[\Lag\s{matter}\suprm{SM}\Bigr]
-\\&\quad - (\mu\tilde h\s u\tilde h\s d+\Hc)
-+ \ii\bar{\tilde h}\s u \bSm \left(\partial_\mu-\ii g_2W_\mu-\frac12\ii g_1B_\mu\right) \tilde h\s u
-+ \ii\bar{\tilde h}\s d \bSm \left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right) \tilde h\s d,
+\\&\quad - (\mu\Hnou\Hnod+\Hc)
++ \ii\bHnou \bSm \left(\Pm-\ii g_2W_\mu-\frac12\ii g_1B_\mu\right) \Hnou
++ \ii\bHnod \bSm \left(\Pm-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right) \Hnod
 \notag
 \end{split}
 \\
  \begin{split}
 &=
-\Lag\s{matter}\suprm{SM}
-\\&\qquad
-+\ii\bar{\tilde h}\s u\bSm\Pm\tilde h\s u
-+\ii\bar{\tilde h}\s d\bSm\Pm\tilde h\s d
--\left[\mu\left(
+\Lag\s{matter}\suprm{SM}-\left[\mu\left(
  \tilde h\s u^+\tilde h\s d^-
 -\tilde h\s u^0\tilde h\s d^0
 \right)+\Hc
 \right]
 \\&\qquad
-+ \bar{\tilde h}\s u \bSm \left(g_2W_\mu+\frac12 g_1B_\mu\right) \tilde h\s u
-+ \bar{\tilde h}\s d \bSm \left(g_2W_\mu-\frac12 g_1B_\mu\right) \tilde h\s d,
++ \ii\bHnouP \bSm \left(\Pm-\frac12\ii g_2W_\mu^3-\frac12\ii g_1B_\mu\right) \HnouP
++ \ii\bHnodM \bSm \left(\Pm+\frac12\ii g_2W_\mu^3+\frac12\ii g_1B_\mu\right) \HnodM
+\\&\qquad
++ \ii\bHnouZ \bSm \left(\Pm+\frac12\ii g_2W_\mu^3-\frac12\ii g_1B_\mu\right) \HnouZ
++ \ii\bHnodZ \bSm \left(\Pm-\frac12\ii g_2W_\mu^3+\frac12\ii g_1B_\mu\right) \HnodZ
+\\&\qquad
++ \frac{g_2}{\sqrt2}
+\left(
+  \bHnouZ \bSm W_\mu^- \HnouP
++ \bHnodZ \bSm W_\mu^+ \HnodM
++ \bHnouP \bSm W_\mu^+ \HnouZ
++ \bHnodM \bSm W_\mu^- \HnodZ
+\right)
  \end{split}
 \\
- \begin{split}
+\begin{split}
 \Lag\s{SFG}&=
 -\sqrt2 g_3\Bigl[
-  \tilde q_i^*\tau^a \left(\ol g^a\PL Q_i\right)
- - \tilde \uR_i^*\tau^a \left(\ol g\PR U_i\right)
- - \tilde \dR_i^*\tau^a \left(\ol g\PR D_i\right)
-\\&\qquad\qquad+
-   \left(\ol Q_i\PR g^a\right)\tau^a \tilde q_i
- - \left(\ol U_i\PL g^a\right)\tau^a \tilde \uR_i
- - \left(\ol D_i\PL g^a\right)\tau^a \tilde \dR_i
-\bigr)\Bigr]
-\\
-&\quad- g_2\Bigl[
-  \tilde \uL_i^* \left(\ol w^+\PL \dL_i\right)
-+ \tilde \nu_i^* \left(\ol w^+\PL l_i\right)
-+ \HuP^* \left(\ol w^+\PL \tilde h_u^0\right)
-+ \HdZ^* \left(\ol w^+\PL \tilde h_d^-\right)
-\\&\qquad\qquad+
-   \tilde \uL_i \left(\ol \dL_i\PR w^-\right)
-+  \tilde \nu_i \left(\ol l_i\PR w^-\right)
-+  \HuP \left(\ol {\tilde h\s u^0}\PR w^-\right)
-+  \HdZ \left(\ol {\tilde h\s d^-}\PR w^-\right)
-\\&\qquad\qquad+
-  \tilde \dL_i^* \left(\ol w^-\PL \uL_i\right)
-+ \tilde l_i^* \left(\ol w^-\PL \nu_i\right)
-+ \HuZ^* \left(\ol w^-\PL \tilde h\s u^+\right)
-+ \HdM^* \left(\ol w^-\PL \tilde h\s d^0\right)
-\\&\qquad\qquad+
-   \tilde \dL_i \left(\ol \uL_i\PR w^+\right)
-+  \tilde l_i \left(\ol \nu_i\PR w^+\right)
-+  \HuZ \left(\ol {\tilde h\s u^+}\PR w^+\right)
-+  \HdM \left(\ol {\tilde h\s d^0}\PR w^+\right)
+   \suL^*{}_i \tau^a \left(\ol\gno{}^a \PL U_i\right)
+ + \sdL^*{}_i \tau^a \left(\ol\gno{}^a \PL D_i\right)
+ - \left(\ol U_i\PL\gno^a\right)  \tau^a \suR{}_i
+ - \left(\ol D_i\PL\gno^a\right)  \tau^a \sdR{}_i
+\\&\qquad\qquad
+ + \left(\ol U_i \PR \gno^a\right)    \tau^a \suL{}_i
+ + \left(\ol D_i \PR \gno^a\right)    \tau^a \sdL{}_i
+ - \suR^*{}_i  \tau^a \left(\ol\gno{}^a\PR U\right)
+ - \sdR^*{}_i  \tau^a \left(\ol\gno{}^a\PR D\right)
 \Bigr]
 \\
-&\quad-\sqrt2 g_2\Bigl[
-  \tilde q_i^*T^3 \left(\ol w^3\PL Q_i\right)
-+ \tilde l_i^*T^3 \left(\ol w^3\PL L_i\right)
-+ H\s u^*T^3 \left(\ol w^3\PL \tilde h_u\right)
-+ H\s d^*T^3 \left(\ol w^3\PL \tilde h_d\right)
+&\quad -g_2\Bigl[
+   \wno^+ \left( d_i\suL{}_i^* + e_i\snu{}_i^* + \HnouZ\HuP^* + \HnodM\HdZ^*\right)
++   \left(\sdL{}_i \bU_i + \seL{}_i \bar\nu_i + \HuZ     \bHnouP + \HdM     \bHnodZ\right) \bwno^-
 \\&\qquad\qquad+
-   \left(\ol Q_i\PR g^3\right)T^3 \tilde q_i
-+  \left(\ol L_i\PR g^3\right)T^3 \tilde l_i
-+  \left(\ol {\tilde h\s u}\PR w^3\right)T^3 H\s u
-+  \left(\ol {\tilde h\s d}\PR w^3\right)T^3 H\s d
-\bigr)\Bigr]
+   \wno^- \left(u_i\sdL{}_i^* + \nu_i\seL{}_i^* + \HnouP\HuZ^* + \HnodZ\HdM^*\right)
+ + \left(\suL{}_i \bD_i + \snu{}_i \bE_i + \HuP     \bHnouZ + \HdZ     \bHnodM\right)\bwno^+
+\Bigr]
+\\
+&\quad -\sqrt2 g_2\Bigl[
+\tfrac12\bigl(
+   \suL{}_i^* u_i
+ + \snu{}_i^* \nu_i
+ + \HuP^*     \HnouP
+ + \HdZ^*     \HnodZ
+ - \sdL{}_i^* d_i
+ - \seL{}_i^* e_i
+ - \HuZ^*    \HnouZ
+ - \HdM^*    \HnodM
+\bigr)\wno^3
+\\&\qquad\qquad\qquad+
+\tfrac12\bwno^a\bigl(
+   \bU_i     \suL{}_i
+ + \bar\nu_i \snu_i
+ + \bHnouP   \HuP
+ + \bHnodZ   \HdZ
+ - \bD_i   \sdL{}_i
+ - \bE_i   \seL{}_i
+ - \bHnouZ  \HuZ
+ - \bHnodM  \HdM
+\bigr)
+\Bigr]
 \\
 &\quad -\sqrt2 g_1\Bigl[
-   \tfrac16\tilde q_i^* \ol b\PL Q_i
- + \tfrac23\tilde \uR_i   \ol U_i\PL b
- - \tfrac13\tilde \dR_i   \ol D_i\PL b
- - \tfrac12\tilde l_i^* \ol b\PL L_i
- -         \tilde \eR_i   \ol E_i\PL b
+   \tfrac16\sqL  _i^* \ol\bno\PL Q_i
+ - \tfrac23\suR{}_i   \ol U_i\PL\bno
+ + \tfrac13\sdR{}_i   \ol D_i\PL\bno
+ - \tfrac12\slL  _i^* \ol\bno\PL L_i
+ +         \seR{}_i   \ol E_i\PL\bno
+\\&\qquad\qquad\qquad+
+   \tfrac16\sqL    _i \ol Q_i\PR\bno
+ - \tfrac23\suR^*{}_i \ol\bno\PR U_i
+ + \tfrac13\sdR^*{}_i \ol\bno\PR D_i
+ - \tfrac12\slL    _i \ol L_i\PR\bno
+ +         \seR^*{}_i \ol\bno\PR E_i
 \\&\qquad\qquad\qquad
- + \tfrac16\ol Q_i\PR b \tilde q_i
- + \tfrac23\ol b\PR U_i \tilde \uR_i^*
- - \tfrac13\ol b\PR D_i \tilde \dR_i^*
- - \tfrac12\ol L_i\PR b \tilde l_i
- -         \ol b\PR E_i \tilde \eR_i^*
-\\&\qquad\qquad\qquad
- + \tfrac12\Hu^* \ol b\PL\tilde h\s u
- - \tfrac12\Hd^* \ol b\PL\tilde h\s d
- + \tfrac12\ol {\tilde h\s u}\PR b \Hu
- - \tfrac12\ol {\tilde h\s d}\PR b \Hd
+ + \tfrac12\Hu^* \Hnou\bno
+ - \tfrac12\Hd^* \Hnod\bno
+ + \tfrac12\Hu   \bHnou\bbno
+ - \tfrac12\Hd   \bHnod\bbno
 \Bigr]
  \end{split}
+\\
+&\notag\text{\TODO{SFGと湯川，compose 可能？ $\wno$をDiracにするときのCはWeyl位相に非依存？}}
 \\
  \begin{split}
 \Lag\s{湯川}
 &=
--y\s u{}_{ij} \HuZ\left(\ol U_i \PL \uL_j\right)
--y\s d{}_{ij} \HdZ\left(\ol D_i \PL \dL_j\right)
--y\s e{}_{ij} \HdZ\left(\ol E_i \PL l_j\right)
+\Bigl(
+-\HuZ \ol U y\s u \PL U
+-\HdZ \ol D y\s d \PL D
+-\HdZ \ol E y\s e \PL E
+\\&\qquad\qquad
++\HuP \ol U y\s u \PL D
++\HdM \ol D y\s d \PL U
++\HdM \ol E y\s e \PL \nu
++\Hc
+\Bigr)
 \\&\quad
-+y\s u{}_{ij} \HuP\left(\ol U_i\PL \dL_j\right)
-+y\s d{}_{ij} \HdM\left(\ol D_i\PL \uL_j\right)
-+y\s e{}_{ij} \HdM\left(\ol E_i\PL \nu_j\right)
++y\s u{}_{ij} \Uc_i     \left(\HnouP \suL{}_j - \HnouZ \sdL{}_j\right)
++y\s d{}_{ij} \Dc_i     \left(\HnodM \sdL{}_j - \HnodZ \suL{}_j\right)
++y\s e{}_{ij} \Ec_i     \left(\HnodM \seL{}_j - \HnodZ \snu{}_j\right)
 \\&\quad
-+ \tilde \uL_j\left(
-y\s d{}_{ij} D\suprm c_i \tilde h\s d^-
--y\s u{}_{ij} U\suprm c_i  \tilde h\s u^0
-\right)
-+\tilde \dL_j \left(
-  y\s u{}_{ij} U\suprm c_i  \tilde h\s u^+ 
- -y\s d{}_{ij} D\suprm c_i \tilde h\s d^0
-\right)
++y\s u{}_{ij} \suR^*{}_i\left(\HnouP u_j - \HnouZ U_j\right)
++y\s d{}_{ij} \sdR^*{}_i\left(\HnodM d_j - \HnodZ D_j\right)
++y\s e{}_{ij} \seR^*{}_i\left(\HnodM e_j - \HnodZ e_j\right)
 \\&\quad
-+\tilde \uR_i^* \left(
- y\s u{}_{ij} \tilde h\s u^+ \dL_j
--y\s u{}_{ij} \tilde h\s u^0 \uL_j
-\right)
-+\tilde \dR_i^* \left(
-y\s d{}_{ij}  \tilde h\s d^- \uL_j
--y\s d{}_{ij}  \tilde h\s d^0 \dL_j
-\right)
++y\s u^*{}_{ij} \bUc_i  \left(\bHnouP \sdL^*{}_j - \bHnouZ \suL^*{}_j\right)
++y\s d^*{}_{ij} \bDc_i  \left(\bHnodM \suL^*{}_j - \bHnodZ \sdL^*{}_j\right)
++y\s e^*{}_{ij} \bEc_i  \left(\bHnodM \snu^*{}_j - \bHnodZ \seL^*{}_j\right)
 \\&\quad
-+\tilde \eR_i^* \left(
-y\s e{}_{ij}  \tilde h\s d^- \nu_j
--y\s e{}_{ij}  \tilde h\s d^0 l_j
-\right)
-+y\s e{}_{ij} E\suprm c_i \tilde h\s d^- \tilde \nu_j
--y\s e{}_{ij} E\suprm c_i \tilde h\s d^0 \tilde l_j
++y\s u^*{}_{ij} \suR{}_i\left(\bHnouP \bD_j     - \bHnouZ \bU_j\right)
++y\s d^*{}_{ij} \sdR{}_i\left(\bHnodM \bU_j     - \bHnodZ \bD_j\right)
++y\s e^*{}_{ij} \seR{}_i\left(\bHnodM \bar\nu_j - \bHnodZ \bE_j\right)
  \end{split}
 \end{align}
 and the rest part is
@@ -683,3 +686,4 @@ and the rest part is
 
 
 
+\end{document}
