@@ -1,5 +1,5 @@
 %#!platexmake -kanji=sjis -pvc CheatSheet
-%%% Time-Stamp: <2012-04-09 10:17:05 misho>
+%%% Time-Stamp: <2012-04-10 11:47:30 misho>
 
 \def\uL{u\s L{}}%obsolete
 \def\dL{d\s L{}}
@@ -641,8 +641,6 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 \Bigr]
  \end{split}
 \\
-&\notag\text{\TODO{SFGと湯川，compose 可能？ $\wno$をDiracにするときのCはWeyl位相に非依存？}}
-\\
  \begin{split}
 \Lag\s{湯川}
 &=
@@ -657,21 +655,23 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 +\Hc
 \Bigr)
 \\&\quad
-+y\s u{}_{ij} \Uc_i     \left(\HnouP \suL{}_j - \HnouZ \sdL{}_j\right)
-+y\s d{}_{ij} \Dc_i     \left(\HnodM \sdL{}_j - \HnodZ \suL{}_j\right)
-+y\s e{}_{ij} \Ec_i     \left(\HnodM \seL{}_j - \HnodZ \snu{}_j\right)
++\suL{}_j\left( y\s d{}_{ij} \Dc_i     \HnodM - y\s u{}_{ij} \Uc_i\HnouZ \right)
++\sdL{}_j\left( y\s u{}_{ij} \Uc_i     \HnouP - y\s d{}_{ij} \Dc_i\HnodZ\right)
++y\s e{}_{ij} \Ec_i \HnodM \snu{}_j
+-y\s e{}_{ij} \Ec_i \HnodZ \seL{}_j
 \\&\quad
-+y\s u{}_{ij} \suR^*{}_i\left(\HnouP u_j - \HnouZ U_j\right)
-+y\s d{}_{ij} \sdR^*{}_i\left(\HnodM d_j - \HnodZ D_j\right)
-+y\s e{}_{ij} \seR^*{}_i\left(\HnodM e_j - \HnodZ e_j\right)
++y\s u{}_{ij} \suR^*{}_i\left(\HnouP  d_j     - \HnouZ  u_j\right)
++y\s d{}_{ij} \sdR^*{}_i\left(\HnodM  u_j     - \HnodZ  d_j\right)
++y\s e{}_{ij} \seR^*{}_i\left(\HnodM \nu_j    - \HnodZ  e_j\right)
 \\&\quad
-+y\s u^*{}_{ij} \bUc_i  \left(\bHnouP \sdL^*{}_j - \bHnouZ \suL^*{}_j\right)
-+y\s d^*{}_{ij} \bDc_i  \left(\bHnodM \suL^*{}_j - \bHnodZ \sdL^*{}_j\right)
-+y\s e^*{}_{ij} \bEc_i  \left(\bHnodM \snu^*{}_j - \bHnodZ \seL^*{}_j\right)
++\suL^*{}_j\left( y^*\s d{}_{ij} \bDc_i     \bHnodM - y^*\s u{}_{ij} \bUc_i\bHnouZ \right)
++\sdL^*{}_j\left( y^*\s u{}_{ij} \bUc_i     \bHnouP - y^*\s d{}_{ij} \bDc_i\bHnodZ\right)
++\snu^*{}_j y^*\s e{}_{ij} \bEc_i \bHnodM
+-\seL^*{}_j y^*\s e{}_{ij} \bEc_i \bHnodZ
 \\&\quad
-+y\s u^*{}_{ij} \suR{}_i\left(\bHnouP \bD_j     - \bHnouZ \bU_j\right)
-+y\s d^*{}_{ij} \sdR{}_i\left(\bHnodM \bU_j     - \bHnodZ \bD_j\right)
-+y\s e^*{}_{ij} \seR{}_i\left(\bHnodM \bar\nu_j - \bHnodZ \bE_j\right)
++y^*\s u{}_{ij} \suR{}_i\left(\bHnouP \bar d_j     - \bHnouZ  \bar u_j\right)
++y^*\s d{}_{ij} \sdR{}_i\left(\bHnodM \bar u_j     - \bHnodZ  \bar d_j\right)
++y^*\s e{}_{ij} \seR{}_i\left(\bHnodM \bar\nu_j    - \bHnodZ  \bar e_j\right)
  \end{split}
 \end{align}
 and the rest part is
