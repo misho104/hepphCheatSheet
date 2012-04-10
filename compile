@@ -7,5 +7,6 @@ platexmake -kanji=sjis CheatSheet
 cd feynman
 feynexec
 cd ..
+rm *.dvi
 platexmake -kanji=sjis CheatSheet
 
