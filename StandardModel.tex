@@ -1,5 +1,5 @@
 %#!./compile CheatSheet
-%%% Time-Stamp: <2012-04-03 23:19:58 misho>
+%%% Time-Stamp: <2012-07-05 14:21:23 Misho>
 %%% 文字コードはShift-JISですよね
 
 \section{Standard Model}
@@ -484,79 +484,117 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 となる。
 
 \subsection{Values of SM Parameters}
-\vskip-24pt\hskip200pt{\small(Extracted from PDG 2010)}
+\newcommand{\upd}[1]{{\RED{#1}}}
+\vskip-24pt\hskip200pt{\small(Extracted from PDG 2010 / \upd{2012})}
 \subsubsection{Experimental Values}
-\subparagraph{Low energy values}
+\subparagraph{Theoretical Parameters}
+\note{These values are all in $\overline{\rm{MS}}$ scheme.}
 \begin{align*}
- \alpha\s{EM} &= 1/137.035999679(94) &
- G\s{F}       &= \frac{{g_2}^2}{4\sqrt2{m_W}^2} = \frac1{\sqrt2v^2} = 1.16637(1)\EE-5\un{GeV^{-2}}&
+ \alpha^{-1}\s{EM}(0) &= 137.035999\upd{074(44)} &
+ G\s{F}       &= \frac{{g_2}^2}{4\sqrt2{m_W}^2} = \frac1{\sqrt2v^2} = 1.16637\upd{87(6)}\EE-5\un{GeV^{-2}}&
+\end{align*}
+\begin{align*}
+ \alpha^{-1}\s{EM}(m_Z)    &= 127.9\upd{44(14)} &
+ m_W(m_W)                  &= 80.3\upd{85(15)}\un{GeV} &
+ \Gamma_W                  &\approx 2.085(42)\un{GeV}
+\\
+ \alpha^{-1}\s{EM}(m_\tau) &= 133.4\upd{71(14)} &
+ m_Z(m_Z)                  &= 91.1876(21)\un{GeV} &
+ \Gamma_Z                  &\approx 2.4952(23)\un{GeV}
+\\
+ \alpha\s{s}(m_Z)          &= 0.118\upd{4(7)}  &
+ \sin^2\theta\s W(m_Z)     &= 0.23116(1\upd{2}) &
+ \sin^2\theta\s{eff}       &= 0.23146(12)
 \end{align*}
 
-\subparagraph{Electroweak scale}\note{These values are all in $\overline{\rm{MS}}$ scheme.}
+\subparagraph{Masses and Lifetimes}
+\note{Quark masses are in $\overline{\rm{MS}}$ scheme, $u, d, s @2\GeV$ and $c, b, t @m$.}
 \begin{align*}
- \alpha^{-1}\s{EM}(m_Z)    &= 127.925(16) & m_W(m_W) &= 80.399(23)\un{GeV}\\
- \alpha^{-1}\s{EM}(m_\tau) &= 133.452(16) & m_Z(m_Z) &= 91.1876(21)\un{GeV}\\
- \alpha\s{s}(m_Z)          &= 0.1183(15)  & \sin^2\theta\s W(m_Z) &= 0.23116(13)\\
- \Gamma_{l^+l^-}           &= 83.984(86)\un{MeV}  & \sin^2\theta\s{eff}   &= 0.23146(12)
-\end{align*}
-
-\subparagraph{Fundamental masses}
-\begin{align*}
- e   &: 0.510998910(13)\un{MeV}         &
- u   &: 1.7 \text{ to } 3.3\un{MeV}     & d&: 4.1\text{ to }5.8\un{MeV}\\
-\mu  &: 105.658367(4)\un{MeV}           &
- c   &: 1.27\pmgosa{0.07}{0.09}\un{GeV} & s&: 101\pmgosa{29}{21}\un{MeV}\\
-\tau &: 1.77682(16)\un{GeV}             &
- t   &: 172.0\gosa{2.2}\un{GeV}         & b&: 4.19\pmgosa{0.18}{0.06}\un{GeV}
+ e   &: 0.5109989\upd{28(11)}\un{MeV}         &
+ u   &: \upd{2.3\pmgosa{0.7}{0.5}}\un{MeV}    & d&: \upd{4.8\pmgosa{0.7}{0.3}}\un{MeV}\\
+\mu  &: 105.6583\upd{715(35)}\un{MeV}         &
+ c   &: 1.2{\upd{75(25)}}\un{GeV}             & s&: \upd{95\pm5}\un{MeV}\\
+\tau &: 1.77682(16)\un{GeV}                   &
+ t   &: 17\upd{3.5(6)(8)}\un{GeV}             & b&: 4.1\upd{8(3)}\un{GeV}
 \end{align*}
 \begin{align*}
  \pi^\pm &: 139.57018(35)\un{MeV}&
  K^\pm   &: 493.677(16)  \un{MeV}&
- p       &: 938.27203(8) \un{MeV}\\
+ p       &: 938.2720\upd{46(21)} \un{MeV}\\
  \pi^0   &: 134.9766(6)   \un{MeV}&
  K^0     &: 497.614(24)  \un{MeV}&
- n       &: 939.565346(23) \un{MeV}
+ n       &: 939.5653\upd{79(21)}\un{MeV}
 \end{align*}
-\subparagraph{Fundamental Lifetime} (also $c\tau$ for some particles)
 \begin{align*}
- \mu     &: 2.197034(21)\un{\mu s} \quad(659\un{m}) &
- \pi^\pm &: 2.6033(5)\EE-8\un{s}&
- K^\pm   &: 1.2380(21)\EE-8\un{s}\\
- \tau    &: 2.906(10)\EE{-13}\un{s} \quad (87\un{\mu m})&
- \pi^0   &: 8.4(5)\EE-{17}\un{s}&
- K^0\s{S}&: 8.953(5)\EE{-11}\un{s}\\
+ \mu     &: 2.1969\upd{811(22)}   \un{\mu s} \ (659\un{m}) &
+ \pi^\pm &: 2.6033(5)\EE-8        \un{s}&
+ K^\pm   &: 1.2380(21)\EE-8       \un{s}     \ (3.7\un{m})\\
+ \tau    &: 2.906(10)\EE{-13}     \un{s}     \ (87\un{\mu m})&
+ \pi^0   &: 8.\upd{52(18)}\EE-{17}\un{s}&
+ K^0\s{S}&: 8.95\upd{64}(33)\EE{-11}\un{s}   \ (2.68\un{cm})&\\
 &&&&
- K^0\s{L}&: 5.116(20)\EE-8\un{s}
+ K^0\s{L}&: 5.116(2\upd{1})\EE-8\un{s}       \ (15.3\un{m})
+\end{align*}
+\subparagraph{Other Important Values}
+\begin{align*}
+     a_e                  &= 11596521.8076(27)\EE{-10} &
+ d^{\rm EDM}_e            &< 10.5\EE{-28}e\un{cm}&
+& \Br(\tau\to e)          = 17.83(4)\%
+\\
+     a_\mu                &= 11659209(6)\EE{-10} &
+ d^{\rm EDM}_\mu          &= -1(9)\EE{-20}e\un{cm}&
+& \Br(\tau\to \mu)         = 17.41(4)\%
+\\
+&&
+ \sin^22\theta_{12} &= 0.857(24)&
+& \Br(\tau\to \text{had})  \sim 64.8\%
+\\
+&&
+ \sin^22\theta_{23} &> 0.95&
+& \Delta m_{\nu21}^2 = 7.50(20)\EE-5\eV^2
+\\
+&&
+ \sin^22\theta_{13} &= 0.098(13)&
+& \left|\Delta m_{\nu32}^2\right| = 0.00232(^{12}_{08})\eV^2\\
 \end{align*}
 \subparagraph{CKM matrix}
-\begin{align}
- V\s{CKM}&=
+\begin{equation*}
+  V\s{CKM}=
 \pmat{
-0.97428(15) & 0.2253(7)   & 0.00347(16)\\
-0.2252(7)   & 0.97345(16) & 0.0410(11)\\
-0.00862(26) & 0.0403(11)  & 0.999152(45)}
-\sim
+0.97425(22) & 0.2252(9)   & 0.0084(6)\\
+0.230(11)   & 1.006(23)   & 0.0429(26)\\
+0.00415(49) & 0.0409(11)  & 0.89(7)
+}
+\approx
 \pmat{
-1-\epsilon^2 & \epsilon & \epsilon^4\\
-\epsilon     & 1-\epsilon^2 & \epsilon^2\\
-\epsilon^3   & \epsilon^2 & 1-\epsilon^4}\quad \text{for $\epsilon\sim0.23$}
-\end{align}
+0.9742\upd{7(15)}         & 0.225\upd{34(65)}        & 0.003\upd{51(^{15}_{14})}\\
+0.225\upd{20(65)}         & 0.9734\upd{4}(16)        & 0.04\upd{12(^{11}_{05})}\\
+0.008\upd{67(^{29}_{31})} & 0.04\upd{04(^{11}_{05})} & 0.9991\upd{46(^{21}_{46})}
+}
+\end{equation*}
+\begin{align*}
+ \lambda &= 0.22535(65),&
+ A&=0.811\pmgosa{0.022}{0.012},&
+ \bar\rho&=0.131\pmgosa{0.026}{0.013},&
+ \bar\eta&=0.345\pmgosa{0.013}{0.014};&
+ J&=(2.96\pmgosa{20}{16})\EE-5
+\end{align*}
 
 
 \subsubsection{Estimation of SM Parameters}
 For EW scale, we can estimate the values as
 \begin{align}
- e&\sim 0.313,& g_1 &\sim 0.358, & g_2 &\sim 0.651, & g_Z &\sim 0.743; &
+ |e|&\sim 0.313,& g_1 &\sim 0.357, & g_2 &\sim 0.652, & g_Z &\sim 0.743; &
   v=\sqrt{\frac{\mu^2}\lambda} &\sim 246\un{GeV}
 \end{align}
 Therefore 湯川 matrices are (after diagonalization), since $vy/\sqrt2=M$,
 \begin{align}
- y_u&\sim \pmat{10^{-5}&0&0\\0&0.007&0\\0&0&0.98},&
- y_d&\sim \pmat{3\times10^{-5}&0&0\\0&0.0006&0\\0&0&0.02},&
+ y_u&\sim \pmat{10^{-5}&0&0\\0&0.007&0\\0&0&0.997},&
+ y_d&\sim \pmat{3\times10^{-5}&0&0\\0&0.0005&0\\0&0&0.02},&
  y_e&\sim \pmat{3\times10^{-6}&0&0\\0&0.0006&0\\0&0&0.01}.&
 \end{align}
 
-Also, for $m_h\sim 120\un{GeV}$, we can estimate the Higgs potential as $\mu\sim85\un{GeV}$ and $\lambda \sim 0.12$.
+Also, for $m_h\sim 125\un{GeV}$, we can estimate the Higgs potential as $\mu\sim88\un{GeV}$ and $\lambda \sim 0.13$.
 
 %%% Local Variables:
 %%% TeX-master: "CheatSheet.tex"
