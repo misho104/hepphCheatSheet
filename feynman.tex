@@ -1,8 +1,8 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <>
+%%% Time-Stamp: <2013-01-09 22:17:59 misho>
 %%% 一部で日本語が使用されています。
 
-\Paragraph{Scalar Boson}
+\paragraph{Scalar Boson}\mbox{}\par
 \vspace{1zw}
 \begin{fmffile}{feynman/scalar}\begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
 \multicolumn{3}{l}{ $\Lag \supset \dfrac12(\Pm\phi)^2-\dfrac12m^2\phi^2$}\\[.6zw]
@@ -24,9 +24,9 @@ $\begC1{\phi^*}\conC{\ }\endC1{\phi}=$&
 \end{tabular}\end{fmffile}
 \\(External lines equal to 1 in both cases.)
 
-\Paragraph{Dirac Fermion}\vspace{0.7zw}
+\paragraph{Dirac Fermion}\mbox{}\par\vspace{0.7zw}
 \begin{fmffile}{feynman/dirac}\begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
-\multicolumn{3}{l}{$\Lag \supset \ol\psi(\ii\slashed{\partial}-m)\psi$}\\
+\multicolumn{3}{l}{$\Lag \supset \overline\psi(\ii\slashed{\partial}-m)\psi$}\\
 \multicolumn{3}{l}{\ \ \ $=\ii\bar\xi\bSm\Pm\xi+\ii\bar\chi\bSm\Pm\chi-m(\xi\chi+\bar\xi\bar\chi)$}\\
 \multicolumn{3}{l}{{\bf Initial state}}\\
 $\begC1{\psi}\conC{\ }\endC1{\ket{\vc p,s}}=$&
@@ -36,21 +36,21 @@ $\begC1{\psi}\conC{\ }\endC1{\ket{\vc p,s}}=$&
 \fmf{phantom,tension=8}{a1,a2}\fmf{phantom,tension=8}{a3,a4}\fmfblob{10pt}{a3}
 \end{fmfgraph*}\end{tabular}
 &$=u^s(p)$\\
-$\begC1{\ol\psi}\conC{\ }\endC1{\ket{\vc p,s}}=$&
+$\begC1{\overline\psi}\conC{\ }\endC1{\ket{\vc p,s}}=$&
 \begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
 \fmfleft{da,a4,db}\fmfright{dc,a1,dd}
 \fmf{fermion,label=$\longleftarrow p$,label.side=left}{a3,a2}
 \fmf{phantom,tension=8}{a1,a2}\fmf{phantom,tension=8}{a3,a4}\fmfblob{10pt}{a3}
 \end{fmfgraph*}\end{tabular}
-&$=\ol v^s(p)$\\
+&$=\overline v^s(p)$\\
 \multicolumn{3}{l}{{\bf Final state}}\\
-$\begC1{\bra{\vc p,s}}\conC{\ }\endC1{\ol\psi}=$&
+$\begC1{\bra{\vc p,s}}\conC{\ }\endC1{\overline\psi}=$&
 \begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
 \fmfleft{da,a1,db}\fmfright{dc,a4,dd}
 \fmf{fermion,label=$\longleftarrow p$,label.side=left}{a3,a2}
 \fmf{phantom,tension=8}{a1,a2}\fmf{phantom,tension=8}{a3,a4}\fmfblob{10pt}{a3}
 \end{fmfgraph*}\end{tabular}
-&$=\ol u^s(p)$\\
+&$=\overline u^s(p)$\\
 $\begC1{\bra{\vc p,s}}\conC{\ }\endC1{\psi}=$&
 \begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
 \fmfleft{da,a1,db}\fmfright{dc,a4,dd}
@@ -59,7 +59,7 @@ $\begC1{\bra{\vc p,s}}\conC{\ }\endC1{\psi}=$&
 \end{fmfgraph*}\end{tabular}
 &$= v^s(p)$\\
 \multicolumn{3}{l}{{\bf Propagator}}\\
-$\begC1{\psi}\conC{\ }\endC1{\ol\psi}=$&
+$\begC1{\psi}\conC{\ }\endC1{\overline\psi}=$&
 \begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
 \fmfleft{da,a1,db}\fmfright{dc,a4,dd}
 \fmf{fermion,label=$\longleftarrow p$,label.side=right}{a3,a2}
@@ -68,20 +68,20 @@ $\begC1{\psi}\conC{\ }\endC1{\ol\psi}=$&
 &$= \dfrac{\ii(\slashed{p}+m)}{p^2-m^2+\ii\epsilon}$\\
 \end{tabular}\end{fmffile}
 
-\Paragraph{Majorana Fermion}\vspace{0.7zw}
+\paragraph{Majorana Fermion}\mbox{}\par\vspace{0.7zw}
 %\begin{fmffile}{feynman/dirac}
 \begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
-\multicolumn{3}{l}{$\Lag \supset \tfrac12\ol\psi(\ii\slashed{\partial}-m)\psi$}\\
+\multicolumn{3}{l}{$\Lag \supset \tfrac12\overline\psi(\ii\slashed{\partial}-m)\psi$}\\
 \multicolumn{3}{l}{\ \ \ $=\ii\bar\lambda\bSm\Pm\lambda-\frac{m}2(\lambda\lambda+\bar\lambda\bar\lambda)$}\\
 \multicolumn{3}{l}{{\bf Initial state}}\\
 \end{tabular}
 
 \newpage
-\phantom{ }\par
-\vspace{-24.5pt}
-\Paragraph{Abelian Gauge Theory (Photon)}\vspace{0.7zw}
+\mbox{}\par
+\vspace{-45pt}
+\paragraph{Abelian Gauge Theory (Photon)}\mbox{}\par
 \begin{fmffile}{feynman/photon}\begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
-\multicolumn{3}{l}{$\Lag \supset -\dfrac14F^{\mu\nu}F_{\mu\nu} + \ii\ol\psi\slashed{D}\psi + |\Dm\phi|^2$}\\
+\multicolumn{3}{l}{$\Lag \supset -\dfrac14F^{\mu\nu}F_{\mu\nu} + \ii\overline\psi\slashed{D}\psi + |\Dm\phi|^2$}\\
 \multicolumn{3}{l}{\qquad($\Dm = \Pm - \ii Q A_\mu$)}\\
 $\begC1{A_\mu}\conC{\ }\endC1{\ket{\vc p;あ}}=$&
 \begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
@@ -104,7 +104,7 @@ $\begC1{A_\mu}\conC{\ }\endC1{A_\nu}=$&
 \fmf{phantom,tension=8}{a1,a2}\fmf{phantom,tension=8}{a3,a4}\fmfblob{10pt}{a3}\fmfblob{10pt}{a2}
 \end{fmfgraph*}\end{tabular}
 &$= \dfrac{-\ii \Hmnd}{p^2+\ii\epsilon}$\\
-$Q\ol\psi\slashed{A}\psi=$&
+$Q\overline\psi\slashed{A}\psi=$&
 \begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)
 \fmfset{dash_len}{1.5mm}\fmfset{arrow_len}{3mm}\fmfset{arrow_ang}{20}
 \fmfv{l=$\mu$,l.d=2}{p2}
@@ -144,9 +144,9 @@ $Q^2A^2|\phi|^2=$&
 &$= 2\ii Q^2\Hmn$\\
 \end{tabular}\end{fmffile}
 \vspace{10pt}
-\Paragraph{Non-Abelian Gauge Theory (Gluon)}\vspace{0.7zw}
+\paragraph{Non-Abelian Gauge Theory (Gluon)}\mbox{}\par
 \begin{fmffile}{feynman/gluon}\begin{tabular}{@{\!\!\!}r@{}c@{}l@{}}
-\multicolumn{3}{l}{$\Lag \supset -\dfrac14F^{\mu\nu}F_{\mu\nu} + \ii\ol\psi\slashed{D}\psi + |\Dm\phi|^2$}\\
+\multicolumn{3}{l}{$\Lag \supset -\dfrac14F^{\mu\nu}F_{\mu\nu} + \ii\overline\psi\slashed{D}\psi + |\Dm\phi|^2$}\\
 \multicolumn{3}{l}{\qquad($\Dm = \Pm - \ii g A_\mu$)}\\
 $\begC1{A^b_\mu}\conC{\ }\endC1{\ket{\vc p;あ,a}}=$&
 \begin{tabular}[c]{@{}c@{}}\begin{fmfgraph*}(80,25)

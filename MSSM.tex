@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <>
+%%% Time-Stamp: <2013-01-09 22:25:49 misho>
 %%% 一部で日本語が使用されています。
 
 \def\uL{u\s L{}}%obsolete
@@ -35,9 +35,8 @@
 \newcommand\bHnouZ{\bar{\tilde h}{}\s u^0}\newcommand\bHnodM{\bar{\tilde h}{}\s d^-}\newcommand\bgno{\bar{\tilde g}{}}
 
 \subsection{Minimal Supersymmetric Standard Model}
-
 \subsubsection{Definitions}
-\subparagraph{Gauge Group and Superfields}\footnotemark
+\subparagraph[Gauge Group and Superfields]{Gauge Group and Superfields\footnotemark}
 \begin{equation}
 \gSU(3)\s{color}\times\gSU(2)\s{weak}\times\gU(1)\s{Y}\quad(\times{\gZ_2}_R\text{\ :\ $R$-parity});
 \hspace{130pt}
@@ -541,9 +540,9 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 \begin{align}
  \Lag\s {gaugino}
 &=
- \frac12\ol \bno\left(\ii \slashed\partial-M_1\right)\bno
-+\frac12\ol \wno\left(\ii \slashed\DD-M_2\right)\wno
-+\frac12\ol \gno\left(\ii \slashed\DD-M_3\right)\gno
+ \frac12\overline \bno\left(\ii \slashed\partial-M_1\right)\bno
++\frac12\overline \wno\left(\ii \slashed\DD-M_2\right)\wno
++\frac12\overline \gno\left(\ii \slashed\DD-M_3\right)\gno
 \\ 
 \begin{split}
 \Lag\s{fermion}&= \text {\eqref{eq:SMLagMatter}} \Bigl[\Lag\s{matter}\suprm{SM}\Bigr]
@@ -579,15 +578,15 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 \begin{split}
 \Lag\s{SFG}&=
 -\sqrt2 g_3\Bigl[
-   \suL^*{}_i \tau^a \left(\ol\gno{}^a \PL U_i\right)
- + \sdL^*{}_i \tau^a \left(\ol\gno{}^a \PL D_i\right)
- - \left(\ol U_i\PL\gno^a\right)  \tau^a \suR{}_i
- - \left(\ol D_i\PL\gno^a\right)  \tau^a \sdR{}_i
+   \suL^*{}_i \tau^a \left(\overline\gno{}^a \PL U_i\right)
+ + \sdL^*{}_i \tau^a \left(\overline\gno{}^a \PL D_i\right)
+ - \left(\overline U_i\PL\gno^a\right)  \tau^a \suR{}_i
+ - \left(\overline D_i\PL\gno^a\right)  \tau^a \sdR{}_i
 \\&\qquad\qquad
- + \left(\ol U_i \PR \gno^a\right)    \tau^a \suL{}_i
- + \left(\ol D_i \PR \gno^a\right)    \tau^a \sdL{}_i
- - \suR^*{}_i  \tau^a \left(\ol\gno{}^a\PR U\right)
- - \sdR^*{}_i  \tau^a \left(\ol\gno{}^a\PR D\right)
+ + \left(\overline U_i \PR \gno^a\right)    \tau^a \suL{}_i
+ + \left(\overline D_i \PR \gno^a\right)    \tau^a \sdL{}_i
+ - \suR^*{}_i  \tau^a \left(\overline\gno{}^a\PR U\right)
+ - \sdR^*{}_i  \tau^a \left(\overline\gno{}^a\PR D\right)
 \Bigr]
 \\
 &\quad -g_2\Bigl[
@@ -623,17 +622,17 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 \Bigr]
 \\
 &\quad -\sqrt2 g_1\Bigl[
-   \tfrac16\sqL  _i^* \ol\bno\PL Q_i
- - \tfrac23\suR{}_i   \ol U_i\PL\bno
- + \tfrac13\sdR{}_i   \ol D_i\PL\bno
- - \tfrac12\slL  _i^* \ol\bno\PL L_i
- +         \seR{}_i   \ol E_i\PL\bno
+   \tfrac16\sqL  _i^* \overline\bno\PL Q_i
+ - \tfrac23\suR{}_i   \overline U_i\PL\bno
+ + \tfrac13\sdR{}_i   \overline D_i\PL\bno
+ - \tfrac12\slL  _i^* \overline\bno\PL L_i
+ +         \seR{}_i   \overline E_i\PL\bno
 \\&\qquad\qquad\qquad+
-   \tfrac16\sqL    _i \ol Q_i\PR\bno
- - \tfrac23\suR^*{}_i \ol\bno\PR U_i
- + \tfrac13\sdR^*{}_i \ol\bno\PR D_i
- - \tfrac12\slL    _i \ol L_i\PR\bno
- +         \seR^*{}_i \ol\bno\PR E_i
+   \tfrac16\sqL    _i \overline Q_i\PR\bno
+ - \tfrac23\suR^*{}_i \overline\bno\PR U_i
+ + \tfrac13\sdR^*{}_i \overline\bno\PR D_i
+ - \tfrac12\slL    _i \overline L_i\PR\bno
+ +         \seR^*{}_i \overline\bno\PR E_i
 \\&\qquad\qquad\qquad
  + \tfrac12\Hu^* \Hnou\bno
  - \tfrac12\Hd^* \Hnod\bno
@@ -646,13 +645,13 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 \Lag\s{湯川}
 &=
 \Bigl(
--\HuZ \ol U y\s u \PL U
--\HdZ \ol D y\s d \PL D
--\HdZ \ol E y\s e \PL E
+-\HuZ \overline U y\s u \PL U
+-\HdZ \overline D y\s d \PL D
+-\HdZ \overline E y\s e \PL E
 \\&\qquad\qquad
-+\HuP \ol U y\s u \PL D
-+\HdM \ol D y\s d \PL U
-+\HdM \ol E y\s e \PL \nu
++\HuP \overline U y\s u \PL D
++\HdM \overline D y\s d \PL U
++\HdM \overline E y\s e \PL \nu
 +\Hc
 \Bigr)
 \\&\quad
@@ -678,7 +677,7 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 and the rest part is
  $\Lag\s{gauge}+\Lag\s{scalar} + \Lag\s{pot.}\suprm{RPC}$.
 
-
+%\subsection{GMSB}
 
 
 %%% Local Variables:

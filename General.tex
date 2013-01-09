@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <>
+%%% Time-Stamp: <2013-01-09 22:19:10 misho>
 %%% 一部で日本語が使用されています。
 
 \section{General Definitions and Tools}
@@ -58,13 +58,13 @@ Vector & $\Psq A^\mu=0;$&
 \subsubsection{Electromagnetism}
 \begin{tabular}{l@{ :\ \ \ }l}
 Electromagnetic Fields & $A^\mu=(\phi,\vc A)$
- \note{We can invert the signs, but cannot lower the index.}\\
+ \NOTE{We can invert the signs, but cannot lower the index.}\\
 Maxwell Equations& $F_{\mu\nu}:=\Pm A_\nu-\Pn A_\mu;\qquad
                     \epsilon^{\mu\nu\rho\sigma}\Pn F_{\rho\sigma}=0,\quad
                     \Pm F^{\mu\nu}=e j^\nu$\\[1zw]
 Our Old Language
-& $\vdiv\vc B=0,\     \vrot\vc E+\pbib{}{t}\vc B=0;\quad
-   \vdiv\vc E= ej^0,\ (\vrot\vc B)_i-\pbib{}{t}E_i=e j^{i}.$\\
+& $\vdiv\vc B=0,\     \vrot\vc E+\pdiff{}{t}\vc B=0;\quad
+   \vdiv\vc E= ej^0,\ (\vrot\vc B)_i-\pdiff{}{t}E_i=e j^{i}.$\\
 & $F_{\mu\nu} =\pmat{0 & & \vc E & \\ & 0 & -B_3 & B_2 \\ -\vc E&B_3&0&-B_1\\&-B_2&B_1&0};\quad
    F_{\mu\nu}F^{\mu\nu} = -2\left(\vnorm E^2-\vnorm B^2\right)$
 \end{tabular}
@@ -91,13 +91,13 @@ Mass term   & \multicolumn{4}{@{}l}{%
 
 \begin{tabular}{l@{ :\ \ \ }l}
 Dirac fermion    & $\Lag\s{Dirac}= \ii\,\bar\xi\bSm\Pm\xi + \ii\,\eta\Sm\Pm\bar\eta
-                               -m(\xi\eta+\bar\xi\bar\eta) = \ol\psi(\ii\Gm\Pm-m)\psi$\\
+                               -m(\xi\eta+\bar\xi\bar\eta) = \overline\psi(\ii\Gm\Pm-m)\psi$\\
 Majorana fermion & $\Lag\s{Majorana}= \ii\,\bar\xi\bSm\Pm\xi -\frac m2(\xi\xi+\bar\xi\bar\xi)
-                         =\frac12\ol\psi\s M(\ii\Gm\Pm-m)\psi\s M$\\
+                         =\frac12\overline\psi\s M(\ii\Gm\Pm-m)\psi\s M$\\
 \end{tabular}
 
 \begin{tabular}{l@{ :\ \ \ }l}
-Charge conjugate & $\psi\suprm C:=C\trans{(\ol\psi)}$\quad[$(\psi\s M)\suprm C=\psi\s M$]\\
+Charge conjugate & $\psi\suprm C:=C\trans{(\overline\psi)}$\quad[$(\psi\s M)\suprm C=\psi\s M$]\\
 \end{tabular}
 
 \subsubsection{Chiral Notation (Peskin)}
@@ -105,7 +105,7 @@ Charge conjugate & $\psi\suprm C:=C\trans{(\ol\psi)}$\quad[$(\psi\s M)\suprm C=\
 Gamma Matrices & $\Gm=\pmat{0&\Sm\\\bSm&0},\quad \G5=\pmat{-1&0\\0&1};\quad
                   P{}\s{L}\suprm{R}=\dfrac{1\pm\G5}2.$\\
 Fields         & $\psi    =\pmat{\xi_\alpha\\\bar\eta^\dalpha}=\pmat{\psi\s L\\\psi\s R};$\quad
-                 $\ol\psi=\psi^\dagger\G0=\pmat{\eta^\alpha&\bar\xi_\dalpha}
+                 $\overline\psi=\psi^\dagger\G0=\pmat{\eta^\alpha&\bar\xi_\dalpha}
                           =\pmat{\psi\s R^\dagger&\psi\s L^\dagger}$;\quad
                  $\psi\s M=\pmat{\xi_\alpha\\\bar\xi^\dalpha}$.\\
  & $u^s(p)=\pmat{\sqrt{p\cdot\sigma}\xi^s\\\sqrt{p\cdot\bar\sigma}\xi^s};\
@@ -116,8 +116,8 @@ Fields         & $\psi    =\pmat{\xi_\alpha\\\bar\eta^\dalpha}=\pmat{\psi\s L\\\
 \begin{tabular}{l@{ :\ \ \ }l}
 Charge conj.  & $C:=-\ii\G2\G0=\pmat{\epsilon_{\alpha\beta}&0\\0&\epsilon^{\dalpha\dbeta}}$\qquad
                  $\begin{cases}-C=C^{-1}=C^\dagger=\trans{C}\\\phantom{-}C=C^*\end{cases}$, $C^{-1}\Gm C=-\trans{\Gm}$.\\
-              & $\psi\suprm C=C\trans{(\ol\psi)}=-\ii\G2\psi^*=\pmat{\eta_\alpha\\\bar\xi^\dalpha}$,\quad
-$\ol\psi{}\suprm C=\trans\psi C=\ii\ol\psi{}^*\G2$\\
+              & $\psi\suprm C=C\trans{(\overline\psi)}=-\ii\G2\psi^*=\pmat{\eta_\alpha\\\bar\xi^\dalpha}$,\quad
+$\overline\psi{}\suprm C=\trans\psi C=\ii\overline\psi{}^*\G2$\\
 Weyl Equations & $\ii\bar\sigma\cdot\partial\psi\s L=m\psi\s R;\quad
                   \ii\sigma\cdot\partial\psi\s R=m\psi\s L$\\
 $z$-boost limit &
@@ -143,7 +143,7 @@ Fields         &
      = \dfrac1{\sqrt2}\pmat{1&1\\-1&1}\psi
      = \dfrac1{\sqrt2}\pmat{\psi\s L+\psi\s R\\-\psi\s L+\psi\s R}$;\quad
       $\hat\psi\s M = \pmat{\psi\s A\\(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix})\psi\s A^*}$.\\
-     &$\hat{\ol\psi} = \hat\psi^\dagger\G0 = \pmat{\psi\s A^\dagger&-\psi\s B^\dagger}$\\
+     &$\hat{\overline\psi} = \hat\psi^\dagger\G0 = \pmat{\psi\s A^\dagger&-\psi\s B^\dagger}$\\
  & $\hat u^s(p)=\pmat{\sqrt{p^0+m}\>\xi^s\\\frac{\vipro p\sigma}{\sqrt{p^0+m}}\xi^s};\
     \hat v^s(p)=\pmat{-\frac{\vipro p\sigma}{\sqrt{p^0+m}}\eta^s\\-\sqrt{p^0+m}\>\eta^s}$\\
  & $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$\\
@@ -167,20 +167,20 @@ $\frac{\vipro p\sigma}{\sqrt{p^0+m}}\simeq\sqrt{\frac m2}(\vipro v\sigma)$;\\
 \subsubsection{CPT transformations}
 \vspace{-24pt}
 \begin{flushright}
-{\note{Note that these expressions are valid under the above frameworks.}}
+{\NOTE{Note that these expressions are valid under the above frameworks.}}
 \end{flushright}
 In the following, $CP$ means ``$P$, then $C$\ '' {\bf in algebraic sense}. Be careful to the order.
 \begin{align*}
  \psi(t,\vc x) &\xrightarrow[\hskip30pt]{P} \eta_P  \G0\psi(t,-\vc x)&
- \ol\psi       &\xrightarrow[\hskip30pt]{P} \eta_P^* \ol\psi\G0\\
+ \overline\psi       &\xrightarrow[\hskip30pt]{P} \eta_P^* \overline\psi\G0\\
  \psi(t,\vc x) &\xrightarrow[\hskip30pt]{T} \eta_T C\G5\psi(-t,\vc x)&
- \ol\psi       &\xrightarrow[\hskip30pt]{T} -\eta_T^* \ol\psi C\G5\\
- \psi(t,\vc x) &\xrightarrow[\hskip30pt]{C} \eta_C   C\ol\psi\trans{}(t,\vc x)=C\G0\psi^*&
- \ol\psi       &\xrightarrow[\hskip30pt]{C} \eta_C^* \ol\psi^*\G0C = -\eta_C^*\trans{(C\psi)}\\
- \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CP} \eta_{CP}\trans{(\ol\psi \G0C)}&
- \ol\psi       &\xrightarrow[\hskip30pt]{CP} \eta_{CP}^*\trans{(C\G0\psi)}\\
- \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CPT} \trans{(\ol\psi\G0\G5)}&
- \ol\psi       &\xrightarrow[\hskip30pt]{CPT} \trans{(\G0\G5\psi)}&
+ \overline\psi       &\xrightarrow[\hskip30pt]{T} -\eta_T^* \overline\psi C\G5\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{C} \eta_C   C\overline\psi\trans{}(t,\vc x)=C\G0\psi^*&
+ \overline\psi       &\xrightarrow[\hskip30pt]{C} \eta_C^* \overline\psi^*\G0C = -\eta_C^*\trans{(C\psi)}\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CP} \eta_{CP}\trans{(\overline\psi \G0C)}&
+ \overline\psi       &\xrightarrow[\hskip30pt]{CP} \eta_{CP}^*\trans{(C\G0\psi)}\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CPT} \trans{(\overline\psi\G0\G5)}&
+ \overline\psi       &\xrightarrow[\hskip30pt]{CPT} \trans{(\G0\G5\psi)}&
 \end{align*}
 Note that $T$-transformation is anti-unitary, and $\eta_{CPT}=1$.
 Especially, photon is $(P,T,C)=(-,+,-)$.
@@ -210,7 +210,7 @@ $CPT$
 Infinitesimal transformation & $\phi(x)\mapsto \phi'(x):=\phi(x)+\alpha\Delta\phi(x)$\\
 Correspondent transformation & $\alpha\Delta\Lag = \alpha\Pm\left(\pdiff{\Lag}{(\Pm\phi)}\Delta\phi\right)+\cancel{\alpha\left[\pdiff\Lag\phi-\Pm\left(\pdiff\Lag{(\Pm\phi)}\right)\right]\Delta\phi}$\\
                              & So, defining\quad $\alpha\Pm\mathcal J^\mu(x):=\Lag'(x)-\Lag(x)$,\\
-Noether current              & $j^\mu(x):=\pbib\Lag{(\Pm\phi)}\Delta\phi-\mathcal J^\mu$;\qquad
+Noether current              & $j^\mu(x):=\pdiff\Lag{(\Pm\phi)}\Delta\phi-\mathcal J^\mu$;\qquad
                                $\Pm j^\mu(x)=0$\\
 Noether charge               & $Q:=\int j^0\dd^3x$\\
 Energy-momentum tensor       & $T\T^\mu_\nu=\Pm\Lag{(\Pm\phi)}\Pn\phi-\Lag\delta^\mu_\nu$;\quad
@@ -244,9 +244,9 @@ Spin Sums & $\displaystyle
              \sum\s{spin}u^s(p)\bar u^s(p)=\slashed p+m;\quad
              \sum\s{spin}v^s(p)\bar v^s(p)=\slashed p-m$\\
 Chage Conj.    & $-C=C^{-1}=C^\dagger=\trans{C}$,   \quad $C^{-1}\Gm C=-C\Gm C=-\trans{\Gm}$,\quad $C^{-1}\G0C=-\G0$\\
-               & $\phantom{-}C=C^*$\hspace{57.6pt}, \quad $\psi\suprm C=C\trans{(\ol\psi)}$,\quad$\ol\psi{}\suprm C=\trans\psi C$\\
- $u$ \& $v$    & $u^*=-\ii\G2v,\quad \trans{v}=-\ii u^\dagger\G2 = \ol u C^{-1}, \quad v=C\trans{\ol u};  \qquad \ol u\s A {P\s H} u\s B = -\ol v\s B{P\s H}v\s A$\\
-               & $v^*=-\ii\G2u,\quad \trans{u}=-\ii v^\dagger\G2 = \ol v C^{-1}, \quad u=C\trans{\ol v}; \qquad \ol v\s A {P\s H} u\s B = -\ol v\s B{P\s H}u\s A$\\
+               & $\phantom{-}C=C^*$\hspace{57.6pt}, \quad $\psi\suprm C=C\trans{(\overline\psi)}$,\quad$\overline\psi{}\suprm C=\trans\psi C$\\
+ $u$ \& $v$    & $u^*=-\ii\G2v,\quad \trans{v}=-\ii u^\dagger\G2 = \overline u C^{-1}, \quad v=C\trans{\overline u};  \qquad \overline u\s A {P\s H} u\s B = -\overline v\s B{P\s H}v\s A$\\
+               & $v^*=-\ii\G2u,\quad \trans{u}=-\ii v^\dagger\G2 = \overline v C^{-1}, \quad u=C\trans{\overline v}; \qquad \overline v\s A {P\s H} u\s B = -\overline v\s B{P\s H}u\s A$\\
 \end{tabular}
 
 \subsubsection{Polarization Sum}
@@ -268,7 +268,7 @@ When $k_\mu M^{\mu\nu}=k'_\nu M^{\mu\nu}=0$ is valid,
 M^{\mu\nu}M^{\rho\sigma*}
 = \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}.
 \end{equation}
-\note{See Sec.~\ref{Sec:Verbose:PolarizationSum} for verbose information.}
+\NOTE{See Sec.~\ref{Sec:Verbose:PolarizationSum} for verbose information.}
 
 \subsubsection{Fierz transformations}
 For Dirac spinors $a,b,c,d$,\par
@@ -504,9 +504,10 @@ To compute the $S$-matrix in a physical region choose the correct branch
 &= \int\frac{\dd\Omega}{4\pi}\frac1{8\pi}\frac{2\vnorm{p_1}}{E\s{cm}}\\
 &= \frac{1}{8\pi}
    \sqrt{1-\frac{2({m_1}^2+{m_2}^2)}{E\s{cm}^2}+\frac{({m_1}^2-{m_2}^2)^2}{E\s{cm}^4}}
-\quad \too[m_2=0]\ \frac{1}{8\pi}\left(1-\frac{{m_1}^2}{{E\s{cm}}^2}\right)
+\quad \longrightarrow [m_2=0]\ \frac{1}{8\pi}\left(1-\frac{{m_1}^2}{{E\s{cm}}^2}\right)
 \end{align}
 \paragraph{Kinematics of Decay}
+\vspace{-5pt}
 \begin{align}
  K\to p_1 + p_2 &\qquad\text{or}\qquad
  \pmat{M\\\vc 0}\to\pmat{\sqrt{p^2+{m_1}^2}\\\vc p}+\pmat{\sqrt{p^2+{m_2}^2}\\-\vc p};\\
@@ -518,8 +519,8 @@ To compute the $S$-matrix in a physical region choose the correct branch
   p_1\cdot p_2= \frac{M^2-\left({m_1}^2+{m_2}^2\right)}2.\notag
 \end{align}
 
-\Paragraph{Mandelstam Variables}
-\vspace{-20pt}
+\paragraph{Mandelstam Variables}
+\vspace{-25pt}
 \begin{align*}
 \text{For $p_1 + p_2 \to k_1 + k_2$ collision,}\qquad
 &s=(p_1+p_2)^2=(k_1+k_2)^2,\\
@@ -528,10 +529,9 @@ To compute the $S$-matrix in a physical region choose the correct branch
 \text{and}\qquad&s+t+u=p_1^2+p_2^2+k_1^2+k_2^2=\sum m^2.
 \end{align*}
 
-\Paragraph{Kinematics of Collision (Same Mass)}
-\vspace{10pt}
+\paragraph{Kinematics of Collision (Same Mass)}\mbox{}\par
 \begin{minipage}{167pt}
-\mygraphicinc{graphics/collision.eps}{165pt}
+\includegraphics[width=165pt]{graphics/collision.eps}
 \end{minipage}
 \begin{minipage}{270pt}
 \begin{align*}
@@ -622,7 +622,7 @@ In Abelian gauge theory, $V$ and fields are always commutative, and thus we have
 \subsubsection{Lagrangian Block}\vskip-30pt
 \begin{align}
  &\Lag \ni \left|\Dm\phi\right|^2-m^2|\phi|^2, \quad
-          \ol\psi(\ii\slashed\DD-m)\psi,\quad
+          \overline\psi(\ii\slashed\DD-m)\psi,\quad
           -\frac14F_a^{\mu\nu}F^a_{\mu\nu}\ \Bigl(=-\frac12\Tr F^{\mu\nu}F_{\mu\nu}\Bigr),\quad
           \theta\epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}\\
  &-\frac14F_a^{\mu\nu}F^a_{\mu\nu}

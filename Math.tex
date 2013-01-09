@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <>
+%%% Time-Stamp: <2013-01-09 22:26:49 misho>
 %%% 一部で日本語が使用されています。
 
 \newcommand{\Hom}{\mathop{\mathrm{Hom}}}
@@ -21,7 +21,7 @@ Field         & $+$: Module, $\times$: Commutative Monoid, $a^{-1}$ but $0$, $1\
 
 \vspace{.5zw}
 
-\Paragraph{Vector Space}
+\paragraph{Vector Space}
 \begin{tabular}{l@{ :\ \ \ }l}
 Vector space on $K$  & For $v\in(V,+)\stx{module}$ and $k\in K\stx{field}$,\\
 \hfill ($K$-module)  & \qquad $k v\in (V,+)$; Compatible, Distributive, $1v=v$.\\
@@ -35,7 +35,7 @@ Inner product & $\braket xx\ge0$, $\braket xx=0\Leftrightarrow x=0$,$\braket{x}{
 
 \vspace{.5zw}
 
-\Paragraph{$K$-algebra}
+\paragraph{$K$-algebra}
 $K$-algebra $C(V)$とは，vector空間$V$に，distributiveな乗法を入れたもの：\\
 \qquad$xy\in C(V);$\quad $(xy)z=x(yz)$, $(x+y)z=xz+yz$, $x(y+z)=xy+xz$, $k(xy)=(kx)y=x(ky)$.
 
@@ -44,7 +44,7 @@ $K$-algebra $C(V)$とは，vector空間$V$に，distributiveな乗法を入れ�
 Lie Algebra & For a Finite-dimensional $K$-module $(A,+)$ and $x,y,z\in(A,+)$, $a,b\in K$,\\
             & \quad $[u,v]\in (A,+)$ (Lie product), and\\
             & \quad Bilinear: $[ax+by, z] = a[x,z]+b[y,z]$, $[x, ay+bz] = a[x,y]+b[x,z]$,\\
-            & \quad Alternating: $[x,x]=0$ \quad ($\then [x,y]=-[y,x]$),\\
+            & \quad Alternating: $[x,x]=0$ \quad ($\Longrightarrow [x,y]=-[y,x]$),\\
             & \quad Jacobi id.: $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$.\\
 \end{tabular}\par
 則ち$[A,B]:=AB-BA$として閉じていればLie algebraとなる。
@@ -81,7 +81,7 @@ The Gamma matrices form Clifford Algebra:
 
 \vspace{1zw}
 
-\Paragraph{Tensor and Tensor Space}
+\paragraph{Tensor and Tensor Space}\mbox{}\par
 \begin{tabular}{l@{ :\ \ \ }l}
 $p$次反変Tensor積 & $T^p(V):=V^{\otimes p} = V\otimes V\otimes \cdots \otimes V$\\
 $q$次共変Tensor積 & $T_q(V):=(V^*)^{\otimes q} = V^*\otimes V^*\otimes \cdots \otimes V^*$\\
@@ -98,7 +98,7 @@ Contraction    & $V^*$は$V\to K$なので，$T^p_q(V)\to T^{p-1}_{q-1}(V)$が�
 \end{tabular}
 
 
-\Paragraph{Grassmann Operator}
+\paragraph{Grassmann Operator}
 台集合$V$をHilbert空間であるとする。$V\ni v$について
 \begin{equation}
  \|\psi v\|^2=(\psi_{ab}v_b)^*(\psi_{ac}v_c) = v_b^*v_c(\psi_{ab})^*\psi_{ac}\ge 0

@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <>
+%%% Time-Stamp: <2013-01-09 22:23:14 misho>
 %%% 一部で日本語が使用されています。
 
 \section{Standard Model}
@@ -15,19 +15,19 @@ We use the following abridged notations:
 \subsection{Symmetries and Fields}
 \begin{center}
  \begin{tabular}[b]{@{\Vrule\ }c@{\ }l|c|c|c@{\ \Vrule}}\Hrule
-   & & $\gSU(3)\s{strong}$ & $\gSU(2)\s{weak} $ & $\gU(1)_Y$ \\\Hline
+   & & $\gSU(3)\s{strong}$ & $\gSU(2)\s{weak} $ & $\gU(1)_Y$ \\\Hrule
 &\multicolumn{4}{l@{\Vrule}}{{\bf Matter Fields} (Fermionic / Lorentz Spinor)}\\\hline
  $\PL Q_i$ &: Left-handed quarks              & $\vc 3$ & $\vc 2$ & $1/6$\\\hline
  $\PL U_i$ &: Right-handed up-type quarks     & $\vc 3$ & $\vc 1$ & $2/3$\\\hline
  $\PR D_i$ &: Right-handed down-type quarks   & $\vc 3$ & $\vc 1$ & $-1/3$\\\hline
  $\PR L_i$ &: Left-handed leptons             & $\vc 1$ & $\vc 2$ & $-1/2$\\\hline
- $\PR E_i$ &: Right-handed leptons            & $\vc 1$ & $\vc 1$ & $-1$\\\Hline
+ $\PR E_i$ &: Right-handed leptons            & $\vc 1$ & $\vc 1$ & $-1$\\\Hrule
 &\multicolumn{4}{l@{\Vrule}}{{\bf Higgs Field} (Bosonic / Lorentz Scalar)}\\\hline
- $H$   &: Higgs                           & $\vc 1$ & $\vc 2$ & $1/2$\\\Hline
+ $H$   &: Higgs                           & $\vc 1$ & $\vc 2$ & $1/2$\\\Hrule
 &\multicolumn{4}{l@{\Vrule}}{{\bf Gauge Fields} (Bosonic / Lorentz Vector)}\\\hline
  $G$   &: Gluons                          & $\vc 8$ & $\vc 1$ & $0$\\\hline
  $W$   &: Weak bosons                     & $\vc 1$ & $\vc 3$ & $0$\\\hline
- $B$   &: B boson                         & $\vc 1$ & $\vc 1$ & $0$\\\Hline
+ $B$   &: B boson                         & $\vc 1$ & $\vc 1$ & $0$\\\Hrule
 \end{tabular}
 \end{center}
 \paragraph{Full Lagrangian}
@@ -50,25 +50,25 @@ $ \Lag = \Lag\s{gauge}
 \begin{split}\label{eq:SMLagMatter}
 \Lag\s{matter} =&\
 % Left Quark
- \ol Q_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu-\ii
+ \overline Q_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu-\ii
  g_2W_\mu-\frac16\ii g_1B_\mu\right)\PL Q_i\\
 & % Up Quark
- + \ol U_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu-\frac23\ii g_1B_\mu\right)\PR U_i\\
+ + \overline U_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu-\frac23\ii g_1B_\mu\right)\PR U_i\\
 & % Down Quark
- + \ol D_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu+\frac13\ii g_1B_\mu\right)\PR D_i\\
+ + \overline D_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu+\frac13\ii g_1B_\mu\right)\PR D_i\\
 & % Left Lepton
- + \ol L_i\ii\gamma^\mu\left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right)\PL L_i\\
+ + \overline L_i\ii\gamma^\mu\left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right)\PL L_i\\
 & % Right Electron
- + \ol E_i\ii\gamma^\mu\left(\partial_\mu+\ii g_1B_\mu\right)\PR E_i,
+ + \overline E_i\ii\gamma^\mu\left(\partial_\mu+\ii g_1B_\mu\right)\PR E_i,
 \end{split}\\
 %%% YUKAWA
 \Lag\s{湯川} =&\
- \ol U_i(y_u)_{ij}H\PL Q_j - \ol D_i (y_d)_{ij}H^\dagger\PL Q_j - \ol E_i(y_e)_{ij}H^\dagger\PL
+ \overline U_i(y_u)_{ij}H\PL Q_j - \overline D_i (y_d)_{ij}H^\dagger\PL Q_j - \overline E_i(y_e)_{ij}H^\dagger\PL
  L_j + \Hc
 \end{align}
 We have no freedom to add other terms into this Lagrangian of the gauge theory. See Appendix~\ref{sec:no-other-term}.
 
-\Paragraph{Gauge Kinetic Terms}
+\paragraph{Gauge Kinetic Terms}
 the gauge kinetic terms can be expanded as
 \begin{align}
 \Lag\s{gauge}
@@ -85,7 +85,7 @@ the gauge kinetic terms can be expanded as
 \end{align}
 
 \subsection{Higgs Mechanism}
-\Paragraph{Higgs Potential}
+\paragraph{Higgs Potential}
 \label{sec:higgs-mechanism}
 The (renormalizable) Higgs potential must be
 \begin{equation}
@@ -199,17 +199,17 @@ G^{a\mu\nu}G^a_{\mu\nu} + (\partial Z)^{\mu\nu}(\partial Z)_{\mu\nu}+(\partial A
 \paragraph{湯川 Term}
 \begin{align}
  \Lag\s{湯川}=
-&\ol U y_uH\PL Q - \ol D y_dH^\dagger\PL Q - \ol E y_eH^\dagger\PL L
+&\overline U y_uH\PL Q - \overline D y_dH^\dagger\PL Q - \overline E y_eH^\dagger\PL L
  + \Hc\notag\\
 =
-& \ol U y_u\epsilon^{\alpha\beta}H^{\alpha}\PL Q^{\beta}
- -\ol D y_d{H^\dagger}^{\alpha}\PL Q^\alpha
- -\ol E y_e{H^\dagger}^{\alpha}\PL L^\alpha + \Hc\notag\\
+& \overline U y_u\epsilon^{\alpha\beta}H^{\alpha}\PL Q^{\beta}
+ -\overline D y_d{H^\dagger}^{\alpha}\PL Q^\alpha
+ -\overline E y_e{H^\dagger}^{\alpha}\PL L^\alpha + \Hc\notag\\
 =
 &-\frac{v+h}{\sqrt2}\left(
-   \ol U y_u\PL Q^1
- + \ol D y_d\PL Q^2
- + \ol E y_e\PL L^2
+   \overline U y_u\PL Q^1
+ + \overline D y_d\PL Q^2
+ + \overline E y_e\PL L^2
 \right) + \Hc
 \end{align}
 \subsection{Full Lagrangian After Higgs Mechanism}
@@ -220,7 +220,7 @@ Now we have the following Lagrangian (with omitting $\PL$ etc.):
 {\ +\ }{m_W}^2W^+W^-
 {\ +\ }\frac{{m_Z}^2}2Z^2\notag\\[.5zw]
 %Higgs
-\note{Higgs}&
+\NOTE{Higgs}&
 {\ +\ }\frac12(\partial_\mu h)^2
 {\ -}\frac12{m_h}^2h^2
 {-}\sqrt{\frac\lambda2}m_h h^3
@@ -235,16 +235,16 @@ Now we have the following Lagrangian (with omitting $\PL$ etc.):
 {\ +\ }\frac{1}{\sqrt2}h\bar D y_d Q^2
 {\ +\ }\frac{1}{\sqrt2}h\bar E y_e L^2 \ +\ \Hc\right)\notag\\[1zw]
 %SU(3) Interactions
-\note{$\gSU(3)$}&
+\NOTE{$\gSU(3)$}&
 {\ +\ }\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) Q
 {\ +\ }\bar U\left(\ii\slashed\partial+g_3\slashed G\right) U
 {\ +\ }\bar D\left(\ii\slashed\partial+g_3\slashed G\right) D
 {\ +\ }\bar L\left(\ii\slashed\partial\right) L
 {\ +\ }\bar E\left(\ii\slashed\partial\right) E\notag\\[1zw]
-\note{$W$}&
+\NOTE{$W$}&
 {\ +\ }\bar Q\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)Q
 {\ +\ }\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)L\notag\\
-\note{$A$\&$Z^0$}&
+\NOTE{$A$\&$Z^0$}&
 {\ +\ }\bar Q\left[
     \left(T^3+\frac16\right)|e|\slashed A
    +\left(\frac{|e|c}{s}T^3-\frac{|e|s}{6c}\right)\slashed Z^0
@@ -257,7 +257,7 @@ Now we have the following Lagrangian (with omitting $\PL$ etc.):
   \right] L\notag\\
 &
 {\ +\ }\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) E\notag\\[.5zw]
-\note{湯川項}& % Yukawa
+\NOTE{湯川項}& % Yukawa
 {\ -\ }\left(\frac{1}{\sqrt2}v\bar U y_u Q^1
 {\ +\ }\frac{1}{\sqrt2}v\bar D y_d Q^2
 {\ +\ }\frac{1}{\sqrt2}v\bar E y_e L^2\ +\ \Hc\right)
@@ -283,9 +283,9 @@ and now we have the 湯川 terms in mass eigenstates as
 \begin{equation}
   \Lag\s{湯川}
 = -\left(1+\frac{1}{v}h\right)\left[
-   {(m_u)_i} \ol U_i \PL Q_i^1
- + {(m_d)_i} \ol D_i \PL Q_i^2
- + {(m_e)_i} \ol E_i \PL L_i^2 + \Hc\right].
+   {(m_u)_i} \overline U_i \PL Q_i^1
+ + {(m_d)_i} \overline D_i \PL Q_i^2
+ + {(m_e)_i} \overline E_i \PL L_i^2 + \Hc\right].
 \end{equation}
 
 In the transformation from the gauge eigenstates to the mass eigenstates, almost all the terms in the Lagrangian are not modified.
@@ -293,31 +293,31 @@ However, only the terms of quark--quark--$W$ interactions do change drastically,
 \begin{align}
  \Lag
 &\supset
- \ol Q\ii\gamma^\mu\left(-\ii g_2W_\mu-\frac16\ii g_1B_\mu\right)\PL Q\\
-&=\ol Q\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)\PL Q
+ \overline Q\ii\gamma^\mu\left(-\ii g_2W_\mu-\frac16\ii g_1B_\mu\right)\PL Q\\
+&=\overline Q\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)\PL Q
 \quad+\quad(\text{interaction terms with $Z$ and $A$})\\
 &\mapsto%
 \frac{g_2}{\sqrt2}
-\pmat{\ol Q^1\Psi_u&\ol Q^2\Psi_d}
+\pmat{\overline Q^1\Psi_u&\overline Q^2\Psi_d}
 \pmat{0&\slashed W^+\\\slashed W^-&0}\PL\pmat{\Psi_u^\dagger Q^1\\\Psi_d^\dagger Q^2} + (\quad{\cdots}\quad)\\
-&=\frac{g_2}{\sqrt2}\left[\ol Q^2\slashed W^-X \PL Q^1+ \ol Q^1\slashed W^+X^\dagger\PL Q^2\right]+(\quad{\cdots}\quad),
+&=\frac{g_2}{\sqrt2}\left[\overline Q^2\slashed W^-X \PL Q^1+ \overline Q^1\slashed W^+X^\dagger\PL Q^2\right]+(\quad{\cdots}\quad),
 \end{align}
 where $X:=\Psi_d\Psi_u^\dagger$ is a matrix, so-called the Cabbibo--小林--益川~(CKM) matrix, which is {\em not} diagonal, and {\em not} real, generally.
 These terms violate the flavor symmetry of quarks, and even the $CP$-symmetry.
 \begin{rightnote}
 In our notation, $CP$-transformation of a spinor is described as
 \begin{equation}
- \mathscr{CP}\left(\psi\right)= -\ii\eta^*\trans{(\ol\psi\G2)},\quad
- \mathscr{CP}\left(\ol\psi\right)= \ii\eta\trans{(\G2\psi)},
+ \mathscr{CP}\left(\psi\right)= -\ii\eta^*\trans{(\overline\psi\G2)},\quad
+ \mathscr{CP}\left(\overline\psi\right)= \ii\eta\trans{(\G2\psi)},
 \end{equation}
 where $\eta$ is a complex phase ($|\eta|=1$).
 Under this transformation, those terms are transformed as, e.g.,
 \begin{eqnarray}
-\mathscr{CP}\left( \ol Q^2\slashed W^-X \PL Q^1\right)
+\mathscr{CP}\left( \overline Q^2\slashed W^-X \PL Q^1\right)
 &=&
-\trans{(\G2Q^2)} \mathscr{P}(-{\slashed W^+})X\PL\trans{(\ol Q^1\G2)}\notag\\
-&=&-{W_\mu^+}^P\trans{(\G2Q^2)}\trans{(\ol Q^1\trans X\G2\PL\trans{\Gm })}\\
-&=&(\ol Q^1{\slashed W^+}\trans X\PL Q^2).\notag
+\trans{(\G2Q^2)} \mathscr{P}(-{\slashed W^+})X\PL\trans{(\overline Q^1\G2)}\notag\\
+&=&-{W_\mu^+}^P\trans{(\G2Q^2)}\trans{(\overline Q^1\trans X\G2\PL\trans{\Gm })}\\
+&=&(\overline Q^1{\slashed W^+}\trans X\PL Q^2).\notag
 \end{eqnarray}
 Therefore, we can see that the $CP$-symmetry is maintained if and only if $\trans X=X^\dagger$, that is, if and only if $X$ is a real matrix.
 \end{rightnote}
@@ -326,7 +326,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 \begin{align}
  \Lag =
 & \Lag\s{gauge}\notag\\
-\note{質量項}& % Yukawa
+\NOTE{質量項}& % Yukawa
 {\quad+\quad}{m_W}^2W^+W^-
 {\quad+\quad}\frac{{m_Z}^2}2Z^2
 \notag\\&
@@ -335,12 +335,12 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 {\ +\ }\bar E M_e \PL L^2\ +\ \Hc\right)
 \notag\\[.5zw]
 %Higgs
-\note{Higgs Field}&
+\NOTE{Higgs Field}&
 {\quad+\quad}\frac12(\partial_\mu h)^2
 {\quad-}\frac12{m_h}^2h^2
 {-}\sqrt{\frac\lambda2}m_h h^3
 {-}\frac14\lambda h^4\notag\\
-\note{Higgsとの結合}&
+\NOTE{Higgsとの結合}&
 {\quad+\quad}\frac{v{g_2}^2}{4}W^+W^-h
 {\quad+\quad}\frac{v({g_1}^2+{g_2}^2)}{8}Z^2h\notag\\&
 {\quad+\quad}\frac{{g_2}^2}{4}W^+W^-h^2
@@ -350,21 +350,21 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 {\ +\ }\frac1v\bar D M_d \PL Q^2h
 {\ +\ }\frac1v\bar E M_e \PL L^2h\ +\ \Hc\right)\notag\\[1zw]
 %SU(3) Interactions
-\note{$\gSU(3)$および微分項}&
+\NOTE{$\gSU(3)$および微分項}&
 {\quad+\quad}\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) \PL Q
 {\quad+\quad}\bar U\left(\ii\slashed\partial+g_3\slashed G\right) \PR U
 {\quad+\quad}\bar D\left(\ii\slashed\partial+g_3\slashed G\right) \PR D\notag\\
 &
 {\quad+\quad}\bar L\left(\ii\slashed\partial\right) \PL L
 {\quad+\quad}\bar E\left(\ii\slashed\partial\right) \PR E\notag\\[1zw]
-\note{$W$ boson}&
+\NOTE{$W$ boson}&
 {\quad+\quad}\frac{g_2}{\sqrt2}\left[
 \bar Q^2\slashed W^-X \PL Q^1+ \bar Q^1\slashed W^+X^\dagger \PL Q^2\right]
-\qquad\note{← $CP$ and flavor violating!}
+\qquad\NOTE{← $CP$ and flavor violating!}
 \notag\\
 &
 {\quad+\quad}\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)\PL L\notag\\
-\note{$A$\&$Z^0$ boson}&
+\NOTE{$A$\&$Z^0$ boson}&
 {\quad+\quad}\bar Q\left[
     \left(T^3+\frac16\right)|e|\slashed A
    +\left(\frac{|e|c}{s}T^3-\frac{|e|s}{6c}\right)\slashed Z^0
@@ -379,9 +379,9 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 {\quad+\quad}\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) \PR E
 \end{align}
 となる。
-
-\subsection{Chiral Notation}
-以上のLagrangianをchiral表示で表すと，まず最初は
+\newpage
+\subsection{Chiral Notation}\mbox{}\par\vspace{-23pt}
+In the chiral expression, the Lagrangian is written as\vspace{-4pt}
 \begin{align}
  \mathcal L
 =& \text{(Higgs terms)} + \text{(Gauge fields strength)}\notag\\
@@ -421,9 +421,9 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 \right)\notag\\
 & % Yukawa
  - \left(U^\dagger\s R y_uHQ\s L + D^\dagger\s R y_dH^\dagger Q\s L +
- E^\dagger \s R y_eH^\dagger L\s L + \Hc\right)
+ E^\dagger \s R y_eH^\dagger L\s L + \Hc\right),
 \end{align}
-であり，そして最終的には
+and finally we obtain
 \begin{align}
  \Lag =
 & \text{(Gauge bosons and Higgs)}\notag\\
@@ -479,16 +479,18 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 + \left(\frac{c^2}{2s^2}+\frac12\right)\nu_e^\dagger \bar\sigma^\mu Z_\mu \nu_e
 - \left(\frac{c^2}{2s^2}-\frac12\right)e\s L^\dagger \bar\sigma^\mu Z_\mu e\s L
 + e\s R^\dagger     \sigma^\mu Z_\mu e\s R
-+ \text{(others)}\right]
++ \text{(others)}\right].
 \end{align}
-となる。
+
+
+\newpage
 
 \subsection{Values of SM Parameters}
 \newcommand{\upd}[1]{{\RED{#1}}}
 \vskip-24pt\hskip200pt{\small(Extracted from PDG 2010 / \upd{2012})}
 \subsubsection{Experimental Values}
 \subparagraph{Theoretical Parameters}
-\note{These values are all in $\overline{\rm{MS}}$ scheme.}
+\NOTE{These values are all in $\overline{\rm{MS}}$ scheme.}
 \begin{align*}
  \alpha^{-1}\s{EM}(0) &= 137.035999\upd{074(44)} &
  G\s{F}       &= \frac{{g_2}^2}{4\sqrt2{m_W}^2} = \frac1{\sqrt2v^2} = 1.16637\upd{87(6)}\EE-5\un{GeV^{-2}}&
@@ -508,7 +510,7 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 \end{align*}
 
 \subparagraph{Masses and Lifetimes}
-\note{$t$ pole mass is the ``MC mass''. Quark $\overline{\rm{MS}}$ mass at 1\,GeV can be obtained by $\times 1.35$.}
+\NOTE{$t$ pole mass is the ``MC mass''. Quark $\overline{\rm{MS}}$ mass at 1\,GeV can be obtained by $\times 1.35$.}
 \begin{align*}
  e   &: 0.5109989\upd{28(11)}\un{MeV}         &
 \mu  &: 105.6583\upd{715(35)}\un{MeV}         &
@@ -516,18 +518,18 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 \end{align*}
 \begin{align*}
 \text{\small [$\overline{\rm MS}$ (2\,GeV)]}\ \
- u   &: \upd{2.3\pmgosa{0.7}{0.5}}\un{MeV}    &
+ u   &: \upd{2.3\pmunc{0.7}{0.5}}\un{MeV}    &
 \text{\small [$\overline{\rm MS}$($m$)]}\ \
  c   &: 1.2{\upd{75(25)}}\un{GeV}             &
 \text{\small [pole]}\ \
  c   &: 1.67(7)\un{GeV}
 \\
- d   &: \upd{4.8\pmgosa{0.7}{0.3}}\un{MeV}    &
+ d   &: \upd{4.8\pmunc{0.7}{0.3}}\un{MeV}    &
  b   &: 4.1\upd{8(3)}\un{GeV}                 &
  b   &: 4.78(6)\un{GeV}
 \\
  s   &: \upd{95\pm5}\un{MeV}                  &
- t   &: 160\pmgosa{5}{4}\un{GeV}              &
+ t   &: 160\pmunc{5}{4}\un{GeV}              &
  t   &: 17\upd{3.5(6)(8)}\un{GeV}
 \end{align*}
 \begin{align*}
@@ -587,10 +589,10 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
 \end{equation*}
 \begin{align*}
  \lambda &= 0.22535(65),&
- A&=0.811\pmgosa{0.022}{0.012},&
- \bar\rho&=0.131\pmgosa{0.026}{0.013},&
- \bar\eta&=0.345\pmgosa{0.013}{0.014};&
- J&=(2.96\pmgosa{20}{16})\EE-5
+ A&=0.811\pmunc{0.022}{0.012},&
+ \bar\rho&=0.131\pmunc{0.026}{0.013},&
+ \bar\eta&=0.345\pmunc{0.013}{0.014};&
+ J&=(2.96\pmunc{20}{16})\EE-5
 \end{align*}
 
 

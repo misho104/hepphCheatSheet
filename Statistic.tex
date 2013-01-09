@@ -11,28 +11,28 @@ Histogram の階級数についてのSturgesの公式 $k\approx 1+\log_2 n$ （$
 
 \paragraph{分布の代表値}
 \begin{align}
- &\text{算術平均}\ \ol x := \frac1n\sum x_i,\quad
+ &\text{算術平均}\ \overline x := \frac1n\sum x_i,\quad
   \text{幾何平均}\ x_G   := \left(\prod x_i\right)^{1/n},\quad
   \text{調和平均}\ x_H   := n\left(\sum \frac1{x_i}\right)^{-1};\\
  &\text{中央値，$n$分位点，最頻値，mid-range，……}
 \end{align}
 \paragraph{分布の散らばり}
 \begin{align}
- &\text{平均偏差}\ d := \frac1n\sum\left|x_i-\ol x\right|, \quad
-  \text{標準偏差（分散）}\ S^2 := \frac1n\sum(x_i-\ol x)^2, \quad
-  \text{変動係数}\ C.V. := S_x/\ol x;\\
+ &\text{平均偏差}\ d := \frac1n\sum\left|x_i-\overline x\right|, \quad
+  \text{標準偏差（分散）}\ S^2 := \frac1n\sum(x_i-\overline x)^2, \quad
+  \text{変動係数}\ C.V. := S_x/\overline x;\\
  &\text{平均差}\ M.D. := \frac1{n^2}\sum_i\sum_j\left|x_i-x_j\right|, \quad
-  \text{Gini係数}\ G.I.:= \frac{M.D.}{2\ol x} = \frac1{2n^2\ol x}\sum_i\sum_j\left|x_i-x_j\right|;\\
+  \text{Gini係数}\ G.I.:= \frac{M.D.}{2\overline x} = \frac1{2n^2\overline x}\sum_i\sum_j\left|x_i-x_j\right|;\\
  &\text{Entropy}\ H = -\sum p_i\log p_i \quad\text{（$p$:相対頻度）}\quad
   \text{… 一ヶ所集中$=0\le H \le 1=$等確率}\\
  &\text{範囲，四分位偏差，……}
 \end{align}
 \paragraph{相関を表す量}
 \begin{align}
- &\text{共分散}\    C_{xy}  :=\frac1n\sum(x_i-\ol x)(y_i-\ol y)&
+ &\text{共分散}\    C_{xy}  :=\frac1n\sum(x_i-\overline x)(y_i-\overline y)&
  &\text{相関係数}\   r_{xy}  :=\frac{C_{xy}}{S_xS_y}  \quad -1\le r_{xy} \le 1, \text{線型不変}\\
  &\text{偏相関関数}\ r_{12;3}:=\frac{r_{12}-r_{13}r_{23}}{\sqrt{1-{r_{13}}^2}\sqrt{1-{r_{23}}^2}}&
- &\text{系列相関関数}\ r_h:=\frac1{S_x}\sum_{i=1}^{n-h}\frac{(x_i-\ol x)(x_i+h-\ol x)}{n-h}
+ &\text{系列相関関数}\ r_h:=\frac1{S_x}\sum_{i=1}^{n-h}\frac{(x_i-\overline x)(x_i+h-\overline x)}{n-h}
 \end{align}
  \text{順位相関関数 … 順位の組 $\{R_i\}$，$\{R_i'\}$ の間の相関}
 \begin{align}
@@ -65,7 +65,7 @@ Bayesの定理: 事象$\{H_i\}$が互いに排反かつ全体を尽くしてい�
 \begin{align}
  &\text{Moment }\mu_r:=\ev{X^r};\quad \mu'_r:=\left\langle(X-\mu)^r \right\rangle \qquad\quad
   \text{標準化 moment }\alpha_r :=\left\langle(X-\mu)^r \right\rangle/\sigma^r\\
- & \text{Moment母関数 }  M_X(t):=\ev{\exp(tX)}\then\mu_r=\nbib{}{t}{n}M_X(t)
+ & \text{Moment母関数 }  M_X(t):=\ev{\exp(tX)}\Longrightarrow \mu_r=\diff[n]{}{t}M_X(t)
 \end{align}
 \begin{align}
  \text{期待値}  \ &\mu:=\mu_1;& \text{計算の便法}\colon\  \mu'_2&=\ev{X^2}-\mu^2\\

@@ -1,20 +1,53 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <>
+%%% Time-Stamp: <2013-01-09 22:29:10 misho>
 %%% 一部で日本語が使用されています。
 
 \documentclass[a4j,10pt,notitlepage]{jsarticle}
-\usepackage[backref=page,bookmarksnumbered=false,bookmarksopen=true,hyperfootnotes=false,hypertex]{hyperref}
-\usepackage[EqNumWithSec,Ver.1.00,Deutsch]{../MyPhysPaperM}
-%\usepackage[greek,japanese]{babel}\usepackage{ngerman}
-%\usepackage{amsmath}
-\usepackage{feynmp,../ContractionMacros, cancel}
-\usepackage{lscape}
+
+\usepackage[backref=page,bookmarksnumbered,bookmarksopen,hyperfootnotes=false,hypertex]{hyperref}
+\usepackage[usenames,dvipdfm]{color}
+\usepackage[dvipdfm]{graphicx}
+
+\usepackage{MyCommand4}
+
+\usepackage[greek,japanese]{babel}\usepackage{ngerman}
+\usepackage{../ContractionMacros}
+\usepackage{feynmp,lscape,slashed,./HEP,fullpage}
+
+
+\makeatletter
+\def\theequation{\@arabic\c@section.\@arabic\c@equation}
+\@addtoreset{equation}{section}
+%appendix周辺
+\renewcommand{\appendix}{\par
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \setcounter{equation}{0}%
+  \gdef\presectionname{\appendixname}%
+  \gdef\postsectionname{}%
+  \def\theequation{\@Alph\c@section.\@arabic\c@equation}
+  \gdef\thesection{\presectionname\@Alph\c@section\postsectionname}%
+  \gdef\thesubsection{\@Alph\c@section.\@arabic\c@subsection}}
+
+\def\label@box#1#2#3#4{\@ifnextchar[{\label@@box{#1}{#2}{#3}{#4}}{\label@@box@{#1}{#2}{#3}{#4}}}
+\def\label@@box#1#2#3#4[#5]{\label@@box@{#1}{#2}{#3}{#4 ： #5}}
+\def\label@@box@#1#2#3#4{%
+ \color{#1}\fboxsep=1zw\begin{center}\csname#2\endcsname%
+ \bgroup\begin{minipage}{.81\textwidth}%
+ \vspace{-#3}\hspace{1zw}%
+ {\fboxsep=0pt\colorbox{white}{\ \bf #4\ }\par}%
+ \color{Black}\begin{minipage}{\textwidth}}%
+\def\endlabel@box{\end{minipage}\end{minipage}\egroup\end{center}}
+\def\preposition#1{\label@box{Black}{Ovalbox}{1.5zw}{#1}}
+\let\endpreposition\endlabel@box
+\def\conclusion#1{\label@box{Black}{shadowbox}{1.5zw}{#1}}
+\let\endconclusion\endlabel@box
+\makeatother
 
 \title{High Energy Physics Cheat Sheet}
 \date{\today}
 \bibliographystyle{myjplainnosort}
 %\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
-\usepackage{../HEP}
 %\maketitle
 \makeatletter
 \def\myoption@subsubsection{\normalfont\normalsize\headfont\bf ◆}

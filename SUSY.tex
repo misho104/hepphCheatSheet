@@ -117,22 +117,22 @@ $\sigma$ matrices& $
  (\psi\phi)\bar\chi_\dalpha&=\tfrac12(\phi\Sm\bar\chi)(\psi\Smd)_\dalpha
 \end{align*}
 \begin{align*}
- \epsilon^{\alpha\beta}\pbib{}{\theta^\beta}&=-\pbib{}{\theta_\alpha}&
- \pbib{}{\theta^\alpha}\thth&=2\theta_\alpha&
- \epsilon^{\alpha\beta}\pbib{}{\theta^\alpha}\pbib{}{\theta^\beta}\thth &=
- \pbib{}{\theta_\alpha}\pbib{}{\theta^\alpha}\thth = 4\\
- \epsilon_{\alpha\beta}\pbib{}{\theta_\beta}&=-\pbib{}{\theta^\alpha}&
- \pbib{}{\theta_\alpha}\thth&=-2\theta^\alpha&
- \epsilon_{\alpha\beta}\pbib{}{\theta_\alpha}\pbib{}{\theta_\beta}\thth &=
- \pbib{}{\theta^\alpha}\pbib{}{\theta_\alpha}\thth = -4\\
- \epsilon^{\dalpha\dbeta}\pbib{}{\btheta^\dbeta}&=-\pbib{}{\btheta_\dalpha}&
- \pbib{}{\btheta^\dalpha}\bthth&=-2\btheta_\dalpha&
- \epsilon_{\dalpha\dbeta}\pbib{}{\btheta_\dalpha}\pbib{}{\btheta_\dbeta}\bthth &=
- \pbib{}{\btheta^\dalpha}\pbib{}{\btheta_\dalpha}\bthth = 4\\
- \epsilon_{\dalpha\dbeta}\pbib{}{\btheta_\dbeta}&=-\pbib{}{\btheta^\dalpha}&
- \pbib{}{\btheta_\dalpha}\bthth&=2\btheta^\dalpha&
- \epsilon^{\dalpha\dbeta}\pbib{}{\btheta^\dalpha}\pbib{}{\btheta^\dbeta}\bthth &=
- \pbib{}{\btheta_\dalpha}\pbib{}{\btheta^\dalpha}\bthth = -4
+ \epsilon^{\alpha\beta}\pdiff{}{\theta^\beta}&=-\pdiff{}{\theta_\alpha}&
+ \pdiff{}{\theta^\alpha}\thth&=2\theta_\alpha&
+ \epsilon^{\alpha\beta}\pdiff{}{\theta^\alpha}\pdiff{}{\theta^\beta}\thth &=
+ \pdiff{}{\theta_\alpha}\pdiff{}{\theta^\alpha}\thth = 4\\
+ \epsilon_{\alpha\beta}\pdiff{}{\theta_\beta}&=-\pdiff{}{\theta^\alpha}&
+ \pdiff{}{\theta_\alpha}\thth&=-2\theta^\alpha&
+ \epsilon_{\alpha\beta}\pdiff{}{\theta_\alpha}\pdiff{}{\theta_\beta}\thth &=
+ \pdiff{}{\theta^\alpha}\pdiff{}{\theta_\alpha}\thth = -4\\
+ \epsilon^{\dalpha\dbeta}\pdiff{}{\btheta^\dbeta}&=-\pdiff{}{\btheta_\dalpha}&
+ \pdiff{}{\btheta^\dalpha}\bthth&=-2\btheta_\dalpha&
+ \epsilon_{\dalpha\dbeta}\pdiff{}{\btheta_\dalpha}\pdiff{}{\btheta_\dbeta}\bthth &=
+ \pdiff{}{\btheta^\dalpha}\pdiff{}{\btheta_\dalpha}\bthth = 4\\
+ \epsilon_{\dalpha\dbeta}\pdiff{}{\btheta_\dbeta}&=-\pdiff{}{\btheta^\dalpha}&
+ \pdiff{}{\btheta_\dalpha}\bthth&=2\btheta^\dalpha&
+ \epsilon^{\dalpha\dbeta}\pdiff{}{\btheta^\dalpha}\pdiff{}{\btheta^\dbeta}\bthth &=
+ \pdiff{}{\btheta_\dalpha}\pdiff{}{\btheta^\dalpha}\bthth = -4
 \end{align*}
 
 \subsection{General Relations}
@@ -142,11 +142,11 @@ $\sigma$ matrices& $
 \end{center}
 \vspace{-1zw}
 \begin{align*}
- Q_\alpha       &:=\pbib{}{\theta^\alpha}+\ii(\Sm\btheta)_\alpha\Pm,&
- D_\alpha       &:=\pbib{}{\theta^\alpha}-\ii(\Sm\btheta)_\alpha\Pm,&
+ Q_\alpha       &:=\pdiff{}{\theta^\alpha}+\ii(\Sm\btheta)_\alpha\Pm,&
+ D_\alpha       &:=\pdiff{}{\theta^\alpha}-\ii(\Sm\btheta)_\alpha\Pm,&
  y   &:= x - \ii\theta\sigma\btheta,\\
- \bar Q_\dalpha &=-\pbib{}{\btheta^\dalpha}-\ii(\theta\Sm)_\dalpha\Pm,&
- \bar D_\dalpha &=-\pbib{}{\btheta^\dalpha}+\ii(\theta\Sm)_\dalpha\Pm,&
+ \bar Q_\dalpha &=-\pdiff{}{\btheta^\dalpha}-\ii(\theta\Sm)_\dalpha\Pm,&
+ \bar D_\dalpha &=-\pdiff{}{\btheta^\dalpha}+\ii(\theta\Sm)_\dalpha\Pm,&
  y^\dagger      &= x + \ii\theta\sigma\btheta
 \end{align*}\vspace{-2zw}
 \begin{align*}
@@ -158,18 +158,18 @@ $\sigma$ matrices& $
 \begin{align}
 &&& \notag
  && \qquad\text{< $x$-basis >} && \qquad\text{< $y$-basis >}&&\qquad\text{< $y^\dagger$-basis >}\\
-&&&D_\alpha      &&=\pbib{}{\theta^\alpha}-\ii(\Sm\btheta)_\alpha\Pm
-                 &&=\pbib{}{\theta^\alpha} - 2\ii(\Sm\btheta)_\alpha\pbib{}{y^\mu}
-                 &&=\pbib{}{\theta^\alpha}&&\\
-&&&\bar D_\dalpha&&=-\pbib{}{\btheta^\dalpha}+\ii(\theta\Sm)_\dalpha\Pm
-                 &&=-\pbib{}{\btheta^\dalpha}
-                 &&=-\pbib{}{\btheta^\dalpha}+2\ii(\theta\Sm)_\dalpha\pbib{}{(y^\dagger)^\mu}&&\\
-&&&D^\alpha      &&=-\pbib{}{\theta_\alpha}+\ii(\btheta\bSm)^\alpha\Pm
-                 &&=-\pbib{}{\theta_\alpha}+2\ii(\btheta\bSm)^\alpha\pbib{}{y^\mu}
-                 &&=-\pbib{}{\theta_\alpha}&&\\
-&&&\bar D^\dalpha&&=\pbib{}{\btheta_\dalpha}-\ii(\bSm\theta)^\dalpha\Pm
-                 &&=\pbib{}{\btheta_\dalpha}
-                 &&=\pbib{}{\btheta_\dalpha}-2\ii(\bSm\theta)^\dalpha\pbib{}{(y^\dagger)^\mu}
+&&&D_\alpha      &&=\pdiff{}{\theta^\alpha}-\ii(\Sm\btheta)_\alpha\Pm
+                 &&=\pdiff{}{\theta^\alpha} - 2\ii(\Sm\btheta)_\alpha\pdiff{}{y^\mu}
+                 &&=\pdiff{}{\theta^\alpha}&&\\
+&&&\bar D_\dalpha&&=-\pdiff{}{\btheta^\dalpha}+\ii(\theta\Sm)_\dalpha\Pm
+                 &&=-\pdiff{}{\btheta^\dalpha}
+                 &&=-\pdiff{}{\btheta^\dalpha}+2\ii(\theta\Sm)_\dalpha\pdiff{}{(y^\dagger)^\mu}&&\\
+&&&D^\alpha      &&=-\pdiff{}{\theta_\alpha}+\ii(\btheta\bSm)^\alpha\Pm
+                 &&=-\pdiff{}{\theta_\alpha}+2\ii(\btheta\bSm)^\alpha\pdiff{}{y^\mu}
+                 &&=-\pdiff{}{\theta_\alpha}&&\\
+&&&\bar D^\dalpha&&=\pdiff{}{\btheta_\dalpha}-\ii(\bSm\theta)^\dalpha\Pm
+                 &&=\pdiff{}{\btheta_\dalpha}
+                 &&=\pdiff{}{\btheta_\dalpha}-2\ii(\bSm\theta)^\dalpha\pdiff{}{(y^\dagger)^\mu}
 \end{align}
 
 
@@ -356,7 +356,7 @@ V^3 &= 0
 \leadsto  -\frac12F^{\mu\nu}F_{\mu\nu}+\frac\ii4\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}+2\ii\lambda\Sm\Pm\bar\lambda + D^2
 \end{align}
 
-\Subparagraph{Lagrangian Blocks}\vspace{-1.1zw}
+\subparagraph{Lagrangian Blocks}\vspace{-1.1zw}
 \begin{flushright}\footnotesize
  ($\Lag\s{inv}$ is SUSY- and gauge-invariant, while $\Lag\s{mass}$ is not gauge-invariant.)
 \end{flushright}\vspace{-14pt}
@@ -381,12 +381,12 @@ Here we turn on the coupling constant $g$. When $\Lambda=\ii\lambda(y)+\sqrt2\th
 \end{align}
 \begin{align*}
   \phi&\mapsto \ee^{- qg\lambda}\phi&
-  C   &\mapsto C+\nRe \lambda&
+  C   &\mapsto C+\Re \lambda&
 M+\ii N&\mapsto M+\ii N-K
 \\
   \psi&\mapsto \ee^{- qg\lambda}\left(\psi+\ii qg\phi\cdot \xi\right)&
   \chi&\mapsto \chi-\tfrac{1}{\sqrt2} \xi&
-A_\mu &\mapsto A_\mu- \Pm(\nIm\lambda)
+A_\mu &\mapsto A_\mu- \Pm(\Im\lambda)
 \\
   F   &\mapsto \ee^{- qg\lambda}\left(F+\ii qg\phi K-\ii qg \xi\psi +\frac{(qg)^2}{2}\xi\xi\phi\right)&
 \lambda&\mapsto\lambda&
@@ -397,7 +397,7 @@ D&\mapsto D\\
 (Very similar to the gauge transformations in Sec.~\ref{sec:abelian-gauge-theory}.)
 \end{flushright}\vspace{-10pt}
 
-\Subparagraph{Lagrangian block}\vspace{-14pt}
+\subparagraph{Lagrangian block}\vspace{-14pt}
 \begin{align*}
  \Lag\s{gauge}&= \frac14 W^\alpha W_\alpha\Big|_\thth + \Hc&&
 \leadsto -\frac14F^{\mu\nu}F_{\mu\nu}+\ii\lambda\Sm\Pm\bar\lambda + \frac12 D^2\\
@@ -443,7 +443,7 @@ D&\mapsto D\\
 \end{align}
 We do not present the transformations of the components; note that $\lambda$ and $D$ are transformed in non-Abelian theories.
 
-\Subparagraph{Wess-Zumino Gauge}
+\subparagraph{Wess-Zumino Gauge}
 \begin{align}
 V^a  &= - \theta\Sm\btheta A^a_\mu(x) + \thth\btheta\bar\lambda^a(x)
        + \bthth\theta\lambda^a(x) + \dfrac12\thth\bthth D^a(x)
