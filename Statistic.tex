@@ -1,59 +1,59 @@
-%#!./compile CheatSheet
-%%% Time-Stamp: <2011-04-23 11:35:03 misho>
-%%% •¶šƒR[ƒh‚ÍShift-JIS‚Å‚·‚æ‚Ë
+%#!platexmake CheatSheet
+%%% Time-Stamp: <>
+%%% ä¸€éƒ¨ã§æ—¥æœ¬èªãŒä½¿ç”¨ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
 \newcommand\ev{\expval}
 \newcommand\func[1]{\mathop{\mathrm{#1}}}
 
 \section{Statistics}
 
-Histogram ‚ÌŠK‹‰”‚É‚Â‚¢‚Ä‚ÌSturges‚ÌŒö® $k\approx 1+\log_2 n$ i$n$:ŠÏ‘ª’l‚Ì”j
+Histogram ã®éšç´šæ•°ã«ã¤ã„ã¦ã®Sturgesã®å…¬å¼ $k\approx 1+\log_2 n$ ï¼ˆ$n$:è¦³æ¸¬å€¤ã®æ•°ï¼‰
 
-\paragraph{•ª•z‚Ì‘ã•\’l}
+\paragraph{åˆ†å¸ƒã®ä»£è¡¨å€¤}
 \begin{align}
- &\text{Zp•½‹Ï}\ \ol x := \frac1n\sum x_i,\quad
-  \text{Šô‰½•½‹Ï}\ x_G   := \left(\prod x_i\right)^{1/n},\quad
-  \text{’²˜a•½‹Ï}\ x_H   := n\left(\sum \frac1{x_i}\right)^{-1};\\
- &\text{’†‰›’lC$n$•ªˆÊ“_CÅ•p’lCmid-rangeCcc}
+ &\text{ç®—è¡“å¹³å‡}\ \ol x := \frac1n\sum x_i,\quad
+  \text{å¹¾ä½•å¹³å‡}\ x_G   := \left(\prod x_i\right)^{1/n},\quad
+  \text{èª¿å’Œå¹³å‡}\ x_H   := n\left(\sum \frac1{x_i}\right)^{-1};\\
+ &\text{ä¸­å¤®å€¤ï¼Œ$n$åˆ†ä½ç‚¹ï¼Œæœ€é »å€¤ï¼Œmid-rangeï¼Œâ€¦â€¦}
 \end{align}
-\paragraph{•ª•z‚ÌU‚ç‚Î‚è}
+\paragraph{åˆ†å¸ƒã®æ•£ã‚‰ã°ã‚Š}
 \begin{align}
- &\text{•½‹Ï•Î·}\ d := \frac1n\sum\left|x_i-\ol x\right|, \quad
-  \text{•W€•Î·i•ªUj}\ S^2 := \frac1n\sum(x_i-\ol x)^2, \quad
-  \text{•Ï“®ŒW”}\ C.V. := S_x/\ol x;\\
- &\text{•½‹Ï·}\ M.D. := \frac1{n^2}\sum_i\sum_j\left|x_i-x_j\right|, \quad
-  \text{GiniŒW”}\ G.I.:= \frac{M.D.}{2\ol x} = \frac1{2n^2\ol x}\sum_i\sum_j\left|x_i-x_j\right|;\\
- &\text{Entropy}\ H = -\sum p_i\log p_i \quad\text{i$p$:‘Š‘Î•p“xj}\quad
-  \text{c ˆêƒ–ŠW’†$=0\le H \le 1=$“™Šm—¦}\\
- &\text{”ÍˆÍCl•ªˆÊ•Î·Ccc}
+ &\text{å¹³å‡åå·®}\ d := \frac1n\sum\left|x_i-\ol x\right|, \quad
+  \text{æ¨™æº–åå·®ï¼ˆåˆ†æ•£ï¼‰}\ S^2 := \frac1n\sum(x_i-\ol x)^2, \quad
+  \text{å¤‰å‹•ä¿‚æ•°}\ C.V. := S_x/\ol x;\\
+ &\text{å¹³å‡å·®}\ M.D. := \frac1{n^2}\sum_i\sum_j\left|x_i-x_j\right|, \quad
+  \text{Giniä¿‚æ•°}\ G.I.:= \frac{M.D.}{2\ol x} = \frac1{2n^2\ol x}\sum_i\sum_j\left|x_i-x_j\right|;\\
+ &\text{Entropy}\ H = -\sum p_i\log p_i \quad\text{ï¼ˆ$p$:ç›¸å¯¾é »åº¦ï¼‰}\quad
+  \text{â€¦ ä¸€ãƒ¶æ‰€é›†ä¸­$=0\le H \le 1=$ç­‰ç¢ºç‡}\\
+ &\text{ç¯„å›²ï¼Œå››åˆ†ä½åå·®ï¼Œâ€¦â€¦}
 \end{align}
-\paragraph{‘ŠŠÖ‚ğ•\‚·—Ê}
+\paragraph{ç›¸é–¢ã‚’è¡¨ã™é‡}
 \begin{align}
- &\text{‹¤•ªU}\    C_{xy}  :=\frac1n\sum(x_i-\ol x)(y_i-\ol y)&
- &\text{‘ŠŠÖŒW”}\   r_{xy}  :=\frac{C_{xy}}{S_xS_y}  \quad -1\le r_{xy} \le 1, \text{üŒ^•s•Ï}\\
- &\text{•Î‘ŠŠÖŠÖ”}\ r_{12;3}:=\frac{r_{12}-r_{13}r_{23}}{\sqrt{1-{r_{13}}^2}\sqrt{1-{r_{23}}^2}}&
- &\text{Œn—ñ‘ŠŠÖŠÖ”}\ r_h:=\frac1{S_x}\sum_{i=1}^{n-h}\frac{(x_i-\ol x)(x_i+h-\ol x)}{n-h}
+ &\text{å…±åˆ†æ•£}\    C_{xy}  :=\frac1n\sum(x_i-\ol x)(y_i-\ol y)&
+ &\text{ç›¸é–¢ä¿‚æ•°}\   r_{xy}  :=\frac{C_{xy}}{S_xS_y}  \quad -1\le r_{xy} \le 1, \text{ç·šå‹ä¸å¤‰}\\
+ &\text{åç›¸é–¢é–¢æ•°}\ r_{12;3}:=\frac{r_{12}-r_{13}r_{23}}{\sqrt{1-{r_{13}}^2}\sqrt{1-{r_{23}}^2}}&
+ &\text{ç³»åˆ—ç›¸é–¢é–¢æ•°}\ r_h:=\frac1{S_x}\sum_{i=1}^{n-h}\frac{(x_i-\ol x)(x_i+h-\ol x)}{n-h}
 \end{align}
- \text{‡ˆÊ‘ŠŠÖŠÖ” c ‡ˆÊ‚Ì‘g $\{R_i\}$C$\{R_i'\}$ ‚ÌŠÔ‚Ì‘ŠŠÖ}
+ \text{é †ä½ç›¸é–¢é–¢æ•° â€¦ é †ä½ã®çµ„ $\{R_i\}$ï¼Œ$\{R_i'\}$ ã®é–“ã®ç›¸é–¢}
 \begin{align}
  &\qquad \text{Spearman}:\
-     r\s S := 1 - \frac6{n(n^2-1)}\sum(R_i-R_i')^2\quad\text{i’Êí‚Ì‘ŠŠÖŠÖ”j}\\
+     r\s S := 1 - \frac6{n(n^2-1)}\sum(R_i-R_i')^2\quad\text{ï¼ˆé€šå¸¸ã®ç›¸é–¢é–¢æ•°ï¼‰}\\
  &\qquad \text{Kendall}:\ 
      r\s K := \frac{\sum G_{ij}}{n(n-1)/2}\where
-       \text{$G_{ij}:=(i,j)$‚É‘Î‚µ‚Ä“¯‡‚È‚ç$+1$C‹t‡‚È‚ç$-1$}
+       \text{$G_{ij}:=(i,j)$ã«å¯¾ã—ã¦åŒé †ãªã‚‰$+1$ï¼Œé€†é †ãªã‚‰$-1$}
 \end{align}
 
-\paragraph{ğŒ•t‚«Šm—¦}
+\paragraph{æ¡ä»¶ä»˜ãç¢ºç‡}
 \begin{equation}
   P(A|B)=\frac{P(A\cap B)}{P(B)}
 \end{equation}
-Bayes‚Ì’è—: –Û$\{H_i\}$‚ªŒİ‚¢‚É”r”½‚©‚Â‘S‘Ì‚ğs‚­‚µ‚Ä‚¢‚é‚Æ‚«C
+Bayesã®å®šç†: äº‹è±¡$\{H_i\}$ãŒäº’ã„ã«æ’åã‹ã¤å…¨ä½“ã‚’å°½ãã—ã¦ã„ã‚‹ã¨ãï¼Œ
 \begin{equation}
- P(A)=\sum P(A\cap H_i) \quad \text{‚É‚æ‚Á‚Ä} \quad
+ P(A)=\sum P(A\cap H_i) \quad \text{ã«ã‚ˆã£ã¦} \quad
   P(H_i|A)=\frac{P(H_i)P(A|H_i)}{\sum_{k}P(H_k)P(A|H_k)}.
 \end{equation}
 
-‘ŠŠÖŒW”‚Ì•ª•z i$\rho$:•êW’c‚Ìi^‚Ìj‘ŠŠÖŒW”j
+ç›¸é–¢ä¿‚æ•°ã®åˆ†å¸ƒ ï¼ˆ$\rho$:æ¯é›†å›£ã®ï¼ˆçœŸã®ï¼‰ç›¸é–¢ä¿‚æ•°ï¼‰
 \begin{equation}
  f(r)=
   \frac{ \left(1-\rho^2\right)^{(n-1)/2}\left(1-r^2\right)^{(n-4)/2}}
@@ -61,89 +61,89 @@ Bayes‚Ì’è—: –Û$\{H_i\}$‚ªŒİ‚¢‚É”r”½‚©‚Â‘S‘Ì‚ğs‚­‚µ‚Ä‚¢‚é‚Æ‚«C
 \sum_{i=0}^\infty\frac{(2\rho r)^i}{i!}\left[\Gamma\left(\frac{n-1+i}2\right)\right]^2
 \end{equation}
 
-\paragraph{Šm—¦•ª•z‚É‘Î‚·‚é Moment}
+\paragraph{ç¢ºç‡åˆ†å¸ƒã«å¯¾ã™ã‚‹ Moment}
 \begin{align}
  &\text{Moment }\mu_r:=\ev{X^r};\quad \mu'_r:=\left\langle(X-\mu)^r \right\rangle \qquad\quad
-  \text{•W€‰» moment }\alpha_r :=\left\langle(X-\mu)^r \right\rangle/\sigma^r\\
- & \text{Moment•êŠÖ” }  M_X(t):=\ev{\exp(tX)}\then\mu_r=\nbib{}{t}{n}M_X(t)
+  \text{æ¨™æº–åŒ– moment }\alpha_r :=\left\langle(X-\mu)^r \right\rangle/\sigma^r\\
+ & \text{Momentæ¯é–¢æ•° }  M_X(t):=\ev{\exp(tX)}\then\mu_r=\nbib{}{t}{n}M_X(t)
 \end{align}
 \begin{align}
- \text{Šú‘Ò’l}  \ &\mu:=\mu_1;& \text{ŒvZ‚Ì•Ö–@}\colon\  \mu'_2&=\ev{X^2}-\mu^2\\
- \text{•ªU}    \ &\sigma^2:=\mu'_2;\quad \text{•W€•Î·}\ \sigma:=\sqrt{\sigma^2};&
+ \text{æœŸå¾…å€¤}  \ &\mu:=\mu_1;& \text{è¨ˆç®—ã®ä¾¿æ³•}\colon\  \mu'_2&=\ev{X^2}-\mu^2\\
+ \text{åˆ†æ•£}    \ &\sigma^2:=\mu'_2;\quad \text{æ¨™æº–åå·®}\ \sigma:=\sqrt{\sigma^2};&
  \mu'_3&=\ev{X^3}-3\mu\mu_2+2\mu^3\\
- \text{˜c“x}    \ &C\s{skew}:=\alpha_3;\quad \text{ë“x}    \ C\s{kurt}:=\alpha_4 - 3&
+ \text{æ­ªåº¦}    \ &C\s{skew}:=\alpha_3;\quad \text{å°–åº¦}    \ C\s{kurt}:=\alpha_4 - 3&
  \mu'_4&=\ev{X^4}-4\mu\mu_3+6\mu^2\mu_2-3\mu^4
 \end{align}
-\paragraph{Chebyshev‚Ì•s“™®}
-‚¢‚©‚È‚éŠm—¦•Ï”‚É‘Î‚µ‚Ä‚àC$\displaystyle P\Bigl(|X-\mu|\ge k\sigma\Bigr)\le\frac1{k^2}$.
+\paragraph{Chebyshevã®ä¸ç­‰å¼}
+ã„ã‹ãªã‚‹ç¢ºç‡å¤‰æ•°ã«å¯¾ã—ã¦ã‚‚ï¼Œ$\displaystyle P\Bigl(|X-\mu|\ge k\sigma\Bigr)\le\frac1{k^2}$.
 
-\paragraph{Stirling‚ÌŒö®}
+\paragraph{Stirlingã®å…¬å¼}
 \begin{equation}
  \log n! = \left(n+\frac12\right)\log n - n + \frac{\log2\pi}2
          + \frac1{12n}-\frac1{360n^3}+\frac1{1260n^5}-\frac1{1680n^7}+\frac1{1188n^9}+\Order(n^{-11})
 \end{equation}
 
-\subsection{—£UŒ^Šm—¦•ª•z}
-\paragraph{’´Šô‰½•ª•z}
-(A,B)‚ª$(M,N-M)$ŒÂ‚ ‚é‚Æ‚«C$n$ŒÂæ‚èo‚µ‚Ä$(k,n-k)$ŒÂ‚Å‚ ‚éŠm—¦B”ñ•œŒ³•ßŠlB
+\subsection{é›¢æ•£å‹ç¢ºç‡åˆ†å¸ƒ}
+\paragraph{è¶…å¹¾ä½•åˆ†å¸ƒ}
+(A,B)ãŒ$(M,N-M)$å€‹ã‚ã‚‹ã¨ãï¼Œ$n$å€‹å–ã‚Šå‡ºã—ã¦$(k,n-k)$å€‹ã§ã‚ã‚‹ç¢ºç‡ã€‚éå¾©å…ƒæ•ç²ã€‚
 \begin{align}
 P_k&=\frac{\combi MCk\ \combi {N-M}C{n-k}}{\combi NCn}&
 E=np,\quad&V=np(1-p)\frac{N-n}{N-1}&(p:=M/N)
 \end{align}
-\paragraph{“ñ€•ª•z}
-Šm—¦$p$‚Å‹N‚«‚é–Û‚ªC$n$‰ñ‚Ì‚¤‚¿$k$‰ñ‹N‚±‚éŠm—¦B•œŒ³•ßŠlCBernoullisB
+\paragraph{äºŒé …åˆ†å¸ƒ}
+ç¢ºç‡$p$ã§èµ·ãã‚‹äº‹è±¡ãŒï¼Œ$n$å›ã®ã†ã¡$k$å›èµ·ã“ã‚‹ç¢ºç‡ã€‚å¾©å…ƒæ•ç²ï¼ŒBernoulliè©¦è¡Œã€‚
 \begin{align}
  P_k&=\combi nCk\cdot p^k(1-p)^{n-k}&
 E=np,\quad&V=np(1-p)&
-&\text{($n=1$\ :\ Bernoulli•ª•z)}
+&\text{($n=1$\ :\ Bernoulliåˆ†å¸ƒ)}
 \end{align}
-\paragraph{Poisson•ª•z}
-“ñ€•ª•z‚É‚¨‚¢‚Ä$np=\lambda$ˆê’è‚Å$n\to\infty,\ p\to0$‚Æ‚µ‚ÄC
+\paragraph{Poissonåˆ†å¸ƒ}
+äºŒé …åˆ†å¸ƒã«ãŠã„ã¦$np=\lambda$ä¸€å®šã§$n\to\infty,\ p\to0$ã¨ã—ã¦ï¼Œ
 $\displaystyle P_k=\frac{\ee^{-\lambda}\lambda^k}{k!}$,\quad$E=V=\lambda$.
 
-\paragraph{Šô‰½•ª•z}
-Šm—¦$p$‚Ì–Û‚ª‹N‚±‚é‚Ü‚Å‚Ì{\bf ¸”s}‰ñ”$k$‚Ì•ª•zB
+\paragraph{å¹¾ä½•åˆ†å¸ƒ}
+ç¢ºç‡$p$ã®äº‹è±¡ãŒèµ·ã“ã‚‹ã¾ã§ã®{\bf å¤±æ•—}å›æ•°$k$ã®åˆ†å¸ƒã€‚
 \begin{align}
  P_k&=p(1-p)^k&
  E=\frac{1-p}{p},&\quad V=\frac{1-p}{p^2}.
 \end{align}
-\paragraph{•‰‚Ì“ñ€•ª•z(Pascal•ª•z)}
-Šm—¦$p$‚Ì–Û‚ª$n$‰ñ‹N‚±‚é‚Ü‚Å‚Ì{\bf ¸”s}‰ñ”$k$‚Ì•ª•zB(s‚Í$n+k$‰ñ)
+\paragraph{è² ã®äºŒé …åˆ†å¸ƒ(Pascalåˆ†å¸ƒ)}
+ç¢ºç‡$p$ã®äº‹è±¡ãŒ$n$å›èµ·ã“ã‚‹ã¾ã§ã®{\bf å¤±æ•—}å›æ•°$k$ã®åˆ†å¸ƒã€‚(è©¦è¡Œã¯$n+k$å›)
 \begin{align}
  P_k&=\combi{n+k-1}Ck\ p^n(1-p)^k&
  E=\frac{k(1-p)}{p},&\quad V=\frac{k(1-p)}{p^2}.
 \end{align}
-\paragraph{ˆê—l•ª•z}
+\paragraph{ä¸€æ§˜åˆ†å¸ƒ}
 \begin{equation}
  P_k=\frac{1}{N},\qquad
  E=\frac{N+1}{2},\quad V=\frac{N^2-1}{12}.
 \end{equation}
 \newpage
-\subsection{˜A‘±Œ^Šm—¦•ª•z}
-\paragraph{³‹K•ª•z}
+\subsection{é€£ç¶šå‹ç¢ºç‡åˆ†å¸ƒ}
+\paragraph{æ­£è¦åˆ†å¸ƒ}
 \begin{equation}
  \func N[\mu,\sigma]=\frac{1}{\sqrt{2\pi}\sigma}\exp\left[-\frac{(x-\mu)^2}{2\sigma^2}\right];
   \qquad E=\mu,\quad V=\sigma^2.
 \end{equation}
-\paragraph{w”•ª•z}
+\paragraph{æŒ‡æ•°åˆ†å¸ƒ}
 \begin{equation}
  \func{Ex}[\lambda]=\func{Ga}[\lambda,1]=
 \lambda\ee^{-\lambda x}\quad(x\ge0);
   \qquad E=\frac1\lambda,\quad V=\frac1{\lambda^2}.
 \end{equation}
-\paragraph{Gamma•ª•z}
+\paragraph{Gammaåˆ†å¸ƒ}
 \begin{equation}
  \func{Ga}[\lambda,\alpha]=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}\ee^{-\lambda x}\quad(x\ge0);
   \qquad E=\frac{\alpha}{\lambda},\quad V=\frac{\alpha}{\lambda^2}.
 \end{equation}
-\paragraph{$\chi^2$•ª•z}
+\paragraph{$\chi^2$åˆ†å¸ƒ}
 \begin{equation}
  \func{\chi^2}[n]=\func{Ga}[1/2,n/2]=\frac{1}{\Gamma(n/2)}
 \sqrt{\frac{x^{n-2}\ee^{-x}}{2^n}}
 \quad(x\ge0);
   \qquad E=n,\quad V=2n.
 \end{equation}
-\paragraph{Beta•ª•z}
+\paragraph{Betaåˆ†å¸ƒ}
 \begin{align}
   \func{Be}[\alpha,\beta]=\frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha,\beta)}
 \quad(0<x<1),
@@ -151,24 +151,24 @@ $\displaystyle P_k=\frac{\ee^{-\lambda}\lambda^k}{k!}$,\quad$E=V=\lambda$.
 \\
 \where B(\alpha,\beta)=\int_0^1x^{\alpha-1}(1-x)^{\beta-1}\dd x=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
 \end{align}
-\paragraph{Cauchy•ª•z}
+\paragraph{Cauchyåˆ†å¸ƒ}
 \begin{equation}
  f[\alpha,\lambda]=\frac{\alpha}{\pi}\left[(x-\lambda)^2+\alpha^2\right];\qquad
-  \text{$E$‚Æ$V$‚Í’è‹`‚³‚ê‚È‚¢B}
+  \text{$E$ã¨$V$ã¯å®šç¾©ã•ã‚Œãªã„ã€‚}
 \end{equation}
-\paragraph{‘Î”³‹K•ª•z}Š“¾‚Ì•ª•zB$\log x$‚ª³‹K•ª•z$N[\mu,\sigma]$‚É]‚¤‚Æ‚«C
+\paragraph{å¯¾æ•°æ­£è¦åˆ†å¸ƒ}æ‰€å¾—ã®åˆ†å¸ƒã€‚$\log x$ãŒæ­£è¦åˆ†å¸ƒ$N[\mu,\sigma]$ã«å¾“ã†ã¨ãï¼Œ
 \begin{equation}
  f[\mu,\sigma]=\frac1{\sqrt{2\pi}\sigma}\frac1x\exp\frac{-(\log x-\mu)^2}{2\sigma^2};\qquad
 E=\ee^{\mu+\sigma^2/2},\quad
 V=\ee^{2\mu+2\sigma^2}-\ee^{2\mu+\sigma^2}.
 \end{equation}
-\paragraph{Pareto•ª•z}‚ŠzŠ“¾‚Ì•ª•zB$E$‚Æ$V$‚Í‚»‚ê‚¼‚ê$a>1$, $a>2$‚Å‚Ì‚İ’è‹`‚³‚ê‚éB
+\paragraph{Paretoåˆ†å¸ƒ}é«˜é¡æ‰€å¾—ã®åˆ†å¸ƒã€‚$E$ã¨$V$ã¯ãã‚Œãã‚Œ$a>1$, $a>2$ã§ã®ã¿å®šç¾©ã•ã‚Œã‚‹ã€‚
 \begin{equation}
   f_{[a,x_0]}=\frac{a}{x_0}\left(\frac{x_0}{x}\right)^{a+1}\quad(x\ge x_0;\quad a>0);\qquad
 E=\frac{a x_0}{a-1},\qquad
 V=\frac{a x_0^2}{a-2}-\left(\frac{a x_0}{a-1}\right)^2.
 \end{equation}
-\paragraph{Weibull•ª•z}$a>0$, $b>0$‚Æ‚·‚éB
+\paragraph{Weibullåˆ†å¸ƒ}$a>0$, $b>0$ã¨ã™ã‚‹ã€‚
 \begin{equation}
  f[a,b]=\frac{b}{a^b}x^{b-1}\exp\left[-\left(\frac xa\right)^b\right]\quad(x\ge0);\qquad
 E=a\Gamma\left(1+\frac1b\right),\quad

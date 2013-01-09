@@ -3,10 +3,10 @@
 yes|TeXCleaner
 rm -rf feynman
 mkdir feynman
-platexmake -kanji=sjis CheatSheet
+platexmake CheatSheet
 cd feynman
 feynexec
 cd ..
 rm *.dvi
-platexmake -kanji=sjis CheatSheet
+platexmake CheatSheet
 

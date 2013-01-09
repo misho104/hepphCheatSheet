@@ -1,6 +1,6 @@
-%#!./compile CheatSheet
-%%% Time-Stamp: <2010-11-03 03:29:26 misho>
-%%% •¶šƒR[ƒh‚ÍShift-JIS‚Å‚·‚æ‚Ë
+%#!platexmake CheatSheet
+%%% Time-Stamp: <>
+%%% ä¸€éƒ¨ã§æ—¥æœ¬èªãŒä½¿ç”¨ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
 \newcommand{\Hom}{\mathop{\mathrm{Hom}}}
 \section{Mathematics}
@@ -10,10 +10,10 @@
 Semigroup     & For $a,b\in A\stx{set}$, $ab\in A$; Associative.\\
 Monoid        & For $a,b\in A\stx{set}$, $ab\in A$; Associative, Unit.\\
 Group         & For $a,b\in A\stx{set}$, $ab\in A$; Associative, Unit, Inverse.\\
-Module {\tiny (‰ÁŒQ/‰ÂŠ·ŒQ)}
+Module {\tiny (åŠ ç¾¤/å¯æ›ç¾¤)}
               & For $a,b\in A\stx{set}$, $a+b\in A$; Commutative, Associative, Unit, Inverse.\\
 Semimodule    & For $a,b\in A\stx{set}$, $a+b\in A$; Commutative, Associative, Unit.\\
-Ring   {\tiny (ŠÂ)}
+Ring   {\tiny (ç’°)}
               & $+$: Module, $\times$: Semigroup{\footnotesize (Monoid)}, Distributive.\\
 Semiring      & $+$: Semimodule, $\times$: Monoid, $0\neq1$, Distributive, $0\times a = a\times 0 = 0$.\\
 Field         & $+$: Module, $\times$: Commutative Monoid, $a^{-1}$ but $0$, $1\neq0$, Distributive.
@@ -36,7 +36,7 @@ Inner product & $\braket xx\ge0$, $\braket xx=0\Leftrightarrow x=0$,$\braket{x}{
 \vspace{.5zw}
 
 \Paragraph{$K$-algebra}
-$K$-algebra $C(V)$‚Æ‚ÍCvector‹óŠÔ$V$‚ÉCdistributive‚Èæ–@‚ğ“ü‚ê‚½‚à‚ÌF\\
+$K$-algebra $C(V)$ã¨ã¯ï¼Œvectorç©ºé–“$V$ã«ï¼Œdistributiveãªä¹—æ³•ã‚’å…¥ã‚ŒãŸã‚‚ã®ï¼š\\
 \qquad$xy\in C(V);$\quad $(xy)z=x(yz)$, $(x+y)z=xz+yz$, $x(y+z)=xy+xz$, $k(xy)=(kx)y=x(ky)$.
 
 \subsubsection{Lie Algebra}
@@ -47,7 +47,7 @@ Lie Algebra & For a Finite-dimensional $K$-module $(A,+)$ and $x,y,z\in(A,+)$, $
             & \quad Alternating: $[x,x]=0$ \quad ($\then [x,y]=-[y,x]$),\\
             & \quad Jacobi id.: $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$.\\
 \end{tabular}\par
-‘¥‚¿$[A,B]:=AB-BA$‚Æ‚µ‚Ä•Â‚¶‚Ä‚¢‚ê‚ÎLie algebra‚Æ‚È‚éB
+å‰‡ã¡$[A,B]:=AB-BA$ã¨ã—ã¦é–‰ã˜ã¦ã„ã‚Œã°Lie algebraã¨ãªã‚‹ã€‚
 \subsubsection{Clifford Algebra}
 Here $V$ is a vector space on $K$ with inner product which need not be positive definite.
 
@@ -67,93 +67,93 @@ The Gamma matrices form Clifford Algebra:
 \end{rightnote}
 
 \subsubsection{Multilinear Algebra}
-‰ÂŠ·ŠÂ$K$ã‚Ìvector‹óŠÔ$V$‚Æ‚»‚Ì‘o‘Î‹óŠÔ$V^*$‚É‚Â‚¢‚ÄF\vspace{.6zw}\par
+å¯æ›ç’°$K$ä¸Šã®vectorç©ºé–“$V$ã¨ãã®åŒå¯¾ç©ºé–“$V^*$ã«ã¤ã„ã¦ï¼š\vspace{.6zw}\par
 \begin{tabular}{l@{ :\ \ \ }l}
 {\bf Tensor Algebra} $T(V)$
     & \begin{minipage}[t]{280pt}
-       üŒ`Ê‘œ$f: V\to T(V)$ ‚ğ‚Â$K$-algebra ‚Å‚ ‚èC•Ê‚Ì$K$-algebra $A$‚Ö‚ÌüŒ^Ê‘œ $g: V\to A$‚ª—^‚¦‚ç‚ê‚½‚Æ‚«‚É‰ÂŠ·‚È€“¯Œ^$h:T(V)\to A$ s.t. $h\circ f=g$‚ªˆêˆÓ‚É‘¶İ‚·‚é‚à‚ÌB
+       ç·šå½¢å†™åƒ$f: V\to T(V)$ ã‚’æŒã¤$K$-algebra ã§ã‚ã‚Šï¼Œåˆ¥ã®$K$-algebra $A$ã¸ã®ç·šå‹å†™åƒ $g: V\to A$ãŒä¸ãˆã‚‰ã‚ŒãŸã¨ãã«å¯æ›ãªæº–åŒå‹$h:T(V)\to A$ s.t. $h\circ f=g$ãŒä¸€æ„ã«å­˜åœ¨ã™ã‚‹ã‚‚ã®ã€‚
       \end{minipage}\vspace{.5zw}\\
 {\bf Symmetric Algebra} $S(V)$
-    & ã‚Ì’è‹`‚ÅC$C(V)$ i‚¨‚æ‚Ñ $A$j‚ğ‰ÂŠ·$K$-algebra‚Æ‚µ‚½‚à‚ÌB\\
+    & ä¸Šã®å®šç¾©ã§ï¼Œ$C(V)$ ï¼ˆãŠã‚ˆã³ $A$ï¼‰ã‚’å¯æ›$K$-algebraã¨ã—ãŸã‚‚ã®ã€‚\\
 {\bf Exterior Algebra} $\wedge(V)$
-    & ã‚Ì’è‹`‚ÅC$g(\cdots vv\cdots)=0$‚ğ—v¿‚µ‚½‚à‚ÌB
+    & ä¸Šã®å®šç¾©ã§ï¼Œ$g(\cdots vv\cdots)=0$ã‚’è¦è«‹ã—ãŸã‚‚ã®ã€‚
 \end{tabular}
 
 \vspace{1zw}
 
 \Paragraph{Tensor and Tensor Space}
 \begin{tabular}{l@{ :\ \ \ }l}
-$p$Ÿ”½•ÏTensorÏ & $T^p(V):=V^{\otimes p} = V\otimes V\otimes \cdots \otimes V$\\
-$q$Ÿ‹¤•ÏTensorÏ & $T_q(V):=(V^*)^{\otimes q} = V^*\otimes V^*\otimes \cdots \otimes V^*$\\
-¬‡TensorÏ      & $T^p_q(V):=T^p(V)\otimes T_q(V)$ i‚½‚¾‚µ$V$‚Æ$V^*$‚Ì‡˜‚ğ•Ï‚¦‚½‚à‚Ì‚Í“¯Œ^j\\
+$p$æ¬¡åå¤‰Tensorç© & $T^p(V):=V^{\otimes p} = V\otimes V\otimes \cdots \otimes V$\\
+$q$æ¬¡å…±å¤‰Tensorç© & $T_q(V):=(V^*)^{\otimes q} = V^*\otimes V^*\otimes \cdots \otimes V^*$\\
+æ··åˆTensorç©      & $T^p_q(V):=T^p(V)\otimes T_q(V)$ ï¼ˆãŸã ã—$V$ã¨$V^*$ã®é †åºã‚’å¤‰ãˆãŸã‚‚ã®ã¯åŒå‹ï¼‰\\
 {\bf Tensor Space}& $T(V):=\oplus T^p_q(V)$
 \end{tabular}\vspace{.5zw}
 
-Tensor space‚Ì‘ã”$(+,\otimes)$‚ÍŠÂ‚ğˆ×‚µ‚Ä‚¨‚èC‚Ü‚½X‚ÉF\vspace{.2zw}\par
+Tensor spaceã®ä»£æ•°$(+,\otimes)$ã¯ç’°ã‚’ç‚ºã—ã¦ãŠã‚Šï¼Œã¾ãŸæ›´ã«ï¼š\vspace{.2zw}\par
 \begin{tabular}{l@{ :\ \ \ }l}
-Contraction    & $V^*$‚Í$V\to K$‚È‚Ì‚ÅC$T^p_q(V)\to T^{p-1}_{q-1}(V)$‚ª’è‹`‚³‚ê‚éB\\
-“àÏ           & $T_2(V)\ni g_{ij}: V\times V\to \Real$ i’Êí‚Í‘ÎÌ‚É‚·‚éB³’è’l‚Æ‚µ‚Ä‚à‚æ‚¢Bj\\
-“Yš‚Ìã‚°‰º‚° & $T_2(V)\cong\Hom(V,V^*)$i“¯Œ^j‚È‚Ì‚ÅC“àÏ‚©‚ç—U“±‚³‚ê‚éB\\
-               & “¯Œ^‚È‚Ì‚ÅC$g^{ij}: \Hom(V^*,V)$‚Í‹tÊ‘œ‚É‚È‚éB
+Contraction    & $V^*$ã¯$V\to K$ãªã®ã§ï¼Œ$T^p_q(V)\to T^{p-1}_{q-1}(V)$ãŒå®šç¾©ã•ã‚Œã‚‹ã€‚\\
+å†…ç©           & $T_2(V)\ni g_{ij}: V\times V\to \Real$ ï¼ˆé€šå¸¸ã¯å¯¾ç§°ã«ã™ã‚‹ã€‚æ­£å®šå€¤ã¨ã—ã¦ã‚‚ã‚ˆã„ã€‚ï¼‰\\
+æ·»å­—ã®ä¸Šã’ä¸‹ã’ & $T_2(V)\cong\Hom(V,V^*)$ï¼ˆåŒå‹ï¼‰ãªã®ã§ï¼Œå†…ç©ã‹ã‚‰èª˜å°ã•ã‚Œã‚‹ã€‚\\
+               & åŒå‹ãªã®ã§ï¼Œ$g^{ij}: \Hom(V^*,V)$ã¯é€†å†™åƒã«ãªã‚‹ã€‚
 \end{tabular}
 
 
 \Paragraph{Grassmann Operator}
-‘äW‡$V$‚ğHilbert‹óŠÔ‚Å‚ ‚é‚Æ‚·‚éB$V\ni v$‚É‚Â‚¢‚Ä
+å°é›†åˆ$V$ã‚’Hilbertç©ºé–“ã§ã‚ã‚‹ã¨ã™ã‚‹ã€‚$V\ni v$ã«ã¤ã„ã¦
 \begin{equation}
  \|\psi v\|^2=(\psi_{ab}v_b)^*(\psi_{ac}v_c) = v_b^*v_c(\psi_{ab})^*\psi_{ac}\ge 0
 \qquad\therefore
 (\psi_{ab})^*\psi_{ac}
  = -\left(\psi_{ab}(\psi_{ac})^*\right)^*
 \end{equation}
-‘¦‚¿”½‰ÂŠ·‚Èì—p‘f‚É‚Â‚¢‚Ä
+å³ã¡åå¯æ›ãªä½œç”¨ç´ ã«ã¤ã„ã¦
 $(ab)^\dagger = a^\dagger b^\dagger$,
 $\trans{(ab)} = -\trans a \trans b$,
-$(ab)^* = b^*a^*$ ‚Å‚ ‚éB
+$(ab)^* = b^*a^*$ ã§ã‚ã‚‹ã€‚
 
-\TODO{$\psi$‚Ì³‘Ì‚ª‚í‚©‚ç‚È‚¢ccBBB}
+\TODO{$\psi$ã®æ­£ä½“ãŒã‚ã‹ã‚‰ãªã„â€¦â€¦ã€‚ã€‚ã€‚}
 
 
 \subsubsection{Lie Group and Lie Algebra}
 \begin{itemize}
- \item ŒQ$G$‚ª{\bf Lie group}‚Å‚ ‚é c $G$‚ª“¯‚É$C^\infty$‘½—l
-       ‘Ì‚Å‚ ‚èCÏ‰‰Z‚Æ‹tŒ³Ê‘œ‚ª‹¤‚É$C^\infty$‹‰‚Å‚ ‚éB
- \item LieŒQ$G$‚ª{\bf COMPLEX Lie group}‚Å‚ ‚é c Ï‰‰Z‚Æ‹tŒ³Ê‘œ‚ª‹¤‚É³‘¥Ê‘œ‚Å‚ ‚éB
+ \item ç¾¤$G$ãŒ{\bf Lie group}ã§ã‚ã‚‹ â€¦ $G$ãŒåŒæ™‚ã«$C^\infty$å¤šæ§˜
+       ä½“ã§ã‚ã‚Šï¼Œç©æ¼”ç®—ã¨é€†å…ƒå†™åƒãŒå…±ã«$C^\infty$ç´šã§ã‚ã‚‹ã€‚
+ \item Lieç¾¤$G$ãŒ{\bf COMPLEX Lie group}ã§ã‚ã‚‹ â€¦ ç©æ¼”ç®—ã¨é€†å…ƒå†™åƒãŒå…±ã«æ­£å‰‡å†™åƒã§ã‚ã‚‹ã€‚
 \end{itemize}
 \begin{itemize}
- \item LieŒQ$G$‚Ì’PˆÊŒ³‚É‚¨‚¯‚éÚ‹óŠÔ‚ğC{\bf $G$‚ÌLie algebra}
-       $\mathfrak g$‚Æ‚¢‚¤B
+ \item Lieç¾¤$G$ã®å˜ä½å…ƒã«ãŠã‘ã‚‹æ¥ç©ºé–“ã‚’ï¼Œ{\bf $G$ã®Lie algebra}
+       $\mathfrak g$ã¨ã„ã†ã€‚
 \begin{itemize}
- \item $\mathfrak g$‚Í$G$‚Ì¶•s•Ï‚Èvectorê‘S‘Ì‚Å‚ ‚éB
- \item $\mathfrak g$‚Ívectorê‚ÌŠ‡ŒÊÏ‚Ì‰º‚ÅLie algebra‚Æ‚È‚éB
+ \item $\mathfrak g$ã¯$G$ã®å·¦ä¸å¤‰ãªvectorå ´å…¨ä½“ã§ã‚ã‚‹ã€‚
+ \item $\mathfrak g$ã¯vectorå ´ã®æ‹¬å¼§ç©ã®ä¸‹ã§Lie algebraã¨ãªã‚‹ã€‚
 \end{itemize}
- \item $G$‚Æ‚µ‚Ä—LŒÀŸŒ³LieŒQ‚ğl‚¦‚é‚ÆC
+ \item $G$ã¨ã—ã¦æœ‰é™æ¬¡å…ƒLieç¾¤ã‚’è€ƒãˆã‚‹ã¨ï¼Œ
 \begin{itemize}
- \item ‚»‚ÌLie‘ã”‚ÌŠî’ê$B_i$‚É‘Î‚µ‚Ä{\bf structure
-       constant} $c$‚ª$[B_i,B_j]=c^{k}_{ij}B_k$‚Æ‚µ‚Ä’è‹`‚Å‚«‚éB
+ \item ãã®Lieä»£æ•°ã®åŸºåº•$B_i$ã«å¯¾ã—ã¦{\bf structure
+       constant} $c$ãŒ$[B_i,B_j]=c^{k}_{ij}B_k$ã¨ã—ã¦å®šç¾©ã§ãã‚‹ã€‚
 \end{itemize}
 \end{itemize}
 \starline
 \begin{itemize}
- \item Compact LieŒQ‚ÍüŒ^LieŒQ‚Å‚ ‚éB
- \item $G$‚Æ‚µ‚Ä{\bf Linear group} $\gGL(n;\Real)$‚ğl‚¦‚é‚ÆC
+ \item Compact Lieç¾¤ã¯ç·šå‹Lieç¾¤ã§ã‚ã‚‹ã€‚
+ \item $G$ã¨ã—ã¦{\bf Linear group} $\gGL(n;\Real)$ã‚’è€ƒãˆã‚‹ã¨ï¼Œ
  \begin{itemize}
-  \item ‚»‚ÌLie‘ã”‚Í$n$ŸÀ³•ûs—ñ‘S‘Ì‚Æ‚È‚éB
-  \item Vectorê‚ÌŠ‡ŒÊÏ‚Í{\bf commutation relation} $[X,Y]=XY-YX$‚Æ‚È‚éB
+  \item ãã®Lieä»£æ•°ã¯$n$æ¬¡å®Ÿæ­£æ–¹è¡Œåˆ—å…¨ä½“ã¨ãªã‚‹ã€‚
+  \item Vectorå ´ã®æ‹¬å¼§ç©ã¯{\bf commutation relation} $[X,Y]=XY-YX$ã¨ãªã‚‹ã€‚
  \end{itemize}
- \item LieŒQ‚ÍC$\gGL(n;\Complex)$‚Ì•”•ªLieŒQ‚Æ‹ÇŠ“¯Œ^‚É‚È‚é‚æ‚¤‚ÈˆÊ‘ŠŒQ
-       ‚Å‚©‚Â˜AŒ‹¬•ª‚ª‚X‰ÂZŒÂ‚Å‚ ‚é‚à‚Ì‚Å‚ ‚éB
+ \item Lieç¾¤ã¯ï¼Œ$\gGL(n;\Complex)$ã®éƒ¨åˆ†Lieç¾¤ã¨å±€æ‰€åŒå‹ã«ãªã‚‹ã‚ˆã†ãªä½ç›¸ç¾¤
+       ã§ã‹ã¤é€£çµæˆåˆ†ãŒé«˜ã€…å¯ç®—å€‹ã§ã‚ã‚‹ã‚‚ã®ã§ã‚ã‚‹ã€‚
 \end{itemize}
 
-ˆÈ‰º‚Å‚ÍCLieŒQ‚Æ‚µ‚Ä$\gGL(n;\Real)$‚Ì•”•ªŒQ‚ğl‚¦‚é‚±‚Æ‚É‚µCLie‘ã”‚Ì
-Œ³‚ğs—ñ‚É‚æ‚è•\Œ»‚·‚éB
+ä»¥ä¸‹ã§ã¯ï¼ŒLieç¾¤ã¨ã—ã¦$\gGL(n;\Real)$ã®éƒ¨åˆ†ç¾¤ã‚’è€ƒãˆã‚‹ã“ã¨ã«ã—ï¼ŒLieä»£æ•°ã®
+å…ƒã‚’è¡Œåˆ—ã«ã‚ˆã‚Šè¡¨ç¾ã™ã‚‹ã€‚
 
 \subsubsection{Matrix Representation}
 \begin{itemize}
- \item LieŒQ$G$‚ÌLie‘ã”‚ÌŠî’ê‚Ì‘g‚ğC$G$‚Ì{\bf generators}‚ÆŒ¾‚¤B
- \item $\gGL(n;\Real)$‚ÌŒ³‚Í$n$ŸŒ³s—ñ‚Å•\‚¹‚éB
- \item LieŒQ$G$‚Ì¶¬q$\{T_i\}$‚É‘Î‚µC
-       ˆÈ‰º‚Ì2‚Â‚Í‹¤‚É$G$‚Ì’PˆÊŒ³‹ß–T‚Ì‹ÇŠÀ•WŒn‚ğ—^‚¦‚éB
+ \item Lieç¾¤$G$ã®Lieä»£æ•°ã®åŸºåº•ã®çµ„ã‚’ï¼Œ$G$ã®{\bf generators}ã¨è¨€ã†ã€‚
+ \item $\gGL(n;\Real)$ã®å…ƒã¯$n$æ¬¡å…ƒè¡Œåˆ—ã§è¡¨ã›ã‚‹ã€‚
+ \item Lieç¾¤$G$ã®ç”Ÿæˆå­$\{T_i\}$ã«å¯¾ã—ï¼Œ
+       ä»¥ä¸‹ã®2ã¤ã¯å…±ã«$G$ã®å˜ä½å…ƒè¿‘å‚ã®å±€æ‰€åº§æ¨™ç³»ã‚’ä¸ãˆã‚‹ã€‚
 \begin{align}
  (x_1,\cdots,x_m)&\mapsto\ee^{x_1T_1+\cdots+x_mT_m}&
 (x_1,\cdots,x_m)&\mapsto\ee^{x_1T_1}\cdots\ee^{x_mT_m}
@@ -161,23 +161,23 @@ $(ab)^* = b^*a^*$ ‚Å‚ ‚éB
 \end{itemize}
 
 \begin{itemize}
- \item LieŒQ$G$‚ªcompact‚Å‚ ‚é c
+ \item Lieç¾¤$G$ãŒcompactã§ã‚ã‚‹ â€¦
 \begin{enumerate}
- \item ‘½—l‘Ì$G$‚ªcompact‚Å‚ ‚éB       \TODO{‚±‚ê‚Í‰½ŒÌ“¯’l‚È‚Ì‚©H}
- \item $G$‚Ì¶¬q$\{T_i\}$‚ğC
-       $\Tr(T_iT_j)=k\,\delta_{ij}$‚©‚Â$k>0$‚Æ‚È‚é‚æ‚¤‚Éæ‚è‘Ö‚¦‚é
-       ‚±‚Æ‚ª‚Å‚«‚éB\\y‚±‚ÌŠî’ê‚Ì‰º‚Å‚Í\‘¢’è”‚ªŠ®‘S”½‘ÎÌ‚É‚È‚éBz
+ \item å¤šæ§˜ä½“$G$ãŒcompactã§ã‚ã‚‹ã€‚       \TODO{ã“ã‚Œã¯ä½•æ•…åŒå€¤ãªã®ã‹ï¼Ÿ}
+ \item $G$ã®ç”Ÿæˆå­$\{T_i\}$ã‚’ï¼Œ
+       $\Tr(T_iT_j)=k\,\delta_{ij}$ã‹ã¤$k>0$ã¨ãªã‚‹ã‚ˆã†ã«å–ã‚Šæ›¿ãˆã‚‹
+       ã“ã¨ãŒã§ãã‚‹ã€‚\\ã€ã“ã®åŸºåº•ã®ä¸‹ã§ã¯æ§‹é€ å®šæ•°ãŒå®Œå…¨åå¯¾ç§°ã«ãªã‚‹ã€‚ã€‘
 \end{enumerate}
- \item CompactŒQ$G$‚ÍC{\bf unitary representation}‚ğ‚ÂB\\
-       ŒÌ‚ÉC’PˆÊŒ³‚Ì‹ß–T‚Å‚Í—LŒÀŒÂ‚Ì{\bf Hermitian matrix} $T^i$‚Æ
-       parameters $x^i\in\Real$‚É‚æ‚èC$G$‚ÌŒ³‚ğ
+ \item Compactç¾¤$G$ã¯ï¼Œ{\bf unitary representation}ã‚’æŒã¤ã€‚\\
+       æ•…ã«ï¼Œå˜ä½å…ƒã®è¿‘å‚ã§ã¯æœ‰é™å€‹ã®{\bf Hermitian matrix} $T^i$ã¨
+       parameters $x^i\in\Real$ã«ã‚ˆã‚Šï¼Œ$G$ã®å…ƒã‚’
        \begin{equation}
         \ee^{\ii x^iT^i}
        \end{equation}
-       ‚Æ•\‚·‚±‚Æ‚ªo—ˆ‚éB
+       ã¨è¡¨ã™ã“ã¨ãŒå‡ºæ¥ã‚‹ã€‚
 \end{itemize}
-\subsubsection{Œ‹˜_}
-Compact LieŒQ‚ÌŒ³‚Ì‚¤‚¿C’PˆÊŒ³‹ß–T‚É‚ ‚é‚à‚Ì$V$‚ÍC
+\subsubsection{çµè«–}
+Compact Lieç¾¤ã®å…ƒã®ã†ã¡ï¼Œå˜ä½å…ƒè¿‘å‚ã«ã‚ã‚‹ã‚‚ã®$V$ã¯ï¼Œ
 \subparagraph{Hermitian Representation}
 \begin{align*}
  V=\exp(\ii x^iT^i)
@@ -192,7 +192,7 @@ Compact LieŒQ‚ÌŒ³‚Ì‚¤‚¿C’PˆÊŒ³‹ß–T‚É‚ ‚é‚à‚Ì$V$‚ÍC
 & R^i:\text{Real Matrix},\quad x^i\in\Real,\\
 &[R^i,R^j]=-f^{ijk}R^k,\quad \Tr(R^iR^j)=-\lambda\,\delta^{ij}<0;\qquad f\in\Real
 \end{align*}
-‚Æ•\‚·‚±‚Æ‚ªo—ˆ‚éB
+ã¨è¡¨ã™ã“ã¨ãŒå‡ºæ¥ã‚‹ã€‚
 
 
 %%% Local Variables:
