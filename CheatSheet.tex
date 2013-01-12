@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2013-01-09 22:29:10 misho>
+%%% Time-Stamp: <2013-01-10 13:37:39 misho>
 %%% 一部で日本語が使用されています。
 
 \documentclass[a4j,10pt,notitlepage]{jsarticle}
@@ -50,11 +50,15 @@
 %\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
 %\maketitle
 \makeatletter
-\def\myoption@subsubsection{\normalfont\normalsize\headfont\bf ◆}
-\def\myoption@paragraph    {\normalfont\normalsize\headfont ■}
-\def\myoption@section      {\bf\Large\headfont\raggedright}
-\def\myoption@subsection   {\normalfont\large\headfont\sc}
-\def\myoption@subparagraph {\normalfont\normalsize\headfont\underline}
+\renewcommand{\section}{\@startsection{section}{1}{\z@}{\Cvs \@plus.3\Cdp \@minus.1\Cdp}{.3\Cvs \@plus.1\Cdp}{\bf\headfont\Large\raggedright}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}{\Cvs \@plus.3\Cdp \@minus.1\Cdp}{.3\Cvs \@plus.1\Cdp}{\usefont{T1}{phv}{m}{sc}\large}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}{\Cvs \@plus.3\Cdp \@minus.1\Cdp}{.2\Cvs\@plus.1\Cdp}{\usefont{T1}{phv}{b}{n}\normalsize ◆}}
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}{0.5\Cvs \@plus.3\Cdp \@minus.1\Cdp}{-1zw}{\normalfont\normalsize\headfont ■}}
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{5}{\z@}{\z@}{-1zw}{\normalfont\normalsize\headfont\underline}}
+\DeclareFontShape{JY1}{hmc}{m}{it}{<-> ssub*hmc/m/n}{}
+\DeclareFontShape{JT1}{hmc}{m}{it}{<-> ssub*hmc/m/n}{}
+\DeclareFontShape{JY1}{hgt}{m}{it}{<-> ssub*hgt/m/n}{}
+\DeclareFontShape{JT1}{hgt}{m}{it}{<-> ssub*hgt/m/n}{}
 \makeatother
 \IfFileExists{\jobname.rev}{
   \usepackage{fancybox}\fancyput(330pt,10pt){{\color[rgb]{0.2,0.2,0.2}\input{\jobname.rev}}}}

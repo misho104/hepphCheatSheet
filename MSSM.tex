@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2013-01-09 22:25:49 misho>
+%%% Time-Stamp: <2013-01-13 00:02:33 misho>
 %%% 一部で日本語が使用されています。
 
 \def\uL{u\s L{}}%obsolete
@@ -14,7 +14,7 @@
 \def\bU{{\bar U}}
 \def\bD{{\bar D}}
 \def\bE{{\bar E}}
-
+\def\rMPL{M^{\rm R}\s{pl}}
 
 \newcommand\sqL{\tilde q}    \newcommand\slL{\tilde l}    \newcommand\suR{\tilde u\s R}
 \newcommand\suL{\tilde u\s L}\newcommand\snu{\tilde \nu}  \newcommand\sdR{\tilde d\s R}
@@ -225,8 +225,9 @@ and
 \end{align}
 Here we use the superfield notation for simple appearance.
 
+\clearpage
 \subsubsection{Scalar Potential (Verbose)}
-(with the superfield notation)
+\vspace{-24pt}
 \begin{align}
  V^F_{\Hu}&=
  |\mu|^2|\Hd|^2+\sum_a\Bigl(|\bU y^u Q^a|^2+|\mu_iL_i^a|^2\Bigr)
@@ -677,9 +678,109 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 and the rest part is
  $\Lag\s{gauge}+\Lag\s{scalar} + \Lag\s{pot.}\suprm{RPC}$.
 
-%\subsection{GMSB}
+\newpage
+\subsection{minimal GMSB}
+$$W\s{mess}=\lambda_i X\bar\Phi_i\Phi_i \leadsto \lambda_i(M_X+F_X\thth)\Phi_i\Phi_i\quad:\quad M\suprm F_i=\lambda_i M_X,\quad \left(M\suprm S_i\right)^2=\lambda_i^2M_X^2-\lambda_iF_X.$$
+If $F_i/M_i$ is universal and the messengers feel only a single $X$,\footnote{%
+If non universal, $\Lambda\s S$ cannot be written in simple form, and
+\begin{equation}
+\Lambda\s{G}=\sum n_i\frac{F_i}{M_i}\left(1+\Order{\fracp{F_i^2}{M_i^4}}\right),
+\end{equation}
+where $n_i$ is twice of the Dynkin index; 1 for $\vc 5$, and 3 for $\vc{10}$.
+}
+\begin{align}
+\Lambda:=\frac{F_X}{M_X},& \quad M\s{mess}:=\lambda M_X,&
+ M_a(M\s{mess})&\simeq\frac{\alpha_a}{4\pi}\Lambda\s G,
+&m^2(M\s{mess})&\simeq2\Lambda\s S^2\sum\frac{\alpha_a^2}{(4\pi)^2}C_a,
+\end{align}
+$C_3$ is $4/3$ for colored particles, $C_2$ is $3/4$ for $\vc 2$, and $C_1=(5/3)Y^2$. Also the $\cancel{\rm SUSY}$ scales are
+\begin{align}
+ \Lambda\s{G}&:=N_5\frac{F}{M}=N_5\Lambda,
+&
+ \Lambda\s{S}&:=N_5\frac{F^2}{M^2}=N_5\Lambda^2;
+ &
+ \text{where $N_5$ is $(\#\vc{5})+3\times(\#\vc{10})$,}
+\end{align}
+Note that $(\Lambda\s G,\Lambda\s S)$ can be used as the defining parameters instead of $(N_5,\Lambda)$.
 
+The total SUSY-breaking $F\s{total}$ is different from that felt by messengers; $F\s{total}=:F/k$ with $k<1$.
+\begin{equation}
+ m_{3/2}
+= \frac{F\s{total}}{\sqrt3\rMPL}
+= \frac{F/k}{\sqrt3\rMPL}
+= \frac{M\s{mess}\Lambda}{\lambda k\cdot\sqrt3\rMPL}.
+\end{equation}
 
+\newpage
+
+\subsection{Gravitino and Goldstino}
+\def\goldi{\tilde{\cal G}}
+\subsubsection{Supercurrent}
+\TODO{係数やら符号やら L/R やらが非常に怪しいので，一度ちゃんと Noether しないとダメ。。}\\
+$\displaystyle S^\mu_\alpha = \frac{1}{\sqrt2}(\Sn\bSm\chi_i)_\alpha\Dn\phi^{*i} + \frac{\ii}{\sqrt2}(\Sm\chi^{\dagger i})_\alpha W_i^* -\frac{\ii}{4}(\Sn\bSr\Sm\lambda^{\dagger a})_\alpha F^a_{\nu\rho}
++\frac{\ii}{2}g_a(\phi^*T^a\phi)(\Sm\lambda^{\dagger a})_\alpha$\\
+With a Majorana particle $X=\spmat{X_\alpha\\ \bar X^\dalpha}$,\vspace{-10pt}
+\begin{align*}
+X^\alpha S^\mu_\alpha&=
+  \frac1{\sqrt2}\Dn\phi^*(\overline X\Gn\Gm\PL\chi) + \frac{\ii}{\sqrt2}(\overline X\Gn\PR\chi)W_i^*-\frac{\ii}{8}F^a_{\nu\rho}\overline X[\Gn,\Gr]\Gm\PR\lambda^a+\frac{\ii g_a(\phi^* T^a\phi)}{2}\overline X\Gm\PR\lambda^a\\
+&\buildrel{\text{h.c.}}\over\leadsto
+ \frac1{\sqrt2}\Dn\phi(\overline X\Gn\Gm\PR\chi) + \frac{\ii}{\sqrt2}(\overline X\Gn\PL\chi)W_i-\frac{\ii}{8}F^a_{\nu\rho}\overline X[\Gn,\Gr]\Gm\PL\lambda^a+
+\frac{\ii g_a(\phi^* T^a\phi)}{2}\overline X\Gm\PL\lambda^a\\
+ \end{align*}
+
+\subsubsection{Goldstino}
+\begin{equation}
+ \Lag\s{goldstino}=i\goldi^\dagger \bSm\Pm\goldi-\frac{1}{F\s{total}}\left[\goldi\Pm S^\mu+\Hc\right],
+\end{equation}
+especially interaction terms contain\\
+\begin{equation}
+-\frac{1}{F\s{total}}
+\left[\Pn\phi^*(\overline\chi\Gm\Gn\PL\Pm\goldi)-\frac{\ii}{4\sqrt2}(\overline\lambda\Gm[\Gn,\Gr]\PR\Pm\goldi)F^a_{\nu\rho}+\Hc\right].
+\end{equation}
+If all the particles are on-shell, this can be reduced to
+\begin{equation}
+\frac{1}{F\s{total}}
+\left[
+(m_\chi^2-m_\phi^2)\phi^*\overline\chi\PL\goldi
++\frac{1}{4\sqrt2}(m_\lambda \overline\lambda[\Gn,\Gr]\PR\goldi)F^a_{\nu\rho}
++\Hc\right].
+\end{equation}
+
+\TODO{実はよくわかってない}
+
+\subsubsection{Gravitino}
+\begin{tabular}{r@{\ \ \ }l}
+Lagrangian: & $\displaystyle \Lag=-\frac12\epsilon^{\mu\nu\rho\sigma}\overline\psi_\mu\G5\Gnd\Pr\psi_\sigma - \frac{m_{3/2}}{4}\overline\psi_\mu\left[\Gm,\Gn\right]\psi_\nu-\frac{1}{\rMPL}\left(\psi_\mu^\alpha S^\mu_\alpha+\Hc\right)$\qquad
+$\Bigl[\psi=\spmat{\psi_\alpha\\\bar\psi^\dalpha}\Bigr]$,\\ 
+%& especially the interaction terms are\\
+%&$\qquad\displaystyle-\frac1{\sqrt2\rMPL}\left(\overline \psi_\mu\Gn\Gm\Bigl[\PL\chi\cdot\Dn\phi^*+\PR\chi\cdot\Dn\phi\Bigr]\right)
+%+\frac{\ii}{8\rMPL}F^a_{\nu\rho}\overline \psi_\mu[\Gn,\Gr]\Gm\lambda^a$
+%\\&
+%$\qquad\qquad\displaystyle- \frac{\ii}{\sqrt2\rMPL}\left(\overline \psi_\mu\Gn\Bigl[\PL\chi\cdot W_i+\PR\chi\cdot W_i^*\Bigr]\right)
+%-\frac{\ii g_a(\phi^* T^a\phi)}{2\rMPL}\overline \psi_\mu\Gm\lambda^a$
+%\\
+EOM:&
+$\displaystyle \epsilon^{\mu\nu\rho\sigma}\G5\Gnd\Pr\psi_\sigma+\frac{m_{3/2}}{2}\left[\Gm,\Gn\right]\psi_\nu=0$\quad (Rarita--Schwinger eq.)\\
+&$\Longrightarrow m_{3/2}\left(\slashed\partial\slashed\psi-\Gn\slashed\partial\psi_\nu\right)=0$,\quad
+ $(\slashed\partial\slashed\psi-\Gn\slashed\partial\psi_\nu)-3\ii m_{3/2}\slashed\psi=0.$\\
+&$\langle\!\langle\text{if massive}\Longrightarrow \slashed \psi=0,\quad\Pm\psi^\mu=0,\quad(\ii\slashed\partial-m_{3/2})\psi_\mu=0\quad\text{(Dirac eq.)}.\rangle\!\rangle$
+\\
+Field:&
+$\displaystyle \psi_\mu=\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}
+     \sum_{s=\pm1/2,\pm3/2}\Bigl[a^s_\vc p u_\mu^s(p)\ee^{-\ii px} + a^{s\dagger}_\vc p v^s_\mu(p)\ee^{\ii px}\Bigr].$
+\\
+& Of course, $u$ and $v$ are as usual related as $v^s_\mu(p)=\left[u^s_\mu(p)\right]\suprm C=C\trans{\overline{u}}$.
+\\
+Spin sum:&
+$\Pi_{\mu\nu}(p):= \sum_s\psi^s_\mu(p)\overline\psi{}^s_\nu(p)$
+\\&\qquad\quad\ \,$\displaystyle=-(\slashed p+m_{3/2})\left(\Hmn-\frac{p_\mu p_\nu}{m_{3/2}^2}\right)
+-\frac13\left(\Gm+\frac{p^\mu}{m_{3/2}}\right)\left(\slashed p-m_{3/2}\right)\left(\Gn+\frac{p^\nu}{m_{3/2}}\right)$
+\\
+&Obviously, $\Gm\Pi_{\mu\nu}(p)=p^\mu\Pi_{\mu\nu}(p)=(\slashed p-m_{3/2})\Pi_{\mu\nu}(p)=0$.
+\\
+Formulae:&
+     $\displaystyle k^\mu k^\nu \Pi_{\mu\nu}(p)=\frac23\left[\frac{(p\cdot k)^2}{m_{3/2}^2}-k^2\right]\left(\slashed p+m_{3/2}\right)$,\quad$\displaystyle \Hmn\Pi_{\mu\nu}(p)=-2\left(\slashed p+m_{3/2}\right)$.
+\end{tabular}
 %%% Local Variables:
 %%% TeX-master: "CheatSheet.tex"
 %%% End:
