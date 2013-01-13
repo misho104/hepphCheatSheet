@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2013-01-13 00:02:33 misho>
+%%% Time-Stamp: <2013-01-13 18:41:33 misho>
 %%% 一部で日本語が使用されています。
 
 \def\uL{u\s L{}}%obsolete
@@ -716,17 +716,17 @@ The total SUSY-breaking $F\s{total}$ is different from that felt by messengers; 
 \subsection{Gravitino and Goldstino}
 \def\goldi{\tilde{\cal G}}
 \subsubsection{Supercurrent}
-\TODO{係数やら符号やら L/R やらが非常に怪しいので，一度ちゃんと Noether しないとダメ。。}\\
-$\displaystyle S^\mu_\alpha = \frac{1}{\sqrt2}(\Sn\bSm\chi_i)_\alpha\Dn\phi^{*i} + \frac{\ii}{\sqrt2}(\Sm\chi^{\dagger i})_\alpha W_i^* -\frac{\ii}{4}(\Sn\bSr\Sm\lambda^{\dagger a})_\alpha F^a_{\nu\rho}
-+\frac{\ii}{2}g_a(\phi^*T^a\phi)(\Sm\lambda^{\dagger a})_\alpha$\\
+$\displaystyle S^\mu_\alpha = (\Sn\bSm\chi_i)_\alpha\Dn\phi^{*i} + \ii(\Sm\chi^{\dagger i})_\alpha W_\phi^* -\frac{1}{2\sqrt2}(\Sn\bSr\Sm\lambda^{\dagger a})_\alpha F^a_{\nu\rho}
++\frac{\ii}{\sqrt2}g_a(\phi^*T^a\phi)(\Sm\lambda^{\dagger a})_\alpha$\\
 With a Majorana particle $X=\spmat{X_\alpha\\ \bar X^\dalpha}$,\vspace{-10pt}
 \begin{align*}
 X^\alpha S^\mu_\alpha&=
-  \frac1{\sqrt2}\Dn\phi^*(\overline X\Gn\Gm\PL\chi) + \frac{\ii}{\sqrt2}(\overline X\Gn\PR\chi)W_i^*-\frac{\ii}{8}F^a_{\nu\rho}\overline X[\Gn,\Gr]\Gm\PR\lambda^a+\frac{\ii g_a(\phi^* T^a\phi)}{2}\overline X\Gm\PR\lambda^a\\
+  \Dn\phi^*(\overline X\Gn\Gm\PL\chi) + \ii(\overline X\Gn\PR\chi)W_\phi^*-\frac{1}{4\sqrt2}F^a_{\nu\rho}\overline X[\Gn,\Gr]\Gm\PR\lambda^a+\frac{\ii g_a(\phi^* T^a\phi)}{\sqrt2}\overline X\Gm\PR\lambda^a\\
 &\buildrel{\text{h.c.}}\over\leadsto
- \frac1{\sqrt2}\Dn\phi(\overline X\Gn\Gm\PR\chi) + \frac{\ii}{\sqrt2}(\overline X\Gn\PL\chi)W_i-\frac{\ii}{8}F^a_{\nu\rho}\overline X[\Gn,\Gr]\Gm\PL\lambda^a+
-\frac{\ii g_a(\phi^* T^a\phi)}{2}\overline X\Gm\PL\lambda^a\\
+ \Dn\phi(\overline X\Gn\Gm\PR\chi) + \ii(\overline X\Gn\PL\chi)W_\phi-\frac{1}{4\sqrt2}F^a_{\nu\rho}\overline X[\Gn,\Gr]\Gm\PL\lambda^a+
+\frac{\ii g_a(\phi^* T^a\phi)}{2}\overline X\Gm\PL\lambda^a
  \end{align*}
+where $W_\phi=\diff[1][\delta]{}{\phi}W|\s{scalar}, W_\phi=\diff[1][\delta]{}{\phi^*}W^*|\s{scalar}.$
 
 \subsubsection{Goldstino}
 \begin{equation}
@@ -735,7 +735,8 @@ X^\alpha S^\mu_\alpha&=
 especially interaction terms contain\\
 \begin{equation}
 -\frac{1}{F\s{total}}
-\left[\Pn\phi^*(\overline\chi\Gm\Gn\PL\Pm\goldi)-\frac{\ii}{4\sqrt2}(\overline\lambda\Gm[\Gn,\Gr]\PR\Pm\goldi)F^a_{\nu\rho}+\Hc\right].
+\left[\left(\Pn\phi^*\cdot\overline\chi\Gm\Gn\PL\Pm\goldi+\Hc\right)
+-\frac{1}{4\sqrt2}(\overline\lambda\Gm[\Gn,\Gr]\Pm\goldi)F^a_{\nu\rho}\right].
 \end{equation}
 If all the particles are on-shell, this can be reduced to
 \begin{equation}
@@ -748,10 +749,10 @@ If all the particles are on-shell, this can be reduced to
 
 \TODO{実はよくわかってない}
 
-\subsubsection{Gravitino}
+   \subsubsection{Gravitino}
+\vskip-1.25\baselineskip$\hspace{90pt}\psi=\spmat{\psi_\alpha\\\bar\psi^\dalpha}$\\[8pt]
 \begin{tabular}{r@{\ \ \ }l}
-Lagrangian: & $\displaystyle \Lag=-\frac12\epsilon^{\mu\nu\rho\sigma}\overline\psi_\mu\G5\Gnd\Pr\psi_\sigma - \frac{m_{3/2}}{4}\overline\psi_\mu\left[\Gm,\Gn\right]\psi_\nu-\frac{1}{\rMPL}\left(\psi_\mu^\alpha S^\mu_\alpha+\Hc\right)$\qquad
-$\Bigl[\psi=\spmat{\psi_\alpha\\\bar\psi^\dalpha}\Bigr]$,\\ 
+Lagrangian: & $\displaystyle \Lag=-\frac12\epsilon^{\mu\nu\rho\sigma}\overline\psi_\mu\G5\Gnd\Pr\psi_\sigma - \frac{m_{3/2}}{4}\overline\psi_\mu\left[\Gm,\Gn\right]\psi_\nu-\frac{1}{\sqrt2\rMPL}\left(\psi_\mu^\alpha S^\mu_\alpha+\Hc\right)$\\
 %& especially the interaction terms are\\
 %&$\qquad\displaystyle-\frac1{\sqrt2\rMPL}\left(\overline \psi_\mu\Gn\Gm\Bigl[\PL\chi\cdot\Dn\phi^*+\PR\chi\cdot\Dn\phi\Bigr]\right)
 %+\frac{\ii}{8\rMPL}F^a_{\nu\rho}\overline \psi_\mu[\Gn,\Gr]\Gm\lambda^a$
@@ -787,3 +788,4 @@ Formulae:&
 
 
 
+ 
