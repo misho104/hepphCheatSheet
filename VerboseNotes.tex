@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <>
+%%% Time-Stamp: <2014-01-02 02:19:22 misho>
 %%% 一部で日本語が使用されています。
 
 \section{Verbose Notes}
@@ -376,6 +376,32 @@ For a field $\lambda^a$ under the adjoint representation,
 \subparagraph{Bianchi Equation}
 \begin{equation}
  \epsilon^{\mu\nu\rho\sigma}\left[\Dn,\left[\Dr,\Ds\right]\right] = \epsilon^{\mu\nu\rho\sigma}\Dn F_{\rho\sigma} = 0.
+\end{equation}
+
+\subparagraph{Conjugate representation}
+Consider a representation $r$ and its generators $\{T_r^a\}$.
+Then $\{-(T_r^a)^*\}$ also satisfies the group structure.
+The corresponding representation is called the {\em conjugate representation} $\overline r$ of $r$:
+\begin{equation}
+ T_{\overline r}^a:=-(T_r^a)^*.
+\end{equation}
+If $\overline r$ is equivalent to $r$, i.e. there exists an unitary matrix $U$ such that
+$T_{\overline r}^a=U^\dagger(T_r^a)U$, the representation $r$ is called a {\em real representation}.
+This $U$ is unique up to a trivial scale factor, and either symmetric or anti-symmetric.
+If $U$ is symmetric, the representation is called {\em real-positive}; otherwise {\em real-negative} or {\em pseudo-real}.
+
+The $\boldsymbol2$ representation of $\gSU(2)$ is pseudo-real because
+\begin{equation}
+ T_{\overline {{\boldsymbol 2}}}^a \equiv -(\sigma^a/2)^* = \sigma^2(\sigma^a/2)\sigma^2.
+\end{equation}
+
+If a field $X$ transforms under a representation $r$, its complex conjugate does under $\overline r$:
+\begin{equation}
+  \delta X=\ii g\theta^a(T_r^a X)
+\quad\Longrightarrow\quad
+ \delta X^*
+=-\ii g\theta^a(T_r^A X)^*
+=\ii g\theta^a(T_{\overline r}^AX^*)
 \end{equation}
 
 \newpage

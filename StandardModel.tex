@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2013-01-10 13:25:43 misho>
+%%% Time-Stamp: <2013-09-08 19:31:36 misho>
 %%% 一部で日本語が使用されています。
 
 \section{Standard Model}
@@ -610,6 +610,53 @@ Therefore 湯川 matrices are (after diagonalization), since $vy/\sqrt2=M$,
 \end{align}
 
 Also, for $m_h\sim 125\un{GeV}$, we can estimate the Higgs potential as $\mu\sim88\un{GeV}$ and $\lambda \sim 0.13$.
+
+\subsection{南部--Goldstone Boson}
+\TODO{正しいか未確認}
+Defining the 南部--Goldstone mode as
+\begin{equation}
+ H = \frac1{\sqrt2}\pmat{-\ii \sqrt2 \phi^+(x) \\ v+h(x)+\ii\phi_3(x)}, \where v=\sqrt{\frac{\mu^2}{\lambda}},
+\end{equation}
+The Higgs part of the Lagrangian turns out to be
+\begin{align}
+ \Lag&\supset \left|\DD_\mu H\right|^2 + \mu^2\left|H\right|^2 - \lambda\left|H\right|^4\\
+&=
+\left(1+\frac{h}{v}\right)^2\left(m_W^2 W^{+\mu}W^-_\mu + \frac{m_Z^2}2Z^\mu Z_\mu\right)
+ -
+\left(1+\frac{h}{2v}\right)^2\frac{m_h^2}{2}h^2
+\\&
+ + m_Z Z^\mu\Pm\phi_3 + m_W\left(W^{+\mu}\Pm\phi^- + W^{-\mu}\Pm\phi^+\right)
+\\&
+ + \ii g_Y m_W\left(B^\mu W^+_\mu\phi^- - B^\mu W^-_\mu\phi^+\right)
+ -\frac{m_h^2}{2}\frac{h}{v}\left(\phi_3^2+2\phi^+\phi^-\right)
+\\&
+ + \frac12\left(\Pm h\right)^2 + \frac12\left(\Pm \phi_3\right)^2 + \left|\Pm\phi^+\right|^2
+\end{align}
+Redefining the gauge fields (with concerning the norms) as
+\begin{align}
+ W^\pm_\mu&:=\frac1{\sqrt2}(W^1_\mu\mp\ii W^2_\mu),&
+\pmat{Z_\mu \\ A_\mu}
+&:= \pmat{%
+\cos\theta\s w & -\sin\theta\s w\\
+\sin\theta\s w & \cos\theta\s w
+}
+\pmat{W^3_\mu \\ B_\mu},
+\end{align}
+where
+\begin{align}
+ &\tan\theta\s w := \frac{g_1}{g_2},\qquad
+ e              := -\frac{g_1g_2}{\sqrt{{g_1}^2+{g_2}^2}};\qquad
+ g_Z            := \sqrt{{g_1}^2+{g_2}^2};\\
+ &g_1=\frac{|e|}{\cos\theta\s w}=g_Z\sin\theta\s w,\qquad
+  g_2=\frac{|e|}{\sin\theta\s w}=g_Z\cos\theta\s w.
+\end{align}
+We obtain the following terms in $\Lag\s{Higgs}$:
+\begin{equation}
+  \Lag\s{Higgs}
+\supset \frac12(\partial_\mu h)^2+\frac{(v+h)^2}4\Bigl[{g_2}^2{W^+}^\mu W^-_\mu + \frac{{g_Z}^2}{2}Z^\mu Z_\mu\Bigr].
+\end{equation}
+Here we have omitted the 南部--Goldstone bosons.
+
 
 %%% Local Variables:
 %%% TeX-master: "CheatSheet.tex"

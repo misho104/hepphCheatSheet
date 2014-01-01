@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2013-01-10 20:19:27 misho>
+%%% Time-Stamp: <2014-01-02 02:37:13 misho>
 %%% 一部で日本語が使用されています。
 
 \section{General Definitions and Tools}
@@ -548,7 +548,13 @@ To compute the $S$-matrix in a physical region choose the correct branch
  (k_1-k_2)^2&=-4(E^2-m_B^2)&
  u&= -(2E^2-m_A^2-m_B^2)-2\vipro pk\\
 \end{align*}
-
+\subparagraph{Kinematics of Collision (initial massless)}\mbox{}\par
+\begin{align*}
+ s&= 4E^2,&
+ (t,u) &= -2E^2+\frac{m_1^2+m_2^2}{2}\pm2\vipro pk,&
+ \vnorm k ^2 &= E^2-\frac{m_1^2+m_2^2}{2}+\frac{\left(m_1^2-m_2^2\right)^2}{16 E^2}
+\end{align*}
+\TODO{needs check}
 \newpage
 \subsection{楊-Mills Theory}\label{sec:yang-mills-general}
 \vskip-22pt\hskip160pt{\small(See App.~\ref{sec:yang-mills-theory} for verbose notes.)}\vspace{-1em}
@@ -630,6 +636,66 @@ In Abelian gauge theory, $V$ and fields are always commutative, and thus we have
     - gf^{abc}A_\mu^a A_\nu^b \Pmu A^{c\nu}
     - \frac{g^2}4 f^{abc}f^{ade}A^b_\mu A^c_\nu A^{d\mu}A^{e\nu}
 \end{align}
+
+\subsection{$\gSU(2)$ Gauge Group}
+The $\gSU(2)$ is defined as $[T^a,T^b]=\ii\epsilon^{abc}T^c$.
+The representation whose generator is $\tau^a:=\sigma^2/2$ is called the fundamental representation $\boldsymbol 2$.
+\subsubsection{Gauge singlet of $\gSU(2)$}
+Consider the fields which transform under $\boldsymbol2$,
+\begin{equation}
+ \phi\mapsto \phi+\ii g\theta^a\left(\tau^a\phi\right).
+\end{equation}
+For scalar fields $\phi$ and vector fields $v$, it is obvious that $\phi^\dagger\phi' (=\phi^*_a \phi'_a)$ and $v^\mu v'^*_\nu$ are gauge singlet.
+
+Fermions are Lorentz symmetric under the form
+ $\xi^\alpha\chi_\alpha$.
+So, in order to make a gauge and Lorentz invariant term, we have to build $\overline{\boldsymbol 2}$ representation. It can be done with $\sigma^2$:
+\begin{equation}
+ \delta(\sigma^2\xi^\alpha) =
+\sigma^2\cdot\ii g\theta^a\left(\tau^a\xi^\alpha\right)
+=
+\ii g\theta^a\left(\sigma^2\tau^a\sigma^2\right)\left(\sigma^2\xi^\alpha\right).
+\end{equation}
+Thus $\sigma^2\xi^\alpha$ follows $\overline{\boldsymbol 2}$ representation, and
+$(\sigma^2\xi^\alpha)\chi_\alpha=\ii\epsilon_{ab}(\xi_a)^\alpha(\chi_b)_\alpha$ is invariant under gauge and Lorentz transformation.
+
+In summary, Weyl (Dirac) spinors $\xi$ ($\psi$) in ${\boldsymbol 2}$ representation composes a gauge singlet in the form of
+\begin{equation}
+ \epsilon_{ab}\xi_a\xi'_b \qquad (\overline\psi \psi').
+\end{equation}
+
+\subsubsection{$\boldsymbol 3$ representation}
+Let us consider a field $\phi$ whose $\gSU(2)$ charge is $\boldsymbol 3$:\footnote{
+Note that the representation $\left\{
+\dfrac1{\sqrt2}\pmat{0&1&0\\1&0&1\\0&1&0},
+\dfrac\ii{\sqrt2}\pmat{0&-1&0\\1&0&-1\\0&1&0},
+\pmat{1&0&0\\0&0&0\\0&0&-1}
+\right\}$ is equivalent to $J^A$.}
+\begin{equation}
+ \phi\mapsto\exp\left(\ii g\theta^A J^A\right)\phi
+\qquad\text{with}\quad [J^A]_{bc}=-\ii\epsilon^{Abc}.
+\end{equation}
+Then,
+\begin{equation}
+ \phi^a\tau^a\mapsto
+\ee^{\ii g\theta^A\tau^a}
+ \left(\phi^a\tau^a\right)
+\ee^{-\ii g\theta^A\tau^a}.
+\end{equation}
+It is convenient to define $\sigma^\pm$ and  $\phi^\pm$ as
+\begin{align}
+ \phi^\pm   &:= \frac1{\sqrt2}(\phi^1\mp\ii\phi^2),&
+ \sigma^+ &:= \pmat{0&1\\0&0},&
+ \sigma^- &:= \pmat{0&0\\1&0};&
+ \phi^1          &= \frac{\phi^++\phi^-}{\sqrt2}&
+ \phi^2          &= \frac{\ii(\phi^+-\phi^-)}{\sqrt2};
+\end{align}
+\begin{equation}
+ \phi^a\tau^a = \frac12\pmat{\phi^3&\sqrt2\phi^+\\\sqrt2\phi^-&-\phi^3}
+=\frac{\sigma^+}{\sqrt2}\phi^+
++\frac{\sigma^-}{\sqrt2}\phi^-
++\frac{\sigma^3}{2}\phi^3.
+\end{equation}
 
 %%% Local Variables:
 %%% TeX-master: "CheatSheet.tex"
