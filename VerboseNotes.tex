@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2014-01-02 02:19:22 misho>
+%%% Time-Stamp: <2014-01-09 21:34:25 misho>
 %%% 一部で日本語が使用されています。
 
 \section{Verbose Notes}
@@ -431,6 +431,23 @@ If a field $X$ transforms under a representation $r$, its complex conjugate does
 \subsection{Instanton}
 \label{sec:cs-instanton}
 \TODO{INSTANTON}
+
+\subsection{Note on the symmetry factor in the Feynman Rules}
+\label{sec:note-symmetry-factor}
+If a vertex consists of different particles, the Feynman rule for the vertex is defined as $\ii\lambda$, where $\lambda$ is the coupling constant for the vertex in the Lagrangian.
+However, if a particle appears $n$-times in the coupling, we define the vertex as $(n!)\times\ii\lambda$.
+
+This factor $n!$ corresponds to the freedom of contraction, which we encounter when contracting the fields. For example, $\bra{\phi_{k_1}\phi_{k_2}\phi_{k_3}}(\lambda\phi^3\psi)\ket{\psi_p}$ has $3!$ choice of the contraction; thus we define the vertex rule as $(3!)\ii\lambda$, and the amplitude is evaluated as $6\ii\lambda$.
+
+For this multiplication, we have to consider a symmetry factor.
+$\begC1{\bra{\phi}}\conC{(\lambda}\endC1{\phi}\begC1{{}^4}\conC{)(\lambda'}\endC1{\phi^3}\begC1{\chi}\conC{)}\endC1{\ket{\chi}}$ has $4\times3!$ freedom, but the rule is already multiplied by $4!\times3!$; thus we have to divide the amplitude by the symmetry factor ($=6$) to obtain $24\ii\lambda\lambda'$.
+Similarly, in
+$\begC1{\bra{\phi}}\conC{\frac12(\lambda}\endC1{\phi}\begC1{{}^4}\conC{)(\lambda}\endC1{\phi}\begC1{{}^4}\conC{)}\endC1{\ket{\phi}}+\begC2{\bra{\phi}}\conC{\frac12(\lambda}\begC3{\phi}\begC1{{}^4}\conC{)(\lambda}\endC1{\phi}\endC2{{}^4}\conC{)}\endC3{\ket{\phi}}
+=
+\begC1{\bra{\phi}}\conC{(\lambda}\endC1{\phi}\begC1{{}^4}\conC{)(\lambda}\endC1{\phi}\begC1{{}^4}\conC{)}\endC1{\ket{\phi}}$,
+ the symmetry factor $6=(4!)^2/(4\cdot4\cdot3!)$ appears.
+(Note that the $1/2$ from the Fourier expansion cancels with the freedom of operators' order.)
+
 
 
 

@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2014-01-03 12:27:44 misho>
+%%% Time-Stamp: <2014-01-09 21:35:10 misho>
 %%% 一部で日本語が使用されています。
 
 \section{General Definitions and Tools}
@@ -218,13 +218,19 @@ $\mathcal H=T^{00}$,\quad $\mathcal P^i =T^{0i}$.\\
 &$T\T^\mu_\nu$ is the variation along $\mu$ in respect to the modification $a^\nu$.\\
 \end{tabular}
 
+
+\subsection{Feynman Rules}
+\paragraph{Rule for vertices}
+\begin{equation*}
+ \Lag\ni\lambda\times (\phi_1)^{n_1}\cdots(\phi_k)^{n_k} \Longrightarrow \ii\lambda \prod_i(n_i!)
+\qquad\text{\footnotesize (See Sec.~\ref{sec:note-symmetry-factor} for details.)}
+\end{equation*}
+
+
 \newpage
 
-\twocolumn[
-\subsection{Feynman Rules}
-]
+\twocolumn
 \input{feynman.tex}
-\vspace{5pt}\TODO{vertexはlagrangianの$(n!)\ii$倍)}
 \onecolumn
 
 
