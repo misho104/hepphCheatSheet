@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2014-01-09 21:35:10 misho>
+%%% Time-Stamp: <2014-01-10 23:53:58 misho>
 %%% 一部で日本語が使用されています。
 
 \section{General Definitions and Tools}
@@ -69,57 +69,97 @@ Our Old Language
    F_{\mu\nu}F^{\mu\nu} = -2\left(\vnorm E^2-\vnorm B^2\right)$
 \end{tabular}
 
+
+\newpage
 \subsection{Spinor Fields}
+\subsubsection{Lorentz transformation}
+\begin{tabbing}
+ For 4-spinor \=\hspace{1em}\=\hspace{14em}\=\kill
+ Algebra~\>:\>
+ $\displaystyle
+  [J_{\mu\nu},J_{\rho\sigma}] = -\ii(\Hmrd J_{\nu\sigma} + \Hnsd J_{\mu\rho} - \Hmsd J_{\nu\rho} - \Hnrd J_{\mu\sigma}).$\\
+ For vector \>:\> $V^\alpha\mapsto\Lambda\T^\alpha_\beta V^\beta=\exp(-\frac\ii2\omega_{\mu\nu}{\mathcal J^{\mu\nu}})\T^\alpha_\beta V^\beta$, where $(\mathcal J^{\mu\nu})_{\alpha\beta}=\ii(\delta\T^\mu_\alpha\delta\T^\nu_\beta-\delta\T^\mu_\beta\delta\T^\nu_\alpha)$.\\
+ For 4-spinor \>:\> $\psi\mapsto \Lambda_{\frac12}\psi=\exp(-\frac\ii2\omega_{\mu\nu}S^{\mu\nu})$, where $S^{\mu\nu}:=\frac\ii4[\Gm,\Gn]$, and $\Lambda^{-1}_{\frac12}\Gm\Lambda_{\frac12}=\Lambda\T^\mu_\nu\Gn$.~\footnotemark\\
+ For 2-spinor \>:\> $\xi\mapsto L\xi = \exp(-\frac\ii2\omega_{\mu\nu}s^{\mu\nu})\xi$, \> We will use~~\= $s^{0i}=\bar s^{i0}=-\frac\ii2\sigma_i$,\\
+\>\>$\bar\eta\mapsto\bar L\bar\eta = \exp(-\frac\ii2\omega_{\mu\nu}\bar s^{\mu\nu})\bar\eta$; \> \> $s^{ij}=\bar s^{ij}=\frac12\epsilon^{ijk}\sigma_k$.\quad{\footnotesize (See Sec.~\ref{sec:weyl-spinor} for details.)}
+\end{tabbing}
+\footnotetext{ $\mathcal J^{\mu\nu}$ and $S^{\mu\nu}$ are representations of Lorentz algebra; $\{\Gm,\Gn\}=2\Hmn$ is sufficient for $S^{\mu\nu}$ to follow the algebra.}
 
-
-
-\begin{tabular}{l@{ :\ \ \ }ll@{\qquad}l@{ :\ \ \ }ll}
-Spinor      & $\xi_\alpha$,
-            & $  \xi^\alpha:=\epsilon^{\alpha\beta}\xi_\beta$; &
-Lorentz tr. & $\xi_\alpha \mapsto \Lambda\T_\alpha^\beta\xi_\beta$,
-            & $\xi^\alpha \mapsto \xi^\beta \Lambda^{-1}\T_\beta^\alpha$;
+\subsubsection{Weyl spinor}
+We use the convention where $L\xi\equiv L\T_\alpha^\beta\xi_\beta$ and $\bar L\bar \eta\equiv \Lambda^{\dagger-1}\T^\dalpha_\dbeta\bar\eta^\dbeta$.
+\begin{tabbing}
+Majorana fermion~\=\hspace{1em}\=\hspace{6em}\=\hspace{8em}\=Lorentz tr.~\=\hspace{1em}\=\hspace{8.3em}\=\hspace{8em}\kill
+Spinor           \>:\> $\xi_\alpha$,
+                    \> $  \xi^\alpha:=\epsilon^{\alpha\beta}\xi_\beta$; \>
+Lorentz tr.      \>:\> $\xi_\alpha \mapsto \Lambda\T_\alpha^\beta\xi_\beta$,
+                    \> $\xi^\alpha \mapsto \xi^\beta \Lambda^{-1}\T_\beta^\alpha$;
 \\
-            & $\bar\eta^\dalpha :=(\eta^\alpha)^*$
-            & $\bar\eta_\dalpha :=(\eta_\alpha)^*$
-           && $\bar\eta^\dalpha \mapsto \Lambda^\dagger{}^{-1}\T^\dalpha_\dbeta\bar\eta^\dbeta$,
-            & $\bar\eta_\dalpha \mapsto \bar\eta_\dbeta\Lambda^\dagger\T^\dbeta_\dalpha$.\\
-Kinetic term& \multicolumn{2}{@{}l}{$\ii\,\bar\xi\bSm\Pm\xi\quad (=\ii\,\eta\Sm\Pm\bar\eta\;)$}\\
-Mass term   & \multicolumn{4}{@{}l}{%
-               [Majorana] $-\frac12(m\s M\xi\xi+m\s M^*\bar\xi\bar\xi)$\qquad%
-               [Dirac]    $-(m\s D\xi\eta+m^*\s D\bar\xi\bar\eta)$}
+                 \> \> $\bar\eta^\dalpha :=(\eta^\alpha)^*$,
+                    \> $\bar\eta_\dalpha :=(\eta_\alpha)^*$;  \> 
+                 \> \> $\bar\eta^\dalpha \mapsto \Lambda^\dagger{}^{-1}\T^\dalpha_\dbeta\bar\eta^\dbeta$,
+                    \> $\bar\eta_\dalpha \mapsto \bar\eta_\dbeta\Lambda^\dagger\T^\dbeta_\dalpha$.\\
+Kinetic term     \>:\> $\ii\,\bar\xi\bSm\Pm\xi$ \>\>
+Mass term        \>:\> [Majorana] $-\frac12(m\s M\xi\xi+m\s M^*\bar\xi\bar\xi)$\\
+                 \> \> \quad $(=\ii\,\xi\Sm\Pm\bar\xi\;)$
+                 \>\>\>\>[Dirac]    $-(m\s D\xi\eta+m^*\s D\bar\xi\bar\eta)$\\
+
+Dirac fermion    \>:\> $\Lag\s{Dirac}= \ii\,\bar\xi\bSm\Pm\xi + \ii\,\eta\Sm\Pm\bar\eta
+                               -m(\xi\eta+\bar\xi\bar\eta) $\>\>\>$= \overline\psi(\ii\Gm\Pm-m)\psi$\\
+Majorana fermion \>:\> $\Lag\s{Majorana}= \ii\,\bar\xi\bSm\Pm\xi -\frac m2(\xi\xi+\bar\xi\bar\xi)$
+                        \>\>\>$ =\frac12\overline\psi\s M(\ii\Gm\Pm-m)\psi\s M$
+\end{tabbing}
+
+\subsubsection{Dirac spinor}\mbox{}\\[-4em]
+$$
+\psi(x)\equiv\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}
+               \sum_{s=1,2}\Bigl[a^s_\vc p u^s(p)\ee^{-\ii p\cdot x}
+                + b^{s\dagger}_\vc p v^s(p)\ee^{\ii p\cdot x}\Bigr],\quad
+       \text{where}~~ (\slashed p-m)u^s(p)=(\slashed p+m)v^s(p)=0.$$
+\begin{itemize}
+ \item $\overline\psi(x)$ and $\psi\suprm C(x)$ should be defined as they properly respond to Lorentz transformation;
+ \item We define matrix $C$ such that $\psi\suprm C\equiv C\trans{(\overline\psi)}$.
+\end{itemize}
+
+
+\paragraph{Chiral notation (Peskin)}
+\begin{equation*}
+ \Gm=\pmat{0&\Sm\\\bSm&0}, \G5=\pmat{-1&0\\0&1};\quad
+\begin{aligned}
+\trans{(\Gm)}&=\{\G0,-\G1,\G2,-\G3\} = \G0\G2\Gm\G2\G0,\\
+(\Gm)^*&=\{\G0,\G1,-\G2,\G3\} = \G2\Gm\G2,
+~(\Gm)^\dagger= \{\G0,-\gamma^i\} = \G0\Gm\G0.
+\end{aligned}
+\end{equation*}
+\begin{tabular}{l@{ :\ \ \ }l}
+Fields &
+   $\psi    =\pmat{\xi_\alpha\\\bar\eta^\dalpha}=\pmat{\psi\s L\\\psi\s R}$
+   $\left[\Longleftarrow S^{\mu\nu}=\pmat{s^{\mu\nu}&0\\0&\bar s^{\mu\nu}}\right]$; \quad
+   $P{}\s{L}\suprm{R}=\dfrac{1\pm\G5}2.$
+\\&
+   $\overline\psi=\psi^\dagger\G0=\pmat{\eta^\alpha&\bar\xi_\dalpha} = \pmat{\psi\s R^\dagger&\psi\s L^\dagger}$
+   $\left[\Longleftarrow \Lambda_{\frac12}^{-1}=\G0\Lambda_{\frac12}^\dagger\G0\right]$;
+\\&
+   $\psi\suprm C=\pmat{\eta_\alpha\\\bar\xi^\dalpha}$
+   \quad
+   $\therefore C=\pmat{\epsilon_{\alpha\beta}&0\\0&\epsilon^{\dalpha\dbeta}}=-\ii\G2\G0$.~~
+   $\begin{cases}
+     C=C^*=-C^{-1}=-C^\dagger=-\trans{C}\\
+     C^{-1}\Gm C=-\trans{\Gm}
+   \end{cases}$
+\\&
+   $\psi\suprm C=C\trans{(\overline\psi)}=-\ii\G2\psi^*=\pmat{\eta_\alpha\\\bar\xi^\dalpha}$,
+   $\overline\psi{}\suprm C=\trans\psi C=\ii\overline\psi{}^*\G2$.
+   \qquad
+   $\psi\s M=\pmat{\xi_\alpha\\\bar\xi^\dalpha}$.\\
+components&
+     $u^s(p)=\pmat{\sqrt{p\cdot\sigma}\xi^s\\\sqrt{p\cdot\bar\sigma}\xi^s};\
+      v^s(p)=\pmat{\sqrt{p\cdot\sigma}\eta^s\\-\sqrt{p\cdot\bar\sigma}\eta^s}.$ \quad
+      $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$.\\
+Weyl Eqs. & $\ii\bar\sigma\cdot\partial\psi\s L=m\psi\s R;\quad
+             \ii\sigma\cdot\partial\psi\s R=m\psi\s L$\\
 \end{tabular}
 
 \begin{tabular}{l@{ :\ \ \ }l}
-Dirac fermion    & $\Lag\s{Dirac}= \ii\,\bar\xi\bSm\Pm\xi + \ii\,\eta\Sm\Pm\bar\eta
-                               -m(\xi\eta+\bar\xi\bar\eta) = \overline\psi(\ii\Gm\Pm-m)\psi$\\
-Majorana fermion & $\Lag\s{Majorana}= \ii\,\bar\xi\bSm\Pm\xi -\frac m2(\xi\xi+\bar\xi\bar\xi)
-                         =\frac12\overline\psi\s M(\ii\Gm\Pm-m)\psi\s M$\\
-\end{tabular}
-
-\begin{tabular}{l@{ :\ \ \ }l}
-Charge conjugate & $\psi\suprm C:=C\trans{(\overline\psi)}$\quad[$(\psi\s M)\suprm C=\psi\s M$]\\
-\end{tabular}
-
-\subsubsection{Chiral Notation (Peskin)}
-\begin{tabular}{l@{ :\ \ \ }l}
-Gamma Matrices & $\Gm=\pmat{0&\Sm\\\bSm&0},\quad \G5=\pmat{-1&0\\0&1};\quad
-                  P{}\s{L}\suprm{R}=\dfrac{1\pm\G5}2.$\\
-Fields         & $\psi    =\pmat{\xi_\alpha\\\bar\eta^\dalpha}=\pmat{\psi\s L\\\psi\s R};$\quad
-                 $\overline\psi=\psi^\dagger\G0=\pmat{\eta^\alpha&\bar\xi_\dalpha}
-                          =\pmat{\psi\s R^\dagger&\psi\s L^\dagger}$;\quad
-                 $\psi\s M=\pmat{\xi_\alpha\\\bar\xi^\dalpha}$.\\
- & $u^s(p)=\pmat{\sqrt{p\cdot\sigma}\xi^s\\\sqrt{p\cdot\bar\sigma}\xi^s};\
-    v^s(p)=\pmat{\sqrt{p\cdot\sigma}\eta^s\\-\sqrt{p\cdot\bar\sigma}\eta^s}$\\
- & $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$.\\
-\end{tabular}
-
-\begin{tabular}{l@{ :\ \ \ }l}
-Charge conj.  & $C:=-\ii\G2\G0=\pmat{\epsilon_{\alpha\beta}&0\\0&\epsilon^{\dalpha\dbeta}}$\qquad
-                 $\begin{cases}-C=C^{-1}=C^\dagger=\trans{C}\\\phantom{-}C=C^*\end{cases}$, $C^{-1}\Gm C=-\trans{\Gm}$.\\
-              & $\psi\suprm C=C\trans{(\overline\psi)}=-\ii\G2\psi^*=\pmat{\eta_\alpha\\\bar\xi^\dalpha}$,\quad
-$\overline\psi{}\suprm C=\trans\psi C=\ii\overline\psi{}^*\G2$\\
-Weyl Equations & $\ii\bar\sigma\cdot\partial\psi\s L=m\psi\s R;\quad
-                  \ii\sigma\cdot\partial\psi\s R=m\psi\s L$\\
 $z$-boost limit &
 Halt: $u^s=\sqrt{m}\spmat{\xi^s\\\xi^s}$, $v^s=\sqrt{m}\spmat{\eta^s\\-\eta^s}$;\\
 &Slow:
@@ -130,7 +170,42 @@ $\sqrt{p\cdot\bar\sigma}\simeq \sqrt m(1+\vipro v\sigma/2)$;\\
  $v^s=\sqrt{2E}\pmat{\spmat{0&0\\0&1}\eta^s\\-\spmat{1&0\\0&0}\eta^s}$.
 \end{tabular}
 
-\subsubsection{Dirac Notation}
+\subparagraph{CPT transformations}\mbox{}\\
+In the following, $CP$ means ``$P$, then $C$\ '' {\bf in algebraic sense}. Be careful on the order.
+\begin{align*}
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{P} \eta_P  \G0\psi(t,-\vc x)&
+ \overline\psi       &\xrightarrow[\hskip30pt]{P} \eta_P^* \overline\psi\G0\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{T} \eta_T C\G5\psi(-t,\vc x)&
+ \overline\psi       &\xrightarrow[\hskip30pt]{T} -\eta_T^* \overline\psi C\G5\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{C} \eta_C   C\overline\psi\trans{}(t,\vc x)=C\G0\psi^*&
+ \overline\psi       &\xrightarrow[\hskip30pt]{C} \eta_C^* \overline\psi^*\G0C = -\eta_C^*\trans{(C\psi)}\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CP} \eta_{CP}\trans{(\overline\psi \G0C)}&
+ \overline\psi       &\xrightarrow[\hskip30pt]{CP} \eta_{CP}^*\trans{(C\G0\psi)}\\
+ \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CPT} \trans{(\overline\psi\G0\G5)}&
+ \overline\psi       &\xrightarrow[\hskip30pt]{CPT} \trans{(\G0\G5\psi)}&
+\end{align*}
+Note that $T$-transformation is anti-unitary, and $\eta_{CPT}=1$.
+Especially, photon is $(P,T,C)=(-,+,-)$.
+
+\begin{tabular}[t]{c|c|c|cccccc}
+ & $\phi$ & $A^\mu$
+ & $\bar\psi\psi$ & $\bar\psi\Gm\psi$ & $\bar\psi\Smn\psi$
+ & $\bar\psi\Gm\G5\psi$ & $\ii\bar\psi\G5\psi$ & $\Pm$\\\hline
+$P$
+  & $\phi$ & $-$$+$$+$$+$$A^\mu$
+  &$+$&$+$$-$$-$$-$&($+$$-$$-$$-$)($+$$-$$-$$-$)&$-$$+$$+$$+$&$-$&$+$$-$$-$$-$\\
+$T$
+  & $\phi$ & $+$$-$$-$$-$$A^\mu$
+  &$+$&$+$$-$$-$$-$&$-$($+$$-$$-$$-$)($+$$-$$-$$-$)&$+$$-$$-$$-$&$-$&$-$$+$$+$$+$\\
+$C$
+  & $\phi^*$ & $+$$A^{\mu*}$
+  &$+$&$-$&$-$&$+$&$+$&$+$\\
+$CPT$
+  & $\phi^*$ & $-$$A^{\mu*}$
+  &$+$&$-$&$+$&$-$&$+$&$-$\\
+\end{tabular}\vspace{1.5zw}
+
+\paragraph{Dirac Notation}\mbox{}\\
 \begin{tabular}{l@{ :\ \ \ }l}
 Gamma Matrices & $\hat\gamma^0=\pmat{1&0\\0&-1},\quad
                   \hat\gamma^i=\pmat{0&\vc\sigma\\-\vc\sigma&0},\quad
@@ -164,59 +239,6 @@ $\frac{\vipro p\sigma}{\sqrt{p^0+m}}\simeq\sqrt{\frac m2}(\vipro v\sigma)$;\\
 \end{tabular}
 
 
-\subsubsection{CPT transformations}
-\vspace{-19pt}
-\begin{flushright}
-{\NOTE{Note that these expressions are valid under the above frameworks.}}\vspace{-5pt}
-\end{flushright}
-In the following, $CP$ means ``$P$, then $C$\ '' {\bf in algebraic sense}. Be careful to the order.
-\begin{align*}
- \psi(t,\vc x) &\xrightarrow[\hskip30pt]{P} \eta_P  \G0\psi(t,-\vc x)&
- \overline\psi       &\xrightarrow[\hskip30pt]{P} \eta_P^* \overline\psi\G0\\
- \psi(t,\vc x) &\xrightarrow[\hskip30pt]{T} \eta_T C\G5\psi(-t,\vc x)&
- \overline\psi       &\xrightarrow[\hskip30pt]{T} -\eta_T^* \overline\psi C\G5\\
- \psi(t,\vc x) &\xrightarrow[\hskip30pt]{C} \eta_C   C\overline\psi\trans{}(t,\vc x)=C\G0\psi^*&
- \overline\psi       &\xrightarrow[\hskip30pt]{C} \eta_C^* \overline\psi^*\G0C = -\eta_C^*\trans{(C\psi)}\\
- \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CP} \eta_{CP}\trans{(\overline\psi \G0C)}&
- \overline\psi       &\xrightarrow[\hskip30pt]{CP} \eta_{CP}^*\trans{(C\G0\psi)}\\
- \psi(t,\vc x) &\xrightarrow[\hskip30pt]{CPT} \trans{(\overline\psi\G0\G5)}&
- \overline\psi       &\xrightarrow[\hskip30pt]{CPT} \trans{(\G0\G5\psi)}&
-\end{align*}
-Note that $T$-transformation is anti-unitary, and $\eta_{CPT}=1$.
-Especially, photon is $(P,T,C)=(-,+,-)$.
-
-\hspace{1zw}
-
-\begin{tabular}[t]{c|c|c|cccccc}
- & $\phi$ & $A^\mu$
- & $\bar\psi\psi$ & $\bar\psi\Gm\psi$ & $\bar\psi\Smn\psi$
- & $\bar\psi\Gm\G5\psi$ & $\ii\bar\psi\G5\psi$ & $\Pm$\\\hline
-$P$
-  & $\phi$ & $-$$+$$+$$+$$A^\mu$
-  &$+$&$+$$-$$-$$-$&($+$$-$$-$$-$)($+$$-$$-$$-$)&$-$$+$$+$$+$&$-$&$+$$-$$-$$-$\\
-$T$
-  & $\phi$ & $+$$-$$-$$-$$A^\mu$
-  &$+$&$+$$-$$-$$-$&$-$($+$$-$$-$$-$)($+$$-$$-$$-$)&$+$$-$$-$$-$&$-$&$-$$+$$+$$+$\\
-$C$
-  & $\phi^*$ & $+$$A^{\mu*}$
-  &$+$&$-$&$-$&$+$&$+$&$+$\\
-$CPT$
-  & $\phi^*$ & $-$$A^{\mu*}$
-  &$+$&$-$&$+$&$-$&$+$&$-$\\
-\end{tabular}\vspace{.5zw}
-
-\subsubsection{Noether current}
-\begin{tabular}{l@{ :\ \ \ }l}
-Infinitesimal transformation & $\phi(x)\mapsto \phi'(x):=\phi(x)+\alpha\Delta\phi(x)$\\
-Correspondent transformation & $\alpha\Delta\Lag = \alpha\Pm\left(\pdiff{\Lag}{(\Pm\phi)}\Delta\phi\right)+\cancel{\alpha\left[\pdiff\Lag\phi-\Pm\left(\pdiff\Lag{(\Pm\phi)}\right)\right]\Delta\phi}$\\
-                             & So, defining\quad $\alpha\Pm\mathcal J^\mu(x):=\Lag'(x)-\Lag(x)$,\\
-Noether current              & $j^\mu(x):=\pdiff\Lag{(\Pm\phi)}\Delta\phi-\mathcal J^\mu$;\qquad
-                               $\Pm j^\mu(x)=0$\\
-Noether charge               & $Q:=\int j^0\dd^3x$\\
-Energy-momentum tensor       & $T\T^\mu_\nu=\Pm\Lag{(\Pm\phi)}\Pn\phi-\Lag\delta^\mu_\nu$;\quad
-$\mathcal H=T^{00}$,\quad $\mathcal P^i =T^{0i}$.\\
-&$T\T^\mu_\nu$ is the variation along $\mu$ in respect to the modification $a^\nu$.\\
-\end{tabular}
 
 
 \subsection{Feynman Rules}
@@ -352,6 +374,22 @@ $\Sm\Sn=\ii\epsilon^{0\mu\nu\rho}\Sr+\delta^\mu_0\Sn+\delta^\nu_0\Sm-\Hmn\sigma^
 $[\sigma^i,\sigma^j]=2\ii\epsilon_{ijk}\sigma^k$
 
 ${\sigma^i,\sigma^j}=2\delta_{ij}$
+
+
+\subsubsection{Noether current}
+\begin{tabular}{l@{ :\ \ \ }l}
+Infinitesimal transformation & $\phi(x)\mapsto \phi'(x):=\phi(x)+\alpha\Delta\phi(x)$\\
+Correspondent transformation & $\alpha\Delta\Lag = \alpha\Pm\left(\pdiff{\Lag}{(\Pm\phi)}\Delta\phi\right)+\cancel{\alpha\left[\pdiff\Lag\phi-\Pm\left(\pdiff\Lag{(\Pm\phi)}\right)\right]\Delta\phi}$\\
+                             & So, defining\quad $\alpha\Pm\mathcal J^\mu(x):=\Lag'(x)-\Lag(x)$,\\
+Noether current              & $j^\mu(x):=\pdiff\Lag{(\Pm\phi)}\Delta\phi-\mathcal J^\mu$;\qquad
+                               $\Pm j^\mu(x)=0$\\
+Noether charge               & $Q:=\int j^0\dd^3x$\\
+Energy-momentum tensor       & $T\T^\mu_\nu=\Pm\Lag{(\Pm\phi)}\Pn\phi-\Lag\delta^\mu_\nu$;\quad
+$\mathcal H=T^{00}$,\quad $\mathcal P^i =T^{0i}$.\\
+&$T\T^\mu_\nu$ is the variation along $\mu$ in respect to the modification $a^\nu$.\\
+\end{tabular}
+
+
 
 \TODO{TODO:}
 \begin{itemize}
