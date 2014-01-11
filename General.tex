@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2014-01-10 23:53:58 misho>
+%%% Time-Stamp: <2014-01-11 16:03:04 misho>
 %%% 一部で日本語が使用されています。
 
 \section{General Definitions and Tools}
@@ -83,7 +83,9 @@ Our Old Language
  For 2-spinor \>:\> $\xi\mapsto L\xi = \exp(-\frac\ii2\omega_{\mu\nu}s^{\mu\nu})\xi$, \> We will use~~\= $s^{0i}=\bar s^{i0}=-\frac\ii2\sigma_i$,\\
 \>\>$\bar\eta\mapsto\bar L\bar\eta = \exp(-\frac\ii2\omega_{\mu\nu}\bar s^{\mu\nu})\bar\eta$; \> \> $s^{ij}=\bar s^{ij}=\frac12\epsilon^{ijk}\sigma_k$.\quad{\footnotesize (See Sec.~\ref{sec:weyl-spinor} for details.)}
 \end{tabbing}
-\footnotetext{ $\mathcal J^{\mu\nu}$ and $S^{\mu\nu}$ are representations of Lorentz algebra; $\{\Gm,\Gn\}=2\Hmn$ is sufficient for $S^{\mu\nu}$ to follow the algebra.}
+\footnotetext{ $\mathcal J^{\mu\nu}$, $S^{\mu\nu}$, and $s^{\mu\nu}$ are representations of Lorentz algebra; $\{\Gm,\Gn\}=2\Hmn$ is sufficient for $S^{\mu\nu}$ to follow the algebra.}
+
+\vspace{-2em}
 
 \subsubsection{Weyl spinor}
 We use the convention where $L\xi\equiv L\T_\alpha^\beta\xi_\beta$ and $\bar L\bar \eta\equiv \Lambda^{\dagger-1}\T^\dalpha_\dbeta\bar\eta^\dbeta$.
@@ -109,6 +111,8 @@ Majorana fermion \>:\> $\Lag\s{Majorana}= \ii\,\bar\xi\bSm\Pm\xi -\frac m2(\xi\x
                         \>\>\>$ =\frac12\overline\psi\s M(\ii\Gm\Pm-m)\psi\s M$
 \end{tabbing}
 
+\vspace{-2em}
+
 \subsubsection{Dirac spinor}\mbox{}\\[-4em]
 $$
 \psi(x)\equiv\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}
@@ -130,7 +134,7 @@ $$
 ~(\Gm)^\dagger= \{\G0,-\gamma^i\} = \G0\Gm\G0.
 \end{aligned}
 \end{equation*}
-\begin{tabular}{l@{ :\ \ \ }l}
+\begin{tabular}{l@{ :\ \ }l}
 Fields &
    $\psi    =\pmat{\xi_\alpha\\\bar\eta^\dalpha}=\pmat{\psi\s L\\\psi\s R}$
    $\left[\Longleftarrow S^{\mu\nu}=\pmat{s^{\mu\nu}&0\\0&\bar s^{\mu\nu}}\right]$; \quad
@@ -151,13 +155,23 @@ Fields &
    $\overline\psi{}\suprm C=\trans\psi C=\ii\overline\psi{}^*\G2$.
    \qquad
    $\psi\s M=\pmat{\xi_\alpha\\\bar\xi^\dalpha}$.\\
-components&
-     $u^s(p)=\pmat{\sqrt{p\cdot\sigma}\xi^s\\\sqrt{p\cdot\bar\sigma}\xi^s};\
-      v^s(p)=\pmat{\sqrt{p\cdot\sigma}\eta^s\\-\sqrt{p\cdot\bar\sigma}\eta^s}.$ \quad
-      $\Bigl[\eta^s=\xi^{-s}:=-\ii\sigma^2(\xi^s)^*=(\xi^2,-\xi^1)\Bigr]$.\\
-Weyl Eqs. & $\ii\bar\sigma\cdot\partial\psi\s L=m\psi\s R;\quad
+components&\parbox[t]{10.4em}{
+$u^s(p)=\pmat{\sqrt{p\cdot\sigma}\xi^s\\\sqrt{p\cdot\bar\sigma}\xi^s};$\\
+ $v^s(p)=\pmat{\sqrt{p\cdot\sigma}\eta^s\\-\sqrt{p\cdot\bar\sigma}\eta^s}.$
+}\hspace{0em}
+\parbox[t]{26.4em}{
+$\xi$ is an $\gSU(2)$ spinor s.t. $\xi^\dagger\xi=1$.\\
+We label $\eta^s=-\ii\sigma_2(\xi^s)^*$ so that $v=C\trans{\overline u}$, $u=C\trans{\overline v}$, and
+\\\hfill
+$\displaystyle\psi\suprm C(x)=\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}
+               \sum_{s=1,2}\Bigl[b^s_\vc p u^s(p)\ee^{-\ii p\cdot x}
+                + a^{s\dagger}_\vc p v^s(p)\ee^{\ii p\cdot x}\Bigr]$.
+}
+\\
+Weyl eqs. & $\ii\bar\sigma\cdot\partial\psi\s L=m\psi\s R;\quad
              \ii\sigma\cdot\partial\psi\s R=m\psi\s L$\\
 \end{tabular}
+
 
 \begin{tabular}{l@{ :\ \ \ }l}
 $z$-boost limit &

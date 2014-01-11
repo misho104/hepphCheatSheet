@@ -9,4 +9,4 @@ feynexec
 cd ..
 rm *.dvi
 platexmake CheatSheet
-
+dvipdfmx CheatSheet

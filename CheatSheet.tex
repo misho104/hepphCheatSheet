@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2013-01-10 13:37:39 misho>
+%%% Time-Stamp: <2014-01-11 16:07:28 misho>
 %%% 一部で日本語が使用されています。
 
 \documentclass[a4j,10pt,notitlepage]{jsarticle}
@@ -19,7 +19,9 @@
 \def\theequation{\@arabic\c@section.\@arabic\c@equation}
 \@addtoreset{equation}{section}
 %appendix周辺
+\let\org@appendix\appendix
 \renewcommand{\appendix}{\par
+  \org@appendix
   \setcounter{section}{0}%
   \setcounter{subsection}{0}%
   \setcounter{equation}{0}%
