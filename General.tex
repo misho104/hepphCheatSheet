@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2014-01-11 16:18:19 misho>
+%%% Time-Stamp: <2014-01-15 17:48:45 misho>
 %%% 一部で日本語が使用されています。
 
 \section{General Definitions and Tools}
@@ -418,23 +418,21 @@ $\mathcal H=T^{00}$,\quad $\mathcal P^i =T^{0i}$.\\
 \subsection{Dirac's Gamma Algebras}
 \subsubsection{Traces}\vspace{-2.5zw}
 \begin{align}
- \Tr(\text{any odd \# of $\gamma$'s})&=0\\
- \Tr(\Gm\Gn)&= 4\Hmn\\
- \Tr(\Gm\Gn\Gr\Gs) &= 4(\Hmn\Hrs-\Hmr\Hns+\Hms\Hnr)\\
- \Tr(\text{$\G5$ and any odd \# of $\gamma$'s})&=0\\
- \Tr(\Gm\Gn\G5)&= 0\\
- \Tr(\Gm\Gn\Gr\Gs\G5) &= -4\ii\epsilon^{\mu\nu\rho\sigma}\\
-\intertext{Generally, for some $\gamma$-matrices $A,B,C,\dots$,}\quad
+ \Tr(\text{any odd \# of $\gamma$'s})&=0,\\
+ \Tr(\Gm\Gn)&= 4\Hmn,\\
+ \Tr(\Gm\Gn\Gr\Gs) &= 4(\Hmn\Hrs-\Hmr\Hns+\Hms\Hnr),\\
+ \Tr(\text{$\G5$ and any odd \# of $\gamma$'s})&=0,\\
+ \Tr(\Gm\Gn\G5)&= 0,\\
+ \Tr(\Gm\Gn\Gr\Gs\G5) &= -4\ii\epsilon^{\mu\nu\rho\sigma}.
+\\
+\intertext{Because of $\Gm\Gn\Gr\Gs\cdots)=\Tr(\cdots\Gs\Gr\Gn\Gm)$,
+for some $\gamma$-matrices $A,B,C,\dots$,}\quad
 \Tr(ABCDEF\cdots) &=
 \Minkow{AB}\Tr(CDEF\cdots) - \Minkow{AC}\Tr(BDEF\cdots)\notag\\
-& + \Minkow{AD}\Tr(BCEF\cdots) - \Minkow{AE}\Tr(BCDF\cdots) + \cdots,\\[1.5zw]
-\Tr(ABCDEF\cdots\G5) &= \text{\emp{Not Established.}}
+& + \Minkow{AD}\Tr(BCEF\cdots) - \Minkow{AE}\Tr(BCDF\cdots) + \cdots.
+\intertext{$\Tr(ABCDEF\cdots\G5)$ can be calculated by utilizing the identity}
+ \G5\Gm\Gn\Gr&=\G5\Gm\Hnr-\G5\Gn\Hmr+\G5\Gr\Hmn-\ii \epsilon^{\mu\nu\rho\sigma}\Gsd.
 \end{align}
-To prove the second equation, we use following technique:
-\begin{equation}
- \Tr(\Gm\Gn\Gr\Gs\cdots)=\Tr(\cdots\Gs\Gr\Gn\Gm);\qquad
- \Tr(\Gm\Gn\Gr\Gs\cdots\G5)=\Tr(\G5\cdots\Gs\Gr\Gn\Gm).
-\end{equation}
 
 \subsubsection{Contractions}\vspace{-2.5zw}
 \begin{align}

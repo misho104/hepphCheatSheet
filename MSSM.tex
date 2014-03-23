@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2013-01-13 18:41:33 misho>
+%%% Time-Stamp: <2014-03-24 01:37:45 misho>
 %%% 一部で日本語が使用されています。
 
 \def\uL{u\s L{}}%obsolete
@@ -677,6 +677,29 @@ Further decomposed results are shown in {\em Standard Model} section, Eqs.~\eqre
 \end{align}
 and the rest part is
  $\Lag\s{gauge}+\Lag\s{scalar} + \Lag\s{pot.}\suprm{RPC}$.
+
+\subsubsection{Mass matrices}
+\begin{align}
+ m^2_{\tilde t}&=\pmat{
+  m^2_{Q_3} + m_t^2 + (\tfrac12-\tfrac23s\s w^2)m_Z^2\cos2\beta &
+  m_t(A_t^*-\mu \cot\beta)\\
+  m_t(A_t-\mu \cot\beta)&
+  m^2_{\bU_3}+m_t^2 + \tfrac23 s\s w^2 m_Z^2\cos2\beta
+},\\
+ m^2_{\tilde b}&=\pmat{
+  m^2_{Q_3} + m_b^2 + (-\tfrac12+\tfrac13s\s w^2)m_Z^2\cos2\beta &
+  m_b(A_b^*-\mu \tan\beta)\\
+  m_b(A_b-\mu \tan\beta)&
+  m^2_{\bD_3}+m_b^2 - \tfrac13 s\s w^2 m_Z^2\cos2\beta
+},\\
+ m^2_{\tilde\tau}&=\pmat{
+  m^2_{L_3} + m_\tau^2 + (-\tfrac12+s\s w^2)m_Z^2\cos2\beta &
+  m_\tau(A_\tau^*-\mu \tan\beta)\\
+  m_\tau(A_\tau-\mu \tan\beta)&
+  m^2_{\bE_3}+m_\tau^2 -  s\s w^2 m_Z^2\cos2\beta
+}.
+\end{align}
+
 
 \newpage
 \subsection{minimal GMSB}
