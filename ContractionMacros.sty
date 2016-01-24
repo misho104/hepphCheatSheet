@@ -1,0 +1,78 @@
+% Macros for "contractions", by Dan Schroeder
+% These are a total kludge--use at your own risk!
+
+\newif\ifContLineOne
+\newif\ifContLineTwo
+\newif\ifContLineThree
+
+% Macro to draw horizontal lines, continuing all contractions in progress.
+% Parameter is the symbols to go underneath.  Lines have width .4pt and 
+% are separated by 3.2pt of space.  Bottom of lowest line is 14pt above baseline.
+\def\conC#1{\vbox{\ialign{##\crcr
+  \ifContLineThree\hrulefill\else\vphantom{\hrulefill}\fi\crcr
+  \noalign{\kern3.2pt\nointerlineskip}
+  \ifContLineTwo\hrulefill\else\vphantom{\hrulefill}\fi\crcr
+  \noalign{\kern3.2pt\nointerlineskip}
+  \ifContLineOne\hrulefill\else\vphantom{\hrulefill}\fi\crcr
+  \noalign{\nointerlineskip}
+  $\hfil\textstyle{\vbox to 14pt{}#1}\hfil$\crcr}}}
+
+% Internal macro to draw vertical legs.  dimen2 is height of
+% bottom of leg.  The initial value of dimen3+(#2*dimen4) is height
+% of top of leg, and must be adjusted if these macros are used under
+% different vertical spacing conditions.
+\def\DrawLeg#1#2{
+  \kern-.2pt              % back up half width of leg
+  \dimen2 =#1             % =height of whatever is underneath leg
+  \advance\dimen2 by 2pt  % 2pt space below bottom of leg
+  \dimen3 = 10.6pt        % base value of height of top of leg
+  \dimen4 =3.6pt          % add this much time 1 2 or 3 to base value
+  \advance\dimen3 by -\dimen2 
+  \multiply\dimen4 by #2
+  \advance\dimen3 by \dimen4
+  \raise\dimen2 \hbox{\vrule height\dimen3 width .4pt} % draw it
+  \kern-.2pt}             % and back up half width of line
+
+% Macro to begin a new contraction.  First parameter is height or level
+% (1, 2, or 3); second parameter is the symbol(s) to go underneath
+\def\begC#1#2{\setbox0 =\hbox{$\textstyle{#2}$}
+  \dimen0=.5\wd0 \dimen1=\ht0
+  \conC{\hskip\dimen0}
+  \count255=#1
+  \ifnum\count255 =1 \ContLineOnetrue\else
+  \ifnum\count255 =2 \ContLineTwotrue\else
+  \ifnum\count255 =3 \ContLineThreetrue\fi\fi\fi
+  \DrawLeg{\dimen1}{\count255}
+  \conC{\hskip\dimen0}
+  \kern-\dimen0\kern-\dimen0 \box0}
+
+% Macro to end a contraction; same parameters as \begC.
+\def\endC#1#2{\setbox0 =\hbox{$\textstyle{#2}$}
+  \dimen0=.5\wd0 \dimen1=\ht0
+  \conC{\hskip\dimen0}
+  \count255=#1
+  \ifnum\count255 =1 \ContLineOnefalse\else
+  \ifnum\count255 =2 \ContLineTwofalse\else
+  \ifnum\count255 =3 \ContLineThreefalse\fi\fi\fi
+  \DrawLeg{\dimen1}{\count255}
+  \conC{\hskip\dimen0}
+  \kern-\dimen0\kern-\dimen0 \box0}
+
+\def\backskip{\vskip -3.6pt}  % useful for eating up extra space
+% when an equation has only first- or second-level contractions
+\def\bbackskip{\vskip -7.2pt}
+
+% Examples
+%Here's a simple contraction using only the first (lowest) level:
+%\bbackskip
+%$$
+%\begC1{\phi_1}\conC{\phi_2\phi_3}\endC1{\phi_4}
+%$$
+%%And here's a complicated example using all three levels:
+%$$
+%\langle0|\, \begC2{\phi(x)}\begC3{\phi(y)}\conC{\,{1\over3!}
+%  \bigl({-i\lambda\over4!}\bigr)^3\int\!d^4z\,}\endC2{\phi}\begC1{\phi}
+%  \endC1\phi\begC1\phi\conC{\,\int\!d^4w\,}\endC1\phi\begC2\phi
+%  \begC1\phi\endC3\phi\conC{\,\int\!d^4u\,}\endC1\phi\endC2\phi
+%  \begC1\phi\endC1\phi\,|0\rangle
+%$$

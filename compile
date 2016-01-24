@@ -1,12 +1,20 @@
 #!/bin/bash
 
-yes|TeXCleaner
-rm -rf feynman
-mkdir feynman
-platexmake CheatSheet
-cd feynman
-feynexec
-cd ..
+git clean -xf feynman
+
+platex CheatSheet
+
+(
+  cd feynman
+  for i in *.mp; do
+    if [ "$i" != "feynmp.mp" ]; then
+      mpost $i
+    fi
+  done
+)
+
 rm *.dvi
-platexmake CheatSheet
+platex CheatSheet
+platex CheatSheet
+platex CheatSheet
 dvipdfmx CheatSheet

@@ -1,0 +1,262 @@
+% MyCommand ver.4.00
+
+%%% 処理系オプション %%%
+\newif\ifPLATEX\PLATEXfalse
+\newif\ifFULL\FULLtrue
+\newif\ifPRESENTATION\PRESENTATIONfalse
+\let\cdef\def
+\def\@tempa{pLaTeX2e}\ifx\pfmtname\@tempa\PLATEXtrue\fi
+\newcommand{\PLATEXusepackage}[2][]{\ifPLATEX\usepackage[#1]{#2}\fi}
+\newcommand{\FULLusepackage}[2][]{\ifFULL\usepackage[#1]{#2}\fi}
+
+\DeclareOption{DEBUG}{\def\cdef#1{\ifdefined#1\errmessage{Command \string#1 already defined}\fi\def#1}}
+\DeclareOption{PRESENTATION}{\PLATEXfalse\FULLfalse\PRESENTATIONtrue}
+\DeclareOption{PLAINLATEX}{\PLATEXfalse}
+\DeclareOption{LIGHTMODE}{\FULLfalse}
+
+
+%%% デザインオプション %%%
+\def\ifVectorDesign{1}                               %%% Vectorの表記法
+  \DeclareOption{vecbold} {\def\ifVectorDesign{1}}   %   *1 vecbold  : 太字
+  \DeclareOption{vecarrow}{\def\ifVectorDesign{2}}   %    2 vecarrow : 矢印
+  \DeclareOption{vecnone} {\def\ifVectorDesign{3}}   %    3 vecnone  : 装飾無し
+\newif\ifspecialblock\specialblocktrue               %%% 微分記号，Napia数などの表記法
+  \DeclareOption{specialblock} {\specialblocktrue}   %   *T specialblock  : Roman
+  \DeclareOption{specialnormal}{\specialblockfalse}  %    F specialnormal : Italic
+\newif\ifNormDouble\NormDoubletrue                   %%% Vectorのnormの表記法
+  \DeclareOption{normdouble}{\NormDoubletrue}        %   *T normdouble : 二重縦線
+  \DeclareOption{normsingle}{\NormDoublefalse}       %    F normsingle : 一重縦線
+\def\ifVDiffDesign{1}                                %%% Vectorの微分の表記法
+  \DeclareOption{usenabla}   {\def\ifVDiffDesign{1}} %   *1 usenabla    : 全て Nabla で表記
+  \DeclareOption{nousenabla} {\def\ifVDiffDesign{2}} %    2 nousenabla  : 文字および△で表記
+  \DeclareOption{usenablalap}{\def\ifVDiffDesign{3}} %    3 usenablalap : Nabla と△を併用
+\newif\ifUnitsBracket\UnitsBracketfalse              %%% 単位記号の[ ]の有無
+  \DeclareOption{unitsbracket}{\UnitsBrackettrue}    %    T unitsbracket   : 付ける
+  \DeclareOption{unitsnobracket}{\UnitsBracketfalse} %   *F unitsnobracket : 付けない
+\newif\ifReImLetters\ReImLetterstrue                 %%% Re/Im の表記
+  \DeclareOption{reimletters}{\ReImLetterstrue}      %   *T Re/Im
+  \DeclareOption{reimsymbol} {\ReImLettersfalse}     %    F R/I (TeX original)
+   
+\ProcessOptions\relax
+
+%%% jsclasses 専用オプションをそれ以外の documentclass でも定義 %%%
+\@ifundefined{ifdraft}{\newif\ifdraft\draftfalse}{}
+\@ifundefined{if@slide}{\newif\if@slide\@slidefalse}{}
+
+%==============================================================================%
+% USEPACKAGE
+%==============================================================================%
+\usepackage{amsmath,amssymb}         % boldsymbol provided here
+\FULLusepackage{mathrsfs}            % mathscr style
+\usepackage{url,cancel,braket}
+\FULLusepackage{wrapfig,fancybox}
+\FULLusepackage[OT2,T1]{fontenc}
+
+\ifPLATEX\ifFULL
+  \usepackage[multi,deluxe]{otf}
+\fi\fi
+
+% COLOR, TXFONTS, FOURIERNC ARE NOT INCLUDED HERE!
+\ifPRESENTATION
+  \usepackage[dvipdfm]{color}
+\fi
+
+%==============================================================================%
+% GENERIC
+%==============================================================================%
+
+\cdef\s#1{_\mathrm{#1}}
+\cdef\ssub#1{\raisebox{-0.3ex}{\tiny$\mathrm #1$}}
+\cdef\suprm#1{^\mathrm{#1}}
+\cdef\stx#1{_{\text{#1}}}
+
+\def\labelitemii{\normalfont$\circ$}
+
+\cdef\where{\qquad\text{where}\quad}
+\cdef\for{\quad\text{for}\quad}
+
+\ifdefined\definecolor
+  \definecolor{orange}          {cmyk}{0,0.61,0.87,0}
+  \definecolor{gray}            {gray}{0.5}
+  \definecolor{presentationpink}{rgb}{1.0,0.17647,0.7451} % 255,45,190
+  \cdef\RED {\color{red}}
+  \cdef\BLUE{\color{blue}}
+  \cdef\GRAY{\color{gray}}
+  \cdef\PINK{\color{presentationpink}}
+\fi
+
+\ifFULL
+  \newcommand{\starline}{\par\begin{center}*\quad*\quad*\end{center}\par}
+  \newcommand{\TODO}[1]{{\bf\color{Red}\underline{TODO}: #1}}
+  \newcommand{\emp}[1]{{\bf\color{Red}#1}}
+  \newcommand{\blueemp}[1]{{\bf\color{blue}#1}}
+  \newcommand{\Hrule}{\noalign{\hrule height1pt}}
+  \newcommand{\Vrule}{\vrule width 1pt}
+
+  \newcommand{\Eucleides}{\foreignlanguage{greek}{Eukle'ides}}
+  \newcommand{\Landau}{\foreignlanguage{russian}{Land\'au}}
+  \newcommand{\Fock}{\foreignlanguage{russian}{Fok}}
+
+  \ifdefined\definecolor
+    \newcommand{\NOTE}[1]{{\footnotesize\text{\color{orange}$\langle\!\langle$#1$\rangle\!\rangle$}}}
+
+    \ifPLATEX
+      \renewcommand{\NOTE}[1]{{\footnotesize\text{\color{orange}{\bf\CID{690}}#1{\bf\CID{691}}}}}
+    \fi
+  \fi
+\fi
+
+%==============================================================================%
+% MATH
+%==============================================================================%
+\cdef\special@letter#1{\ifspecialblock {\mathrm #1} \else #1 \fi}
+\cdef\dd{\special@letter{d}}
+\cdef\DD{\special@letter{D}}
+\cdef\ee{\special@letter{e}}
+\cdef\ii{\special@letter{i}}
+\cdef\ppi{\ifspecialblock \piup \else \pi \fi}
+\cdef\micro{\ifspecialblock \muup \else \mu \fi}
+
+\cdef\Hc{\text{H.c.}}
+
+\cdef\abs#1{\left|#1\right|}
+\cdef\trans#1{#1\raisebox{1.0ex}{\tiny$\mathrm T$}}
+\cdef\degree{{}^{\circ}}
+\cdef\pmat#1{\begin{pmatrix}#1\end{pmatrix}}
+\cdef\spmat#1{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
+
+\renewcommand{\iff}{\@ifnextchar[{\@iff}{\Longleftrightarrow}}
+\cdef\@iff[#1]{\DOTSB\;\buildrel {#1}\over\Longleftrightarrow\;}
+\cdef\combi#1#2#3{{}_{#1}\mbox{\large #2}_{#3}}
+
+\cdef\Tr     {\mathop{\mathrm{Tr}}}
+\cdef\diag   {\mathop{\mathrm{diag}}}
+\cdef\ad     {\mathop{\mathrm{ad}}}
+\cdef\arctanh{\mathop{\mathrm{arctanh}}}
+\cdef\arccoth{\mathop{\mathrm{arccoth}}}
+\cdef\arcsinh{\mathop{\mathrm{arcsinh}}}
+\cdef\arccosh{\mathop{\mathrm{arccosh}}}
+\cdef\sech   {\mathop{\mathrm{sech}}}
+\cdef\csch   {\mathop{\mathrm{csch}}}
+\cdef\Order  {\special@letter{O}}
+
+\ifReImLetters
+  \def\Re{\mathop{\mathrm{Re}}}
+  \def\Im{\mathop{\mathrm{Im}}}
+\fi
+
+\cdef\vc#1{{\ifcase\ifVectorDesign\or\boldsymbol{#1}\or\overrightarrow{#1\mathstrut}\or#1\fi}}
+\cdef\norm#1{\ifNormDouble\left\|#1\right\|\else\left|#1\right|\fi}
+\cdef\vnorm#1{\norm{\vc{#1}}}
+\cdef\vipro#1#2{\vc{#1}\cdot\vc{#2}}
+\cdef\vopro#1#2{\vc{#1}\times\vc{#2}}
+
+\cdef\vdiv {\ifnum\ifVDiffDesign=2\mathrm{div}\,\else\nabla\!\cdot\!\fi}
+\cdef\vrot {\ifnum\ifVDiffDesign=2\mathrm{rot}\,\else\nabla\!\times\!\fi}
+\cdef\vgrad{\ifnum\ifVDiffDesign=2\mathrm{grad}\,\else\nabla\!\fi}
+\cdef\vlap {\ifnum\ifVDiffDesign=1\nabla^2\else\triangle\fi}
+
+\cdef\@diff#1#2#3#4{\frac{#4#3#1}{#4#2#3}}
+\cdef\diff{\@ifnextchar[{\diff@}{\diff@[1]}}
+\cdef\diff@[#1]{\@ifnextchar[{\diff@@[#1]}{\diff@@[#1][\dd]}}
+\cdef\diff@@[#1][#2]#3#4{\@diff{#3}{#4}{\ifx#11\relax\else^#1\fi}{#2}}
+\cdef\pdiff#1#2{\@diff{#1}{#2}{}{\partial}}
+
+\cdef\fracp#1#2{\left(\frac{#1}{#2}\right)}
+
+%==============================================================================%
+% PHYSICS
+%==============================================================================%
+\cdef\expval#1{\left\langle#1\right\rangle}
+\cdef\celcius{\,\ddo\!\mathrm{C}}
+
+\cdef\Br{\mathop{\mathrm{Br}}}
+
+\cdef\un{\@ifstar{\@un}{\@@@un}}
+\cdef\@un#1{\@@un{[#1]}}
+\cdef\@@un#1{\mbox{\footnotesize$\,\mathrm{#1}$}}
+\cdef\@@@un#1{\ifUnitsBracket \@@un{[#1]} \else \@@un{#1} \fi}
+\cdef\unc#1{_{\pm#1}}
+\cdef\pmunc#1#2{^{+#1}_{-#2}}
+
+\cdef\EE{\@ifnextchar-{\@@EE}{\@EE}}
+\cdef\@EE#1{\ifnum#1=1 \times\!10 \else \times\!10^{#1}\fi}
+\cdef\@@EE#1#2{\times\!10^{-#2}}
+
+\cdef\gSU{\mathrm{SU}}
+\cdef\gSO{\mathrm{SO}}
+\cdef\gU {\mathrm{U}}
+\cdef\gZ {\mathrm{Z}}
+\cdef\gSL{\mathrm{SL}}
+\cdef\gGL{\mathrm{GL}}
+\cdef\aGL{\mathfrak{gl}}
+\cdef\aSU{\mathfrak{su}}
+\cdef\aSL{\mathfrak{sl}}
+
+%%% ATOM
+\cdef\atom{\protect\@@@@@atom}
+\cdef\@@@@@atom{\@ifnextchar[{\@@atom}{\@atom}}
+\cdef\@atom#1{\mathrm{#1}\relax\relax}
+\cdef\@@atom[#1]{\@ifnextchar[{\@@@@atom[#1]}{\@@@atom[#1]}}
+\cdef\@@@atom[#1]{{}^{#1}\@atom}
+\cdef\@@@@atom[#1][#2]{%
+  \kern-1ex\raisebox{0.8ex}{\hbox to 4ex{\hfill\scriptsize$#1$}}%
+  \kern-4ex\raisebox{-0.4ex}{\hbox to 4ex{\hfill\scriptsize$#2$}}\@atom}
+
+%%% TENSOR
+\cdef\T{\@ifnextchar^{\T@u}{\@ifnextchar_{\T@d}{}}}
+\cdef\T@u^#1{{^#1}\T}
+\cdef\T@d_#1{{_#1}\T}
+
+%==============================================================================%
+% RIGHTNOTE
+%==============================================================================%
+\ifFULL
+  \cdef\rightnote{\vskip.5\baselineskip%
+    \@tempcnta=\linewidth\multiply\@tempcnta9\divide\@tempcnta10\linewidth=\@tempcnta sp%
+    \begin{tabular}{p{.1\linewidth}|@{\ \ }r}&\hskip.5zw%
+    \begin{minipage}{.913\linewidth}\vskip.3\baselineskip\parindent=1zw\small}
+  \cdef\endrightnote{
+    \@tempcnta=\linewidth\multiply\@tempcnta10\divide\@tempcnta9\advance\@tempcnta1\linewidth=\@tempcnta sp%
+    \vspace{.5\baselineskip}\end{minipage}\end{tabular}\vskip.5\baselineskip}
+\fi
+
+%==============================================================================%
+% OBSOLETES
+%==============================================================================%
+
+%\newcounter{tenumerate}
+%\def\titem{\csname titem@\titem@type \endcsname}
+%
+%\def\titemize{\vspace{-\baselineskip}\begin{flushleft}\hskip2em\def\titem@type{titemize}\begin{tabular}{ll}}
+%\def\titemizec{\vspace{-\baselineskip}\begin{center}\def\titem@type{titemize}\begin{tabular}{ll}}
+%\def\endtitemize{\let\titem@type=\relax\end{tabular}\end{flushleft}}
+%\def\endtitemizec{\let\titem@type=\relax\end{tabular}\end{center}}
+%\def\titem@titemize#1#2{\\\textbullet\hskip.4em{#1} & \hskip-.8em : {#2}}
+%
+%\def\tenumerate{\setcounter{tenumerate}{0}%
+%\vspace{-\baselineskip}\begin{flushleft}\hskip2em\def\titem@type{tenumerate}\begin{tabular}{ll}}
+%\def\tenumeratec{\setcounter{tenumerate}{0}%
+%\vspace{-\baselineskip}\begin{center}\def\titem@type{tenumerate}\begin{tabular}{ll}}
+%\def\endtenumerate{\let\titem@type=\relax\end{tabular}\end{flushleft}}
+%\def\endtenumeratec{\let\titem@type=\relax\end{tabular}\end{center}}
+%\def\titem@tenumerate#1#2{\\\stepcounter{tenumerate}(\arabic{tenumerate})\hskip.4em{#1} & \hskip-.8em : {#2}}
+
+
+%\def\label@box#1#2#3#4{%
+%  \@ifnextchar[{\label@@box{#1}{#2}{#3}{#4}}{\label@@box@{#1}{#2}{#3}{#4}}}
+%\def\label@@box#1#2#3#4[#5]{\label@@box@{#1}{#2}{#3}{#4 ： #5}}
+%\def\label@@box@#1#2#3#4{%
+% \color{#1}\fboxsep=1zw\begin{center}\csname#2\endcsname%
+% \bgroup\begin{minipage}{.81\textwidth}%
+% \vspace{-#3}\hspace{1zw}%
+% {\fboxsep=0pt\colorbox{white}{\ \bf #4\ }\par}%
+% \color{Black}\begin{minipage}{\textwidth}}%
+%\def\endlabel@box{\end{minipage}\end{minipage}\egroup\end{center}}
+%
+%\def\preposition#1{\label@box{Black}{Ovalbox}{1.5zw}{#1}}
+%\def\important{\label@box{Red}{doublebox}{1.7zw}{重要!!}}
+%\def\conclusion#1{\label@box{Black}{shadowbox}{1.5zw}{#1}}
+%\let\endpreposition\endlabel@box
+%\let\endimportant\endlabel@box
+%\let\endconclusion\endlabel@box
