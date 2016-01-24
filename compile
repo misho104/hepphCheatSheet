@@ -16,5 +16,5 @@ platex CheatSheet
 rm *.dvi
 platex CheatSheet
 platex CheatSheet
-platex CheatSheet
+platex --shell-escape CheatSheet
 dvipdfmx CheatSheet
