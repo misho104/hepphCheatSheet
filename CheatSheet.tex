@@ -1,5 +1,5 @@
 %#!platex -shell-escape CheatSheet
-%%% Time-Stamp: <2016-01-24 21:42:47 misho>
+%%% Time-Stamp: <2016-01-25 14:14:37 misho>
 %%% 一部で日本語が使用されています。
 
 \documentclass[a4j,10pt,notitlepage]{jsarticle}
@@ -18,6 +18,11 @@
 % ---------------------------------------------------------------------------- %
 \makeatletter
 % ---------------------------------------------------------------------------- %
+% Spaces
+\addtolength{\textheight}{0.2in}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+    {.3\Cvs \@plus.2\Cdp \@minus.2\Cvs}{\z@}{\normalfont\normalsize\headfont}}
+
 % Notes header
 \usepackage[hhmmss]{datetime}
 \newcommand{\gitrevision}{%
@@ -73,11 +78,14 @@
 \title{High Energy Physics Cheat Sheet}
 \author{Sho Iwamoto}
 \bibliographystyle{myjplainnosort}
-
 \begin{document}
+{
+\setlength{\abovedisplayskip}{4pt}
+\setlength{\belowdisplayskip}{4pt}
 \input{General.tex}
 \clearpage
 \input{StandardModel.tex}
+}
 \clearpage
 \input{SUSY.tex}
 \clearpage

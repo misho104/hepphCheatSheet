@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2016-01-24 21:18:06 misho>
+%%% Time-Stamp: <2016-01-25 14:14:12 misho>
 %%% 一部で日本語が使用されています。
 
 \section{General Definitions and Tools}
@@ -29,7 +29,7 @@ Spinor $\epsilon$ and $\sigma$ matrices
  & $\sigma_+ = \tfrac12(\sigma_1+\ii\sigma_2) = \spmat{0&1\\0&0},\quad
     \sigma_- = \tfrac12(\sigma_1-\ii\sigma_2) = \spmat{0&0\\1&0},$\\[.5zw]
  & $\Sm:=(1,\vc\sigma),\quad \bSm:=(1,-\vc\sigma)$.
-\end{tabular}\vspace{-.5zw}
+\end{tabular}
 \end{rightnote}
 \begin{tabular}{l@{ :\ \ \ }l}
 Fourier Transformation & 
@@ -85,7 +85,6 @@ Our Old Language
 \end{tabbing}
 \footnotetext{ $\mathcal J^{\mu\nu}$, $S^{\mu\nu}$, and $s^{\mu\nu}$ are representations of Lorentz algebra; $\{\Gm,\Gn\}=2\Hmn$ is sufficient for $S^{\mu\nu}$ to follow the algebra.}
 
-\vspace{-2em}
 
 \subsubsection{Weyl spinor}
 We use the convention where $L\xi\equiv L\T_\alpha^\beta\xi_\beta$ and $\bar L\bar \eta\equiv \Lambda^{\dagger-1}\T^\dalpha_\dbeta\bar\eta^\dbeta$.
@@ -111,9 +110,7 @@ Majorana fermion \>:\> $\Lag\s{Majorana}= \ii\,\bar\xi\bSm\Pm\xi -\frac m2(\xi\x
                         \>\>\>$ =\frac12\overline\psi\s M(\ii\Gm\Pm-m)\psi\s M$
 \end{tabbing}
 
-\vspace{-2em}
-
-\subsubsection{Dirac spinor}\mbox{}\\[-4em]
+\subsubsection{Dirac spinor}
 $$
 \psi(x)\equiv\intdP{p} \frac{1}{\sqrt{2E_{\vc p}}}
                \sum_{s=1,2}\Bigl[a^s_\vc p u^s(p)\ee^{-\ii p\cdot x}
@@ -123,7 +120,6 @@ $$
  \item $\overline\psi(x)$ and $\psi\suprm C(x)$ should be defined as they properly respond to Lorentz transformation;
  \item We define matrix $C$ such that $\psi\suprm C\equiv C\trans{(\overline\psi)}$.
 \end{itemize}
-
 
 \paragraph{Chiral notation (Peskin)}
 \begin{equation*}
@@ -217,7 +213,7 @@ $C$
 $CPT$
   & $\phi^*$ & $-$$A^{\mu*}$
   &$+$&$-$&$+$&$-$&$+$&$-$\\
-\end{tabular}\vspace{1.5zw}
+\end{tabular}
 
 \paragraph{Dirac Notation}\mbox{}\\
 \begin{tabular}{l@{ :\ \ \ }l}
@@ -300,7 +296,9 @@ When Ward identity $k_\mu M^\mu=0$ is valid,
 =             \Hmnd M^{\mu}M^{\nu*}.
 \end{equation}
 
-\subparagraph{Double photons case}$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$\par
+\subparagraph{Double photons case}$M=\epsilon_\mu^*(k)\epsilon_\nu'^*(k')M^{\mu\nu}$
+\NOTE{See Sec.~\ref{Sec:Verbose:PolarizationSum} for verbose information.}
+\par
 When $k_\mu M^{\mu\nu}=k'_\nu M^{\mu\nu}=0$ is valid,
 \begin{equation}
   \sum\s{pol.}\left|M\right|^2
@@ -309,7 +307,6 @@ When $k_\mu M^{\mu\nu}=k'_\nu M^{\mu\nu}=0$ is valid,
 M^{\mu\nu}M^{\rho\sigma*}
 = \Hmrd\Hnsd M^{\mu\nu}M^{\rho\sigma*}.
 \end{equation}
-\NOTE{See Sec.~\ref{Sec:Verbose:PolarizationSum} for verbose information.}
 
 \subsubsection{Fierz transformations}
 For Dirac spinors $a,b,c,d$,\par
@@ -354,13 +351,12 @@ For  $P:=p'+p$ and $q:=p'-p$,
 \end{align}
 
 \subsubsection{Color Sum}
-\vspace{-20pt}
-\begin{flushright}
+\begin{flushright}\vspace{-1.5em}
 {\footnotesize (Here $T^a$ is $\vc 3$ of $\gSU(3)$. For other representations or gauge groups, see Sec.~\ref{sec:yang-mills-general}.)}
-\end{flushright}\vskip-10pt
+\end{flushright}
 \begin{equation}
   \Tr(T^aT^b):=\frac12\delta^{ab}\qquad\qquad \text{\footnotesize (That is, $T^a$'s are $\tfrac12\times$Gell-Mann matrices.)}
-\end{equation}\vskip-20pt
+\end{equation}
 \begin{align}
 \sum_a T^aT^a    &= \frac43\cdot\vc 1, &
 \sum_{c,d} f^{acd}f^{bcd} &= 3\delta^{ab}&
@@ -369,8 +365,6 @@ For  $P:=p'+p$ and $q:=p'-p$,
 \sum_{b,c} f^{abc}T^bT^c  &= \frac{3\ii}{2}T^a&
  f^{Dab}f^{EDc}+&f^{Dca}f^{EDb}+f^{Dbc}f^{EDa}=0
 \end{align}
-
-\vspace{50pt}
 
 
 \subsection{Miscellaneous Techniques}
@@ -415,7 +409,7 @@ $\mathcal H=T^{00}$,\quad $\mathcal P^i =T^{0i}$.\\
 \newpage
 
 \subsection{Dirac's Gamma Algebras}
-\subsubsection{Traces}\vspace{-2.5zw}
+\subsubsection{Traces}
 \begin{align}
  \Tr(\text{any odd \# of $\gamma$'s})&=0,\\
  \Tr(\Gm\Gn)&= 4\Hmn,\\
@@ -433,7 +427,7 @@ for some $\gamma$-matrices $A,B,C,\dots$,}\quad
  \G5\Gm\Gn\Gr&=\G5\Gm\Hnr-\G5\Gn\Hmr+\G5\Gr\Hmn-\ii \epsilon^{\mu\nu\rho\sigma}\Gsd.
 \end{align}
 
-\subsubsection{Contractions}\vspace{-2.5zw}
+\subsubsection{Contractions}
 \begin{align}
  \Gm\Gmd&=4\\
  \Gm\Gn\Gmd&=-2\Gn\\
@@ -480,7 +474,7 @@ Generally, for some $\gamma$-matrices $A,B,C,\dots$,
 \newpage
 
 \subsection{Loop Integrals and Dimensional Regularization}
-\subsubsection{Feynman Parameters}\vspace{-2.5zw}
+\subsubsection{Feynman Parameters}
 \begin{align}
  \frac{1}{A_1A_2\cdots A_n}&=
 \int_0^1\dd x_1\cdots x_n\ \delta\left(\sum x_i-1\right)
@@ -488,7 +482,7 @@ Generally, for some $\gamma$-matrices $A,B,C,\dots$,
  \frac{1}{A_1A_2}&=
 \int_0^1\dd x\frac{1}{[xA_1+(1-x)A_2]^2}
 \end{align}
-\subsubsection{$d$-dimensional integrals in Minkowski space}\vspace{-2.5zw}
+\subsubsection{$d$-dimensional integrals in Minkowski space}
 \begin{align}
  \intdP[d]{l}\frac1{(l^2-\Delta)^n}&=
 \frac{(-1)^n\ii}{(4\pi)^{d/2}}\frac{\Gamma(n-\frac d2)}{\Gamma(n)}
@@ -595,11 +589,11 @@ To compute the $S$-matrix in a physical region choose the correct branch
 \begin{align*}
  \vnorm p ^2 &= E^2-m_A^2 & \vipro pk &=\vnorm p \vnorm k\cos\theta\\
  \vnorm k ^2 &= E^2-m_B^2
-\end{align*}\vspace{-27pt}
+\end{align*}
 \begin{align*}
  p_1 \cdot p_2&=s/2-m_A^2 & p_1\cdot k_1  &= p_2 \cdot k_2 = \tfrac12(m_A^2+m_B^2-t);\\
  k_1 \cdot k_2&=s/2-m_B^2 & p_1 \cdot k_2 &= p_1 \cdot k_2 = \tfrac12(m_A^2+m_B^2-u);
-\end{align*}\vskip-10pt
+\end{align*}
 \end{minipage}
 \begin{align*}
 &&  s&= 4E^2,\\
@@ -608,7 +602,7 @@ To compute the $S$-matrix in a physical region choose the correct branch
  (k_1-k_2)^2&=-4(E^2-m_B^2)&
  u&= -(2E^2-m_A^2-m_B^2)-2\vipro pk\\
 \end{align*}
-\subparagraph{Kinematics of Collision (initial massless)}\mbox{}\par
+\paragraph{Kinematics of Collision (initial massless)}
 \begin{align*}
  s&= 4E^2,&
  (t,u) &= -2E^2+\frac{m_1^2+m_2^2}{2}\pm2\vipro pk,&
@@ -617,8 +611,8 @@ To compute the $S$-matrix in a physical region choose the correct branch
 \TODO{needs check}
 \newpage
 \subsection{楊-Mills Theory}\label{sec:yang-mills-general}
-\vskip-22pt\hskip160pt{\small(See App.~\ref{sec:yang-mills-theory} for verbose notes.)}\vspace{-1em}
-\subsubsection{Non-Abelian gauge theory}\vskip-24pt
+\vspace{-22pt}\hskip160pt{\small(See App.~\ref{sec:yang-mills-theory} for verbose notes.)}
+\subsubsection{Non-Abelian gauge theory}
 \begin{align*}
   [T^a,T^b] &= \ii f\T^a^b_c T^c,&
   &0 =f\T^D_a_b f\T^E_D_c + f\T^D_c_a f\T^E_D_b  + f\T^D_b_c f\T^E_D_a,&
@@ -627,7 +621,6 @@ To compute the $S$-matrix in a physical region choose the correct branch
  &[\tilde T^a]\T_i^j := T^{{\rm ad}\ a}\T_i^j :=-\ii f^{aij}&
 &[\tilde\Dm]\T_i^j:=\delta_i^j\Pm+gf^{iaj}A^a_\mu.
 \end{align*}
-\vskip-20pt
 \begin{align*}
  F_{\mu\nu}        &=       \frac\ii g\left[\Dm,\Dn\right]&
  \Dm\phi                      &= \Pm\phi-\ii g A_\mu^a(T^a_\phi\phi)\\
@@ -637,7 +630,6 @@ To compute the $S$-matrix in a physical region choose the correct branch
  \Big(\Dm F_{\nu\rho}         &= \Pm\lambda -\ii g [A_\mu,F_{\nu\rho}]\Big).\footnotemark
 \end{align*}
 \footnotetext{Note that we can use any representation $T^a$ but must the same ones for $A^a_\mu T^a$ and $\lambda^a T^a$.}
-\vskip-33pt
 \begin{align*}
  \phi              &\mapsto  V\phi := \ee^{\ii g\theta}\phi&
  A_\mu             &\mapsto  V\left(A_\mu+\frac\ii g\Pm\right)V^{-1}&
@@ -645,7 +637,7 @@ To compute the $S$-matrix in a physical region choose the correct branch
  \phi^a      {}'   &\simeq \phi+\ii g \theta^aT^a\phi&
  A_\mu^a     {}'   &\simeq A_\mu^a+\Pm\theta^a+gf^{abc}A_\mu^b\theta^c&
  F_{\mu\nu}^a{}'   &\simeq F_{\mu\nu}^a+g f^{abc}F_{\mu\nu}^b\theta^c
-\end{align*}\vskip-10pt
+\end{align*}
 \begin{equation*}
  \epsilon^{\mu\nu\rho\sigma}\left[\Dn,\left[\Dr,\Ds\right]\right] = \epsilon^{\mu\nu\rho\sigma}\Dn F_{\rho\sigma} = 0.
 \end{equation*}
@@ -656,7 +648,7 @@ Here we have two constants which {\bf depend on representation $r$}.
     \Tr(T^aT^b) =: C(r)\delta^{ab}\quad \text{\footnotesize(Killing form)},\qquad
     T^aT^a =: C_2(r)\cdot\vc 1\quad \text{\footnotesize(quadratic Casimir operator)},
 \end{equation}
-which satisfy\vskip-30pt
+which satisfy
 \begin{align}
    C(r) &= \frac{d(r)}{d(\text{ad})}C_2(r),&
  T^aT^bT^a&=\left[C_2(r)-\frac12 C_2(\text{ad})\right]T^b,\\
@@ -683,7 +675,7 @@ In Abelian gauge theory, $V$ and fields are always commutative, and thus we have
  &F_{\mu\nu}        \mapsto  F_{\mu\nu}
 \end{align*}
 
-\subsubsection{Lagrangian Block}\vspace{-2em}
+\subsubsection{Lagrangian Block}
 \begin{align}
  &\Lag \ni \left|\Dm\phi\right|^2-m^2|\phi|^2, \quad
           \overline\psi(\ii\slashed\DD-m)\psi,\quad

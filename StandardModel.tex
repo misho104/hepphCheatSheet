@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2014-01-11 16:11:30 misho>
+%%% Time-Stamp: <2016-01-25 14:19:32 misho>
 %%% 一部で日本語が使用されています。
 
 \section{Standard Model}
@@ -147,7 +147,7 @@ Here we present another form:
 \begin{equation}
 Z^0_\mu:=\frac1{\sqrt{{g_1}^2+{g_2}^2}}(g_2 W^3_\mu-g_1B_\mu),\quad
 A_\mu:=\frac1{\sqrt{{g_1}^2+{g_2}^2}}(g_1 W^3_\mu+g_2B_\mu)
-\end{equation}
+\end{equation}\vspace{-2em}
 \end{rightnote}
 
 You can see the gauge bosons have acquired the masses
@@ -197,71 +197,71 @@ G^{a\mu\nu}G^a_{\mu\nu} + (\partial Z)^{\mu\nu}(\partial Z)_{\mu\nu}+(\partial A
 \end{equation}
 
 \paragraph{湯川 Term}
-\begin{align}
+\begin{equation}\begin{split}
  \Lag\s{湯川}=
 &\overline U y_uH\PL Q - \overline D y_dH^\dagger\PL Q - \overline E y_eH^\dagger\PL L
- + \Hc\notag\\
+ + \Hc\\
 =
 & \overline U y_u\epsilon^{\alpha\beta}H^{\alpha}\PL Q^{\beta}
  -\overline D y_d{H^\dagger}^{\alpha}\PL Q^\alpha
- -\overline E y_e{H^\dagger}^{\alpha}\PL L^\alpha + \Hc\notag\\
+ -\overline E y_e{H^\dagger}^{\alpha}\PL L^\alpha + \Hc\\
 =
 &-\frac{v+h}{\sqrt2}\left(
    \overline U y_u\PL Q^1
  + \overline D y_d\PL Q^2
  + \overline E y_e\PL L^2
 \right) + \Hc
-\end{align}
+\end{split}\end{equation}
 \subsection{Full Lagrangian After Higgs Mechanism}
 Now we have the following Lagrangian (with omitting $\PL$ etc.):
-\begin{align}
+\begin{equation}\begin{split}
  \Lag =
 & \Lag\s{gauge}
 {\ +\ }{m_W}^2W^+W^-
-{\ +\ }\frac{{m_Z}^2}2Z^2\notag\\[.5zw]
+{\ +\ }\frac{{m_Z}^2}2Z^2\\
 %Higgs
 \NOTE{Higgs}&
 {\ +\ }\frac12(\partial_\mu h)^2
 {\ -}\frac12{m_h}^2h^2
 {-}\sqrt{\frac\lambda2}m_h h^3
 {-}\frac14\lambda h^4
-\notag\\&
+\\&
 {\ +\ }\frac{v{g_2}^2}{4}W^+W^-h
-{\ +\ }\frac{v({g_1}^2+{g_2}^2)}{8}Z^2h\notag\\&
+{\ +\ }\frac{v({g_1}^2+{g_2}^2)}{8}Z^2h\\&
 {\ +\ }\frac{{g_2}^2}{4}W^+W^-h^2
-{\ +\ }\frac{{g_1}^2+{g_2}^2}{8}Z^2h^2\notag\\
+{\ +\ }\frac{{g_1}^2+{g_2}^2}{8}Z^2h^2\\
 &
 {\ -\ }\left(\frac{1}{\sqrt2}h\bar U y_u Q^1
 {\ +\ }\frac{1}{\sqrt2}h\bar D y_d Q^2
-{\ +\ }\frac{1}{\sqrt2}h\bar E y_e L^2 \ +\ \Hc\right)\notag\\[1zw]
+{\ +\ }\frac{1}{\sqrt2}h\bar E y_e L^2 \ +\ \Hc\right)\\
 %SU(3) Interactions
 \NOTE{$\gSU(3)$}&
 {\ +\ }\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) Q
 {\ +\ }\bar U\left(\ii\slashed\partial+g_3\slashed G\right) U
 {\ +\ }\bar D\left(\ii\slashed\partial+g_3\slashed G\right) D
 {\ +\ }\bar L\left(\ii\slashed\partial\right) L
-{\ +\ }\bar E\left(\ii\slashed\partial\right) E\notag\\[1zw]
+{\ +\ }\bar E\left(\ii\slashed\partial\right) E\\
 \NOTE{$W$}&
 {\ +\ }\bar Q\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)Q
-{\ +\ }\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)L\notag\\
+{\ +\ }\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)L\\
 \NOTE{$A$\&$Z^0$}&
 {\ +\ }\bar Q\left[
     \left(T^3+\frac16\right)|e|\slashed A
    +\left(\frac{|e|c}{s}T^3-\frac{|e|s}{6c}\right)\slashed Z^0
-  \right] Q\notag\\
-&{\ +\ }\bar U\left(\frac23 |e|\slashed A-\frac{2|e|s}{3c}\slashed Z\right) U\notag\\
-&{\ +\ }\bar D\left(-\frac13 |e|\slashed A+\frac{|e|s}{3c}\slashed Z\right) D\notag\\
+  \right] Q\\
+&{\ +\ }\bar U\left(\frac23 |e|\slashed A-\frac{2|e|s}{3c}\slashed Z\right) U\\
+&{\ +\ }\bar D\left(-\frac13 |e|\slashed A+\frac{|e|s}{3c}\slashed Z\right) D\\
 &{\ +\ }\bar L\left[
     \left(T^3-\frac12\right)|e|\slashed A
    +\left(\frac{|e|c}{s}T^3+\frac{|e|s}{2c}\right)\slashed Z^0
-  \right] L\notag\\
+  \right] L\\
 &
-{\ +\ }\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) E\notag\\[.5zw]
+{\ +\ }\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) E\\
 \NOTE{湯川項}& % Yukawa
 {\ -\ }\left(\frac{1}{\sqrt2}v\bar U y_u Q^1
 {\ +\ }\frac{1}{\sqrt2}v\bar D y_d Q^2
 {\ +\ }\frac{1}{\sqrt2}v\bar E y_e L^2\ +\ \Hc\right)
-\end{align}
+\end{split}\end{equation}
 \subsection{Mass Eigenstates}
 Here we will obtain the mass eigenstates of the fermions, by diagonalizing the 湯川 matrices.
 
@@ -322,7 +322,7 @@ Under this transformation, those terms are transformed as, e.g.,
 Therefore, we can see that the $CP$-symmetry is maintained if and only if $\trans X=X^\dagger$, that is, if and only if $X$ is a real matrix.
 \end{rightnote}
 
-以上より，標準模型のLagrangianは
+Thus the Lagrangian is
 \begin{align}
  \Lag =
 & \Lag\s{gauge}\notag\\
@@ -376,9 +376,8 @@ Therefore, we can see that the $CP$-symmetry is maintained if and only if $\tran
    +\left(\frac{|e|c}{s}T^3+\frac{|e|s}{2c}\right)\slashed Z^0
   \right] \PL L\notag\\
 & 
-{\quad+\quad}\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) \PR E
+{\quad+\quad}\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) \PR E.
 \end{align}
-となる。
 \newpage
 \subsection{Chiral Notation}
 In the chiral expression, the Lagrangian is written as
