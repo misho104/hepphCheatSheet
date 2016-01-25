@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2016-01-25 14:19:32 misho>
+%%% Time-Stamp: <2016-01-25 15:26:23 misho>
 %%% 一部で日本語が使用されています。
 
 \section{Standard Model}
@@ -659,6 +659,59 @@ and the 湯川 interactions are
  \right).
 \end{split}
 \end{align}
+
+
+\subsection{CKM matrix}\noindent
+\begin{minipage}[t]{0.53\textwidth}
+\subparagraph{PDG SM convention}(2014 \S12)
+\[
+-\mathcal L \supset Y_{ij}^d H^a \overline{Q_i^a} d_j - Y_{ij}^u\epsilon^{ab} H^a\overline{Q_i^b}u_j
+;
+\quad
+Y^{\rm diag} = V_L Y V_R^\dagger
+\]
+\subparagraph{SLHA2 convention}(0801.0045)
+\begin{align*}
+  \Lag&\supset
+ \textstyle\int\dd^2\theta\,W
+ \supset
+ \int\dd^2\theta\,\epsilon^{ab}\left(
+   Y^D_{ij}\Hd^a Q_i^b\bar D_j
+ - Y^U_{ij}\Hu^a Q_i^b\bar U_j
+ \right)
+ \\
+ &\therefore -\Lag \supset
+   Y^D_{ij}\HdZ \psi_{Q_i^2}\psi_{\bar D_j}
+ + Y^U_{ij}\HuZ \psi_{Q_i^1}\psi_{\bar U_j}
+ \quad \text{\footnotesize (See Eq.~43)}
+ \\&\qquad\qquad\leadsto
+   (Y^D_{ij})^*\HdZ{}^* \overline{Q_i^2}d_j
+ + (Y^U_{ij})^*\HuZ{}^* \overline{Q_i^1}u_j;
+ \\
+ &Y^{\rm diag} = U^\dagger \trans{Y}V = V^\dagger Y^* U
+\end{align*}
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.44\textwidth}
+In both conventions,
+ \begin{align*}
+ V\s{CKM} &= V_L^u V_R^{d\dagger} \text{(PDG)} = V_U^\dagger V_D \text{(SLHA)}
+ \\& =
+ \pmat{V_{ud}&V_{us}&V_{ub}\\V_{cd}&V_{cs}&\cdots};
+\end{align*}
+and in Wolfenstein parameterization,
+\[
+  \pmat{
+ 1-\lambda^2/2 & \lambda       & A\lambda^3(\rho-\ii \eta)\\
+ -\lambda      & 1-\lambda^2/2 & A\lambda^2\\
+ A\lambda^3(1-\rho-\ii\eta) & -A\lambda^2 & 1
+ }.
+\]
+\NOTE{Be careful of the minus sign before $\eta$.}
+\end{minipage}
+
+
+
 %%% Local Variables:
 %%% TeX-master: "CheatSheet.tex"
 %%% End:
