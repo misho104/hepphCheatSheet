@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2014-03-24 01:37:45 misho>
+%%% Time-Stamp: <2016-01-26 15:55:45 misho>
 %%% 一部で日本語が使用されています。
 
 \def\uL{u\s L{}}%obsolete
@@ -700,6 +700,85 @@ and the rest part is
 }.
 \end{align}
 
+\subsection{SLHA convention}\TODO{this whole section should be rewritten following this convention}
+\begin{align}
+ \Lag &=\int\!\dd^4\theta\,K + \left(\int\!\dd^2\theta\,W + \Hc\right)\\
+ W &= \epsilon^{ab}\left[
+   (Y_e)_{ij}\Hd^a L_i^b \bE_j
+ + (Y_d)_{ij}\Hd^a Q_i^b \bD_j
+ + (Y_u)_{ij}\Hu^b Q_i^a \bU_j
+ - \mu\Hd^a\Hu^b\right]
+ \\
+ &= \Hd LY_e \bE + \Hd Q Y_d \bD - \Hu Q Y_u \bU + \mu\Hu\Hd
+ \\%
+\begin{split}
+  -\Lag&\supset%
+ \left(Q^\dagger m_Q^2 Q+L^\dagger m_L^2 L+\bU^\dagger m_\bU^2\bU + \bD^\dagger m_\bD^2\bD + \bE^\dagger m_\bE^2 \bE
+       +m^2_{\Hu}|\Hu|^2 + m^2_{\Hd}|\Hd|^2\right)
+ \\&\qquad
+ +\left(\Hd L T_e \bE + \Hd Q T_d \bD - \Hu Q T_u \bU  + m_3^2 \Hu\Hd + \Hc\right)
+ \big|\stx{scalar part}
+\end{split}
+\\\begin{split} &=
+   \left(\sqL^\dagger m_Q^2\sqL+\slL^\dagger m_L^2\slL+\suR^\dagger \trans{(m_\bU^2)} \suR + \sdR^\dagger \trans{(m_\bD^2)}\sdR + \seR^\dagger \trans{(m_\bE^2)}\seR
+       +m^2_{\Hu}|\Hu|^2 + m^2_{\Hd}|\Hd|^2\right)
+   \\&\qquad
+   +\left(\Hd \slL T_e \seR^* + \Hd\sqL T_d \sdR - \Hu \sqL T_u \suR + m_3^2\Hu\Hd+\Hc\right)
+  \end{split}
+\end{align}
+We rotate the superfields so that the fermion masses are diagonal:
+$Y^{\rm diag} = U^\dagger \trans{Y}V = V^\dagger Y^* U$,
+which is called \textbf{super-CKM basis}. Explicitly,
+\begin{equation}
+ \left[ Q_u, Q_d, L, \bU, \bD, \bE  \right]^{\rm sCKM}
+  = \left[
+     V_u^\dagger Q_u, V_d^\dagger Q_d, V_e^\dagger L, \bU U_u, \bD U_d, \bE U_e \right]
+\end{equation}
+and the CKM matrix (see ~Sec.~\ref{sec:CKM}) is defined as
+$V\s{CKM} = V_u^\dagger V_d \approx
+    \spmat{
+ 1-\lambda^2/2 & \lambda       & A\lambda^3(\rho-\ii \eta)\\
+ -\lambda      & 1-\lambda^2/2 & A\lambda^2\\
+ A\lambda^3(1-\rho-\ii\eta) & -A\lambda^2 & 1
+ }
+ $.
+\begin{align}
+\begin{split}
+ -\Lag&\supset%
+ \left(
+   Q_u^\dagger V_u^\dagger m_Q^2 V_uQ_u
+ + Q_d^\dagger V_d^\dagger m_Q^2 V_dQ_d
+ + L^\dagger   V_e^\dagger m_L^2 V_eL
+ \right.\\&\qquad\qquad\left.
+ + \bU U_u^\dagger \trans{(m_\bU^2)} U_u \bU^*
+ + \bD U_d^\dagger \trans{(m_\bD^2)} U_d \bD^*
+ + \bE U_e^\dagger \trans{(m_\bE^2)} U_e \bE^*
+ \right)
+ \\&\qquad\qquad
+ +\epsilon^{ab}\left(\Hd^a \bE U_e^\dagger \trans{T_e} V_e L^b
+                   + \Hd^a \bD U_d^\dagger \trans{T_d} V_d Q_d
+                   - \Hu^a \bU U_u^\dagger \trans{T_u} V_u Q_u
+\right)
+ \big|^{\text{superfields in sCKM}}\stx{scalar part},
+\end{split}
+\end{align}
+and the SLHA2 input parameters are (note that \texttt{MSQ2IN} is defined with $V_d$):
+\begin{align*}
+ \text{\texttt{MS*2IN}}&=\left\{
+ V_d^\dagger m_Q^2 V_d,
+ V_e^\dagger m_L^2 V_e,
+ U_u^\dagger \trans{(m_\bU^2)} U_u,
+ U_d^\dagger \trans{(m_\bD^2)} U_d,
+ U_e^\dagger \trans{(m_\bE^2)} U_e
+ \right\},\\
+ \text{\texttt{T*IN}} &= \left\{
+ U_u^\dagger \trans{T_u} V_u,
+ U_d^\dagger \trans{T_d} V_d,
+ U_e^\dagger \trans{T_e} V_e
+ \right\},
+ \qquad\qquad
+ \text{\texttt{VCKMIN}}=(\lambda,A,\bar\rho,\bar\eta).
+\end{align*}
 
 \newpage
 \subsection{minimal GMSB}

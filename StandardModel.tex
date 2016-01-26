@@ -1,5 +1,5 @@
 %#!platexmake CheatSheet
-%%% Time-Stamp: <2016-01-25 15:26:23 misho>
+%%% Time-Stamp: <2016-01-26 15:28:38 misho>
 %%% 一部で日本語が使用されています。
 
 \section{Standard Model}
@@ -661,7 +661,7 @@ and the 湯川 interactions are
 \end{align}
 
 
-\subsection{CKM matrix}\noindent
+\subsection{CKM matrix}\label{sec:CKM}\noindent
 \begin{minipage}[t]{0.53\textwidth}
 \subparagraph{PDG SM convention}(2014 \S12)
 \[
@@ -699,16 +699,35 @@ In both conventions,
  \\& =
  \pmat{V_{ud}&V_{us}&V_{ub}\\V_{cd}&V_{cs}&\cdots};
 \end{align*}
-and in Wolfenstein parameterization,
+and in Wolfenstein parameterization, $V\s{CKM}\approx$
 \[
-  \pmat{
+ \pmat{
  1-\lambda^2/2 & \lambda       & A\lambda^3(\rho-\ii \eta)\\
  -\lambda      & 1-\lambda^2/2 & A\lambda^2\\
  A\lambda^3(1-\rho-\ii\eta) & -A\lambda^2 & 1
  }.
 \]
-\NOTE{Be careful of the minus sign before $\eta$.}
+\hfill\NOTE{Be careful of the minus sign before $\eta$.}
 \end{minipage}
+
+Also we have a standard parameterization without approximation:
+\begin{equation}
+  V\s{CKM} =\pmat{
+ c_{12} c_{13} & s_{12} c_{13} & s_{13} \ee^{-\ii\delta}\\
+ -s_{12} c_{23} - c_{12} s_{23} s_{13} \ee^{\ii\delta}& c_{12} c_{23} - s_{12}s_{23}s_{13} \ee^{\ii\delta}& s_{23}c_{13}\\
+  s_{12}s_{23} - c_{12} c_{23} s_{13}\ee^{\ii\delta} & -c_{12}s_{23}-s_{12}c_{23}s_{13}\ee^{\ii\delta} & c_{23} c_{13}
+ },
+\end{equation}
+which relates to the Wolfenstein parameterization via
+\begin{align}
+  \lambda &= s_{12},& A &= \frac{s_{23}}{\lambda^2},&
+ \rho+\ii\eta&=\frac{s_{13}\ee^{\ii\delta}}{A\lambda^3}
+ = \frac{(\bar\rho+\ii\bar\eta)\sqrt{1-A^2\lambda^4}}
+        {\sqrt{1-\lambda^2}\left[1-A^2\lambda^4(\bar\rho+\ii\bar\eta)\right]}
+ = \left(\bar\rho+\ii\bar\eta\right)\left(1+\frac{\lambda^2}{2}+\Order(\lambda^4)\right).
+\end{align}
+
+
 
 
 
