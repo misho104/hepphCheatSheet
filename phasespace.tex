@@ -48,7 +48,7 @@ $
 = \int\!\dd\Pi_1\dd\Pi_2\,f(p_1,p_2,\cos\theta_{12}).
 $
 \\
-Rewriting with $E_\pm = E_1\pm E_2$ and $s=(p_1+p_2)^2=m_1^2 + m_2^2 + 2E_1E_2 - \|\vc p_1\|\|\vc p_2\|\cos\theta_{12}$,
+Rewriting with $E_\pm = E_1\pm E_2$ and $s=(p_1+p_2)^2=m_1^2 + m_2^2 + 2E_1E_2 - 2\|\vc p_1\|\|\vc p_2\|\cos\theta_{12}$,
 \\
 $
 \int\dd\Pi_1\dd\Pi_2
@@ -58,7 +58,7 @@ $
 \int\!\frac{(4\pi)\dd p_1\,p_1^2}{(2\pi)^3}
 \frac{(2\pi)\dd p_2\,p_2^2\,\dd\cos\theta_{12}}{(2\pi)^3}\frac{1}{2E_12E_2}
 =
-\int\!\frac{\dd E_+\dd E_- \dd s}{32\pi^4}
+\int\!\frac{\dd E_+\dd E_- \dd s}{128\pi^4}
 $,
 \\
 where the Jacobian is $\left|\frac{\dd(E_+,E_-,s)}{\dd(p_1, p_2, \cos\theta_{12})}\right|=\frac{4p_1^2p_2^2}{E_1E_2}$, or $\left|\frac{\dd(E_1,E_2,s)}{\dd(p_1, p_2, \cos\theta_{12})}\right|=\frac{2p_1^2p_2^2}{E_1E_2}.$
@@ -77,7 +77,7 @@ $; using these bounds,
 \begin{equation}
  \int\dd\Pi_1\dd\Pi_2
 =
-\frac{1}{32\pi^4}
+\frac{1}{128\pi^4}
 \int_{(m_1+m_2)^2}^\infty\dd s
 \int_{\sqrt{s}}^\infty\dd E_+
 \int\w{min}^{\mathrm{max}}\dd E_-.
