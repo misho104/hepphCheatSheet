@@ -1,0 +1,20 @@
+|\mu|^2\left(|\hu|^2 + |\hd|^2\right)
++ \left(
+  - \yu[ij]\mu^{*}\tuR[i]^{x*}\tqL[j]^{ax}\hd^{a*}
+  - \yd[ij]\mu^{*}    \tdR[i]^{x*}\tqL[j]^{ax}\hu^{a*}
+   - \ye[ij]\mu^{*}\teR[i]^{*}\tlL[j]^{a}\hu^{a*}
++\text{H.c.}\right)
+\\&
++ \epsilon^{ac}\epsilon^{bd}(\yu^\dagger\yu)_{ji}\hu^{a}\hu^{b*}\tqL[i]^{cx}\tqL[j]^{dx*}
++ \epsilon^{ac}\epsilon^{bd}(\yd^\dagger\yd)_{ji}\hd^{a}\hd^{b*}\tqL[i]^{cx}\tqL[j]^{dx*}
++ \epsilon^{ac}\epsilon^{bd}(\ye^\dagger\ye)_{ji}\hd^{a}\hd^{b*}\tlL[i]^{c}\tlL[j]^{d*}
+\\&
++ (\yu\yu^\dagger)_{ij}|\hu|^2\tuR[i]^{x*}\tuR[j]^{x}
++ (\yd\yd^\dagger)_{ij}|\hd|^2\tdR[i]^{x*}\tdR[j]^{x}
++ (\ye\ye^\dagger)_{ij}|\hd|^2\teR[i]^{*}\teR[j]
+- \left( \yu[ik]\yd[jk]^{*}\hu^{a}\tuR[i]^{x*}\hd^{a*}\tdR[j]^{x} + \text{H.c.} \right)
+\\&
++ \yu[ik]\yu[jl]^{*}\tuR[i]^{x*}\tuR[j]^{y}\tqL[k]^{ax}\tqL[l]^{ay*}
++ \yd[ik]\yd[jl]^{*} \tdR[i]^{x*}\tdR[j]^{y}\tqL[k]^{ax}\tqL[l]^{ay*}
++ \ye[ik]\ye[jl]^{*}\teR[i]^{*}\teR[j]\tlL[k]^{a}\tlL[l]^{a*}
++ \left( \yd[ik]\ye[jl]^{*} \tdR[i]^{x*}\tqL[k]^{ax}\teR[j]\tlL[l]^{a*} + \text{H.c.} \right)

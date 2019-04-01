@@ -1,0 +1,95 @@
+\frac{g_Y^2}{3}|\tdR|^2|\teR|^2
+\\&
++ \left( -\frac{g_3^2}{6}|\tdR|^2|\tuR|^2 + -\frac{2g_Y^2}{9}|\tdR|^2|\tuR|^2 + \frac{g_3^2}{2}\tdR[j]^{y*}\tuR[i]^{x*}\tdR[j]^{x}\tuR[i]^{y} + \lambda''_{ikm}\lambda^{\prime \prime *}_{jlm}\tdR[k]^{y*}\tuR[i]^{x*}\tdR[l]^{y}\tuR[j]^{x} - \lambda''_{ikm}\lambda^{\prime \prime *}_{jlm}\tdR[k]^{y*}\tuR[i]^{x*}\tdR[l]^{x}\tuR[j]^{y} \right)
+\\&
++ -\frac{2g_Y^2}{3}|\tuR|^2|\teR|^2
+\\&
++ |\hd|^2\left( -\frac{g_Y^2}{6}|\tdR|^2 + (\yd\yd^\dagger)_{ij}\tdR[i]^{x*}\tdR[j]^{x} \right)
+\\&
++ |\hd|^2\left( -\frac{g_Y^2}{2}|\teR|^2 + (\ye\ye^\dagger)_{ij}\teR[i]^{*}\teR[j] \right)
+\\&
++ \frac{g_Y^2}{3}|\hd|^2|\tuR|^2
+\\&
++ \frac{g_Y^2}{6}|\hu|^2|\tdR|^2
+\\&
++ \frac{g_Y^2}{2}|\hu|^2|\teR|^2
+\\&
++ |\hu|^2\left( -\frac{g_Y^2}{3}|\tuR|^2 + (\yu\yu^\dagger)_{ij}\tuR[i]^{x*}\tuR[j]^{x} \right)
+\\&
++ \left( -\frac{g_2^2}{4}|\hd|^2|\hu|^2 + -\frac{g_Y^2}{4}|\hd|^2|\hu|^2 + \frac{g_2^2}{2}\hd^{b}\hu^{a}\hd^{a*}\hu^{b*} \right)
+\\&
++ \left( -\frac{g_Y^2}{6}|\tdR|^2|\tlL|^2 + \lambda'_{kmi}\lambda^{\prime *}_{lmj}\tdR[i]^{x*}\tlL[k]^{a}\tdR[j]^{x}\tlL[l]^{a*} \right)
+\\&
++ \left( -\frac{g_Y^2}{2}|\teR|^2|\tlL|^2 + \ye[ik]\ye[jl]^{*}\teR[i]^{*}\tlL[k]^{a}\teR[j]\tlL[l]^{a*} + \lambda_{kmi}\lambda^{*}_{lmj}\teR[i]^{*}\tlL[k]^{a}\teR[j]\tlL[l]^{a*} \right)
+\\&
++ \frac{g_Y^2}{3}|\tuR|^2|\tlL|^2
+\\&
++ \left( -\frac{g_2^2}{4}|\hd|^2|\tlL|^2 + \frac{g_Y^2}{4}|\hd|^2|\tlL|^2 + \frac{g_2^2}{2}\hd^{a}\tlL[i]^{b}\hd^{b*}\tlL[i]^{a*} + (\ye^\dagger\ye)_{ji}\hd^{a}\tlL[i]^{c}\hd^{b*}\tlL[j]^{d*}\epsilon^{ac}\epsilon^{bd} \right)
+\\&
++ \left( -\frac{g_2^2}{4}|\hu|^2|\tlL|^2 + -\frac{g_Y^2}{4}|\hu|^2|\tlL|^2 + \frac{g_2^2}{2}\hu^{a}\tlL[i]^{b}\hu^{b*}\tlL[i]^{a*} \right)
+\\&
++ \left( \frac{g_Y^2}{18}|\tdR|^2|\tqL|^2 + \frac{g_3^2}{6}|\tdR|^2|\tqL|^2 + -\frac{g_3^2}{2}\tdR[i]^{x*}\tqL[j]^{ax}\tdR[i]^{y}\tqL[j]^{ay*} + \yd[ik]\yd[jl]^{*}\tdR[i]^{x*}\tqL[k]^{ax}\tdR[j]^{y}\tqL[l]^{ay*} + \lambda'_{mki}\lambda^{\prime *}_{mlj}\tdR[i]^{x*}\tqL[k]^{ax}\tdR[j]^{y}\tqL[l]^{ay*} \right)
+\\&
++ \frac{g_Y^2}{6}|\teR|^2|\tqL|^2
+\\&
++ \left( \frac{g_3^2}{6}|\tuR|^2|\tqL|^2 + -\frac{g_Y^2}{9}|\tuR|^2|\tqL|^2 + -\frac{g_3^2}{2}\tuR[i]^{x*}\tqL[j]^{ax}\tuR[i]^{y}\tqL[j]^{ay*} + \yu[ik]\yu[jl]^{*}\tuR[i]^{x*}\tqL[k]^{ax}\tuR[j]^{y}\tqL[l]^{ay*} \right)
+\\&
++ \left( -\frac{g_Y^2}{12}|\hd|^2|\tqL|^2 + -\frac{g_2^2}{4}|\hd|^2|\tqL|^2 + \frac{g_2^2}{2}\hd^{a}\tqL[i]^{bx}\hd^{b*}\tqL[i]^{ax*} + (\yd^\dagger\yd)_{ji}\hd^{a}\tqL[i]^{cx}\hd^{b*}\tqL[j]^{dx*}\epsilon^{ac}\epsilon^{bd} \right)
+\\&
++ \left( \frac{g_Y^2}{12}|\hu|^2|\tqL|^2 + -\frac{g_2^2}{4}|\hu|^2|\tqL|^2 + \frac{g_2^2}{2}\hu^{a}\tqL[i]^{bx}\hu^{b*}\tqL[i]^{ax*} + (\yu^\dagger\yu)_{ji}\hu^{a}\tqL[i]^{cx}\hu^{b*}\tqL[j]^{dx*}\epsilon^{ac}\epsilon^{bd} \right)
+\\&
++ \left( -\frac{g_Y^2}{12}|\tlL|^2|\tqL|^2 + -\frac{g_2^2}{4}|\tlL|^2|\tqL|^2 + \frac{g_2^2}{2}\tlL[j]^{b}\tqL[i]^{ax}\tlL[j]^{a*}\tqL[i]^{bx*} + \lambda'_{kim}\lambda^{\prime *}_{ljm}\tlL[k]^{c}\tqL[i]^{ax}\tlL[l]^{d*}\tqL[j]^{bx*}\epsilon^{ac}\epsilon^{bd} \right)
+\\&
++ \left( -\frac{g_3^2}{12}|\tdR|^4 + \frac{g_Y^2}{18}|\tdR|^4 + \frac{g_3^2}{4}\tdR[i]^{x*}\tdR[j]^{y*}\tdR[i]^{y}\tdR[j]^{x} + -\frac{1}{4}\lambda''_{mij}\lambda^{\prime \prime *}_{mkl}\tdR[i]^{x*}\tdR[j]^{y*}\tdR[k]^{y}\tdR[l]^{x} + \frac{1}{4}\lambda''_{mij}\lambda^{\prime \prime *}_{mkl}\tdR[i]^{x*}\tdR[j]^{y*}\tdR[k]^{x}\tdR[l]^{y} \right)
+\\&
++ \frac{g_Y^2}{2}|\teR|^4
+\\&
++ \left( -\frac{g_3^2}{12}|\tuR|^4 + \frac{2g_Y^2}{9}|\tuR|^4 + \frac{g_3^2}{4}\tuR[i]^{x*}\tuR[j]^{y*}\tuR[i]^{y}\tuR[j]^{x} \right)
+\\&
++ \frac{1}{8}|\hd|^4\left( g_2^2 + g_Y^2 \right)
+\\&
++ \frac{1}{8}|\hu|^4\left( g_2^2 + g_Y^2 \right)
+\\&
++ \left( -\frac{g_2^2}{8}|\tlL|^4 + \frac{g_Y^2}{8}|\tlL|^4 + \frac{g_2^2}{4}\tlL[i]^{a}\tlL[j]^{b}\tlL[i]^{b*}\tlL[j]^{a*} + \frac{1}{4}\lambda_{ijm}\lambda^{*}_{klm}\tlL[i]^{a}\tlL[j]^{b}\tlL[k]^{c*}\tlL[l]^{d*}\epsilon^{ab}\epsilon^{cd} \right)
+\\&
++ \left( -\frac{g_3^2}{12}|\tqL|^4 + \frac{g_Y^2}{72}|\tqL|^4 + -\frac{g_2^2}{8}|\tqL|^4 + \frac{g_2^2}{4}\tqL[i]^{ax}\tqL[j]^{by}\tqL[i]^{bx*}\tqL[j]^{ay*} + \frac{g_3^2}{4}\tqL[i]^{ax}\tqL[j]^{by}\tqL[i]^{ay*}\tqL[j]^{bx*} \right)
+\\&
++ |\hu|^2\left( |\mu|^2 + |\mu'|^2 \right)
+\\&
+- \left( \yu[ik]\yd[jk]^{*}\hu^{a}\tuR[i]^{x*}\hd^{a*}\tdR[j]^{x} + \yd[jk]\yu[ik]^{*}\hd^{a}\tdR[j]^{x*}\hu^{a*}\tuR[i]^{x} \right)
+\\&
++ \tdR[i]^{x*}\tdR[j]^{x}\left( \lambda'_{kli}\yd[jl]^{*}\tlL[k]^{a}\hd^{a*} + \yd[il]\lambda^{\prime *}_{klj}\hd^{a}\tlL[k]^{a*} \right)
+\\&
+- \left( \lambda'_{klj}\yu[il]^{*}\tdR[j]^{x*}\tlL[k]^{a}\hu^{a*}\tuR[i]^{x} + \yu[il]\lambda^{\prime *}_{klj}\hu^{a}\tuR[i]^{x*}\tdR[j]^{x}\tlL[k]^{a*} \right)
+\\&
+- \tqL[i]^{bx}\tqL[j]^{cx*}\left( \lambda'_{kil}\yd[lj]^{*}\tlL[k]^{d}\hd^{a*}\epsilon^{ac}\epsilon^{bd} + \yd[li]\lambda^{\prime *}_{kjl}\hd^{a}\tlL[k]^{d*}\epsilon^{ab}\epsilon^{cd} \right)
+\\&
++ \left( \ye[ij]\mu^{\prime *}_{j}\teR[i]^{*}\hd^{a}\hu^{a*} + \mu'_{j}\ye[ij]^{*}\hu^{a}\teR[i]\hd^{a*} \right)
+\\&
++ \teR[i]^{*}\teR[j]\left( \lambda_{kli}\ye[jl]^{*}\tlL[k]^{a}\hd^{a*} + \ye[il]\lambda^{*}_{klj}\hd^{a}\tlL[k]^{a*} \right)
+\\&
++ \left( - \mu\ye[ij]^{*}\hu^{a}\teR[i]\tlL[j]^{a*} - \ye[ij]\mu^{*}\teR[i]^{*}\tlL[j]^{a}\hu^{a*} + \mu'_{k}\lambda^{*}_{jki}\hu^{a}\teR[i]\tlL[j]^{a*} + \lambda_{jki}\mu^{\prime *}_{k}\teR[i]^{*}\tlL[j]^{a}\hu^{a*} \right)
+\\&
++ \frac{1}{2}\tlL[i]^{b}\tlL[k]^{d*}\left( \lambda_{ijl}\ye[lk]^{*}\tlL[j]^{c}\hd^{a*}\epsilon^{ad}\epsilon^{bc} + \ye[li]\lambda^{*}_{jkl}\hd^{a}\tlL[j]^{c*}\epsilon^{ab}\epsilon^{cd} \right)
+\\&
++ |\mu|^2|\hd|^2
+\\&
++ \left( \mu\mu^{\prime *}_{i}\hd^{a}\tlL[i]^{a*} + \mu'_{i}\mu^{*}\tlL[i]^{a}\hd^{a*} \right)
+\\&
+- \left( \yu[ij]\mu^{*}\tuR[i]^{x*}\tqL[j]^{ax}\hd^{a*} + \mu\yu[ij]^{*}\hd^{a}\tuR[i]^{x}\tqL[j]^{ax*} \right)
+\\&
++ \mu'_{i}\mu^{\prime *}_{j}\tlL[i]^{a}\tlL[j]^{a*}
+\\&
+- \left( \yu[ij]\mu^{\prime *}_{k}\tuR[i]^{x*}\tqL[j]^{ax}\tlL[k]^{a*} + \mu'_{k}\yu[ij]^{*}\tlL[k]^{a}\tuR[i]^{x}\tqL[j]^{ax*} \right)
+\\&
+- \left( \yd[ij]\mu^{*}\tdR[i]^{x*}\tqL[j]^{ax}\hu^{a*} + \lambda'_{kji}\mu^{\prime *}_{k}\tdR[i]^{x*}\tqL[j]^{ax}\hu^{a*} + \mu\yd[ij]^{*}\hu^{a}\tdR[i]^{x}\tqL[j]^{ax*} + \mu'_{k}\lambda^{\prime *}_{kji}\hu^{a}\tdR[i]^{x}\tqL[j]^{ax*} \right)
+\\&
++ \left( \yd[ik]\ye[jl]^{*}\tdR[i]^{x*}\tqL[k]^{ax}\teR[j]\tlL[l]^{a*} + \ye[jl]\yd[ik]^{*}\teR[j]^{*}\tlL[l]^{a}\tdR[i]^{x}\tqL[k]^{ax*} - \lambda_{lmj}\lambda^{\prime *}_{mki}\teR[j]^{*}\tlL[l]^{a}\tdR[i]^{x}\tqL[k]^{ax*} - \lambda'_{mki}\lambda^{*}_{lmj}\tdR[i]^{x*}\tqL[k]^{ax}\teR[j]\tlL[l]^{a*} \right)
+\\&
+- \left( \lambda'_{lki}\ye[jl]^{*}\tdR[i]^{x*}\tqL[k]^{ax}\teR[j]\hd^{a*} + \ye[jl]\lambda^{\prime *}_{lki}\teR[j]^{*}\hd^{a}\tdR[i]^{x}\tqL[k]^{ax*} \right)
+\\&
++ \epsilon^{ab}\epsilon^{xyz}\left( \yd[lk]\lambda^{\prime \prime *}_{ijl}\hd^{a}\tqL[k]^{bz}\tdR[j]^{y}\tuR[i]^{x} + \lambda''_{ijl}\yd[lk]^{*}\tdR[j]^{y*}\tuR[i]^{x*}\hd^{a*}\tqL[k]^{bz*} \right)
+\\&
+- \epsilon^{ab}\epsilon^{xyz}\left( \lambda'_{lkm}\lambda^{\prime \prime *}_{ijm}\tlL[l]^{b}\tqL[k]^{az}\tdR[j]^{y}\tuR[i]^{x} + \lambda''_{ijm}\lambda^{\prime *}_{lkm}\tdR[j]^{y*}\tuR[i]^{x*}\tlL[l]^{b*}\tqL[k]^{az*} \right)
+\\&
++ -\frac{1}{2}\epsilon^{ab}\epsilon^{xyz}\left( \yu[lk]\lambda^{\prime \prime *}_{lij}\hu^{a}\tqL[k]^{bz}\tdR[i]^{x}\tdR[j]^{y} + \lambda''_{lij}\yu[lk]^{*}\tdR[i]^{x*}\tdR[j]^{y*}\hu^{a*}\tqL[k]^{bz*} \right)

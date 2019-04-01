@@ -1,0 +1,28 @@
+-F^*_{\hu^{a}}
+& = 
+\epsilon^{ab}\left( - \tuR[]^{x*}\yu[]\tqL[]^{bx} + \mu\hd^{b} + \mu'_{i}\tlL[i]^{b} \right)
+,\\
+-F^*_{\hd^{a}}
+& = 
+\epsilon^{ab}\left( \teR[]^{*}\ye[]\tlL[]^{b} + \tdR[]^{x*}\yd[]\tqL[]^{bx} - \mu\hu^{b} \right)
+,\\
+-F^*_{\tqL[i]^{ax}}
+& = 
+\epsilon^{ab}\left( - \yd[ji]\hd^{b}\tdR[j]^{x*} + \yu[ji]\hu^{b}\tuR[j]^{x*} - \lambda'_{kij}\tdR[j]^{x*}\tlL[k]^{b}\right)
+,\\
+-F^*_{\tuR[i]^{x*}}
+& = 
+- \yu[ij]\hu\tqL[j]^{x} + \frac{1}{2}\epsilon^{xyz}\lambda''_{ijk}\tdR[j]^{y*}\tdR[k]^{z*}
+,\\
+-F^*_{\tdR[i]^{x*}}
+& = 
+\yd[ij]\hd\tqL[j]^{x} + \lambda'_{jki}\tlL[j]\tqL[k]^{x} - \lambda''_{jik}\epsilon^{xyz}\tuR[j]^{y*}\tdR[k]^{z*}
+,\\
+-F^*_{\tlL[i]^{a}}
+& = 
+\epsilon^{ab}\left( - \ye[ji]\teR[j]^{*}\hd^{b} - \mu'_{i}\hu^{b} + \lambda_{ijk}\tlL[j]^{b}\teR[k]^{*} + \lambda'_{ijk}\tqL[j]^{bx} \tdR[k]^{x*}\right)
+,\\
+-F^*_{\teR[i]^{*}}
+& = 
+\ye[ij]\hd\tlL[j] + \frac{1}{2}\lambda_{jki}\tlL[j]\tlL[k]
+.

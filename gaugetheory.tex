@@ -1,0 +1,90 @@
+\documentclass[CheatSheet]{subfiles}
+\begin{document}
+\summarystyle
+
+\section{Gauge theory}
+\paragraph{SU(2)}
+Fundamental representation $\TWO=(T^a)_{ij}$,
+adjoint representation $\text{adj.}=(\epsilon^{a})^{bc}$.%
+\footnote{We do not distinguish sub- and superscripts for gauge indices.}
+\begin{align*}
+ T_a &= \frac{1}{2} \sigma_a,
+&
+ \Tr(T_a T_b) &= \frac{1}{2}\delta_{ab},
+&
+ [T_a, T_b] &= \ii \epsilon^{abc}T^c,
+&
+ \epsilon^{abc}\epsilon^{ade} &= \delta_{bd}\delta_{ce} - \delta_{be}\delta_{cd}
+\end{align*}
+Since
+$\overline{\TWO}
+  = -(T^a)^*_{ij}$
+has identities
+ $-\epsilon T^a \epsilon = -T^{a*}$ and
+ $-\epsilon (-T^{a*}) \epsilon = T^a$,
+%
+%\begin{equation}
+% $-\epsilon T^a \epsilon = -T^{a*}$,
+%\end{equation}
+%  = -\epsilon^{ik}T^a_{kl}\epsilon^{lj}
+%  = (\epsilon T^a\epsilon^{-1})_{ij}
+we see that $\epsilon^{ab}\TWO^b$ transforms as $\overline{\TWO}^a$:
+\begin{equation}
+ \epsilon^{ab}\TWO^b
+\to
+ \epsilon^{ab}[\exp\left(\ii g \theta^\alpha T^\alpha\right)]^{bc}\TWO^{c}
+=
+ \epsilon^{ab}[\exp\left(\ii g \theta^\alpha T^\alpha\right)]^{bc}(\epsilon^{-1})^{cd}(\epsilon^{de}\TWO^e)
+=
+ [\exp\left(-\ii g \theta^\alpha T^{\alpha*}\right)]^{ab}(\epsilon^{bc}\TWO^c).
+\end{equation}
+
+\paragraph{SU(3)}
+Fundamental representation $\THREE=(\tau^a)_{ij}$,
+$\THREEbar=-(\tau^{a})^*_{ij}$;
+adjoint representation $\text{adj.}=\boldsymbol{8}=(f^{a})^{bc}$.%
+
+Gell-Mann matrices:
+\begin{align}
+ \lambda_{1\text{--}8} &=
+  \left(\begin{smallmatrix} 0&1&0 \\ 1&0&0 \\ 0&0&0 \end{smallmatrix}\right),
+  \left(\begin{smallmatrix} 0&-\ii&0 \\ \ii&0&0 \\ 0&0&0  \end{smallmatrix}\right),
+  \left(\begin{smallmatrix} 1&0&0 \\ 0&-1&0 \\ 0&0&0  \end{smallmatrix}\right),
+  \left(\begin{smallmatrix} 0&0&1 \\ 0&0&0 \\ 1&0&0  \end{smallmatrix}\right),
+  \left(\begin{smallmatrix} 0&0&-\ii \\ 0&0&0 \\ \ii&0&0  \end{smallmatrix}\right),
+  \left(\begin{smallmatrix} 0&0&0 \\ 0&0&1 \\ 0&1&0  \end{smallmatrix}\right),
+  \left(\begin{smallmatrix} 0&0&0 \\ 0&0&-\ii \\ 0&\ii&0  \end{smallmatrix}\right),
+  \tfrac1{\sqrt3}\left(\begin{smallmatrix} 1&0&0 \\ 0&1&0 \\ 0&0&-2 \end{smallmatrix}\right).
+\end{align}
+
+\begin{align*}
+ \tau_a &= \frac{1}{2} \lambda_a,
+&
+ \Tr(\tau_a \tau_b) &= \frac{1}{2}\delta_{ab},
+&
+ [\tau_a, \tau_b] &= \ii f^{abc}\tau^c,
+&
+ f^{ade}f^{bcd} + f^{bde}f^{cad} + f^{cde}f^{abd} &= 0.
+\end{align*}
+
+\begin{align*}
+\THREE:~~\phi_a&
+  \to [\exp(\ii g \theta^\alpha \tau^\alpha)]_{ab}\phi_b
+  \simeq \phi_a + \ii g \theta^\alpha \tau^\alpha_{ab}\phi_b
+&
+\THREEbar:~~\phi_a&
+  \to[\exp(-\ii g \theta^\alpha \tau^{\alpha*})]_{ab}\phi_b
+  \simeq \phi_a - \ii g \theta^\alpha \tau^{\alpha*}_{ab}\phi_b
+\\
+\phi_a^*&
+  \to[\exp(-\ii g \theta^\alpha \tau^{\alpha*})]_{ab}\phi_b^*
+ \simeq \phi_a^* - \ii g \theta^\alpha \tau^{\alpha*}_{ab}\phi_b^*
+&
+\phi_a^*&
+  \to[\exp(\ii g \theta^\alpha \tau^{\alpha})]_{ab}\phi_b^*
+  \simeq \phi_a^* + \ii g \theta^\alpha \tau^{\alpha}_{ab}\phi_b^*
+\\
+&=\phi_b^*[\exp(-\ii g \theta^\alpha \tau^{\alpha})]_{ba}
+ \simeq \phi_a^* - \ii g \theta^\alpha \phi_b^* \tau^{\alpha}_{ba}
+\end{align*}
+\end{document}

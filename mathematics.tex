@@ -1,0 +1,52 @@
+\documentclass[CheatSheet]{subfiles}
+\begin{document}
+
+\detailstyle
+\section{Mathematics}
+\subsection{Matrix exponential}
+Excerpted from \S2 and \S5 of Hall 2015 \cite{hall2015}:
+\begin{alignat}{2}
+ &\ee^X := \sum_{m=0}^\infty \frac{X^m}{m!} \text{~~(converges for any $X$)},
+\quad&
+ &\log X := \sum_{m=1}^\infty (-1)^{m+1}\frac{(A-1)^m}{m} \text{~~(conv.~if $\|A-I\|<1$)}.
+\end{alignat}
+\begin{alignat}{2}
+ &\ee^{\log A} = A \text{~~(if $\|A-I\|<1$)},
+\quad&
+ &\log \ee^X = X \text{~and~} \|\ee^X-1\| < 1 \text{~~(if $\|X\|<\log2$).}
+\end{alignat}
+\begin{equation}
+ \text{Hilbert-Schmidt norm}:~\|X\|^2 := \sum_{i,j}|X_{ij}|^2 = {\Tr X^\dagger X}.
+\end{equation}
+Properties:
+\begin{alignat*}{4}
+ \ee^{(X^\TT)} &= (\ee^X)^\TT,
+&\qquad
+ \ee^{(X^*)} &= (\ee^X)^*,
+&\qquad
+ (\ee^X)^{-1} &= \ee^{-X},
+&\qquad
+ \ee^{YXY^{-1}} &= Y\ee^X Y^{-1},
+\end{alignat*}
+\begin{alignat*}{3}
+ \det \exp X &= \exp\Tr X,
+&\qquad
+ \frac{\dd}{\dd t}\ee^{tX} &= X\ee^{t X} = \ee^{tX} X
+&\qquad
+ \ee^{(\alpha+\beta)X} &= \ee^{\alpha X}\ee^{\beta X} \text{~for $\alpha, \beta\in \mathbb C$};
+\end{alignat*}
+Baker-Campbell-Hausdorff:
+\begin{align}
+  \ee^X Y \ee^{-X}
+&= Y + [X, Y] + \frac1{2!}[X, [X, Y]] + \frac1{3!}[X, [X, [X, Y]]] + \cdots;
+\\
+  \log(\ee^X \ee^Y)
+&= X + \int_0^1\!\dd t\, g(\ee^{[X,}\ee^{t[Y,})Y
+\qquad\Bigl[
+  g(z) = \frac{\log z}{1-z^{-1}} = 1+\sum_{n=1}^{\infty}\frac{(-1)^{n+1}(z-1)^n}{n(n+1)}
+\Bigr]\\
+&= X + Y + \frac12[X,Y] + \frac1{12}[X, [X,Y]] - \frac1{12}[Y, [X,Y]] + \cdots
+\quad\text{(Baker-Campbell-Hausdorff).}
+\end{align}
+
+\end{document}

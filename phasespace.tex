@@ -1,214 +1,232 @@
-\documentclass[new]{subfiles}
+\documentclass[CheatSheet]{subfiles}
 \begin{document}
 
-\newcommand{\ddP}[1]{\!\frac{\dd^3\vc#1}{(2\pi)^3}}
 
+\newcommand{\ddP}[2][3]{\frac{\dd^{#1}\vc#2}{(2\pi)^{#1}}}
+
+\summarystyle
 \section{Kinematics}
+
+\paragraph{Decay rate and cross section}  (Note: $\mathcal M$ has a mass dimension of $4-N\w i-N\w f$.)
+\begin{alignat}{2}
+&
+\text{decay rate (rest frame; $\sqrt{s}=M_0$)}:
+&\quad&
+\dd\Gamma=
+\frac{\overline{\dd\Pi^{N\w f}}}{2M_0}
+\Bigl|\mathcal M(M_0\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\})\Bigr|^2,
+\\
+&\text{cross section (Lorentz invariant)}:
+&&
+\dd\sigma =
+\frac{\overline{\dd\Pi^{N\w f}}}{2E_A2E_B\,v_{\text{M\o l}}}
+\Bigl|\mathcal M(p_A,p_B\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\})\Bigr|^2,
+\end{alignat}
+where $\overline{\dd\Pi^{n}}$ is $n$-particle Lorentz-invariant phase space with momentum conservation
+\begin{equation}
+ \overline{\dd\Pi^{n}} := \dd\Pi_1\dd\Pi_2\cdots\dd\Pi_n\,(2\pi)^4\ddelta[4]\left(P_0-\sum p_n\right);
+\quad
+ \dd\Pi := \ddP{p}\frac{1}{2E_{\vc p}}.
+\end{equation}
+At the CM frame, two-body phase-space are characterized by the final momentum $\|\vc p\|$ and given by
+\begin{equation}
+\overline{\dd\Pi^{2}}
+=\frac{\|\vc p\|}{4\pi\sqrt{s}}\frac{\dd\Omega}{4\pi}
+=
+\frac{\|\vc p\|}{8\pi \sqrt{s}}\dd\cos\theta
+=
+\frac1{16\pi}\sqrt{1-\frac{2 (m_1^2+m_2^2)}{s}+\frac{(m_1^2-m_2^2)^2}{s^2}}\dd\cos\theta
+\end{equation}
+with $\sqrt s = M_0$ or $E\w{CM}$, $\theta$ is the angle between initial and final motion, and
+\begin{align*}
+\|\vc p\|&=\frac{\sqrt{s}}{2}\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right),&
+ E_1&=\frac{s+m_1^2-m_2^2}{2\sqrt{s}},&
+ E_2&=\frac{s-m_1^2+m_2^2}{2\sqrt{s}},&
+ p_1\cdot p_2 &= \frac{s-(m_1^2+m_2^2)}{2}.
+\end{align*}
+\paragraph{Mandelstam variables} For $(k_1,k_2)\to(p_3,p_4)$ collision,
+\begin{align*}
+ &s = (k_1+k_2)^2 = (p_3+p_4)^2, \qquad
+ t = (p_3-k_1)^2 = (p_4-k_2)^2, \qquad
+ u = (p_3-k_2)^2 = (p_4-k_1)^2;\\
+ & s+t+u=m_1^2+m_2^2+m_3^2+m_4^2.
+\end{align*}
+
+
+\begin{wrapfigure}[2]{r}{12em}\vspace{-3em}
+ \includegraphics[width=\linewidth,page=1]{figs/collision.pdf}
+\end{wrapfigure}
+
+\noindent
+If the collision is with the ``same mass'' $(m_A,m_A)\to (m_B,m_B)$,
+\begin{align*}
+t &= m_A^2+m_B^2 - s/2+2kp\cos\theta,
+\qquad
+(k_1-k_2)^2=4m_A^2-s,
+\\
+u &= m_A^2+m_B^2 - s/2-2kp\cos\theta,
+\qquad
+(p_3-p_4)^2=4m_B^2-s,
+\\
+k&=\frac{\sqrt{s-4m_A^2}}{2},
+\qquad
+k_1\cdot k_2 = \frac{s}{2}-m_A^2,
+\qquad
+k_1\cdot p_3=k_2\cdot p_4=\frac{m_A^2+m_B^2-t}{2},
+\\
+p&=\frac{\sqrt{s-4m_B^2}}{2},
+\qquad
+p_3\cdot p_4 = \frac{s}{2}-m_B^2,
+\qquad
+k_1\cdot p_4=k_2\cdot p_3=\frac{m_A^2+m_B^2-u}{2}.
+\end{align*}
+
+\begin{wrapfigure}[2]{r}{12em}\vspace{-1em}
+ \includegraphics[width=\linewidth,page=2]{figs/collision.pdf}
+\end{wrapfigure}
+
+\noindent
+Instead, if the collision is ``initially massless'' $(0,0)\to (m_3,m_4)$,
+\begin{align*}
+ t &= (m_3^2+m_4^2-s)/2+p\sqrt{s}\cos\theta,\\
+ u &= (m_3^2+m_4^2-s)/2-p\sqrt{s}\cos\theta,\\
+ p &= (\sqrt{s}/2)\mathop{\lambda^{1/2}}\left(1;m_3^2/s,{m_4^2}/{s}\right).
+\end{align*}
+
+\newpage
+
+\detailstyle
 \subsection{Fundamentals}
-$
-\int\!\dd\Pi
+Lorentz-invariant phase space:
+\begin{equation*}
+\int\dd\Pi
 = \int\ddP{p}\frac{1}{2E_{\vc p}}
-= \int\!\frac{\dd^4 p}{(2\pi)^4}(2\pi)\ddelta\left((p^0)^2-m^2-\|\vc p\|^2\right)\Big|_{p^0\ge0}
-$
-\minisec{K\"all\'en function}
-$
-\mathop{\lambda}(x,y,z)
-= x^2+y^2+z^2-2xy-2yz-2zx = (x-y-z)^2-4yz
-$;\quad $\mathop{\lambda}(s,m_1^2,m_2^2)=s^2\mathop{\lambda}(1,m_1^2/s,m_2^2/s)$;\\
-$
+= \int\ddP{p}\frac{1}{2\sqrt{m^2+\|\vc p\|^2}}
+= \int\frac{\dd p_0\dd^3\vc p}{(2\pi)^4}(2\pi)\ddelta\left(p_0^2-\|\vc p\|^2-m^2\right)\Theta(p_0)
+\end{equation*}
+K\"all\'en function:
+\begin{align*}
+&\mathop{\lambda}(x,y,z)
+= x^2+y^2+z^2-2xy-2yz-2zx
+= (x-y-z)^2-4yz;
+\\
+&
 \mathop{\lambda}(1;\alpha_1^2,\alpha_2^2)
 = (1-(\alpha_1+\alpha_2)^2)(1-(\alpha_1-\alpha_2)^2)
 = (1+\alpha_1+\alpha_2)(1-\alpha_1-\alpha_2)(1+\alpha_1-\alpha_2)(1-\alpha_1+\alpha_2).
-$
-\begin{align}
-\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right)
-= \sqrt{1-\frac{2 (m_1^2+m_2^2)}{s}+\frac{(m_1^2-m_2^2)^2}{s^2}};\quad
-m_1=m_2:\ \sqrt{1-\frac{4m^2}{s}},\quad
-m_2=0:\ \frac{s-m_1^2}{s}.
-\end{align}
+\end{align*}
+\begin{alignat*}{2}
+&\mathop{\lambda^{1/2}}\left(s;m_1^2, m_2^2\right) = s\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s}, \frac{m_2^2}{s}\right);&
+\qquad
+&\mathop{\lambda^{1/2}}\left(1;\frac{m^2}{s},\frac{m^2}{s}\right)
+= \sqrt{1-\frac{4 m^2}{s}},\\
+&\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right)
+= \sqrt{1-\frac{2 (m_1^2+m_2^2)}{s}+\frac{(m_1^2-m_2^2)^2}{s^2}},&
+&\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},0\right)
+= \frac{s-m_1^2}{s}.
+\end{alignat*}
 
-
-\paragraph{Two-body kinematics}
-$s=(p_1+p_2)^2$\\
-In CM frame, $s=(E_1+E_2)^2$ and
-$p= \sqrt{\frac{s}{4}}\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right)$;
-\quad
-$E_1 = \frac{s+m_1^2-m_2^2}{2\sqrt{s}}$.
-\\
-For $m_1=m_2$, $E=\frac{\sqrt{s}}{2}$ and $
-p = \sqrt{\frac{s}{4}}\sqrt{1-\frac{4 m^2}{s}}
-=\frac{\sqrt{s-4m^2}}{2}$; $v=\frac{p}{E}=\sqrt{1-\frac{4m^2}{s}}$.
-\\
-For $m_2=0$, $p=\frac{\sqrt{s}}{2}\left(1-\frac{m_1^2}{s}\right)=E_2$ and
-$E_1=\frac{\sqrt{s}}{2}\left(1+\frac{m_1^2}{s}\right)$.
-\minisec{Two-body phase space}
-$
-\int\!\dd\Pi_1\dd\Pi_2\text{(Lorentz invariant)}
-= \int\!\dd\Pi_1\dd\Pi_2\,f(p_1, p_2, p_1^\mu p_{2\mu})
-= \int\!\dd\Pi_1\dd\Pi_2\,f(p_1,p_2,\cos\theta_{12}).
-$
-\\
-Rewriting with $E_\pm = E_1\pm E_2$ and $s=(p_1+p_2)^2=m_1^2 + m_2^2 + 2E_1E_2 - 2\|\vc p_1\|\|\vc p_2\|\cos\theta_{12}$,
-\\
-$
-\int\dd\Pi_1\dd\Pi_2
+\paragraph{Two-body phase space}
+If $f(p_1^\mu,p_2^\mu)$ is Lorentz invariant, $f\equiv f(p_1^2,p_2^2,p_1^\mu p_{2\mu})\equiv f(p_1,p_2,\cos\theta_{12})$.
+Meanwhile,
+\begin{equation}
+ \int\dd\Pi_1\dd\Pi_2
 =
 \int\ddP{p_1}\,\,\ddP{p_2}\frac{1}{2E_12E_2}
 =
-\int\!\frac{(4\pi)\dd p_1\,p_1^2}{(2\pi)^3}
+\int\frac{(4\pi)\dd p_1\,p_1^2}{(2\pi)^3}
 \frac{(2\pi)\dd p_2\,p_2^2\,\dd\cos\theta_{12}}{(2\pi)^3}\frac{1}{2E_12E_2}
 =
-\int\!\frac{\dd E_+\dd E_- \dd s}{128\pi^4}
-$,
-\\
-where the Jacobian is $\left|\frac{\dd(E_+,E_-,s)}{\dd(p_1, p_2, \cos\theta_{12})}\right|=\frac{4p_1^2p_2^2}{E_1E_2}$, or $\left|\frac{\dd(E_1,E_2,s)}{\dd(p_1, p_2, \cos\theta_{12})}\right|=\frac{2p_1^2p_2^2}{E_1E_2}.$
-\\
-As $
-\cos\theta_{12}=\frac{E_+^2-E_-^2+2 \left(m_1^2+m_2^2-s\right)}{\sqrt{(E_++E_-)^2-4 m_1^2}\sqrt{(E_+-E_-)^2-4 m_2^2}}
-$ is restricted as $[-1,1]$, $E_-$ is bounded as
-\\
-$
-\left|E_- - \frac{m_1^2-m_2^2}{s}E_+\right| 
-\le
-\sqrt{E_+^2-s}\cdot\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right)
-=
-2p\sqrt{\frac{E_+^2-s}{s}}
-$; using these bounds,
+\int\frac{\dd E_+\dd E_- \dd s}{128\pi^4},
+\end{equation}
+with the replacement of the variables
+\begin{align*}
+& E_\pm = E_1\pm E_2,
+\qquad
+s=(p_1+p_2)^2=m_1^2 + m_2^2 + 2E_1E_2 - 2\|\vc p_1\|\|\vc p_2\|\cos\theta_{12};\\
+&
+\left|\frac{\dd(E_+,E_-,s)}{\dd(p_1, p_2, \cos\theta_{12})}\right|=\frac{4p_1^2p_2^2}{E_1E_2},
+\qquad
+\left|\frac{\dd(E_1,E_2,s)}{\dd(p_1, p_2, \cos\theta_{12})}\right|=\frac{2p_1^2p_2^2}{E_1E_2}.
+\end{align*}
+Therefore, 
 \begin{equation}
  \int\dd\Pi_1\dd\Pi_2
 =
 \frac{1}{128\pi^4}
 \int_{(m_1+m_2)^2}^\infty\dd s
 \int_{\sqrt{s}}^\infty\dd E_+
-\int\w{min}^{\mathrm{max}}\dd E_-.
+\int\w{min}^{\mathrm{max}}\dd E_-,
 \end{equation}
-
-\minisec{Two-body phase space with momentum conservation}
-$\int\dd\Pi^{(2)}:=
-\int\dd\Pi_1\dd\Pi_2\,(2\pi)^4\ddelta[4](P_0-p_1-p_2)
+where the boundary of $E_-$ is given by
+\begin{align*}
+ &\cos\theta_{12}=\frac{E_+^2-E_-^2+2 \left(m_1^2+m_2^2-s\right)}{\sqrt{(E_++E_-)^2-4 m_1^2}\sqrt{(E_+-E_-)^2-4 m_2^2}} \in [-1,1]\\
+ &\therefore\quad
+\left|E_- - \frac{m_1^2-m_2^2}{s}E_+\right| 
+\le
+\sqrt{E_+^2-s}\cdot\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right)
 =
-\int\!\frac{\dd p_1\dd\Omega\,p_1^2}{16\pi^2}\frac{\delta(E_0-\sqrt{m_1^2+p_1^2}-\sqrt{m_2^2+\|\vc P_0-\vc p_1\|^2})}{E_1E_2}
-$;
-\\
-$p_1=\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
+2p\sqrt{\frac{E_+^2-s}{s}}.
+\end{align*}
+
+\paragraph{Two-body phase space with momentum conservation}
+As a general representation in any frame,
+\begin{equation}
+\overline{\dd\Pi^2}
+=\frac{\dd p_1\dd\Omega\,p_1^2}{16\pi^2}\frac{\delta(E_0-\sqrt{m_1^2+p_1^2}-\sqrt{m_2^2+\|\vc P_0-\vc p_1\|^2})}{E_1E_2}
+=\frac{1}{8\pi}\dd\cos\theta_{1}\frac{p_1^2}{E_0p_1-P_0E_1\cos\theta_1},
+\end{equation}
+where the momentum $p_1$ is given by
+\begin{equation}
+p_1=\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
  + E_0\sqrt{\mathop{\lambda}(E_0^2,m_1^2,m_2^2)+P_0^4-2P_0^2(E_0^2+m_1^2-2m_1^2\cos^2\theta_1-m_2^2)}
-}{2(E_0^2-P_0^2\cos^2\theta_1)}$\\
-and
-$
-\int\dd\Pi^{(2)}
-=
-\frac{1}{8\pi}\int\dd\cos\theta_{1}\frac{p_1^2}{E_0p_1-P_0E_1\cos\theta_1}
-$;
-\begin{align}
- \text{CM ($E_0=\sqrt{s}$):}& &
-\int\dd\Pi^{(2)}&=\int\frac{\dd\cos\theta_{1}}{8\pi}\frac{p}{\sqrt{s}}
-;&
- p &= \frac{\sqrt{s}}{2}\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right),
-&
-E_1 &= \frac{s+m_1^2-m_2^2}{2\sqrt{s}}.
-\end{align}
+}{2(E_0^2-P_0^2\cos^2\theta_1)}.
+\end{equation}
+CM frame result is recovered by setting $E_0=\sqrt{s}$ and $P_0=0$.
 
-\newpage
 \subsection{Decay rate and Cross section}
-\noindent
-Rate $\dd R=\dd\Pi^{(n)}\left|\mathcal M\right|^2(2\pi)^4\ddelta[4](p\w i-p\w f)$ is Lorentz invariant; density is given by $\rho=2E$.
-\\
-Decay rate: $R = \frac{N}{VT} =: \rho_1^{\text{rest}}\Gamma = 2m\Gamma$\quad(defined at the rest frame);
-\\
-Cross section:
-$R = \frac{N}{VT}
-=: v\w{rel}\rho_1\rho_2 \frac{p_1\cdot p_2}{E_1E_2}\sigma=:v_{\text{M\o l}}\rho_1\rho_2\sigma$\quad (defined as Lorentz invariant).
-\\
-Note that $\rho/E$ is Lorentz invariant; the factor is introduced as $(p_1\cdot p_2)/E_1E_2=1$ at $\vc p_1=0$ or $\vc p_2=0$.
-\begin{align}
-&\text{relative velocity:}\quad
-v\w{rel}
+As
+$\braket{\text{out}|\text{in}}=(2\pi)^4\ddelta[4](p\w i-p\w f)\ii\mathcal M$
+(for $\text{in}\neq\text{out}$) and $\braket{\vc p|\vc p}=2E_{\vc p}(2\pi)^3\ddelta[3](\vc 0)=2E_\vc {p}V$ for one-particle state,
+\begin{equation}
+ \frac{N\w{ev}}{\prod\w{in} N\w{particle}}
+= \int\dd\Pi^{\mathrm{out}}\frac{\left|\braket{\text{out}|\text{in}}\right|^2}{\braket{\text{in}|\text{in}}}
+= \int\dd\Pi^{\mathrm{out}}\frac{(2\pi)^8|\mathcal M|^2}{\prod\w{in}(2E)V}
+\frac{VT}{(2\pi^4)}\ddelta[4](p\w i-p\w f)
+= VT\int\overline{\dd\Pi^{N\w f}}\frac{|\mathcal M|^2}{\prod\w{in}(2E)V}.
+\end{equation}
+Therefore, decay rate (at the rest frame) is given by
+\begin{equation}
+ \dd\Gamma
+:= \frac{1}{T}\frac{\dd N\w{ev}}{N\w{particle}}
+ = \frac{1}{T}VT\overline{\dd\Pi^{N\w f}}\frac{|\mathcal M|^2}{(2E)V}
+ = \frac{1}{2M_0}\overline{\dd\Pi^{N\w f}}{|\mathcal M|^2}.
+\end{equation}
+We also define Lorentz-invariant cross section $\sigma$ by $N\w{ev}=:(\rho_A v_{\text{M\o l}}T\sigma)N_B=(\rho_A v_{\text{M\o l}}T\sigma)(\rho_B V)$, or
+\begin{equation}
+\dd\sigma:=\frac{\dd N\w{ev}}{\rho_A v_{\text{M\o l}}TN_B}
 =
-\frac{\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}}{p_1\cdot p_2}
+\frac{V}{v_{\text{M\o l}}T}
+VT\overline{\dd\Pi^{N\w f}}\frac{|\mathcal M|^2}{2E_A2E_BV^2}
 =
-\frac{\sqrt{\|\vc v_1-\vc v_2\|^2-\|\vc v_1\times\vc v_2\|^2}}{1-\vc v_1\cdot\vc v_2}
-=
-\frac{\mathop{\lambda^{1/2}}(s,m_1^2,m_2^2)}{s-(m_1^2+m_2^2)},
-\\
-&\text{M\o ller parameter:}\quad
-v_{\text{M\o l}}:= \frac{\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}}{E_1E_2}\quad \leadsto \text{$|v_1-v_2|$ if $\vc v_1\parallel \vc v_2$};
-\end{align}
-\vspace{-1em}\par
-{\hfill [mass dimension of $\mathcal M$ is $4-N\w i-N\w f$]}
-\par\vspace{-2.4em}
-\begin{align}
-\dd\Gamma&=
-\frac{1}{2m_A}\Biggl[\prod\w f\frac{\dd^3p\w f}{(2\pi)^3}\frac{1}{2E\w f}\Biggr]
-\Bigl|\mathcal M(m_A\to\{p\w f\})\Bigr|^2(2\pi)^4\ddelta[4]\left(m_A-\{p\w f\}\right),
-\\
-\dd\sigma &=
-\frac{1}{2E_A2E_B\ v_{\text{M\o l}}}\Biggl[\prod\w f\frac{\dd^3p\w f}{(2\pi)^3}\frac{1}{2E\w f}\Biggr]
-\Bigl|\mathcal M(p_A,p_B\to\{p\w f\})\Bigr|^2(2\pi)^4\ddelta[4]\left(p_A+p_B-\{p\w f\}\right).
-\end{align}
-
-\minisec{Two-body kinematics in CM frame}
-\begin{align}
-\int\!\dd\Pi^{(2)}
-&:=\int\!\frac{\dd^3\vc p_1}{(2\pi)^3}\frac{\dd^3\vc p_2}{(2\pi)^3}
-\frac{1}{2E_1}\frac{1}{2E_2}\,(2\pi)^4\ddelta[4](\sqrt{s}-p_1-p_2)\qquad\text{($\sqrt s=E\w{CM}$ or $M\w{mother}$)}
-\notag\\&=
-\frac{\|\vc p\|}{4\pi\sqrt{s}}\int\!\frac{\dd\Omega}{4\pi}
-=
-\frac{\|\vc p\|}{8\pi \sqrt{s}}\int\dd\cos\theta
-\\
-\frac{\|\vc p\|}{8\pi\sqrt{s}}
-&=
-\frac{1}{8\pi\sqrt{s}}\cdot\frac{\sqrt{s}}{2}\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right)
-=
-\frac1{16\pi}\sqrt{1-\frac{2 (m_1^2+m_2^2)}{s}+\frac{(m_1^2-m_2^2)^2}{s^2}}
-\end{align}
-\begin{align}
- E_1&=\frac{s+m_1^2-m_2^2}{2\sqrt{s}}&
- E_2&=\frac{s-m_1^2+m_2^2}{2\sqrt{s}}&
- p_1\cdot p_2 &= \frac{s-(m_1^2+m_2^2)}{2}
-\end{align}
-
-\subparagraph{Mandelstam variables} For $(k_1,k_2)\to(p_3,p_4)$ collision,
-\begin{align*}
- &s = (k_1+k_2)^2 = (p_3+p_4)^2, \quad
- t = (p_3-k_1)^2 = (p_4-k_2)^2, \quad
- u = (p_3-k_2)^2 = (p_4-k_1)^2;\\
- & s+t+u=m_1^2+m_2^2+m_3^2+m_4^2
-\end{align*}
-
-\begin{wrapfigure}[3]{r}{10.1em}
-\vspace{-2em}
- \includegraphics[width=10em]{collision.pdf}
-\end{wrapfigure}
-For same-mass collision, $ s = (2E)^2 = E\w{CM}^2$ and
-\begin{align*}
- t &= m_A^2+m_B^2 - s/2+2kp\cos\theta
-&
-(k_1-k_2)^2&=4m_A^2-s
-\\
- u &= m_A^2+m_B^2 - s/2-2kp\cos\theta
-&
-(p_1-p_2)^2&=4m_B^2-s
-\end{align*}\vspace{-1.5em}
-\begin{align*}
- k&=\frac{\sqrt{s-4m_A^2}}{2}
-&k_1\cdot k_2 &= \frac{s}{2}-m_A^2
-&k_1\cdot p_1&=k_2\cdot p_2=\frac{m_A^2+m_B^2-t}{2}
-\\
- p&=\frac{\sqrt{s-4m_B^2}}{2}
-&p_1\cdot p_2 &= \frac{s}{2}-m_B^2
-&k_1\cdot p_2&=k_1\cdot p_2=\frac{m_A^2+m_B^2-u}{2}
-\end{align*}
-\begin{wrapfigure}[3]{r}{10.1em}
-\vspace{-1.5em}
- \includegraphics[width=10em]{collision2.pdf}
-\end{wrapfigure}
-
-For collision with initial mass ignored,
-\begin{align*}
- t &= (m_1^2+m_2^2-s)/2+p\sqrt{s}\cos\theta\\
- u &= (m_1^2+m_2^2-s)/2-p\sqrt{s}\cos\theta
-\end{align*}
+\frac{1}{2E_A2E_B\,v_{\text{M\o l}}}
+\overline{\dd\Pi^{N\w f}}|\mathcal M|^2.
+\end{equation}
+where the M\o ller parameter $v_{\text{M\o l}}$ is equal to $v^{\mathrm{NR}}\w{rel}=\|\vc v_A-\vc v_B\|$ if $\vc v_A\parallel\vc v_B$ (cf.~Ref.~\cite{1605.00569}).
+Generally,
+\begin{equation}
+  v_{\text{M\o l}}:= \frac{\sqrt{(p_A\cdot p_B)^2-m_A^2m_B^2}}{E_AE_B}
+=\frac{p_A\cdot p_B}{E_A E_B}v\w{rel}
+=({1-\vc v_A\cdot\vc v_B})v\w{rel},
+\end{equation}
+where $v\w{rel}$ is the actual relative velocity
+\begin{equation}
+  v\w{rel}
+=\sqrt{1-\frac{(1-v_A^2)(1-v_B^2)}{1-(\vc v_A\cdot\vc v_B)^2}}
+=\frac{\sqrt{\|\vc v_A-\vc v_B\|^2-\|\vc v_A\times\vc v_B\|^2}}{1-\vc v_A\cdot\vc v_B}
+=\frac{\mathop{\lambda^{1/2}}(s,m_A^2,m_B^2)}{s-(m_A^2+m_B^2)}\neq v^{\mathrm{NR}}\w{rel}.
+\end{equation}
+(Note that $p_A\cdot p_B/E_AE_B=1$ if $\vc p_A=0$ or $\vc p_B=0$. Also, Each of $v\w{rel}$, $VT$, and $E_AE_Bv_{\text{M\o l}}$ is Lorentz invariant.)
 
 
 

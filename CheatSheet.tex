@@ -1,110 +1,174 @@
-%#!platex -shell-escape CheatSheet
-%%% Time-Stamp: <2016-01-25 14:14:37 misho>
-%%% 一部で日本語が使用されています。
+\documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
+\pdfoutput=1
 
-\documentclass[a4j,10pt,notitlepage]{jsarticle}
+% ----------------------------------------------------------- Packages
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb,url,cite,slashed,cancel,booktabs,hyperref,graphicx,xspace,subcaption,wrapfig,braket}
+\usepackage[capitalize]{cleveref}
+\renewcommand\citepunct{,\penalty1000\hskip.13emplus.1emminus.1em\relax} % no line-break in \cite
+\renewcommand\thefootnote{*\arabic{footnote}}
+\numberwithin{equation}{section}
 
-\usepackage[backref=page,bookmarksnumbered,bookmarksopen,hyperfootnotes=false,hypertex]{hyperref}
-\usepackage[usenames]{color}
-\usepackage{graphicx}
+% MATH NOTATION
+\newcommand\w[1]{_{\mathrm{#1}}}
+\newcommand\vc[1]{{\boldsymbol{#1}}}
+\newcommand\dd{\mathop{}\!\mathrm{d}}
+\newcommand\DD{\mathop{}\!\mathrm{D}}
+\newcommand\ee{\mathop{}\!\mathrm{e}}
+\newcommand\abs[1]{\lvert#1\rvert}
+\newcommand\norm[1]{\lVert#1\rVert}
+\newcommand\Abs[1]{\left\lvert#1\right\rvert}
+\newcommand\Norm[1]{\left\lVert#1\right\rVert}
+\newcommand\ii{\mathrm{i}}
+\newcommand\co[1]{\mathrm{c}_{#1}}
+\newcommand\si[1]{\mathrm{s}_{#1}}
+\newcommand\coco[1]{\mathrm{c}^2_{#1}}
+\newcommand\sisi[1]{\mathrm{s}^2_{#1}}
+\newcommand\pmat[1]{\begin{pmatrix}#1\end{pmatrix}}
+\DeclareMathOperator{\Order}{\mathcal{O}}
+\DeclareMathOperator{\sign}{\mathrm{sign}}
+\DeclareMathOperator{\Tr}{\mathrm{Tr}}
+\DeclareMathOperator{\diag}{\mathrm{diag}}
+\renewcommand{\Re}{\mathop{\mathrm{Re}}}
+\renewcommand{\Im}{\mathop{\mathrm{Im}}}
 
-\usepackage{MyCommand4}
+\newcommand\oneone{1}
+\newcommand{\dn}[3]{\frac{\dd^#1 #2}{\dd #3^#1}}
+\newcommand{\pdn}[3]{\frac{\partial^#1 #2}{\partial #3^#1}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand\ddelta[1][\relax]{\qopname\relax o{\ifx#1\relax\delta\else\delta^{(#1)}\fi}}
 
-\usepackage[greek,japanese]{babel}
-\usepackage{ContractionMacros}
-\usepackage{feynmp,lscape,slashed,./HEP}
-\usepackage{fancybox,fullpage}
-
-% ---------------------------------------------------------------------------- %
+\newcommand\unit[1]{\,\mathrm{#1}\xspace}
+\newcommand\eV{\unit{eV}}
+\newcommand\keV{\unit{keV}}
+\newcommand\MeV{\unit{MeV}}
+\newcommand\GeV{\unit{GeV}}
+\newcommand\TeV{\unit{TeV}}
+\newcommand\PeV{\unit{PeV}}
+\newcommand\fb{\unit{fb}}
+\newcommand\pb{\unit{pb}}
+\newcommand\iab{\unit{ab^{-1}}}
+\newcommand\ifb{\unit{fb^{-1}}}
+\newcommand\ipb{\unit{pb^{-1}}}
+\newcommand\fm{\unit{fm}}
+\newcommand\vev[1]{\langle\#1\rangle}
 \makeatletter
-% ---------------------------------------------------------------------------- %
-% Spaces
-\addtolength{\textheight}{0.2in}
-\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
-    {.3\Cvs \@plus.2\Cdp \@minus.2\Cvs}{\z@}{\normalfont\normalsize\headfont}}
-
-% Notes header
-\usepackage[hhmmss]{datetime}
-\newcommand{\gitrevision}{%
-  \ifnum\pdf@shellescape=1
-  @\input{|"git rev-parse HEAD | head -c 7"}%
-  \else%
-  \;@\;%
-  \fi}
-\newcommand{\header}{%
-  \jobname\gitrevision%\input{|"git rev-parse HEAD | head -c 7"}%
-  \number\day\;%
-  \ifcase\month\or Jan\or Feb\or Mar\or Apr\or May\or Jun\or%
-                   Jul\or Aug\or Sep\or Oct\or Nov\or Dec\fi\;%
-  \number\year~%
-  \currenttime}
-\fancyput(240pt,10pt){{\color[rgb]{0.4,0.4,0.4}[\header]}}
-
-% Equation label
-\def\theequation{\@arabic\c@section.\@arabic\c@equation}
-\@addtoreset{equation}{section}
-
-% Appendix
-\let\org@appendix\appendix
-\renewcommand{\appendix}{\par
-  \org@appendix
-  \setcounter{section}{0}%
-  \setcounter{subsection}{0}%
-  \setcounter{equation}{0}%
-  \gdef\presectionname{\appendixname}%
-  \gdef\postsectionname{}%
-  \def\theequation{\@Alph\c@section.\@arabic\c@equation}
-  \gdef\thesection{\presectionname\@Alph\c@section\postsectionname}%
-  \gdef\thesubsection{\@Alph\c@section.\@arabic\c@subsection}}
-
-% Box
-\def\label@box#1#2#3#4{\@ifnextchar[{\label@@box{#1}{#2}{#3}{#4}}{\label@@box@{#1}{#2}{#3}{#4}}}
-\def\label@@box#1#2#3#4[#5]{\label@@box@{#1}{#2}{#3}{#4 ： #5}}
-\def\label@@box@#1#2#3#4{%
- \color{#1}\fboxsep=1zw\begin{center}\csname#2\endcsname%
- \bgroup\begin{minipage}{.81\textwidth}%
- \vspace{-#3}\hspace{1zw}%
- {\fboxsep=0pt\colorbox{white}{\ \bf #4\ }\par}%
- \color{Black}\begin{minipage}{\textwidth}}%
-\def\endlabel@box{\end{minipage}\end{minipage}\egroup\end{center}}
-\def\preposition#1{\label@box{Black}{Ovalbox}{1.5zw}{#1}}
-\let\endpreposition\endlabel@box
-\def\conclusion#1{\label@box{Black}{shadowbox}{1.5zw}{#1}}
-\let\endconclusion\endlabel@box
-% ---------------------------------------------------------------------------- %
+\def\EE{\@ifnextchar-{\@@EE}{\@EE}}
+\def\@EE#1{\ifnum#1=1 \times\!10 \else \times\!10^{#1}\fi}
+\def\@@EE#1#2{\times\!10^{-#2}}
 \makeatother
-% ---------------------------------------------------------------------------- %
 
-\title{High Energy Physics Cheat Sheet}
-\author{Sho Iwamoto}
-\bibliographystyle{myjplainnosort}
-\begin{document}
-{
-\setlength{\abovedisplayskip}{4pt}
-\setlength{\belowdisplayskip}{4pt}
-\input{General.tex}
-\clearpage
-\input{StandardModel.tex}
+% ---------------------------------------------------- For Sho's Notes
+\usepackage{scrlayer-scrpage,soul,subfiles}
+%\graphicspath{{images/}{../images/}}
+\usepackage[usenames]{color}
+\usepackage[hhmmss]{datetime}
+\definecolor{gray}{gray}{0.3}
+\newdateformat{mydate}{\THEDAY\;\shortmonthname.\;\THEYEAR}
+\addtokomafont{pagehead}{\small\normalfont}
+%\addtokomafont{caption}{\raggedright}
+\ohead{\texttt{\color{gray}{[NewCheatSheet~@~\mydate\today~\currenttime]}}}
+\bibliographystyle{utphys27mod}
+
+
+%special to this tex
+\let\defaultabovedisplayskip\abovedisplayskip % 9+1.8-5.4
+\let\defaultbelowdisplayskip\belowdisplayskip % 9+1.8-5.4
+\let\defaultabovedisplayshortskip\abovedisplayshortskip % 0+2.7
+\let\defaultbelowdisplayshortskip\belowdisplayshortskip % 5.4+2.7-2.7
+\newcommand{\summarystyle}{%
+  \changefontsizes{10pt}%
+  \let\defaultabovedisplayskip\abovedisplayskip%
+  \let\defaultbelowdisplayskip\belowdisplayskip%
+  \let\defaultabovedisplayshortskip\abovedisplayshortskip%
+  \let\defaultbelowdisplayshortskip\belowdisplayshortskip%
 }
+\newcommand{\detailstyle}{%
+  \changefontsizes{9pt}%
+  \setlength{\abovedisplayskip}{2pt plus 2pt minus 1pt}%
+  \setlength{\belowdisplayskip}{2pt plus 2pt minus 1pt}%
+  \setlength{\abovedisplayshortskip}{0pt plus 2pt}%
+  \setlength{\belowdisplayshortskip}{2pt plus 2pt minus 1pt}%
+}
+
+
+\renewcommand{\parallel}{\mathrel{/\mkern-5mu/}}
+\newcommand{\THREE}{\boldsymbol 3}
+\newcommand{\TWO}{\boldsymbol 2}
+\newcommand{\boldN}{\boldsymbol N}
+\newcommand{\THREEbar}{\overline{\boldsymbol 3}}
+\newcommand{\boldNbar}{\overline{\boldsymbol N}}
+\newcommand{\TODO}[1]{{\color{red}{$\clubsuit$\texttt{TODO:}#1$\clubsuit$}}}
+\DeclareMathOperator{\gSU}{\mathrm SU}
+\DeclareMathOperator{\gU}{\mathrm U}
+\newcommand{\bq}{\bar q}
+\newcommand{\cc}{\mathrm{c}}
+\newcommand{\TT}{\mathrm{T}}
+\newcommand{\opC}{\mathsf{C}}
+
+
+
+
+\newcommand\tqL[1][]{\tilde q_{\mathrm{L}#1}}
+\newcommand\tuL[1][]{\tilde u_{\mathrm{L}#1}}
+\newcommand\tdL[1][]{\tilde d_{\mathrm{L}#1}}
+\newcommand\tuR[1][]{\tilde u_{\mathrm{R}#1}}
+\newcommand\tdR[1][]{\tilde d_{\mathrm{R}#1}}
+\newcommand\tlL[1][]{\tilde l_{\mathrm{L}#1}}
+\newcommand\tnuL[1][]{\tilde \nu_{\mathrm{L}#1}}
+\newcommand\teL[1][]{\tilde e_{\mathrm{L}#1}}
+\newcommand\teR[1][]{\tilde e_{\mathrm{R}#1}}
+
+\newcommand\qL[1][]{q_{\mathrm{L}#1}}
+\newcommand\uL[1][]{u_{\mathrm{L}#1}}
+\newcommand\dL[1][]{d_{\mathrm{L}#1}}
+\newcommand\uR[1][]{u_{\mathrm{R}#1}}
+\newcommand\dR[1][]{d_{\mathrm{R}#1}}
+\newcommand\lL[1][]{l_{\mathrm{L}#1}}
+\newcommand\nuL[1][]{\nu_{\mathrm{L}#1}}
+\newcommand\eL[1][]{e_{\mathrm{L}#1}}
+\newcommand\eR[1][]{e_{\mathrm{R}#1}}
+
+\newcommand\Hu{H\w u}
+\newcommand\Hd{H\w d}
+\newcommand\hu{h\w u}
+\newcommand\huz{h\w u^0}
+\newcommand\hup{h\w u^+}
+\newcommand\hd{h\w d}
+\newcommand\hdz{h\w d^0}
+\newcommand\hdm{h\w d^-}
+
+\newcommand\thu{\tilde h\w u}
+\newcommand\thuz{\tilde h\w u^0}
+\newcommand\thup{\tilde h\w u^+}
+\newcommand\thd{\tilde h\w d}
+\newcommand\thdz{\tilde h\w d^0}
+\newcommand\thdm{\tilde h\w d^-}
+
+\newcommand\tig{\tilde g}
+\newcommand\tiw{\tilde w}
+\newcommand\tib{\tilde b}
+
+\newcommand\yu[1][]{y_{\mathrm{u}#1}}
+\newcommand\yd[1][]{y_{\mathrm{d}#1}}
+\newcommand\ye[1][]{y_{\mathrm{e}#1}}
+
+
+\title{HEP Cheat Sheet}
+\date{\today}
+
+\author{Sho Iwamoto}
+\begin{document}
+
+\subfile{phasespace}
 \clearpage
-\input{SUSY.tex}
+\subfile{gaugetheory}
 \clearpage
-\input{MSSM.tex}
+\subfile{spinors}
 \clearpage
-\input{SUGRA.tex}
+\subfile{MSSM}
 \clearpage
 \appendix
-\input{Math.tex}
-\clearpage
-\input{Statistic.tex}
-\clearpage
-\input{VerboseNotes.tex}
-\clearpage
-\input{SUSY-WB.tex}
-\clearpage\ifodd\arabic{page}\mbox{}\clearpage\fi
-\input{frequent.tex}
-\end{document}
+\subfile{mathematics}
 
-%%% Local Variables:
-%%% TeX-master: t
-%%% End:
+\end{document}
