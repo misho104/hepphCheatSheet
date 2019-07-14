@@ -3,7 +3,10 @@ hep-ph CheatSheet
 
 [![CC-BY-NC-SA](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc/4.0/)
 
-This is a cheatsheet for high-energy physics, including quantum field theory, written by [Misho (Sho Iwamoto)](http://www.misho-web.com).
+[CheatSheet.pdf](https://github.com/misho104/hepphCheatSheet/blob/master/CheatSheet.pdf) is a cheatsheet for high-energy physics written by [Misho (Sho Iwamoto)](http://www.misho-web.com).
+
+An older version is available as [CheatSheet_v1.pdf](https://github.com/misho104/hepphCheatSheet/blob/master/CheatSheet_v1.pdf).
+
 
 ### Warnings
 
