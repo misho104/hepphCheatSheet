@@ -1,3 +1,4 @@
+%%% Time-Stamp: <2019-07-16 14:03:36>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \pdfoutput=1
 
@@ -11,7 +12,7 @@
 
 % MATH NOTATION
 \newcommand\w[1]{_{\mathrm{#1}}}
-\newcommand\vc[1]{{\boldsymbol{#1}}}
+\newcommand\vc[1]{{\bm{#1}}}
 \newcommand\dd{\mathop{}\!\mathrm{d}}
 \newcommand\DD{\mathop{}\!\mathrm{D}}
 \newcommand\ee{\mathop{}\!\mathrm{e}}
@@ -36,7 +37,7 @@
 \newcommand{\dn}[3]{\frac{\dd^#1 #2}{\dd #3^#1}}
 \newcommand{\pdn}[3]{\frac{\partial^#1 #2}{\partial #3^#1}}
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand\ddelta[1][\relax]{\qopname\relax o{\ifx#1\relax\delta\else\delta^{(#1)}\fi}}
+\newcommand\diracdelta[1][\relax]{\qopname\relax o{\ifx#1\relax\delta\else\delta^{(#1)}\fi}}
 
 \newcommand\unit[1]{\,\mathrm{#1}\xspace}
 \newcommand\eV{\unit{eV}}
@@ -90,14 +91,14 @@
   \setlength{\abovedisplayshortskip}{0pt plus 2pt}%
   \setlength{\belowdisplayshortskip}{2pt plus 2pt minus 1pt}%
 }
-
+\usepackage{bm}
 
 \renewcommand{\parallel}{\mathrel{/\mkern-5mu/}}
-\newcommand{\THREE}{\boldsymbol 3}
-\newcommand{\TWO}{\boldsymbol 2}
-\newcommand{\boldN}{\boldsymbol N}
-\newcommand{\THREEbar}{\overline{\boldsymbol 3}}
-\newcommand{\boldNbar}{\overline{\boldsymbol N}}
+\newcommand{\THREE}{\bm 3}
+\newcommand{\TWO}{\bm 2}
+\newcommand{\boldN}{\bm N}
+\newcommand{\THREEbar}{\overline{\bm 3}}
+\newcommand{\boldNbar}{\overline{\bm N}}
 \newcommand{\TODO}[1]{{\color{red}{$\clubsuit$\texttt{TODO:}#1$\clubsuit$}}}
 \DeclareMathOperator{\gSU}{\mathrm SU}
 \DeclareMathOperator{\gU}{\mathrm U}
@@ -153,6 +154,14 @@
 \newcommand\yd[1][]{y_{\mathrm{d}#1}}
 \newcommand\ye[1][]{y_{\mathrm{e}#1}}
 
+\newcommand\dalpha{{\dot\alpha}}
+\newcommand\dbeta{{\dot\beta}}
+\newcommand\dgamma{{\dot\gamma}}
+\newcommand\ddelta{{\dot\delta}}
+\newcommand\bsigma{\bar\sigma}
+\newcommand\btheta{\bar\theta}
+
+\newcommand\col[1]{\color{magenta}#1}
 
 \title{HEP Cheat Sheet}
 \date{\today}
@@ -165,6 +174,8 @@
 \subfile{gaugetheory}
 \clearpage
 \subfile{spinors}
+\clearpage
+\subfile{SUSY}
 \clearpage
 \subfile{MSSM}
 \clearpage

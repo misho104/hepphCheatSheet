@@ -24,7 +24,7 @@
 \end{alignat}
 where $\overline{\dd\Pi^{n}}$ is $n$-particle Lorentz-invariant phase space with momentum conservation
 \begin{equation}
- \overline{\dd\Pi^{n}} := \dd\Pi_1\dd\Pi_2\cdots\dd\Pi_n\,(2\pi)^4\ddelta[4]\left(P_0-\sum p_n\right);
+  \overline{\dd\Pi^{n}} := \dd\Pi_1\dd\Pi_2\cdots\dd\Pi_n\,(2\pi)^4\diracdelta[4]\left(P_0-\sum p_n\right);
 \quad
  \dd\Pi := \ddP{p}\frac{1}{2E_{\vc p}}.
 \end{equation}
@@ -102,7 +102,7 @@ Lorentz-invariant phase space:
 \int\dd\Pi
 = \int\ddP{p}\frac{1}{2E_{\vc p}}
 = \int\ddP{p}\frac{1}{2\sqrt{m^2+\|\vc p\|^2}}
-= \int\frac{\dd p_0\dd^3\vc p}{(2\pi)^4}(2\pi)\ddelta\left(p_0^2-\|\vc p\|^2-m^2\right)\Theta(p_0)
+= \int\frac{\dd p_0\dd^3\vc p}{(2\pi)^4}(2\pi)\diracdelta\left(p_0^2-\|\vc p\|^2-m^2\right)\Theta(p_0)
 \end{equation*}
 K\"all\'en function:
 \begin{align*}
@@ -186,13 +186,13 @@ CM frame result is recovered by setting $E_0=\sqrt{s}$ and $P_0=0$.
 
 \subsection{Decay rate and Cross section}
 As
-$\braket{\text{out}|\text{in}}=(2\pi)^4\ddelta[4](p\w i-p\w f)\ii\mathcal M$
-(for $\text{in}\neq\text{out}$) and $\braket{\vc p|\vc p}=2E_{\vc p}(2\pi)^3\ddelta[3](\vc 0)=2E_\vc {p}V$ for one-particle state,
+$\braket{\text{out}|\text{in}}=(2\pi)^4\diracdelta[4](p\w i-p\w f)\ii\mathcal M$
+(for $\text{in}\neq\text{out}$) and $\braket{\vc p|\vc p}=2E_{\vc p}(2\pi)^3\diracdelta[3](\vc 0)=2E_\vc {p}V$ for one-particle state,
 \begin{equation}
  \frac{N\w{ev}}{\prod\w{in} N\w{particle}}
 = \int\dd\Pi^{\mathrm{out}}\frac{\left|\braket{\text{out}|\text{in}}\right|^2}{\braket{\text{in}|\text{in}}}
 = \int\dd\Pi^{\mathrm{out}}\frac{(2\pi)^8|\mathcal M|^2}{\prod\w{in}(2E)V}
-\frac{VT}{(2\pi^4)}\ddelta[4](p\w i-p\w f)
+\frac{VT}{(2\pi^4)}\diracdelta[4](p\w i-p\w f)
 = VT\int\overline{\dd\Pi^{N\w f}}\frac{|\mathcal M|^2}{\prod\w{in}(2E)V}.
 \end{equation}
 Therefore, decay rate (at the rest frame) is given by

@@ -97,6 +97,15 @@ $C^4_{ijk}=C^4_{ikj}$.)
 
 We follow the notation of DHM~\cite[PhysRept]{0812.1594} and Martin~\cite[v7]{hep-ph9709356} (but note that Martin uses $(-,+,+,+)$-metric) for RPC part and SLHA2 convention for RPV part.
 
+%\subsection{Lagrangian construction}
+%As in Ref.~\cite{1712.05926},
+%\begin{align}
+% \mathcal L = \frac12\int\!\dd^4\theta\,
+%\left[K(\ee^{2g V}\Phi,\Phi^\dagger) + K(\Phi,\Phi^\dagger\ee^{2g V})\right]
+%+\left[\int\!\dd^2\theta\left( W(\Phi) + \sum\w{gauges}\frac{f_{ab}(\Phi)}{4} \mathcal W^{\alpha a}\mathcal W^b_\alpha
+%\right)+\text{H.c.}\right]
+%\end{align}
+
 
 \subsection{Scalar potential}
 The MSSM scalar potential has contributions from $F$-terms and $D$-terms:
@@ -146,29 +155,57 @@ Combining these, the full SUSY scalar potential is given by
   \end{split}
 \end{align}
 
+\newpage
 \begin{wraptable}{r}{200pt}\vspace{-3em}
  \begin{tabular}[t]{c@{\,}c@{\,}c@{\,}c@{\,}c}\toprule
  SLHA  && our notation && Martin/DHM\\\midrule
- $(H_1, H_2)$              &$=$& $(\Hd, \Hu)$ \\\midrule
- $Y_{\mathrm{u,d,e}}$      &$=$& $(y_{\mathrm{u,d,e}})^\TT$\\
- $T_{\mathrm{u,d,e}}$      &$=$& $(a_{\mathrm{u,d,e}})^\TT$\\
- $A_{\mathrm{u,d,e}}$      &$=$& $(A_{\mathrm{u,d,e}})^\TT$\\
- $m^2_{U^\cc,D^\cc, E\cc}$ &$=$& $(m^2_{U^\cc,D^\cc, E^\cc})^\dagger$\\
- $M_{1,2,3}$               &$=$& $-M_{1,2,3}$\\
- $m_3^2$                   &$=$& $b$\\
- $m_A^2$                   &$=$& $m^2_{A_0}$ (tree)\\\midrule
-                           && $\kappa_i$ &$=$& $-\mu_i'$ \footnotesize{(rarely used)}\\
- $D_i$                     &$=$& $b_i$\\
- $m^2_{\tilde L_iH_1}$     &$=$& $M^2_{Li}$ \\\bottomrule
+ $\col (H_1, H_2)$              &$=$& $(\Hd, \Hu)$ \\\midrule
+ $\col Y_{\mathrm{u,d,e}}$      &$=$& $(y_{\mathrm{u,d,e}})^\TT$\\
+ $\col T_{\mathrm{u,d,e}}$      &$=$& $(a_{\mathrm{u,d,e}})^\TT$\\
+ $\col A_{\mathrm{u,d,e}}$      &$=$& $(A_{\mathrm{u,d,e}})^\TT$\\
+ $\col m^2_{U^\cc,D^\cc, E\cc}$ &$=$& $(m^2_{U^\cc,D^\cc, E^\cc})^\dagger$\\
+ $\col M_{1,2,3}$               &$=$& $-M_{1,2,3}$\\
+ $\col m_3^2$                   &$=$& $b$\\
+ $\col m_A^2$                   &$=$& $m^2_{A_0}$ (tree)\\\midrule
+                           &&$\kappa_i$ &$=$& $\col -\mu_i'$ \footnotesize{(rarely used)}\\
+ $\col D_i$                     &$=$& $b_i$\\
+ $\col m^2_{\tilde L_iH_1}$     &$=$& $M^2_{Li}$ \\\bottomrule
  \end{tabular}
 \end{wraptable}
 
 \subsection{SLHA convention}
-The SLHA convention \cite{SLHA} is different from our notation; the reinterpretation rules for the MSSM parameters are given in the right table, while
+The SLHA convention \cite{SLHA} is different from our notation; the reinterpretation rules for the MSSM parameters are given in the right table  (\textbf{\col magenta color} for objects in other conventions), while
 \begin{equation*}
   \mu, b, m^2_{Q, L, \Hu, \Hd}, \text{RPV-trilinears ($\lambda$s and $T$s)}
 \end{equation*}
  are in common.
+
+
+
+\clearpage
+
+In particular, the chargino/neutralino mass terms in RPC case are given by
+\begin{align}
+ \mathcal L\supset
+&\left[
+  \frac12{\col M_1}\tib\tib
++ \frac12{\col M_2}\tiw\tiw
+- \mu\thu\thd
+- \frac{g_Y}{2\sqrt2} \left(\hu^*\thu-\hd^*\thd\right)\tib
+- \sqrt{2}{g_2} \left(\hu^*T^a\thu+\hd^*T_a\thd\right)\tiw
+\right]+\text{H.c.}
+\\
+&\to
+\frac{1}{2}
+\begin{pmatrix}\tib \\ \tiw \\ \huz \\ \hdz\end{pmatrix}^\TT
+\begin{pmatrix}
+ -M_1 & 0 & -m_Z \co{\beta} \si{w} & m_Z \si{\beta} \si{w} \\
+ 0 & -M_ 2 & m_Z \co{\beta} \co{w} & -m_Z \si{\beta} \co{w} \\
+ -m_Z \co{\beta} \si{w} & m_Z \co{\beta} \co{w} & 0 & -\mu  \\
+ m_Z \si{\beta} \si{w} & -m_Z \si{\beta} \co{w} & -\mu  & 0
+\end{pmatrix}
+\begin{pmatrix}\tib \\ \tiw \\ \huz \\ \hdz\end{pmatrix}
+\end{align}
 
 \end{document}
 
