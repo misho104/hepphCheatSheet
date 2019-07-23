@@ -1,314 +1,577 @@
 (* ::Package:: *)
 
 System`Convert`CommonDump`templateBoxToDisplay = BoxForm`TemplateBoxToDisplayBoxes;
-SubsuperscriptBoxSub[z_, {},         {},       f_] := z;
-SubsuperscriptBoxSub[z_, super_List, {},       f_] := Row[super] // SuperscriptBox[z, MakeBoxes[#, f]]&;
-SubsuperscriptBoxSub[z_, {},         sub_List, f_] := Row[sub] // SubscriptBox[z, MakeBoxes[#,f]] &;
-SubsuperscriptBoxSub[z_, super_List, sub_List, f_] := Sequence[Row[sub], Row[super]] // SubsuperscriptBox[z, MakeBoxes[#1,f], MakeBoxes[#2,f]] &
-Tensor /: MakeBoxes[obj: Tensor[z_[mainsuper_List, mainsub_List], super_List, sub_List], f:StandardForm|TraditionalForm] := SubsuperscriptBoxSub[MakeBoxes[z, f], mainsuper, mainsub, f] // SubsuperscriptBoxSub[#, super, sub, f]& // InterpretationBox[#,obj] &
-Tensor /: MakeBoxes[obj: Tensor[z_, super_List, sub_List], f:StandardForm|TraditionalForm] := InterpretationBox[#,obj] &@ SubsuperscriptBoxSub[MakeBoxes[z,f], super, sub, f]
-GrassmannTensor /: MakeBoxes[obj: GrassmannTensor[z_, super_List, sub_List], f:StandardForm|TraditionalForm] := InterpretationBox[#,obj] &@ StyleBox[SubsuperscriptBoxSub[MakeBoxes[z,f], super, sub, f], Red]
-GrassmannDot /: MakeBoxes[obj: GrassmannDot[a__], f:StandardForm] := Dot[a] // ToBoxes // InterpretationBox[#,obj] &
-GrassmannDot /: MakeBoxes[obj: GrassmannDot[a__], f:TraditionalForm] := Row[{a}] // ToBoxes // InterpretationBox[#,obj] &
-GrassmannPair /: MakeBoxes[obj: GrassmannPair[a_, b_], f:StandardForm|TraditionalForm] := RowBox[{"(", StyleBox[MakeBoxes[a, f], Red], StyleBox[MakeBoxes[b, f], Red], ")"}] // InterpretationBox[#, obj]&
-\[Eta] /: MakeBoxes[obj: \[Eta][a_List, b_List], f:StandardForm|TraditionalForm] := InterpretationBox[#,obj] &@ SubsuperscriptBoxSub[MakeBoxes["\[Eta]",f], a, b, f]
-\[Delta] /: MakeBoxes[obj: \[Delta][a_, b_], f:StandardForm|TraditionalForm] := InterpretationBox[#,obj] &@ SubsuperscriptBoxSub[MakeBoxes["\[Delta]",f], {}, {a,b}, f]
+
+(* Object definition in BNF *)
+LabelType = _Symbol | _String;
+SpinorLabelType = LabelType | OverDot[LabelType];
+
+LabelTypeOrI = LabelType | _Integer;
+SpinorLabelTypeOrI = LabelTypeOrI | OverDot[LabelTypeOrI];
+
+IndexClassType = _String;
+UpperIndexType = UI[SpinorLabelTypeOrI, IndexClassType];
+LowerIndexType = LI[SpinorLabelTypeOrI, IndexClassType];
+IndexType = (UI|LI)[SpinorLabelTypeOrI, IndexClassType];
+
+NameType = _Symbol | _String | _Field;
+
+NormalTensorType = NT[NameType | OverBar[NameType], RepeatedNull[IndexType]];
+GrassmannTensorType = GT[NameType | OverBar[NameType], RepeatedNull[IndexType]];
+TensorType = NormalTensorType | GrassmannTensorType;
+
+(* Format *)
+Sequence[GT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, Style[n, Red], i] // ToBoxes // InterpretationBox[#,obj] &) &;
+Sequence[NT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, n, i] // ToBoxes // InterpretationBox[#,obj] &) &;
+MakeBoxesNT[f_, n_] := n;
+MakeBoxesNT[f_, n_, UI[a:SpinorLabelTypeOrI, _]] := Superscript[n, a]
+MakeBoxesNT[f_, n_, LI[a:SpinorLabelTypeOrI, _]] := Subscript[n, a]
+MakeBoxesNT[f_, n_, a:Repeated[_UI]] := Row[{a}[[All, 1]]] // Superscript[n, #]&
+MakeBoxesNT[f_, n_, a:Repeated[_LI]] := Row[{a}[[All, 1]]] // Subscript[n, #]&
+MakeBoxesNT[f_, n_, any__, a:Repeated[_UI]] := Row[{MakeBoxesNT[f, n, any], MakeBoxesNT[f, "", a]}]
+MakeBoxesNT[f_, n_, any__, a:Repeated[_LI]] := Row[{MakeBoxesNT[f, n, any], MakeBoxesNT[f, "", a]}]
+
+TDot /: MakeBoxes[obj: TDot[a__], f:StandardForm] := Dot[TDotPreFormat[a]] // ToBoxes // InterpretationBox[#,obj] &
+TDot /: MakeBoxes[obj: TDot[a__], f:TraditionalForm] := Row[{TDotPreFormat[a]}] // ToBoxes // InterpretationBox[#,obj] &
+
+TDotPreFormat$Target = (\[Sigma]|OverBar[\[Sigma]]|\[Epsilon]|HoldForm[\[Sigma]]|HoldForm[OverBar[\[Sigma]]]|HoldForm[\[Epsilon]]);
+TDotPreFormat$SpinorRow[{a_, GT[{b__}]}, s___] := TDotPreFormat$SpinorRow[{a, b}, s]
+TDotPreFormat$SpinorRow[{GT[{a__}], b_}, s___] := TDotPreFormat$SpinorRow[{a, b}, s]
+TDotPreFormat$[seq___] := Module[{objs = {seq}},
+  objs = objs //. {List[
+    x1___,
+    GT[a1:NameType, a2___, UI[a4:LabelType, "spinor"]],
+    GT[b1:NameType, LI[a4_, "spinor"]] | TDotPreFormat$SpinorRow[b1_, LI[a4_, "spinor"]],
+    x2___
+  ] /; FreeQ[{a2}, "spinor"] :> List[x1, TDotPreFormat$SpinorRow[{GT[a1, a2], GT[b1]}], x2], List[
+    x1___,
+    GT[a1:OverBar[NameType], a2___, LI[a4:OverDot[LabelType], "spinor"]],
+    GT[b1:OverBar[NameType], UI[a4_, "spinor"]] | TDotPreFormat$SpinorRow[b1_, UI[a4_, "spinor"]],
+    x2___
+  ] /; FreeQ[{a2}, "spinor"] :> List[x1, TDotPreFormat$SpinorRow[{GT[a1, a2], GT[b1]}], x2], List[
+    x1___,
+    NT[a1:TDotPreFormat$Target, a2___, a3:(UI|LI)[SpinorLabelTypeOrI, "spinor"], UI[a4:LabelType, "spinor"]],
+    GT[b1:NameType, LI[a4_, "spinor"]] | TDotPreFormat$SpinorRow[b1_, LI[a4_, "spinor"]],
+    x2___
+  ] /; FreeQ[{a2}, "spinor"] :> List[x1, TDotPreFormat$SpinorRow[{NT[a1, a2], GT[b1]}, a3], x2], List[
+    x1___,
+    NT[a1:TDotPreFormat$Target, a2___, a3:(UI|LI)[SpinorLabelTypeOrI, "spinor"], LI[a4:OverDot[LabelType], "spinor"]],
+    GT[b1:(OverBar[NameType]), UI[a4_, "spinor"]] | TDotPreFormat$SpinorRow[b1_, UI[a4_, "spinor"]],
+    x2___
+  ] /; FreeQ[{a2}, "spinor"] :> List[x1, TDotPreFormat$SpinorRow[{NT[a1, a2], GT[b1]}, a3], x2], List[
+    x1___,
+    GT[b1:NameType, UI[a3:LabelType, "spinor"]] | TDotPreFormat$SpinorRow[b1_, UI[a3:LabelType, "spinor"]],
+    NT[a1:TDotPreFormat$Target, a2___, LI[a3_, "spinor"], a4:(UI|LI)[SpinorLabelTypeOrI, "spinor"]],
+    x2___
+  ] /; FreeQ[{a2}, "spinor"] :> List[x1, TDotPreFormat$SpinorRow[{GT[b1], NT[a1, a2]}, a4], x2], List[
+    x1___,
+    GT[b1:(OverBar[NameType]), LI[a3:OverDot[LabelType], "spinor"]] | TDotPreFormat$SpinorRow[b1_, LI[a3:OverDot[LabelType], "spinor"]],
+    NT[a1:TDotPreFormat$Target, a2___, UI[a3_, "spinor"], a4:(UI|LI)[SpinorLabelTypeOrI, "spinor"]],
+    x2___
+  ] /; FreeQ[{a2}, "spinor"] :> List[x1, TDotPreFormat$SpinorRow[{GT[b1], NT[a1, a2]}, a4], x2]};
+  Sequence@@(objs //. TDotPreFormat$SpinorRow[List[a___], s___] :> NT[Row[{"(", a, ")"}], s])]
+$Contraction = True;
+TDotPreFormat$disabled[seq___] := seq;
+TDotPreFormat := If[$Contraction, TDotPreFormat$, TDotPreFormat$disabled]
 
 
-PutOverDot[a_] := If[Head[a] === OverDot || a === "", a, OverDot[a]]
-SwitchOverDot[a: ""] := ""
-SwitchOverDot[OverDot[x_]] := x
-SwitchOverDot[x_] := OverDot[x]
+ReleaseHoldAll[exp_] := FixedPoint[ReleaseHold, exp]
 
-GrassmannTensor /: Conjugate[GrassmannTensor[OverBar[a_], b_, c_]] := GrassmannTensor[a, SwitchOverDot/@b, SwitchOverDot/@c]
-GrassmannTensor /: Conjugate[GrassmannTensor[a_, b_, c_]] := GrassmannTensor[OverBar[a], SwitchOverDot/@b, SwitchOverDot/@c]
+IndexIter::any = "Need to specify index class, not any.";
+IndexIter[name_] := Switch[name,
+  "lorentz", {0, 1, 2, 3},
+  "spinor", {1, 2},
+  "any", Message[IndexIter::any]; Abort[],
+  _, Abort[]];
 
-GrassmannDot[x1___, Times[a_, b__], x2___] := GrassmannDot[x1, a, Times[b], x2]
-GrassmannDot[x1___, Plus[a_, b__], x2___] := GrassmannDot[x1, a, x2] + GrassmannDot[x1, Plus[b], x2]
-GrassmannDot[x1___, a_, x2___] /; NumericQ[a] := a GrassmannDot[x1, x2]
-(*GrassmannDot[x1___, a_Tensor, x2___] := a GrassmannDot[x1, x2]*)
-GrassmannDot[x1___, a_Symbol, x2___] := a GrassmannDot[x1, x2]
-GrassmannDot[] := 1
+PutOverDot[a:SpinorLabelTypeOrI] := If[Head[a]===OverDot, a, OverDot[a]];
+SwitchOverDot[a:SpinorLabelTypeOrI] := If[Head[a]===OverDot, a[[1]], OverDot[a]];
 
-GrassmannDot /: GrassmannDot[a__]GrassmannDot[b__] := Module[{bnew, overlap},
-  overlap = Intersection[FindIndices[GrassmannDot[a]], FindIndices[GrassmannDot[b]]];
-  bnew = If[Length[overlap] > 0, RenewIndices[GrassmannDot[b]], GrassmannDot[b]];
-  GrassmannDot[a, Sequence@@bnew]]
-GrassmannDot /: Conjugate[GrassmannDot[a__]] := GrassmannDot @@ Reverse[Conjugate/@{a}]
-
-(* make dot contraction *)
-GrassmannDot[x1___, f1_GrassmannTensor, x2___, f1_, x3___] := 0 /; FreeQ[f1, ""]
-GrassmannDot[x1___, f1: GrassmannTensor[_, {a_}, {}], mid:Repeated[_GrassmannTensor], f2: GrassmannTensor[_, {}, {a_}], x2___] := (-1)^Length[{mid}] GrassmannDot[x1,f1,f2,mid,x2]
-GrassmannDot[x1___, f1: GrassmannTensor[_, {}, {a_}], mid:Repeated[_GrassmannTensor], f2: GrassmannTensor[_, {a_}, {}], x2___] := (-1)^(Length[{mid}]+1) GrassmannDot[x1,f2,f1,mid,x2]
-GrassmannDot[x1___, GrassmannTensor[s_OverBar, {OverDot[a_]}, {}], GrassmannTensor[t_OverBar, {}, {OverDot[a_]}], x2___] := (-GrassmannPair[s, t]) GrassmannDot[x1, x2]
-GrassmannDot[x1___, GrassmannTensor[s_, {a_}, {}], GrassmannTensor[t_, {}, {a_}], x2___] /; FreeQ[a, OverDot] && FreeQ[{s,t}, OverBar] := GrassmannPair[s, t] GrassmannDot[x1, x2]
-
-GrassmannContraction[exp_] := exp //. {
-  GrassmannDot[x1___, (f1:Tensor|GrassmannTensor)[x2_, {x3___, a_}, x4_], (f2:Tensor|GrassmannTensor)[x5_, x6_, {a_, x7___}], x8___] :> GrassmannDot[x1, f1[x2, {x3, ""}, x4], f2[x5, x6, {"", x7}], x8] /; FreeQ[a, OverDot] && a=!="",
-  GrassmannDot[x1___, (f1:Tensor|GrassmannTensor)[x2_, x3_, {x4___, a:OverDot[_]}], (f2:Tensor|GrassmannTensor)[x5_, {a_, x6___}, x7_], x8___] :> GrassmannDot[x1, f1[x2, x3, {x4, ""}], f2[x5, {"", x6}, x7], x8]
-};
-GrassmannContractionRevert[exp_] := exp //. {
-  GrassmannDot[x1___, (f1:Tensor|GrassmannTensor)[x2_, {x3___, ""}, x4_], (f2:Tensor|GrassmannTensor)[x5_, x6_, {"", x7___}], x8___] :> Module[{a=Unique[]}, GrassmannDot[x1, f1[x2, {x3, a}, x4], f2[x5, x6, {a, x7}], x8]],
-  GrassmannDot[x1___, (f1:Tensor|GrassmannTensor)[x2_, x3_, {x4___, ""}], (f2:Tensor|GrassmannTensor)[x5_, {"", x6___}, x7_], x8___] :> Module[{a=Unique[]}, GrassmannDot[x1, f1[x2, x3, {x4, OverDot[a]}], f2[x5, {OverDot[a], x6}, x7], x8]]
-}
+(* spinor index moves last *)
+NT[x__, a:((UI|LI)[_, "spinor"]), b:((UI|LI)[_, type_]), y___] /; type =!= "spinor" := NT[x, b, a] 
+GT[x__, a:((UI|LI)[_, "spinor"]), b:((UI|LI)[_, type_]), y___] /; type =!= "spinor" := GT[x, b, a] 
 
 
+(* Conjugate Operation is "defined" For (single) Grassmann-type tensor. *)
+GT /: Conjugate[GT[OverBar[a:NameType], b:RepeatedNull[IndexType]]] := GT[a, b /. {(x:UI|LI)[y_SpinorLabelTypeOrI, "spinor"] :> x[SwitchOverDot[y], "spinor"]}]
+GT /: Conjugate[GT[a:NameType, b:RepeatedNull[IndexType]]] := GT[OverBar[a], b /. {(x:UI|LI)[y_SpinorLabelTypeOrI, "spinor"] :> x[SwitchOverDot[y], "spinor"]}]
 
-ToUpper[exp_] := exp //. {
-  GrassmannTensor[f_OverBar, {}, {a_OverDot}] :> Module[{b=OverDot[Unique[]]}, \[Epsilon]L[a, b] GrassmannTensor[f, {b}, {}]], 
-  GrassmannTensor[f_, {}, {a_}] /; FreeQ[f, OverBar] && FreeQ[a, OverDot] :> Module[{b=Unique[]}, \[Epsilon]L[a, b] GrassmannTensor[f, {b}, {}]]
-}
 
-GrassmannExpand[exp_] := Module[{tmp = exp},
-  tmp = tmp //. {
-    GrassmannPair[a_OverBar, b_OverBar] :> Module[{i=OverDot[Unique[]]}, GrassmannDot[(GrassmannTensor[a, {}, {i}] // ToUpper), GrassmannTensor[b, {i}, {}]]],
-    GrassmannPair[a_, b_] /; FreeQ[{a,b}, OverBar] :> Module[{i=Unique[]}, GrassmannDot[GrassmannTensor[a, {i}, {}], (GrassmannTensor[b, {}, {i}] // ToUpper)]]
-  }]
+(* Product of tensor *)
+FlipSign::usage = "FlipSign[a, b, ..., z] is the sign-flip of grassmann product when A is moved to the last.";
+FlipSign[a_NT, ___] := 1
+FlipSign[a_GT] := 1
+FlipSign[a_GT, b_NT, c___] := FlipSign[a, c]
+FlipSign[a_GT, b_GT, c___] := (-1)FlipSign[a, c]
 
-SortGrassmannDotSub[GrassmannDot[a___]] := Module[{elements = {a}, order, sign},
-  order = OrderingBy[elements, #[[1]]&];
-  sign = Signature[order];
-  (sign)*GrassmannDot@@(elements[[order]])
-]  
-SortGrassmannDot[exp_] := FixedPoint[# /. (g_GrassmannDot :> SortGrassmannDotSub[g])&, exp]
+TDot::GrassmannProduct = "Invalid grassman product found: `1`.";
+TDot[] := 1;
+TDot[a:_NT|_GT] := a;
 
-SumToList[exp_]  := Module[{tmp = Expand[exp]}, If[Head[tmp] === Plus, List@@tmp, {tmp}]];
-FindIndices[exp_] := Cases[exp, (Tensor|GrassmannTensor)[_, a_List, b_List] :> {a,b}, All] // Flatten // Select[#, FreeQ[#, _Integer]&]&;
-FindDoublyAppearingLetters[exp_] := Cases[Counts[FindIndices[exp]] /. {Association -> List}, (p_ -> 2) :> p]
+TDot[x1___, Times[a_, b__], x2___] := If[Head[a]===GT && Not[FreeQ[{b}, GT]], Message[TDot::GrassmannProduct, {a,b}]; Abort[], TDot[x1, a, Times[b], x2]]
+TDot[x1___, Plus[a_, b__], x2___] := TDot[x1, a, x2] + TDot[x1, Plus[b], x2]
+TDot[x1___, TDot[x2___], x3___] := TDot[x1, x2, x3]
 
-RewriteIndicesSub[exp_] := Module[{
-    allindices = FindIndices[exp] // DeleteDuplicates,
-    toreplace = FindDoublyAppearingLetters[exp],
-    nottoreplace,
-    newindices,
-    rule
-  },
-  nottoreplace = Complement[allindices, toreplace];
-  newindices = Complement[CharacterRange["a", "z"], TextString/@nottoreplace];
-  If[Length[newindices] < Length[toreplace], Print["indices shortage."]; Abort[]];
-  rule = (#[[1]]->#[[2]]) &/@ Transpose[{toreplace, newindices[[1;;Length[toreplace]]]}];
-  exp /. rule
-];
-RewriteIndices[exp_] := Total[RewriteIndicesSub /@ SumToList[exp]]
+TDot[x1___, a_List, x2___] := TDot[x1, #, x2] &/@ a;
 
-RenewIndicesSub[exp_] := Module[{
-    allindices = FindIndices[exp] // DeleteDuplicates,
-    newindices, rule
-  },
-  newindices = Unique[] /@ allindices;
-  rule = (#[[1]]->#[[2]]) &/@ Transpose[{allindices, newindices}];
-  exp /. rule
-];
-RenewIndices[exp_] := Total[RenewIndicesSub /@ SumToList[GrassmannContractionRevert[exp]]]
+TDot[x1___, a_, x2___] /; NumericQ[a] := a TDot[x1, x2]
+TDot[x1___, a_Symbol, x2___] := a TDot[x1, x2]
+TDot /: TDot[a___]TDot[b___] := TDot[a,b]
 
-FillGrassmannIndicesSub[exp_] := Module[{indices = FindDoublyAppearingLetters[exp], tmp = exp},
-  indices = indices //. {OverDot[a_]:>a};
-  Do[tmp = Sum@@{tmp, {i, 2}}, {i, indices}]; tmp]
+TDot[OrderlessPatternSequence[a:GT[___], a_, ___]] := 0
+
+(* Times are included in TDot (but not define for GT because of order issue *)
+NT /: Times[a_NT, b_NT] := TDot[a, b]
+NT /: Times[a_NT, b_GT] := TDot[a, b]
+NT /: Times[a_GT, b_NT] := TDot[a, b]
+NT /: Times[a_NT, TDot[b__]] := TDot[a, b]
+
+(* Epsilon-contraction rule: Always from left *)
+GT /: TDot[x1___, NT[\[Epsilon], UI[a:SpinorLabelType, "spinor"], UI[b:SpinorLabelType, "spinor"]], x2___, GT[n___, LI[b_, "spinor"]], x3___] /; FreeQ[{n}, "spinor"] := TDot[x1, x2, GT[n, UI[a, "spinor"]], x3]
+GT /: TDot[x1___, NT[\[Epsilon], LI[a:SpinorLabelType, "spinor"], LI[b:SpinorLabelType, "spinor"]], x2___, GT[n___, UI[b_, "spinor"]], x3___] /; FreeQ[{n}, "spinor"] := TDot[x1, x2, GT[n, LI[a, "spinor"]], x3]
+GT /: TDot[x1___, NT[\[Epsilon], UI[b:SpinorLabelType, "spinor"], UI[a:SpinorLabelType, "spinor"]], x2___, GT[n___, LI[b_, "spinor"]], x3___] /; FreeQ[{n}, "spinor"] := (-1)TDot[x1, x2, GT[n, UI[a, "spinor"]], x3]
+GT /: TDot[x1___, NT[\[Epsilon], LI[b:SpinorLabelType, "spinor"], LI[a:SpinorLabelType, "spinor"]], x2___, GT[n___, UI[b_, "spinor"]], x3___] /; FreeQ[{n}, "spinor"] := (-1)TDot[x1, x2, GT[n, LI[a, "spinor"]], x3]
+GT /: TDot[x1___, GT[n___, LI[b_, "spinor"]], x2___, NT[\[Epsilon], UI[a:SpinorLabelType, "spinor"], UI[b:SpinorLabelType, "spinor"]], x3___] /; FreeQ[{n}, "spinor"] := TDot[x1, GT[n, UI[a, "spinor"]], x2, x3]
+GT /: TDot[x1___, GT[n___, UI[b_, "spinor"]], x2___, NT[\[Epsilon], LI[a:SpinorLabelType, "spinor"], LI[b:SpinorLabelType, "spinor"]], x3___] /; FreeQ[{n}, "spinor"] := TDot[x1, GT[n, LI[a, "spinor"]], x2, x3]
+GT /: TDot[x1___, GT[n___, LI[b_, "spinor"]], x2___, NT[\[Epsilon], UI[b:SpinorLabelType, "spinor"], UI[a:SpinorLabelType, "spinor"]], x3___] /; FreeQ[{n}, "spinor"] := (-1) TDot[x1, GT[n, UI[a, "spinor"]], x2, x3]
+GT /: TDot[x1___, GT[n___, UI[b_, "spinor"]], x2___, NT[\[Epsilon], LI[b:SpinorLabelType, "spinor"], LI[a:SpinorLabelType, "spinor"]], x3___] /; FreeQ[{n}, "spinor"] := (-1) TDot[x1, GT[n, LI[a, "spinor"]], x2, x3]
+
+(* Bare-indiced spinors are forced to upper. *)
+GT[n___, LI[a:_Integer, "spinor"]] /; FreeQ[{n}, "spinor"] := Sum[\[Epsilon]L[a,b]GT[n, UI[b, "spinor"]]//ReleaseHold, {b, 2}];
+GT[n___, LI[a:OverDot[_Integer], "spinor"]] /; FreeQ[{n}, "spinor"] := Sum[\[Epsilon]Ld[a,b]GT[n, UI[OverDot[b], "spinor"]]//ReleaseHold, {b, 2}] ;
+
+
+(* TDot order: spinors, \[Eta], non-spinors *)
+TDot[x1___, a:(_NT|_GT), b:(NT|GT)[___, (LI|UI)[_, "spinor"], ___], x2___] /; FreeQ[a, "spinor"] := FlipSign[a, b]*TDot[x1, b, a, x2]
+TDot[x1___, a: NT[x_, ___], b: NT[\[Eta], ___], x2___] /; (x=!=\[Eta] && FreeQ[a, "spinor"]) := TDot[x1, b, a, x2]
+TDot[x1___, a:(NT|GT)[a1__, LI[a2:LabelType, "spinor"], a3___], x2___, b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a1, b3}, "spinor"] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
+TDot[x1___, a:(NT|GT)[a1__, UI[a2:OverDot[LabelType], "spinor"], a3___], x2___, b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a1, b3}, "spinor"] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
+TDot[x1___, a:(NT|GT)[a1__, UI[a2:LabelType, "spinor"], a3___], x2__, b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a3, b1}, "spinor"] := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
+TDot[x1___, a:(NT|GT)[a1__, LI[a2:OverDot[LabelType], "spinor"], a3___], x2__, b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a3, b1}, "spinor"] := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
+
+(* TDot order: integer-indexed spinors *)
+TDot[x1___, a:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x2___, b:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x3___]/; Not[OrderedQ[{a,b}]] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
+
+(* Eta-contraction rule *)
+TDot[x1___, NT[\[Eta], UI[a:LabelTypeOrI, "lorentz"], UI[b:LabelType, "lorentz"]], x2___, (n:GT|NT)[n1___, LI[b_, "lorentz"], n2___], x3___] := TDot[x1, x2, n[n1, UI[a, "lorentz"], n2], x3]
+TDot[x1___, NT[\[Eta], LI[a:LabelTypeOrI, "lorentz"], LI[b:LabelType, "lorentz"]], x2___, (n:GT|NT)[n1___, UI[b_, "lorentz"], n2___], x3___] := TDot[x1, x2, n[n1, LI[a, "lorentz"], n2], x3]
+TDot[x1___, (n:GT|NT)[n1___, LI[b_, "lorentz"], n2___], x2___, NT[\[Eta], UI[a:LabelTypeOrI, "lorentz"], UI[b:LabelType, "lorentz"]], x3___] := TDot[x1, x2, n[n1, UI[a, "lorentz"], n2], x3]
+TDot[x1___, (n:GT|NT)[n1___, UI[b_, "lorentz"], n2___], x2___, NT[\[Eta], LI[a:LabelTypeOrI, "lorentz"], LI[b:LabelType, "lorentz"]], x3___] := TDot[x1, x2, n[n1, LI[a, "lorentz"], n2], x3]
+
+(* Kronecker Delta: UI is in front of LI. *)
+\[Delta] /: NT[\[Delta], a:LI[SpinorLabelTypeOrI, IndexClassType], b:UI[SpinorLabelTypeOrI, IndexClassType]] := NT[\[Delta], b, a]
+TDot[x1___, NT[\[Delta], UI[a:SpinorLabelTypeOrI, c:IndexClassType|"any"], LI[b:SpinorLabelType, c:IndexClassType]], x2___, (n:GT|NT)[n1___, UI[b_, c_], n2___], x3___] := TDot[x1, x2, n[n1, UI[a, c], n2], x3]
+TDot[x1___, NT[\[Delta], UI[a:SpinorLabelType, c:IndexClassType|"any"], LI[b:SpinorLabelTypeOrI, c:IndexClassType]], x2___, (n:GT|NT)[n1___, LI[a_, c_], n2___], x3___] := TDot[x1, x2, n[n1, LI[b, c], n2], x3]
+TDot[x1___, (n:GT|NT)[n1___, UI[b_, c_], n2___], x2___, NT[\[Delta], UI[a:SpinorLabelTypeOrI, c:IndexClassType], LI[b:SpinorLabelType, c:IndexClassType|"any"]], x3___] := TDot[x1, x2, n[n1, UI[a, c], n2], x3]
+TDot[x1___, (n:GT|NT)[n1___, LI[a_, c_], n2___], x2___, NT[\[Delta], UI[a:SpinorLabelType, c:IndexClassType], LI[b:SpinorLabelTypeOrI, c:IndexClassType|"any"]], x3___] := TDot[x1, x2, n[n1, LI[b, c], n2], x3]
+\[Eta] /: NT[\[Eta], f:OrderlessPatternSequence[LI[a:LabelTypeOrI, "lorentz"], UI[b:LabelTypeOrI, "lorentz"]]] := NT[\[Delta], f]
+
+
+(* Objects *)
+\[Epsilon]U[a_, b_] := NT[HoldForm[\[Epsilon]], UI[a, "spinor"], UI[b, "spinor"]]
+\[Epsilon]L[a_, b_] := NT[HoldForm[\[Epsilon]], LI[a, "spinor"], LI[b, "spinor"]]
+\[Epsilon]Ud[a_, b_] := NT[HoldForm[\[Epsilon]], UI[PutOverDot[a], "spinor"], UI[PutOverDot[b], "spinor"]]
+\[Epsilon]Ld[a_, b_] := NT[HoldForm[\[Epsilon]], LI[PutOverDot[a], "spinor"], LI[PutOverDot[b], "spinor"]]
+
+\[Epsilon]U[a_, b_, c_, d_] := NT[HoldForm[\[Epsilon]], UI[a, "lorentz"], UI[b, "lorentz"], UI[c, "lorentz"], UI[d, "lorentz"]]
+\[Epsilon]L[a_, b_, c_, d_] := NT[HoldForm[\[Epsilon]], LI[a, "lorentz"], LI[b, "lorentz"], LI[c, "lorentz"], LI[d, "lorentz"]]
+
+NT[\[Epsilon], ___, a_, ___, a_, ___] := 0
+NT[\[Epsilon], x___, pos_[a_, type_], pos_[b_, type_], y___] /; Not[OrderedQ[{a, b}]] := (-1) NT[\[Epsilon], x, pos[b, type], pos[a, type], y]
+NT[\[Epsilon], UI[1, "spinor"], UI[2, "spinor"]] := +1
+NT[\[Epsilon], LI[1, "spinor"], LI[2, "spinor"]] := -1 (* beware! *)
+NT[\[Epsilon], UI[OverDot[1], "spinor"], UI[OverDot[2], "spinor"]] := +1
+NT[\[Epsilon], LI[OverDot[1], "spinor"], LI[OverDot[2], "spinor"]] := -1 (* beware! *)
+
+NT[\[Epsilon], UI[0, "lorentz"], UI[1, "lorentz"], UI[2, "lorentz"], UI[3, "lorentz"]] := +1
+NT[\[Epsilon], LI[0, "lorentz"], LI[1, "lorentz"], LI[2, "lorentz"], LI[3, "lorentz"]] := -1 (* beware! *)
+
+\[Eta]U[\[Mu]_, \[Nu]_] := NT[HoldForm[\[Eta]], UI[\[Mu], "lorentz"], UI[\[Nu], "lorentz"]]
+\[Eta]L[\[Mu]_, \[Nu]_] := NT[HoldForm[\[Eta]], LI[\[Mu], "lorentz"], LI[\[Nu], "lorentz"]]
+
+\[Sigma][\[Mu]_, a_, b_]        := NT[HoldForm[\[Sigma]], UI[\[Mu], "lorentz"], LI[a, "spinor"], LI[PutOverDot[b], "spinor"]]
+\[Sigma][,\[Mu]_, a_, b_]       := NT[HoldForm[\[Sigma]], LI[\[Mu], "lorentz"], LI[a, "spinor"], LI[PutOverDot[b], "spinor"]]
+\[Sigma]Upper[\[Mu]_, a_, b_]   := NT[HoldForm[\[Sigma]], UI[\[Mu], "lorentz"], UI[a, "spinor"], UI[PutOverDot[b], "spinor"]]
+\[Sigma]Upper[,\[Mu]_, a_, b_]  := NT[HoldForm[\[Sigma]], LI[\[Mu], "lorentz"], UI[a, "spinor"], UI[PutOverDot[b], "spinor"]]
+\[Sigma]b[\[Mu]_, a_, b_]       := NT[HoldForm[OverBar[\[Sigma]]], UI[\[Mu], "lorentz"], UI[PutOverDot[a], "spinor"], UI[b, "spinor"]]
+\[Sigma]b[,\[Mu]_, a_, b_]      := NT[HoldForm[OverBar[\[Sigma]]], LI[\[Mu], "lorentz"], UI[PutOverDot[a], "spinor"], UI[b, "spinor"]]
+\[Sigma]bLower[\[Mu]_, a_, b_]   := NT[HoldForm[OverBar[\[Sigma]]], UI[\[Mu], "lorentz"], LI[PutOverDot[a], "spinor"], LI[b, "spinor"]]
+\[Sigma]bLower[,\[Mu]_, a_, b_]  := NT[HoldForm[OverBar[\[Sigma]]], LI[\[Mu], "lorentz"], LI[PutOverDot[a], "spinor"], LI[b, "spinor"]]
+
+\[Sigma][\[Mu]_, \[Nu]_, a_, b_]   := NT[HoldForm[\[Sigma]], UI[\[Mu], "lorentz"], UI[\[Nu], "lorentz"], LI[a, "spinor"], UI[b, "spinor"]]
+\[Sigma][,\[Mu]_, \[Nu]_, a_, b_]  := NT[HoldForm[\[Sigma]], LI[\[Mu], "lorentz"], LI[\[Nu], "lorentz"], LI[a, "spinor"], UI[b, "spinor"]]
+\[Sigma]b[\[Mu]_, \[Nu]_, a_, b_]  := NT[HoldForm[OverBar[\[Sigma]]], UI[\[Mu], "lorentz"], UI[\[Nu], "lorentz"], UI[PutOverDot[a], "spinor"], LI[PutOverDot[b], "spinor"]]
+\[Sigma]b[,\[Mu]_, \[Nu]_, a_, b_] := NT[HoldForm[OverBar[\[Sigma]]], LI[\[Mu], "lorentz"], LI[\[Nu], "lorentz"], UI[PutOverDot[a], "spinor"], LI[PutOverDot[b], "spinor"]]
+
+\[Delta][a_, b_, class:IndexClassType] := NT[HoldForm[\[Delta]], UI[a, class], LI[b, class]];
+\[Delta][a_, b_] := \[Delta][a, b, "any"];
+\[Delta]d[a_, b_, class:"spinor"] := NT[HoldForm[\[Delta]], UI[PutOverDot[a], class], LI[PutOverDot[b], class]];
+\[Delta]d[a_, b_] := \[Delta]d[a, b, "spinor"];
+
+
+(* definitions *)
+NT[\[Delta], UI[a:LabelTypeOrI, (cls:IndexClassType)|"any"], LI[b:LabelTypeOrI, (cls_)|"any"]] /; a==b := 1
+NT[\[Delta], UI[a:LabelTypeOrI, (cls:IndexClassType)|"any"], LI[b:LabelTypeOrI, (cls_)|"any"]] /; a!=b := 0
+NT[\[Delta], UI[OverDot[a:LabelTypeOrI], (cls:IndexClassType)|"any"], LI[OverDot[b:LabelTypeOrI], (cls_)|"any"]] /; a==b := 1
+NT[\[Delta], UI[OverDot[a:LabelTypeOrI], (cls:IndexClassType)|"any"], LI[OverDot[b:LabelTypeOrI], (cls_)|"any"]] /; a!=b := 0
+
+NT[\[Eta], UI[\[Mu]:0|1|2|3, "lorentz"], UI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1]  
+NT[\[Eta], LI[\[Mu]:0|1|2|3, "lorentz"], LI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1] 
+NT[\[Sigma], UI[\[Mu]:0|1|2|3, "lorentz"], LI[a:1|2, "spinor"], LI[OverDot[b:1|2], "spinor"]] := PauliMatrix[\[Mu]][[a,b]]
+
+NT[OverBar[\[Sigma]], UI[\[Mu]:0|1|2|3, "lorentz"], UI[OverDot[a:1|2], "spinor"], UI[b:1|2, "spinor"]] := If[\[Mu]==0, +1, -1] * PauliMatrix[\[Mu]][[a,b]]
+NT[sigma:(\[Sigma]|OverBar[\[Sigma]]), x___, LI[\[Mu]:0|1|2|3, "lorentz"], y___] := \[Eta]L[\[Mu],\[Mu]] * NT[sigma, x, UI[\[Mu], "lorentz"], y]
+NT[\[Sigma], UI[\[Mu]_, "lorentz"], UI[\[Nu]_, "lorentz"], LI[a_, "spinor"], UI[b_, "spinor"]] := Module[{c=OverDot[Unique[]], result},
+  result = (I/4)*(\[Sigma][\[Mu],a,c]\[Sigma]b[\[Nu],c,b] - \[Sigma][\[Nu],a,c]\[Sigma]b[\[Mu],c,b]);
+  If[IntegerQ[\[Mu]] && IntegerQ[\[Nu]] && (IntegerQ[a] || IntegerQ[b]), SumIndex[result, {c, "spinor"}], result]]
+NT[OverBar[\[Sigma]], UI[\[Mu]_, "lorentz"], UI[\[Nu]_, "lorentz"], UI[OverDot[a_], "spinor"], LI[OverDot[b_], "spinor"]] := Module[{c=Unique[], result},
+  result = (I/4)*(\[Sigma]b[\[Mu],a,c]\[Sigma][\[Nu],c,b] - \[Sigma]b[\[Nu],a,c]\[Sigma][\[Mu],c,b]);
+  If[IntegerQ[\[Mu]] && IntegerQ[\[Nu]] && (IntegerQ[a] || IntegerQ[b]), SumIndex[result, {c, "spinor"}], result]]
+
+(* irregular sigma position *)
+NT[\[Sigma], lor_, UI[a_, "spinor"], UI[b_, "spinor"]] := Module[{c=Unique[], d=OverDot[Unique[]]},
+  \[Epsilon]U[a,c]*\[Epsilon]Ud[b,d]*NT[\[Sigma], lor, LI[c, "spinor"], LI[d, "spinor"]]]
+NT[OverBar[\[Sigma]], lor_, LI[a_, "spinor"], LI[b_, "spinor"]] := Module[{c=OverDot[Unique[]], d=Unique[]},
+  \[Epsilon]Ld[a,c]*\[Epsilon]L[b,d]*NT[\[Sigma], lor, LI[c, "spinor"], LI[d, "spinor"]]]
+
+(* special rule for epsilons*)
+NT[\[Epsilon], whole:OrderlessPatternSequence[UI[a:_Integer|OverDot[_Integer], "spinor"], UI[b:SpinorLabelType, "spinor"]]] := Module[{c=Unique[], tmp, cdot},
+  cdot = If[Head[a]===OverDot, OverDot[c], c];
+  tmp = (NT[HoldForm[\[Epsilon]], whole] /. b->cdot) \[Delta][b,cdot,"spinor"];
+  Sum[tmp, {c, 2}//Evaluate]//ReleaseHold]
+NT[\[Epsilon], whole:OrderlessPatternSequence[LI[a:_Integer|OverDot[_Integer], "spinor"], LI[b:SpinorLabelType, "spinor"]]] := Module[{c=Unique[], tmp, cdot},
+  cdot = If[Head[a]===OverDot, OverDot[c], c];
+  tmp = (NT[HoldForm[\[Epsilon]], whole] /. b->cdot) \[Delta][cdot,b,"spinor"];
+  Sum[tmp, {c, 2}//Evaluate]//ReleaseHold]
+
+
+TDot::InvalidIndices = "Invalid indices in `1`.";
+
+FindIndices[a:TDot[RepeatedNull[TensorType]]] := Cases[a, _UI|_LI, 2] // Select[FreeQ[#[[1]], _Integer]&]
+
+FindUniqueIndices[a:TDot[RepeatedNull[TensorType]]] := Cases[CountsBy[FindIndices[a], #[[1]]&] /. Association->List, Rule[p_,1]:>p]
   
-FillGrassmannIndices[exp_] := Total[FillGrassmannIndicesSub /@ SumToList[exp]]
+FindIndicesToContract[a:TDot[RepeatedNull[TensorType]]] := Module[{i=GroupBy[FindIndices[a], Head], upper, lower},
+  upper = Lookup[i, UI, {}];
+  lower = Lookup[i, LI, {}];
+  If[Intersection[upper, lower]=!={}, Message[TDot::InvalidIndices, a]; Print[3,i]; Abort[]];
+  If[Not[DuplicateFreeQ[upper]], Message[TDot::InvalidIndices, a]; Print[i]; Abort[]];
+  If[Not[DuplicateFreeQ[lower]], Message[TDot::InvalidIndices, a]; Print[i, i];Abort[]];
+  Intersection[(List@@#)&/@upper, (List@@#)&/@lower]]
+
+FillIndices[a:TDot[RepeatedNull[TensorType]], indextypes_List] := Module[{tmp = ReleaseHoldAll[a], indices, iter, range, i},
+  SumIndex[tmp, Evaluate[Sequence@@Select[FindIndicesToContract[tmp], MemberQ[indextypes, #[[2]]]&]]]]
+FillIndices[exp_, indextypes_List] := ReleaseHoldAll[exp] /. {a:TDot[RepeatedNull[TensorType]] :> FillIndices[a, indextypes]}
+FillIndices[exp_, indextypes_] := FillIndices[exp, {indextypes}]
 
 
-\[Theta][a_] := GrassmannTensor[\[Theta], {a}, {}]
-\[Theta][,a_] := GrassmannTensor[\[Theta], {}, {a}]
-\[Theta]b[a_] := GrassmannTensor[OverBar[\[Theta]], {PutOverDot[a]}, {}]
-\[Theta]b[,a_] := GrassmannTensor[OverBar[\[Theta]], {}, {PutOverDot[a]}]
+SumIndex::InvalidType = "Unsupported type `1`.";
+Attributes[SumIndex] = {HoldAll};
+SumIndex[exp_] := exp;
+SumIndex[exp_, {symbol_, type_}, remaining___] := Module[{iter, i, result},
+  iter = Which[
+     MatchQ[type, List[RepeatedNull[_Integer]]], type,
+     MatchQ[type, _String], IndexIter[type],
+     True, Message[SumIndex::InvalidType, type]; Abort[]];
+  If[Head[symbol]===OverDot,
+    (* overdot summation *)
+    iter = OverDot/@iter;
+    result = Sum[exp, {symbol, iter}//Evaluate],
+    (* non-dot summation; escape dotted indices *)
+    i = Unique[];
+    result = exp //. OverDot[symbol] -> i;
+    result = Sum[result, {symbol, iter}//Evaluate];
+    result = result //. i -> OverDot[symbol]];
+  SumIndex[result, remaining]];
 
-\[Epsilon]U[a_, b_] := Tensor[\[Epsilon], {a, b}, {}]
-\[Epsilon]L[a_, b_] := Tensor[\[Epsilon], {}, {a, b}]
-\[Epsilon]Ud[a_, b_] := Tensor[\[Epsilon], {PutOverDot[a], PutOverDot[b]}, {}]
-\[Epsilon]Ld[a_, b_] := Tensor[\[Epsilon], {}, {PutOverDot[a], PutOverDot[b]}]
-\[Epsilon]4U[a_, b_, c_, d_] := Tensor[\[CurlyEpsilon], {a, b, c, d}, {}] 
-\[Epsilon]4L[a_, b_, c_, d_] := Tensor[\[CurlyEpsilon], {},  {a, b, c, d}] 
-
-Tensor[\[Epsilon], {a_, a_}, {}] := 0
-Tensor[\[Epsilon], {}, {a_, a_}] := 0
-Tensor[\[Epsilon], {1, 2}, {}] := +1
-Tensor[\[Epsilon], {2, 1}, {}] := -1
-Tensor[\[Epsilon], {}, {1, 2}] := -1 (* beware! *)
-Tensor[\[Epsilon], {}, {2, 1}] := +1 (* beware! *)
-Tensor[\[Epsilon], {OverDot[1], OverDot[2]}, {}] := +1
-Tensor[\[Epsilon], {OverDot[2], OverDot[1]}, {}] := -1
-Tensor[\[Epsilon], {}, {OverDot[1], OverDot[2]}] := -1 (* beware! *)
-Tensor[\[Epsilon], {}, {OverDot[2], OverDot[1]}] := +1 (* beware! *)
-Tensor[\[CurlyEpsilon], {0, 1, 2, 3}, {}] := +1
-Tensor[\[CurlyEpsilon], {}, {0, 1, 2, 3}] := -1
-Tensor[\[CurlyEpsilon], ___, {___, a_, ___, a_, ___}, ___] := 0
-Tensor[\[CurlyEpsilon], x1___, {x2___, a_, x3___, b_, x4___}, x5___] /; a > b := (-1)^(Length[{x3}]+1) Tensor[\[CurlyEpsilon], x1, {x2, b, a, x3, x4}, x5]
-
-\[Eta]U[\[Mu]_, \[Nu]_] := \[Eta][{\[Mu], \[Nu]}, {}]
-\[Eta]L[\[Mu]_, \[Nu]_] := \[Eta][{}, {\[Mu], \[Nu]}]
-\[Sigma][\[Mu]_, a_, b_]   /; FreeQ[\[Mu], List] := Tensor[\[Sigma][{\[Mu]}, {}], {}, {a, PutOverDot[b]}]
-\[Sigma][,\[Mu]_, a_, b_]  /; FreeQ[\[Mu], List] := Tensor[\[Sigma][{}, {\[Mu]}], {}, {a, PutOverDot[b]}]
-\[Sigma]b[\[Mu]_, a_, b_]  /; FreeQ[\[Mu], List] := Tensor[OverBar[\[Sigma]][{\[Mu]}, {}], {PutOverDot[a], b}, {}]
-\[Sigma]b[,\[Mu]_, a_, b_] /; FreeQ[\[Mu], List] := Tensor[OverBar[\[Sigma]][{}, {\[Mu]}], {PutOverDot[a], b}, {}]
-
-\[Sigma][{\[Mu]_,\[Nu]_}, a_, b_] := Tensor[\[Sigma][{\[Mu], \[Nu]}, {}], {" ", b}, {a}]
-\[Sigma][,{\[Mu]_, \[Nu]_}, a_, b_] := Tensor[\[Sigma][{}, {\[Mu], \[Nu]}], {" ", b}, {a}]
-\[Sigma]b[{\[Mu]_, \[Nu]_}, a_, b_] := Tensor[OverBar[\[Sigma]][{\[Mu], \[Nu]}, {}], {PutOverDot[a]}, {" ", PutOverDot[b]}]
-\[Sigma]b[,{\[Mu]_, \[Nu]_}, a_, b_] := Tensor[OverBar[\[Sigma]][{}, {\[Mu], \[Nu]}], {PutOverDot[a]}, {" ", PutOverDot[b]}]
-
-EvaluateDoublySigma[exp_] := exp //.{
-  Tensor[\[Sigma][{\[Mu]_, \[Nu]_}, {}], {" ", b_}, {a_}] :> Module[{c=Unique[]},
-    (I/4)(GrassmannDot[\[Sigma][\[Mu], a, c], \[Sigma]b[\[Nu], c, b]]-GrassmannDot[\[Sigma][\[Nu], a, c], \[Sigma]b[\[Mu], c, b]])],
-  Tensor[\[Sigma][{}, {\[Mu]_, \[Nu]_}], {" ", b_}, {a_}] :> Module[{c=Unique[]},
-    (I/4)(GrassmannDot[\[Sigma][,\[Mu], a, c], \[Sigma]b[,\[Nu], c, b]]-GrassmannDot[\[Sigma][,\[Nu], a, c], \[Sigma]b[,\[Mu], c, b]])],
-  Tensor[OverBar[\[Sigma]][{\[Mu]_, \[Nu]_}, {}], {a_}, {" ", b_}] :> Module[{c=Unique[]},
-    (I/4)(GrassmannDot[\[Sigma]b[\[Mu], a, c], \[Sigma][\[Nu], c, b]]-GrassmannDot[\[Sigma]b[\[Nu], a, c], \[Sigma][\[Mu], c, b]])],
-  Tensor[\[Sigma][{}, {\[Mu]_, \[Nu]_}], {" ", b_}, {a_}] :> Module[{c=Unique[]},
-    (I/4)(GrassmannDot[\[Sigma]b[,\[Mu], a, c], \[Sigma][,\[Nu], c, b]]-GrassmannDot[\[Sigma]b[,\[Nu], a, c], \[Sigma][,\[Mu], c, b]])]
-}
-
-\[Eta][{\[Mu]_, \[Nu]_}, {}] /; \[Mu]!=\[Nu] := 0
-\[Eta][{}, {\[Mu]_, \[Nu]_}] /; \[Mu]!=\[Nu] := 0
-\[Eta][{a:0|1|2|3, a_}, {}] := If[a==0, 1, -1]
-\[Eta][{}, {a:0|1|2|3, a_}] := If[a==0, 1, -1]
-
-Tensor[\[Sigma]         [{i:0|1|2|3}, {}], {}, {a:1|2, OverDot[b:1|2]}] := PauliMatrix[i][[a,b]]
-Tensor[OverBar[\[Sigma]][{i:0|1|2|3}, {}], {OverDot[a:1|2], b:1|2}, {}] := If[i==0, +1, -1] * PauliMatrix[i][[a,b]]
-Tensor[\[Sigma][{}, {\[Mu]_}], {}, x1_] := Module[{\[Nu]=Unique[]}, Tensor[\[Eta][{}, {\[Mu], \[Nu]}], {}, {}]Tensor[\[Sigma][{\[Nu]}, {}], {}, x1]]
-Tensor[OverBar[\[Sigma]][{}, {\[Mu]_}], x1_, {}] := Module[{\[Nu]=Unique[]}, Tensor[\[Eta][{}, {\[Mu], \[Nu]}], {}, {}]Tensor[OverBar[\[Sigma]][{\[Nu]}, {}], x1, {}]]
-\[Delta][a_, a_] := 1
-\[Delta][a_, b_] /; a!=b := 0
-\[Delta][OverDot[a_], OverDot[b_]] /; a!=b := 0
+Attributes[Tablize] = {HoldAll};
+Tablize[exp_] := exp;
+Tablize[exp_, {symbol_, type_}, remaining___] := Module[{iter, i, result},
+  iter = Which[
+     MatchQ[type, List[RepeatedNull[_Integer]]], type,
+     MatchQ[type, _String], IndexIter[type],
+     True, Message[SumIndex::InvalidType, type]; Abort[]];
+  If[Head[symbol]===OverDot,
+    (* overdot summation *)
+    iter = OverDot/@iter;
+    result = Table[exp, {symbol, iter}//Evaluate],
+    (* non-dot summation; escape dotted indices *)
+    i = Unique[];
+    result = exp //. OverDot[symbol] -> i;
+    result = Table[result, {symbol, iter}//Evaluate];
+    result = result //. i -> OverDot[symbol]];
+  Tablize[result, remaining]];
 
 
-Attributes[TestByFill] = {HoldAll};
-TestByFill[exp1_, exp2_, freeindices___] := Module[{diff, result, indices=Sequence@@(ReleaseHold/@{freeindices})},
-  diff = ReleaseHold[exp1-exp2] /. {SUM->Sum, TR->Tr} // GrassmannContractionRevert // EvaluateDoublySigma // ToUpper;
-  indices = {indices} // ReleaseHold;
-  diff = diff // GrassmannExpand // FillGrassmannIndices;
-  diff = SortGrassmannDot[Table[diff, Evaluate[Sequence@@indices]]];
-  result = AllTrue[Flatten[{diff}], #==0&];
-  If[result==True, AppendTo[ToTeX, exp1==exp2]];
-  {exp1==exp2, result}]
-
-TeXOutput := Do[Module[{tmp},
-  tmp = t //. {a|"a"->\[Alpha], b|"b"->\[Beta], c|"c"->\[Gamma], d|"d"->\[Delta]} // TeXForm // ToString;
-  FixedPoint[StringReplace[{
-    " }"->"}", " ^"->"^", " _"->"_", " )"->")",
-    "\\dot{\\alpha}"->"\\dalpha", "\\dot{\\beta}"->"\\dbeta", "\\dot{\\gamma}"->"\\dgamma", "\\dot{\\delta}"->"\\ddelta"
-        }], tmp]] // Print,
-  {t, ToTeX}]
+(* ::Code:: *)
+(*GT["a"]*)
+(*GT["a", UI[x, "spinor"]]*)
+(*GT["a", UI[x, "spinor"], UI[y, "spinor"]]*)
+(*GT["a", LI[x, "spinor"]]*)
+(*GT["a", LI[x, "spinor"], UI[y, "spinor"]]*)
+(*GT["a", LI[x, "spinor"], LI[y, "spinor"]]*)
+(*GT["a", UI[x, "spinor"], UI[y, "spinor"], UI[x, "spinor"], LI[y, "spinor"]]*)
+(*TDot[GT[OverBar[\[Theta]], LI[OverDot[a], "spinor"]],GT[OverBar[\[Theta]], UI[OverDot[c], "spinor"]],  \[Sigma]b[\[Mu], a, b], \[Sigma][\[Nu], b, c]]//ReleaseHoldAll*)
+(*TDot[GT[OverBar[\[Theta]], UI[OverDot[c], "spinor"]],  \[Sigma]b[\[Mu], a, b], \[Sigma][\[Nu], b, c]]//ReleaseHoldAll*)
+(*TDot[GT[OverBar[\[Theta]], LI[OverDot[a], "spinor"]], \[Sigma]b[\[Mu], a, b], \[Sigma][\[Nu], b, c]]//ReleaseHoldAll*)
+(*TDot[GT[OverBar[\[Theta]], LI[OverDot[a], "spinor"]],GT[\[Theta], LI[b, "spinor"]],  \[Sigma]b[\[Mu], a, b]]//ReleaseHoldAll*)
+(*TDot[GT[OverBar[\[Theta]], UI[OverDot[b], "spinor"]],  \[Sigma][\[Mu], a, b]]//ReleaseHoldAll*)
+(*TDot[GT[OverBar[\[Theta]], LI[OverDot[a], "spinor"]], \[Sigma]b[\[Mu], a, b]]//ReleaseHoldAll*)
 
 
-(* ::Text:: *)
-(*Sigma-matrices basic rules*)
+(* ::Section:: *)
+(*Validation*)
 
 
 ToTeX = {};
-  
-TestByFill[GrassmannDot[\[Epsilon]U[a,b], \[Epsilon]L[b,c]], \[Delta][a,c], {a,2}, {c,2}]
-TestByFill[GrassmannDot[\[Epsilon]L[a,b], \[Epsilon]U[b,c]], \[Delta][a,c], {a,2}, {c,2}]
+TeXOutput[exp_List] := Do[Module[{tmp},
+      tmp = t //. {a | "a" -> \[Alpha], b | "b" -> \[Beta], c | "c" -> \[Gamma], d | "d" -> \[Delta]} // TeXForm // ToString;
+      FixedPoint[StringReplace[{
+           " }" -> "}", " ^" -> "^", " _" -> "_", " )" -> ")",
+           "\\dot{\\alpha}" -> "\\dalpha", "\\dot{\\beta}" -> "\\dbeta", "\\dot{\\gamma}" -> "\\dgamma", "\\dot{\\delta}" -> "\\ddelta",
+           "\\bar{\\theta}" -> "\\btheta",
+           "\\bar{\\sigma}" -> "\\bsigma",
+           "\\Sigma"->"\\sigma",
+           "\\frac"->"\\tfrac",
+           "\\overline{" -> "\\bar{"
+               }], tmp]] // Print,
+    {t, exp}]
 
-TestByFill[\[Sigma][\[Mu], a, b], \[Epsilon]L[a,d]\[Epsilon]Ld[b,c] \[Sigma]b[\[Mu], c, d], {\[Mu], 0, 3}, {a,2}, {b,2}]
-TestByFill[\[Sigma]b[\[Mu], a, b], \[Epsilon]Ud[a,d]\[Epsilon]U[b,c] \[Sigma][\[Mu], c, d], {\[Mu], 0, 3}, {a,2}, {b,2}]
+ToTable::multiple = "Multiple appearance of `1`.";
+ToTable::none = "No appearance of `1`.";
+ToTable[exp_, indices_] := Module[{tmp = exp, guessedtype, iterlist, iter},
+     iterlist = Function[i, 
+          guessedtype = Cases[tmp, (UI | LI)[i, _], All] /. _[_, "any"] -> Nothing // DeleteDuplicates;
+          Switch[Length[guessedtype],
+             0, Message[ToTable::none, i]; guessedtype = None,
+             1, guessedtype = guessedtype[[1, 2]],
+             _, Message[ToTable::multiple, i]; Abort[]];
+          {i, guessedtype}
+        ] /@ indices;
+     iterlist = Sequence @@ Select[iterlist, #[[2]] =!= None &];
+     Tablize[tmp, iterlist // Evaluate]
+   ];
+Attributes[Test] = {HoldAll};
+Test[exp1_Equal] := Test[exp1, {}]
+Test[exp1_Equal, indices_List] := Module[{parts, diff, result},
+    parts = List@@exp1;
+    parts = FillIndices[#, {"spinor", "lorentz"}] & /@ parts;
+    If[Length[indices] > 0,  parts = ToTable[#, indices]& /@ parts; parts = FillIndices[#, {"spinor", "lorentz"}]& /@ parts];
+    result = (Equal@@parts) // ExpandAll;
+    If[result===True, AppendTo[ToTeX, exp1]];
+    {exp1, result}]    
+Test[exp1_, exp2_] := Test[exp1, exp2, {}]
+Test[exp1_, exp2_, indices_List] := Module[{diff, result},
+    diff = exp1 - exp2 // FillIndices[#, {"spinor", "lorentz"}] &;
+    If[Length[indices] > 0, diff = ToTable[diff, indices] // FillIndices[#, {"spinor", "lorentz"}]&];
+    result = AllTrue[Flatten[{diff}], #==0&] // ExpandAll;
+    If[result == True, AppendTo[ToTeX, exp1 == exp2]];
+    {exp1 == exp2, result}]
 
-TestByFill[Conjugate[\[Sigma][\[Mu], a, b]], \[Epsilon]Ld[a,c]\[Epsilon]L[b,d]\[Sigma]b[\[Mu], c, d], {a,2}, {b,2}, {\[Mu],0,3}]
-TestByFill[Conjugate[\[Sigma]b[\[Mu], a, b]], \[Epsilon]U[a,c]\[Epsilon]Ud[b,d]\[Sigma][\[Mu], c, d], {a,2}, {b,2}, {\[Mu],0,3}]
-
-Conjugate[\[Sigma][{\[Mu], \[Nu]}, a, b]] - \[Epsilon]Ld[a,c]\[Epsilon]Ud[b,d]\[Sigma]b[{\[Mu], \[Nu]}, c,d]
-(EvaluateDoublySigma[%])//. {
-  Conjugate[a_ + b_] :> Conjugate[a] + Conjugate[b],
-  Conjugate[\[Sigma][\[Mu]_, a_, b_]] :> Module[{c=Unique[], d=Unique[]}, \[Epsilon]Ld[a,c]\[Epsilon]L[b,d]\[Sigma]b[\[Mu], c, d]],
-  Conjugate[\[Sigma]b[\[Mu]_, a_, b_]] :> Module[{c=Unique[], d=Unique[]}, \[Epsilon]U[a,c]\[Epsilon]Ud[b,d]\[Sigma][\[Mu], c, d]]
-} // ExpandAll // FillGrassmannIndices // Table[#, {\[Mu], 0, 3}, {\[Nu],0,3}, {a, 2}, {b, 2}]&
-
-Conjugate[\[Sigma]b[{\[Mu], \[Nu]}, a, b]] - \[Epsilon]U[a,c]\[Epsilon]L[b,d]\[Sigma][{\[Mu], \[Nu]}, c,d]
-(EvaluateDoublySigma[%])//. {
-  Conjugate[a_ + b_] :> Conjugate[a] + Conjugate[b],
-  Conjugate[\[Sigma][\[Mu]_, a_, b_]] :> Module[{c=Unique[], d=Unique[]}, \[Epsilon]Ld[a,c]\[Epsilon]L[b,d]\[Sigma]b[\[Mu], c, d]],
-  Conjugate[\[Sigma]b[\[Mu]_, a_, b_]] :> Module[{c=Unique[], d=Unique[]}, \[Epsilon]U[a,c]\[Epsilon]Ud[b,d]\[Sigma][\[Mu], c, d]]
-} // ExpandAll // FillGrassmannIndices // Table[#, {\[Mu], 0, 3}, {\[Nu],0,3}, {a, 2}, {b, 2}]&
-
-
-
-{\[Sigma][{\[Mu], \[Nu]}, a, b],\[Sigma]b[{\[Mu], \[Nu]}, a, b]}
-Table[#, {a,2},{b,2}] &/@ %
-ConjugateTranspose[%[[1]]] - %[[2]] // EvaluateDoublySigma // ExpandAll
-Table[%/. {a_GrassmannDot :> FillGrassmannIndices[a]}, {\[Mu],0,3},{\[Nu],0,3}]
+\[Psi][a_]  := GT["\[Psi]", UI[a, "spinor"]]
+\[Psi][,a_] := GT["\[Psi]", LI[a, "spinor"]]
+\[Theta][a_]  := GT["\[Theta]", UI[a, "spinor"]]
+\[Theta][,a_] := GT["\[Theta]", LI[a, "spinor"]]
+\[Xi][a_]  := GT["\[Xi]", UI[a, "spinor"]]
+\[Xi][,a_] := GT["\[Xi]", LI[a, "spinor"]]
+\[Chi][a_]  := GT["\[Chi]", UI[a, "spinor"]]
+\[Chi][,a_] := GT["\[Chi]", LI[a, "spinor"]]
+\[Psi]b[a_]  := GT[OverBar["\[Psi]"], UI[PutOverDot[a], "spinor"]]
+\[Psi]b[,a_] := GT[OverBar["\[Psi]"], LI[PutOverDot[a], "spinor"]]
+\[Theta]b[a_]  := GT[OverBar["\[Theta]"], UI[PutOverDot[a], "spinor"]]
+\[Theta]b[,a_] := GT[OverBar["\[Theta]"], LI[PutOverDot[a], "spinor"]]
+\[Xi]b[a_]  := GT[OverBar["\[Xi]"], UI[PutOverDot[a], "spinor"]]
+\[Xi]b[,a_] := GT[OverBar["\[Xi]"], LI[PutOverDot[a], "spinor"]]
+\[Chi]b[a_]  := GT[OverBar["\[Chi]"], UI[PutOverDot[a], "spinor"]]
+\[Chi]b[,a_] := GT[OverBar["\[Chi]"], LI[PutOverDot[a], "spinor"]]
+\[Theta]\[Theta] = Module[{i=Unique[]}, TDot[\[Theta][i], \[Theta][,i]]];
+\[Theta]\[Theta]b = Module[{i=Unique[]}, TDot[\[Theta]b[,i], \[Theta]b[i]]];
 
 
-TestByFill[GrassmannDot[\[Theta][a],\[Theta][b]], (-1/2)\[Epsilon]U[a,b]GrassmannPair[\[Theta],\[Theta]], {a,2}, {b,2}]
-TestByFill[GrassmannDot[\[Theta][,a],\[Theta][,b]], (1/2)\[Epsilon]L[a,b]GrassmannPair[\[Theta],\[Theta]], {a,2}, {b,2}]
-TestByFill[GrassmannDot[\[Theta][a],\[Theta][,b]], (1/2)\[Delta][a,b]GrassmannPair[\[Theta],\[Theta]], {a,2}, {b,2}]
-TestByFill[GrassmannDot[\[Theta][a] ,\[Sigma][\[Mu], a, b], \[Sigma]b[\[Nu], b, c], \[Theta][,c]] // GrassmannContraction, \[Eta]U[\[Mu],\[Nu]] GrassmannPair[\[Theta], \[Theta]], {\[Mu], 0, 3}, {\[Nu], 0, 3}]
+ToTeX = {};
+TeXOutput[exp_List] := Do[Module[{tmp},
+      tmp = t //. {a | "a" -> \[Alpha], b | "b" -> \[Beta], c | "c" -> \[Gamma], d | "d" -> \[Delta]} // TeXForm // ToString;
+      FixedPoint[StringReplace[{
+           " }" -> "}", " ^" -> "^", " _" -> "_", " )" -> ")",
+           "\\dot{\\alpha}" -> "\\dalpha", "\\dot{\\beta}" -> "\\dbeta", "\\dot{\\gamma}" -> "\\dgamma", "\\dot{\\delta}" -> "\\ddelta",
+           "\\bar{\\theta}" -> "\\btheta",
+           "\\bar{\\sigma}" -> "\\bsigma",
+           "\\overline{" -> "\\bar{"
+               }], tmp]] // Print,
+    {t, exp}]
 
-TestByFill[GrassmannDot[\[Theta]b[a],\[Theta]b[b]], (+1/2)\[Epsilon]Ud[a,b]GrassmannPair[OverBar[\[Theta]],OverBar[\[Theta]]], {a,2}, {b,2}]
-TestByFill[GrassmannDot[\[Theta]b[,a],\[Theta]b[,b]], (-1/2)\[Epsilon]Ld[a,b]GrassmannPair[OverBar[\[Theta]],OverBar[\[Theta]]], {a,2}, {b,2}]
-TestByFill[GrassmannDot[\[Theta]b[,a],\[Theta]b[b]], (1/2)\[Delta][OverDot[a],OverDot[b]]GrassmannPair[OverBar[\[Theta]],OverBar[\[Theta]]], {a,2}, {b,2}]
-TestByFill[GrassmannDot[\[Theta]b[,a], \[Sigma]b[\[Mu], a, b], \[Sigma][\[Nu], b, c], \[Theta]b[c]] // GrassmannContraction, \[Eta]U[\[Mu],\[Nu]] GrassmannPair[OverBar[\[Theta]], OverBar[\[Theta]]], {\[Mu], 0, 3}, {\[Nu], 0, 3}]
+ToTable::multiple = "Multiple appearance of `1`.";
+ToTable::none = "No appearance of `1`.";
+ToTable[exp_, indices_] := Module[{tmp = exp, guessedtype, iterlist, iter},
+     iterlist = Function[i, 
+          guessedtype = Cases[tmp, (UI | LI)[i, _], All] /. _[_, "any"] -> Nothing // DeleteDuplicates;
+          Switch[Length[guessedtype],
+             0, Message[ToTable::none, i]; guessedtype = None,
+             1, guessedtype = guessedtype[[1, 2]],
+             _, Message[ToTable::multiple, i]; Abort[]];
+          {i, guessedtype}
+        ] /@ indices;
+     iterlist = Sequence @@ Select[iterlist, #[[2]] =!= None &];
+     Tablize[tmp, iterlist // Evaluate]
+   ];
+Attributes[Test] = {HoldAll};
+Test[exp1_Equal] := Test[exp1, {}]
+Test[exp1_Equal, indices_List] := Module[{parts, diff, result},
+    parts = List@@exp1;
+    parts = FillIndices[#, {"spinor", "lorentz"}] & /@ parts;
+    If[Length[indices] > 0,  parts = ToTable[#, indices]& /@ parts; parts = FillIndices[#, {"spinor", "lorentz"}]& /@ parts];
+    result = (Equal@@parts) // ExpandAll;
+    If[result===True, AppendTo[ToTeX, exp1]];
+    {exp1, result}]    
+Test[exp1_, exp2_] := Test[exp1, exp2, {}]
+Test[exp1_, exp2_, indices_List] := Module[{diff, result},
+    diff = exp1 - exp2 // FillIndices[#, {"spinor", "lorentz"}] &;
+    If[Length[indices] > 0, diff = ToTable[diff, indices] // FillIndices[#, {"spinor", "lorentz"}]&];
+    result = AllTrue[Flatten[{diff}], #==0&] // ExpandAll;
+    If[result == True, AppendTo[ToTeX, exp1 == exp2]];
+    {exp1 == exp2, result}]
 
-TestByFill[GrassmannPair[\[Theta],\[Phi]]GrassmannPair[\[Theta],\[Psi]], (-1/2)GrassmannPair[\[Psi],\[Phi]]GrassmannPair[\[Theta],\[Theta]]]
-TestByFill[GrassmannPair[OverBar[\[Theta]],OverBar[\[Phi]]]GrassmannPair[OverBar[\[Theta]],OverBar[\[Psi]]], (-1/2)GrassmannPair[OverBar[\[Psi]],OverBar[\[Phi]]]GrassmannPair[OverBar[\[Theta]],OverBar[\[Theta]]]]
-TestByFill[GrassmannDot[\[Theta][a],\[Sigma][\[Mu],a,b],\[Theta]b[b]]GrassmannDot[\[Theta][c],\[Sigma][\[Nu],c,d],\[Theta]b[d]] // GrassmannContraction, (1/2)GrassmannPair[\[Theta],\[Theta]] GrassmannPair[OverBar[\[Theta]],OverBar[\[Theta]]]\[Eta]U[\[Mu],\[Nu]], {\[Mu],0,3}, {\[Nu],0,3}]
+\[Psi][a_]  := GT["\[Psi]", UI[a, "spinor"]]
+\[Psi][,a_] := GT["\[Psi]", LI[a, "spinor"]]
+\[Theta][a_]  := GT["\[Theta]", UI[a, "spinor"]]
+\[Theta][,a_] := GT["\[Theta]", LI[a, "spinor"]]
+\[Xi][a_]  := GT["\[Xi]", UI[a, "spinor"]]
+\[Xi][,a_] := GT["\[Xi]", LI[a, "spinor"]]
+\[Chi][a_]  := GT["\[Chi]", UI[a, "spinor"]]
+\[Chi][,a_] := GT["\[Chi]", LI[a, "spinor"]]
+\[Psi]b[a_]  := GT[OverBar["\[Psi]"], UI[PutOverDot[a], "spinor"]]
+\[Psi]b[,a_] := GT[OverBar["\[Psi]"], LI[PutOverDot[a], "spinor"]]
+\[Theta]b[a_]  := GT[OverBar["\[Theta]"], UI[PutOverDot[a], "spinor"]]
+\[Theta]b[,a_] := GT[OverBar["\[Theta]"], LI[PutOverDot[a], "spinor"]]
+\[Xi]b[a_]  := GT[OverBar["\[Xi]"], UI[PutOverDot[a], "spinor"]]
+\[Xi]b[,a_] := GT[OverBar["\[Xi]"], LI[PutOverDot[a], "spinor"]]
+\[Chi]b[a_]  := GT[OverBar["\[Chi]"], UI[PutOverDot[a], "spinor"]]
+\[Chi]b[,a_] := GT[OverBar["\[Chi]"], LI[PutOverDot[a], "spinor"]]
+\[Theta]\[Theta] = Module[{i=Unique[]}, TDot[\[Theta][i], \[Theta][,i]]];
+\[Theta]\[Theta]b = Module[{i=Unique[]}, TDot[\[Theta]b[,i], \[Theta]b[i]]];
 
-TestByFill[GrassmannDot[\[Theta][a],\[Sigma][\[Nu],a,b],\[Theta]b[b], \[Theta][c]]// GrassmannContraction, (1/2)GrassmannPair[\[Theta],\[Theta]] GrassmannDot[\[Theta]b[,a],\[Sigma]b[\[Nu],a,c]], {\[Nu],0,3}, {c,2}]
-TestByFill[GrassmannDot[\[Theta][a],\[Sigma][\[Nu],a,b],\[Theta]b[b], \[Theta]b[,c]]// GrassmannContraction, -(1/2)GrassmannPair[OverBar[\[Theta]],OverBar[\[Theta]]] GrassmannDot[\[Theta][a],\[Sigma][\[Nu],a,c]], {\[Nu],0,3}, {c,2}]
-TestByFill[GrassmannDot[\[Sigma][\[Mu],a,b], \[Theta]b[b], \[Theta][c], \[Sigma][\[Nu],c,d], \[Theta]b[d]]// GrassmannContraction, (1/2)GrassmannPair[OverBar[\[Theta]],OverBar[\[Theta]]] GrassmannDot[\[Sigma][\[Mu],a,b],\[Sigma]b[\[Nu],b,c],\[Theta][,c]], {\[Mu],0,3}, {\[Nu],0,3}, {a,2}]
+\[Sigma]M[\[Mu]_]     := NT[HoldForm[\[Sigma]], UI[\[Mu], "lorentz"]]
+\[Sigma]M[,\[Mu]_]    := NT[HoldForm[\[Sigma]], LI[\[Mu], "lorentz"]]
+\[Sigma]M[\[Mu]_, \[Nu]_] := NT[HoldForm[\[Sigma]], UI[\[Mu], "lorentz"], UI[\[Nu], "lorentz"]]
+\[Sigma]M[,\[Mu]_, \[Nu]_] := NT[HoldForm[\[Sigma]], LI[\[Mu], "lorentz"], LI[\[Nu], "lorentz"]]
+\[Sigma]bM[\[Mu]_]     := NT[HoldForm[OverBar[\[Sigma]]], UI[\[Mu], "lorentz"]]
+\[Sigma]bM[,\[Mu]_]    := NT[HoldForm[OverBar[\[Sigma]]], LI[\[Mu], "lorentz"]]
+\[Sigma]bM[\[Mu]_, \[Nu]_] := NT[HoldForm[OverBar[\[Sigma]]], UI[\[Mu], "lorentz"], UI[\[Nu], "lorentz"]]
+\[Sigma]bM[,\[Mu]_, \[Nu]_] := NT[HoldForm[OverBar[\[Sigma]]], LI[\[Mu], "lorentz"], LI[\[Nu], "lorentz"]]
 
-
-
-ToMatrix[input_] := input /. {
-  \[Sigma][a_]:>Table[\[Sigma][a,x,y],{x,2},{y,2}],
-  \[Sigma]b[a_]:>Table[\[Sigma]b[a,x,y],{x,2},{y,2}],
-  \[Eta][any__] :> \[Eta][any]{{1,0},{0,1}}
+\[Sigma]ToMatrix[exp_] := exp //. {
+  NT[\[Sigma], UI[\[Mu]_, "lorentz"]] :> Table[\[Sigma][\[Mu], a, b], {a,2}, {b,2}],
+  NT[\[Sigma], LI[\[Mu]_, "lorentz"]] :> Table[\[Sigma][,\[Mu], a, b], {a,2}, {b,2}],
+  NT[OverBar[\[Sigma]], UI[\[Mu]_, "lorentz"]] :> Table[\[Sigma]b[\[Mu], a, b], {a,2}, {b,2}],
+  NT[OverBar[\[Sigma]], LI[\[Mu]_, "lorentz"]] :> Table[\[Sigma]b[,\[Mu], a, b], {a,2}, {b,2}],
+  NT[\[Sigma], UI[\[Mu]_, "lorentz"], UI[\[Nu]_, "lorentz"]] :> Table[\[Sigma][\[Mu], \[Nu], a, b], {a,2}, {b,2}],
+  NT[\[Sigma], LI[\[Mu]_, "lorentz"], LI[\[Nu]_, "lorentz"]] :> Table[\[Sigma][,\[Mu], \[Nu], a, b], {a,2}, {b,2}],
+  NT[OverBar[\[Sigma]], UI[\[Mu]_, "lorentz"], UI[\[Nu]_, "lorentz"]] :> Table[\[Sigma]b[\[Mu], \[Nu], a, b], {a,2}, {b,2}],
+  NT[OverBar[\[Sigma]], LI[\[Mu]_, "lorentz"], LI[\[Nu]_, "lorentz"]] :> Table[\[Sigma]b[,\[Mu], \[Nu], a, b], {a,2}, {b,2}],
+  HiddenOne -> {{1, 0}, {0, 1}}
 }
-TestMatricesByFill[exp1_, exp2_, freeindices___] := Module[{diff, result, e1, e2, indices=Sequence@@(ReleaseHold/@{freeindices})},
-  diff = ReleaseHold[ToMatrix[exp1]-ToMatrix[exp2]] // Flatten;
-  result = AllTrue[TestByFill[#, 0, freeindices][[2]] &/@ diff, #&];
-  If[result==True, AppendTo[ToTeX, exp1==exp2]];
-  {exp1==exp2, result}]
+TestForMatrix[exp1_, exp2_, indices_List] := Module[{e1, e2, result},
+  e1 = exp1 // ReleaseHoldAll // \[Sigma]ToMatrix;
+  e2 = exp2 // ReleaseHoldAll // \[Sigma]ToMatrix;
+  result = Test[#[[1]], #[[2]], indices]& /@ Transpose[{Flatten[{e1}], Flatten[{e2}]}];
+  result = AllTrue[result, #[[2]]&];
+  If[result == True, ToTeX = Drop[ToTeX, -1]; AppendTo[ToTeX, (exp1 == exp2)//HiddenOne->1]];
+  {exp1 == exp2, result} //. HiddenOne -> 1]
 
 
-TestMatricesByFill[\[Sigma][\[Mu]].\[Sigma]b[\[Nu]], \[Eta][{\[Mu],\[Nu]}, {}] - 2I \[Sigma][{\[Mu],\[Nu]}], {\[Mu],0,3}, {\[Nu],0,3}]
-TestMatricesByFill[\[Sigma]b[\[Mu]].\[Sigma][\[Nu]], \[Eta][{\[Mu],\[Nu]}, {}] - 2I \[Sigma]b[{\[Mu],\[Nu]}], {\[Mu],0,3}, {\[Nu],0,3}]
-TestMatricesByFill[\[Sigma][{\[Mu],\[Nu]}], -\[Sigma][{\[Nu],\[Mu]}], {\[Mu],0,3}, {\[Nu],0,3}]
-TestMatricesByFill[\[Sigma]b[{\[Mu],\[Nu]}], -\[Sigma]b[{\[Nu],\[Mu]}], {\[Mu],0,3}, {\[Nu],0,3}]
-TestByFill[TR[ToMatrix[\[Sigma]b[\[Mu]].\[Sigma][\[Nu]]]], TR[ToMatrix[\[Sigma][\[Mu]].\[Sigma]b[\[Nu]]]], {\[Mu],0,3},{\[Nu],0,3}]
-TestByFill[TR[ToMatrix[\[Sigma]b[\[Mu]].\[Sigma][\[Nu]]]], 2\[Eta][{\[Mu],\[Nu]},{}], {\[Mu],0,3},{\[Nu],0,3}]
-TestByFill[TR[ToMatrix[\[Sigma][{\[Mu], \[Nu]}]]], 0, {\[Mu],0,3},{\[Nu],0,3}]
-TestByFill[TR[ToMatrix[\[Sigma]b[{\[Mu], \[Nu]}]]], 0, {\[Mu],0,3},{\[Nu],0,3}]
+(* ::Section:: *)
+(*Definitions*)
 
 
-TestMatricesByFill[\[Sigma][\[Mu]].\[Sigma]b[\[Rho]].\[Sigma][\[Nu]] + \[Sigma][\[Nu]].\[Sigma]b[\[Rho]].\[Sigma][\[Mu]], 2(\[Eta][{\[Mu],\[Rho]}, {}].\[Sigma][\[Nu]]+\[Eta][{\[Nu],\[Rho]}, {}].\[Sigma][\[Mu]]-\[Eta][{\[Mu],\[Nu]}, {}].\[Sigma][\[Rho]]), {\[Mu],0,3}, {\[Nu],0,3}, {\[Rho],0,3}]
-TestMatricesByFill[\[Sigma]b[\[Mu]].\[Sigma][\[Rho]].\[Sigma]b[\[Nu]] + \[Sigma]b[\[Nu]].\[Sigma][\[Rho]].\[Sigma]b[\[Mu]], 2(\[Eta][{\[Mu],\[Rho]}, {}].\[Sigma]b[\[Nu]]+\[Eta][{\[Nu],\[Rho]}, {}].\[Sigma]b[\[Mu]]-\[Eta][{\[Mu],\[Nu]}, {}].\[Sigma]b[\[Rho]]), {\[Mu],0,3}, {\[Nu],0,3}, {\[Rho],0,3}]
-TestMatricesByFill[\[Sigma][\[Mu]].\[Sigma]b[\[Nu]].\[Sigma][\[Rho]] - \[Sigma][\[Rho]].\[Sigma]b[\[Nu]].\[Sigma][\[Mu]], SUM[2I \[Epsilon]4U[\[Mu],\[Nu],\[Rho],\[Xi]] \[Eta][{}, {\[Xi],\[Alpha]}] \[Sigma][\[Alpha]], {\[Xi],0,3}, {\[Alpha],0,3}], {\[Mu],0,3}, {\[Nu],0,3}, {\[Rho],0,3}]
-TestMatricesByFill[\[Sigma]b[\[Mu]].\[Sigma][\[Nu]].\[Sigma]b[\[Rho]] - \[Sigma]b[\[Rho]].\[Sigma][\[Nu]].\[Sigma]b[\[Mu]], SUM[-2I \[Epsilon]4U[\[Mu],\[Nu],\[Rho],\[Xi]] \[Eta][{}, {\[Xi],\[Alpha]}] \[Sigma]b[\[Alpha]], {\[Xi],0,3}, {\[Alpha],0,3}], {\[Mu],0,3}, {\[Nu],0,3}, {\[Rho],0,3}]
-TestByFill[TR[ToMatrix[\[Sigma][{\[Mu],\[Nu]}].\[Sigma][{\[Rho],\[Xi]}]]], ((1/2)(\[Eta][{\[Mu],\[Rho]},{}]\[Eta][{\[Nu],\[Xi]},{}] - \[Eta][{\[Mu],\[Xi]},{}]\[Eta][{\[Nu],\[Rho]},{}])+(-I/2)\[Epsilon]4U[\[Mu],\[Nu],\[Rho],\[Xi]]) , {\[Mu],0,3}, {\[Nu],0,3}, {\[Rho],0,3}, {\[Xi],0,3}]
-TestByFill[TR[ToMatrix[\[Sigma]b[{\[Mu],\[Nu]}].\[Sigma]b[{\[Rho],\[Xi]}]]], ((1/2)(\[Eta][{\[Mu],\[Rho]},{}]\[Eta][{\[Nu],\[Xi]},{}] - \[Eta][{\[Mu],\[Xi]},{}]\[Eta][{\[Nu],\[Rho]},{}])+(I/2)\[Epsilon]4U[\[Mu],\[Nu],\[Rho],\[Xi]]) , {\[Mu],0,3}, {\[Nu],0,3}, {\[Rho],0,3}, {\[Xi],0,3}]
+(* ::Code:: *)
+(*Test[\[Epsilon]U[0,1,2,3]==-\[Epsilon]L[0,1,2,3]==1]*)
+(*Test[\[Epsilon]U[1,2] == \[Epsilon]L[2,1] == \[Epsilon]Ud[1,2] == \[Epsilon]Ld[2,1] == 1]*)
+(*Test[\[Epsilon]U[2,1] == \[Epsilon]L[1,2] == \[Epsilon]Ud[2,1] == \[Epsilon]Ld[1,2] == -1]*)
+(*Test[\[Epsilon]L[a,b]\[Epsilon]U[b,c] == \[Epsilon]U[a,b]\[Epsilon]L[b,c]==\[Delta][a,c,"spinor"], {a,c}]*)
+(*Test[\[Psi][a]==\[Epsilon]U[a,b]\[Psi][,b], {a}]*)
+(*Test[\[Psi][,a]==\[Epsilon]L[a,b]\[Psi][b], {a}]*)
+(*Test[\[Psi]b[a]==\[Epsilon]Ud[a,b]\[Psi]b[,b], {OverDot[a]}]*)
+(*Test[\[Psi]b[,a]==\[Epsilon]Ld[a,b]\[Psi]b[b], {OverDot[a]}]*)
+(*Test[\[Sigma][\[Mu], a, b], \[Epsilon]L[a,d]\[Epsilon]Ld[b,c] \[Sigma]b[\[Mu], c, d], {a, OverDot[b], \[Mu]}]*)
+(*Test[\[Sigma]b[\[Mu], a, b], \[Epsilon]Ud[a,d]\[Epsilon]U[b,c] \[Sigma][\[Mu], c, d], {OverDot[a], b, \[Mu]}]*)
+(**)
 
 
-TestByFill[GrassmannDot[GrassmannTensor[OverBar[\[Xi]], {}, {""}], \[Sigma]b[\[Mu],"",""], GrassmannTensor[\[Chi], {}, {""}]], -GrassmannDot[GrassmannTensor[\[Chi], {""}, {}], \[Sigma][\[Mu],"",""], GrassmannTensor[OverBar[\[Xi]], {""}, {}]], {\[Mu],0,3}]
+(* ::Section:: *)
+(*Conjugation rules*)
 
 
-TestByFill[SUM[\[Eta][{},{\[Mu],\[Nu]}]\[Sigma][\[Mu],a,b]\[Sigma]b[\[Nu],c,d],{\[Mu],0,3},{\[Nu],0,3}],  2\[Delta][a,d]\[Delta][b,c], {a,2},{b,2},{c,2},{d,2}]
-TestByFill[SUM[\[Eta][{},{\[Mu],\[Nu]}]\[Sigma][\[Mu],a,b]\[Sigma][\[Nu],c,d],{\[Mu],0,3},{\[Nu],0,3}],  2\[Epsilon]L[a,c]\[Epsilon]L[b,d], {a,2},{b,2},{c,2},{d,2}]
-TestByFill[SUM[\[Eta][{},{\[Mu],\[Nu]}]\[Sigma]b[\[Mu],a,b]\[Sigma]b[\[Nu],c,d],{\[Mu],0,3},{\[Nu],0,3}],  2\[Epsilon]U[a,c]\[Epsilon]U[b,d], {a,2},{b,2},{c,2},{d,2}]
-TestByFill[GrassmannDot[\[Sigma][{\[Mu],\[Nu]},a,b], \[Epsilon]L[b,c]], GrassmannDot[\[Sigma][{\[Mu],\[Nu]},c,b], \[Epsilon]L[b,a]], {a,2}, {c,2}, {\[Mu],0,3},{\[Nu],0,3}]
-TestByFill[GrassmannDot[\[Sigma]b[{\[Mu],\[Nu]},a,b], \[Epsilon]Ud[b,c]], GrassmannDot[\[Sigma]b[{\[Mu],\[Nu]},c,b], \[Epsilon]Ud[b,a]], {a,2}, {c,2}, {\[Mu],0,3},{\[Nu],0,3}]
+(* ::Code:: *)
+(*ToTeX = {};*)
+(*Test[Conjugate[\[Sigma][\[Mu], a, b]], \[Epsilon]Ld[a,c]\[Epsilon]L[b,d]\[Sigma]b[\[Mu], c, d], {a, b, \[Mu]}]*)
+(*Test[Conjugate[\[Sigma]b[\[Mu], a, b]], \[Epsilon]U[a,c]\[Epsilon]Ud[b,d]\[Sigma][\[Mu], c, d], {a, b, \[Mu]}]*)
 
 
-TestByFill[
-  GrassmannDot[\[Sigma][\[Mu],a,b], \[Sigma][\[Nu],c,d]] - GrassmannDot[\[Sigma][\[Nu],a,b], \[Sigma][\[Mu],c,d]],
-  -2I GrassmannDot[\[Sigma][{\[Mu],\[Nu]},a,""], \[Epsilon]L["",c], \[Epsilon]Ld[b,d]]-2I GrassmannDot[\[Epsilon]Ld[b,""], \[Sigma]b[{\[Mu],\[Nu]},"",d], \[Epsilon]L[a,c]], {a,2},{b,2},{c,2},{d,2},{\[Mu],0,3},{\[Nu],0,3}]
-TestByFill[
-  GrassmannDot[\[Sigma][\[Mu],a,b], \[Sigma][\[Nu],c,d]] + GrassmannDot[\[Sigma][\[Nu],a,b], \[Sigma][\[Mu],c,d]],
-  \[Eta][{\[Mu],\[Nu]}, {}]\[Epsilon]L[a,c]\[Epsilon]Ld[b,d]+4SUM[\[Eta][{}, {\[Rho],\[Xi]}] GrassmannDot[\[Sigma][{\[Rho],\[Mu]},a,""], \[Epsilon]L["",c],\[Epsilon]Ld[b,""]\[Sigma]b[{\[Xi],\[Nu]},"",d]], {\[Rho],0,3},{\[Xi],0,3}],
-   {a,2},{b,2},{c,2},{d,2},{\[Mu],0,3},{\[Nu],0,3}]
+(* ::Section:: *)
+(*Contraction formulae*)
 
 
-ToTeX={}
-TestByFill[
-  GrassmannDot[\[Sigma]b[\[Mu],a,b], \[Sigma]b[\[Nu],c,d]] - GrassmannDot[\[Sigma]b[\[Nu],a,b], \[Sigma]b[\[Mu],c,d]],
-  -2I GrassmannDot[\[Sigma]b[{\[Mu],\[Nu]},a,""], \[Epsilon]Ud["",c], \[Epsilon]U[b,d]]-2I GrassmannDot[\[Epsilon]U[b,""], \[Sigma][{\[Mu],\[Nu]},"",d], \[Epsilon]Ud[a,c]], {a,2},{b,2},{c,2},{d,2},{\[Mu],0,3},{\[Nu],0,3}]
-TestByFill[
-  GrassmannDot[\[Sigma]b[\[Mu],a,b], \[Sigma]b[\[Nu],c,d]] + GrassmannDot[\[Sigma]b[\[Nu],a,b], \[Sigma]b[\[Mu],c,d]],
-  \[Eta][{\[Mu],\[Nu]}, {}]\[Epsilon]Ud[a,c]\[Epsilon]U[b,d]+4SUM[\[Eta][{}, {\[Rho],\[Xi]}] GrassmannDot[\[Sigma]b[{\[Rho],\[Mu]},a,y], \[Epsilon]Ud[y,c],\[Epsilon]U[b,x]\[Sigma][{\[Xi],\[Nu]},x,d]], {\[Rho],0,3},{\[Xi],0,3}],
-   {a,2},{b,2},{c,2},{d,2},{\[Mu],0,3},{\[Nu],0,3}]
+(* ::Code:: *)
+(*ToTeX = {};*)
+(*Test[TDot[\[Theta][a],\[Theta][b]], (-1/2)\[Epsilon]U[a,b]\[Theta]\[Theta], {a, b}]*)
+(*Test[TDot[\[Theta]b[a],\[Theta]b[b]], (+1/2)\[Epsilon]Ud[a,b]\[Theta]\[Theta]b, {OverDot[a], OverDot[b]}]*)
+(*Test[TDot[\[Theta][a], \[Xi][,a], \[Theta][b],\[Chi][,b]], (-1/2)TDot[\[Xi][c], \[Chi][,c]]\[Theta]\[Theta]] // ExpandAll*)
+(*Test[TDot[\[Theta][c],\[Sigma][\[Nu],c,b],\[Theta]b[b], \[Theta][a]], (1/2)\[Theta]\[Theta] TDot[\[Theta]b[,c], \[Sigma]b[\[Nu],c,a]], {\[Nu], a}]*)
+(**)
+(*Test[TDot[\[Theta][,a],\[Theta][,b]], (1/2)\[Epsilon]L[a,b]\[Theta]\[Theta], {a, b}]*)
+(*Test[TDot[\[Theta]b[,a],\[Theta]b[,b]], (-1/2)\[Epsilon]Ld[a,b]\[Theta]\[Theta]b, {OverDot[a], OverDot[b]}]*)
+(*Test[TDot[\[Theta]b[,a], \[Xi]b[a], \[Theta]b[,b], \[Chi]b[b]], (-1/2)TDot[\[Xi]b[,c], \[Chi]b[c]]\[Theta]\[Theta]b]*)
+(*Test[TDot[\[Theta][c],\[Sigma][\[Nu],c,b],\[Theta]b[b], \[Theta]b[,a]], -(1/2)\[Theta]\[Theta]b TDot[\[Theta][c], \[Sigma][\[Nu],c,a]], {\[Nu], OverDot[a]}]*)
+(**)
+(*Test[TDot[\[Theta][a],\[Theta][,b]], (1/2)\[Delta][a,b]\[Theta]\[Theta], {a, b}]*)
+(*Test[TDot[\[Theta]b[,a],\[Theta]b[b]], (1/2)\[Delta][OverDot[a],OverDot[b]]\[Theta]\[Theta]b, {OverDot[a], OverDot[b]}]*)
+(*Test[TDot[\[Theta][a],\[Sigma][\[Mu],a,b],\[Theta]b[b]]TDot[\[Theta][c],\[Sigma][\[Nu],c,d],\[Theta]b[d]], (1/2)\[Theta]\[Theta] \[Theta]\[Theta]b \[Eta]U[\[Mu],\[Nu]], {\[Mu], \[Nu]}]*)
+(*Test[TDot[\[Sigma][\[Mu],a,b], \[Theta]b[b], \[Theta][c], \[Sigma][\[Nu],c,d], \[Theta]b[d]], (1/2)\[Theta]\[Theta]b TDot[\[Sigma][\[Mu],a,b],\[Sigma]b[\[Nu],b,c],\[Theta][,c]], {\[Mu], \[Nu], a}]*)
+(*Test[TDot[\[Theta][a] ,\[Sigma][\[Mu], a, b], \[Sigma]b[\[Nu], b, c], \[Theta][,c]], \[Eta]U[\[Mu],\[Nu]] \[Theta]\[Theta], {\[Mu], \[Nu]}]*)
+(*Test[TDot[\[Theta]b[,a], \[Sigma]b[\[Mu], a, b], \[Sigma][\[Nu], b, c], \[Theta]b[c]], \[Eta]U[\[Mu],\[Nu]] \[Theta]\[Theta]b, {\[Mu], \[Nu]}]*)
+(*TeXOutput[ToTeX]*)
 
 
-TestByFill[Sum[\[Epsilon]4U[\[Mu],\[Nu],\[Rho],\[Xi]]\[Sigma][{\[Alpha],\[Beta]}, a,b]\[Eta]L[\[Alpha],\[Rho]]\[Eta]L[\[Beta],\[Xi]], {\[Alpha],0,3}, {\[Beta],0,3}, {\[Rho],0,3},{\[Xi],0,3}], 2I \[Sigma][{\[Mu],\[Nu]}, a,b], {\[Mu],0,3},{\[Nu],0,3},{a,2},{b,2}]
-TestByFill[Sum[\[Epsilon]4U[\[Mu],\[Nu],\[Rho],\[Xi]]\[Sigma]b[{\[Alpha],\[Beta]}, a,b]\[Eta]L[\[Alpha],\[Rho]]\[Eta]L[\[Beta],\[Xi]], {\[Alpha],0,3}, {\[Beta],0,3}, {\[Rho],0,3},{\[Xi],0,3}], -2I \[Sigma]b[{\[Mu],\[Nu]}, a,b], {\[Mu],0,3},{\[Nu],0,3},{a,2},{b,2}]
+(* ::Code:: *)
+(*TestForMatrix[\[Sigma]M[\[Mu]].\[Sigma]bM[\[Nu]], \[Eta]U[\[Mu],\[Nu]]HiddenOne - 2I \[Sigma]M[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[\[Sigma]bM[\[Mu]].\[Sigma]M[\[Nu]], \[Eta]U[\[Mu],\[Nu]]HiddenOne - 2I \[Sigma]bM[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[\[Sigma]M[\[Mu],\[Nu]], -\[Sigma]M[\[Nu],\[Mu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[\[Sigma]bM[\[Mu],\[Nu]], -\[Sigma]bM[\[Nu],\[Mu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[Tr[\[Sigma]M[\[Mu]].\[Sigma]bM[\[Nu]]], 2\[Eta]U[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[Tr[\[Sigma]bM[\[Mu]].\[Sigma]M[\[Nu]]], 2\[Eta]U[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[Tr[\[Sigma]M[\[Mu], \[Nu]]], 0, {\[Mu],\[Nu]}]*)
+(*TestForMatrix[Tr[\[Sigma]bM[\[Mu], \[Nu]]], 0, {\[Mu],\[Nu]}]*)
+(*TestForMatrix[\[Sigma]M[\[Mu]].\[Sigma]bM[\[Rho]].\[Sigma]M[\[Nu]] + \[Sigma]M[\[Nu]].\[Sigma]bM[\[Rho]].\[Sigma]M[\[Mu]], 2(\[Eta]U[\[Mu],\[Rho]]\[Sigma]M[\[Nu]]+\[Eta]U[\[Nu],\[Rho]]\[Sigma]M[\[Mu]]-\[Eta]U[\[Mu],\[Nu]]\[Sigma]M[\[Rho]]), {\[Mu], \[Nu], \[Rho]}]*)
+(*TestForMatrix[\[Sigma]bM[\[Mu]].\[Sigma]M[\[Rho]].\[Sigma]bM[\[Nu]] + \[Sigma]bM[\[Nu]].\[Sigma]M[\[Rho]].\[Sigma]bM[\[Mu]], 2(\[Eta]U[\[Mu],\[Rho]]\[Sigma]bM[\[Nu]]+\[Eta]U[\[Nu],\[Rho]] \[Sigma]bM[\[Mu]]-\[Eta]U[\[Mu],\[Nu]]\[Sigma]bM[\[Rho]]), {\[Mu], \[Nu], \[Rho]}]*)
+(*TestForMatrix[\[Sigma]M[\[Mu]].\[Sigma]bM[\[Nu]].\[Sigma]M[\[Rho]] - \[Sigma]M[\[Rho]].\[Sigma]bM[\[Nu]].\[Sigma]M[\[Mu]], 2I \[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]] \[Eta]L[\[CapitalSigma],\[Alpha]] \[Sigma]M[\[Alpha]], {\[Mu], \[Nu], \[Rho]}]*)
+(*TestForMatrix[\[Sigma]bM[\[Mu]].\[Sigma]M[\[Nu]].\[Sigma]bM[\[Rho]] - \[Sigma]bM[\[Rho]].\[Sigma]M[\[Nu]].\[Sigma]bM[\[Mu]], -2I \[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]] \[Eta]L[\[CapitalSigma],\[Alpha]] \[Sigma]bM[\[Alpha]],{\[Mu], \[Nu], \[Rho]}]*)
+(*TestForMatrix[Tr[\[Sigma]M[\[Mu],\[Nu]].\[Sigma]M[\[Rho],\[CapitalSigma]]], ((1/2)(\[Eta]U[\[Mu],\[Rho]]\[Eta]U[\[Nu],\[CapitalSigma]] - \[Eta]U[\[Mu],\[CapitalSigma]]\[Eta]U[\[Nu],\[Rho]])+(-I/2)\[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]) , {\[Mu], \[Nu], \[Rho], \[CapitalSigma]}]*)
+(*TestForMatrix[Tr[\[Sigma]bM[\[Mu],\[Nu]].\[Sigma]bM[\[Rho],\[CapitalSigma]]], ((1/2)(\[Eta]U[\[Mu],\[Rho]]\[Eta]U[\[Nu],\[CapitalSigma]] - \[Eta]U[\[Mu],\[CapitalSigma]]\[Eta]U[\[Nu],\[Rho]])+(I/2)\[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]) , {\[Mu], \[Nu], \[Rho], \[CapitalSigma]}]*)
+
+
+(* ::Code:: *)
+(*Test[\[Sigma][\[Mu],a,a]\[Sigma]b[,\[Mu],b,b],  2\[Delta][a,b]\[Delta]d[b,a], {a,OverDot[a],b,OverDot[b]}]*)
+(*Test[\[Sigma][,\[Mu],a,a]\[Sigma][\[Mu],b,b],   2\[Epsilon]L[a,b]\[Epsilon]Ld[a,b], {a,OverDot[a],b,OverDot[b]}]*)
+(*Test[\[Sigma]b[,\[Mu],a,a]\[Sigma]b[\[Mu],b,b],  2\[Epsilon]Ud[a,b]\[Epsilon]U[a,b],  {a,OverDot[a],b,OverDot[b]}]*)
+(*Test[TDot[\[Sigma][\[Mu],\[Nu],a,b], \[Epsilon]L[b,c]], TDot[\[Sigma][\[Mu],\[Nu],c,b], \[Epsilon]L[b,a]], {a,c,\[Mu],\[Nu]}]*)
+(*Test[TDot[\[Sigma]b[\[Mu],\[Nu],a,b], \[Epsilon]Ud[b,c]], TDot[\[Sigma]b[\[Mu],\[Nu],c,b], \[Epsilon]Ud[b,a]], {OverDot[a],OverDot[c],\[Mu],\[Nu]}]*)
+
+
+(* ::Code:: *)
+(*Test[*)
+(*  TDot[\[Sigma][\[Mu],a,a], \[Sigma][\[Nu],b,b]] - TDot[\[Sigma][\[Nu],a,a], \[Sigma][\[Mu],b,b]],*)
+(*  -2I TDot[\[Sigma][\[Mu],\[Nu],a,c], \[Epsilon]L[c,b], \[Epsilon]Ld[a,b]]-2I TDot[\[Epsilon]Ld[a,c], \[Sigma]b[\[Mu],\[Nu],c,b], \[Epsilon]L[a,b]], {a,OverDot[b],b,OverDot[a],\[Mu],\[Nu]}]*)
+(*Test[*)
+(*  TDot[\[Sigma][\[Mu],a,a], \[Sigma][\[Nu],b,b]] + TDot[\[Sigma][\[Nu],a,a], \[Sigma][\[Mu],b,b]],*)
+(* \[Eta]U[\[Mu],\[Nu]]\[Epsilon]L[a,b]\[Epsilon]Ld[a,b] + 4 \[Eta]L[\[Rho],\[CapitalSigma]]\[Sigma][\[Rho],\[Mu],a,c]\[Epsilon]L[c,b]\[Epsilon]Ld[a,c]\[Sigma]b[\[CapitalSigma],\[Nu],c,b],   {a,OverDot[b],b,OverDot[a],\[Mu],\[Nu]}]*)
+(*Test[*)
+(*  TDot[\[Sigma]b[\[Mu],a,a], \[Sigma]b[\[Nu],b,b]] - TDot[\[Sigma]b[\[Nu],a,a], \[Sigma]b[\[Mu],b,b]],*)
+(*  -2I TDot[\[Sigma]b[\[Mu],\[Nu],a,c], \[Epsilon]Ud[c,b], \[Epsilon]U[a,b]]-2I TDot[\[Epsilon]U[a,c], \[Sigma][\[Mu],\[Nu],c,b], \[Epsilon]Ud[a,b]],  {a,OverDot[b],b,OverDot[a],\[Mu],\[Nu]}]*)
+(*Test[*)
+(*  TDot[\[Sigma]b[\[Mu],a,a], \[Sigma]b[\[Nu],b,b]] + TDot[\[Sigma]b[\[Nu],a,a], \[Sigma]b[\[Mu],b,b]],*)
+(*  \[Eta]U[\[Mu],\[Nu]]\[Epsilon]Ud[a,b]\[Epsilon]U[a,b] + 4 \[Eta]L[\[Rho],\[CapitalSigma]]\[Sigma]b[\[Rho],\[Mu],a,c]\[Epsilon]Ud[c,b]\[Epsilon]U[a,c]\[Sigma][\[CapitalSigma],\[Nu],c,b],   {a,OverDot[b],b,OverDot[a],\[Mu],\[Nu]}]*)
+(*TestForMatrix[\[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]\[Sigma]bM[,\[Rho],\[CapitalSigma]], -2I \[Sigma]bM[\[Mu],\[Nu]], {\[Mu], \[Nu]}]*)
+(*TestForMatrix[\[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]\[Sigma]M[,\[Rho],\[CapitalSigma]], 2 I \[Sigma]M[\[Mu],\[Nu]], {\[Mu], \[Nu]}]*)
 
 
 
