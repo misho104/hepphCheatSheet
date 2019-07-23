@@ -387,69 +387,6 @@ Test[exp1_, exp2_, indices_List] := Module[{diff, result},
 \[Theta]\[Theta] = Module[{i=Unique[]}, TDot[\[Theta][i], \[Theta][,i]]];
 \[Theta]\[Theta]b = Module[{i=Unique[]}, TDot[\[Theta]b[,i], \[Theta]b[i]]];
 
-
-ToTeX = {};
-TeXOutput[exp_List] := Do[Module[{tmp},
-      tmp = t //. {a | "a" -> \[Alpha], b | "b" -> \[Beta], c | "c" -> \[Gamma], d | "d" -> \[Delta]} // TeXForm // ToString;
-      FixedPoint[StringReplace[{
-           " }" -> "}", " ^" -> "^", " _" -> "_", " )" -> ")",
-           "\\dot{\\alpha}" -> "\\dalpha", "\\dot{\\beta}" -> "\\dbeta", "\\dot{\\gamma}" -> "\\dgamma", "\\dot{\\delta}" -> "\\ddelta",
-           "\\bar{\\theta}" -> "\\btheta",
-           "\\bar{\\sigma}" -> "\\bsigma",
-           "\\overline{" -> "\\bar{"
-               }], tmp]] // Print,
-    {t, exp}]
-
-ToTable::multiple = "Multiple appearance of `1`.";
-ToTable::none = "No appearance of `1`.";
-ToTable[exp_, indices_] := Module[{tmp = exp, guessedtype, iterlist, iter},
-     iterlist = Function[i, 
-          guessedtype = Cases[tmp, (UI | LI)[i, _], All] /. _[_, "any"] -> Nothing // DeleteDuplicates;
-          Switch[Length[guessedtype],
-             0, Message[ToTable::none, i]; guessedtype = None,
-             1, guessedtype = guessedtype[[1, 2]],
-             _, Message[ToTable::multiple, i]; Abort[]];
-          {i, guessedtype}
-        ] /@ indices;
-     iterlist = Sequence @@ Select[iterlist, #[[2]] =!= None &];
-     Tablize[tmp, iterlist // Evaluate]
-   ];
-Attributes[Test] = {HoldAll};
-Test[exp1_Equal] := Test[exp1, {}]
-Test[exp1_Equal, indices_List] := Module[{parts, diff, result},
-    parts = List@@exp1;
-    parts = FillIndices[#, {"spinor", "lorentz"}] & /@ parts;
-    If[Length[indices] > 0,  parts = ToTable[#, indices]& /@ parts; parts = FillIndices[#, {"spinor", "lorentz"}]& /@ parts];
-    result = (Equal@@parts) // ExpandAll;
-    If[result===True, AppendTo[ToTeX, exp1]];
-    {exp1, result}]    
-Test[exp1_, exp2_] := Test[exp1, exp2, {}]
-Test[exp1_, exp2_, indices_List] := Module[{diff, result},
-    diff = exp1 - exp2 // FillIndices[#, {"spinor", "lorentz"}] &;
-    If[Length[indices] > 0, diff = ToTable[diff, indices] // FillIndices[#, {"spinor", "lorentz"}]&];
-    result = AllTrue[Flatten[{diff}], #==0&] // ExpandAll;
-    If[result == True, AppendTo[ToTeX, exp1 == exp2]];
-    {exp1 == exp2, result}]
-
-\[Psi][a_]  := GT["\[Psi]", UI[a, "spinor"]]
-\[Psi][,a_] := GT["\[Psi]", LI[a, "spinor"]]
-\[Theta][a_]  := GT["\[Theta]", UI[a, "spinor"]]
-\[Theta][,a_] := GT["\[Theta]", LI[a, "spinor"]]
-\[Xi][a_]  := GT["\[Xi]", UI[a, "spinor"]]
-\[Xi][,a_] := GT["\[Xi]", LI[a, "spinor"]]
-\[Chi][a_]  := GT["\[Chi]", UI[a, "spinor"]]
-\[Chi][,a_] := GT["\[Chi]", LI[a, "spinor"]]
-\[Psi]b[a_]  := GT[OverBar["\[Psi]"], UI[PutOverDot[a], "spinor"]]
-\[Psi]b[,a_] := GT[OverBar["\[Psi]"], LI[PutOverDot[a], "spinor"]]
-\[Theta]b[a_]  := GT[OverBar["\[Theta]"], UI[PutOverDot[a], "spinor"]]
-\[Theta]b[,a_] := GT[OverBar["\[Theta]"], LI[PutOverDot[a], "spinor"]]
-\[Xi]b[a_]  := GT[OverBar["\[Xi]"], UI[PutOverDot[a], "spinor"]]
-\[Xi]b[,a_] := GT[OverBar["\[Xi]"], LI[PutOverDot[a], "spinor"]]
-\[Chi]b[a_]  := GT[OverBar["\[Chi]"], UI[PutOverDot[a], "spinor"]]
-\[Chi]b[,a_] := GT[OverBar["\[Chi]"], LI[PutOverDot[a], "spinor"]]
-\[Theta]\[Theta] = Module[{i=Unique[]}, TDot[\[Theta][i], \[Theta][,i]]];
-\[Theta]\[Theta]b = Module[{i=Unique[]}, TDot[\[Theta]b[,i], \[Theta]b[i]]];
-
 \[Sigma]M[\[Mu]_]     := NT[HoldForm[\[Sigma]], UI[\[Mu], "lorentz"]]
 \[Sigma]M[,\[Mu]_]    := NT[HoldForm[\[Sigma]], LI[\[Mu], "lorentz"]]
 \[Sigma]M[\[Mu]_, \[Nu]_] := NT[HoldForm[\[Sigma]], UI[\[Mu], "lorentz"], UI[\[Nu], "lorentz"]]
