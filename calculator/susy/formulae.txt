@@ -1,0 +1,162 @@
+\paragraph{Convention} Our convention follows DHM (except for $D_\mu$):
+\begin{align*}
+ &  \eta = \diag(1, -1, -1, -1);
+\quad
+\epsilon^{0123}=-\epsilon_{0123}=1
+,\quad
+\epsilon^{12}=\epsilon_{21}=\epsilon^{\dot{1}\dot{2}}=\epsilon_{\dot{2}\dot{1}}=1
+%\epsilon^{21}=\epsilon_{12}=\epsilon^{\dot{2}\dot{1}}=\epsilon_{\dot{1}\dot{2}}=-1
+\quad\bigl(
+\epsilon_{\alpha \beta}\epsilon^{\beta \gamma}=\epsilon^{\alpha \beta}\epsilon_{\beta \gamma}=\delta^{\alpha}_{\gamma}
+\bigr),\\&
+\psi^{\alpha}=\epsilon^{\alpha\beta}\psi_{\beta}
+,\quad
+\psi_{\alpha}=\epsilon_{\alpha \beta}\psi^{\beta}
+,\quad
+\bar{\psi}^{\dalpha}=\epsilon^{\dalpha\dbeta}\bar{\psi}_{\dbeta}
+,\quad
+\bar{\psi}_{\dalpha}=\epsilon_{\dalpha\dbeta}\bar{\psi}^\dbeta
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;\end{align*}\vspace{-18pt}\begin{alignat*}{3}
+\sigma^\mu_{\alpha\dalpha} &:= (\vc{1},\vc{\sigma})_{\alpha\dalpha},
+\qquad&
+\sigma^{\mu\nu}{}_\alpha{}^\beta &:= \frac{\ii}{4} (\sigma^\mu\bsigma^\nu-\sigma^\nu\bsigma^\mu)_{\alpha}{}^{\beta},\footnotemark
+\qquad&
+&\bigl(
+\sigma^{\mu}_{\alpha \dbeta}=\epsilon_{\alpha \delta}\epsilon_{\dbeta\dgamma}\bsigma^{\mu \dgamma\delta}
+,\quad
+\bsigma^{\mu \dalpha\beta}=\epsilon^{\beta \gamma}\sigma^{\mu}_{\gamma \ddelta}\epsilon^{\dalpha\ddelta}
+\bigr)\\
+\bsigma^{\mu\dalpha\alpha} &:= (\vc{1},-\vc{\sigma})^{\dalpha\alpha},
+&
+\bsigma^{\mu\nu}{}^{\dalpha}{}_{\dbeta} &:= \frac{\ii}{4} (\bsigma^\mu\sigma^\nu-\bsigma^\nu\sigma^\mu)^{\dalpha}{}_{\dbeta},\addtocounter{footnote}{-1}\footnotemark
+\end{alignat*}\vspace{-18pt}
+\begin{align*}
+&(\psi\xi):=\psi^\alpha\xi_\alpha,
+\quad
+ (\bar\psi\bar\chi):=\bar\psi_{\dalpha}\bar\chi^{\dalpha};
+\qquad
+\frac{\dd}{\dd\theta^\alpha}(\theta\theta) := \theta_\alpha\quad\text{[left derivative]}.
+\end{align*}
+Especially, spinor-index contraction is done as ${}^\alpha{}_\alpha$ and  ${}_{\dalpha}{}^{\dalpha}$ except for $\epsilon_{ab}$ (which always comes from left).
+\footnotetext{As the definition of $\sigma^{\mu\nu}$ and $\bsigma^{\mu\nu}$ are not unified in literature, they are not used in this CheatSheet except for this page.}%
+Noting that complex conjugate reverses spinor order: $(\psi^\alpha\xi^\beta)^* := (\xi^\beta)^*(\psi^\alpha)^*$,
+\begin{alignat*}{3}&
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bar{\psi}^{\dalpha}:=(\psi^{\alpha})^*
+,\quad
+ \epsilon^{\dot a\dot b} := (\epsilon^{ab})^*
+,\qquad&&
+\bigl(\psi \chi\bigr)^*=(\bar{\psi}\bar{\chi})
+,\\&
+\bigl(\sigma^{\mu}_{\alpha \dbeta}\bigr)^*=
+\bsigma^{\mu}{}_{\dalpha\beta}=\epsilon_{\beta \delta}\epsilon_{\dalpha\dgamma}\bsigma^{\mu \dgamma\delta}
+,&&
+%%%
+\bigl(\sigma^{\mu\nu}\bigr)^\dagger{}^\alpha{}_\beta= \bsigma^{\mu\nu}{}^\dalpha{}_\dbeta,
+%%%
+&\qquad&
+\bigl(\sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\bigr)^*=\bsigma^{\mu \nu \dbeta}{}_{\dalpha}
+=\bsigma^{\mu \nu}{}_{\dalpha}{}^{\dbeta}
+=\epsilon_{\dalpha\dgamma}\epsilon^{\dbeta\ddelta}\bsigma^{\mu \nu \dgamma}{}_{\ddelta}
+,\\&
+\bigl(\bsigma^{\mu \dalpha\beta}\bigr)^*=
+\sigma^{\mu \alpha \dbeta}=\epsilon^{\dbeta\ddelta}\epsilon^{\alpha \gamma}\sigma^{\mu}_{\gamma \ddelta}
+,&&
+%%%
+\bigl(\bsigma^{\mu\nu}\bigr)^\dagger{}_\dalpha{}^\dbeta= \sigma^{\mu\nu}{}_\alpha{}^\beta
+%%%
+,&&
+\bigl(\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\bigr)^*=\sigma^{\mu \nu}{}_{\beta}{}^{\alpha}
+=\bsigma^{\mu \nu}{}^{\alpha}{}_{\beta}
+=\epsilon_{\beta \delta}\epsilon^{\alpha \gamma}\sigma^{\mu \nu}{}_{\gamma}{}^{\delta}
+.\end{alignat*}
+\paragraph{Contraction formulae}
+\begin{alignat*}{3}&
+\theta^{\alpha}\theta^{\beta}=-\tfrac{1}{2} \epsilon^{\alpha \beta}(\theta \theta)
+&\quad&
+\btheta^{\dalpha}\btheta^{\dbeta}=\tfrac{1}{2} \epsilon^{\dalpha\dbeta}(\btheta\btheta)
+&\quad&
+(\theta \xi)(\theta \chi)=-\tfrac{1}{2} (\theta \theta)(\xi \chi)
+\quad~~
+(\theta \sigma^{\nu}\btheta)\theta^{\alpha}=\tfrac{1}{2} (\theta \theta)(\btheta\bsigma^{\nu})^{\alpha}
+\\&
+\theta_{\alpha}\theta_{\beta}=\tfrac{1}{2} \epsilon_{\alpha \beta}(\theta \theta)
+&&
+\btheta_{\dalpha}\btheta_{\dbeta}=-\tfrac{1}{2} \epsilon_{\dalpha\dbeta}(\btheta\btheta)
+&&
+(\btheta\bar{\xi})(\btheta\bar{\chi})=-\tfrac{1}{2} (\btheta\btheta)(\bar{\xi}\bar{\chi})
+\quad~~
+(\theta \sigma^{\nu}\btheta)\btheta_{\dalpha}=-\tfrac{1}{2} (\theta \sigma^{\nu}){}_{\dalpha}(\btheta\btheta)
+\\&
+\theta^{\alpha}\theta_{\beta}=\tfrac{1}{2} (\theta \theta)\delta^{\alpha}_{\beta}
+&&
+\btheta_{\dalpha}\btheta^{\dbeta}=\tfrac{1}{2} (\btheta\btheta)\delta^{\dalpha}_{\dbeta}
+&&
+(\theta \sigma^{\mu}\btheta)(\theta \sigma^{\nu}\btheta)=\tfrac{1}{2} (\btheta\btheta)(\theta \theta)\eta^{\mu \nu}
+\\&
+(\theta \sigma^{\mu}\bsigma^{\nu}\theta)=(\theta \theta)\eta^{\mu \nu}
+&&
+(\btheta\bsigma^{\mu}\sigma^{\nu}\btheta)=(\btheta\btheta)\eta^{\mu \nu}
+&&
+(\sigma^{\mu}\btheta){}_{\alpha}(\theta \sigma^{\nu}\btheta)=\tfrac{1}{2} (\btheta\btheta)(\sigma^{\mu}\bsigma^{\nu}\theta){}_{\alpha}
+\end{alignat*}
+\vspace{-9pt}
+\begin{align*}&
+%%%%%%
+\sigma^{\mu}\bsigma^{\nu}=\eta^{\mu \nu}-2 \ii \sigma^{\mu \nu}
+&&
+\sigma^{\mu}\bsigma^{\rho}\sigma^{\nu}+\sigma^{\nu}\bsigma^{\rho}\sigma^{\mu}=2 \left(\sigma^{\mu}\eta^{\nu \rho}+\sigma^{\nu}\eta^{\mu \rho}-\sigma^{\rho}\eta^{\mu \nu}\right)
+\\&
+\bsigma^{\mu}\sigma^{\nu}=\eta^{\mu \nu}-2 \ii \bsigma^{\mu \nu}
+&&
+\sigma^{\mu}\bsigma^{\nu}\sigma^{\rho}-\sigma^{\rho}\bsigma^{\nu}\sigma^{\mu}=2 \ii \sigma_{\sigma}\epsilon^{\mu \nu \rho \sigma}
+\\&
+\Tr\left(\sigma^{\mu}\bsigma^{\nu}\right)=
+\Tr\left(\bsigma^{\mu}\sigma^{\nu}\right)=2 \eta^{\mu \nu}
+&&
+\bsigma^{\mu}\sigma^{\rho}\bsigma^{\nu}+\bsigma^{\nu}\sigma^{\rho}\bsigma^{\mu}=2 \left(\bsigma^{\mu}\eta^{\nu \rho}+\bsigma^{\nu}\eta^{\mu \rho}-\bsigma^{\rho}\eta^{\mu \nu}\right)
+\\&
+\sigma^{\mu}_{\alpha \dalpha}\bsigma_{\mu}{}^{\dbeta\beta}=2 \delta^{\dbeta}_{\dalpha}\delta^{\alpha}_{\beta}
+&&
+\bsigma^{\mu}\sigma^{\nu}\bsigma^{\rho}-\bsigma^{\rho}\sigma^{\nu}\bsigma^{\mu}=-2 \ii \bsigma_{\sigma}\epsilon^{\mu \nu \rho \sigma}
+\\&
+\sigma_{\mu \alpha \dalpha}\sigma^{\mu}_{\beta \dbeta}=2 \epsilon_{\alpha \beta}\epsilon_{\dalpha\dbeta}
+&&
+\epsilon_{\dbeta\dalpha}\bsigma^{\mu \dalpha\alpha}=\epsilon_{\dbeta\dalpha}\epsilon^{\dalpha\dgamma}\epsilon^{\alpha \gamma}\sigma^{\mu}_{\gamma \dgamma}=\epsilon^{\alpha \gamma}\sigma^{\mu}_{\gamma \dbeta}
+\\&
+\bsigma_{\mu}{}^{\dalpha\alpha}\bsigma^{\mu \dbeta\beta}=2 \epsilon^{\alpha \beta}\epsilon^{\dalpha\dbeta}
+&&
+\epsilon_{\beta \alpha}\bsigma^{\mu \dalpha\alpha}=\epsilon_{\beta \alpha}\epsilon^{\dalpha\dgamma}\epsilon^{\alpha \gamma}\sigma^{\mu}_{\gamma \dgamma}=\epsilon^{\dalpha\dgamma}\sigma^{\mu}_{\beta \dgamma}
+\\&
+\Tr\left(\sigma^{\mu \nu}\right)=
+\Tr\left(\bsigma^{\mu \nu}\right)=0
+&&
+\Tr\left(\sigma^{\mu \nu}\sigma^{\rho \sigma}\right)=\tfrac{1}{2} \left(\eta^{\mu \rho}\eta^{\nu \sigma}-\eta^{\mu \sigma}\eta^{\nu \rho}\right)-\tfrac{1}{2} \ii \epsilon^{\mu \nu \rho \sigma}
+\\&
+\bsigma^{\mu \nu}=-\bsigma^{\nu \mu}
+\qquad
+\sigma^{\mu \nu}=-\sigma^{\nu \mu}
+&&
+\Tr\left(\bsigma^{\mu \nu}\bsigma^{\rho \sigma}\right)=\tfrac{1}{2} \left(\eta^{\mu \rho}\eta^{\nu \sigma}-\eta^{\mu \sigma}\eta^{\nu \rho}\right)+\tfrac{1}{2} \ii \epsilon^{\mu \nu \rho \sigma}
+\\&
+\sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\epsilon_{\beta \gamma}=\sigma^{\mu \nu}{}_{\gamma}{}^{\beta}\epsilon_{\beta \alpha}
+&&
+\sigma^{\mu}_{\alpha \dalpha}\sigma^{\nu}_{\beta \dbeta}-\sigma^{\nu}_{\alpha \dalpha}\sigma^{\mu}_{\beta \dbeta}=-2 \ii \epsilon_{\dalpha\dgamma}\bsigma^{\mu \nu \dgamma}{}_{\dbeta}\epsilon_{\alpha \beta}-2 \ii \sigma^{\mu \nu}{}_{\alpha}{}^{\gamma}\epsilon_{\gamma \beta}\epsilon_{\dalpha\dbeta}
+\\&
+\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\epsilon^{\dbeta\dgamma}=\bsigma^{\mu \nu \dgamma}{}_{\dbeta}\epsilon^{\dbeta\dalpha}
+&&
+\sigma^{\mu}_{\alpha \dalpha}\sigma^{\nu}_{\beta \dbeta}+\sigma^{\nu}_{\alpha \dalpha}\sigma^{\mu}_{\beta \dbeta}=4 \sigma^{\rho \mu}{}_{\alpha}{}^{\gamma}\epsilon_{\gamma \beta}\epsilon_{\dalpha\dgamma}\bsigma^{\sigma \nu \dgamma}{}_{\dbeta}\eta_{\rho \sigma}+\epsilon_{\alpha \beta}\epsilon_{\dalpha\dbeta}\eta^{\mu \nu}
+\\&
+\bsigma_{\rho \sigma}\epsilon^{\mu \nu \rho \sigma}=-2 \ii \bsigma^{\mu \nu}
+&&
+\bsigma^{\mu \dalpha\alpha}\bsigma^{\nu \dbeta\beta}-\bsigma^{\nu \dalpha\alpha}\bsigma^{\mu \dbeta\beta}=-2 \ii \bsigma^{\mu \nu \dalpha}{}_{\dgamma}\epsilon^{\dgamma\dbeta}\epsilon^{\alpha \beta}-2 \ii \epsilon^{\alpha \gamma}\sigma^{\mu \nu}{}_{\gamma}{}^{\beta}\epsilon^{\dalpha\dbeta}
+\\&
+\sigma_{\rho \sigma}\epsilon^{\mu \nu \rho \sigma}=2 \ii \sigma^{\mu \nu}
+&&
+\bsigma^{\mu \dalpha\alpha}\bsigma^{\nu \dbeta\beta}+\bsigma^{\nu \dalpha\alpha}\bsigma^{\mu \dbeta\beta}=4 \epsilon^{\alpha \gamma}\sigma^{\sigma \nu}{}_{\gamma}{}^{\beta}\bsigma^{\rho \mu \dalpha}{}_{\dgamma}\epsilon^{\dgamma\dbeta}\eta_{\rho \sigma}+\epsilon^{\alpha \beta}\epsilon^{\dalpha\dbeta}\eta^{\mu \nu}
+\end{align*}
+
+%\bigl((\bar{\chi}\bsigma^{\mu}\xi)\bigr)^*=(\bar{\xi}\bsigma^{\mu}\chi)
+%\\&
+%\bigl((\bar{\chi}\bsigma^{\mu}\sigma^{\nu}\bar{\xi})\bigr)^*=(\xi \sigma^{\nu}\bsigma^{\mu}\chi)
