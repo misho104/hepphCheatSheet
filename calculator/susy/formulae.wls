@@ -5,7 +5,7 @@ SetDirectory[NotebookDirectory[]];
 <<WeylAlgebra`
 
 TeXConvert[exp_] := Module[{tmp},
-      tmp = exp //. {a | "a" -> \[Alpha], b | "b" -> \[Beta], c | "c" -> \[Gamma], d | "d" -> \[Delta]} // TeXForm // ToString;
+      tmp = exp //. {a | "a" -> \[Alpha], b | "b" -> \[Beta], c | "c" -> \[Gamma], d | "d" -> \[Delta], Complex[a_, b_] :> a+b "ii"} // TeXForm // ToString;
       tmp = FixedPoint[StringReplace[{
            " }" -> "}", " ^" -> "^", " _" -> "_", " )" -> ")",
            "\\dot{\\alpha}" -> "\\dalpha", "\\dot{\\beta}" -> "\\dbeta", "\\dot{\\gamma}" -> "\\dgamma", "\\dot{\\delta}" -> "\\ddelta",
@@ -15,6 +15,7 @@ TeXConvert[exp_] := Module[{tmp},
            "\\frac"->"\\tfrac",
            "\\overline{" -> "\\bar{",
            "\\text{Tr}"->"\\Tr",
+           "\\text{ii}"->"\\ii",
            "\\text{}"->"{}",
            ".\\sigma"->"\\sigma",
            ".\\bsigma"->"\\bsigma",

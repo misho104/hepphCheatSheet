@@ -25,7 +25,7 @@
 &\bigl(
 \sigma^{\mu}_{\alpha \dbeta}=\epsilon_{\alpha \delta}\epsilon_{\dbeta\dgamma}\bsigma^{\mu \dgamma\delta}
 ,\quad
-\bsigma^{\mu \dalpha\beta}=\epsilon^{\beta \gamma}\sigma^{\mu}_{\gamma \ddelta}\epsilon^{\dalpha\ddelta}
+\bsigma^{\mu \dalpha\beta}=\epsilon^{\dalpha\ddelta}\epsilon^{\beta \gamma}\sigma^{\mu}_{\gamma \ddelta}
 \bigr)\\
 \bsigma^{\mu\dalpha\alpha} &:= (\vc{1},-\vc{\sigma})^{\dalpha\alpha},
 &
@@ -49,15 +49,15 @@ Noting that complex conjugate reverses spinor order: $(\psi^\alpha\xi^\beta)^* :
 ,\qquad&&
 \bigl(\psi \chi\bigr)^*=(\bar{\psi}\bar{\chi})
 ,\\&
-\bigl(\sigma^{\mu}_{\alpha \dbeta}\bigr)^*=
+\bigl(\sigma^{\mu}_{\alpha \dbeta}\bigr)^*=  % \bsigma^{\mu}{}_{\dalpha\beta}
 \bsigma^{\mu}{}_{\dalpha\beta}=\epsilon_{\beta \delta}\epsilon_{\dalpha\dgamma}\bsigma^{\mu \dgamma\delta}
 ,&&
 %%%
 \bigl(\sigma^{\mu\nu}\bigr)^\dagger{}^\alpha{}_\beta= \bsigma^{\mu\nu}{}^\dalpha{}_\dbeta,
 %%%
 &\qquad&
-\bigl(\sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\bigr)^*=\bsigma^{\mu \nu \dbeta}{}_{\dalpha}
-=\bsigma^{\mu \nu}{}_{\dalpha}{}^{\dbeta}
+\bigl(\sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\bigr)^*= \bsigma^{\mu \nu \dbeta}{}_{\dalpha} =
+\bsigma^{\mu \nu}{}_{\dalpha}{}^{\dbeta}
 =\epsilon_{\dalpha\dgamma}\epsilon^{\dbeta\ddelta}\bsigma^{\mu \nu \dgamma}{}_{\ddelta}
 ,\\&
 \bigl(\bsigma^{\mu \dalpha\beta}\bigr)^*=
@@ -67,23 +67,23 @@ Noting that complex conjugate reverses spinor order: $(\psi^\alpha\xi^\beta)^* :
 \bigl(\bsigma^{\mu\nu}\bigr)^\dagger{}_\dalpha{}^\dbeta= \sigma^{\mu\nu}{}_\alpha{}^\beta
 %%%
 ,&&
-\bigl(\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\bigr)^*=\sigma^{\mu \nu}{}_{\beta}{}^{\alpha}
-=\bsigma^{\mu \nu}{}^{\alpha}{}_{\beta}
-=\epsilon_{\beta \delta}\epsilon^{\alpha \gamma}\sigma^{\mu \nu}{}_{\gamma}{}^{\delta}
+\bigl(\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\bigr)^* = %%% \sigma^{\mu \nu}{}_{\beta}{}^{\alpha}
+\sigma^{\mu \nu}{}_{\beta}{}^{\alpha}
+=\bsigma^{\mu \nu}{}^{\alpha}{}_{\beta} =\epsilon_{\beta \delta}\epsilon^{\alpha \gamma}\sigma^{\mu \nu}{}_{\gamma}{}^{\delta}
 .\end{alignat*}
 \paragraph{Contraction formulae}
 \begin{alignat*}{3}&
-\theta^{\alpha}\theta^{\beta}=-\tfrac{1}{2} \epsilon^{\alpha \beta}(\theta \theta)
+\theta^{\alpha}\theta^{\beta}=-\tfrac{1}{2} (\theta \theta)\epsilon^{\alpha \beta}
 &\quad&
-\btheta^{\dalpha}\btheta^{\dbeta}=\tfrac{1}{2} \epsilon^{\dalpha\dbeta}(\btheta\btheta)
+\btheta^{\dalpha}\btheta^{\dbeta}=\tfrac{1}{2} (\btheta\btheta)\epsilon^{\dalpha\dbeta}
 &\quad&
 (\theta \xi)(\theta \chi)=-\tfrac{1}{2} (\theta \theta)(\xi \chi)
 \quad~~
 (\theta \sigma^{\nu}\btheta)\theta^{\alpha}=\tfrac{1}{2} (\theta \theta)(\btheta\bsigma^{\nu})^{\alpha}
 \\&
-\theta_{\alpha}\theta_{\beta}=\tfrac{1}{2} \epsilon_{\alpha \beta}(\theta \theta)
+\theta_{\alpha}\theta_{\beta}=\tfrac{1}{2} (\theta \theta)\epsilon_{\alpha \beta}
 &&
-\btheta_{\dalpha}\btheta_{\dbeta}=-\tfrac{1}{2} \epsilon_{\dalpha\dbeta}(\btheta\btheta)
+\btheta_{\dalpha}\btheta_{\dbeta}=-\tfrac{1}{2} (\btheta\btheta)\epsilon_{\dalpha\dbeta}
 &&
 (\btheta\bar{\xi})(\btheta\bar{\chi})=-\tfrac{1}{2} (\btheta\btheta)(\bar{\xi}\bar{\chi})
 \quad~~
@@ -93,7 +93,7 @@ Noting that complex conjugate reverses spinor order: $(\psi^\alpha\xi^\beta)^* :
 &&
 \btheta_{\dalpha}\btheta^{\dbeta}=\tfrac{1}{2} (\btheta\btheta)\delta^{\dalpha}_{\dbeta}
 &&
-(\theta \sigma^{\mu}\btheta)(\theta \sigma^{\nu}\btheta)=\tfrac{1}{2} (\btheta\btheta)(\theta \theta)\eta^{\mu \nu}
+(\theta \sigma^{\mu}\btheta)(\theta \sigma^{\nu}\btheta)=\tfrac{1}{2} (\theta \theta)(\btheta\btheta)\eta^{\mu \nu}
 \\&
 (\theta \sigma^{\mu}\bsigma^{\nu}\theta)=(\theta \theta)\eta^{\mu \nu}
 &&
@@ -112,7 +112,7 @@ Noting that complex conjugate reverses spinor order: $(\psi^\alpha\xi^\beta)^* :
 &&
 \sigma^{\mu}\bsigma^{\nu}\sigma^{\rho}-\sigma^{\rho}\bsigma^{\nu}\sigma^{\mu}=2 \ii \sigma_{\sigma}\epsilon^{\mu \nu \rho \sigma}
 \\&
-\Tr\left(\sigma^{\mu}\bsigma^{\nu}\right)=
+\Tr\left(\sigma^{\mu}\bsigma^{\nu}\right)= %%% 2 \eta^{\mu \nu}
 \Tr\left(\bsigma^{\mu}\sigma^{\nu}\right)=2 \eta^{\mu \nu}
 &&
 \bsigma^{\mu}\sigma^{\rho}\bsigma^{\nu}+\bsigma^{\nu}\sigma^{\rho}\bsigma^{\mu}=2 \left(\bsigma^{\mu}\eta^{\nu \rho}+\bsigma^{\nu}\eta^{\mu \rho}-\bsigma^{\rho}\eta^{\mu \nu}\right)
@@ -138,7 +138,7 @@ Noting that complex conjugate reverses spinor order: $(\psi^\alpha\xi^\beta)^* :
 \qquad
 \sigma^{\mu \nu}=-\sigma^{\nu \mu}
 &&
-\Tr\left(\bsigma^{\mu \nu}\bsigma^{\rho \sigma}\right)=\tfrac{1}{2} \left(\eta^{\mu \rho}\eta^{\nu \sigma}-\eta^{\mu \sigma}\eta^{\nu \rho}\right)+\tfrac{1}{2} \ii \epsilon^{\mu \nu \rho \sigma}
+\Tr\left(\bsigma^{\mu \nu}\bsigma^{\rho \sigma}\right)=\tfrac{1}{2} \ii \epsilon^{\mu \nu \rho \sigma}+\tfrac{1}{2} \left(\eta^{\mu \rho}\eta^{\nu \sigma}-\eta^{\mu \sigma}\eta^{\nu \rho}\right)
 \\&
 \sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\epsilon_{\beta \gamma}=\sigma^{\mu \nu}{}_{\gamma}{}^{\beta}\epsilon_{\beta \alpha}
 &&

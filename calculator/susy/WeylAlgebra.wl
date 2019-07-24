@@ -59,15 +59,16 @@ GrassmannTensorType = GT[NameType | OverBar[NameType], RepeatedNull[IndexType]];
 TensorType = NormalTensorType | GrassmannTensorType;
 
 (* Format *)
-Sequence[GT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, Style[n, Red], i] // ToBoxes // InterpretationBox[#,obj] &) &;
-Sequence[NT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, n, i] // ToBoxes // InterpretationBox[#,obj] &) &;
-MakeBoxesNT[f_, n_] := n;
-MakeBoxesNT[f_, n_, UI[a:SpinorLabelTypeOrI, _]] := Superscript[n, a]
-MakeBoxesNT[f_, n_, LI[a:SpinorLabelTypeOrI, _]] := Subscript[n, a]
-MakeBoxesNT[f_, n_, a:Repeated[_UI]] := Row[{a}[[All, 1]]] // Superscript[n, #]&
-MakeBoxesNT[f_, n_, a:Repeated[_LI]] := Row[{a}[[All, 1]]] // Subscript[n, #]&
-MakeBoxesNT[f_, n_, any__, a:Repeated[_UI]] := Row[{MakeBoxesNT[f, n, any], MakeBoxesNT[f, "", a]}]
-MakeBoxesNT[f_, n_, any__, a:Repeated[_LI]] := Row[{MakeBoxesNT[f, n, any], MakeBoxesNT[f, "", a]}]
+Sequence[GT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, Style[#, Red]&, n, i] // ToBoxes // InterpretationBox[#,obj] &) &;
+Sequence[NT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, #&, n, i] // ToBoxes // InterpretationBox[#,obj] &) &;
+MakeBoxesNT$[f_, c_, n_] := c[n];
+MakeBoxesNT$[f_, c_, n_, UI[a:SpinorLabelTypeOrI, _]] := Superscript[c[n], a]
+MakeBoxesNT$[f_, c_, n_, LI[a:SpinorLabelTypeOrI, _]] := Subscript[c[n], a]
+MakeBoxesNT$[f_, c_, n_, a:Repeated[_UI]] := Row[{a}[[All, 1]]] // Superscript[c[n], #]&
+MakeBoxesNT$[f_, c_, n_, a:Repeated[_LI]] := Row[{a}[[All, 1]]] // Subscript[c[n], #]&
+MakeBoxesNT$[f_, c_, n_, any__, a:Repeated[_UI]] := Row[{MakeBoxesNT$[f, c, n, any], MakeBoxesNT$[f, c, "", a]}]
+MakeBoxesNT$[f_, c_, n_, any__, a:Repeated[_LI]] := Row[{MakeBoxesNT$[f, c, n, any], MakeBoxesNT$[f, c, "", a]}]
+MakeBoxesNT = MakeBoxesNT$; (* for extensions *)
 
 TDot /: MakeBoxes[obj: TDot[a__], f:StandardForm] := Dot[TDotPreFormat[a]] // ToBoxes // InterpretationBox[#,obj] &
 TDot /: MakeBoxes[obj: TDot[a__], f:TraditionalForm] := Row[{TDotPreFormat[a]}] // ToBoxes // InterpretationBox[#,obj] &
@@ -147,7 +148,7 @@ TDot::GrassmannProduct = "Invalid grassman product found: `1`.";
 TDot[] := 1;
 TDot[a:_NT|_GT] := a;
 
-TDot[x1___, Times[a_, b__], x2___] := If[Head[a]===GT && Not[FreeQ[{b}, GT]], Message[TDot::GrassmannProduct, {a,b}]; Abort[], TDot[x1, a, Times[b], x2]]
+TDot[x1___, Times[a:Except[_GT], b__], x2___] := TDot[x1, a, Times[b], x2]
 TDot[x1___, Plus[a_, b__], x2___] := TDot[x1, a, x2] + TDot[x1, Plus[b], x2]
 TDot[x1___, TDot[x2___], x3___] := TDot[x1, x2, x3]
 
@@ -163,7 +164,10 @@ TDot[OrderlessPatternSequence[a:GT[___], a_, ___]] := 0
 NT /: Times[a_NT, b_NT] := TDot[a, b]
 NT /: Times[a_NT, b_GT] := TDot[a, b]
 NT /: Times[a_GT, b_NT] := TDot[a, b]
-NT /: Times[a_NT, TDot[b__]] := TDot[a, b]
+TDot /: Times[a:(_NT|_GT), TDot[b__]] := TDotProduct[{a}, {b}]
+TDot /: Times[TDot[a__], b:(_NT|_GT)] := TDotProduct[{a}, {b}]
+TDotProduct[a_List, b_List] := If[OddQ[Count[a, _GT] * Count[b, _GT]], Message[TDot::GrassmannProduct, {a,b}]; Abort[], TDot[Sequence@@a, Sequence@@b]]
+
 
 (* Epsilon-contraction rule: Always from left *)
 GT /: TDot[x1___, NT["\[Epsilon]", UI[a:SpinorLabelType, "spinor"], UI[b:SpinorLabelType, "spinor"]], x2___, GT[n___, LI[b_, "spinor"]], x3___] /; FreeQ[{n}, "spinor"] := TDot[x1, x2, GT[n, UI[a, "spinor"]], x3]
