@@ -253,13 +253,17 @@ NT["\[Epsilon]", LI[0, "lorentz"], LI[1, "lorentz"], LI[2, "lorentz"], LI[3, "lo
 
 
 (* definitions *)
-NT["\[Delta]", UI[a:LabelTypeOrI, (cls:IndexClassType)|"any"], LI[b:LabelTypeOrI, (cls_)|"any"]] /; a==b := 1
+NT["\[Delta]", UI[a_Integer, (cls:IndexClassType)|"any"], LI[a_, (cls_)|"any"]] := 1
+NT["\[Delta]", UI[OverDot[a_Integer], (cls:IndexClassType)|"any"], LI[OverDot[a_], (cls_)|"any"]] := 1
+
 NT["\[Delta]", UI[a:LabelTypeOrI, (cls:IndexClassType)|"any"], LI[b:LabelTypeOrI, (cls_)|"any"]] /; a!=b := 0
-NT["\[Delta]", UI[OverDot[a:LabelTypeOrI], (cls:IndexClassType)|"any"], LI[OverDot[b:LabelTypeOrI], (cls_)|"any"]] /; a==b := 1
 NT["\[Delta]", UI[OverDot[a:LabelTypeOrI], (cls:IndexClassType)|"any"], LI[OverDot[b:LabelTypeOrI], (cls_)|"any"]] /; a!=b := 0
 
-NT["\[Eta]", UI[\[Mu]:0|1|2|3, "lorentz"], UI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1]  
-NT["\[Eta]", LI[\[Mu]:0|1|2|3, "lorentz"], LI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1] 
+NT["\[Delta]", x:UI[a:LabelType, cls:IndexClassType], y:LI[a_, cls_]] := Sum[NT["\[Delta]", x, y], {a, IndexIter[cls]}]
+NT["\[Delta]", UI[OverDot[a:LabelType], cls:IndexClassType], LI[OverDot[a_], cls_]] := Sum[NT["\[Delta]", x, y], {a, IndexIter[cls]}]
+
+NT["\[Eta]", UI[\[Mu]:0|1|2|3, "lorentz"], UI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1]
+NT["\[Eta]", LI[\[Mu]:0|1|2|3, "lorentz"], LI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1]
 NT["\[Sigma]", UI[\[Mu]:0|1|2|3, "lorentz"], LI[a:1|2, "spinor"], LI[OverDot[b:1|2], "spinor"]] := PauliMatrix[\[Mu]][[a,b]]
 
 NT[OverBar["\[Sigma]"], UI[\[Mu]:0|1|2|3, "lorentz"], UI[OverDot[a:1|2], "spinor"], UI[b:1|2, "spinor"]] := If[\[Mu]==0, +1, -1] * PauliMatrix[\[Mu]][[a,b]]

@@ -46,10 +46,13 @@ TDot[x1___, a:GT[n_, LI[i:OverDot[LabelType], "spinor"]], x2___, GT[n_, UI[j:Ove
 
 
 (* "whole" tag is necessary to keep the order of sequence x1. *)
-TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[a_, "spinor"], UI[b_, "spinor"]], NT["\[Epsilon]", LI[b_, "spinor"], LI[c_, "spinor"]]]] := +\[Delta][a,c]TDot[x1]
-TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[a_, "spinor"], UI[b_, "spinor"]], NT["\[Epsilon]", LI[c_, "spinor"], LI[b_, "spinor"]]]] := -\[Delta][a,c]TDot[x1]
-TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[b_, "spinor"], UI[a_, "spinor"]], NT["\[Epsilon]", LI[b_, "spinor"], LI[c_, "spinor"]]]] := -\[Delta][a,c]TDot[x1]
-TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[b_, "spinor"], UI[a_, "spinor"]], NT["\[Epsilon]", LI[c_, "spinor"], LI[b_, "spinor"]]]] := +\[Delta][a,c]TDot[x1]
+TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[a_, "spinor"], UI[b_, "spinor"]], NT["\[Epsilon]", LI[b_, "spinor"], LI[c_, "spinor"]]]] := +\[Delta][a,c,"spinor"]TDot[x1]
+TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[a_, "spinor"], UI[b_, "spinor"]], NT["\[Epsilon]", LI[c_, "spinor"], LI[b_, "spinor"]]]] := -\[Delta][a,c,"spinor"]TDot[x1]
+TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[b_, "spinor"], UI[a_, "spinor"]], NT["\[Epsilon]", LI[b_, "spinor"], LI[c_, "spinor"]]]] := -\[Delta][a,c,"spinor"]TDot[x1]
+TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[b_, "spinor"], UI[a_, "spinor"]], NT["\[Epsilon]", LI[c_, "spinor"], LI[b_, "spinor"]]]] := +\[Delta][a,c,"spinor"]TDot[x1]
+
+TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[a_, "spinor"], UI[b_, "spinor"]], NT["\[Epsilon]", LI[b_, "spinor"], LI[a_, "spinor"]]]] := +\[Delta][a, a, "spinor"]TDot[x1]
+TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[a_, "spinor"], UI[b_, "spinor"]], NT["\[Epsilon]", LI[a_, "spinor"], LI[b_, "spinor"]]]] := -\[Delta][a, a, "spinor"]TDot[x1]
 
 TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", LI[a:LabelType, "spinor"], LI[d:LabelType, "spinor"]], NT["\[Epsilon]", LI[b_OverDot, "spinor"], LI[c_OverDot, "spinor"]], NT[OverBar["\[Sigma]"], t:(UI|LI)[\[Mu]_, "lorentz"], UI[c_, "spinor"], UI[d_, "spinor"]]]] := +TDot[x1, NT["\[Sigma]", t, LI[a, "spinor"], LI[b, "spinor"]]]
 TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", LI[d:LabelType, "spinor"], LI[a:LabelType, "spinor"]], NT["\[Epsilon]", LI[b_OverDot, "spinor"], LI[c_OverDot, "spinor"]], NT[OverBar["\[Sigma]"], t:(UI|LI)[\[Mu]_, "lorentz"], UI[c_, "spinor"], UI[d_, "spinor"]]]] := -TDot[x1, NT["\[Sigma]", t, LI[a, "spinor"], LI[b, "spinor"]]]
@@ -60,8 +63,6 @@ TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[a_OverDot, "spino
 TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[d_OverDot, "spinor"], UI[a_OverDot, "spinor"]], NT["\[Epsilon]", UI[b:LabelType, "spinor"], UI[c:LabelType, "spinor"]], NT["\[Sigma]", t:(UI|LI)[\[Mu]_, "lorentz"], LI[c_, "spinor"], LI[d_, "spinor"]]]] := -TDot[x1, NT[OverBar["\[Sigma]"], t, UI[a, "spinor"], UI[b, "spinor"]]]
 TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[a_OverDot, "spinor"], UI[d_OverDot, "spinor"]], NT["\[Epsilon]", UI[c:LabelType, "spinor"], UI[b:LabelType, "spinor"]], NT["\[Sigma]", t:(UI|LI)[\[Mu]_, "lorentz"], LI[c_, "spinor"], LI[d_, "spinor"]]]] := -TDot[x1, NT[OverBar["\[Sigma]"], t, UI[a, "spinor"], UI[b, "spinor"]]]
 TDot[whole:OrderlessPatternSequence[x1___, NT["\[Epsilon]", UI[d_OverDot, "spinor"], UI[a_OverDot, "spinor"]], NT["\[Epsilon]", UI[c:LabelType, "spinor"], UI[b:LabelType, "spinor"]], NT["\[Sigma]", t:(UI|LI)[\[Mu]_, "lorentz"], LI[c_, "spinor"], LI[d_, "spinor"]]]] := +TDot[x1, NT[OverBar["\[Sigma]"], t, UI[a, "spinor"], UI[b, "spinor"]]]
-
-
 
 
 TDot[whole:OrderlessPatternSequence[x1___,

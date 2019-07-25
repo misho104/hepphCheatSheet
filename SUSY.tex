@@ -1,4 +1,4 @@
-%%% Time-Stamp: <2019-07-26 11:18:06 misho>
+%%% Time-Stamp: <2019-07-26 23:04:33 misho>
 \documentclass[CheatSheet]{subfiles}
 \begin{document}
 
@@ -7,5 +7,75 @@
 
 \input{calculator/susy/formulae.txt}
 
+\paragraph{Superfields}
 
+
+\clearpage
+\detailstyle
+
+\subsection{Lorentz symmetry as SU(2)$\times$SU(2)}
+
+\subsection{Derivative in superspace}
+
+\begin{align}&
+y^\mu := x^\mu - \ii(\theta\sigma^{\mu}\btheta)
+\\&
+\phi(y)=\phi(x)-\ii (\theta \sigma^{\mu}\btheta) \partial_{\mu}\phi(x)-\frac{1}{4} \theta^4 \partial^2\phi(x)
+\end{align}
+
+\subsection{Superfields}
+
+
+\paragraph{Chiral superfield}
+\begin{align}
+ \Phi
+ &= \phi(y) + \sqrt{2} \theta \psi(y) + \theta^2 F(y)\\
+ &= \phi(x)+\sqrt{2} \theta \psi(x)-\ii \partial_{\mu}\phi(x) (\theta \sigma^{\mu}\btheta)+F(x) \theta^2+\frac{\ii}{\sqrt{2}} (\partial_{\mu}\psi(x)\sigma^{\mu}\btheta) \theta^2-\frac{1}{4} \partial^2\phi(x) \theta^4
+\\
+ \Phi^*
+ &= \phi^*(x)+\sqrt{2} \bar{\psi}(x)\btheta+F^*(x) \btheta^2+\ii \partial_{\mu}\phi^*(x) (\theta \sigma^{\mu}\btheta)-\frac{\ii}{\sqrt{2}}[\theta \sigma^{\mu}\partial_{\mu}\bar{\psi}(x)] \btheta^2-\frac{1}{4} \partial^2\phi^*(x) \theta^4
+ \\
+\begin{split}
+ \Phi_i^* \Phi_j
+ &=
+ \phi_i^*\phi_j + \sqrt{2} \phi_i^*(\theta \psi_j)+\sqrt{2} (\bar{\psi_i}\btheta)\phi_j
+ + \phi_i^* F_j \theta^2+2 (\bar{\psi_i}\btheta)(\theta \psi_j)
+ -\ii \left(\phi_i^*\partial_{\mu}\phi_j-\partial_{\mu}\phi_i^*\phi_j\right) (\theta \sigma^{\mu}\btheta)
+ +F_i^*\phi_j \btheta^2
+ \\&\quad
++\left[
+\sqrt{2} \bar{\psi_i}\btheta F_j-\frac{\ii\left( \partial_{\mu}\phi_i^*\cdot\psi_j\sigma^{\mu}\btheta-\phi_i^*\partial_{\mu}\psi_j\sigma^{\mu}\btheta\right)}{\sqrt2}\right]\theta^2
++\left[\sqrt2 F_i^*\theta \psi_j+\frac{\ii\left(\theta \sigma^{\mu}\bar{\psi_i}\partial_{\mu}\phi_j-\theta \sigma^{\mu}\partial_{\mu}\bar{\psi_i}\phi_j\right)}{\sqrt2}\right] \btheta^2
+\\&\quad
++\frac{1}{4} \left(4 F_i^*F_j-\phi_i^*\partial^2\phi_j-(\partial^2\phi_i^*)\phi_j+2 (\partial_{\mu}\phi_i^*)(\partial^{\mu}\phi_j)+2 \ii (\psi_j\sigma^{\mu}\partial_{\mu}\bar{\psi_i})-2 \ii (\partial_{\mu}\psi_j\sigma^{\mu}\bar{\psi_i})\right) \theta^4
+\end{split}
+\\
+\begin{split}
+ &\equiv
+ \phi_i^*\phi_j + \sqrt{2} \phi_i^*(\theta \psi_j)+\sqrt{2} (\bar{\psi_i}\btheta)\phi_j
+ + \phi_i^* F_j \theta^2+2 (\bar{\psi_i}\btheta)(\theta \psi_j)
+ -2\ii \left(\phi_i^*\partial_{\mu}\phi_j\right) (\theta \sigma^{\mu}\btheta)
+ +F_i^*\phi_j \btheta^2
+ \\&\quad
++\sqrt2\left(
+\bar{\psi_i}\btheta F_j+\ii\phi_i^*\partial_{\mu}\psi_j\sigma^{\mu}\btheta\right)\theta^2
++\sqrt2\left(F_i^*\theta \psi_j-\ii\theta \sigma^{\mu}\partial_{\mu}\bar{\psi_i}\phi_j\right) \btheta^2
+\\&\quad
++\left(F_i^*F_j+(\partial_{\mu}\phi_i^*)(\partial^{\mu}\phi_j)+\ii\bar{\psi_i}\sigma^\mu\partial_{\mu}\psi_j\right) \theta^4
+\end{split}
+\end{align}
+\begin{align}
+ \Phi_i\Phi_j\Big|_{\theta^2}&=-\psi_i\psi_j+F_i\phi_j+\phi_iF_j
+\\
+\Phi_i\Phi_j\Phi_k\Big|_{\theta^2}&=
+-(\psi_i\psi_j)\phi_k-(\psi_k\psi_i)\phi_j-(\psi_j\psi_k)\phi_i+\phi_i\phi_jF_k+\phi_k\phi_iF_j+\phi_j\phi_kF_i
+\end{align}
+\begin{equation}
+ \begin{split}
+\ee^{k\Phi} &=
+\ee^{k\phi}\left[1+\sqrt{2} k \theta \psi+\Bigl(kF-\frac{k^2}{2}\psi\psi\Bigr) \theta^2-\ii k \partial_{\mu}\phi (\theta \sigma^{\mu}\btheta)
+%\right.\\&\qquad\qquad\left.
++\frac{\ii k \left(\partial_{\mu}\psi+k\psi\partial_{\mu}\phi\right)\sigma^{\mu}\btheta \theta^2}{\sqrt{2}}-\frac{k}{4} \left(\partial^2\phi+k \partial_{\mu}\phi\partial^{\mu}\phi\right) \theta^4\right]
+\end{split}
+\end{equation}
 \end{document}
