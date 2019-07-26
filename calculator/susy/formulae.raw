@@ -122,7 +122,21 @@
 \\&
 \bsigma^{\mu \dalpha\alpha}\bsigma^{\nu \dbeta\beta}+\bsigma^{\nu \dalpha\alpha}\bsigma^{\mu \dbeta\beta}=4 \epsilon^{\alpha \gamma}\sigma^{\sigma \nu}{}_{\gamma}{}^{\beta}\bsigma^{\rho \mu \dalpha}{}_{\dgamma}\epsilon^{\dgamma\dbeta}\eta_{\rho \sigma}+\epsilon^{\alpha \beta}\epsilon^{\dalpha\dbeta}\eta^{\mu \nu}
 \\&
-\bigl((\bar{\chi}\bsigma^{\mu}\xi)\bigr)^*=(\bar{\xi}\bsigma^{\mu}\chi)
+(\bar{\xi}\bsigma^{\mu}\chi)=-(\chi \sigma^{\mu}\bar{\xi})
+\\&
+(\bar{\xi}\bsigma^{\mu}\sigma^{\nu}\bar{\chi})=(\bar{\chi}\bsigma^{\nu}\sigma^{\mu}\bar{\xi})
+\\&
+(\xi \sigma^{\mu}\bsigma^{\nu}\chi)=(\chi \sigma^{\nu}\bsigma^{\mu}\xi)
+\\&
+(\bar{\xi}\bsigma^{\mu}\sigma^{\nu}\bsigma^{\rho}\chi)=-(\chi \sigma^{\rho}\bsigma^{\nu}\sigma^{\mu}\bar{\xi})
+\\&
+\bigl((\xi \sigma^{\mu}\bar{\chi})\bigr)^*=(\chi \sigma^{\mu}\bar{\xi})
+\\&
+\bigl((\bar{\xi}\bsigma^{\mu}\chi)\bigr)^*=(\bar{\chi}\bsigma^{\mu}\xi)
 \\&
 \bigl((\bar{\chi}\bsigma^{\mu}\sigma^{\nu}\bar{\xi})\bigr)^*=(\xi \sigma^{\nu}\bsigma^{\mu}\chi)
+\\&
+(\xi \chi)\psi^{\alpha}=-(\psi \xi)\chi^{\alpha}-(\psi \chi)\xi^{\alpha}
+\\&
+(\xi \chi)\bar{\psi}_{\dalpha}=\tfrac{1}{2} (\xi \sigma^{\mu}\bar{\psi})(\chi \sigma_{\mu})_{\dalpha}
 \\&

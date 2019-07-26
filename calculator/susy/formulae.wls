@@ -236,9 +236,15 @@ TestConjugate[exp1_, exp2_, spinorindices_List, indices_List] := Module[{diff, r
 (*  \[Eta]U[\[Mu],\[Nu]]\[Epsilon]Ud[a,b]\[Epsilon]U[a,b] + 4 \[Eta]L[\[Rho],\[CapitalSigma]]\[Sigma]b[\[Rho],\[Mu],a,c]\[Epsilon]Ud[c,b]\[Epsilon]U[a,c]\[Sigma][\[CapitalSigma],\[Nu],c,b],   {a,OverDot[b],b,OverDot[a],\[Mu],\[Nu]}]*)
 
 
-(* ::Code:: *)
-(*TestConjugate[TDot[\[Chi]b[,a],\[Sigma]b[\[Mu],a,b],\[Xi][,b]],TDot[\[Xi]b[,a],\[Sigma]b[\[Mu],a,b],\[Chi][,b]],{}, {\[Mu]}]*)
-(*TestConjugate[TDot[\[Chi]b[,a],\[Sigma]b[\[Mu],a,b],\[Sigma][\[Nu],b,c],\[Xi]b[c]],TDot[\[Xi][a],\[Sigma][\[Nu],a,b],\[Sigma]b[\[Mu],b,c],\[Chi][,c]],{}, {\[Mu],\[Nu]}]*)
+Test[TDot[\[Xi]b[,a], \[Sigma]b[\[Mu],a,b], \[Chi][,b]], -TDot[\[Chi][a], \[Sigma][\[Mu],a,b], \[Xi]b[b]], {\[Mu]}]
+Test[TDot[\[Xi]b[,a], \[Sigma]b[\[Mu],a,b], \[Sigma][\[Nu], b, c], \[Chi]b[c]], TDot[\[Chi]b[,x], \[Sigma]b[\[Nu],x,a], \[Sigma][\[Mu],a,b], \[Xi]b[b]], {\[Mu], \[Nu]}]
+Test[TDot[\[Xi][a], \[Sigma][\[Mu],a,b], \[Sigma]b[\[Nu], b, c], \[Chi][,c]], TDot[\[Chi][x], \[Sigma][\[Nu],x,a], \[Sigma]b[\[Mu],a,b], \[Xi][,b]], {\[Mu], \[Nu]}]
+Test[TDot[\[Xi]b[,a], \[Sigma]b[\[Mu],a,b], \[Sigma][\[Nu], b, c], \[Sigma]b[\[Rho], c, d], \[Chi][,d]], -TDot[\[Chi][a], \[Sigma][\[Rho],a,b], \[Sigma]b[\[Nu],b,c], \[Sigma][\[Mu],c,d], \[Xi]b[d]], {\[Mu],\[Nu],\[Rho]}]
+TestConjugate[TDot[\[Xi][a],\[Sigma][\[Mu],a,b],\[Chi]b[b]],TDot[\[Chi][a],\[Sigma][\[Mu],a,b],\[Xi]b[b]],{}, {\[Mu]}]
+TestConjugate[TDot[\[Xi]b[,a],\[Sigma]b[\[Mu],a,b],\[Chi][,b]],TDot[\[Chi]b[,a],\[Sigma]b[\[Mu],a,b],\[Xi][,b]],{}, {\[Mu]}]
+TestConjugate[TDot[\[Chi]b[,a],\[Sigma]b[\[Mu],a,b],\[Sigma][\[Nu],b,c],\[Xi]b[c]],TDot[\[Xi][a],\[Sigma][\[Nu],a,b],\[Sigma]b[\[Mu],b,c],\[Chi][,c]],{}, {\[Mu],\[Nu]}]
+Test[TDot[\[Xi][b],\[Chi][,b],\[Psi][a]], -TDot[\[Psi][b],\[Xi][,b],\[Chi][a]]-TDot[\[Psi][b],\[Chi][,b],\[Xi][a]], {a}]
+Test[TDot[\[Xi][b],\[Chi][,b],\[Psi]b[,a]], (1/2)TDot[\[Xi][b], \[Sigma][\[Mu], b, c], \[Psi]b[c], \[Chi][c],\[Sigma][,\[Mu],c,a]], {OverDot[a]}]
 
 
 filehandle = OpenWrite["formulae.raw"];
