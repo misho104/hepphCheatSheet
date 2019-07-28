@@ -28,7 +28,7 @@ NT /: Conjugate[a:NT[OverBar["\[Sigma]"], b:Repeated[IndexType]]] := SwitchOverD
 (*Derived rules.*)
 
 
-TDot[OrderlessPatternSequence[GT[n_, (UI|LI)[_, "spinor"]], GT[n_, (UI|LI)[_, "spinor"]], GT[n_, (UI|LI)[_, "spinor"]], ___]]:=0
+TDot[OrderlessPatternSequence[GT[n_, (UI|LI)[_, "spinor"]], GT[n_, (UI|LI)[SpinorLabelType, "spinor"]], GT[n_, (UI|LI)[SpinorLabelType, "spinor"]], ___]]:=0
 
 
 Gen\[Theta]\[Theta][\[Theta]_] := Module[{k=Unique[]}, TDot[GT[\[Theta], UI[k, "spinor"]], GT[\[Theta], LI[k, "spinor"]]]]
@@ -78,6 +78,22 @@ TDot[whole:OrderlessPatternSequence[x1___,
 TDot[whole:OrderlessPatternSequence[x1___,
   NT[OverBar["\[Sigma]"], LI[\[Mu]_, "lorentz"], ad:UI[_OverDot, "spinor"], a:UI[LabelType, "spinor"]],
   NT[OverBar["\[Sigma]"], UI[\[Mu]_, "lorentz"], bd:UI[_OverDot, "spinor"], b:UI[LabelType, "spinor"]]]] := 2*TDot[x1, NT["\[Epsilon]", a, b], NT["\[Epsilon]", ad, bd]]
+
+
+Rewrite\[Sigma]\[Sigma][exp_] := exp /. {
+  TDot[whole:OrderlessPatternSequence[x1___, NT["\[Sigma]", UI[\[Mu]_, "lorentz"], LI[a_, "spinor"], LI[da_OverDot, "spinor"]],  NT["\[Sigma]", UI[\[Nu]_, "lorentz"], LI[b_, "spinor"], LI[db_OverDot, "spinor"]]]] :> Module[
+    {c=Unique[], dc=OverDot[Unique[]], \[Rho]=Unique[], \[CapitalSigma]=Unique[]}, (1/2)TDot[x1, Total[{
+      -2I \[Epsilon]L[da, dc]\[Sigma]b[\[Mu],\[Nu],dc,db] \[Epsilon]L[a,b],
+      -2I \[Sigma][\[Mu],\[Nu],a,c]\[Epsilon]L[c,b]\[Epsilon]L[da,db],
+      4\[Sigma][\[Rho],\[Mu],a,c]\[Epsilon]L[c,b]\[Epsilon]L[da,dc]\[Sigma]b[\[CapitalSigma], \[Nu], dc, db]\[Eta]L[\[Rho],\[CapitalSigma]],
+      \[Epsilon]L[a,b]\[Epsilon]L[da,db]\[Eta]U[\[Mu],\[Nu]]}]]],
+  TDot[whole:OrderlessPatternSequence[x1___, NT[OverBar["\[Sigma]"], UI[\[Mu]_, "lorentz"], UI[da_OverDot, "spinor"], UI[a_, "spinor"]],  NT[OverBar["\[Sigma]"], UI[\[Nu]_, "lorentz"], UI[db_OverDot, "spinor"], UI[b_, "spinor"]]]] :> Module[
+    {c=Unique[], dc=OverDot[Unique[]], \[Rho]=Unique[], \[CapitalSigma]=Unique[]}, (1/2)TDot[x1, Total[{
+      -2I \[Sigma]b[\[Mu],\[Nu],da,dc] \[Epsilon]U[dc, db] \[Epsilon]U[a,b],
+      -2I \[Epsilon]U[a,c]\[Sigma][\[Mu],\[Nu],c,b]\[Epsilon]L[da,db],
+      4 \[Epsilon]U[a,c]\[Sigma][\[CapitalSigma],\[Nu],c,b]\[Sigma]b[\[Rho], \[Mu], da, dc]\[Epsilon]U[dc,db]\[Eta]L[\[Rho],\[CapitalSigma]],
+      \[Epsilon]U[a,b]\[Epsilon]U[da,db]\[Eta]U[\[Mu],\[Nu]]}]]]
+}; (* Not well tested *)
 
 
 End[];

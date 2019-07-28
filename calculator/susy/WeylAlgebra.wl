@@ -58,6 +58,10 @@ NormalTensorType = NT[NameType | OverBar[NameType], RepeatedNull[IndexType]];
 GrassmannTensorType = GT[NameType | OverBar[NameType], RepeatedNull[IndexType]];
 TensorType = NormalTensorType | GrassmannTensorType;
 
+BlankType := Blank|BlankSequence|BlankNullSequence;
+NoPattern[ex_] := FreeQ[Hold[ex], BlankType];
+Attributes[NoPattern] = {HoldAllComplete};
+
 (* Format *)
 Sequence[GT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, Style[#, Red]&, n, i] // ToBoxes // InterpretationBox[#,obj] &) &;
 Sequence[NT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, #&, n, i] // ToBoxes // InterpretationBox[#,obj] &) &;
@@ -185,15 +189,15 @@ GT[n___, LI[a:OverDot[_Integer], "spinor"]] /; FreeQ[{n}, "spinor"] := Sum[\[Eps
 
 
 (* TDot order: spinors, \[Eta], non-spinors *)
-TDot[x1___, a:(_NT|_GT), b:(NT|GT)[___, (LI|UI)[_, "spinor"], ___], x2___] /; FreeQ[a, "spinor"] := FlipSign[a, b]*TDot[x1, b, a, x2]
-TDot[x1___, a: NT[x_, ___], b: NT["\[Eta]", ___], x2___] /; (x=!="\[Eta]" && FreeQ[a, "spinor"]) := TDot[x1, b, a, x2]
-TDot[x1___, a:(NT|GT)[a1__, LI[a2:LabelType, "spinor"], a3___], x2___, b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a1, b3}, "spinor"] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
-TDot[x1___, a:(NT|GT)[a1__, UI[a2:OverDot[LabelType], "spinor"], a3___], x2___, b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; (FreeQ[{a1, b3}, "spinor"] && DuplicateFreeQ[Cases[{a3, b1}, (UI|LI)[s_, "spinor"]:>s]]):= FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
-TDot[x1___, a:(NT|GT)[a1__, UI[a2:LabelType, "spinor"], a3___], x2__, b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a3, b1}, "spinor"] := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
-TDot[x1___, a:(NT|GT)[a1__, LI[a2:OverDot[LabelType], "spinor"], a3___], x2__, b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; (FreeQ[{a3, b1}, "spinor"] && DuplicateFreeQ[Cases[{a1, b3}, (UI|LI)[s_, "spinor"]:>s]]) := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
+w:TDot[x1___, a:(_NT|_GT), b:(NT|GT)[___, (LI|UI)[_, "spinor"], ___], x2___] /; FreeQ[a, "spinor"] && NoPattern[w] := FlipSign[a, b]*TDot[x1, b, a, x2]
+w:TDot[x1___, a: NT[x_, ___], b: NT["\[Eta]", ___], x2___] /; (x=!="\[Eta]" && FreeQ[a, "spinor"] && NoPattern[w]) := TDot[x1, b, a, x2]
+TDot[x1___, a:(NT|GT)[a1__, LI[a2:LabelType, "spinor"], a3___], x2:RepeatedNull[_NT|_GT], b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a1, b3}, "spinor"] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
+TDot[x1___, a:(NT|GT)[a1__, UI[a2:OverDot[LabelType], "spinor"], a3___], x2:RepeatedNull[_NT|_GT], b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; (FreeQ[{a1, b3}, "spinor"] && DuplicateFreeQ[Cases[{a3, b1}, (UI|LI)[s_, "spinor"]:>s]]):= FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
+TDot[x1___, a:(NT|GT)[a1__, UI[a2:LabelType, "spinor"], a3___], x2:Repeated[_NT|_GT], b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a3, b1}, "spinor"] := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
+TDot[x1___, a:(NT|GT)[a1__, LI[a2:OverDot[LabelType], "spinor"], a3___], x2:Repeated[_NT|_GT], b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; (FreeQ[{a3, b1}, "spinor"] && DuplicateFreeQ[Cases[{a1, b3}, (UI|LI)[s_, "spinor"]:>s]]) := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
 
 (* TDot order: integer-indexed spinors *)
-TDot[x1___, a:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x2___, b:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x3___]/; Not[OrderedQ[{a,b}]] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
+TDot[x1___, a:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x2:RepeatedNull[_NT|_GT], b:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x3___]/; Not[OrderedQ[{a,b}]] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
 
 (* Eta-contraction rule *)
 TDot[x1___, NT["\[Eta]", UI[a:LabelTypeOrI, "lorentz"], UI[b:LabelType, "lorentz"]], x2___, (n:GT|NT)[n1___, LI[b_, "lorentz"], n2___], x3___] := TDot[x1, x2, n[n1, UI[a, "lorentz"], n2], x3]
@@ -219,8 +223,8 @@ NT["\[Eta]", f:OrderlessPatternSequence[LI[a:LabelTypeOrI, "lorentz"], UI[b:Labe
 \[Epsilon]U[a_, b_, c_, d_] := NT[HoldForm["\[Epsilon]"], UI[a, "lorentz"], UI[b, "lorentz"], UI[c, "lorentz"], UI[d, "lorentz"]]
 \[Epsilon]L[a_, b_, c_, d_] := NT[HoldForm["\[Epsilon]"], LI[a, "lorentz"], LI[b, "lorentz"], LI[c, "lorentz"], LI[d, "lorentz"]]
 
-NT["\[Epsilon]", ___, a_, ___, a_, ___] := 0
-NT["\[Epsilon]", x___, pos_[a_, type_], pos_[b_, type_], y___] /; Not[OrderedQ[{a, b}]] := (-1) NT["\[Epsilon]", x, pos[b, type], pos[a, type], y]
+NT["\[Epsilon]", ___, a:IndexType, ___, a_, ___] := 0
+NT["\[Epsilon]", x___, pos_[a:SpinorLabelTypeOrI, type_], pos_[b:SpinorLabelTypeOrI, type_], y___] /; Not[OrderedQ[{a, b}]] := (-1) NT["\[Epsilon]", x, pos[b, type], pos[a, type], y]
 NT["\[Epsilon]", UI[1, "spinor"], UI[2, "spinor"]] := +1
 NT["\[Epsilon]", LI[1, "spinor"], LI[2, "spinor"]] := -1 (* beware! *)
 NT["\[Epsilon]", UI[OverDot[1], "spinor"], UI[OverDot[2], "spinor"]] := +1
@@ -297,7 +301,7 @@ TDot::InvalidIndices = "Invalid indices in `1`.";
 FindIndices[a:TDot[RepeatedNull[TensorType]]] := Cases[a, _UI|_LI, 2] // Select[FreeQ[#[[1]], _Integer]&]
 
 FindUniqueIndices[a:TDot[RepeatedNull[TensorType]]] := Cases[CountsBy[FindIndices[a], #[[1]]&] /. Association->List, Rule[p_,1]:>p]
-  
+
 FindIndicesToContract[a:TDot[RepeatedNull[TensorType]]] := Module[{i=GroupBy[FindIndices[a], Head], upper, lower},
   upper = Lookup[i, UI, {}];
   lower = Lookup[i, LI, {}];
