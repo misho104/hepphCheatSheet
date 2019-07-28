@@ -1,4 +1,4 @@
-%%% Time-Stamp: <2019-07-26 23:04:33 misho>
+%%% Time-Stamp: <2019-07-28 23:49:22 misho>
 \documentclass[CheatSheet]{subfiles}
 \begin{document}
 
@@ -15,26 +15,122 @@
 
 \subsection{Lorentz symmetry as SU(2)$\times$SU(2)}
 
-\subsection{Derivative in superspace}
 
-\begin{align}&
-y^\mu := x^\mu - \ii(\theta\sigma^{\mu}\btheta)
+\subsection{Supersymmetry algebra}
+We define the generators as
+\begin{alignat}{3}
+ P_\mu
+ &:= \ii\partial_\mu,
+\quad&
+ \{Q_\alpha, \bar Q_\dalpha\}
+ &= -2\ii\sigma^{\mu}_{\alpha\dalpha}\partial_\mu = -2\sigma^{\mu}_{\alpha\dalpha}P_\mu,
+\quad&
+  \{Q_\alpha, Q_\beta\} =   \{\bar Q_\dalpha, \bar Q_\dbeta\} = 0,
+\end{alignat}
+which is realized by
+\begin{align*}
+Q_\alpha &= \frac{\partial}{\partial \theta^{\alpha}}+\ii (\sigma^{\mu}\btheta){}_{\alpha}\partial_{\mu},
+&
+\bar Q_\dalpha&=-\frac{\partial}{\partial \btheta^{\dalpha}}-\ii (\theta \sigma^{\mu}){}_{\dalpha}\partial_{\mu},
+&
+Q^\alpha&=-\frac{\partial}{\partial \theta_{\alpha}}-\ii (\btheta\bsigma^{\mu})^{\alpha}\partial_{\mu},
+&
+\bar Q^{\dalpha}&=\frac{\partial}{\partial \btheta_{\dalpha}}+\ii (\bsigma^{\mu}\theta)^{\dalpha}\partial_{\mu},
+\\
+D_\alpha&=\frac{\partial}{\partial \theta^{\alpha}}-\ii (\sigma^{\mu}\btheta){}_{\alpha}\partial_{\mu},
+&
+\bar D_\dalpha&=-\frac{\partial}{\partial \btheta^{\dalpha}}+\ii (\theta \sigma^{\mu}){}_{\dalpha}\partial_{\mu},
+&
+D^\alpha&=-\frac{\partial}{\partial \theta_{\alpha}}+\ii (\btheta\bsigma^{\mu})^{\alpha}\partial_{\mu},
+&
+\bar D^\dalpha&=\frac{\partial}{\partial \btheta_{\dalpha}}-\ii (\bsigma^{\mu}\theta)^{\dalpha}\partial_{\mu};
+\end{align*}
+$D_\alpha$ etc.~works as covariant derivatives because of the commutation relations
+\begin{align*}
+\{D_\alpha, \bar D_\dalpha\}&=+2\ii\sigma^{\mu}_{\alpha\dalpha}\partial_\mu,&
+\{Q_\alpha, D_\beta\}&=
+\{Q_\alpha, \bar D_\dbeta\}=
+\{\bar Q_\dalpha, D_\beta\}=
+\{\bar Q_\dalpha, \bar D_\dbeta\}=
+\{D_\alpha, D_\beta\}=
+\{\bar D_\dalpha, \bar D_\dbeta\}=0.
+\end{align*}
+
+\paragraph{Derivative formulae}
+
+\begin{align*}
+&
+\epsilon^{\alpha\beta}\frac{\partial}{\partial\theta^\beta}=-\frac{\partial}{\partial\theta_\alpha}
+&&
+\frac{\partial}{\partial \theta^{\alpha}}\theta \theta =2 \theta_{\alpha}
+&&
+\frac{\partial}{\partial \theta^{\alpha}}\frac{\partial}{\partial \theta_{\beta}}\theta \theta =-2 \delta^{\beta}_{\alpha}
+&&
+\frac{\partial}{\partial \btheta^{\dalpha}}\frac{\partial}{\partial \btheta_{\dbeta}}\btheta\btheta=2 \delta^{\dbeta}_{\dalpha}
 \\&
-\phi(y)=\phi(x)-\ii (\theta \sigma^{\mu}\btheta) \partial_{\mu}\phi(x)-\frac{1}{4} \theta^4 \partial^2\phi(x)
-\end{align}
+\epsilon_{\alpha\beta}\frac{\partial}{\partial\theta_\beta}=-\frac{\partial}{\partial\theta^\alpha}
+&&
+\frac{\partial}{\partial \theta_{\alpha}}\theta \theta =-2 \theta^{\alpha}
+&&
+\frac{\partial}{\partial \theta_{\alpha}}\frac{\partial}{\partial \theta_{\beta}}\theta \theta =2 \epsilon^{\alpha \beta}
+&&
+\frac{\partial}{\partial \btheta_{\dalpha}}\frac{\partial}{\partial \btheta_{\dbeta}}\btheta\btheta=-2 \epsilon^{\dalpha\dbeta}
+\\&
+\epsilon^{\dalpha\dbeta}\frac{\partial}{\partial\btheta^\dbeta}=-\frac{\partial}{\partial\btheta_\dalpha}
+&&
+\frac{\partial}{\partial \btheta_{\dalpha}}\btheta\btheta=2 \btheta^{\dalpha}
+&&
+\frac{\partial}{\partial \theta_{\alpha}}\frac{\partial}{\partial \theta^{\beta}}\theta \theta =2 \delta^{\alpha}_{\beta}
+&&
+\frac{\partial}{\partial \btheta_{\dalpha}}\frac{\partial}{\partial \btheta^{\dbeta}}\btheta\btheta=-2 \delta^{\dalpha}_{\dbeta}
+\\&
+\epsilon_{\dalpha\dbeta}\frac{\partial}{\partial\btheta_\dbeta}=-\frac{\partial}{\partial\btheta^\dalpha}
+&&
+\frac{\partial}{\partial \btheta^{\dalpha}}\btheta\btheta=-2 \btheta_{\dalpha}
+&&
+\frac{\partial}{\partial \theta^{\alpha}}\frac{\partial}{\partial \theta^{\beta}}\theta \theta =-2 \epsilon_{\alpha \beta}
+&&
+\frac{\partial}{\partial \btheta^{\dalpha}}\frac{\partial}{\partial \btheta^{\dbeta}}\btheta\btheta=2 \epsilon_{\dalpha\dbeta}
+\end{align*}
 
 \subsection{Superfields}
-
-
-\paragraph{Chiral superfield}
+\paragraph{SUSY-invariant Lagrangian}
+SUSY transformation is induced by $\xi Q + \bar\xi\bar Q = \xi^\alpha\partial_\alpha + \bar\xi_\dalpha\partial^{\dalpha} + \ii(\xi\sigma^\mu\btheta+\bar\xi\bar\sigma^\mu\theta)\partial_\mu$.
+Therefore, for an object $\Psi$ in the superspace,
+\begin{equation}
+ \bigl[\Psi\bigr]_{\theta^4}\xrightarrow{\text{SUSY}}
+ \left[\Psi + \xi^\alpha\partial_\alpha\Psi + \bar\xi_\dalpha\partial^{\dalpha}\Psi + \ii(\xi\sigma^\mu\btheta+\bar\xi\bar\sigma^\mu\theta)\partial_\mu\Psi\right]_{\theta^4}
+=
+ \left[\Psi +
+\ii(\xi\sigma^\mu\btheta+\bar\xi\bar\sigma^\mu\theta)\partial_\mu\Psi\right]_{\theta^4},
+\end{equation}
+which means $\bigl[\Psi\bigr]_{\theta^4}$ is SUSY-invariant up to total derivative, i.e., $\int\dd^4x \bigl[\Psi\bigr]_{\theta^4}$ is SUSY-invariant action. Also,
+\begin{equation}
+  \bigl[\Psi\bigr]_{\theta^2}\xrightarrow{\text{SUSY}}
+ \left[\Psi + \bar\xi_\dalpha\left(\partial^{\dalpha} + \ii(\bar\sigma^{\mu}\theta)^\dalpha\partial_\mu\right)\Psi\right]_{\theta^2}
+=\left[\Psi + \bar\xi_\dalpha\bar D^\dalpha\Psi+2\ii(\bar\sigma^{\mu}\theta)^\dalpha\partial_\mu\Psi\right]_{\theta^2}
+\end{equation}
+will be SUSY-invariant if $\bar D_\dalpha\Psi=0$, i.e., $\Psi$ is a chiral superfield. Therefore, SUSY-invariant Lagrangian is given by
+\begin{equation}
+ \mathcal L = \bigl[\text{(any real superfield)}\Bigr]_{\theta^4} + \bigl[\text{(any chiral superfield)}\Bigr]_{\theta^2} + \bigl[\text{(any chiral superfield)}^*\Bigr]_{\btheta^2}.
+\end{equation}
+\paragraph{Chiral superfield} A chiral superfield is a superfield that satisfies $\bar D_\dalpha \Phi = 0$.
+Because of $\bar D_\dalpha y^\mu=\bar D_\dalpha \theta=0$ holds for a variable $y^\mu := x^\mu - \ii(\theta\sigma^{\mu}\btheta)$, this condition is equivalent to $\partial_\dalpha \Phi(y,\theta,\btheta)=0$.
+Using the Taylor expansion formula
+\begin{equation}
+f(y,\theta,\btheta)=f(x,\theta,\btheta)-\ii (\theta \sigma^{\mu}\btheta) \partial_{\mu}f(x,\theta,\btheta)-\frac{1}{4} \theta^4 \partial^2f(x,\theta,\btheta),
+\end{equation}
+we find
 \begin{align}
  \Phi
  &= \phi(y) + \sqrt{2} \theta \psi(y) + \theta^2 F(y)\\
  &= \phi(x)+\sqrt{2} \theta \psi(x)-\ii \partial_{\mu}\phi(x) (\theta \sigma^{\mu}\btheta)+F(x) \theta^2+\frac{\ii}{\sqrt{2}} (\partial_{\mu}\psi(x)\sigma^{\mu}\btheta) \theta^2-\frac{1}{4} \partial^2\phi(x) \theta^4
 \\
  \Phi^*
- &= \phi^*(x)+\sqrt{2} \bar{\psi}(x)\btheta+F^*(x) \btheta^2+\ii \partial_{\mu}\phi^*(x) (\theta \sigma^{\mu}\btheta)-\frac{\ii}{\sqrt{2}}[\theta \sigma^{\mu}\partial_{\mu}\bar{\psi}(x)] \btheta^2-\frac{1}{4} \partial^2\phi^*(x) \theta^4
- \\
+ &= \phi^*(x)+\sqrt{2} \bar{\psi}(x)\btheta+F^*(x) \btheta^2+\ii \partial_{\mu}\phi^*(x) (\theta \sigma^{\mu}\btheta)-\frac{\ii}{\sqrt{2}}[\theta \sigma^{\mu}\partial_{\mu}\bar{\psi}(x)] \btheta^2-\frac{1}{4} \partial^2\phi^*(x) \theta^4;
+\end{align}
+their product is expanded as
+\begin{align}
 \begin{split}
  \Phi_i^* \Phi_j
  &=
@@ -75,7 +171,8 @@ y^\mu := x^\mu - \ii(\theta\sigma^{\mu}\btheta)
 \ee^{k\Phi} &=
 \ee^{k\phi}\left[1+\sqrt{2} k \theta \psi+\Bigl(kF-\frac{k^2}{2}\psi\psi\Bigr) \theta^2-\ii k \partial_{\mu}\phi (\theta \sigma^{\mu}\btheta)
 %\right.\\&\qquad\qquad\left.
-+\frac{\ii k \left(\partial_{\mu}\psi+k\psi\partial_{\mu}\phi\right)\sigma^{\mu}\btheta \theta^2}{\sqrt{2}}-\frac{k}{4} \left(\partial^2\phi+k \partial_{\mu}\phi\partial^{\mu}\phi\right) \theta^4\right]
++\frac{\ii k \left(\partial_{\mu}\psi+k\psi\partial_{\mu}\phi\right)\sigma^{\mu}\btheta \theta^2}{\sqrt{2}}-\frac{k}{4} \left(\partial^2\phi+k \partial_{\mu}\phi\partial^{\mu}\phi\right) \theta^4\right];
 \end{split}
 \end{equation}
+note that $\Phi_i\Phi_j$, $\Phi_i\Phi_j\Phi_k$, and $\ee^{k\Phi}$ are all chiral superfields.
 \end{document}

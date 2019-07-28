@@ -1,0 +1,40 @@
+\text{QQ}(\text{Null},\alpha ,f)=\frac{\partial}{\partial \theta^{\alpha}}f+\ii (\sigma^{\mu}\btheta){}_{\alpha}.\partial_{\mu}f
+\\&
+\text{QQb}(\text{Null},\alpha ,f)=-\frac{\partial}{\partial \btheta^{\dalpha}}f-\ii (\theta \sigma^{\mu}){}_{\dalpha}.\partial_{\mu}f
+\\&
+\text{QQ}(\alpha ,f)=-\frac{\partial}{\partial \theta_{\alpha}}f-\ii (\btheta\bsigma^{\mu})^{\alpha}.\partial_{\mu}f
+\\&
+\text{QQb}(\alpha ,f)=\frac{\partial}{\partial \btheta_{\dalpha}}f+\ii (\bsigma^{\mu}\theta)^{\dalpha}.\partial_{\mu}f
+\\&
+\text{DD}(\text{Null},\alpha ,f)=\frac{\partial}{\partial \theta^{\alpha}}f-\ii (\sigma^{\mu}\btheta){}_{\alpha}.\partial_{\mu}f
+\\&
+\text{DDb}(\text{Null},\alpha ,f)=-\frac{\partial}{\partial \btheta^{\dalpha}}f+\ii (\theta \sigma^{\mu}){}_{\dalpha}.\partial_{\mu}f
+\\&
+\text{DD}(\alpha ,f)=-\frac{\partial}{\partial \theta_{\alpha}}f+\ii (\btheta\bsigma^{\mu})^{\alpha}.\partial_{\mu}f
+\\&
+\text{DDb}(\alpha ,f)=\frac{\partial}{\partial \btheta_{\dalpha}}f-\ii (\bsigma^{\mu}\theta)^{\dalpha}.\partial_{\mu}f
+\\&
+\frac{\partial}{\partial \theta_{\alpha}}\theta \theta =-2 \theta^{\alpha}
+\\&
+\frac{\partial}{\partial \theta^{\alpha}}\theta \theta =2 \theta_{\alpha}
+\\&
+\frac{\partial}{\partial \btheta_{\dalpha}}\text{$\theta \theta $b}=2 \btheta^{\dalpha}
+\\&
+\frac{\partial}{\partial \btheta^{\dalpha}}\text{$\theta \theta $b}=-2 \btheta_{\dalpha}
+\\&
+\frac{\partial}{\partial \theta_{\alpha}}\frac{\partial}{\partial \theta_{\beta}}\theta \theta =2 \epsilon^{\alpha \beta}
+\\&
+\frac{\partial}{\partial \theta^{\alpha}}\frac{\partial}{\partial \theta_{\beta}}\theta \theta =-2 \delta^{\beta}_{\alpha}
+\\&
+\frac{\partial}{\partial \theta_{\alpha}}\frac{\partial}{\partial \theta^{\beta}}\theta \theta =2 \delta^{\alpha}_{\beta}
+\\&
+\frac{\partial}{\partial \theta^{\alpha}}\frac{\partial}{\partial \theta^{\beta}}\theta \theta =-2 \epsilon_{\alpha \beta}
+\\&
+\frac{\partial}{\partial \btheta_{\dalpha}}\frac{\partial}{\partial \btheta_{\dbeta}}\text{$\theta \theta $b}=-2 \epsilon^{\dalpha\dbeta}
+\\&
+\frac{\partial}{\partial \btheta^{\dalpha}}\frac{\partial}{\partial \btheta_{\dbeta}}\text{$\theta \theta $b}=2 \delta^{\dbeta}_{\dalpha}
+\\&
+\frac{\partial}{\partial \btheta_{\dalpha}}\frac{\partial}{\partial \btheta^{\dbeta}}\text{$\theta \theta $b}=-2 \delta^{\dalpha}_{\dbeta}
+\\&
+\frac{\partial}{\partial \btheta^{\dalpha}}\frac{\partial}{\partial \btheta^{\dbeta}}\text{$\theta \theta $b}=2 \epsilon_{\dalpha\dbeta}
+\\&

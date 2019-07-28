@@ -8,7 +8,7 @@
 \\&
 \text{YtoX}(\Phi (i))^* \text{YtoX}(\Phi (j))=\phi_j(x).\phi_i^*(x)+\sqrt{2} (\theta \psi_j(x)).\phi_i^*(x)+\sqrt{2} (\bar{\psi_i}(x)\btheta).\phi_j(x)+F_j(x).\phi_i^*(x) \theta^2+2 (\theta \psi_j(x)).(\bar{\psi_i}(x)\btheta)-\ii \left(\partial_{\mu}\phi_j(x).\phi_i^*(x)-\partial_{\mu}\phi_i^*(x).\phi_j(x)\right) (\theta \sigma^{\mu}\btheta)+F_i^*(x).\phi_j(x) \btheta^2+\frac{\left(2 (\bar{\psi_i}(x)\btheta).F_j(x)-\ii \left((\psi_j(x)\sigma^{\mu}\btheta).\partial_{\mu}\phi_i^*(x)-(\partial_{\mu}\psi_j(x)\sigma^{\mu}\btheta).\phi_i^*(x)\right)\right) \theta^2}{\sqrt{2}}+\frac{\left(2 (\theta \psi_j(x)).F_i^*(x)+\ii \left((\theta \sigma^{\mu}\bar{\psi_i}(x)).\partial_{\mu}\phi_j(x)-(\theta \sigma^{\mu}){}_{\dalpha}.\partial_{\mu}\bar{\psi_i}(x){}^{\dalpha}.\phi_j(x)\right)\right) \btheta^2}{\sqrt{2}}+\frac{1}{4} \left(4 F_j(x).F_i^*(x)-\partial^2\phi_j(x).\phi_i^*(x)-\partial^2\phi_i^*(x).\phi_j(x)+2 \partial_{\mu}\phi_i^*(x).\partial^{\mu}\phi_j(x)+2 \ii (\psi_j(x)\sigma^{\mu}){}_{\dbeta}.\partial_{\mu}\bar{\psi_i}(x){}^{\dbeta}-2 \ii (\partial_{\mu}\psi_j(x)\sigma^{\mu}\bar{\psi_i}(x))\right) \theta^4
 \\&
-\text{ThetaCoeff}(\text{YtoX}(\Phi (i)) \text{YtoX}(\Phi (j)),2,0)=\left(-(\psi_i(x)\psi_j(x))+F_i(x).\phi_j(x)+F_j(x).\phi_i(x)\right) \theta^2
+\text{ThetaCoeff}(\text{YtoX}(\Phi (i)) \text{YtoX}(\Phi (j)),2,0)=\left(-(\psi_j(x)\psi_i(x))+F_i(x).\phi_j(x)+F_j(x).\phi_i(x)\right) \theta^2
 \\&
 \text{ThetaCoeff}(\text{YtoX}(\Phi (i)) \text{YtoX}(\Phi (j)) \text{YtoX}(\Phi (k)),2,0)=\left(-(\psi_j(x)\psi_i(x)).\phi_k(x)-(\psi_k(x)\psi_i(x)).\phi_j(x)-(\psi_k(x)\psi_j(x)).\phi_i(x)+\phi_i(x).\phi_j(x).F_k(x)+\phi_i(x).\phi_k(x).F_j(x)+\phi_j(x).\phi_k(x).F_i(x)\right) \theta^2
 \\&
