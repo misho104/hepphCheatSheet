@@ -38,15 +38,40 @@ Properties:
 Baker-Campbell-Hausdorff:
 \begin{align}
   \ee^X Y \ee^{-X}
-&= Y + [X, Y] + \frac1{2!}[X, [X, Y]] + \frac1{3!}[X, [X, [X, Y]]] + \cdots;
+&= Y + [X, Y] + \frac1{2!}[X, [X, Y]] + \frac1{3!}[X, [X, [X, Y]]] + \cdots = \ee^{[X,]}Y;
+\\
+  \ee^X \ee^Y \ee^{-X}
+&= \sum_{n=0}^\infty\frac{1}{n!}(\ee^X Y \ee^{-X})^n
+ = \exp\left(\ee^{[X,]}Y\right);
 \\
   \log(\ee^X \ee^Y)
 &= X + \int_0^1\!\dd t\, g(\ee^{[X,}\ee^{t[Y,})Y
 \qquad\Bigl[
-  g(z) = \frac{\log z}{1-z^{-1}} = 1+\sum_{n=1}^{\infty}\frac{(-1)^{n+1}(z-1)^n}{n(n+1)}
+  g(z) = \frac{\log z}{1-z^{-1}} = 1-\sum_{n=1}^{\infty}\frac{(1-z)^n}{n(n+1)};
+\quad
+g(\ee^y)=\sum_{n=0}^{\infty}\frac{B_ny^n}{n!}
 \Bigr]\\
 &= X + Y + \frac12[X,Y] + \frac1{12}[X, [X,Y]] - \frac1{12}[Y, [X,Y]] + \cdots
 \quad\text{(Baker-Campbell-Hausdorff).}
 \end{align}
+\begin{align}
+   \log(\ee^X\ee^Y)
+&=\sum_{k=1}^\infty \frac{(-1)^{k-1}}{k}\left(\sum_{m,n=0}^{\infty}\frac{X^mY^n}{m!n!}-1\right)^k
+&=\sum_{k=1}^\infty
+   \sum_{m_1+n_1>0}\cdots\sum_{m_k+n_k>0}\frac{(-1)^{k-1}}{k}
+\frac{X^{m_1}Y^{n_1}\cdots X^{m_k}Y^{n_k}}{m_1!n_1!\cdots m_k!n_k!}
+\end{align}
+\begin{equation}
+   \log(\ee^X\ee^Y)=\sum_{k=1}^{\infty}\sum_{m_1+n_1>0}\cdots\sum_{m_k+n_k>0}
+\frac{(-1)^{k-1}}{k\sum_{i=1}^{k}(m_i+n_i)}
+\frac{
+\Bigl([X,\Bigr)^{m_1}
+\Bigl([Y,\Bigr)^{n_1}\cdots
+\Bigl([X,\Bigr)^{m_k}
+\Bigl([Y,\Bigr)^{n_k}]\cdots]
+}{m_1!n_1!\cdots m_k!n_k!}
+\end{equation}
+withe $[X]:=X$ understood.
+
 
 \end{document}
