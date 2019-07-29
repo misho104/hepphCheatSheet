@@ -264,7 +264,7 @@ NT["\[Delta]", UI[a:LabelTypeOrI, (cls:IndexClassType)|"any"], LI[b:LabelTypeOrI
 NT["\[Delta]", UI[OverDot[a:LabelTypeOrI], (cls:IndexClassType)|"any"], LI[OverDot[b:LabelTypeOrI], (cls_)|"any"]] /; a!=b := 0
 
 NT["\[Delta]", x:UI[a:LabelType, cls:IndexClassType], y:LI[a_, cls_]] := Sum[NT["\[Delta]", x, y], {a, IndexIter[cls]}]
-NT["\[Delta]", UI[OverDot[a:LabelType], cls:IndexClassType], LI[OverDot[a_], cls_]] := Sum[NT["\[Delta]", x, y], {a, IndexIter[cls]}]
+NT["\[Delta]", x:UI[OverDot[a:LabelType], cls:IndexClassType], y:LI[OverDot[a_], cls_]] := Sum[NT["\[Delta]", x, y], {a, IndexIter[cls]}]
 
 NT["\[Eta]", UI[\[Mu]:0|1|2|3, "lorentz"], UI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1]
 NT["\[Eta]", LI[\[Mu]:0|1|2|3, "lorentz"], LI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1]
@@ -326,15 +326,23 @@ SumIndex[exp_, {symbol_, type_}] := Module[{iter, i, result},
      MatchQ[type, List[RepeatedNull[_Integer]]], type,
      MatchQ[type, _String], IndexIter[type],
      True, Message[SumIndex::InvalidType, type]; Abort[]];
-  If[Head[symbol]===OverDot,
-    (* overdot summation *)
-    iter = OverDot/@iter;
-    result = Sum[exp, {symbol, iter}//Evaluate],
-    (* non-dot summation; escape dotted indices *)
-    i = Unique[];
-    result = exp //. OverDot[symbol] -> i;
-    result = Sum[result, {symbol, iter}//Evaluate];
-    result = result //. i -> OverDot[symbol]];
+  Which[
+    Head[symbol]===OverDot,
+      (* overdot summation *)
+      iter = OverDot/@iter;
+      result = Sum[exp, {symbol, iter}//Evaluate],
+    StringQ[symbol],
+      (* string must be replaced by symbols (and escape dotted indices) *)
+      i = Unique[];
+      result = exp //. symbol -> i //. OverDot[i] -> OverDot[symbol];
+      result = Sum[result, {i, iter}//Evaluate],
+    True,
+      (* non-dot summation; escape dotted indices *)
+      i = Unique[];
+      result = exp //. OverDot[symbol] -> i;
+      result = Sum[result, {symbol, iter}//Evaluate];
+      result = result //. i -> OverDot[symbol]
+  ];
   result];
 
 Attributes[Tablize] = {HoldAll};
