@@ -9,6 +9,7 @@ NT::usage = "Normal tensor (non-Grassmannian tensor).";
 GT::usage = "Grassmannian tensor.";
 UI::usage = "Upper index.";
 LI::usage = "Lower index.";
+NI::usage = "Non-positional index.";
 TDot::usage = "Dot-product of tensors.";
 Field::usage = "Represents a field.";
 $Contraction::usage = "Boolean configuration variable to contract spinor-indices in display or not.";
@@ -50,7 +51,7 @@ SpinorLabelTypeOrI = LabelTypeOrI | OverDot[LabelTypeOrI];
 IndexClassType = _String;
 UpperIndexType = UI[SpinorLabelTypeOrI, IndexClassType];
 LowerIndexType = LI[SpinorLabelTypeOrI, IndexClassType];
-IndexType = (UI|LI)[SpinorLabelTypeOrI, IndexClassType];
+IndexType = (UI|LI|NI)[SpinorLabelTypeOrI, IndexClassType];
 
 NameType = _Symbol | _String | _Field;
 
@@ -66,11 +67,11 @@ Attributes[NoPattern] = {HoldAllComplete};
 Sequence[GT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, Style[#, Red]&, n, i] // ToBoxes // InterpretationBox[#,obj] &) &;
 Sequence[NT, NameType | OverBar[NameType] | _Row, RepeatedNull[IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT[f, #&, n, i] // ToBoxes // InterpretationBox[#,obj] &) &;
 MakeBoxesNT$[f_, c_, n_] := c[n];
-MakeBoxesNT$[f_, c_, n_, UI[a:SpinorLabelTypeOrI, _]] := Superscript[c[n], a]
+MakeBoxesNT$[f_, c_, n_, (UI|NI)[a:SpinorLabelTypeOrI, _]] := Superscript[c[n], a]
 MakeBoxesNT$[f_, c_, n_, LI[a:SpinorLabelTypeOrI, _]] := Subscript[c[n], a]
-MakeBoxesNT$[f_, c_, n_, a:Repeated[_UI]] := Row[{a}[[All, 1]]] // Superscript[c[n], #]&
+MakeBoxesNT$[f_, c_, n_, a:Repeated[_UI|_NI]] := Row[{a}[[All, 1]]] // Superscript[c[n], #]&
 MakeBoxesNT$[f_, c_, n_, a:Repeated[_LI]] := Row[{a}[[All, 1]]] // Subscript[c[n], #]&
-MakeBoxesNT$[f_, c_, n_, any__, a:Repeated[_UI]] := Row[{MakeBoxesNT$[f, c, n, any], MakeBoxesNT$[f, c, "", a]}]
+MakeBoxesNT$[f_, c_, n_, any__, a:Repeated[_UI|_NI]] := Row[{MakeBoxesNT$[f, c, n, any], MakeBoxesNT$[f, c, "", a]}]
 MakeBoxesNT$[f_, c_, n_, any__, a:Repeated[_LI]] := Row[{MakeBoxesNT$[f, c, n, any], MakeBoxesNT$[f, c, "", a]}]
 MakeBoxesNT = MakeBoxesNT$; (* for extensions *)
 
@@ -188,17 +189,6 @@ GT[n___, LI[a:_Integer, "spinor"]] /; FreeQ[{n}, "spinor"] := Sum[\[Epsilon]L[a,
 GT[n___, LI[a:OverDot[_Integer], "spinor"]] /; FreeQ[{n}, "spinor"] := Sum[\[Epsilon]Ld[a,b]GT[n, UI[OverDot[b], "spinor"]]//ReleaseHold, {b, 2}] ;
 
 
-(* TDot order: spinors, \[Eta], non-spinors *)
-w:TDot[x1___, a:(_NT|_GT), b:(NT|GT)[___, (LI|UI)[_, "spinor"], ___], x2___] /; FreeQ[a, "spinor"] && NoPattern[w] := FlipSign[a, b]*TDot[x1, b, a, x2]
-w:TDot[x1___, a: NT[x_, ___], b: NT["\[Eta]", ___], x2___] /; (x=!="\[Eta]" && FreeQ[a, "spinor"] && NoPattern[w]) := TDot[x1, b, a, x2]
-TDot[x1___, a:(NT|GT)[a1__, LI[a2:LabelType, "spinor"], a3___], x2:RepeatedNull[_NT|_GT], b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a1, b3}, "spinor"] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
-TDot[x1___, a:(NT|GT)[a1__, UI[a2:OverDot[LabelType], "spinor"], a3___], x2:RepeatedNull[_NT|_GT], b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; (FreeQ[{a1, b3}, "spinor"] && DuplicateFreeQ[Cases[{a3, b1}, (UI|LI)[s_, "spinor"]:>s]]):= FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
-TDot[x1___, a:(NT|GT)[a1__, UI[a2:LabelType, "spinor"], a3___], x2:Repeated[_NT|_GT], b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a3, b1}, "spinor"] := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
-TDot[x1___, a:(NT|GT)[a1__, LI[a2:OverDot[LabelType], "spinor"], a3___], x2:Repeated[_NT|_GT], b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; (FreeQ[{a3, b1}, "spinor"] && DuplicateFreeQ[Cases[{a1, b3}, (UI|LI)[s_, "spinor"]:>s]]) := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
-
-(* TDot order: integer-indexed spinors *)
-TDot[x1___, a:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x2:RepeatedNull[_NT|_GT], b:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x3___]/; Not[OrderedQ[{a,b}]] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
-
 (* Eta-contraction rule *)
 TDot[x1___, NT["\[Eta]", UI[a:LabelTypeOrI, "lorentz"], UI[b:LabelType, "lorentz"]], x2___, (n:GT|NT)[n1___, LI[b_, "lorentz"], n2___], x3___] := TDot[x1, x2, n[n1, UI[a, "lorentz"], n2], x3]
 TDot[x1___, NT["\[Eta]", LI[a:LabelTypeOrI, "lorentz"], LI[b:LabelType, "lorentz"]], x2___, (n:GT|NT)[n1___, UI[b_, "lorentz"], n2___], x3___] := TDot[x1, x2, n[n1, LI[a, "lorentz"], n2], x3]
@@ -207,10 +197,10 @@ TDot[x1___, (n:GT|NT)[n1___, UI[b_, "lorentz"], n2___], x2___, NT["\[Eta]", LI[a
 
 (* Kronecker Delta: UI is in front of LI. *)
 NT["\[Delta]", a:LI[SpinorLabelTypeOrI, IndexClassType], b:UI[SpinorLabelTypeOrI, IndexClassType]] := NT["\[Delta]", b, a]
-TDot[x1___, NT["\[Delta]", UI[a:SpinorLabelTypeOrI, c:IndexClassType|"any"], LI[b:SpinorLabelType, c:IndexClassType|"any"]], x2___, (n:GT|NT)[n1___, UI[b_, c_], n2___], x3___] := TDot[x1, x2, n[n1, UI[a, c], n2], x3]
-TDot[x1___, NT["\[Delta]", UI[a:SpinorLabelType, c:IndexClassType|"any"], LI[b:SpinorLabelTypeOrI, c:IndexClassType|"any"]], x2___, (n:GT|NT)[n1___, LI[a_, c_], n2___], x3___] := TDot[x1, x2, n[n1, LI[b, c], n2], x3]
-TDot[x1___, (n:GT|NT)[n1___, UI[b_, c_], n2___], x2___, NT["\[Delta]", UI[a:SpinorLabelTypeOrI, c:IndexClassType|"any"], LI[b:SpinorLabelType, c:IndexClassType|"any"]], x3___] := TDot[x1, n[n1, UI[a, c], n2], x2, x3]
-TDot[x1___, (n:GT|NT)[n1___, LI[a_, c_], n2___], x2___, NT["\[Delta]", UI[a:SpinorLabelType, c:IndexClassType|"any"], LI[b:SpinorLabelTypeOrI, c:IndexClassType|"any"]], x3___] := TDot[x1, n[n1, LI[b, c], n2], x2, x3]
+TDot[x1___, NT["\[Delta]", UI[a:SpinorLabelTypeOrI, c:IndexClassType|"any"], LI[b:SpinorLabelType, c:IndexClassType|"any"]], x2___, (n:GT|NT)[n1___, (t:UI|NI)[b_, c_], n2___], x3___] := TDot[x1, x2, n[n1, t[a, c], n2], x3]
+TDot[x1___, NT["\[Delta]", UI[a:SpinorLabelType, c:IndexClassType|"any"], LI[b:SpinorLabelTypeOrI, c:IndexClassType|"any"]], x2___, (n:GT|NT)[n1___, (t:LI|NI)[a_, c_], n2___], x3___] := TDot[x1, x2, n[n1, t[b, c], n2], x3]
+TDot[x1___, (n:GT|NT)[n1___, (t:UI|NI)[b_, c_], n2___], x2___, NT["\[Delta]", UI[a:SpinorLabelTypeOrI, c:IndexClassType|"any"], LI[b:SpinorLabelType, c:IndexClassType|"any"]], x3___] := TDot[x1, n[n1, t[a, c], n2], x2, x3]
+TDot[x1___, (n:GT|NT)[n1___, (t:LI|NI)[a_, c_], n2___], x2___, NT["\[Delta]", UI[a:SpinorLabelType, c:IndexClassType|"any"], LI[b:SpinorLabelTypeOrI, c:IndexClassType|"any"]], x3___] := TDot[x1, n[n1, t[b, c], n2], x2, x3]
 NT["\[Eta]", f:OrderlessPatternSequence[LI[a:LabelTypeOrI, "lorentz"], UI[b:LabelTypeOrI, "lorentz"]]] := NT["\[Delta]", f]
 
 
@@ -260,11 +250,11 @@ NT["\[Epsilon]", LI[0, "lorentz"], LI[1, "lorentz"], LI[2, "lorentz"], LI[3, "lo
 NT["\[Delta]", UI[a_Integer, (cls:IndexClassType)|"any"], LI[a_, (cls_)|"any"]] := 1
 NT["\[Delta]", UI[OverDot[a_Integer], (cls:IndexClassType)|"any"], LI[OverDot[a_], (cls_)|"any"]] := 1
 
-NT["\[Delta]", UI[a:LabelTypeOrI, (cls:IndexClassType)|"any"], LI[b:LabelTypeOrI, (cls_)|"any"]] /; a!=b := 0
-NT["\[Delta]", UI[OverDot[a:LabelTypeOrI], (cls:IndexClassType)|"any"], LI[OverDot[b:LabelTypeOrI], (cls_)|"any"]] /; a!=b := 0
+NT["\[Delta]", UI[a_Integer, (cls:IndexClassType)|"any"], LI[b_Integer, (cls_)|"any"]] /; a!=b := 0
+NT["\[Delta]", UI[OverDot[a_Integer], (cls:IndexClassType)|"any"], LI[OverDot[b_Integer], (cls_)|"any"]] /; a!=b := 0
 
-NT["\[Delta]", x:UI[a:LabelType, cls:IndexClassType], y:LI[a_, cls_]] := Sum[NT["\[Delta]", x, y], {a, IndexIter[cls]}]
-NT["\[Delta]", x:UI[OverDot[a:LabelType], cls:IndexClassType], y:LI[OverDot[a_], cls_]] := Sum[NT["\[Delta]", x, y], {a, IndexIter[cls]}]
+NT["\[Delta]", x:UI[a:LabelType, cls:IndexClassType], y:LI[a_, cls_]] := SumIndex[1, {a, cls}]
+NT["\[Delta]", x:UI[OverDot[a:LabelType], cls:IndexClassType], y:LI[OverDot[a_], cls_]] := SumIndex[1, {a, cls}]
 
 NT["\[Eta]", UI[\[Mu]:0|1|2|3, "lorentz"], UI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1]
 NT["\[Eta]", LI[\[Mu]:0|1|2|3, "lorentz"], LI[\[Nu]:0|1|2|3, "lorentz"]] := Which[\[Mu]!=\[Nu], 0, \[Mu]==\[Nu]==0, 1, True, -1]
@@ -298,7 +288,7 @@ NT["\[Epsilon]", whole:OrderlessPatternSequence[LI[a:_Integer|OverDot[_Integer],
 
 TDot::InvalidIndices = "Invalid indices in `1`.";
 
-FindIndices[a:TDot[RepeatedNull[TensorType]]] := Cases[a, _UI|_LI, 2] // Select[FreeQ[#[[1]], _Integer]&]
+FindIndices[a:TDot[RepeatedNull[TensorType]]] := Cases[a, _UI|_LI|_NI, 2] // Select[FreeQ[#[[1]], _Integer]&]
 
 FindUniqueIndices[a:TDot[RepeatedNull[TensorType]]] := Cases[CountsBy[FindIndices[a], #[[1]]&] /. Association->List, Rule[p_,1]:>p]
 
@@ -362,6 +352,19 @@ Tablize[exp_, {symbol_, type_}, remaining___] := Module[{iter, i, result},
     result = Table[result, {symbol, iter}//Evaluate];
     result = result //. i -> OverDot[symbol]];
   Tablize[result, remaining]];
+
+
+(* TDot order: spinors, \[Eta], non-spinors *)
+NoOverlap[e1_, e2_] := DisjointQ[Cases[e1, (UI|LI)[a_, b_]:>{a,b}, All], Cases[e2, (UI|LI)[a_, b_]:>{a,b}, All]]
+w:TDot[x1___, a:(_NT|_GT), b:(NT|GT)[___, (LI|UI)[_, "spinor"], ___], x2___] /; FreeQ[a, "spinor"] && NoPattern[w] := FlipSign[a, b]*TDot[x1, b, a, x2]
+w:TDot[x1___, a: NT[x_, ___], b: NT["\[Eta]", ___], x2___] /; (x=!="\[Eta]" && FreeQ[a, "spinor"] && NoPattern[w]) := TDot[x1, b, a, x2]
+TDot[x1___, a:(NT|GT)[a1__, LI[a2:LabelType, "spinor"], a3___], x2:RepeatedNull[_NT|_GT], b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a1, b3}, "spinor"] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
+TDot[x1___, a:(NT|GT)[a1__, UI[a2:OverDot[LabelType], "spinor"], a3___], x2:RepeatedNull[_NT|_GT], b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; (FreeQ[{a1, b3}, "spinor"] && NoOverlap[{a3},{x2,b1}]):= FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
+TDot[x1___, a:(NT|GT)[a1__, UI[a2:LabelType, "spinor"], a3___], x2:Repeated[_NT|_GT], b:(NT|GT)[b1__, LI[a2_, "spinor"], b3___], x3___] /; FreeQ[{a3, b1}, "spinor"] := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
+TDot[x1___, a:(NT|GT)[a1__, LI[a2:OverDot[LabelType], "spinor"], a3___], x2:Repeated[_NT|_GT], b:(NT|GT)[b1__, UI[a2_, "spinor"], b3___], x3___] /; (FreeQ[{a3, b1}, "spinor"] && NoOverlap[{a1},{x2}]) := FlipSign[a, x2] TDot[x1,x2,a,b,x3]
+
+(* TDot order: integer-indexed spinors *)
+TDot[x1___, a:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x2:RepeatedNull[_NT|_GT], b:GT[_, (UI|LI)[_Integer|OverDot[_Integer], "spinor"]], x3___]/; Not[OrderedQ[{a,b}]] := FlipSign[a, x2, b] TDot[x1,x2,b,a,x3]
 
 
 End[];

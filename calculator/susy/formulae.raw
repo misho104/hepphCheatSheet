@@ -70,7 +70,7 @@
 \\&
 \sigma^{\mu}\bsigma^{\nu}=\eta^{\mu \nu}-2 \ii \sigma^{\mu \nu}
 \\&
-\sigma^{\mu}\bsigma^{\rho}\sigma^{\nu}+\sigma^{\nu}\bsigma^{\rho}\sigma^{\mu}=2 \left(\sigma^{\mu}\eta^{\nu \rho}+\sigma^{\nu}\eta^{\mu \rho}-\sigma^{\rho}\eta^{\mu \nu}\right)
+\sigma^{\mu}\bsigma^{\nu}\sigma^{\rho}+\sigma^{\rho}\bsigma^{\nu}\sigma^{\mu}=2 \left(\sigma^{\mu}\eta^{\rho \nu}-\sigma^{\nu}\eta^{\mu \rho}+\sigma^{\rho}\eta^{\mu \nu}\right)
 \\&
 \bsigma^{\mu}\sigma^{\nu}=\eta^{\mu \nu}-2 \ii \bsigma^{\mu \nu}
 \\&
@@ -80,7 +80,7 @@
 \\&
 \Tr\left(\bsigma^{\mu}\sigma^{\nu}\right)=2 \eta^{\mu \nu}
 \\&
-\bsigma^{\mu}\sigma^{\rho}\bsigma^{\nu}+\bsigma^{\nu}\sigma^{\rho}\bsigma^{\mu}=2 \left(\bsigma^{\mu}\eta^{\nu \rho}+\bsigma^{\nu}\eta^{\mu \rho}-\bsigma^{\rho}\eta^{\mu \nu}\right)
+\bsigma^{\mu}\sigma^{\nu}\bsigma^{\rho}+\bsigma^{\rho}\sigma^{\nu}\bsigma^{\mu}=2 \left(\bsigma^{\mu}\eta^{\rho \nu}-\bsigma^{\nu}\eta^{\mu \rho}+\bsigma^{\rho}\eta^{\mu \nu}\right)
 \\&
 \sigma^{\mu}_{\alpha \dalpha}\bsigma_{\mu}{}^{\dbeta\beta}=2 \delta^{\dbeta}_{\dalpha}\delta^{\alpha}_{\beta}
 \\&

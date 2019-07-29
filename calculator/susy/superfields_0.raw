@@ -6,11 +6,11 @@
 \\&
 \text{QQb}(\alpha ,f)=\frac{\partial}{\partial \btheta_{\dalpha}}f+\ii (\bsigma^{\mu}\theta)^{\dalpha}.\partial_{\mu}f
 \\&
-\text{DD}(\text{Null},\alpha ,f)=\frac{\partial}{\partial \theta^{\alpha}}f-\ii (\sigma^{\mu}\btheta){}_{\alpha}.\partial_{\mu}f
+D(\text{Null},\alpha ,f)=\frac{\partial}{\partial \theta^{\alpha}}f-\ii (\sigma^{\mu}\btheta){}_{\alpha}.\partial_{\mu}f
 \\&
 \text{DDb}(\text{Null},\alpha ,f)=-\frac{\partial}{\partial \btheta^{\dalpha}}f+\ii (\theta \sigma^{\mu}){}_{\dalpha}.\partial_{\mu}f
 \\&
-\text{DD}(\alpha ,f)=-\frac{\partial}{\partial \theta_{\alpha}}f+\ii (\btheta\bsigma^{\mu})^{\alpha}.\partial_{\mu}f
+D(\alpha ,f)=-\frac{\partial}{\partial \theta_{\alpha}}f+\ii (\btheta\bsigma^{\mu})^{\alpha}.\partial_{\mu}f
 \\&
 \text{DDb}(\alpha ,f)=\frac{\partial}{\partial \btheta_{\dalpha}}f-\ii (\bsigma^{\mu}\theta)^{\dalpha}.\partial_{\mu}f
 \\&

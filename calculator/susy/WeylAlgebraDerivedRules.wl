@@ -7,6 +7,11 @@
 
 
 BeginPackage["WeylAlgebra`"];
+Rewrite\[Sigma]\[Sigma]::usage = "Rewrite \[Sigma]\[Sigma] pair.";
+Sym\[Sigma]::usage = "Rewrite \[Sigma]\[Sigma]bar or \[Sigma]bar\[Sigma] pair.";
+Switch\[Sigma]A::usage = "Rewrite \[Sigma]\[Sigma]bar or \[Sigma]bar\[Sigma] pair.";
+Switch\[Sigma]B::usage = "Rewrite \[Sigma]\[Sigma]bar or \[Sigma]bar\[Sigma] pair.";
+Switch\[Sigma]::usage = "Rewrite \[Sigma]\[Sigma]bar or \[Sigma]bar\[Sigma] pair."
 
 
 Begin["`Private`"];
@@ -94,7 +99,44 @@ Rewrite\[Sigma]\[Sigma][exp_] := exp /. {
       4 \[Epsilon]U[a,c]\[Sigma][\[CapitalSigma],\[Nu],c,b]\[Sigma]b[\[Rho], \[Mu], da, dc]\[Epsilon]U[dc,db]\[Eta]L[\[Rho],\[CapitalSigma]],
       \[Epsilon]U[a,b]\[Epsilon]U[da,db]\[Eta]U[\[Mu],\[Nu]]}]]]
 }; (* Not well tested *)
+Sym\[Sigma][exp_] := exp //. {
+  TDot[w:OrderlessPatternSequence[x___,
+    NT["\[Sigma]",        \[Mu]:(UI|LI)[_,"lorentz"], a:LI[LabelType, "spinor"], LI[b:OverDot[LabelType], "spinor"]],
+    NT[OverBar["\[Sigma]"],\[Nu]:(UI|LI)[_,"lorentz"], UI[b_, "spinor"], c:UI[LabelType,"spinor"]]]] :> TDot[x, NT["\[Eta]",\[Mu],\[Nu]]NT["\[Delta]",a,c] - 2I NT[HoldForm["\[Sigma]"],\[Mu],\[Nu],a,c]],
+  TDot[w:OrderlessPatternSequence[x___,
+    NT[OverBar["\[Sigma]"],\[Mu]:(UI|LI)[_,"lorentz"], a:UI[OverDot[LabelType], "spinor"], UI[b:LabelType, "spinor"]],
+    NT["\[Sigma]",         \[Nu]:(UI|LI)[_,"lorentz"], LI[b_, "spinor"], c:LI[OverDot[LabelType],"spinor"]]]] :> TDot[x, NT["\[Eta]",\[Mu],\[Nu]]NT["\[Delta]",a,c] - 2I NT[HoldForm[OverBar["\[Sigma]"]],\[Mu],\[Nu],a,c]]
+}
 
+TDot[w:OrderlessPatternSequence[x___,
+    NT["\[Sigma]",         \[Mu]:(UI|LI)[\[Mu]i_,"lorentz"], a:LI[LabelType, "spinor"], LI[b:OverDot[LabelType], "spinor"]],
+    NT[OverBar["\[Sigma]"],\[Nu]:(UI|LI)[\[Nu]i_,"lorentz"], UI[b_, "spinor"], UI[c:LabelType,"spinor"]],
+    NT["\[Sigma]",         \[Rho]:(UI|LI)[\[Rho]i_,"lorentz"], LI[c_, "spinor"], d:LI[OverDot[LabelType], "spinor"]]
+   ]] := Module[{s=Unique[]}, TDot[x, NT["\[Sigma]",\[Mu],a,d]NT["\[Eta]",\[Nu],\[Rho]]+NT["\[Sigma]",\[Rho],a,d]NT["\[Eta]",\[Mu],\[Nu]]-NT["\[Sigma]",\[Nu],a,d]NT["\[Eta]",\[Mu],\[Rho]] + I NT["\[Sigma]",LI[s,"lorentz"],a,d]NT["\[Epsilon]",\[Mu],\[Nu],\[Rho],UI[s,"lorentz"]]]]
+TDot[w:OrderlessPatternSequence[x___,
+    NT[OverBar["\[Sigma]"],\[Mu]:(UI|LI)[\[Mu]i_,"lorentz"], a:UI[OverDot[LabelType], "spinor"], UI[b:LabelType,"spinor"]],
+    NT["\[Sigma]",         \[Nu]:(UI|LI)[\[Nu]i_,"lorentz"], LI[b_, "spinor"], LI[c:OverDot[LabelType], "spinor"]],
+    NT[OverBar["\[Sigma]"],\[Rho]:(UI|LI)[\[Rho]i_,"lorentz"], UI[c_, "spinor"], d:UI[LabelType,"spinor"]]
+   ]] := Module[{s=Unique[]}, TDot[x, NT[OverBar["\[Sigma]"],\[Mu],a,d]NT["\[Eta]",\[Nu],\[Rho]]+NT[OverBar["\[Sigma]"],\[Rho],a,d]NT["\[Eta]",\[Mu],\[Nu]]-NT[OverBar["\[Sigma]"],\[Nu],a,d]NT["\[Eta]",\[Mu],\[Rho]] - I NT[OverBar["\[Sigma]"],LI[s,"lorentz"],a,d]NT["\[Epsilon]",\[Mu],\[Nu],\[Rho],UI[s,"lorentz"]]]]
+
+
+Switch\[Sigma]A[exp_] := exp //. {
+  TDot[w:OrderlessPatternSequence[x___, NT["\[Epsilon]",db:LI[OverDot[LabelType],"spinor"],LI[da:OverDot[LabelType],"spinor"]],NT[OverBar["\[Sigma]"],\[Mu]_,UI[da_,"spinor"],a:UI[LabelType,"spinor"]]]] :> (+1)Module[{c=Unique[]}, TDot[x, NT["\[Epsilon]",a,UI[c,"spinor"]],NT[HoldForm["\[Sigma]"],\[Mu],LI[c,"spinor"],db]]],
+  TDot[w:OrderlessPatternSequence[x___, NT["\[Epsilon]",LI[da:OverDot[LabelType],"spinor"],db:LI[OverDot[LabelType],"spinor"]],NT[OverBar["\[Sigma]"],\[Mu]_,UI[da_,"spinor"],a:UI[LabelType,"spinor"]]]] :> (-1)Module[{c=Unique[]}, TDot[x, NT["\[Epsilon]",a,UI[c,"spinor"]],NT[HoldForm["\[Sigma]"],\[Mu],LI[c,"spinor"],db]]],
+  TDot[w:OrderlessPatternSequence[x___, NT["\[Epsilon]",b:LI[LabelType,"spinor"],LI[a:LabelType,"spinor"]],NT[OverBar["\[Sigma]"],\[Mu]_,da:UI[OverDot[LabelType],"spinor"],UI[a_,"spinor"]]]] :> (+1)Module[{dc=OverDot[Unique[]]}, TDot[x, NT["\[Epsilon]",da,UI[dc,"spinor"]],NT[HoldForm["\[Sigma]"],\[Mu],b,LI[dc,"spinor"]]]],
+  TDot[w:OrderlessPatternSequence[x___, NT["\[Epsilon]",LI[a:LabelType,"spinor"],b:LI[LabelType,"spinor"]],NT[OverBar["\[Sigma]"],\[Mu]_,da:UI[OverDot[LabelType],"spinor"],UI[a_,"spinor"]]]] :> (-1)Module[{dc=OverDot[Unique[]]}, TDot[x, NT["\[Epsilon]",da,UI[dc,"spinor"]],NT[HoldForm["\[Sigma]"],\[Mu],b,LI[dc,"spinor"]]]]
+}
+Switch\[Sigma]B[exp_] := exp //. {
+  TDot[w:OrderlessPatternSequence[x___, NT["\[Epsilon]",a:UI[LabelType,"spinor"],UI[c:LabelType,"spinor"]],NT["\[Sigma]",\[Mu]_,LI[c_,"spinor"],db:LI[OverDot[LabelType],"spinor"]]]] :> (+1)Module[{da=OverDot[Unique[]]}, TDot[x, NT["\[Epsilon]",db,LI[da,"spinor"]], NT[OverBar[HoldForm["\[Sigma]"]],\[Mu],UI[da,"spinor"],a]]],
+  TDot[w:OrderlessPatternSequence[x___, NT["\[Epsilon]",UI[c:LabelType,"spinor"],a:UI[LabelType,"spinor"]],NT["\[Sigma]",\[Mu]_,LI[c_,"spinor"],db:LI[OverDot[LabelType],"spinor"]]]] :> (-1)Module[{da=OverDot[Unique[]]}, TDot[x, NT["\[Epsilon]",db,LI[da,"spinor"]], NT[OverBar[HoldForm["\[Sigma]"]],\[Mu],UI[da,"spinor"],a]]],
+  TDot[w:OrderlessPatternSequence[x___, NT["\[Epsilon]",da:UI[OverDot[LabelType],"spinor"],UI[dc:OverDot[LabelType],"spinor"]],NT["\[Sigma]",\[Mu]_,b:LI[LabelType,"spinor"],LI[dc:OverDot[LabelType],"spinor"]]]] :> (+1)Module[{a=Unique[]}, TDot[x, NT["\[Epsilon]",b,LI[a,"spinor"]], NT[OverBar[HoldForm["\[Sigma]"]],\[Mu],da,UI[a,"spinor"]]]],
+  TDot[w:OrderlessPatternSequence[x___, NT["\[Epsilon]",UI[dc:OverDot[LabelType],"spinor"],da:UI[OverDot[LabelType],"spinor"]],NT["\[Sigma]",\[Mu]_,b:LI[LabelType,"spinor"],LI[dc:OverDot[LabelType],"spinor"]]]] :> (-1)Module[{a=Unique[]}, TDot[x, NT["\[Epsilon]",b,LI[a,"spinor"]], NT[OverBar[HoldForm["\[Sigma]"]],\[Mu],da,UI[a,"spinor"]]]]
+}
+Switch\[Sigma][exp_] := Module[{r=exp},
+  r = FixedPoint[Switch\[Sigma]A @* Switch\[Sigma]B, r];
+  r = FixedPoint[Switch\[Sigma]A @* ReleaseHoldAll, r];
+  r = FixedPoint[Switch\[Sigma]B @* ReleaseHoldAll, r];
+r]
 
 End[];
 EndPackage[];

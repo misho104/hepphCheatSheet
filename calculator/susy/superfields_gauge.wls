@@ -1,51 +1,26 @@
 #!/usr/bin/env wolframscript
 (* ::Package:: *)
 
-SetDirectory[NotebookDirectory[]];
-<<WeylAlgebra`
-<<WeylAlgebraDerivedRules`
-
-
 (* ::Subsection:: *)
 (*Common tools*)
 
 
-TeXConvert[exp_] := Module[{tmp},
-      tmp = exp //. {a | "a" -> \[Alpha], b | "b" -> \[Beta], c | "c" -> \[Gamma], d | "d" -> \[Delta], Complex[a_, b_] :> a+b "ii"} // TeXForm // ToString;
-      tmp = FixedPoint[StringReplace[{
-           " }" -> "}", " ^" -> "^", " _" -> "_", " )" -> ")",
-           "\\dot{\\alpha}" -> "\\dalpha", "\\dot{\\beta}" -> "\\dbeta", "\\dot{\\gamma}" -> "\\dgamma", "\\dot{\\delta}" -> "\\ddelta",
-           "\\bar{\\theta}" -> "\\btheta",
-           "\\bar{\\sigma}" -> "\\bsigma",
-           "\\Sigma"->"\\sigma",
-           "\\overline{" -> "\\bar{",
-           "\\text{Tr}"->"\\Tr",
-           "\\text{ii}"->"\\ii",
-           "\\text{}"->"{}",
-           "\{+\}-"->"-",
-           "\{+\}"->"+",
-           "_{\\text{dummy}}"->"",
-           "^{\\text{dummy}}"->"",
-           "\\text{F}"->"F",
-           "\\text{C}"->"C",
-           "\\text{A}"->"A",
-           "\\text{DD}"->"D",
-           "\\text{M1}"->"M",
-           "\\text{M2}"->"N",
-           ".\\sigma"->"\\sigma",
-           ".\\bsigma"->"\\bsigma",
-           a:("\\delta^{\\"~~Repeated[LetterCharacter])~~"}{}_{\\"~~s:Repeated[LetterCharacter]~~"}":>a<>"}_{\\"<>s<>"}",
-           a:("\\sigma^{\\"~~Repeated[LetterCharacter]~~"}") ~~ "{}_" :> a<>"_"
-     }], tmp];
-     tmp = StringReplace[tmp, {"["->"\\bigl(", "]"->"\\bigr)"}];
-     tmp = StringReplace[tmp, {"\\left\\bigl"->"\\left", "\\right\\bigr"->"\\right"}];
-     tmp]
+SetDirectory[NotebookDirectory[]];
+<<WeylAlgebra`
+<<WeylAlgebraDerivedRules`
  
 SumToList[exp_]  := Module[{tmp = Expand[exp]}, If[Head[tmp] === Plus, List@@tmp, {tmp}]];
 
+RewriteIndicesOrdering[a_] := a /. {
+  NT[p:"\[Sigma]"|OverBar["\[Sigma]"],q__]:>{0,p,q},
+  GT[p:"\[Theta]"|OverBar["\[Theta]"],q__]:>{3,p,q},
+  _[Field[p_,_],___] :> {2,p},
+  _[OverBar[Field[p_,_]],___] :> {1,p}
+}
 RewriteIndices[exp_, format_, indices_:Null] :=
-  Module[{old, nottoreplace, toreplace, new, rule},
-    old = Cases[exp,  format :> index, All];
+  Module[{rep, old, nottoreplace, toreplace, new, rule},
+    rep = exp //. TDot[a__]:>TDotList@@SortBy[{a}, RewriteIndicesOrdering];
+    old = Cases[rep,  format :> index, All];
     nottoreplace = Counts[old] /. Association -> List // Cases[#, (p_ -> 1) :> p] &;
     toreplace = Counts[old] /. Association -> List // Cases[#, (p_ -> 2) :> p] &;
     new = If[indices===Null, If[Head[#]===OverDot, OverDot[Unique[]], Unique[]]& /@ toreplace, Select[indices, FreeQ[nottoreplace, #] &]];
@@ -58,6 +33,18 @@ RewriteIndices[exp_] := Module[{result},
   result = RewriteIndices[#, (UI|LI)[index_, "lorentz"], {"\[Mu]", "\[Nu]", "\[Rho]", "\[CapitalSigma]", "\[Alpha]", "\[Beta]", "\[Gamma]"}] & /@ result;
   result = RewriteIndices[#, ((UI|LI)[index_, "spinor"] /; FreeQ[index, OverDot]), {"a", "b", "c", "d", "e", "f", "g", "h", "k"}] & /@ result;
   result = RewriteIndices[#, ((UI|LI)[index_OverDot, "spinor"]), OverDot/@{"a", "b", "c", "d", "e", "f", "g", "h", "k"}] & /@ result;
+  result = RewriteIndices[#, NI[index_, "SUNI"], {"i", "j", "k", "l", "m", "n"}] & /@ result;
+  result = RewriteIndices[#, NI[index_, "SUNF"], {"s", "t", "u", "v", "w"}] & /@ result;
+  Total[result]
+];
+
+RenewIndices[exp_] := Module[{result},
+  result = SumToList[exp];
+  result = RewriteIndices[#, (UI|LI)[index_, "lorentz"]] & /@ result;
+  result = RewriteIndices[#, ((UI|LI)[index_, "spinor"] /; FreeQ[index, OverDot])] & /@ result;
+  result = RewriteIndices[#, ((UI|LI)[index_OverDot, "spinor"])] & /@ result;
+  result = RewriteIndices[#, NI[index_, "SUNI"]] & /@ result;
+  result = RewriteIndices[#, NI[index_, "SUNF"]] & /@ result;
   Total[result]
 ];
 
@@ -74,12 +61,16 @@ SortTDot[exp_] := exp /. TDot -> TD //. {
   TD[x1___, a_, b_, x2___] /; Not[OrderedQ[{a,b}]] :> TD[x1, b, a, x2]FlipSign[a,b]
 } //. TD->TDot
 
+LorentzSort[exp_] := (exp//.{
+  (p:NT|GT)[x1__, LI[\[Mu]_,"lorentz"], x2___]/; FreeQ[{x1}, "\[Eta]"] :> Module[{\[Nu]=Unique[]}, \[Eta]L[\[Mu], \[Nu]] p[x1, UI[\[Nu],"lorentz"], x2]]
+}//SortTDot//RewriteIndices)//.NT[HoldForm["\[Eta]"], a_, b_] /; Not[OrderedQ[{a,b}]] :> NT[HoldForm["\[Eta]"], b, a]//ReleaseHoldAll;
+
 
 ToTeX = {};
 Express::usage = "";
 Attributes[Express] = {HoldFirst};
 Express[exphold_, apply_:(#&), hold_:True] := If[hold=!=True, Express[exphold//Evaluate, apply, True], Module[{exp},
-  exp = apply[ReleaseHoldAll[exphold]] // RewriteIndices // OrderTheta;
+  exp = ReleaseHoldAll[exphold] // RewriteIndices // OrderTheta[#,apply]&;
   AppendTo[ToTeX, HoldForm[exphold] == exp];
   exp]]
 
@@ -158,20 +149,21 @@ F [i_,x_]      := NT[Field["F"[i],x]]
 \[Psi]b[i_,x_,a_]   := GT[OverBar[Field["\[Psi]"[i],x]], UI[OverDot[a], "spinor"]]
 \[Psi]b[i_,x_, ,a_] := GT[OverBar[Field["\[Psi]"[i],x]], LI[OverDot[a], "spinor"]]
 
-CC[i_,x_]      := NT[Field["C"[i],x]]
-dd[i_,x_]      := NT[Field["DD"[i],x]]
-M1[i_,x_]      := NT[Field["M1"[i],x]]
-M2[i_,x_]      := NT[Field["M2"[i],x]]
-\[Chi] [i_,x_,a_]   := GT[Field["\[Chi]"[i],x], UI[a, "spinor"]]
-\[Chi] [i_,x_, ,a_] := GT[Field["\[Chi]"[i],x], LI[a, "spinor"]]
-\[Chi]b[i_,x_,a_]   := GT[OverBar[Field["\[Chi]"[i],x]], UI[OverDot[a], "spinor"]]
-\[Chi]b[i_,x_, ,a_] := GT[OverBar[Field["\[Chi]"[i],x]], LI[OverDot[a], "spinor"]]
-\[Lambda] [i_,x_,a_]   := GT[Field["\[Lambda]"[i],x], UI[a, "spinor"]]
-\[Lambda] [i_,x_, ,a_] := GT[Field["\[Lambda]"[i],x], LI[a, "spinor"]]
-\[Lambda]b[i_,x_,a_]   := GT[OverBar[Field["\[Lambda]"[i],x]], UI[OverDot[a], "spinor"]]
-\[Lambda]b[i_,x_, ,a_] := GT[OverBar[Field["\[Lambda]"[i],x]], LI[OverDot[a], "spinor"]]
-A [i_,x_,\[Mu]_]   := NT[Field["A"[i],x], UI[\[Mu], "lorentz"]]
-A [i_,x_,,\[Mu]_]  := NT[Field["A"[i],x], LI[\[Mu], "lorentz"]]
+dd[s_,x_]      := NT[Field["DD",x], NI[s, "SUNF"]]
+\[Lambda] [s_,x_,a_]   := GT[Field["\[Lambda]",x], UI[a, "spinor"], NI[s, "SUNF"]]
+\[Lambda] [s_,x_, ,a_] := GT[Field["\[Lambda]",x], LI[a, "spinor"], NI[s, "SUNF"]]
+\[Lambda]b[s_,x_,a_]   := GT[OverBar[Field["\[Lambda]",x]], UI[OverDot[a], "spinor"], NI[s, "SUNF"]]
+\[Lambda]b[s_,x_, ,a_] := GT[OverBar[Field["\[Lambda]",x]], LI[OverDot[a], "spinor"], NI[s, "SUNF"]]
+A [s_,x_,\[Mu]_]   := NT[Field["A",x], UI[\[Mu], "lorentz"], NI[s, "SUNF"]]
+A [s_,x_,,\[Mu]_]  := NT[Field["A",x], LI[\[Mu], "lorentz"], NI[s, "SUNF"]]
+FF[s_,x_,\[Mu]_,\[Nu]_] := Module[{t=Unique[], u=Unique[]}, Dx[\[Mu], A[s, x, \[Nu]]] - Dx[\[Nu], A[s, x, \[Mu]]] + g NT["f", NI[s, "SUNF"], NI[t, "SUNF"], NI[u, "SUNF"]]A[t,x,\[Mu]]A[u,x,\[Nu]]]
+FF[s_,x_,,\[Mu]_,\[Nu]_] := Module[{t=Unique[], u=Unique[]}, Dx[,\[Mu], A[s, x, ,\[Nu]]] - Dx[,\[Nu], A[s, x, ,\[Mu]]] + g NT["f", NI[s, "SUNF"], NI[t, "SUNF"], NI[u, "SUNF"]]A[t,x,,\[Mu]]A[u,x,,\[Nu]]]
+FF0[i_,j_,x_,\[Mu]_,\[Nu]_] := Module[{s=Unique[], t=Unique[], k=Unique[]}, Dx[\[Mu], A[s,x,\[Nu]]]T[s,i,j] - Dx[\[Nu], A[s,x,\[Mu]]]T[s,i,j] - I g (A[s,x,\[Mu]]T[s,i,k]A[t,x,\[Nu]]T[t,k,j]-A[t,x,\[Nu]]T[t,i,k]A[s,x,\[Mu]]T[s,k,j])]
+FF0[i_,j_,x_,,\[Mu]_,\[Nu]_] := Module[{s=Unique[], t=Unique[], k=Unique[]}, Dx[,\[Mu], A[s,x,,\[Nu]]]T[s,i,j] - Dx[,\[Nu], A[s,x,,\[Mu]]]T[s,i,j] - I g (A[s,x,,\[Mu]]T[s,i,k]A[t,x,,\[Nu]]T[t,k,j]-A[t,x,,\[Nu]]T[t,i,k]A[s,x,,\[Mu]]T[s,k,j])]
+T [i_,s_,t_] := NT["T", NI[i, "SUNF"], NI[s,"SUNI"], NI[t,"SUNI"]]
+
+NT["TS", a_, b_, i_, j_]/;Not[OrderedQ[{a,b}]]:=NT["TS", b,a,i,j]
+NT["f", x1___, a_, b_, x2___]/;Not[OrderedQ[{a,b}]]:=(-1)NT["f",x1,b,a,x2]
 
 
 (* for spinors: (unused rule)
@@ -185,10 +177,14 @@ Conj[(f:"C"|"M1"|"M2"|"A"|"DD")[i_]] := f[i]
 
 (* Derivatives *)
 
-IsGrassmann[x_] := Switch[Head[x], "x", False, "\[Theta]", True, "\[Theta]b", True, _, Print[x];Abort[]]
+IsGrassmann[x_] := Switch[Head[x], "x", False, "xD", False, "\[Theta]", True, "\[Theta]b", True, _, Print[x];Abort[]]
 Dx [index_,  any_] := Deriv["x"[UI[index, "lorentz"]], any]             (* Dx[\[Mu]]   = \[PartialD]^\[Mu];              \!\(\(Dx[\(,\)\(\[Mu]\)]\)\ \ \  = \ 
 \*SubscriptBox[\(\[PartialD]\), \(\[Mu]\)]\) *)
 Dx [,index_, any_] := Deriv["x"[LI[index, "lorentz"]], any]             (* Dx[\[Mu]]   = \[PartialD]^\[Mu];              \!\(\(Dx[\(,\)\(\[Mu]\)]\)\ \ \  = \ 
+\*SubscriptBox[\(\[PartialD]\), \(\[Mu]\)]\) *)
+DxD[index_,  any_] := Deriv["xD"[UI[index, "lorentz"]], any]            (* DxD[\[Mu]]  = D^\[Mu];              \!\(\(Dx[\(,\)\(\[Mu]\)]\)\ \ \  = \ 
+\*SubscriptBox[\(\[PartialD]\), \(\[Mu]\)]\) *)
+DxD[,index_, any_] := Deriv["xD"[LI[index, "lorentz"]], any]            (* DxD[\[Mu]]  = D^\[Mu];              \!\(\(Dx[\(,\)\(\[Mu]\)]\)\ \ \  = \ 
 \*SubscriptBox[\(\[PartialD]\), \(\[Mu]\)]\) *)
 D\[Theta] [index_,  any_] := Deriv["\[Theta]"[UI[index, "spinor"]],  any]             (* D\[Theta][\[Alpha]]   = \[PartialD]^\[Alpha] = d/d(\[Theta]_\[Alpha]),   D\[Theta][,\[Alpha]]   = \!\(
 \*SubscriptBox[\(\[PartialD]\), \(\[Alpha]\)]\ \(\(=\)\(\ \)\(d/d\((
@@ -253,209 +249,125 @@ TakeDerivative["\[Theta]b"[_UI|_LI],  NT[___]] := 0
 TakeDerivative["\[Theta]"[_UI|_LI],   GT[Except["\[Theta]"], ___]] := 0
 TakeDerivative["\[Theta]b"[_UI|_LI],  GT[Except[OverBar["\[Theta]"]], ___]] := 0
 
+TakeDerivative["xD"[p:(UI|LI)[\[Mu]_, "lorentz"]], w:(n:GT|NT)[f:(OverBar[Field["\[Lambda]", x_]]|Field["\[Lambda]"|"DD", x_]), x1___, NI[s_, "SUNF"], x2___]] := Module[{t=Unique[], u=Unique[]},
+  TakeDerivative["x"[p], w] +  g NT["f", NI[s, "SUNF"],NI[t, "SUNF"],NI[u, "SUNF"]] NT[Field["A",x],p,NI[t,"SUNF"]]n[f,x1, NI[u,"SUNF"], x2]]
+TakeDerivative["xD"[_UI|_LI], (NT|GT)[f:Except[Field[__]|OverBar[Field[__]]], ___]] := 0
+TakeDerivative["xD"[p_], GT[Field[Dx2["\[Lambda]"],x_],any___]] := Module[{\[Mu]=Unique[]}, Deriv["xD"[p], GT[Field["\[Lambda]", x], any]] // Dx[,\[Mu],#]& // Dx[\[Mu],#]&]
+TakeDerivative["xD"[p_], GT[Field[Dx["\[Lambda]"],x_],a:(UI|LI)[_,"lorentz"],any___]] := Deriv["xD"[p], GT[Field["\[Lambda]", x], any]] // Deriv["x"[a], #]&
+  
 (* Derivative + conjugate *)
 Conj[Dx[f_]] := Dx[Conj[f]]
 Conj[Dx2[f_]] := Dx2[Conj[f]]
 
-
-(* ::Subsection:: *)
-(*Chiral superfield*)
-
-
-CommuteDerivatives[exp_] := exp//.{TDot[x1___, DT[a_], Deriv[b_, f]] /; Not[FreeQ[{a,b}, "lorentz"]] :> TDot[x1, dd[a b,f]], Deriv[a_, Deriv[b_, f]]/;Not[FreeQ[{a,b}, "lorentz"]]:>dd[a b,f]} // ExpandAll
-QQ[,a,QQ[,b, f]]  + QQ[,b,QQ[,a, f]] // ReleaseHoldAll//RewriteIndices//CollectTheta//CommuteDerivatives//SortTDot//CommuteDerivatives
-QQ[,a,DD[,b, f]]  + DD[,b,QQ[,a, f]] // ReleaseHoldAll//RewriteIndices//CollectTheta//CommuteDerivatives//SortTDot//CommuteDerivatives
-QQ[,a,DDb[,b, f]] + DDb[,b,QQ[,a, f]] // ReleaseHoldAll//RewriteIndices//CollectTheta//CommuteDerivatives
-DD[,a,DD[,b, f]]  + DD[,b,DD[,a, f]] // ReleaseHoldAll//RewriteIndices//CollectTheta//CommuteDerivatives//SortTDot//CommuteDerivatives
-DD[,a,QQb[,b, f]] + QQb[,b,DD[,a, f]] // ReleaseHoldAll//RewriteIndices//CollectTheta//CommuteDerivatives
-QQb[,a,DDb[,b, f]] + DDb[,b,QQb[,a, f]] // ReleaseHoldAll//RewriteIndices//CollectTheta//CommuteDerivatives//SortTDot//CommuteDerivatives
-
-
-QQ[,a,QQb[,b, f]] + QQb[,b,QQ[,a, f]] // ReleaseHoldAll//RewriteIndices//CollectTheta//CommuteDerivatives
-DD[,a,DDb[,b, f]] + DDb[,b,DD[,a, f]] // ReleaseHoldAll//RewriteIndices//CollectTheta//CommuteDerivatives
-
-
-ToTeX = {};
-Express[QQ[,a,f]]
-Express[QQb[,a,f]]
-Express[QQ[a,f]]
-Express[QQb[a,f]]
-Express[DD[,a, f]]
-Express[DDb[,a, f]]
-Express[DD[a, f]]
-Express[DDb[a, f]]
-
-Express[Evaluate[D\[Theta][a, HoldForm[\[Theta]\[Theta]]]]]
-Express[Evaluate[D\[Theta][,a, HoldForm[\[Theta]\[Theta]]]]]
-Express[Evaluate[D\[Theta]b[a, HoldForm[\[Theta]\[Theta]b]]]]
-Express[Evaluate[D\[Theta]b[,a, HoldForm[\[Theta]\[Theta]b]]]]
-Express[Evaluate[D\[Theta][a,D\[Theta][b, HoldForm[\[Theta]\[Theta]]]]]]
-Express[Evaluate[D\[Theta][,a,D\[Theta][b, HoldForm[\[Theta]\[Theta]]]]]]
-Express[Evaluate[D\[Theta][a,D\[Theta][,b, HoldForm[\[Theta]\[Theta]]]]]]
-Express[Evaluate[D\[Theta][,a,D\[Theta][,b, HoldForm[\[Theta]\[Theta]]]]]]
-Express[Evaluate[D\[Theta]b[a,D\[Theta]b[b, HoldForm[\[Theta]\[Theta]b]]]]]
-Express[Evaluate[D\[Theta]b[,a,D\[Theta]b[b, HoldForm[\[Theta]\[Theta]b]]]]]
-Express[Evaluate[D\[Theta]b[a,D\[Theta]b[,b, HoldForm[\[Theta]\[Theta]b]]]]]
-Express[Evaluate[D\[Theta]b[,a,D\[Theta]b[,b, HoldForm[\[Theta]\[Theta]b]]]]]
-
-filehandle = OpenWrite["superfields_0.raw"];
-Do[
-  tmp = TeXConvert[t];
-  WriteString[filehandle, tmp];
-  WriteString[filehandle, "\n\\\\&\n"];
-  , {t, ToTeX}];
-Close[filehandle];
-
-
-\[CapitalDelta]x[\[Mu]_] := Module[{a=Unique[], b=Unique[]}, -I TDot[\[Theta][a], \[Sigma][\[Mu], a, b], \[Theta]b[b]]];
-\[CapitalDelta]x2 := (-1/2)*\[Theta]\[Theta]*\[Theta]\[Theta]b;
-\[CapitalPhi][i_] := Module[{c=Unique[]}, \[Phi][i,y] + Sqrt[2] TDot[\[Theta][c],\[Psi][i,y,,c]] + \[Theta]\[Theta] F[i,y]]
-YtoX[exp_] := exp //. {
-  (t:NT|GT)[Field[n_,y], any___] :> Module[{\[Mu]=Unique[\[Mu]]}, t[Field[n,x], any] + \[CapitalDelta]x[\[Mu]]*Dx[,\[Mu], t[Field[n,x], any]] + (\[CapitalDelta]x2/2)t[Field[Dx2[n], x], any]]//ReleaseHoldAll//ExpandAll
-}
-
-
-ToTeX = {};
-Express[\[Phi]["dummy",HoldForm[y]], YtoX, False]
-Express[\[CapitalPhi][i]]
-Express[\[CapitalPhi][i]//YtoX]
-Express[\[CapitalPhi][i]//YtoX//Conjugate]
-Express[(\[CapitalPhi][i]//YtoX//Conjugate)(\[CapitalPhi][j]//YtoX)]
-Express[ThetaCoeff[(\[CapitalPhi][i]//YtoX)(\[CapitalPhi][j]//YtoX), 2, 0]]
-Express[ThetaCoeff[(\[CapitalPhi][i]//YtoX)(\[CapitalPhi][j]//YtoX)(\[CapitalPhi][k]//YtoX), 2, 0]]
-
-filehandle = OpenWrite["superfields_1.raw"];
-Do[
-  tmp = TeXConvert[t];
-  WriteString[filehandle, tmp];
-  WriteString[filehandle, "\n\\\\&\n"];
-  , {t, ToTeX}];
-Close[filehandle];  
-
-
-expIKP = Module[{
-    IKP=Function[i, (Ik \[CapitalPhi][i]//YtoX)//.{\[Phi][i,x]:>\[Phi], F[i,x]:>F}] (*delayed evaluation*)
-  },
-  1 + IKP[i] + (1/2)IKP[i]IKP[i] + (1/6)IKP[i]IKP[i]IKP[i] + (1/24)IKP[i]IKP[i]IKP[i]IKP[i]+ (1/120)IKP[i]IKP[i]IKP[i]IKP[i]IKP[i]]//ReleaseHoldAll//ExpandAll;
-
-
-expIKPexpanded = Total[{
-  expN[Ik \[Phi], 5],
-  (-Sqrt[2]Ik TDot[-\[Theta][a],\[Psi][i,x,,a]]expN[Ik \[Phi],4]),
-  (-I Ik)expN[Ik \[Phi], 4]TDot[\[Theta][a],\[Sigma][\[Mu],a,b],\[Theta]b[b],NT[Field[Dx["\[Phi]"[i]], x], LI[\[Mu], "lorentz"]]],
-  (Ik F expN[Ik \[Phi], 4]\[Theta]\[Theta] - (Ik^2/2) TDot[\[Psi][i, x,a],\[Psi][i, x,,a]]expN[Ik \[Phi], 3]\[Theta]\[Theta]),
-  (Ik I)/Sqrt[2] expN[Ik \[Phi],4] TDot[GT[Field[Dx["\[Psi]"[i]], x], LI[\[Mu], "lorentz"], UI[a, "spinor"]], \[Sigma][\[Mu], a, b], \[Theta]b[b]] \[Theta]\[Theta],
-  ( Ik^2 I/Sqrt[2]) \[Theta]\[Theta] expN[Ik \[Phi], 3]TDot[GT[Field["\[Psi]"[i], x], UI[a, "spinor"]], \[Sigma][\[Mu],a,b],\[Theta]b[b], NT[Field[Dx["\[Phi]"[i]], x], LI[\[Mu], "lorentz"]]],
-  (-Ik/4 expN[Ik \[Phi],4]NT[Field[Dx2["\[Phi]"[i]],x]] + (-Ik^2/4)expN[Ik \[Phi],3] TDot[NT[Field[Dx["\[Phi]"[i]],x],LI[\[Mu],"lorentz"]],NT[Field[Dx["\[Phi]"[i]],x],UI[\[Mu],"lorentz"]]]) \[Theta]\[Theta] \[Theta]\[Theta]b}
-];
-(expIKP - expIKPexpanded) //. expN[a_, n_] :> Sum[a^i/i!, {i, 0, n}]// ReleaseHoldAll // RewriteIndices
-
-
-ToTeX = {};
-expIKPexpanded //. expN[a_, n_] :> Exp[a] // ReleaseHoldAll // RewriteIndices // CollectTheta // Expand
-Express[%]
-filehandle = OpenWrite["superfields_2.raw"];
-Do[
-  tmp = TeXConvert[t];
-  WriteString[filehandle, tmp];
-  WriteString[filehandle, "\n\\\\&\n"];
-  , {t, ToTeX}];
-Close[filehandle];
+(* for debug
+T[x,a,b]T[y,b,c]+T[y,a,b]T[x,b,c]//SymmetrizeT//RewriteIndices//ExpandAll
+T[x,a,b]T[y,b,c]-T[y,a,b]T[x,b,c]//SymmetrizeT//RewriteIndices//ExpandAll
+\[Sigma]b[\[Mu],a,b]\[Sigma][\[Nu],b,c]- (\[Sigma]b[\[Mu],a,b]\[Sigma][\[Nu],b,c]//ReleaseHoldAll//Sym\[Sigma]//ReleaseHoldAll//ExpandAll)
+%//ReleaseHoldAll // FillIndices[#,"spinor"]& // Table[#,{a,2},{c,2},{\[Mu],0,3},{\[Nu],0,3}]&
+\[Sigma]b[\[Mu],c,a]\[Sigma][\[Nu],b,c]- (\[Sigma]b[\[Mu],c,a]\[Sigma][\[Nu],b,c]//ReleaseHoldAll//Sym\[Sigma]//ReleaseHoldAll//ExpandAll)
+%//ReleaseHoldAll // FillIndices[#,"spinor"]& // Table[#,{a,2},{b,2},{\[Mu],0,3},{\[Nu],0,3}]&
+FF0[p,q,x,\[Mu],\[Nu]] // SymmetrizeT // RewriteIndices
+FF0[p,q,x,,\[Mu],\[Nu]] // SymmetrizeT // RewriteIndices*)
 
 
 (* ::Subsection:: *)
 (*Vector superfield*)
 
 
-V[i_] := Module[{a=Unique[], b=Unique[], c=Unique[], \[Mu]=Unique[]}, Total[{
-  CC[i,x],
-  +I TDot[\[Theta][a],   \[Chi][i, x,,a]],
-  -I TDot[\[Theta]b[,a], \[Chi]b[i, x,a]],
-  (1/2)HoldForm[TDot][\[Theta][a],\[Theta][,a],M1[i,x]+I M2[i, x]],
-  (1/2)HoldForm[TDot][\[Theta]b[,a],\[Theta]b[a],M1[i,x]-I M2[i, x]],
-  -TDot[\[Theta][a],\[Sigma][\[Mu],a,b],\[Theta]b[b],A[i,x,,\[Mu]]],
-  +TDot[\[Theta][a], \[Theta][,a], \[Theta]b[,b], \[Lambda]b[i,x,b]],
-  (+1/2)TDot[\[Theta][a], \[Theta][,a], \[Theta]b[,b], \[Sigma]b[\[Mu],b,c],HoldForm[Dx][,\[Mu],\[Chi][i,x,,c]]],
-  +TDot[\[Theta]b[,a], \[Theta]b[a], \[Theta][b], \[Lambda][i,x,,b]],
-  (-1/2)TDot[\[Theta]b[,a], \[Theta]b[a], \[Theta][b], \[Sigma][\[Mu],b,c],HoldForm[Dx][,\[Mu],\[Chi]b[i,x,c]]],
-  (1/2)TDot[\[Theta][a],\[Theta][,a],\[Theta]b[,b],\[Theta]b[b],dd[i,x]],
-  (-1/4)TDot[\[Theta][a],\[Theta][,a],\[Theta]b[,b],\[Theta]b[b],HoldForm[Dx][\[Mu],HoldForm[Dx][,\[Mu],CC[i,x]]]]
-}]]
+\[CapitalDelta]x[\[Mu]_] := Module[{a=Unique[], b=Unique[]}, -I TDot[\[Theta][a], \[Sigma][\[Mu], a, b], \[Theta]b[b]]];
+\[CapitalDelta]x2 := (-1/2)*\[Theta]\[Theta]*\[Theta]\[Theta]b;
+YtoX[exp_] := exp //. {
+  (t:NT|GT)[Field[n_,y], any___] :> Module[{\[Mu]=Unique[\[Mu]]}, t[Field[n,x], any] + \[CapitalDelta]x[\[Mu]]*Dx[,\[Mu], t[Field[n,x], any]] + (\[CapitalDelta]x2/2)t[Field[Dx2[n], x], any]],
+  (t:NT|GT)[OverBar[Field[n_,yd]],any___] :> Module[{\[Mu]=Unique[\[Mu]]}, t[OverBar[Field[n,x]], any] - \[CapitalDelta]x[\[Mu]]*Dx[,\[Mu], t[Field[n,x], any]] + (\[CapitalDelta]x2/2)t[Field[Dx2[n], x], any]]
+}//ReleaseHoldAll//ExpandAll
 
 
-V[i]//(# - Conjugate[#])& // ReleaseHoldAll //SortTDot // RewriteIndices
+SymmetrizeT[exp_] := exp//.TDot[w:OrderlessPatternSequence[any___, T[s_,i_,j_],T[t_,j_,k_]]] :> (1/2) TDot[any, Module[{u=Unique[]}, NT["TS", NI[s, "SUNF"], NI[t, "SUNF"], NI[i, "SUNI"], LI[k, "SUNI"]] + I NT["f", NI[s, "SUNF"], NI[t, "SUNF"], NI[u, "SUNF"]]T[u,i,k]]];
 
-
-V[i] - I(\[CapitalPhi][i]//YtoX) +I (\[CapitalPhi][i]//YtoX//Conjugate);
-V[i]/.{
-   NT[Field["C"[i], x]] -> NT[Field["C"[i], x]] - I \[Phi][i,x]+I Conjugate[\[Phi][i,x]],
-   w:(NT[Field["M1"[i], x]] + I NT[Field["M2"[i], x]]):> w - 2 I F[i,x],
-   w:(NT[Field["M1"[i], x]] - I NT[Field["M2"[i], x]]):> w + 2 I Conjugate[F[i,x]],
-   GT[Field["\[Chi]"[i],x],s:(_UI|_LI)] :> GT[Field["\[Chi]"[i],x],s] - Sqrt[2] GT[Field["\[Psi]"[i],x],s],
-   GT[OverBar[Field["\[Chi]"[i],x]],s:(_UI|_LI)] :> GT[OverBar[Field["\[Chi]"[i],x]],s] -Sqrt[2] GT[OverBar[Field["\[Psi]"[i],x]],s],
-   NT[Field["A"[i],x],s:(_UI|_LI)] :> NT[Field["A"[i],x],s] + NT[Field[Dx["\[Phi]"[i]],x],s] + NT[Field[Conj[Dx["\[Phi]"[i]]],x],s]
+ContractT[exp_] := exp//.{
+  TDot[w:OrderlessPatternSequence[x___, T[a_,i_,j_], T[b_,j_,k_]]] :> TDot[x,TT[{a,b},i,k]],
+  TDot[w:OrderlessPatternSequence[x___, TT[{a__},i_,k_], T[c_,k_,m_]]] :> TDot[x,TT[{a,c},i,m]],
+  TDot[w:OrderlessPatternSequence[x___, TT[{a__},i_,j_], T[c_,k_,i_]]] :> TDot[x,TT[{c,a},k,j]],
+  TDot[w:OrderlessPatternSequence[x___, TT[{a__},i_,k_], TT[{c__},k_,m_]]] :> TDot[x,TT[{a,c},i,m]]
+} //. {
+  TDot[a___,b:TT[{x_, y_},p_,q_],c___] /; Not[OrderedQ[{x,y}]] :>((b TDot[a,c])/.{x->y,y->x}),
+  TDot[a___,b:TT[{x_, y_},p_,q_],c___] /; OrderedQ[{x,y}] :>((b TDot[a,c]))
 }
-%%-% // ReleaseHoldAll //ExpandAll// RewriteIndices // CollectTheta // RewriteIndices // SortTDot
-
-
-expKV = Module[{
-    KV=Function[i, (k V[i])] (*delayed evaluation*)
-  },
-  1 + KV[i] + (1/2)KV[i]KV[i] + (1/6)KV[i]KV[i]KV[i] + (1/24)KV[i]KV[i]KV[i]KV[i]+ (1/120)KV[i]KV[i]KV[i]KV[i]KV[i]]//ReleaseHoldAll//ExpandAll//ReleaseHoldAll;
-
-
-expKVexpanded = Total[{
-  expN[k CC, 5],
-  I k TDot[\[Theta][a],\[Chi][i,x,,a]]expN[k CC, 4],
-  -I k TDot[\[Theta]b[,a],\[Chi]b[i,x,a]]expN[k CC, 4],
-  k^2 TDot[\[Theta][a],\[Chi][i,x,,a]]TDot[\[Theta]b[,a],\[Chi]b[i,x,a]]expN[k CC, 3],
-  -k TDot[\[Theta][a],\[Sigma][,\[Mu],a,b],\[Theta]b[b],A[i,x,\[Mu]]] expN[k CC, 4],
-  k(1/2)TDot[\[Theta][a],\[Theta][,a],M1[i,x]+I M2[i, x]]expN[k CC, 4],
-  (k^2/4)\[Theta]\[Theta] TDot[\[Chi][i,x,a],\[Chi][i,x,,a]]expN[k CC, 3],
-  k(1/2)TDot[\[Theta]b[,a],\[Theta]b[a],M1[i,x]-I M2[i, x]]expN[k CC, 4],
-  (k^2/4)\[Theta]\[Theta]b TDot[\[Chi]b[i,x,,a],\[Chi]b[i,x,a]]expN[k CC, 3],
-  \[Theta]\[Theta]b(
-      k (TDot[\[Theta][a],\[Lambda][i,x,,a]]-(1/2) TDot[\[Theta][a], \[Sigma][\[Mu],a,c],Dx[,\[Mu],\[Chi]b[i,x,c]]])expN[k CC,4]
-      +(I k^2/2) TDot[\[Theta][a],\[Chi][i,x,,a]]expN[k CC,3](M1[i,x]- I M2[i, x])
-      + (I k^3/4) TDot[\[Theta][a],\[Chi][i,x,,a], \[Chi]b[i,x,,b], \[Chi]b[i,x,b]]expN[k CC,2]
-      + (I k^2/2) TDot[\[Chi]b[i,x,,a], \[Sigma]b[,\[Mu],a,b], \[Theta][,b]]A[i,x,\[Mu]]expN[k CC,3]
-  ),
-  \[Theta]\[Theta](
-      k (TDot[\[Theta]b[,a],\[Lambda]b[i,x,a]]+(1/2) TDot[\[Theta]b[,a], \[Sigma]b[\[Mu],a,c],Dx[,\[Mu],\[Chi][i,x,,c]]])expN[k CC,4]
-      -(I k^2/2) TDot[\[Theta]b[,a],\[Chi]b[i,x,a]]expN[k CC,3](M1[i,x]+ I M2[i, x])
-      - (I k^3/4) TDot[\[Theta]b[,a],\[Chi]b[i,x,a], \[Chi][i,x,b], \[Chi][i,x,,b]]expN[k CC,2]
-      +(I k^2/2) TDot[\[Chi][i,x,a], \[Sigma][,\[Mu],a,b], \[Theta]b[b]]A[i,x,\[Mu]]expN[k CC,3]
-  ),
-  \[Theta]\[Theta] \[Theta]\[Theta]b k((1/2)dd[i,x]-(1/4)Dx[\[Mu],Dx[,\[Mu],CC[i,x]]]) expN[k CC, 4],
-  \[Theta]\[Theta] \[Theta]\[Theta]b I ((-k^2/2) TDot[\[Lambda][i,x,a],\[Chi][i,x,,a]] - (-k^2/2) TDot[\[Lambda]b[i,x,,a],\[Chi]b[i,x,a]]) expN[k CC, 3],
-  \[Theta]\[Theta] \[Theta]\[Theta]b (k^2/4)(TDot[M1[i,x],M1[i,x]]+TDot[M2[i,x],M2[i,x]] + A[i,x,\[Mu]]A[i,x,,\[Mu]])expN[k CC, 3],
- \[Theta]\[Theta] \[Theta]\[Theta]b I ((-k^3/2) (I/4)TDot[\[Chi][i,x,a],\[Chi][i,x,,a]]( M1[i,x] -I M2[i, x]) - (k^3/2)(I/4) TDot[\[Chi]b[i,x,,a],\[Chi]b[i,x,a]](M1[i,x]+I M2[i, x])) expN[k CC, 2],
- \[Theta]\[Theta] \[Theta]\[Theta]b I (k^2/4)TDot[\[Chi]b[i,x,,a], \[Sigma]b[\[Mu],a,c],Dx[,\[Mu],\[Chi][i,x,,c]]] expN[k CC, 3],
- \[Theta]\[Theta] \[Theta]\[Theta]b (-I) (k^2/4)TDot[Dx[,\[Mu],\[Chi]b[i,x,,a]], \[Sigma]b[\[Mu],a,c],\[Chi][i,x,,c]] expN[k CC, 3],
- \[Theta]\[Theta] \[Theta]\[Theta]b k^4/16 TDot[\[Chi][i,x,a],\[Chi][i,x,,a]] TDot[\[Chi]b[i,x,,b],\[Chi]b[i,x,b]] expN[k CC, 1],
- \[Theta]\[Theta] \[Theta]\[Theta]b (k^3/4)TDot[\[Chi]b[i,x,,a], \[Sigma]b[,\[Mu],a,c],\[Chi][i,x,,c]]A[i,x,\[Mu]] expN[k CC, 2]
-}];
-((expKV //. CC[i,x] -> CC) - expKVexpanded) //. expN[a_, n_] :> Sum[a^i/i!, {i, 0, n}]// ReleaseHoldAll //SortTDot // CollectTheta // RewriteIndices
-
-
-Vwz[i_] := Module[{a=Unique[], b=Unique[], \[Mu]=Unique[]}, Total[{
-  -TDot[\[Theta][a],\[Sigma][\[Mu],a,b],\[Theta]b[b],A[i,x,,\[Mu]]],
-  +TDot[\[Theta][a], \[Theta][,a], \[Theta]b[,b], \[Lambda]b[i,x,b]],
-  +TDot[\[Theta]b[,a], \[Theta]b[a], \[Theta][b], \[Lambda][i,x,,b]],
-  (1/2)TDot[\[Theta][a],\[Theta][,a],\[Theta]b[,b],\[Theta]b[b],dd[i,x]]
+V[i_, j_] := Module[{a=Unique[], b=Unique[], \[Mu]=Unique[], s=Unique[]}, T[s, i, j]* Total[{
+  -TDot[\[Theta][a],\[Sigma][\[Mu],a,b],\[Theta]b[b],A[s,x,,\[Mu]]],
+  +TDot[\[Theta][a], \[Theta][,a], \[Theta]b[,b], \[Lambda]b[s,x,b]],
+  +TDot[\[Theta]b[,a], \[Theta]b[a], \[Theta][b], \[Lambda][s,x,,b]],
+  (1/2)TDot[\[Theta][a],\[Theta][,a],\[Theta]b[,b],\[Theta]b[b],dd[s,x]]
 }]]
-ExpVwz[k_] := 1 + k Vwz[i] + k^2 Vwz[i]Vwz[i]/2
+expV[r_, i_, j_] := Module[{k=Unique[]}, \[Delta][i, j, "SUNI"] + r V[i,j] + (r^2/2)TDot[V[i,k],V[k,j]]]// ReleaseHoldAll//ExpandAll
+
+
+g/:NumericQ[g]:=True
+w1 = HoldForm[(-1/(8g))DDb[,b,DDb[b,TDot[expV[-2 g,p,r],DD[,a,expV[2 g,r,q]]]]]];
+wExpanded0 = \[Lambda][s,y,,a]T[s,p,q] + dd[s,y]T[s,p,q]\[Theta][,a] + TDot[\[Sigma][\[Mu],\[Nu],a,b],\[Theta][,b]] "FF0"[p,q,y,,\[Mu],\[Nu]] + \[Theta]\[Theta] I \[Sigma][\[Mu],a,b]"DxD"[,\[Mu],\[Lambda]b[s,yd,b]]T[s,p,q];
+wExpanded = \[Lambda][s,y,,a]T[s,p,q] + dd[s,y]T[s,p,q]\[Theta][,a] + TDot[\[Sigma][\[Mu],\[Nu],a,b],\[Theta][,b]] FF0[p,q,y,,\[Mu],\[Nu]] + \[Theta]\[Theta] I \[Sigma][\[Mu],a,b]DxD[,\[Mu],Evaluate[\[Lambda]b[s,yd,b]//YtoX]]T[s,p,q] // YtoX;
+diff = w1-wExpanded // ReleaseHoldAll // ExpandAll // SortTDot // RewriteIndices;
+
+
+diff // Switch\[Sigma] // Switch\[Sigma] // SymmetrizeT//ExpandAll//RewriteIndices;
+SymmetrizeIndices[Sym\[Sigma][%], {"\[Mu]","\[Nu]"}]//SortTDot//RewriteIndices//LorentzSort//Switch\[Sigma]//ReleaseHoldAll//RewriteIndices
+
+
+TeXConvert[exp_] := Module[{tmp},
+      tmp = exp //. {a->"alpha",b->"beta",c->"gamma",d->"delta",Complex[a_, b_] :> a+b "ii"} // TeXForm // ToString;
+      tmp = FixedPoint[StringReplace[{
+           " }" -> "}", " ^" -> "^", " _" -> "_", " )" -> ")",
+           "\\dot{\\alpha}" -> "\\dalpha", "\\dot{\\beta}" -> "\\dbeta", "\\dot{\\gamma}" -> "\\dgamma", "\\dot{\\delta}" -> "\\ddelta",
+           "\\bar{\\theta}" -> "\\btheta",
+           "\\bar{\\sigma}" -> "\\bsigma",
+           "\\Sigma"->"\\sigma",
+           "\\overline{" -> "\\bar{",
+           "\\text{Tr}"->"\\Tr",
+           "\\text{ii}"->"\\ii",
+           "\\text{}"->"{}",
+           "\{+\}-"->"-",
+           "\{+\}"->"+",
+           "_{\\text{dummy}}"->"",
+           "^{\\text{dummy}}"->"",
+           "\\text{alpha}"->"\\alpha",
+           "\\text{beta}"->"\\beta",
+           "\\text{gamma}"->"\\gamma",
+           "\\text{delta}"->"\\delta",
+           "\\text{a}"->"\\alpha",
+           "\\text{b}"->"\\beta",
+           "\\text{c}"->"\\gamma",
+           "\\text{d}"->"\\delta",
+           "\\text{s}"->"a",
+           "\\text{t}"->"b",
+           "\\text{u}"->"c",
+           "\\text{F}"->"F",
+           "\\text{C}"->"C",
+           "\\text{A}"->"A",
+           "\\text{DD}"->"D",
+           "\\text{M1}"->"M",
+           "\\text{M2}"->"N",
+           "\\text{i}"->"i",
+           "\\text{T}"->"T",
+           "\\text{yd}"->"y^*",
+           ".\\sigma"->"\\sigma",
+           ".\\bsigma"->"\\bsigma",
+           a:("\\delta^{\\"~~Repeated[LetterCharacter])~~"}{}_{\\"~~s:Repeated[LetterCharacter]~~"}":>a<>"}_{\\"<>s<>"}",
+           a:("\\sigma^{\\"~~Repeated[LetterCharacter]~~"}") ~~ "{}_" :> a<>"_"
+     }], tmp];
+     tmp = StringReplace[tmp, {"["->"\\bigl(", "]"->"\\bigr)"}];
+     tmp = StringReplace[tmp, {"\\left\\bigl"->"\\left", "\\right\\bigr"->"\\right"}];
+     tmp]
 
 
 ToTeX = {};
-Express[V["dummy"]// ReleaseHoldAll// RewriteIndices // SortTDot]
-V["dummy"] - I (\[CapitalPhi]["dummy"]//YtoX) +I (\[CapitalPhi]["dummy"]//YtoX//Conjugate) // ReleaseHoldAll// RewriteIndices // SortTDot;
-Express[%]
-expKVexpanded //. expN[a_, n_] :> Exp[a] // ReleaseHoldAll // RewriteIndices // CollectTheta
-Express[%]
-Express[Vwz[i]]
-Express[ExpVwz[2g Q]]
-filehandle = OpenWrite["superfields_3.raw"];
+Express[FF["s",x,\[Mu],\[Nu]]]
+Express[FF0["i","j",x,\[Mu],\[Nu]]]
+Express[DxD[\[Mu],\[Lambda]["s",x,a]]]
+wExpanded0//RewriteIndices//ExpandAll//RewriteIndices//ContractT;
+Express[%,Collect[#, _TT]&]
+wExpanded//RewriteIndices//ReleaseHoldAll//ExpandAll//RewriteIndices//ContractT;
+Express[%,Collect[#, _TT]&]
+filehandle = OpenWrite["superfields_gauge_1.raw"];
 Do[
   tmp = TeXConvert[t];
   WriteString[filehandle, tmp];
