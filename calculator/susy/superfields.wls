@@ -447,6 +447,20 @@ Vwz[i_] := Module[{a=Unique[], b=Unique[], \[Mu]=Unique[]}, Total[{
 ExpVwz[k_] := 1 + k Vwz[i] + k^2 Vwz[i]Vwz[i]/2
 
 
+LorentzSort[exp_] := (exp//.{
+  (p:NT|GT)[x1__, LI[\[Mu]_,"lorentz"], x2___]/; FreeQ[{x1}, "\[Eta]"] :> Module[{\[Nu]=Unique[]}, \[Eta]L[\[Mu], \[Nu]] p[x1, UI[\[Nu],"lorentz"], x2]]
+}//SortTDot//RewriteIndices)//.NT[HoldForm["\[Eta]"], a_, b_] /; Not[OrderedQ[{a,b}]] :> NT[HoldForm["\[Eta]"], b, a]//ReleaseHoldAll;
+
+kinetic = Total[{
+  TDot[I \[Psi]b[i,x,,a], \[Sigma]b[\[Mu],a,b],Dx[,\[Mu],\[Psi][j,x,,b]]-I g Q A[i,x,,\[Mu]]\[Psi][j,x,,b]],
+  Conjugate[(Dx[\[Mu],\[Phi][i,x]]-I g Q A[i,x,\[Mu]]\[Phi][i,x])](Dx[,\[Mu],\[Phi][j,x]]-I g Q A[i,x,,\[Mu]]\[Phi][j,x])
+}]//Simplify[#,{Q\[Element]Reals,g>0}]&
+
+surface = -1/4 Dx[\[Mu],Conjugate[\[Phi][i,x]]]\[Phi][j,x]-1/4Dx[\[Mu],\[Phi][j,x]]Conjugate[\[Phi][i,x]] - (I/2)TDot[\[Psi]b[i,x,,a] ,\[Sigma]b[\[Mu],a,b],\[Psi][j,x,,b]] // Dx[,\[Mu],#]&
+
+ThetaCoeff[(\[CapitalPhi][i]//YtoX//Conjugate)(\[CapitalPhi][j]//YtoX)ExpVwz[2g Q],2,2] - \[Theta]\[Theta] \[Theta]\[Theta]b (kinetic+surface) //ReleaseHoldAll//Expand // CollectTheta // SortTDot // RewriteIndices // LorentzSort
+
+
 ToTeX = {};
 Express[V["dummy"]// ReleaseHoldAll// RewriteIndices // SortTDot]
 V["dummy"] - I (\[CapitalPhi]["dummy"]//YtoX) +I (\[CapitalPhi]["dummy"]//YtoX//Conjugate) // ReleaseHoldAll// RewriteIndices // SortTDot;
@@ -455,6 +469,7 @@ expKVexpanded //. expN[a_, n_] :> Exp[a] // ReleaseHoldAll // RewriteIndices // 
 Express[%]
 Express[Vwz[i]]
 Express[ExpVwz[2g Q]]
+Express[(\[CapitalPhi][i]//YtoX//Conjugate)(\[CapitalPhi][j]//YtoX)ExpVwz[2g Q] - \[Theta]\[Theta] \[Theta]\[Theta]b surface // ReleaseHoldAll // ThetaCoeff[#,2,2]& // Switch\[Sigma] // SortTDot // RewriteIndices // LorentzSort]
 filehandle = OpenWrite["superfields_3.raw"];
 Do[
   tmp = TeXConvert[t];

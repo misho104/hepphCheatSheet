@@ -8,3 +8,5 @@
 \\&
 \text{ExpVwz}(2 g Q)=1-2 g Q A_i(x)_{\mu} (\theta \sigma^{\mu}\btheta)+2 g Q (\btheta\bar{\lambda_i}(x)) \theta^2+2 g Q (\theta \lambda_i(x)) \btheta^2+g Q \left(D_i(x)+g Q A_i(x)_{\mu}.A_i(x){}^{\mu}\right) \theta^4
 \\&
+\text{LorentzSort}\left(\text{RewriteIndices}\left(\text{SortTDot}\left(\text{Switch$\sigma $}\left((\text{ThetaCoeff}(\text{$\#$1},2,2)\&)\left(\text{ReleaseHoldAll}\left(\text{YtoX}(\Phi (i))^* \text{YtoX}(\Phi (j)) \text{ExpVwz}(2 g Q)-\theta \theta  \text{$\theta \theta $b} \text{surface}\right)\right)\right)\right)\right)\right)=\left(F_j(x).F_i^*(x)+\partial^{\mu}\phi_j(x).\partial_{\mu}\phi_i^*(x)-\sqrt{2} g Q (\lambda_i(x)\psi_j(x)).\phi_i^*(x)-\sqrt{2} g Q (\bar{\lambda_i}(x)\bar{\psi_i}(x)).\phi_j(x)+\ii (\bar{\psi_i}(x)\bsigma^{\mu}){}^{\beta}.\partial_{\mu}\psi_j(x)_{\beta}+g Q D_i(x).\phi_j(x).\phi_i^*(x)-\ii g Q \phi_j(x).A_i(x){}^{\mu}.\partial_{\mu}\phi_i^*(x)+\ii g Q \phi_i^*(x).A_i(x){}^{\mu}.\partial_{\mu}\phi_j(x)+g Q (\bar{\psi_i}(x)\bsigma^{\mu}\psi_j(x)).A_i(x)_{\mu}+g^2 Q^2 \phi_j(x).\phi_i^*(x).A_i(x){}^{\mu}.A_i(x)_{\mu}\right) \theta^4
+\\&
