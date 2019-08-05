@@ -1,4 +1,4 @@
-%%% Time-Stamp: <2019-07-31 20:53:19 misho>
+%%% Time-Stamp: <2019-08-01 07:06:55 misho>
 \documentclass[CheatSheet]{subfiles}
 
 \newcommand{\OQ}{{\mathcal Q}}
@@ -143,6 +143,7 @@ which means $\bigl[\Psi\bigr]_{\theta^4}$ is SUSY-invariant up to total derivati
 will be SUSY-invariant if $\bar \OD_\dalpha\Psi=0$, i.e., $\Psi$ is a chiral superfield. Therefore, SUSY-invariant Lagrangian is given by
 \begin{equation}
  \mathcal L = \bigl[\text{(any real superfield)}\Bigr]_{\theta^4} + \bigl[\text{(any chiral superfield)}\Bigr]_{\theta^2} + \bigl[\text{(any chiral superfield)}^*\Bigr]_{\btheta^2}.
+\label{eq:susy-inv}
 \end{equation}
 \paragraph{Chiral superfield} A chiral superfield is a superfield that satisfies $\bar \OD_\dalpha \Phi = 0$, i.e.,
 we find
@@ -328,7 +329,7 @@ For non-Abelian gauges, the supergauge transformation for the real field is eval
 \ee^{2\ii g \Omega^{*}}
  \ee^{2g V}
 \ee^{-2\ii g \Omega}
-\\&=
+real super\\&=
 \left(\ee^{2\ii g\Omega^*}\ee^{2g V}\ee^{-2\ii g\Omega^*}\right)
 \left(\ee^{2\ii g\Omega^*}\ee^{-2\ii g\Omega}\right)
 \\&=\exp\left(\ee^{[2\ii g\Omega^*,}2gV\right)\ee^{2\ii g(\Omega^*-\Omega)}+\Order(\Omega^2)
@@ -416,7 +417,7 @@ In Wess-Zumino gauge, it is given by
 \mathcal W_\alpha &=\left\{
 \lambda_{\alpha}^{a}(y)+\theta_\alpha D^{a}(y)+\frac{[\ii(\sigma^{\mu}\bsigma^{\nu}-\sigma^{\nu}\bsigma^{\mu})\theta]_\alpha}{4} F^a_{\mu\nu}(y)
 +\theta^2 \left[\ii\sigma^{\mu}\DD_\mu\bar{\lambda}^a(y^*)\right]_\alpha
-\right\}T^a
+\right\}t^a
 \\\begin{split}&=\left[
 \lambda_{\alpha}^{a}+\theta_\alpha D^{a}+\frac{\ii}{2} (\sigma^{\mu}\bsigma^{\nu}\theta)_\alpha F^a_{\mu\nu}
 +\ii \theta^2(\sigma^{\mu}\DD_{\mu}\bar{\lambda}^{a})_\alpha
@@ -447,14 +448,20 @@ Also,
 -\frac{1}{4}\left(\ii \epsilon^{\sigma\mu \nu\rho}+2\eta^{\mu\rho}\eta^{\nu\sigma}\right)
 F^a_{\mu\nu}F^b_{\rho\sigma}
 \right]
-\Tr(T^aT^b)
+\Tr(t^at^b)
 \\
 &=
 \ii\lambda^a\sigma^{\mu}\DD_{\mu}\bar{\lambda}^a
 +\frac12D^a D^a
 -\frac14F^a_{\mu\nu}F^{a\mu\nu}
 +\frac{\ii}{8}\epsilon^{\mu \nu\rho\sigma}
-F^a_{\mu\nu}F^a_{\rho\sigma}.
+F^a_{\mu\nu}F^a_{\rho\sigma},
+\\
+ \left[\Tr(\mathcal W^\alpha\mathcal W_\alpha)\right]_{\theta^4}
+&=
+\frac{\theta^4}{4} \left(2 (\partial^{\mu}\lambda^{a})(\partial_{\mu}\lambda^{b})-\lambda^{a}\partial^2\lambda^{b}-(\partial^2\lambda^{a})\lambda^b\right)\Tr(t^at^b)
+=
+\frac{\theta^4}{4} \left((\partial^{\mu}\lambda^{a})(\partial_{\mu}\lambda^{a})-\lambda^{a}\partial^2\lambda^{a}\right).
 \end{align}
 
 For Abelian theory,
@@ -469,4 +476,58 @@ For Abelian theory,
 +\frac{\ii}{8}\epsilon^{\mu \nu\rho\sigma}
 F_{\mu\nu}F_{\rho\sigma}.
 \end{align}
+
+\subsection{Lagrangian blocks}
+\paragraph{Lagrangian construction}
+The supergauge transformation is summarized as
+\begin{equation}
+ \Phi_i   \to U_{ij}\Phi_j,
+\qquad
+ \tilde\Phi_j \to \tilde\Phi_i [U^{-1}]_{ij},
+\qquad
+\mathcal W_\alpha\to U'\mathcal W_\alpha U^{\prime-1},
+\end{equation}
+where
+\begin{equation}
+ \tilde\Phi^*_j :=  \Phi^*_i [\ee^{2gV t^a_\Phi}]_{ij},
+\qquad
+ U:=\exp(2\ii g \Omega^at^{a}_\Phi),
+\qquad
+ U':=\exp(2\ii g \Omega^at^{a}_{\mathcal W}),
+\end{equation}
+$t^a_\Phi$ is the representation matrix or U(1) charge for the field $\Phi$,
+and $t^a_{\mathcal W}$ is the representation matrix that is used to define $\mathcal W_\alpha$.
+To construct a Lagrangian, we should composite these ingredients in real and invariant under SUSY, supergauge, and Lorentz transformation.
+A sufficient condition for SUSY invariance is given by \eqref{eq:susy-inv}, so
+\begin{equation}
+ \mathcal L =
+\left[K(\Phi_i, \tilde\Phi^*_j)\right]_{\theta^4}
++
+\left\{
+\left[f_{ab}(\Phi_i)\mathcal W^a\mathcal W^b\right]_{\theta^2} + \text{H.c.}
+\right\}
++
+\left\{
+\left[W(\Phi_i)\right]_{\theta^2} + \text{H.c.}
+\right\} + D
+\end{equation}
+is one possible construction.
+The last term $D$ (Fayet-Illiopoulos term) comes from $V$ of an U(1) gauge boson; note that its supergauge invariance is due to the intentional definition of $V$.
+
+One can construct more general Lagrangian; for example, one can introduce a vector superfield that is not associated to a gauge symmetry, but then the supergauge fixing is not available and one has to include $C$ or $M$ fields.
+
+\paragraph{Renormalizable Lagrangian}
+Since $[\Phi]_{\theta^4}$ is a total derivative, renormalizable Lagrangian is limited to
+\begin{equation}
+  \mathcal L =
+\left[\Phi^*_i [\ee^{2gV t^a_\Phi}]_{ij}\Phi_j\right]_{\theta^4}
++
+\left\{
+\left[\mathcal W^a\mathcal W^a\right]_{\theta^2} 
++\left[W(\Phi_i)\right]_{\theta^2} + \text{H.c.}
+\right\}
++
+D
+\end{equation}
+up to numeric coefficients.
 \end{document}
