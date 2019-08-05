@@ -1,4 +1,4 @@
-%%% Time-Stamp: <2019-08-01 07:06:55 misho>
+%%% Time-Stamp: <2019-08-05 19:57:31 misho>
 \documentclass[CheatSheet]{subfiles}
 
 \newcommand{\OQ}{{\mathcal Q}}
@@ -11,6 +11,182 @@
 \input{calculator/susy/formulae.txt}
 
 \paragraph{Superfields}
+\begin{align}
+ &\Phi= \phi(x)+\sqrt{2} \theta \psi(x)-\ii \partial_{\mu}\phi(x) (\theta \sigma^{\mu}\btheta)+F(x) \theta^2+\frac{\ii}{\sqrt{2}} (\partial_{\mu}\psi(x)\sigma^{\mu}\btheta) \theta^2-\frac{\theta^4}{4} \partial^2\phi(x) ,
+\\
+ &\Phi^*
+ = \phi^*(x)+\sqrt{2} \bar{\psi}(x)\btheta+F^*(x) \btheta^2+\ii \partial_{\mu}\phi^*(x) (\theta \sigma^{\mu}\btheta)-\frac{\ii}{\sqrt{2}}[\theta \sigma^{\mu}\partial_{\mu}\bar{\psi}(x)] \btheta^2-\frac{\theta^4}{4} \partial^2\phi^*(x),
+\\
+ &V=(\btheta\bsigma^{\mu}\theta)A_{\mu}(x)+\btheta^2\theta\lambda(x)+\theta^2\btheta\bar{\lambda}(x)+\frac{\theta^4}{2}D(x)\qquad\text{(in Wess-Zumino supergauge)}.
+\end{align}
+\paragraph{Without gauge symmetries}
+\begin{align}
+&\mathcal L =
+\Phi_i^* \Phi_i\Big|_{\theta^4}{} + \biggl(W(\Phi_i)\Big|_{\theta^2} + \text{H.c.}\biggr);
+\\
+&\quad\Phi_i^* \Phi_i\Big|_{\theta^4}=
+(\partial_{\mu}\phi_i^*)(\partial^{\mu}\phi_i)+\ii\bar{\psi_i}\sigma^\mu\partial_{\mu}\psi_i+F_i^*F_i,
+\\
+\begin{split}
+ &\quad W(\Phi_i)\Big|_{\theta^2}\leadsto\Bigl[\kappa_i\Phi_i+
+ m_{ij}\Phi_i\Phi_j
+ + y_{ijk}\Phi_i\Phi_j\Phi_k
+ \Bigr]_{\theta^2}
+ \\&\qquad\qquad\quad=
+ \kappa_i F_i + m_{ij}\left(-\psi_i\psi_j+F_i\phi_j+\phi_iF_j\right)
+ \\
+ &\qquad\qquad\qquad\qquad
+ +y_{ijk}\Big[
+ -(\psi_i\psi_j\phi_k+\psi_i\phi_j\psi_k+\phi_i\psi_j\psi_k)
+ +\phi_i\phi_jF_k+\phi_i F_j \phi_k+F_i \phi_j\phi_k
+ \Big].
+\end{split}
+\end{align}
+\paragraph{With a U(1) gauge symmetry}
+\footnote{
+We use the convention with $V\ni\lambda(x)\theta\btheta^2$, which corresponds to $\lambda=\ii\col{\lambda\w{SLHA}}$. In SLHA convention, the scalar-fermion-gaugino interaction is replaced to 
+\begin{equation*}
+  -\sqrt{2}g{\col \ii\lambda^a\w{SLHA}} (\phi^*t^a\psi)
+ -\sqrt{2}g{\col (-\ii\blambda^a\w{SLHA})}(\bar\psi t^a\phi).
+\end{equation*}
+}%
+\begin{equation}
+   \mathcal L =
+\Phi^*_i \ee^{2gV Q_i}\Phi_i\Big|_{\theta^4}
++
+\biggl[
+\left(\frac14 - \frac{\ii g^2\Theta}{32\pi^2}\right)
+\mathcal W^\alpha\mathcal W_\alpha\Big|_{\theta^2} +
+W(\Phi_i)\Big|_{\theta^2} + \text{H.c.}
+\biggr]
++
+\Lambda\w{FI}D;
+\end{equation}\vskip-18pt
+\begin{equation}
+\Phi_i \ee^{2gQ_i V} \Phi_i\Big|_{\theta^4}
+\equiv
+\DD^{\mu}\phi_i^*\DD_{\mu}\phi_i
++\ii \bar{\psi_i}\bsigma^{\mu}\DD_{\mu}\psi_i
++F_i^*F_i
+-\sqrt{2} g Q_i \phi_i^*\lambda\psi_i
+-\sqrt{2} g Q_i \bar{\psi_i}\bar{\lambda}\phi_i
++g Q_i \phi_i^*\phi_i D,
+\end{equation}\vskip-18pt
+\begin{equation}
+\begin{split}
+ \left(\frac14 - \frac{\ii g^2\Theta}{32\pi^2}\right)
+ \mathcal W^\alpha\mathcal W_\alpha\Big|_{\theta^2}+\text{H.c.}
+ &= \frac{1}{2}\Re\mathcal W\mathcal W\big|_{\theta^2}
+ + \frac{g^2\Theta}{16\pi^2}\Im\mathcal W\mathcal W\big|_{\theta^2}
+ \\
+ &\equiv \ii\bar{\lambda}\bsigma^{\mu}\DD_{\mu}\lambda
+ +\frac12DD
+ -\frac14F_{\mu\nu}F^{\mu\nu}
+ +\frac{g^2\Theta}{64\pi^2}\epsilon^{\mu \nu\rho\sigma}
+ F_{\mu\nu}F_{\rho\sigma},
+\end{split}
+\end{equation}\vskip-18pt
+\begin{alignat*}{3}
+\qquad\qquad&&
+ \DD_{\mu}\phi_i&=(\partial_\mu-\ii g Q_i A_\mu)\phi_i, \qquad&
+ \DD_{\mu}\psi_i&=(\partial_\mu-\ii g Q_i A_\mu)\psi_i, \\&&
+\DD^{\mu}\phi_i^*&=(\partial^\mu+\ii g Q_i A^\mu)\phi_i^*, &
+ F_{\mu\nu} &= \partial_\mu A_\nu-\partial_\nu A_\mu,\qquad
+\DD_\mu\lambda=\partial_\mu\lambda.
+\end{alignat*}\vskip-18pt
+\begin{equation}
+  \{\phi,\psi,F\}\xrightarrow{\text{gauge}}
+ \ee^{\ii g Q_i \theta}\{\phi,\psi,F\},\qquad
+  A_\mu\xrightarrow{\text{gauge}} A_\mu+\partial_\mu \theta,\qquad
+  \lambda\xrightarrow{\text{gauge}}\lambda,\qquad
+  D\xrightarrow{\text{gauge}}D.
+\end{equation}
+
+\newpage
+
+\paragraph{With an SU({\itshape N}) gauge symmetry}
+\begin{equation}
+   \mathcal L =
+\Phi^* \ee^{2gV}\Phi\Big|_{\theta^4}
++
+\biggl[
+\left(\frac12 - \frac{\ii g^2\Theta}{16\pi^2}\right)
+\Tr\mathcal W^\alpha\mathcal W_\alpha\Big|_{\theta^2} +
+W(\Phi)\Big|_{\theta^2} + \text{H.c.}
+\biggr];
+\end{equation}\vskip-18pt
+\begin{align}
+ \Phi^*\ee^{2g V}\Phi\Big|_{\theta^4}
+&:=\Phi^*_i\left[\ee^{2g V^a t^a_\Phi}\right]{\!}_{ij}\Phi_j\Big|_{\theta^4}
+\\
+\begin{split}
+ &=
+ (\partial_{\mu}\phi_i^*)(\partial^{\mu}\phi_i)+\ii\bar{\psi_i}\bsigma^\mu\partial_{\mu}\psi_i
++F_i^*F_i
+ -\sqrt{2}g\lambda^a (\phi^*t^a\psi)
+ -\sqrt{2}g\blambda^a(\bar\psi^*t^a\phi)
+ \\&\qquad
+ + g A^a_{\mu}\bpsi\bsigma^\mu(t^a\psi)
+ + 2\ii gA^a_{\mu}\phi^*\partial_{\mu}(t^a\phi)
+ +g^2A^{a\mu}A^b_\mu(\phi^*t^at^b\phi)
+ + gD^a(\phi^*t^a\phi)
+\end{split}
+\\&=
+\DD^\mu\phi^*\DD_\mu\phi
++\ii\bar{\psi_i}\bsigma^\mu\DD_{\mu}\psi_i + F^*F
+ -\sqrt{2}g\lambda^a (\phi^*t^a\psi)
+ -\sqrt{2}g\blambda^a(\bar\psi t^a\phi)
+ + gD^a(\phi^*t^a\phi)
+\end{align}\vskip-18pt
+\begin{equation}
+\begin{split}
+  \left(\frac12 - \frac{\ii g^2\Theta}{16\pi^2}\right)\Tr
+ \mathcal W^\alpha\mathcal W_\alpha\Big|_{\theta^2}+\text{H.c.}
+ &= \Re\Tr\mathcal W\mathcal W\big|_{\theta^2}
+ + \frac{g^2\Theta}{8\pi^2}\Im\Tr\mathcal W\mathcal W\big|_{\theta^2}\\
+&=
+\ii\lambda^a\sigma^{\mu}\DD_{\mu}\bar{\lambda}^a
++\frac12D^a D^a
+-\frac14F^a_{\mu\nu}F^{a\mu\nu}
++\frac{g^2\Theta}{64\pi^2}\epsilon^{\mu \nu\rho\sigma}
+F^a_{\mu\nu}F^a_{\rho\sigma};
+\end{split}
+\end{equation}\vskip-18pt
+\begin{alignat*}{3}
+ \DD_{\mu}\phi_i&=\partial_\mu\phi_i-\ii g A^a_\mu t^a_{ij}\phi_j, \qquad&
+  \DD_{\mu}\psi_i&=\partial_\mu\psi_i-\ii g A^a_\mu t^a_{ij}\psi_j, \qquad&
+  F^a_{\mu\nu}&=\partial_{\mu}A_\nu^a-\partial_{\nu}A_\mu^a+g A_\mu^b A_\nu^c f^{abc},\\
+\DD^{\mu}\phi_i^*&=\partial^\mu\phi_i^*+\ii g A^{a\mu}\phi_j^*t^a_{ji},&
+\DD_\mu\lambda^a_\alpha&=\partial_{\mu}\lambda^{a}_\alpha+g f^{abc}A_\mu^{b}\lambda^{c}_\alpha.
+\end{alignat*}
+\begin{align*}
+   \{\phi,\psi,F\}&\xrightarrow{\text{gauge}} \ee^{\ii g \theta^at^a}\{\phi,\psi,F\},\\
+   A_\mu^a&\xrightarrow{\text{gauge}} A^a_\mu+\partial_\mu \theta^a
+   + g f^{abc}A_\mu^b\theta^c  + \Order(\theta^2),
+ &\lambda^a&\xrightarrow{\text{gauge}}\lambda^a+gf^{abc}\lambda^b\theta^c+\Order(\theta^2),
+ \\
+ D^a&\xrightarrow{\text{gauge}} D^a+gf^{abc}D^b\theta^c+\Order(\theta^2),
+& \blambda^a&\xrightarrow{\text{gauge}}\blambda^a+gf^{abc}\blambda^b\theta^c + \Order(\theta^2).
+\footnotemark
+\end{align*}
+\footnotetext{{\TODO{give in non-infinitesimal form}}}
+
+\paragraph{Auxiliary fields and Scalar potential}
+In all of the above three theories,
+\begin{align}
+& \mathcal L\supset
+F^*_i F_i
++ F_i\pd{W}{\Phi_i}\Big|\w{scalar}
++ F_i^*\pd{W^*}{\Phi_i^*}\Big|\w{scalar}
++\frac12 D^aD^a + g D^a(\phi^*t^a\phi);
+\\&
+ \vev{F^*_i} = -\pd{W}{\Phi_i}\Big|\w{scalar},\qquad
+ \vev{D^a} = -g\phi^*t^a\phi;
+\\&
+ \mathcal L\supset -V\w{SUSY} = -
+\left[\vev{F^*_i}\vev{F_i}+\frac{g^2}2 (\phi^*t^a\phi)(\phi^*t^a\phi)\right].
+\end{align}
+
 
 
 \clearpage
@@ -183,7 +359,7 @@ their product is expanded as
 \bar{\psi_i}\btheta F_j+\ii\phi_i^*\partial_{\mu}\psi_j\sigma^{\mu}\btheta\right)\theta^2
 +\sqrt2\left(F_i^*\theta \psi_j-\ii\theta \sigma^{\mu}\partial_{\mu}\bar{\psi_i}\phi_j\right) \btheta^2
 \\&\quad
-+\left(F_i^*F_j+(\partial_{\mu}\phi_i^*)(\partial^{\mu}\phi_j)+\ii\bar{\psi_i}\sigma^\mu\partial_{\mu}\psi_j\right) \theta^4
++\left(F_i^*F_j+(\partial_{\mu}\phi_i^*)(\partial^{\mu}\phi_j)+\ii\bar{\psi_i}\bsigma^\mu\partial_{\mu}\psi_j\right) \theta^4
 \end{split}
 \end{align}
 \begin{align}
@@ -329,7 +505,7 @@ For non-Abelian gauges, the supergauge transformation for the real field is eval
 \ee^{2\ii g \Omega^{*}}
  \ee^{2g V}
 \ee^{-2\ii g \Omega}
-real super\\&=
+\\&=
 \left(\ee^{2\ii g\Omega^*}\ee^{2g V}\ee^{-2\ii g\Omega^*}\right)
 \left(\ee^{2\ii g\Omega^*}\ee^{-2\ii g\Omega}\right)
 \\&=\exp\left(\ee^{[2\ii g\Omega^*,}2gV\right)\ee^{2\ii g(\Omega^*-\Omega)}+\Order(\Omega^2)
@@ -363,7 +539,7 @@ this defines the Wess-Zumino gauge:
   - 2\theta \sigma^{\mu}\btheta A^a_{\mu} +2\theta^2\btheta \blambda^a+2\btheta^2\theta\lambda^a
   + D^a\theta^4
 \right)t^a
- +g^2Q^2A^{a\mu} A^b_\mu\theta^4t^at^b.
+ +g^2A^{a\mu} A^b_\mu\theta^4t^at^b.
 \end{align}
 The gauge transformation is given by
 \begin{equation}
@@ -404,12 +580,17 @@ V +2(\btheta\bsigma^{\mu}\theta)\partial_{\mu}\phi
 \paragraph{Gauge-field strength}
 The real superfield $\ee^{V}$ is gauge-invariant in Abelian case and a candidate in Lagrangian term, but this is not case in non-Abelian case.
 We thus define a chiral superfield from $\ee^{V}$:
-\begin{equation}
- \mathcal W_\alpha = \frac14\bar\OD_\dalpha\bar\OD^\dalpha\left(\ee^{-2gV}\OD_\alpha\ee^{2gV}\right);
-\qquad
-\mathcal W_\alpha\xrightarrow{\text{gauge}}
-\ee^{2\ii g \Omega}\mathcal W_{\alpha}\ee^{-2\ii g \Omega};
-\end{equation}
+\begin{align}
+& \mathcal W_\alpha = \frac14\bar\OD_\dalpha\bar\OD^\dalpha\left(\ee^{-2gV}\OD_\alpha\ee^{2gV}\right);\\
+&\mathcal W_\alpha\xrightarrow{\text{gauge}}
+\ee^{2\ii g \Omega}\mathcal W_{\alpha}\ee^{-2\ii g \Omega}
+\quad
+\Bigl(
+\mathcal W_\alpha^a\xrightarrow{\text{gauge}}[\ee^{+2g \tilde f^c \Omega^c}]^{ab}W_\alpha^b
+\text{\quad with\quad$[\tilde f^c]_{ab}=f^{abc}$}
+\Bigr);\footnotemark
+\end{align}%
+\footnotetext{\TODO{This equivalence should be checked/explained in gauge-theory section; especially, the sign is not verified and might be opposite.}}%
 it is not supergauge- or Lorentz-invariatn, but $\Tr(\mathcal W^\alpha \mathcal W_\alpha) = \Tr(\epsilon^{\alpha\beta}\mathcal W_\beta \mathcal W_\alpha)$ is supergauge- and Lorentz-invariant, and its $\theta^2$-term is SUSY-invariant, which becomes a candidate in SUSY Lagrangian with its Hermitian conjugate.
 
 In Wess-Zumino gauge, it is given by
@@ -469,31 +650,32 @@ For Abelian theory,
 & \mathcal W_\alpha = \frac14\bar\OD_\dalpha\bar\OD^\dalpha\left(\ee^{-2gV}\OD_\alpha\ee^{2gV}\right)
 =\frac14\bar\OD_\dalpha\bar\OD^\dalpha\OD_\alpha(2gV),
 \\
-& \frac12\left[\mathcal W^\alpha\mathcal W_\alpha\right]_{\theta^2}
-=\ii\lambda\sigma^{\mu}\DD_{\mu}\bar{\lambda}
+& \mathcal W^\alpha\mathcal W_\alpha\Big|_{\theta^2}
+=2\left(
+\ii\lambda\sigma^{\mu}\DD_{\mu}\bar{\lambda}
 +\frac12DD
 -\frac14F_{\mu\nu}F^{\mu\nu}
 +\frac{\ii}{8}\epsilon^{\mu \nu\rho\sigma}
-F_{\mu\nu}F_{\rho\sigma}.
+F_{\mu\nu}F_{\rho\sigma}\right).
 \end{align}
 
 \subsection{Lagrangian blocks}
 \paragraph{Lagrangian construction}
 The supergauge transformation is summarized as
 \begin{equation}
- \Phi_i   \to U_{ij}\Phi_j,
+ \Phi_i   \to [U_{\Phi}]_{ij}\Phi_j,
 \qquad
- \tilde\Phi_j \to \tilde\Phi_i [U^{-1}]_{ij},
+ \tilde\Phi_j \to \tilde\Phi_i [U_\Phi^{-1}]_{ij},
 \qquad
-\mathcal W_\alpha\to U'\mathcal W_\alpha U^{\prime-1},
+\mathcal W_\alpha\to U_{\mathcal W}\mathcal W_\alpha U_{\mathcal W}^{-1},
 \end{equation}
 where
 \begin{equation}
  \tilde\Phi^*_j :=  \Phi^*_i [\ee^{2gV t^a_\Phi}]_{ij},
 \qquad
- U:=\exp(2\ii g \Omega^at^{a}_\Phi),
+ U_\Phi:=\exp(2\ii g \Omega^at^{a}_\Phi),
 \qquad
- U':=\exp(2\ii g \Omega^at^{a}_{\mathcal W}),
+ U_{\mathcal W}:=\exp(2\ii g \Omega^at^{a}_{\mathcal W}),
 \end{equation}
 $t^a_\Phi$ is the representation matrix or U(1) charge for the field $\Phi$,
 and $t^a_{\mathcal W}$ is the representation matrix that is used to define $\mathcal W_\alpha$.
@@ -501,18 +683,18 @@ To construct a Lagrangian, we should composite these ingredients in real and inv
 A sufficient condition for SUSY invariance is given by \eqref{eq:susy-inv}, so
 \begin{equation}
  \mathcal L =
-\left[K(\Phi_i, \tilde\Phi^*_j)\right]_{\theta^4}
+\Bigl[K(\Phi_i, \tilde\Phi^*_j)\Bigr]_{\theta^4}
 +
 \left\{
-\left[f_{ab}(\Phi_i)\mathcal W^a\mathcal W^b\right]_{\theta^2} + \text{H.c.}
+\Bigl[f_{ab}(\Phi_i)\mathcal W^a\mathcal W^b\Bigr]_{\theta^2} + \text{H.c.}
 \right\}
 +
 \left\{
-\left[W(\Phi_i)\right]_{\theta^2} + \text{H.c.}
+\Bigl[W(\Phi_i)\Bigr]_{\theta^2} + \text{H.c.}
 \right\} + D
 \end{equation}
 is one possible construction.
-The last term $D$ (Fayet-Illiopoulos term) comes from $V$ of an U(1) gauge boson; note that its supergauge invariance is due to the intentional definition of $V$.
+The K\"ahler function $K$ should be real and supergauge invariant, the gauge kinetic function $f$ should be holomorphic and supergauge invariant with $\mathcal W^a\mathcal W^b$, and the superpotential $W$ is holomorphic and supergauge invariant.  The last term $D$ (Fayet-Illiopoulos term) comes from $V$ of an U(1) gauge boson; note that its supergauge invariance is due to the intentional definition of $V$.
 
 One can construct more general Lagrangian; for example, one can introduce a vector superfield that is not associated to a gauge symmetry, but then the supergauge fixing is not available and one has to include $C$ or $M$ fields.
 
@@ -529,5 +711,7 @@ Since $[\Phi]_{\theta^4}$ is a total derivative, renormalizable Lagrangian is li
 +
 D
 \end{equation}
-up to numeric coefficients.
+up to numeric coefficients. With multiple gauge groups, the K\"ahler part is extended as
+$\Phi^*_i [\ee^{2gV t^a_\Phi}\ee^{2gV' t^{\prime a}_\Phi}\cdots]_{ij}\Phi_j$, where the inner part is obviously commutable.
+
 \end{document}
