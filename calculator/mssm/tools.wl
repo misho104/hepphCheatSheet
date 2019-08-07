@@ -9,11 +9,12 @@ OrderInTerm[exp_] := Which[
   Head[exp] === \[Epsilon]3, {1, 1},
   MemberQ[{P, PC, P2}, Head[exp]], {1, exp[[1]]/.{\[Mu]->0, yu->1, yd->2, ye->3, \[Mu]p->4, \[Lambda]->5, \[Lambda]p->6, \[Lambda]pp->7}},
   MemberQ[{S, SC, S2, S4}, Head[exp]], {2, exp[[1]]/.{Hu->1, Hd->2, bU->11, bD->12, bE->13, Q->21, L->22}},
-  True, {3, exp}];
+  MemberQ[{F, FC}, Head[exp]], {3, exp[[1]]/.{Hu->1, Hd->2, bU->11, bD->12, bE->13, Q->21, L->22}},
+  True, {4, exp}];
 
 TermOrder[exp_] := DeleteDuplicates[Cases[exp, (P|PC)[a_, ___] :> a, All]]/.{\[Mu]->0, yu->1, yd->2, ye->3, \[Mu]p->4, \[Lambda]->5, \[Lambda]p->6, \[Lambda]pp->7};
 
-ToTeXString[(type:S|P|SC|PC|S2|S4|P2)[name_, rules___]] := Module[{r = {rules}, gen, su2, su3},
+ToTeXString[(type:S|P|SC|PC|S2|S4|P2|F|FC)[name_, rules___]] := Module[{r = {rules}, gen, su2, su3},
   gen = Cases[r, (Gen->a_) :> TextString[a]]//StringJoin;
   su2 = Cases[r, (SU2->a_) :> TextString[a]]//StringJoin;
   su3 = Cases[r, (SU3->a_) :> TextString[a]]//StringJoin;
@@ -49,7 +50,7 @@ ToTeXString[exp_] := Module[{result = Expand[exp]},
     PLUS[a__] :> PLUS@@SortBy[TermOrder][{a}]
   };
   result = result//.{
-    term:(_S|_P|_SC|_PC|_S2|_S4|_P2|_\[Epsilon]|_\[Epsilon]3) :> ToTeXString[term],
+    term:(_S|_P|_SC|_PC|_S2|_S4|_P2|_\[Epsilon]|_\[Epsilon]3|_F|_FC) :> ToTeXString[term],
     PLUS[a__] :> {"\\left( ", Sequence@@(Riffle[{a}, " + "]), " \\right)"},
     List[a__String] :> StringJoin[{a}],
     (TIMES|Dot)[a__String] :> StringJoin[{a}]
@@ -63,8 +64,9 @@ RewriteIndicesOrder[exp_] := Which[
   Head[exp] === \[Epsilon]3, {2, 1},
   MemberQ[{P, PC, P2}, Head[exp]], {1, exp[[1]]/.{\[Mu]->0, yu->1, yd->2, ye->3, \[Mu]p->4, \[Lambda]->5, \[Lambda]p->6, \[Lambda]pp->7}},
   MemberQ[{S, SC, S2, S4}, Head[exp]], {0, exp[[1]]/.{Hu->1, Hd->2, bU->11, bD->12, bE->13, Q->21, L->22}},
-  Not[FreeQ[exp, (S|SC|S2|S4)[__]]], {0, 100},
-  True, {3, exp}];
+  MemberQ[{F, FC}, Head[exp]], {3, exp[[1]]/.{Hu->1, Hd->2, bU->11, bD->12, bE->13, Q->21, L->22}},
+  Not[FreeQ[exp, (S|SC|S2|S4|F|FC)[__]]], {0, 100},
+  True, {4, exp}];
 
 RewriteIndices[exp_, code_, indices_] :=
   Module[{tmp, old, nottoreplace, toreplace, new, rule},

@@ -1,0 +1,23 @@
+\epsilon^{ab}\left(
+-\mu\thu^{a}\thd^{b}
+- \yd[ij]\hd^{a}\dR[i]^{\cc x}\qL[j]^{bx}
+- \yd[ij]\tdR[i]^{x*}\thd^{a}\qL[j]^{bx}
++ \yd[ji]\tqL[i]^{ax}\thd^{b}\dR[j]^{\cc x}
+\right.\\&\quad\left.
+- \ye[ij]\teR[i]^{*}\thd^{a}\lL[j]^{b}
+- \ye[ij]\hd^{a}\eR[i]^{\cc }\lL[j]^{b}
++ \ye[ji]\tlL[i]^{a}\thd^{b}\eR[j]^{\cc }
++ \yu[ij]\hu^{a}\uR[i]^{\cc x}\qL[j]^{bx}
++ \yu[ij]\tuR[i]^{x*}\thu^{a}\qL[j]^{bx}
+- \yu[ji]\tqL[i]^{ax}\thu^{b}\uR[j]^{\cc x}
+\right.\\&\quad\left.
+- \mu'_{i}\thu^{a}\lL[i]^{b}
+- \lambda_{ikj}\tlL[i]^{a}\eR[j]^{\cc }\lL[k]^{b}
+- \frac{1}{2}\lambda_{jki}\teR[i]^{*}\lL[j]^{a}\lL[k]^{b}
+- \lambda'_{ikj}\tlL[i]^{a}\dR[j]^{\cc x}\qL[k]^{bx}
++ \lambda'_{kij}\tqL[i]^{ax}\dR[j]^{\cc x}\lL[k]^{b}
++ \lambda'_{kji}\tdR[i]^{x*}\qL[j]^{ax}\lL[k]^{b}
+\right.\\&\quad\left.
+- \frac{1}{2}\epsilon^{xyz}\lambda''_{ijk}\tuR[i]^{x*}\dR[j]^{\cc y}\dR[k]^{\cc z}
++ \epsilon^{xyz}\lambda''_{jik}\tdR[i]^{x*}\uR[j]^{\cc y}\dR[k]^{\cc z}
+\right)

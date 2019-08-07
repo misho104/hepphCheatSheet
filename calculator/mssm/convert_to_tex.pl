@@ -85,6 +85,17 @@ my $param_sq = {
   "g3" => "g_3^2",
 };
 
+my $fermion = {
+  "Hu" => "\\thu_{SUB}^{SUP}",
+  "Hd" => "\\thd_{SUB}^{SUP}",
+  "Q"  => "\\qL[SUB]^{SUP}",
+  "bU" => "\\uR[SUB]^{\\cc SUP}",
+  "bD" => "\\dR[SUB]^{\\cc SUP}",
+  "L"  => "\\lL[SUB]^{SUP}",
+  "bE" => "\\eR[SUB]^{\\cc SUP}"
+};
+
+
 sub fieldname_to_tex{
   my ($type, $name, $subscript, $superscript) = @_;
   my $tex = "";
@@ -102,6 +113,8 @@ sub fieldname_to_tex{
     $tex = $scalar_4->{$name} or die "undefined scalar $name";
   }elsif($type eq "P2"){
     $tex = $param_sq->{$name} or die "undefined param $name";
+  }elsif($type eq "F"){
+    $tex = $fermion->{$name} or die "undefined scalar $name";
   }
   $tex =~ s/SUB/$subscript/;
   $tex =~ s/SUP/$superscript/;

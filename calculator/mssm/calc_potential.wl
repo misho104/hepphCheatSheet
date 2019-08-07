@@ -165,3 +165,15 @@ result = (#[[1]]->(#[[2]] // ToOrder // Total)) &/@ result;
 ToTeXString /@ result[[All,2]];
 s = StringRiffle[%, "\n\\\\&\n+ "];
 s // ToFile["SUSYPotential.raw", #]&
+
+
+SuperPot //. {
+  Dot[SF[x1__], SF[x2__], SF[x3__]] :> (-1)(Dot[S[x1], F[x2], F[x3]] + Dot[S[x3], F[x1], F[x2]] + Dot[S[x2], F[x3], F[x1]]),
+  Dot[SF[x1__], SF[x2__]] :> (-1)Dot[F[x1], F[x2]]
+} // ExpandAll
+%//.Dot[a_,b_]/;Not[OrderedQ[OrderInTerm/@{a,b}]]&&FreeQ[{a,b},Dot]:>(Dot[b,a]) // RewriteIndices//ToOrder;
+StringRiffle[ToTeXString /@ (List@@(Expand[%])), "\n\\\\&\n+ "];
+ToFile["superfermion.raw", %]
+
+
+
