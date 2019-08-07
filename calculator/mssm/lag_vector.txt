@@ -1,0 +1,37 @@
+-\frac{1}{2} (\partial_{\mu}B_{\nu}-\partial_{\nu}B_{\mu})\partial^{\mu}B^{\nu}
+ - \frac{1}{2} (\partial_{\mu}g_{\nu}^{a} - \partial_{\nu}g_{\mu}^{a})\partial^{\mu}g^{a\nu}
+ - \frac{1}{2} (\partial_{\mu}W_{\nu}^{a} - \partial_{\nu}W_{\mu}^{a})\partial^{\mu}W^{a\nu}
+\\&\quad
+ - g_2\epsilon^{abc}W_{\mu}^{b}W_{\nu}^{c}\partial^{\mu}W^{a\nu}
+ - \frac{g_2^2}{4}\epsilon^{abe}\epsilon^{cde}W_{\mu}^{a}W_{\nu}^{b}W^{c\mu}W^{d\nu}
+\\&\quad
+ - g_3f^{abc}g_{\mu}^{b}g_{\nu}^{c}\partial^{\mu}g^{a\nu}
+ - \frac{g_3^2}{4}f^{cde}f^{abe}g_{\mu}^{a}g_{\nu}^{b}g^{c\mu}g^{d\nu}
++ \frac{g_3^2\Theta_g}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}G^a_{\mu\nu}G^a_{\rho\sigma},
+\end{split}\\\begin{split}&=
+ \text{(gluons)}
+  -\frac{1}{2} (\partial_{\mu}A_{\nu} - \partial_{\nu}A_{\mu})\partial^{\mu}A^{\nu}
+ - (\partial_{\mu}W_{\nu}^{-} - \partial_{\nu}W_{\mu}^{-})\partial_{\mu}W^{+\nu}
+ - \frac{1}{2} (\partial_{\mu}Z_{\nu} - \partial_{\nu}Z_{\mu})\partial^{\mu}Z^{\nu}
+\\&\quad
+ + {\ii} g_2\co{\mathrm w}\left[(W_{\mu}^{-}Z_{\nu} - W_{\nu}^{-}Z_{\mu})\partial^{\mu}W^{+\nu}
+ - (W_{\mu}^{+}Z_{\nu} - W_{\nu}^{+}Z_{\mu})\partial^{\mu}W^{-\nu}
+ + (W_{\mu}^{+}W_{\nu}^{-} - W_{\nu}^{+}W_{\mu}^{-})\partial^{\mu}Z^{\nu}\right]
+\\&\quad
+ + {\ii} |e|\left[(W_{\mu}^{-}A_{\nu} - W_{\nu}^{-}A_{\mu})\partial^{\mu}W^{+\nu}
+ - (W_{\mu}^{+}A_{\nu} - W_{\nu}^{+}A_{\mu})\partial^{\mu}W^{-\nu}
+ + (W_{\mu}^{+}W_{\nu}^{-} - W_{\nu}^{+}W_{\mu}^{-})\partial^{\mu}A^{\nu}\right]
+\\&\quad
+ + \frac{g_2^2}{2}W^{+\mu}W_{\mu}^{+}W^{-\nu}W_{\nu}^{-}
+ - \frac{g_2^2}{2}W^{+\mu}W^{+\nu}W_{\mu}^{-}W_{\nu}^{-}
+ - g_2^2W^{+\mu}W_{\mu}^{-}Z^{\nu}Z_{\nu}
+ + g_2^2W^{+\mu}W^{-\nu}Z_{\mu}Z_{\nu}
+\\&\quad
+ - e^2W^{+\mu}W_{\mu}^{-}A^{\nu}A_{\nu}
+ + e^2W^{+\mu}W_{\mu}^{-}Z^{\nu}Z_{\nu}
+ + e^2W^{+\mu}W^{-\nu}A_{\mu}A_{\nu}
+ - e^2W^{+\mu}W^{-\nu}Z_{\mu}Z_{\nu}
+\\&\quad
+ -2 g_2^2\co{\mathrm w}\si{\mathrm w}W^{+\mu}W_{\mu}^{-}A^{\nu}Z_{\nu}
+ + g_2^2\co{\mathrm w}\si{\mathrm w}W^{+\mu}W^{-\nu}A_{\mu}Z_{\nu}
+ + g_2^2\co{\mathrm w}\si{\mathrm w}W^{+\mu}W^{-\nu}A_{\nu}Z_{\mu}

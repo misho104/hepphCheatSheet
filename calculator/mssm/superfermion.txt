@@ -17,7 +17,7 @@
 - \lambda'_{ikj}\tlL[i]^{a}\dR[j]^{\cc x}\qL[k]^{bx}
 + \lambda'_{kij}\tqL[i]^{ax}\dR[j]^{\cc x}\lL[k]^{b}
 + \lambda'_{kji}\tdR[i]^{x*}\qL[j]^{ax}\lL[k]^{b}
-\right.\\&\quad\left.
+\right)
+\\&\quad
 - \frac{1}{2}\epsilon^{xyz}\lambda''_{ijk}\tuR[i]^{x*}\dR[j]^{\cc y}\dR[k]^{\cc z}
 + \epsilon^{xyz}\lambda''_{jik}\tdR[i]^{x*}\uR[j]^{\cc y}\dR[k]^{\cc z}
-\right)

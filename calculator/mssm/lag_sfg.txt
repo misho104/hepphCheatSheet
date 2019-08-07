@@ -1,0 +1,74 @@
+ - g_2\tuL^{*}\dL\tiw^{+}
+ - g_2\tuL\bdL\bar{\tiw}^{+}
+ - g_2\tdL^{*}\uL\tiw^{-}
+ - g_2\tdL\buL\bar{\tiw}^{-}
+ \\&\quad
+ - {\sqrt2} g_3\tuL^{*}\tau^a\uL\tig^{a}
+ + {\sqrt2} g_3\tuR^{*}\tau^a\buR^{\cc}\bar{\tig}^{a}
+ - {\sqrt2} g_3\tuL\tau^{a*}\buL\bar{\tig}^{a}
+ + {\sqrt2} g_3\tuR\tau^{a*}\uR^{\cc}\tig^{a}
+ \\&\quad
+ - \frac{g_2}{\sqrt2} \tuL^{*}\uL\tiw^{3}
+ - \frac{g_2}{\sqrt2} \tuL\buL\bar{\tiw}^{3}
+ - \frac{g_Y}{3\sqrt2} \tuL^{*}\uL\tib
+ + \frac{2\sqrt2g_Y}{3}\tuR^{*}\buR^{\cc}\bar{\tib}
+ - \frac{g_Y}{3\sqrt2} \tuL\buL\bar{\tib}
+ + \frac{2\sqrt2g_Y}{3}\tuR\uR^{\cc}\tib
+ \\&\quad
+ - {\sqrt2} g_3\tdL^{*}\tau^a\dL\tig^{a}
+ + {\sqrt2} g_3\tdR^{*}\tau^a\bdR^{\cc}\bar{\tig}^{a}
+ - {\sqrt2} g_3\tdL\tau^{a*}\bdL\bar{\tig}^{a}
+ + {\sqrt2} g_3\tdR\tau^{a*}\dR^{\cc}\tig^{a}
+ \\&\quad
+ + \frac{g_2}{\sqrt2} \tdL^{*}\dL\tiw^{3}
+ + \frac{g_2}{\sqrt2} \tdL\bdL\bar{\tiw}^{3}
+ - \frac{g_Y}{3\sqrt2} \tdL^{*}\dL\tib
+ - \frac{\sqrt2g_Y}{3} \tdR^{*}\bdR^{\cc}\bar{\tib}
+ - \frac{g_Y}{3\sqrt2} \tdL\bdL\bar{\tib}
+ - \frac{\sqrt2g_Y}{3} \tdR\dR^{\cc}\tib
+ \\&\quad
+ - g_2\teL\bnuL\bar{\tiw}^{-}
+ - g_2\tnuL\beL\bar{\tiw}^{+}
+ - g_2\teL^{*}\nuL\tiw^{-}
+ - g_2\tnuL^{*}\eL\tiw^{+}
+ \\&\quad
+ - \frac{g_2}{\sqrt2} \tnuL^{*}\nuL\tiw^{3}
+ + \frac{g_Y}{\sqrt2} \tnuL^{*}\nuL\tib
+ - \frac{g_2}{\sqrt2} \tnuL\bnuL\bar{\tiw}^{3}
+ + \frac{g_Y}{\sqrt2} \tnuL\bnuL\bar{\tib}
+ \\&\quad
+ + \frac{g_2}{\sqrt2} \teL^{*}\eL\tiw^{3}
+ + \frac{g_Y}{\sqrt2} \teL^{*}\eL\tib
+ - {\sqrt2} g_Y       \teR^{*}\beR^{\cc }\bar{\tib}
+ + \frac{g_2}{\sqrt2} \teL\beL\bar{\tiw}^{3}
+ + \frac{g_Y}{\sqrt2} \teL\beL\bar{\tib}
+ - {\sqrt2} g_Y       \teR\eR^{\cc }\tib
+ \\&\quad
+ - g_2\hu^{+*}\thuz\tiw^{+}
+ - g_2\hdz\bthdm\bar{\tiw}^{+}
+ - g_2\hd^{-*}\thdz\tiw^{-}
+ - g_2\huz\bthup\bar{\tiw}^{-}
+ \\&\quad
+ - g_2\hd^{0*}\thdm\tiw^{+}
+ - g_2\hu^{0*}\thup\tiw^{-}
+ - g_2\hup\bthuz\bar{\tiw}^{+}
+ - g_2\hdm\bthdz\bar{\tiw}^{-}
+ \\&\quad
+ - \frac{g_2}{\sqrt2} \hup\bthup\bar{\tiw}^{3}
+ - \frac{g_Y}{\sqrt2} \hup\bthup\bar{\tib}
+ - \frac{g_2}{\sqrt2} \hu^{+*}\thup\tiw^{3}
+ - \frac{g_Y}{\sqrt2} \hu^{+*}\thup\tib
+ + \frac{g_2}{\sqrt2} \hd^{-*}\thdm\tiw^{3}
+ + \frac{g_Y}{\sqrt2} \hd^{-*}\thdm\tib
+ \\&\quad
+ + \frac{g_2}{\sqrt2} \hdm\bthdm\bar{\tiw}^{3}
+ + \frac{g_Y}{\sqrt2} \hdm\bthdm\bar{\tib}
+ + \frac{g_2}{\sqrt2} \hu^{0*}\thuz\tiw^{3}
+ - \frac{g_Y}{\sqrt2} \hu^{0*}\thuz\tib
+ - \frac{g_2}{\sqrt2} \hd^{0*}\thdz\tiw^{3}
+ + \frac{g_Y}{\sqrt2} \hd^{0*}\thdz\tib
+ \\&\quad
+ + \frac{g_2}{\sqrt2} \huz\bthuz\bar{\tiw}^{3}
+ - \frac{g_Y}{\sqrt2} \huz\bthuz\bar{\tib}
+ - \frac{g_2}{\sqrt2} \hdz\bthdz\bar{\tiw}^{3}
+ + \frac{g_Y}{\sqrt2} \hdz\bthdz\bar{\tib}

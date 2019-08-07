@@ -1,0 +1,108 @@
+   (\partial_{\mu}\tuL^{*} + {\ii} g_3\tuL^{*}\tau^{a} g_{\mu}^{a})(\partial^{\mu}\tuL - \ii g_3 g^{b\mu} \tau^{b}\tuL)
+ + (\partial_{\mu}\tuR     - {\ii} g_3\tuR \tau^{a*}g_{\mu}^{a})(\partial^{\mu}\tuR^{*} + \ii g_3 g_\mu^b\tau^{b*}\tuR^*)
+\\&\quad
+ + (\partial_{\mu}\tdL^{*} + {\ii} g_3\tdL^{*}\tau^a g_{\mu}^{a})(\partial^{\mu}\tdL - \ii g_3  g^{b\mu} \tau^{b} \tdL)
+ + (\partial_{\mu}\tdR     - {\ii} g_3\tdR^{y}\tau^{a*}g_{\mu}^{a})(\partial^{\mu}\tdR^{*} + \ii g_3 g_\mu^b\tau^{b*}\tdR^*)
+\\&\quad
+ + {\sqrt2} g_2g_3\tuL^{*}\tau^a\tdL W^{+\mu}g_{\mu}^{a}
+ + {\sqrt2} g_2g_3\tdL^{*}\tau^a\tuL W^{-\mu}g_{\mu}^{a}
+ + \frac{4}{3} g_3|e|(\tuL^{*}\tau^a\tuL +\tuR^{*}\tau^a\tuR )g^{a\mu}A_{\mu}
+\\&\quad
+ - \frac{2}{3} g_3|e|(\tdL^{*}\tau^a\tdL +\tdR^{*}\tau^a\tdR )g^{a\mu}A_{\mu}
+ +\frac{(3-4\sw^2)g_Z}{3} g_3\tuL^{*}\tau^a\tuL g^{a\mu}Z_{\mu}
+ - \frac{4\sw^2g_Z}{3}g_3\tuR^{*}\tau^a\tuR g^{a\mu}Z_{\mu}
+\\&\quad
+ + \frac{(2\sw^2-3)g_Z}{3} g_3\tdL^{*}\tau^a\tdL g^{a\mu}Z_{\mu}
+ + \frac{2\sw^2g_Z}{3}g_3\tdR^{*}\tau^a\tdR g^{a\mu}Z_{\mu}
+\\&\quad
+ + \frac{\ii g_2}{\sqrt2} W_{\mu}^{+}\left( \tuL^*\partial^{\mu}\tdL  -  \tdL \partial^{\mu}\tuL^*\right)
+ - \frac{\ii g_2}{\sqrt2}W_{\mu}^{-}\left( \tuL \partial^{\mu}\tdL^* - \tdL^*\partial^{\mu}\tuL \right)
+\\&\quad
+ + \frac{2 {\ii}}{3} |e|A_{\mu}\left(\tuL^*\partial^{\mu}\tuL
+ - \tuL \partial^{\mu}\tuL^*  + \tuR^*\partial^{\mu}\tuR  - \tuR \partial^{\mu}\tuR^*\right)
+ - \frac{{\ii}}{3} |e|A_{\mu}\left(\tdL^*\partial^{\mu}\tdL  -\tdL \partial^{\mu}\tdL^* + \tdR^*\partial^{\mu}\tdR - \tdR \partial^{\mu}\tdR^*\right)
+\\&\quad
++ \frac{{\ii}(4 \sw^2-3) g_Z}{6}Z_{\mu} \left(\tuL \partial^{\mu}\tuL^* - \tuL^*\partial^{\mu}\tuL \right)
+ + \frac{{\ii}(2 \sw^2-3) g_Z}{6} Z_{\mu}\left(\tdL^*\partial^{\mu}\tdL  - \tdL \partial^{\mu}\tdL^*\right)
+\\&\quad
+ - \frac{2 {\ii}\sw^2g_Z}{3}Z_\mu\left( \tuR^* \partial^{\mu}\tuR  - \tuR \partial^{\mu}\tuR^*\right)
+ + \frac{{\ii}\sw^2g_Z}{3} Z_\mu \left(\tdR^*\partial^{\mu}\tdR  - \tdR \partial^{\mu}\tdR^*\right)
+\\&\quad
+ + \frac{g_2^2}{2} \left(|\tuL|^2+ |\tdL|^2\right) W^{+\mu}W_{\mu}^{-}
+ - \frac{\sw^2 g_2 g_Z}{3\sqrt2} \tuL^*\tdL W^{+\mu}Z_{\mu}
+ - \frac{\sw^2 g_2 g_Z}{3\sqrt2} \tdL^*\tuL W^{-\mu}Z_{\mu}
+\\&\quad
+ + \frac{(3-4\sw^2)^2g_Z^2}{36} |\tuL|^2 Z^{\mu}Z_{\mu}
+ + \frac{4\sw^4g_Z^2}{9} |\tuR|^2Z^{\mu}Z_{\mu}
+ + \frac{(3-2\sw^2)^2g_Z^2}{36} |\tdL|^2 Z^{\mu}Z_{\mu}
+ + \frac{\sw^4g_Z^2}{9} |\tdR|^2Z^{\mu}Z_{\mu}
+\\&\quad
+ + \frac{4}{9} e^{2}\left(|\tuL|^2+|\tuR|^2\right) A^{\mu}A_{\mu}
+ + \frac{1}{9} e^{2}\left(|\tdL|^2 +|\tdR|^2\right)A^{\mu}A_{\mu}
+ + \frac{|e|g_2}{3\sqrt2} \tuL^*\tdL W^{+\mu}A_{\mu}
+ + \frac{|e|g_2}{3\sqrt2} \tdL^*\tuL W^{-\mu}A_{\mu}
+\\&\quad
+ + \frac{2(3-4 \sw^2) g_Z|e|}{9} |\tuL|^2 A^{\mu}Z_{\mu}
+ - \frac{8\sw^2g_Z|e|}{9} |\tuR|^2A^{\mu}Z_{\mu}
+ + \frac{(3-2 \sw^2) g_Z|e|}{9} |\tdL|^2 A^{\mu}Z_{\mu}
+ - \frac{2\sw^2g_Z|e|}{9} |\tdR|^2A^{\mu}Z_{\mu}
+\\[1em]&\quad
+ + \partial_{\mu}\teR \partial^{\mu}\teR^{*}
+ + \partial_{\mu}\teL^{*}\partial^{\mu}\teL
+ + \partial_{\mu}\tnuL^{*}\partial^{\mu}\tnuL
+ + {\ii} \frac{g_2}{\sqrt2}W_{\mu}^+ (\tnuL^{*}\partial^{\mu}\teL - \teL \partial^{\mu}\tnuL^{*})
+ + {\ii} \frac{g_2}{\sqrt2}W_{\mu}^- (\teL^{*}\partial^{\mu}\tnuL - \tnuL \partial^{\mu}\teL^{*})
+\\&\quad
+ - \frac{{\ii}(1-2 \sw^2)g_Z}{2}Z_\mu(\teL^{*}\partial^{\mu}\teL - \teL \partial^{\mu}\teL^{*})
+ + \frac{{\ii}g_Z }{2}Z_\mu (\tnuL^{*}\partial^{\mu}\tnuL  - \tnuL \partial^{\mu}\tnuL^{*})
+ + {\ii}\sw^2 g_Z Z_{\mu}(\teR^{*}\partial^{\mu}\teR - \teR \partial^{\mu}\teR^{*})
+\\&\quad
+ + {\ii} |e|A_\mu (\teL    \partial^{\mu}\teL^{*} - \teL^{*}\partial^{\mu}\teL + \teR\partial^{\mu}\teR^{*} - \teR^{*}\partial^{\mu}\teR)
+\\&\quad
+ + \frac{g_2^{2}}{2} (|\tnuL|^2 + |\teL|^2) W^{+\mu}W_{\mu}^{-}
+ + \frac{g_2 g_Z\sw^2}{\sqrt2} \left(\teL^{*}\tnuL W^-_{\mu}Z^{\mu} + \tnuL^{*}\teL W^{+}_\mu Z^{\mu}\right)
+ - \frac{g_2|e|}{\sqrt2} \left(\tnuL^{*}\teL W^{+}_\mu A^{\mu} + \teL^{*}\tnuL W^{-}_\mu A^{\mu}\right)
+\\&\quad
+ + \frac{(1-2\sw^2)^2g_Z^2}{4} |\teL|^2 Z^{\mu}Z_{\mu}
+ + \frac{g_Z^2}{4} |\tnuL|^2 Z^{\mu}Z_{\mu}
+ + g_Z^{2}\sw^4|\teR|^2 Z^{\mu}Z_{\mu}
+\\&\quad
+ + e^{2}(|\teL|^2+|\teR|^2) A^{\mu}A_{\mu}
+ + (1-2 \sw^2) |e|g_Z |\teL|^2 A^{\mu}Z_{\mu}
+ -2 \sw^2 g_Z|e||\teR|^2 A^{\mu}Z_{\mu}
+\\[1em]&\quad
+ + \partial_{\mu}\hd^{-*}\partial^{\mu}\hdm
+ + \partial_{\mu}\hd^{0*}\partial^{\mu}\hdz
+ + \partial_{\mu}\hu^{+*}\partial^{\mu}\hup
+ + \partial_{\mu}\hu^{0*}\partial^{\mu}\huz
+ + {\ii} \frac{g_2}{\sqrt2}W_\mu^+ \left(\hu^{+*}\partial^{\mu}\huz - \huz \partial^{\mu}\hu^{+*}\right)
+\\&\quad
+ + {\ii} \frac{g_2}{\sqrt2}W_\mu^- \left(\hu^{0*}\partial^{\mu}\hup - \hup \partial^{\mu}\hu^{0*}\right)
+ + {\ii} \frac{g_2}{\sqrt2}W_\mu^+ \left(\hd^{0*}\partial^{\mu}\hdm - \hdm \partial^{\mu}\hd^{0*}\right)
+ + {\ii} \frac{g_2}{\sqrt2}W_\mu^- \left(\hd^{-*}\partial^{\mu}\hdz - \hdz \partial^{\mu}\hd^{-*}\right)
+ \\&\quad
+ + \frac{{\ii}(1-2 \sw^2)g_Z}{2} Z_\mu \left(\hu^{+*}\partial^{\mu}\hup - \hup \partial^{\mu}\hu^{+*}\right)
+ + \frac{{\ii}(2 \sw^2-1)g_Z}{2} Z_\mu \left(\hd^{-*}\partial^{\mu}\hdm - \hdm \partial^{\mu}\hd^{-*}\right)
+ \\&\quad
+ - \frac{{\ii}g_Z}{2} Z_\mu \left(\hu^{0*}\partial^{\mu}\huz - \huz \partial^{\mu}\hu^{0*}\right)
+ + \frac{{\ii}g_Z}{2} Z_\mu \left(\hd^{0*}\partial^{\mu}\hdz - \hdz \partial^{\mu}\hd^{0*}\right)
+ \\&\quad
+ - {\ii} |e|A_\mu  \left(\hd^{-*}\partial^{\mu}\hdm - \hdm \partial^{\mu}\hd^{-*}\right)
+ + {\ii} |e|A_\mu  \left(\hu^{+*}\partial^{\mu}\hup - \hup \partial^{\mu}\hu^{+*}\right)
+ \\&\quad
+ + \frac{g_2^2}{2}\left( |\hup|^2 + |\huz|^2 + |\hdz|^2 + |\hdm|^2 \right) W^{+\mu}W_{\mu}^{-}
+ + \frac{\sw^2 g_Z g_2}{\sqrt2} \left(\hd^{0*}\hdm - \hu^{+*}\huz\right)W^{+}_{\mu}Z^{\mu}
+ \\&\quad
+ + \frac{\sw^2 g_Z g_2}{\sqrt2} \left(\hd^{-*}\hdz - \hu^{0*}\hup\right)W^{-}_\mu Z^{\mu}
+ + \frac{g_2|e|}{\sqrt2} \left(\hu^{+*}\huz - \hd^{0*}\hdm \right) W^{+}_\mu A^{\mu}
+ + \frac{g_2|e|}{\sqrt2} \left(\hu^{0*}\hup - \hd^{-*}\hdz\right)  W^{-}_\mu A^{\mu}
+ \\&\quad
+ + \frac{(1-2\sw^2)^2g_Z^2}{4}\left(|\hup|^2 + |\hdm|^2\right) Z^{\mu}Z_{\mu} 
+ + \frac{g_Z^2}{4} \left(|\huz|^2 + |\hdz|^2\right) Z^{\mu}Z_{\mu} 
+ + e^{2}\left(|\hup|^2 + |\hdm|^2\right) A^{\mu}A_{\mu}
+ \\&\quad
+ + (1-2 \sw^2) |e| g_Z \left(|\hup|^2 + |\hdm|^2\right) A^{\mu}Z_{\mu}
+%
+% gY e = gZ sw e = gZ g2 sw^2
+% gY g2 = e gZ
+% gY sw = gZ sw^2

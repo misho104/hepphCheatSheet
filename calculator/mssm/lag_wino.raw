@@ -1,0 +1,8 @@
+g_2\bar{\tiw}^{3}\bsigma^{\mu }\tiw^{-}W_{\mu}^{+}
+ - g_2\bar{\tiw}^{3}\bsigma^{\mu }\tiw^{+}W_{\mu}^{-}
+ + g_2\bar{\tiw}^{-}\bsigma^{\mu }\tiw^{3}W_{\mu}^{-}
+ - g_2\bar{\tiw}^{+}\bsigma^{\mu }\tiw^{3}W_{\mu}^{+}
+ - g_2\co{\mathrm w}\bar{\tiw}^{-}\bsigma^{\mu }\tiw^{-}Z_{\mu}
+ + g_2\co{\mathrm w}\bar{\tiw}^{+}\bsigma^{\mu }\tiw^{+}Z_{\mu}
+ - g_2\si{\mathrm w}\bar{\tiw}^{-}\bsigma^{\mu }\tiw^{-}A_{\mu}
+ + g_2\si{\mathrm w}\bar{\tiw}^{+}\bsigma^{\mu }\tiw^{+}A_{\mu}

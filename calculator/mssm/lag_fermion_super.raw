@@ -1,0 +1,33 @@
+(-1) \mu\thup\thdm
+ + \mu\thuz\thdz
+ - \kappa_{i}\thup\eL[i]
+ + \kappa_{i}\thuz\nuL[i]
+ + \yd[ij]\hdm\dR[i]^{\cc x}\uL[j]^{x}
+ - \yd[ij]\hdz\dR[i]^{\cc x}\dL[j]^{x}
+ - \yd[ij]\tdL[j]^{x}\thdz\dR[i]^{\cc x}
+ + \yd[ij]\tuL[j]^{x}\thdm\dR[i]^{\cc x}
+ + \yd[ji]\tdR[j]^{x*}\thdm\uL[i]^{x}
+ - \yd[ji]\tdR[j]^{x*}\thdz\dL[i]^{x}
+ + \ye[ij]\hdm\eR[i]^{\cc }\nuL[j]
+ - \ye[ij]\hdz\eR[i]^{\cc }\eL[j]
+ - \ye[ij]\teL[j]\thdz\eR[i]^{\cc }
+ + \ye[ij]\tnuL[j]\thdm\eR[i]^{\cc }
+ + \ye[ji]\teR[j]^{*}\thdm\nuL[i]
+ - \ye[ji]\teR[j]^{*}\thdz\eL[i]
+ + \yu[ij]\hup\uR[i]^{\cc x}\dL[j]^{x}
+ - \yu[ij]\huz\uR[i]^{\cc x}\uL[j]^{x}
+ + \yu[ij]\tdL[j]^{x}\thup\uR[i]^{\cc x}
+ - \yu[ij]\tuL[j]^{x}\thuz\uR[i]^{\cc x}
+ + \yu[ji]\tuR[j]^{x*}\thup\dL[i]^{x}
+ - \yu[ji]\tuR[j]^{x*}\thuz\uL[i]^{x}
+ - \lambda_{ijk}\teR[k]^{*}\nuL[i]\eL[j]
+ - \lambda_{jki}\teL[k]\eR[i]^{\cc }\nuL[j]
+ + \lambda_{jki}\tnuL[k]\eR[i]^{\cc }\eL[j]
+ - \lambda'_{jik}\tdR[k]^{x*}\dL[i]^{x}\nuL[j]
+ + \lambda'_{jik}\tdR[k]^{x*}\uL[i]^{x}\eL[j]
+ - \lambda'_{jki}\tdL[k]^{x}\dR[i]^{\cc x}\nuL[j]
+ + \lambda'_{jki}\tuL[k]^{x}\dR[i]^{\cc x}\eL[j]
+ + \lambda'_{kji}\teL[k]\dR[i]^{\cc x}\uL[j]^{x}
+ - \lambda'_{kji}\tnuL[k]\dR[i]^{\cc x}\dL[j]^{x}
+ - \epsilon^{xyz}\lambda''_{ijk}\tdR[k]^{z*}\uR[i]^{\cc x}\dR[j]^{\cc y}
+ - \frac{1}{2} \epsilon^{xyz}\lambda''_{kij}\tuR[k]^{z*}\dR[i]^{\cc x}\dR[j]^{\cc y}

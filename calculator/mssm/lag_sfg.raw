@@ -1,0 +1,62 @@
+\frac{1}{\sqrt2} g_2\hdm\bthdm\bar{\tiw}^{3}
+ - g_2\hdm\bthdz\bar{\tiw}^{-}
+ - g_2\hdz\bthdm\bar{\tiw}^{+}
+ - \frac{1}{\sqrt2} g_2\hdz\bthdz\bar{\tiw}^{3}
+ - \frac{1}{\sqrt2} g_2\hup\bthup\bar{\tiw}^{3}
+ - g_2\hup\bthuz\bar{\tiw}^{+}
+ - g_2\huz\bthup\bar{\tiw}^{-}
+ + \frac{1}{\sqrt2} g_2\huz\bthuz\bar{\tiw}^{3}
+ + \frac{1}{\sqrt2} g_2\hd^{-*}\thdm\tiw^{3}
+ - g_2\hd^{-*}\thdz\tiw^{-}
+ - g_2\hd^{0*}\thdm\tiw^{+}
+ - \frac{1}{\sqrt2} g_2\hd^{0*}\thdz\tiw^{3}
+ - \frac{1}{\sqrt2} g_2\hu^{+*}\thup\tiw^{3}
+ - g_2\hu^{+*}\thuz\tiw^{+}
+ - g_2\hu^{0*}\thup\tiw^{-}
+ + \frac{1}{\sqrt2} g_2\hu^{0*}\thuz\tiw^{3}
+ + \frac{1}{\sqrt2} g_2\teL[i]\beL[i]\bar{\tiw}^{3}
+ - g_2\teL[i]\bnuL[i]\bar{\tiw}^{-}
+ - g_2\tnuL[i]\beL[i]\bar{\tiw}^{+}
+ - \frac{1}{\sqrt2} g_2\tnuL[i]\bnuL[i]\bar{\tiw}^{3}
+ + \frac{1}{\sqrt2} g_2\teL[i]^{*}\eL[i]\tiw^{3}
+ - g_2\teL[i]^{*}\nuL[i]\tiw^{-}
+ - g_2\tnuL[i]^{*}\eL[i]\tiw^{+}
+ - \frac{1}{\sqrt2} g_2\tnuL[i]^{*}\nuL[i]\tiw^{3}
+ + \frac{1}{\sqrt2} g_2\tdL[i]^{x}\bdL[i]^{x}\bar{\tiw}^{3}
+ - g_2\tdL[i]^{x}\buL[i]^{x}\bar{\tiw}^{-}
+ - g_2\tuL[i]^{x}\bdL[i]^{x}\bar{\tiw}^{+}
+ - \frac{1}{\sqrt2} g_2\tuL[i]^{x}\buL[i]^{x}\bar{\tiw}^{3}
+ + \frac{1}{\sqrt2} g_2\tdL[i]^{x*}\dL[i]^{x}\tiw^{3}
+ - g_2\tdL[i]^{x*}\uL[i]^{x}\tiw^{-}
+ - g_2\tuL[i]^{x*}\dL[i]^{x}\tiw^{+}
+ - \frac{1}{\sqrt2} g_2\tuL[i]^{x*}\uL[i]^{x}\tiw^{3}
+ + \frac{1}{\sqrt2} g_Y\hdm\bthdm\bar{\tib}
+ + \frac{1}{\sqrt2} g_Y\hdz\bthdz\bar{\tib}
+ - \frac{1}{\sqrt2} g_Y\hup\bthup\bar{\tib}
+ - \frac{1}{\sqrt2} g_Y\huz\bthuz\bar{\tib}
+ + \frac{1}{\sqrt2} g_Y\hd^{-*}\thdm\tib
+ + \frac{1}{\sqrt2} g_Y\hd^{0*}\thdz\tib
+ - \frac{1}{\sqrt2} g_Y\hu^{+*}\thup\tib
+ - \frac{1}{\sqrt2} g_Y\hu^{0*}\thuz\tib
+ - {\sqrt2} g_Y\teR[i]^{*}\beR[i]^{\cc }\bar{\tib}
+ + \frac{1}{\sqrt2} g_Y\teL[i]\beL[i]\bar{\tib}
+ + \frac{1}{\sqrt2} g_Y\tnuL[i]\bnuL[i]\bar{\tib}
+ - {\sqrt2} g_Y\teR[i]\eR[i]^{\cc }\tib
+ + \frac{1}{\sqrt2} g_Y\teL[i]^{*}\eL[i]\tib
+ + \frac{1}{\sqrt2} g_Y\tnuL[i]^{*}\nuL[i]\tib
+ - \frac{1}{3} {\sqrt2} g_Y\tdR[i]^{x*}\bdR[i]^{\cc x}\bar{\tib}
+ + \frac{2}{3} {\sqrt2} g_Y\tuR[i]^{x*}\buR[i]^{\cc x}\bar{\tib}
+ - \frac{1}{3} \frac{1}{\sqrt2} g_Y\tdL[i]^{x}\bdL[i]^{x}\bar{\tib}
+ - \frac{1}{3} \frac{1}{\sqrt2} g_Y\tuL[i]^{x}\buL[i]^{x}\bar{\tib}
+ - \frac{1}{3} {\sqrt2} g_Y\tdR[i]^{x}\dR[i]^{\cc x}\tib
+ + \frac{2}{3} {\sqrt2} g_Y\tuR[i]^{x}\uR[i]^{\cc x}\tib
+ - \frac{1}{3} \frac{1}{\sqrt2} g_Y\tdL[i]^{x*}\dL[i]^{x}\tib
+ - \frac{1}{3} \frac{1}{\sqrt2} g_Y\tuL[i]^{x*}\uL[i]^{x}\tib
+ - {\sqrt2} g_3\tau^{xya}\tdL[i]^{y}\bdL[i]^{x}\bar{\tig}^{a}
+ - {\sqrt2} g_3\tau^{xya}\tuL[i]^{y}\buL[i]^{x}\bar{\tig}^{a}
+ + {\sqrt2} g_3\tau^{xya}\tdR[i]^{y}\dR[i]^{\cc x}\tig^{a}
+ + {\sqrt2} g_3\tau^{xya}\tuR[i]^{y}\uR[i]^{\cc x}\tig^{a}
+ + {\sqrt2} g_3\tau^{yxa}\tdR[i]^{y*}\bdR[i]^{\cc x}\bar{\tig}^{a}
+ + {\sqrt2} g_3\tau^{yxa}\tuR[i]^{y*}\buR[i]^{\cc x}\bar{\tig}^{a}
+ - {\sqrt2} g_3\tau^{yxa}\tdL[i]^{y*}\dL[i]^{x}\tig^{a}
+ - {\sqrt2} g_3\tau^{yxa}\tuL[i]^{y*}\uL[i]^{x}\tig^{a}

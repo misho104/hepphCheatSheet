@@ -14,7 +14,7 @@ OrderInTerm[exp_] := Which[
 
 TermOrder[exp_] := DeleteDuplicates[Cases[exp, (P|PC)[a_, ___] :> a, All]]/.{\[Mu]->0, yu->1, yd->2, ye->3, \[Kappa]->4, \[Lambda]->5, \[Lambda]p->6, \[Lambda]pp->7};
 
-ToTeXString[(type:S|P|SC|PC|S2|S4|P2|F|FC)[name_, rules___]] := Module[{r = {rules}, gen, su2, su3},
+ToTeXString[(type:S|P|SC|PC|S2|S4|P2|F|FC|V)[name_, rules___]] := Module[{r = {rules}, gen, su2, su3},
   gen = Cases[r, (Gen->a_) :> TextString[a]]//StringJoin;
   su2 = Cases[r, (SU2->a_) :> TextString[a]]//StringJoin;
   su3 = Cases[r, (SU3->a_) :> TextString[a]]//StringJoin;
@@ -50,7 +50,7 @@ ToTeXString[exp_] := Module[{result = Expand[exp]},
     PLUS[a__] :> PLUS@@SortBy[TermOrder][{a}]
   };
   result = result//.{
-    term:(_S|_P|_SC|_PC|_S2|_S4|_P2|_\[Epsilon]|_\[Epsilon]3|_F|_FC) :> ToTeXString[term],
+    term:(_S|_P|_SC|_PC|_S2|_S4|_P2|_\[Epsilon]|_\[Epsilon]3|_F|_FC|_V) :> ToTeXString[term],
     PLUS[a__] :> {"\\left( ", Sequence@@(Riffle[{a}, " + "]), " \\right)"},
     List[a__String] :> StringJoin[{a}],
     (TIMES|Dot)[a__String] :> StringJoin[{a}]

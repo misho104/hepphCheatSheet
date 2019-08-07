@@ -1,0 +1,61 @@
+{\ii} \bthdm\bsigma^{\mu }\partial_{\mu}\thdm
+ + {\ii} \bthdz\bsigma^{\mu }\partial_{\mu}\thdz
+ + {\ii} \bthup\bsigma^{\mu }\partial_{\mu}\thup
+ + {\ii} \bthuz\bsigma^{\mu }\partial_{\mu}\thuz
+ + {\ii} \beR[i]^{\cc }\bsigma^{\mu }\partial_{\mu}\eR[i]^{\cc }
+ + {\ii} \beL[i]\bsigma^{\mu }\partial_{\mu}\eL[i]
+ + {\ii} \bnuL[i]\bsigma^{\mu }\partial_{\mu}\nuL[i]
+ + {\ii} \bdR[i]^{\cc x}\bsigma^{\mu }\partial_{\mu}\dR[i]^{\cc x}
+ + {\ii} \buR[i]^{\cc x}\bsigma^{\mu }\partial_{\mu}\uR[i]^{\cc x}
+ + {\ii} \bdL[i]^{x}\bsigma^{\mu }\partial_{\mu}\dL[i]^{x}
+ + {\ii} \buL[i]^{x}\bsigma^{\mu }\partial_{\mu}\uL[i]^{x}
+ + \frac{1}{\sqrt2} g_2\bthdm\bsigma^{\mu }\thdzW_{\mu}^{-}
+ + \frac{1}{\sqrt2} g_2\bthdz\bsigma^{\mu }\thdmW_{\mu}^{+}
+ + \frac{1}{\sqrt2} g_2\bthup\bsigma^{\mu }\thuzW_{\mu}^{+}
+ + \frac{1}{\sqrt2} g_2\bthuz\bsigma^{\mu }\thupW_{\mu}^{-}
+ + \frac{1}{\sqrt2} g_2\beL[i]\bsigma^{\mu }\nuL[i]W_{\mu}^{-}
+ + \frac{1}{\sqrt2} g_2\bnuL[i]\bsigma^{\mu }\eL[i]W_{\mu}^{+}
+ + \frac{1}{\sqrt2} g_2\bdL[i]^{x}\bsigma^{\mu }\uL[i]^{x}W_{\mu}^{-}
+ + \frac{1}{\sqrt2} g_2\buL[i]^{x}\bsigma^{\mu }\dL[i]^{x}W_{\mu}^{+}
+ - \frac{1}{2} g_2\co{\mathrm w}\bthdm\bsigma^{\mu }\thdmZ_{\mu}
+ + \frac{1}{2} g_2\co{\mathrm w}\bthdz\bsigma^{\mu }\thdzZ_{\mu}
+ + \frac{1}{2} g_2\co{\mathrm w}\bthup\bsigma^{\mu }\thupZ_{\mu}
+ - \frac{1}{2} g_2\co{\mathrm w}\bthuz\bsigma^{\mu }\thuzZ_{\mu}
+ - \frac{1}{2} g_2\co{\mathrm w}\beL[i]\bsigma^{\mu }\eL[i]Z_{\mu}
+ + \frac{1}{2} g_2\co{\mathrm w}\bnuL[i]\bsigma^{\mu }\nuL[i]Z_{\mu}
+ - \frac{1}{2} g_2\co{\mathrm w}\bdL[i]^{x}\bsigma^{\mu }\dL[i]^{x}Z_{\mu}
+ + \frac{1}{2} g_2\co{\mathrm w}\buL[i]^{x}\bsigma^{\mu }\uL[i]^{x}Z_{\mu}
+ - \frac{1}{2} g_2\si{\mathrm w}\bthdm\bsigma^{\mu }\thdmA_{\mu}
+ + \frac{1}{2} g_2\si{\mathrm w}\bthdz\bsigma^{\mu }\thdzA_{\mu}
+ + \frac{1}{2} g_2\si{\mathrm w}\bthup\bsigma^{\mu }\thupA_{\mu}
+ - \frac{1}{2} g_2\si{\mathrm w}\bthuz\bsigma^{\mu }\thuzA_{\mu}
+ - \frac{1}{2} g_2\si{\mathrm w}\beL[i]\bsigma^{\mu }\eL[i]A_{\mu}
+ + \frac{1}{2} g_2\si{\mathrm w}\bnuL[i]\bsigma^{\mu }\nuL[i]A_{\mu}
+ - \frac{1}{2} g_2\si{\mathrm w}\bdL[i]^{x}\bsigma^{\mu }\dL[i]^{x}A_{\mu}
+ + \frac{1}{2} g_2\si{\mathrm w}\buL[i]^{x}\bsigma^{\mu }\uL[i]^{x}A_{\mu}
+ - g_3\tau^{xya}\bdR[i]^{\cc y}\bsigma^{\mu }\dR[i]^{\cc x}g_{\mu}^{a}
+ - g_3\tau^{xya}\buR[i]^{\cc y}\bsigma^{\mu }\uR[i]^{\cc x}g_{\mu}^{a}
+ + g_3\tau^{yxa}\bdL[i]^{y}\bsigma^{\mu }\dL[i]^{x}g_{\mu}^{a}
+ + g_3\tau^{yxa}\buL[i]^{y}\bsigma^{\mu }\uL[i]^{x}g_{\mu}^{a}
+ - \frac{1}{2} g_Y\co{\mathrm w}\bthdm\bsigma^{\mu }\thdmA_{\mu}
+ - \frac{1}{2} g_Y\co{\mathrm w}\bthdz\bsigma^{\mu }\thdzA_{\mu}
+ + \frac{1}{2} g_Y\co{\mathrm w}\bthup\bsigma^{\mu }\thupA_{\mu}
+ + \frac{1}{2} g_Y\co{\mathrm w}\bthuz\bsigma^{\mu }\thuzA_{\mu}
+ + g_Y\co{\mathrm w}\beR[i]^{\cc }\bsigma^{\mu }\eR[i]^{\cc }A_{\mu}
+ - \frac{1}{2} g_Y\co{\mathrm w}\beL[i]\bsigma^{\mu }\eL[i]A_{\mu}
+ - \frac{1}{2} g_Y\co{\mathrm w}\bnuL[i]\bsigma^{\mu }\nuL[i]A_{\mu}
+ + \frac{1}{3} g_Y\co{\mathrm w}\bdR[i]^{\cc x}\bsigma^{\mu }\dR[i]^{\cc x}A_{\mu}
+ - \frac{2}{3} g_Y\co{\mathrm w}\buR[i]^{\cc x}\bsigma^{\mu }\uR[i]^{\cc x}A_{\mu}
+ + \frac{1}{6} g_Y\co{\mathrm w}\bdL[i]^{x}\bsigma^{\mu }\dL[i]^{x}A_{\mu}
+ + \frac{1}{6} g_Y\co{\mathrm w}\buL[i]^{x}\bsigma^{\mu }\uL[i]^{x}A_{\mu}
+ + \frac{1}{2} g_Y\si{\mathrm w}\bthdm\bsigma^{\mu }\thdmZ_{\mu}
+ + \frac{1}{2} g_Y\si{\mathrm w}\bthdz\bsigma^{\mu }\thdzZ_{\mu}
+ - \frac{1}{2} g_Y\si{\mathrm w}\bthup\bsigma^{\mu }\thupZ_{\mu}
+ - \frac{1}{2} g_Y\si{\mathrm w}\bthuz\bsigma^{\mu }\thuzZ_{\mu}
+ - g_Y\si{\mathrm w}\beR[i]^{\cc }\bsigma^{\mu }\eR[i]^{\cc }Z_{\mu}
+ + \frac{1}{2} g_Y\si{\mathrm w}\beL[i]\bsigma^{\mu }\eL[i]Z_{\mu}
+ + \frac{1}{2} g_Y\si{\mathrm w}\bnuL[i]\bsigma^{\mu }\nuL[i]Z_{\mu}
+ - \frac{1}{3} g_Y\si{\mathrm w}\bdR[i]^{\cc x}\bsigma^{\mu }\dR[i]^{\cc x}Z_{\mu}
+ + \frac{2}{3} g_Y\si{\mathrm w}\buR[i]^{\cc x}\bsigma^{\mu }\uR[i]^{\cc x}Z_{\mu}
+ - \frac{1}{6} g_Y\si{\mathrm w}\bdL[i]^{x}\bsigma^{\mu }\dL[i]^{x}Z_{\mu}
+ - \frac{1}{6} g_Y\si{\mathrm w}\buL[i]^{x}\bsigma^{\mu }\uL[i]^{x}Z_{\mu}
