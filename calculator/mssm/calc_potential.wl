@@ -8,7 +8,7 @@ SuperPot = Total[{
   -P[yu, Gen->"i", Gen->"j"]                 \[Epsilon][SU2->"a", SU2->"b"]           SF[bU, SU3->"x", Gen->"i"].SF[Hu, SU2->"a"].SF[Q, SU3->"x", SU2->"b", Gen->"j"],
   P[yd, Gen->"i", Gen->"j"]                  \[Epsilon][SU2->"a", SU2->"b"]           SF[bD, SU3->"x", Gen->"i"].SF[Hd, SU2->"a"].SF[Q, SU3->"x", SU2->"b", Gen->"j"],
   P[ye, Gen->"i", Gen->"j"]                  \[Epsilon][SU2->"a", SU2->"b"]           SF[bE, Gen->"i"].SF[Hd, SU2->"a"].SF[L, SU2->"b", Gen->"j"],
-  P[\[Mu]p, Gen->"i"]                            \[Epsilon][SU2->"a", SU2->"b"]           SF[Hu, SU2->"a"].SF[L, SU2->"b", Gen->"i"],
+  -P[\[Kappa], Gen->"i"]                            \[Epsilon][SU2->"a", SU2->"b"]           SF[L, SU2->"a", Gen->"i"].SF[Hu, SU2->"b"],
   (1/2) P[\[Lambda], Gen->"i", Gen->"j", Gen->"k"]   \[Epsilon][SU2->"a", SU2->"b"]           SF[L, SU2->"a", Gen->"i"].SF[L, SU2->"b", Gen->"j"].SF[bE, Gen->"k"],
         P[\[Lambda]p, Gen->"i", Gen->"j", Gen->"k"]  \[Epsilon][SU2->"a", SU2->"b"]           SF[L, SU2->"a", Gen->"i"].SF[Q, SU3->"x", SU2->"b", Gen->"j"].SF[bD, SU3->"x", Gen->"k"],
   (1/2) P[\[Lambda]pp, Gen->"i", Gen->"j", Gen->"k"]\[Epsilon]3[SU3->"x", SU3->"y", SU3->"z"] SF[bU, SU3->"x", Gen->"i"].SF[bD, SU3->"y", Gen->"j"].SF[bD, SU3->"z", Gen->"k"]

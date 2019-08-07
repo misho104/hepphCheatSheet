@@ -11,7 +11,7 @@
 + \yu[ij]\tuR[i]^{x*}\thu^{a}\qL[j]^{bx}
 - \yu[ji]\tqL[i]^{ax}\thu^{b}\uR[j]^{\cc x}
 \right.\\&\quad\left.
-- \mu'_{i}\thu^{a}\lL[i]^{b}
+- \kappa_{i}\thu^{a}\lL[i]^{b}
 - \lambda_{ikj}\tlL[i]^{a}\eR[j]^{\cc }\lL[k]^{b}
 - \frac{1}{2}\lambda_{jki}\teR[i]^{*}\lL[j]^{a}\lL[k]^{b}
 - \lambda'_{ikj}\tlL[i]^{a}\dR[j]^{\cc x}\qL[k]^{bx}

@@ -1,6 +1,6 @@
 -F^*_{\hu^{a}}
 & = 
-\epsilon^{ab}\left( - \tuR^{x*}\yu\tqL^{bx} + \mu\hd^{b} + \mu'_{i}\tlL[i]^{b} \right)
+\epsilon^{ab}\left( - \tuR^{x*}\yu\tqL^{bx} + \mu\hd^{b} + \kappa_{i}\tlL[i]^{b} \right)
 \\
 -F^*_{\hd^{a}}
 & = 
@@ -20,7 +20,7 @@
 \\
 -F^*_{\tlL[i]^{a}}
 & = 
-\epsilon^{ab}\left( - \ye[ji]\teR[j]^{*}\hd^{b} - \mu'_{i}\hu^{b} + \lambda_{ikj}\teR[j]^{*}\tlL[k]^{b} + \lambda'_{ikj}\tdR[j]^{x*}\tqL[k]^{bx} \right)
+\epsilon^{ab}\left( - \ye[ji]\teR[j]^{*}\hd^{b} - \kappa_{i}\hu^{b} + \lambda_{ikj}\teR[j]^{*}\tlL[k]^{b} + \lambda'_{ikj}\tdR[j]^{x*}\tqL[k]^{bx} \right)
 \\
 -F^*_{\teR[i]^{*}}
 & = 

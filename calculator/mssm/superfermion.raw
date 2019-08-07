@@ -1,6 +1,6 @@
 (-1)\mu\epsilon^{ab}\thu^{a}\thd^{b}
 \\&
-- \epsilon^{ab}\mu'_{i}\thu^{a}\lL[i]^{b}
+- \epsilon^{ab}\kappa_{i}\thu^{a}\lL[i]^{b}
 \\&
 - \epsilon^{ab}\yd[ij]\hd^{a}\dR[i]^{\cc x}\qL[j]^{bx}
 \\&

@@ -1,15 +1,15 @@
-|\hu|^2\left( |\mu|^2 + |\mu'|^2 \right)
+|\hu|^2\left( |\mu|^2 + \sum_i|\kappa_i|^2 \right)
 + |\mu|^2|\hd|^2
-+ \left( \mu^{\prime *}_{i}\mu\tlL[i]^{*}\hd + \text{H.c.} \right)
-+ \mu^{\prime *}_{i}\mu'_{j}\tlL[i]^{*}\tlL[j]^{}
++ \left( \kappa^*_{i}\mu\tlL[i]^{*}\hd + \text{H.c.} \right)
++ \kappa^{*}_{i}\kappa_{j}\tlL[i]^{*}\tlL[j]^{}
 \\&
 + \Bigl[{}
   - \yu[ij]\mu^{*}\hd^{*}\tuR[i]^{*}\tqL[j]
-  - \yu[ij]\mu^{\prime *}_{k}\tuR[i]^{*}\tqL[j]\tlL[k]^{*} 
-  - \left(\yd[ij]\mu^{*} + \lambda'_{kji}\mu^{\prime *}_{k} \right)   \hu^{*}\tdR[i]^{*}\tqL[j]
+  - \yu[ij]\kappa^{*}_{k}\tuR[i]^{*}\tqL[j]\tlL[k]^{*} 
+  - \left(\yd[ij]\mu^{*} + \lambda'_{kji}\kappa^{*}_{k} \right)   \hu^{*}\tdR[i]^{*}\tqL[j]
 \Bigr.\\&\Bigl.\qquad{}
-  + \ye[ij]\mu^{\prime *}_{j}\teR[i]^{*}\hu^{*}\hd^{}
-   + \left(\lambda_{jki}\mu^{\prime *}_{k}- \ye[ij]\mu^{*}\right)\hu^{*}\teR[i]^{*}\tlL[j]
+  + \ye[ij]\kappa^{*}_{j}\teR[i]^{*}\hu^{*}\hd^{}
+   + \left(\lambda_{jki}\kappa^{*}_{k}- \ye[ij]\mu^{*}\right)\hu^{*}\teR[i]^{*}\tlL[j]
 +\text{H.c.}\Bigr]
 \\&
 + \frac{1}{8}\left( g_2^2 + g_Y^2 \right)|\hd|^4
