@@ -1,0 +1,107 @@
+ - \frac{1}{2} M_3\tig^{a}\tig^{a}
+ - \frac{1}{2} M_3^{*}\bar{\tig}^{a}\bar{\tig}^{a}
+\\&
+ - \frac{1}{2} M_1\tib\tib
+ - \frac{1}{2} M_2\tiw^{3}\tiw^{3}
+ + \mu\thuz\thdz
+ + \co{\beta} m_Z \si{\mathrm w} \thdz\tib
+ - \co{\mathrm w} \co{\beta} m_Z \thdz\tiw^{3}
+ - m_Z \si{\mathrm w} \si{\beta} \thuz\tib
+ + \co{\mathrm w} m_Z \si{\beta} \thuz\tiw^{3}
+\\&
+ - \frac{1}{2} M_1^{*}\bar{\tib}\bar{\tib}
+ - \frac{1}{2} M_2^{*}\bar{\tiw}^{3}\bar{\tiw}^{3}
+ + \mu^{*}\bthuz\bthdz
+ + \co{\beta} m_Z \si{\mathrm w} \bthdz\bar{\tib}
+ - \co{\mathrm w} \co{\beta} m_Z \bthdz\bar{\tiw}^{3}
+ - m_Z \si{\mathrm w} \si{\beta} \bthuz\bar{\tib}
+ + \co{\mathrm w} m_Z \si{\beta} \bthuz\bar{\tiw}^{3}
+\\&
+ - M_2\tiw^{+}\tiw^{-}
+ - M_2^{*}\bar{\tiw}^{+}\bar{\tiw}^{-}
+ - \mu\thup\thdm
+ - \mu^{*}\bthup\bthdm
+(-1) {\sqrt2} \co{\mathrm w} \co{\beta} m_Z \thdm\tiw^{+}
+ - {\sqrt2} \co{\mathrm w} m_Z \si{\beta} \thup\tiw^{-}
+ - {\sqrt2} \co{\mathrm w} \co{\beta} m_Z \bthdm\bar{\tiw}^{+}
+ - {\sqrt2} \co{\mathrm w} m_Z \si{\beta} \bthup\bar{\tiw}^{-}
+\\&
+ + \co{\mathrm w}^2 m_Z^2 W^{+\mu}W_{\mu}^{-}
+ + \frac{1}{2} m_Z^2 Z_{\mu}Z^{\mu}
+\\&
+ - |\mu|^2\hu^{0*}\huz
+ - |\mu|^2\hd^{0*}\hdz
+\\&
+ - \frac{1}{4} m_Z^2 \si{\beta}^2 \huz\huz
+ - \frac{1}{4} \co{\beta}^2 m_Z^2 \hdz\hdz
+ + b\huz\hdz
+ + \frac{1}{2} \co{\beta} m_Z^2 \si{\beta} \huz\hdz
+\\&
+ + b^{*}\hu^{0*}\hd^{0*}
+ - \frac{1}{4} \co{\beta}^2 m_Z^2 \hd^{0*}\hd^{0*}
+ + \frac{1}{2} \co{\beta} m_Z^2 \si{\beta} \hu^{0*}\hd^{0*}
+ - \frac{1}{4} m_Z^2 \si{\beta}^2 \hu^{0*}\hu^{0*}
+\\&
+ + \frac{1}{2} \co{\beta} m_Z^2 \si{\beta} \hd^{0*}\huz
+ + \frac{1}{2} \co{\beta} m_Z^2 \si{\beta} \hu^{0*}\hdz
+\\&
+ - {\sqrt2} Power[g_Z, (-1)] m_Z \si{\beta} \yu[ij]\uR[i]^{\cc x}\uL[j]^{x}
+ - {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z \yd[ij]\dR[i]^{\cc x}\dL[j]^{x}
+ - {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z \ye[ij]\eR[i]^{\cc }\eL[j]
+ - {\sqrt2} Power[g_Z, (-1)] m_Z \si{\beta} \yu[ij]^{*}\buR[i]^{\cc x}\buL[j]^{x}
+ - {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z \yd[ij]^{*}\bdR[i]^{\cc x}\bdL[j]^{x}
+ - {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z \ye[ij]^{*}\beR[i]^{\cc }\beL[j]
+\\&
+ - |\mu|^2\hu^{+*}\hup
+ - |\mu|^2\hd^{-*}\hdm
+ + Plus[TIMES[(-1), m_{\Hd}^2], TIMES[-\frac{1}{4}, Plus[(1), TIMES[(3), \co{2\beta}]], m_Z^2]] \hd^{0*}\hdz
+ + Plus[TIMES[(-1), m_{\Hd}^2], TIMES[m_Z^2, Plus[-\frac{1}{2}, TIMES[\si{\mathrm w}^2, \si{\beta}^2]]]] \hd^{-*}\hdm
+ + Plus[TIMES[(-1), m_{\Hu}^2], TIMES[\frac{1}{4}, Plus[(-1), TIMES[(3), \co{2\beta}]], m_Z^2]] \hu^{0*}\huz
+ + Plus[TIMES[(-1), m_{\Hu}^2], TIMES[m_Z^2, Plus[-\frac{1}{2}, TIMES[\co{\beta}^2, \si{\mathrm w}^2]]]] \hu^{+*}\hup
+\\&
+ - b\hup\hdm
+ - \co{\mathrm w}^2 \co{\beta} m_Z^2 \si{\beta} \hup\hdm
+ - b^{*}\hu^{+*}\hd^{-*}
+ - \co{\mathrm w}^2 \co{\beta} m_Z^2 \si{\beta} \hu^{+*}\hd^{-*}
+\\&
+ - [m_{Q}^2]_{ji}\tuL[j]^{x*}\tuL[i]^{x}
+ + \frac{1}{6} \co{2\beta} m_Z^2 Plus[(-3), TIMES[(4), \si{\mathrm w}^2]] \tuL[i]^{x*}\tuL[i]^{x}
+ + (-2) Power[g_Z, (-2)] m_Z^2 \si{\beta}^2 \yu[ki]\yu[kj]^{*}\tuL[j]^{x*}\tuL[i]^{x}
+\\&
+ - [m_{U^\cc}^2]_{ij}\tuR[j]^{x}\tuR[i]^{x*}
+ - \frac{2}{3} \co{2\beta} m_Z^2 \si{\mathrm w}^2 \tuR[i]^{x}\tuR[i]^{x*}
+ + (-2) Power[g_Z, (-2)] m_Z^2 \si{\beta}^2 \yu[ik]\yu[jk]^{*}\tuR[j]^{x}\tuR[i]^{x*}
+\\&
+ + {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z \mu\yu[ij]^{*}\tuR[i]^{x}\tuL[j]^{x*}
+ + {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z \mu^{*}\yu[ij]\tuR[i]^{x*}\tuL[j]^{x}
+ - {\sqrt2} Power[g_Z, (-1)] m_Z \si{\beta} a_{{\mathrm u} ij}\tuR[i]^{x*}\tuL[j]^{x}
+ - {\sqrt2} Power[g_Z, (-1)] m_Z \si{\beta} a^{*}_{{\mathrm u} ij}\tuR[i]^{x}\tuL[j]^{x*}
+\\&
+ - [m_{Q}^2]_{ji}\tdL[j]^{x*}\tdL[i]^{x}
+ + \frac{1}{6} \co{2\beta} m_Z^2 Plus[(3), TIMES[(-2), \si{\mathrm w}^2]] \tdL[i]^{x*}\tdL[i]^{x}
+ + (-2) \co{\beta}^2 Power[g_Z, (-2)] m_Z^2 \yd[ki]\yd[kj]^{*}\tdL[j]^{x*}\tdL[i]^{x}
+\\&
+ - [m_{D^\cc}^2]_{ij}\tdR[j]^{x}\tdR[i]^{x*}
+ + \frac{1}{3} \co{2\beta} m_Z^2 \si{\mathrm w}^2 \tdR[i]^{x}\tdR[i]^{x*}
+ + (-2) \co{\beta}^2 Power[g_Z, (-2)] m_Z^2 \yd[ik]\yd[jk]^{*}\tdR[j]^{x}\tdR[i]^{x*}
+\\&
+ - {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z a_{{\mathrm d} ij}\tdR[i]^{x*}\tdL[j]^{x}
+ - {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z a^{*}_{{\mathrm d} ij}\tdR[i]^{x}\tdL[j]^{x*}
+ + {\sqrt2} Power[g_Z, (-1)] m_Z \si{\beta} \mu\yd[ij]^{*}\tdR[i]^{x}\tdL[j]^{x*}
+ + {\sqrt2} Power[g_Z, (-1)] m_Z \si{\beta} \mu^{*}\yd[ij]\tdR[i]^{x*}\tdL[j]^{x}
+\\&
+ - [m_{L}^2]_{ji}\tnuL[j]^{*}\tnuL[i]
+ - \frac{1}{2} \co{2\beta} m_Z^2 \tnuL[i]^{*}\tnuL[i]
+\\&
+ - [m_{L}^2]_{ji}\teL[j]^{*}\teL[i]
+ + \frac{1}{2} \co{2\beta} m_Z^2 Plus[(1), TIMES[(-2), \si{\mathrm w}^2]] \teL[i]^{*}\teL[i]
+ + (-2) \co{\beta}^2 Power[g_Z, (-2)] m_Z^2 \ye[ki]\ye[kj]^{*}\teL[j]^{*}\teL[i]
+\\&
+ - [m_{E^\cc}^2]_{ij}\teR[j]\teR[i]^{*}
+ + \co{2\beta} m_Z^2 \si{\mathrm w}^2 \teR[i]\teR[i]^{*}
+ + (-2) \co{\beta}^2 Power[g_Z, (-2)] m_Z^2 \ye[ik]\ye[jk]^{*}\teR[j]\teR[i]^{*}
+\\&
+ - {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z a_{{\mathrm e} ij}\teR[i]^{*}\teL[j]
+ - {\sqrt2} \co{\beta} Power[g_Z, (-1)] m_Z a^{*}_{{\mathrm e} ij}\teR[i]\teL[j]^{*}
+ + {\sqrt2} Power[g_Z, (-1)] m_Z \si{\beta} \mu\ye[ij]^{*}\teR[i]\teL[j]^{*}
+ + {\sqrt2} Power[g_Z, (-1)] m_Z \si{\beta} \mu^{*}\ye[ij]\teR[i]^{*}\teL[j]

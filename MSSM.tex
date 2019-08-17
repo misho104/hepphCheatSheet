@@ -156,7 +156,13 @@ V^{\mathrm{RPV}}_{\text{\cancel{SUSY}}}
 \notag\\&\qquad\qquad\qquad
    + \left(C^1_{ijk}\tlL[i]^*\tqL[j]\tuR[k]^* + C^2_i\hu^*\hd\teR[i]^* + C^3_{ijk}\tdR[i]\tuR[j]^*\teR[k]^*+\frac12C^4_{ijk}\tdR[i]\tqL[j]\tqL[k]+\text{H.c.}\right).
 \end{align}
-As usual, we remove $\Theta_W$ and $\Theta_B$ by rotating fermions, which is compatible with mass diagonalization, and assume the absence of Fayet-Illiopoulos term: $\Lambda\w{FI}=0$.
+As usual, we remove $\Theta_W$ and $\Theta_B$ by rotating fermions\footnote{%
+Fail-safe memo:
+The $\Theta$-terms are total derivatives and relevant in non-perturbative discussion.
+Redefinition of chiral fermions generates those terms (Fujikawa method) as a non-perturbative effect, so we can remove $\Theta$-terms as long as we have such freedoms.
+Note also that the absence of gauge anomaly means the corresponding gauge transformations do not induce additional $\Theta$-terms.
+}
+, which is compatible with mass diagonalization (discussed later), and assume the absence of Fayet-Illiopoulos term: $\Lambda\w{FI}=0$.
 The SU(3) angle $\Theta_g$ forms QCD phase $\Theta\w{QCD}$ together with the phases from Yukawa matrices.
 Then,
 \begin{align}
@@ -418,11 +424,12 @@ while corresponding fermion terms are
   -\mu\thu^a\thd^b-\kappa_i\thu^a\lL[i]^b
 \right).
 \end{equation}
-We block-diagonalize the scalar mass matrix so that Higgses and $\tlL$ are separated; then in general lepton and Higgsinos are mixed.
-Also we rotate SU(2) symmetry so that $\vev{\hup}=0$; i.e., our SU(2) notation is fixed as such.
+If the $R$-parity is not conserved, we redefine $(\Hd, L)$ superfields so that the mass matrix is block-diagonal, which corresponds to $\gU(4)_{\Hd,L}\to\gU(3)_L\times\gU(1)_{\Hd}$ (DOF counting: $16\to9+1$ to remove $b'_i$).
+Then lepton and $\thd$ are mixed.\footnote{If we separated leptons and $\thd$ first, sleptons would acquire VEVs and lepton-gaugino mixings would be induced.}
+With $R$-parity conservation, we do not suffer from these mixings.
 
 \subsubsection{Higgs potential and induced mass in  R-parity conserved case}
-With $R$-parity conservation (and SU(2) notation-fixing),
+We perform ``SU(2)-notation fixing'', i.e., use the freedom associated to $T_1$ and $T_2$ of SU(2), so that $\vev{\hup}=0$. Then $\vev{\hdm}=0$ and effectively
 \begin{equation}
  V\w{pot}=
    (|\mu|^2 + m^2_{\Hu})  |\huz|^2
@@ -430,73 +437,147 @@ With $R$-parity conservation (and SU(2) notation-fixing),
  + \frac{g_Z^2}{8}\left(|\huz|^2 - |\hdz|^2\right)^2
  - \left(b\huz\hdz +\text{H.c.}\right).
 \end{equation}
-We also fix the U(1) notation so that $b>0$, $\vev{\huz}=v\sin\beta>0$, and $\vev{\hdz}=v\cos\beta>0$:
-\begin{equation}
- V\w{pot}=
+We redefine $\Hd$ superfield so that $b>0$.\footnote{
+Note that $T_3$-rotation induces $\huz\to\ee^{\ii\theta/2}\huz$ and $\hdz\to\ee^{-\ii\theta/2}\hdz$; it cannot the remove phase of $b$.}
+Then $\arg\vev{\huz}=-\arg\vev{\hdz}$ and, with $T_3$-rotation, $\vev{\huz}>0$ and $\vev{\hdz}>0$:
+\begin{align}
+ &\vev{\huz} =: \vu =: v\sin\beta,\qquad
+ \vev{\hdz} =: \vd =: v\cos\beta;
+\\
+& V\w{pot}=
    (|\mu|^2 + m^2_{\Hu})  v^2\sin^2\beta
  + (|\mu|^2 + m^2_{\Hd}) v^2\cos^2\beta
  + \frac{g_Z^2}{8}v^4\cos^2 2\beta
- - v^2\sin2\beta,
-\end{equation}
-where the solutions are
+ - v^2 b\sin2\beta.
+\end{align}
+This potential can have two minima; one with $0<\beta\le\pi/4$ and the other with $\pi/4\le\beta<\pi/2$:
 \begin{equation}
- \sin2\beta = \frac{2b}{2|\mu|^2 + m_{\Hu}^2 + m_{\Hd}^2},\qquad
- \frac{g_Z^2 v^2}{2}
-=\left|\frac{m_{\Hd}^2-m_{\Hu}^2}{\cos2\beta}\right| - m_{\Hu}^2-m_{\Hd}^2-2|\mu|^2.
+ \tan\beta = \frac{B\mp\sqrt{B^2-4b^2}}{2b}
+\quad
+\left(\cos2\beta = \pm\frac{\sqrt{B^2-4b^2}}{B}\right),
+ \qquad
+ m_Z^2:=\frac{g_Z^2}{2}v^2 = \left(\pm\frac{m_{\Hd}^2 - m_{\Hu}^2}{\sqrt{B^2-4b^2}}-1\right)B,
+\end{equation}
+where $B:=2|\mu|^2+m_{\Hu}^2+m_{\Hd}^2>2b>0$ and $m_Z$ is the $Z$-boson tree-level mass.
+Also,
+\begin{equation}
+ \sin2\beta = \frac{2b}{2|\mu|^2 + m_{\Hu}^2 + m_{\Hd}^2},
+\qquad
+ m_Z^2 = \frac{-(m_{\Hd}^2 - m_{\Hu}^2)}{\cos2\beta} - \left(2|\mu|^2 + m_{\Hu}^2 + m_{\Hd}^2\right)
+\end{equation}
+are satisfied in both solutions.
+
+\paragraph{Higgs sector}
+The \NAMBU-Goldstone--Higgs mixings and the mass terms for the charged Higgs bosons are given by
+\begin{equation}
+\begin{split}
+  \mathcal L&\supset
+ \partial_\mu\hd^{-*} \partial^\mu\hd^{-}
++ \partial_\mu\hu^{+*} \partial^\mu\hu^+
++ \left(-b-\frac12g_2^2\vu\vd\right)(\hup\hdm+\hu^{+*}\hd^{-*})
+\\&\quad
++ \left[\frac{g_Y^2(\vu^2-\vd^2)-g_2^2(\vu^2+\vd^2)}{4}-|\mu|^2-m_{\Hd}^2\right]|\hdm|^2
++ \left[\frac{g_Y^2(\vd^2-\vu^2)-g_2^2(\vu^2+\vd^2)}{4}-|\mu|^2-m_{\Hu}^2\right] |\hup|^2
+\\&\quad
++\frac{\ii g_2}{\sqrt2}W^-_\mu\partial^\mu\left(
+\vu\hup - \vu \hu^{+*} - \vd \hd^{-*} + \vd \hdm
+\right)
+\end{split}
+\end{equation}
+and those for the neutral Higgs bosons are
+\begin{equation}
+\begin{split}
+ \mathcal L&\supset
+  \partial_\mu\hd^{0*} \partial^\mu\hd^0
+ + \partial_\mu\hu^{0*} \partial^\mu\hu^0
+ -\frac{g_Z^2\vd^2}{8}(\hdz\hdz+\hd^{0*}\hd^{0*})
+ -\frac{g_Z^2\vu^2}{8}(\huz\huz+\hu^{0*}\hu^{0*})
+\\&\quad
+ +\left(b+\frac{g_Z^2\vu\vd}{4}\right)(\huz\hdz+\hu^{0*}\hd^{0*})
+ +\frac{g_Z^2\vu\vd}{4}(\huz\hd^{0*}+\hu^{0*}\hdz)
+\\&\quad
+ + \left(\frac{g_Z^2(\vu^2-2\vd^2)}{4}-|\mu|^2-m_{\Hd}^2\right)|\hdz|^2
+ + \left(\frac{g_Z^2(\vd^2-2\vu^2)}{4}-|\mu|^2-m_{\Hu}^2\right)|\hdz|^2
+\\&\quad
+ + \frac{\ii g_Z}{2}Z_\mu\partial^\mu\left(
+  \vd\hdz - \vd \hd^{0*} - \vu\huz + \vu \hu^{0*}
+\right).
+\end{split}
+\end{equation}
+Therefore, with $m_W:=\cw m_Z$ and 
+\begin{equation}
+ \pmat{\hup\\\hd^{-*}} = \pmat{\si\beta & \co\beta \\ -\co\beta & \si\beta} \pmat{-\ii G^+\\H^+},
+\quad
+ \pmat{\huz\\\hdz}
+ = \frac{1}{\sqrt2}\pmat{\phi\w u\\\phi\w d}
++  \frac{\ii}{\sqrt2} \pmat{\si\beta & \co\beta \\ -\co\beta & \si\beta} \pmat{G^0\\A^0},
+\end{equation}
+we have
+\begin{equation}
+\begin{split}
+  \mathcal L &\supset
+\partial_\mu G^{+*}\partial^\mu G^+
++\partial_\mu H^{+*}\partial^\mu H^+
++m_W(W^-_\mu\partial^\mu G^+ + W^+_\mu\partial^\mu G^{+*})
++ \left(\frac{m_{\Hd}^2-m_{\Hu}^2}{\cos2\beta} + m_Z^2\sw^2\right)|H^+|^2
+\\&\quad
++\frac12(\partial_\mu\phi_1)^2
++\frac12(\partial_\mu\phi_2)^2
++\frac12(\partial_\mu A^0)^2
++\frac12(\partial_\mu G^0)^2
++m_Z Z_\mu\partial^\mu G^0
+-\frac{B}{2}A_0^2
+\\&\quad
+-\frac14\left(B+m_Z^2+(B-m_Z^2)\cos2\beta\right)\phi\w u^2.
+-\frac14\left(B+m_Z^2-(B-m_Z^2)\cos2\beta\right)\phi\w d^2
++\frac12(B+m_Z^2)(\sin 2\beta)\phi\w u\phi\w d.
+\end{split}
+\end{equation}
+In particular, the tree-level masses are
+\begin{align}
+ m_{A_0}^2 &= B = 2|\mu|^2+m_{\Hu}^2+m_{\Hd}^2,
+\\
+ m_{H^+}^2 &= m_{A_0}^2 + m_W^2,\\
+ m_{h,H} &= \frac12\left(m_{A_0}^2 + m_Z^2 \mp \sqrt{\left(m_{A_0}^2-m_Z^2\right)^2+4m_{A_0}^2m_Z^2\sin^22\beta}\right)
+\end{align}
+with
+\begin{equation}
+ \pmat{\phi\w u\\\phi\w d} = \pmat{\cos\alpha & \sin\alpha \\ -\sin\alpha&\cos\alpha}\pmat{h\\H};
+\qquad
+\frac{\tan2\alpha}{\tan2\beta} = \frac{m_{A_0}^2+m_Z^2}{m_{A_0}^2-m_Z^2}.
 \end{equation}
 
-The mass terms are summarized as, except for the neutral Higgs bosons,
-\begin{align}
- \mathcal L\w{fermions}&\supset-\Bigl(
- v\si\beta\buR\yu\uL
- + v\co\beta\bdR\yd\dL
- + v\co\beta\beR\ye\eL +\text{H.c.}\Bigr)+ \text{(gaugino masses)},
-\\
- \mathcal L\w{SFG}&\supset
- - g_2v\co\beta\bthdm\bar\tiw^+
- - g_2v\si\beta\bthup\bar\tiw^-
- + \frac{g_2v\si\beta}{\sqrt2}\thuz\tiw^3
- - \frac{g_Yv\si\beta}{\sqrt2}\thuz\tib
- - \frac{g_2v\co\beta}{\sqrt2}\thdz\tiw^3
- + \frac{g_Yv\co\beta}{\sqrt2}\thdz\tib +\text{H.c.},
-\\
+\paragraph{Other masses}
+The other mass terms are given by
+\begin{equation}
+ \begin{split}
+\mathcal L&\supset
+   \input{calculator/mssm/lag_massterms.txt},
+ \end{split}
+\end{equation}
+where, at the tree level, the gauge boson mass $m_W$ and $m_Z$, the gluino mass $M_3$, and matter-fermion masses $\vu\yu$, $\vd\yd$, and $\vd\ye$ are given with the ``correct'' sign (as far as $M_3>0$, etc.).
+
+For neutralinos and charginos,
+\begin{equation}
 \begin{split}
-  \mathcal L\w{scalars}&\supset
- \frac{g_2^2v^2}{2}W^{+\mu}W^-_{\mu} + \frac{g_Z^2v^2}{4}Z^\mu Z_\mu
- -\Big\{
- \\&\quad
-   \left[|\mu|^2+m_{\Hu}^2+\frac{g_2^2-g_Y^2\co{2\beta}}{4}v^2\right] |\hup|^2
- + \left[|\mu|^2+m_{\Hd}^2+\frac{g_2^2+g_Y^2\co{2\beta}}{4}v^2\right] |\hdm|^2
- \\&\quad
- + \frac{4b+g_2^2v^2\si{2\beta}}{4}(\hup\hdm + \hu^{+*}\hd^{-*})
- \\&\quad
- + \tuL^*m_Q^2\tuL+ \tdL^*m_Q^2\tdL+\tnuL^*m_L^2\tnuL+\teL^*m_L^2\teL+\tuR^* m_{U^\cc}^2\tuR + \tdR^* m_{D^\cc}^2\tdR + \teR^* m_{E^\cc}^2\teR
- \\&\quad
- + v^2\sisi\beta(\tuL^{*}\yu^\dagger\yu\tuL)
- + v^2\sisi\beta(\tuR^{*}\yu\yu^\dagger\tuR)
- + v^2\coco\beta(\tdL^{*}\yd^\dagger\yd\tdL)
- + v^2\coco\beta(\tdR^{*}\yd\yd^\dagger\tdR)
- + v^2\coco\beta(\teR^{*}\ye\ye^\dagger\teR)
- \\&\quad
- + v^2\coco\beta(\teL^{*}\ye^\dagger\ye\teL)
- -\left[
-   v\si\beta\mu^{*}(\tdR^{*}\yd\tdL)
- + v\si\beta\mu^{*}(\teR^{*}\ye\teL)
- + v\co\beta\mu^{*}(\tuR^{*}\yu\tuL) +\text{H.c.}\right]
- \\&\quad
- + \frac{(3g_2^2-g_Y^2) v^2\co{2\beta}}{12} |\tuL|^2
- - \frac{(3g_2^2+g_Y^2) v^2\co{2\beta}}{12} |\tdL|^2
- + \frac{g_Y^2 v^2\co{2\beta} }{ 3} |\tuR|^2
- - \frac{g_Y^2 v^2\co{2\beta} }{ 6} |\tdR|^2
- \\&\quad
- + \frac{g_Z^2 v^2\co{2\beta} }{ 4} |\tnuL|^2
- - \frac{(g_2^2-g_Y^2) v^2\co{2\beta}}{ 4} |\teL|^2
- - \frac{g_Y^2 v^2\co{2\beta} }{ 2} |\teR|^2
- \\&\quad
- +\left(\tuR^*v\si\beta {a\w u}\tuL + \tdR^* v\co\beta {a\w d} \tdL+ \teR^* v\co\beta {a\w e} \teL +\tuR^* v\co\beta{c\w u}\tuL+\tdR^* v\si\beta{c\w d}\tdL+\teR^*v \si\beta{c\w e}\teL+\text{H.c.}\right)
- \Big\}.
+  -\mathcal L&\supset
+ \frac12\pmat{\tib\\\tiw^3\\\thdz\\\thuz}^\TT
+ \pmat{
+ M_1&0&-\co\beta\sw m_Z&+\si\beta\sw m_Z \\
+ 0&M_2&+\co\beta\cw m_Z&-\si\beta\cw m_Z \\
+ -\co\beta\sw m_Z&+\co\beta\cw m_Z&0&-\mu \\
+ +\si\beta\sw m_Z&-\si\beta\cw m_Z&-\mu&0
+ }
+ \pmat{\tib\\\tiw^3\\\thdz\\\thuz} + \text{h.c.}
+\\&\quad
++\pmat{\tiw^- & \thdm}
+\pmat{ M_2& \sqrt2\si\beta m_W\\ \sqrt2\co\beta m_W& \mu}
+\pmat{\tiw^+ \\ \thup}
++\pmat{\bar\tiw^- & \bthdm}
+\pmat{ M_2^*& \sqrt2\si\beta m_W\\ \sqrt2\co\beta m_W& \mu^*}
+\pmat{\bar\tiw^+ \\ \bthup}.
 \end{split}
-\end{align}
+\end{equation}
 
 \newpage
 \begin{wraptable}{r}{200pt}\vspace{-3em}

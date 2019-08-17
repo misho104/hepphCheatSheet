@@ -47,6 +47,25 @@ my $param = {
   "cw" => "\\co{\\mathrm w}^{SUP}_{SUB}",
   "\\tau" => "\\tau^{SUP}_{SUB}",
   "\\[CapitalTheta]G" => "\\Theta_G{}^{SUP}_{SUB}",
+  "M1" => "M_1^{SUP}_{SUB}",
+  "M2" => "M_2^{SUP}_{SUB}",
+  "M3" => "M_3^{SUP}_{SUB}",
+  "c\\[Beta]" => "\\co{\\beta}^{SUP}_{SUB}",
+  "s\\[Beta]" => "\\si{\\beta}^{SUP}_{SUB}",
+  "c2\\[Beta]" => "\\co{2\\beta}^{SUP}_{SUB}",
+  "s2\\[Beta]" => "\\si{2\\beta}^{SUP}_{SUB}",
+  "mZ" => "m_Z^{SUP}_{SUB}",
+  "b" => "b^{SUP}_{SUB}",
+  "au" => "a^{SUP}_{{\\mathrm u} SUB}",
+  "ad" => "a^{SUP}_{{\\mathrm d} SUB}",
+  "ae" => "a^{SUP}_{{\\mathrm e} SUB}",
+  "mHd2" => "m_{\\Hd}^2^{SUP}_{SUB}",
+  "mHu2" => "m_{\\Hu}^2^{SUP}_{SUB}",
+  "mUc2" => "[m_{U^\\cc}^2]^{SUP}_{SUB}",
+  "mDc2" => "[m_{D^\\cc}^2]^{SUP}_{SUB}",
+  "mEc2" => "[m_{E^\\cc}^2]^{SUP}_{SUB}",
+  "mQ2" => "[m_{Q}^2]^{SUP}_{SUB}",
+  "mL2" => "[m_{L}^2]^{SUP}_{SUB}",
 };
 
 my $scalar_conj = {
@@ -76,6 +95,13 @@ my $param_conj = {
   "\\[Lambda]" => "\\lambda^{SUP*}_{SUB}",
   "\\[Lambda]p" => "\\lambda'^{SUP*}_{SUB}",
   "\\[Lambda]pp" => "\\lambda''^{SUP*}_{SUB}",
+  "M1" => "M_1^{*SUP}_{SUB}",
+  "M2" => "M_2^{*SUP}_{SUB}",
+  "M3" => "M_3^{*SUP}_{SUB}",
+  "b" => "b^{*SUP}_{SUB}",
+  "au" => "a^{*SUP}_{{\\mathrm u} SUB}",
+  "ad" => "a^{*SUP}_{{\\mathrm d} SUB}",
+  "ae" => "a^{*SUP}_{{\\mathrm e} SUB}",
 };
 
 my $scalar_sq = {

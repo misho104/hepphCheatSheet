@@ -1,0 +1,83 @@
+  m_W^2 W^{+\mu}W_{\mu}^{-}
+ + \frac{1}{2} m_Z^2 Z_{\mu}Z^{\mu}
+ - \frac{1}{2} M_3\tig^{a}\tig^{a}
+ - \frac{1}{2} M_3^{*}\bar{\tig}^{a}\bar{\tig}^{a}
+\\&
+ + \left(
+ - \frac{1}{2} M_1\tib\tib
+ - \frac{1}{2} M_2\tiw^{3}\tiw^{3}
+ + \mu\thuz\thdz
+ + \co{\beta} m_Z \sw \thdz\tib
+ - \cw \co{\beta} m_Z \thdz\tiw^{3}
+ - m_Z \sw \si{\beta} \thuz\tib
+ + \cw m_Z \si{\beta} \thuz\tiw^{3}
+ +\text{h.c.}\right)
+\\&
+ - M_2\tiw^{+}\tiw^{-}
+ - \mu\thup\thdm
+ - M_2^{*}\bar{\tiw}^{+}\bar{\tiw}^{-}
+ - \mu^{*}\bthup\bthdm
+ - {\sqrt2} m_W \left(\co{\beta} \thdm\tiw^{+}
+ +\si{\beta} \thup\tiw^{-}
+ +\co{\beta} \bthdm\bar{\tiw}^{+}
+ +\si{\beta} \bthup\bar{\tiw}^{-}\right)
+\\&
+ -  \vu \yu[ij]\uR[i]^{\cc}\uL[j]
+ -  \vd \yd[ij]\dR[i]^{\cc}\dL[j]
+ -  \vd \ye[ij]\eR[i]^{\cc}\eL[j]
+ -  \vu \yu[ij]^{*}\buR[i]^{\cc}\buL[j]
+ -  \vd \yd[ij]^{*}\bdR[i]^{\cc}\bdL[j]
+ -  \vd \ye[ij]^{*}\beR[i]^{\cc}\beL[j]
+\\&
+ -\tuL^*\left(
+   m_{Q}^2
+ +  \vu^2 \yu^\dagger\yu
+ + \frac{3-4\sw^2}{6} \co{2\beta} m_Z^2
+\right)\tuL
+ -\tuR^*\left(
+   m_{U^\cc}^2
+ + \vu^2 \yu\yu^\dagger
+ + \frac{4\sw^2}{6} \co{2\beta} m_Z^2
+\right)\tuR
+\\&
+ - \vu a_{{\mathrm u} ij}\tuR[i]^*\tuL[j]
+ + \vd \mu^{*}\yu[ij]\tuR[i]^*\tuL[j]
+ - \vu a^{*}_{{\mathrm u} ij}\tuR[i]\tuL[j]^*
+ + \vd \mu\yu[ij]^{*}\tuR[i]\tuL[j]^*
+\\&
+ -\tdL^*\left(
+  m_{Q}^2
+ + \vd^2 \yd^\dagger\yd
+ + \frac{-3+2\sw^2}{6} \co{2\beta} m_Z^2
+\right)\tdL
+ -\tdR^*\left(
+   m_{D^\cc}^2
+ + \vd^2 \yd\yd^\dagger
+ + \frac{-2\sw^2}{6} \co{2\beta} m_Z^2
+\right)\tdR
+\\&
+ - \vd a_{{\mathrm d} ij}\tdR[i]^*\tdL[j]
+ + \vu \mu^{*}\yd[ij]\tdR[i]^*\tdL[j]
+ - \vd a^{*}_{{\mathrm d} ij}\tdR[i]\tdL[j]^*
+ + \vu \mu\yd[ij]^{*}\tdR[i]\tdL[j]^*
+\\&
+ -\tnuL^*\left(
+ m_{L}^2
+ + \frac{1}{2} \co{2\beta} m_Z^2
+ \right)\tnuL
+\\&
+ -\teL^*\left(
+ m_{L}^2
+ + \vd^2 \ye^\dagger\ye
+ + \frac{-1+2\sw^2}{2} \co{2\beta} m_Z^2
+\right)
+ -\teR^*\left(
+  m_{E^\cc}^2
+ + \vd^2 \ye\ye^\dagger
+ + (-\sw^2)\co{2\beta} m_Z^2
+ \right)\teR
+\\&
+ - \vd a_{{\mathrm e} ij}\teR[i]^{*}\teL[j]
+ + \vu \mu^{*}\ye[ij]\teR[i]^{*}\teL[j]
+ - \vd a^{*}_{{\mathrm e} ij}\teR[i]\teL[j]^{*}
+ + \vu \mu\ye[ij]^{*}\teR[i]\teL[j]^{*}

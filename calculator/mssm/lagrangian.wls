@@ -10,7 +10,7 @@ $ExtraNameType = _P|_PC|_P2|_P4|_S|_SC|_S2|_F|_FC|_V;
 SetDirectory[NotebookDirectory[]];
 <<WeylAlgebra`
  
-SumToList[exp_]  := Module[{tmp = Expand[exp]}, If[Head[tmp] === Plus, List@@tmp, {tmp}]];
+SumToList[exp_]  := If[Head[exp] === Plus, List@@exp, {exp}];
 
 TDotOrder$Fields = <|"Hu"->1, "HuP"->2, "HuZ"->3, "Hd"->4, "HdZ"->5, "HdM"->6, "bU"->11, "bD"->12, "bE"->13, "Q"->21, "UL"->23, "DL"->24, "L"->25, "NUL"->27, "EL"->28, "Bi"->51, "Wi"->52, "WiP"->53, "WiM"->54, "Wi3"->55, "Gi"->57, "B"->101, "W"->102, "WP"->103, "WM"->104, "W3"->105, "g"->106|>;
 TDotOrder$Indices = <|"Gen"->0, "SU2I"->1, "SU3I"->3, "SU2F"->2, "SU3F"->4|>;
@@ -24,7 +24,7 @@ TDotOrder[exp_] := Switch[exp,
   NT[(P|PC|P2|P4)["g2"]],   {-10, 2, exp},
   NT[(P|PC|P2|P4)["g3"]],   {-10, 3, exp},
   NT[(P|PC|P2|P4)[_], ___], {-1, TDotOrder$Params[exp[[1,1]]], exp},
-  NT[_[dx[_]], ___], Module[{tmp=TDotOrder[exp/.dx:>(#&)]}, {tmp[[1]]+10, tmp[[2]], exp}],
+  NT[_["dx",_], ___], Module[{tmp=TDotOrder[exp/.a_["dx", b__]:>a[b]]}, {tmp[[1]]+10, tmp[[2]], exp}],
   NT[S[_], ___],  {32, TDotOrder$Fields[exp[[1,1]]], exp},
   NT[SC[_], ___], {31, TDotOrder$Fields[exp[[1,1]]], exp},
   NT[F[_], ___],  {36, TDotOrder$Fields[exp[[1,1]]], exp},
@@ -47,7 +47,7 @@ RewriteIndices[exp_, format_, indices_:Null] :=
     exp /. rule];
 
 RewriteIndices[exp_] := Module[{result},
-  result = SumToList[exp];
+  result = SumToList[Expand[exp]];
   result = RewriteIndices[#, (UI|LI)[index_, "lorentz"], {"\[Mu]", "\[Nu]", "\[Rho]", "\[CapitalSigma]", "\[Alpha]", "\[Beta]", "\[Gamma]"}] & /@ result;
   result = RewriteIndices[#, NI[index_, "Gen"],  {"i", "j", "k", "l", "m", "n"}] & /@ result;
   result = RewriteIndices[#, NI[index_, "SU2I"], {"a", "b", "c", "d", "e", "f"}] & /@ result;
@@ -58,7 +58,7 @@ RewriteIndices[exp_] := Module[{result},
 ];
 
 RenewIndices[exp_] := Module[{result},
-  result = SumToList[exp];
+  result = SumToList[Expand[exp]];
   result = RewriteIndices[#, (UI|LI)[index_, "lorentz"]] & /@ result;
   result = RewriteIndices[#, NI[index_, "Gen"]] & /@ result;
   result = RewriteIndices[#, NI[index_, "SU2I"]] & /@ result;
@@ -90,6 +90,11 @@ Express[exphold_, apply_:(#&), hold_:True] := If[hold=!=True, Express[exphold//E
 
 Delete[MakeBoxesNT$fields];
 Sequence[NT, _SF|_F|_S|_V|_P|_SFC|_FC|_SC|_PC|_P2|_S2|_P4, RepeatedNull[WeylAlgebra`Private`IndexType]] // (#1 /: MakeBoxes[obj: #1[n:#2|HoldForm[#2], i:#3], f:StandardForm|TraditionalForm] := MakeBoxesNT$fields[f, #&, n, i] // ToBoxes // InterpretationBox[#,obj] &) &;
+
+MakeBoxesNT$fields[f_, c_, t_["dx",n__], UI[\[Mu]_, "lorentz"], any___] := Row[{Superscript["\[PartialD]", \[Mu]], MakeBoxesNT$fields[f, c, t[n], any]}]
+MakeBoxesNT$fields[f_, c_, t_["dx",n__], LI[\[Mu]_, "lorentz"], any___] := Row[{Subscript["\[PartialD]", \[Mu]], MakeBoxesNT$fields[f, c, t[n], any]}]
+MakeBoxesNT$fields[f_, c_, t_["dx2",n__], any___] := Row[{Superscript["\[PartialD]", 2], MakeBoxesNT$fields[f, c, t[n], any]}]
+
 MakeBoxesNT$fields[f_, c_, SF[n_], any___] := MakeBoxesNT$fields[f, Style[#, Blue]&, n, any]
 MakeBoxesNT$fields[f_, c_, P[n_], any___] := MakeBoxesNT$fields[f, #&, n, any]
 MakeBoxesNT$fields[f_, c_, (S|V)[n_], any___] := MakeBoxesNT$fields[f, Style[#, Black]&, n, any]
@@ -102,10 +107,6 @@ MakeBoxesNT$fields[f_, c_, P4[n_], any___] := MakeBoxesNT$fields[f, Superscript[
 MakeBoxesNT$fields[f_, c_, SC[n_], any___] := MakeBoxesNT$fields[f, Superscript[Style[#, Black], "*"]&, n, any]
 MakeBoxesNT$fields[f_, c_, S2[n_], any___] := MakeBoxesNT$fields[f, Superscript[Style[#, Black], "2"]&, n, any]
 MakeBoxesNT$fields[f_, c_, FC[n_], any___] := MakeBoxesNT$fields[f, Superscript[Style[#, Red], "*"]&, n, any]
-
-MakeBoxesNT$fields[f_, c_, dx[n_], UI[\[Mu]_, "lorentz"], any___] := Row[{Superscript["\[PartialD]", \[Mu]], MakeBoxesNT$fields[f, c, n, any]}]
-MakeBoxesNT$fields[f_, c_, dx[n_], LI[\[Mu]_, "lorentz"], any___] := Row[{Subscript["\[PartialD]", \[Mu]], MakeBoxesNT$fields[f, c, n, any]}]
-MakeBoxesNT$fields[f_, c_, dx2[n_], any___] := Row[{Superscript["\[PartialD]", 2], MakeBoxesNT$fields[f, c, n, any]}]
 
 MakeBoxesNT$fields[exp___] := WeylAlgebra`Private`MakeBoxesNT$[exp]
 
@@ -131,22 +132,10 @@ bE[i_] := NT[F["bE"], NI[i, "Gen"]]
 tHu[a_] := NT[F["Hu"], NI[a, "SU2I"]]
 tHd[a_] := NT[F["Hd"], NI[a, "SU2I"]]
 
-NT[(t:S|SC|F|FC)["Q"],x1___, NI[1,"SU2I"], x2___] := NT[t["UL"],x1,x2]
-NT[(t:S|SC|F|FC)["Q"],x1___, NI[2,"SU2I"], x2___] := NT[t["DL"],x1,x2]
-NT[(t:S|SC|F|FC)["L"],x1___, NI[1,"SU2I"], x2___] := NT[t["NUL"],x1,x2]
-NT[(t:S|SC|F|FC)["L"],x1___, NI[2,"SU2I"], x2___] := NT[t["EL"],x1,x2]
-NT[(t:S|SC|F|FC)["Hu"],x1___, NI[1,"SU2I"], x2___] := NT[t["HuP"],x1,x2]
-NT[(t:S|SC|F|FC)["Hu"],x1___, NI[2,"SU2I"], x2___] := NT[t["HuZ"],x1,x2]
-NT[(t:S|SC|F|FC)["Hd"],x1___, NI[1,"SU2I"], x2___] := NT[t["HdZ"],x1,x2]
-NT[(t:S|SC|F|FC)["Hd"],x1___, NI[2,"SU2I"], x2___] := NT[t["HdM"],x1,x2]
-NT[(t:S|SC|F|FC)[dx["Q"]],x1___, NI[1,"SU2I"], x2___] := NT[t[dx["UL"]],x1,x2]
-NT[(t:S|SC|F|FC)[dx["Q"]],x1___, NI[2,"SU2I"], x2___] := NT[t[dx["DL"]],x1,x2]
-NT[(t:S|SC|F|FC)[dx["L"]],x1___, NI[1,"SU2I"], x2___] := NT[t[dx["NUL"]],x1,x2]
-NT[(t:S|SC|F|FC)[dx["L"]],x1___, NI[2,"SU2I"], x2___] := NT[t[dx["EL"]],x1,x2]
-NT[(t:S|SC|F|FC)[dx["Hu"]],x1___, NI[1,"SU2I"], x2___] := NT[t[dx["HuP"]],x1,x2]
-NT[(t:S|SC|F|FC)[dx["Hu"]],x1___, NI[2,"SU2I"], x2___] := NT[t[dx["HuZ"]],x1,x2]
-NT[(t:S|SC|F|FC)[dx["Hd"]],x1___, NI[1,"SU2I"], x2___] := NT[t[dx["HdZ"]],x1,x2]
-NT[(t:S|SC|F|FC)[dx["Hd"]],x1___, NI[2,"SU2I"], x2___] := NT[t[dx["HdM"]],x1,x2]
+NT[(t:S|SC|F|FC)[d___,"Q"], x1___, NI[i:1|2,"SU2I"], x2___] := NT[t[d, {"UL", "DL"}[[i]]],x1,x2]
+NT[(t:S|SC|F|FC)[d___,"L"], x1___, NI[i:1|2,"SU2I"], x2___] := NT[t[d, {"NUL", "EL"}[[i]]],x1,x2]
+NT[(t:S|SC|F|FC)[d___,"Hu"],x1___, NI[i:1|2,"SU2I"], x2___] := NT[t[d, {"HuP", "HuZ"}[[i]]],x1,x2]
+NT[(t:S|SC|F|FC)[d___,"Hd"],x1___, NI[i:1|2,"SU2I"], x2___] := NT[t[d, {"HdZ", "HdM"}[[i]]],x1,x2]
 
 BB[\[Mu]_]  := NT[V["B"], UI[\[Mu], "lorentz"]]
 BB[,\[Mu]_] := NT[V["B"], LI[\[Mu], "lorentz"]]
@@ -175,10 +164,10 @@ NT["\[Epsilon]", NI[1, "SU2I"], NI[2, "SU2I"]] := 1
 
 fieldType = S | F | V | SC | FC;
 
-Dx[\[Mu]_,  obj:NT[(ft:fieldType)[field_], any___]] := NT[ft[dx[field]], UI[\[Mu], "lorentz"], any]
-Dx[,\[Mu]_, obj:NT[(ft:fieldType)[field_], any___]] := NT[ft[dx[field]], LI[\[Mu], "lorentz"], any]
-NT[(ft:fieldType)[dx[dx[field_]]], x1___, UI[\[Mu]_, "lorentz"], x2___, LI[\[Mu]_, "lorentz"], x3___] /; FreeQ[{x2}, "lorentz"] := NT[ft[dx2[field]], x1, x2, x3]
-NT[(ft:fieldType)[dx[dx[field_]]], x1___, LI[\[Mu]_, "lorentz"], x2___, UI[\[Mu]_, "lorentz"], x3___] /; FreeQ[{x2}, "lorentz"] := NT[ft[dx2[field]], x1, x2, x3]
+Dx[\[Mu]_,  obj:NT[(ft:fieldType)[field_], any___]] := NT[ft["dx", field], UI[\[Mu], "lorentz"], any]
+Dx[,\[Mu]_, obj:NT[(ft:fieldType)[field_], any___]] := NT[ft["dx", field], LI[\[Mu], "lorentz"], any]
+NT[(ft:fieldType)["dx", "dx", field_], x1___, UI[\[Mu]_, "lorentz"], x2___, LI[\[Mu]_, "lorentz"], x3___] /; FreeQ[{x2}, "lorentz"] := NT[ft["dx2", field], x1, x2, x3]
+NT[(ft:fieldType)["dx", "dx", field_], x1___, LI[\[Mu]_, "lorentz"], x2___, UI[\[Mu]_, "lorentz"], x3___] /; FreeQ[{x2}, "lorentz"] := NT[ft["dx2", field], x1, x2, x3]
 
 ProdT[NT[f_, x1___, NI[a_, "SU2I"], x2___], A_] /; FreeQ[{x1, x2}, "SU2I"] := Module[{b=Unique["a"]}, T[A, a, b] NT[f, x1, NI[b, "SU2I"], x2]]
 Prod\[Tau][NT[f_, x1___, NI[a_, "SU3I"], x2___], A_] /; FreeQ[{x1, x2}, "SU3I"] := Module[{b=Unique["x"]}, \[Tau][A, a, b] NT[f, x1, NI[b, "SU3I"], x2]]
@@ -208,29 +197,22 @@ Dx[var__, TDot[exp__]] := TDot[Dx$operator[var], exp]
 TDot[x1___, Dx$operator[var__], x2_, x3___] := TDot[x1, Dx[var, x2], x3] + TDot[x1, x2, Dx$operator[var], x3]
 TDot[x1___, Dx$operator[var__]] := 0
 
+TakeConjugate[S|F|V] := #&
+TakeConjugate[SC|FC] := Conjugate
+
+NT[t_[dx___, Plus[a_, b__]], any___] := NT[t[dx,a],any] + NT[t[dx,Plus[b]],any]
+NT[t_[dx___, Times[a_?NumericQ, b__]], any___] := TakeConjugate[t][a] NT[t[dx,Times[b]],any]
+NT[t_[dx___, Times[a:(_P|_PC|_P2), b__]], any___] := TakeConjugate[t][NT[a]] * NT[t[dx,Times[b]],any]
+
 SU2Replace[exp_] := exp //. {
-  NT[V[dx["W"]],a:_[_,"lorentz"],b:_[_,"lorentz"],NI[1,"SU2F"]] :> (NT[V[dx["WP"]], a, b]+NT[V[dx["WM"]], a, b])/Sqrt[2],
-  NT[V[dx["W"]],a:_[_,"lorentz"],b:_[_,"lorentz"],NI[2,"SU2F"]] :> (NT[V[dx["WM"]], a, b]-NT[V[dx["WP"]], a, b])/(Sqrt[2]I),
-  NT[V[dx["W"]],a:_[_,"lorentz"],b:_[_,"lorentz"],NI[3,"SU2F"]] :> NT[V[dx["W3"]], a, b],
-  NT[V["W"],a:_[_,"lorentz"],NI[1,"SU2F"]] :> (NT[V["WP"], a]+NT[V["WM"], a])/Sqrt[2],
-  NT[V["W"],a:_[_,"lorentz"],NI[2,"SU2F"]] :> (NT[V["WM"], a]-NT[V["WP"], a])/(Sqrt[2]I),
-  NT[V["W"],a:_[_,"lorentz"],NI[3,"SU2F"]] :> NT[V["W3"], a],
-  NT[F["Wi"],NI[1,"SU2F"]] :> (NT[F["WiP"]]+NT[F["WiM"]])/Sqrt[2],
-  NT[F["Wi"],NI[2,"SU2F"]] :> (NT[F["WiM"]]-NT[F["WiP"]])/(Sqrt[2]I),
-  NT[F["Wi"],NI[3,"SU2F"]] :> NT[F["Wi3"]],
-  NT[F[dx["Wi"]],a:_[_,"lorentz"],NI[1,"SU2F"]] :> (NT[F[dx["WiP"]],a]+NT[F[dx["WiM"]],a])/Sqrt[2],
-  NT[F[dx["Wi"]],a:_[_,"lorentz"],NI[2,"SU2F"]] :> (NT[F[dx["WiM"]],a]-NT[F[dx["WiP"]],a])/(Sqrt[2]I),
-  NT[F[dx["Wi"]],a:_[_,"lorentz"],NI[3,"SU2F"]] :> NT[F[dx["Wi3"]],a],
-  NT[FC["Wi"],NI[1,"SU2F"]] :> (NT[FC["WiP"]]+NT[FC["WiM"]])/Sqrt[2],
-  NT[FC["Wi"],NI[2,"SU2F"]] :> (NT[FC["WiM"]]-NT[FC["WiP"]])/(-Sqrt[2]I),
-  NT[FC["Wi"],NI[3,"SU2F"]] :> NT[FC["Wi3"]],
-  NT[FC[dx["Wi"]],a:_[_,"lorentz"],NI[1,"SU2F"]] :> (NT[FC[dx["WiP"]],a]+NT[FC[dx["WiM"]],a])/Sqrt[2],
-  NT[FC[dx["Wi"]],a:_[_,"lorentz"],NI[2,"SU2F"]] :> (NT[FC[dx["WiM"]],a]-NT[FC[dx["WiP"]],a])/(-Sqrt[2]I),
-  NT[FC[dx["Wi"]],a:_[_,"lorentz"]NI[3,"SU2F"]] :> NT[FC[dx["Wi3",a]]],
-  NT[V["W3"], any___] :> TDot[NT[P["cw"]], NT[V["Z"], any]] + TDot[NT[P["sw"]], NT[V["A"], any]],
-  NT[V["B"], any___] :> TDot[-NT[P["sw"]], NT[V["Z"], any]] + TDot[NT[P["cw"]], NT[V["A"], any]],
-  NT[V[dx["W3"]], any___] :> TDot[NT[P["cw"]], NT[V[dx["Z"]], any]] + TDot[NT[P["sw"]], NT[V[dx["A"]], any]],
-  NT[V[dx["B"]], any___] :> TDot[-NT[P["sw"]], NT[V[dx["Z"]], any]] + TDot[NT[P["cw"]], NT[V[dx["A"]], any]]
+  NT[V[dx___,"W"], x1___, NI[1,"SU2F"], x2___] :> (NT[V[dx,"WP"],x1,x2]+NT[V[dx,"WM"],x1,x2])/Sqrt[2],
+  NT[V[dx___,"W"], x1___, NI[2,"SU2F"], x2___] :> (NT[V[dx,"WM"],x1,x2]-NT[V[dx,"WP"],x1,x2])/(I Sqrt[2]),
+  NT[V[dx___,"W"], x1___, NI[3,"SU2F"], x2___] :> NT[V[dx,"W3"],x1,x2],
+  "W3" -> P["cw"]"Z" + P["sw"]"A",
+  "B" -> -P["sw"]"Z" + P["cw"]"A",
+  NT[(t:F|FC)[dx___,"Wi"], x1___, NI[1,"SU2F"], x2___] :> ((NT[F[dx,"WiP"],x1,x2]+NT[F[dx,"WiM"],x1,x2])/Sqrt[2] // If[t===FC,Conjugate, #&]),
+  NT[(t:F|FC)[dx___,"Wi"], x1___, NI[2,"SU2F"], x2___] :> ((NT[F[dx,"WiM"],x1,x2]-NT[F[dx,"WiP"],x1,x2])/(I Sqrt[2]) // If[t===FC,Conjugate, #&]),
+  NT[(t:F|FC)[dx___,"Wi"], x1___, NI[3,"SU2F"], x2___] :> (NT[F[dx,"Wi3"],x1,x2] // If[t===FC,Conjugate, #&])
 }
 
 SuperPotential = Module[{param=Function[{x, y}, NT[P[x], Sequence@@(NI[#, "Gen"] &/@ y)]]}, Total[{ 
@@ -266,7 +248,7 @@ Conj[P[a__]] := PC[a]
 Conj[PC[a__]] := P[a]
 Conj[SF[a__]] := SFC[a]
 Conj[SFC[a__]] := SF[a]
-RealParameters = "gY"|"g2"|"g3"|"cw"|"sw"|"vu"|"vd";
+RealParameters = "gY"|"g2"|"g3"|"cw"|"sw"|"vu"|"vd"|"mHu2"|"mHd2";
 PC[real:RealParameters] := P[real]
 TDot/: TDot[x:OrderlessPatternSequence[any___,
            NT[P[name_], indices___],
@@ -296,7 +278,7 @@ ToTeXString[NT["\[Epsilon]", indices___]] := ToTeXString$["\\epsilon", indices]
 ToTeXString[NT["f", indices___]] := ToTeXString$["f", indices]
 ToTeXString[NT["\[Tau]", indices___]] := ToTeXString$["P:\\tau", indices]
 ToTeXString[NT[(tag:S|SC|F|FC|V|P|PC|P2|P4|S2)[f_String], indices___]] := ToTeXString$[TextString[tag]<>":"<>f, indices]
-ToTeXString[NT[(tag:S|SC|F|FC|V)[dx[f_String]], lor:(UI|LI)[_, "lorentz"], indices___]] := ToTeXString$["P:partial", lor] <> ToTeXString[NT[tag[f], indices]]
+ToTeXString[NT[(tag:S|SC|F|FC|V)["dx", f_String], lor:(UI|LI)[_, "lorentz"], indices___]] := ToTeXString$["P:partial", lor] <> ToTeXString[NT[tag[f], indices]]
 
 ToTeXString$[name_, indices___] := StringJoin[{
   "@", name,
@@ -447,13 +429,6 @@ VSUSYD = (1/2)D3\[Alpha] RenewIndices[D3\[Alpha]] + (1/2)D2\[Alpha] RenewIndices
 SU2ExpandedSUSYPotential = VSUSYF + VSUSYD // ExpandAll // FillIndices[#, {"SU2I", "SU2F"}]& // SU2Replace // ExpandAll // SortTDot // LorentzSort // RewriteIndices;
 
 
-CountFields[exp_] := Module[{p1, p2},
-  p1 = Length[Cases[exp,(S|SC|F|FC|V)[_],All]];
-  p2 = Length[Cases[exp,S2[_],All]];
-  p1+2p2]  
-CountNonVEVFields[exp_] := CountScalar[exp/.{(S|SC|S2)["HdZ"|"HuZ"]:>Null}]
-
-
 Lgaugino =  Total[{
   TDot[I, Conjugate[Gi[x]], NT[P["\[Sigma]bmu"]], Dx[,"\[Mu]",Gi[x]]],
   TDot[I Conjugate[Gi[x]], NT[P["\[Sigma]bmu"]], NT[P["g3"]], NT["f", NI[x,"SU3F"], NI[y,"SU3F"], NI[z,"SU3F"]],GG[,"\[Mu]",y],Gi[z]],
@@ -485,6 +460,11 @@ VscalarNonSUSYRPC = Total[{
 }//(#+Conjugate[#])&]
 
 
+CountFields[exp_] := Module[{p1, p2},
+  p1 = Length[Cases[exp,(S|SC|F|FC|V)[__],All]];
+  p2 = Length[Cases[exp,S2[__],All]];
+  p1+2p2]
+
 LALL = Total[{
   LvectorSU2expanded,
   LfermionSuper + Conjugate[LfermionSuper],
@@ -493,22 +473,119 @@ LALL = Total[{
   LSFG,
   Lscalarkin - VSUSYF - VSUSYD - VscalarNonSUSYRPC}] //ExpandAll// FillIndices[#, {"SU2F", "SU2I"}]& // SU2Replace//ExpandAll//SortTDot // RewriteIndices
 
-
-MassTerms = Select[List@@(LALL//ExpandAll),CountNonVEVScalar[#]<=2&] /. {
-  NT[(P|PC|P2)["\[Lambda]"|"\[Kappa]"],___]:>0,
-  NT[_[dx[_]],___]:>0,
-  NT[(S|SC)["HdZ"]]:>NT[P["vd"]],
-  NT[(S|SC)["HuZ"]]:>NT[P["vu"]]
-} // SortTDot // Total
+LALLwithVEVs = LALL /. {NT[(s:SC|S)["HuZ"]]:>NT[P["vu"]]+NT[s["HuZ"]], NT[(s:SC|S)["HdZ"]]->NT[P["vd"]]+NT[s["HdZ"]]}
 
 
-Select[MassTerms, Not[FreeQ[#,(S|SC)["HuP"|"HdM"]]]&]//.{
-  TDot[x1___,NT[P[t_]],x2___]:>t TDot[x1,x2],
-  TDot[x1___,NT[PC[t_]],x2___]:>Conjugate[t] TDot[x1,x2],
-  TDot[x1___,NT[P2[t_]],x2___]:>t^2 TDot[x1,x2]
+(* check the "VEV" conditions again *)
+Select[List@@(LALLwithVEVs/.{
+  NT[(P|P2|PC)["\[Kappa]"],any___]:>0
+}//ExpandAll),CountFields[#]==1&] // SortTDot // Total;
+%//. {
+  TDot[a___, NT[p:P[x_:RealParameters]],b___]:>x TDot[a,b],
+  TDot[a___, NT[p:PC[x_:RealParameters]],b___]:>Conjugate[x] TDot[a,b],
+  TDot[a___, NT[p:P2[x_:RealParameters]],b___]:>x Conjugate[x] TDot[a,b]
+}//.{  "vu"->Sqrt[vsq] Sin[\[Beta]],
+  "vd"->Sqrt[vsq] Cos[\[Beta]],
+  Conjugate[x:"gY"|"g2"|"b"|vsq]:>x,
+  "b"->(2 "\[Mu]" Conjugate["\[Mu]"]+"mHu2"+"mHd2")Sin[2\[Beta]]/2
+}// FullSimplify[#,{vsq>0,\[Beta]>0}]&;
+%//.{  vsq -> (2/("g2"^2+"gY"^2)) (("mHu2"-"mHd2")/Cos[2\[Beta]] - 2"\[Mu]" Conjugate["\[Mu]"]-"mHu2"-"mHd2")} // FullSimplify
+
+
+neutralHiggsSector = Select[LALLwithVEVs // Expand, Not[FreeQ[#, "HuZ"|"HdZ"]] && CountFields[#]==2 &]
+chargedHiggsSector = Select[LALLwithVEVs // Expand, Not[FreeQ[#, "HuP"|"HdM"]] && CountFields[#]==2 &]
+
+
+chargedHiggsSector //. {
+  NT[(P|PC|P2)["\[Kappa]"],___]:>0,
+  NT[(F|FC)[__],___]:>0,
+  TDot[a___, NT[p:P[x:RealParameters]],b___]:>Symbol[x] TDot[a,b],
+  TDot[a___, NT[p:P2[x:RealParameters]],b___]:>Symbol[x]^2TDot[a,b],
+  TDot[a___, NT[P2["\[Mu]"]],b___]:>\[Mu]sq TDot[a,b],
+  TDot[a___, NT[(P|PC)["b"]],c___]:>b TDot[a,c]
+} // SortTDot // LorentzSort // Collect[#,TDot[__],FullSimplify]&
+
+% //. {
+  NT[SC[dx___,"HdM"],a___] :> -C\[Beta] NT[S[dx,-I "GP"],a] + S\[Beta] NT[S[dx,"HP"],a],
+  NT[S [dx___,"HuP"],a___] :>  S\[Beta] NT[S[dx,-I "GP"],a] + C\[Beta] NT[S[dx,"HP"],a],
+  NT[S [dx___,"HdM"],a___] :> -C\[Beta] NT[SC[dx, -I "GP"],a] + S\[Beta] NT[SC[dx,"HP"],a],
+  NT[SC[dx___,"HuP"],a___] :>  S\[Beta] NT[SC[dx, -I "GP"],a] + C\[Beta] NT[SC[dx,"HP"],a],
+  C\[Beta]->Cos[\[Beta]],
+  S\[Beta]->Sin[\[Beta]],
+  vu->v Sin[\[Beta]],
+  vd->v Cos[\[Beta]],
+  b->(Sin[2\[Beta]]/2)(2\[Mu]sq+mHu2+mHd2),
+  \[Mu]sq->((mHu2-mHd2)/Cos[2\[Beta]]-mHu2-mHd2-mZ^2)/2,
+  gY->gZ Sqrt[1-cw^2],
+  g2->gZ cw,
+  gZ->Sqrt[2]mZ/v,
+  mHd2->-B Cos[2\[Beta]]+mHu2-Cos[2\[Beta]] mZ^2,
+  \[Mu]sq->(B-mHu2-mHd2)/2
+} // SortTDot // LorentzSort // Collect[#,TDot[__],FullSimplify]&
+
+
+neutralHiggsSector //. {
+  NT[(P|PC|P2)["\[Kappa]"],___]:>0,
+  NT[(F|FC)[__],___]:>0,
+  TDot[a___, NT[p:P[x:RealParameters]],b___]:>Symbol[x] TDot[a,b],
+  TDot[a___, NT[p:P2[x:RealParameters]],b___]:>Symbol[x]^2TDot[a,b],
+  TDot[a___, NT[P2["\[Mu]"]],b___]:>\[Mu]sq TDot[a,b],
+  TDot[a___, NT[(P|PC)["b"]],c___]:>b TDot[a,c],
+  sw->gY/gZ,
+  cw->g2/gZ
+} // SortTDot // LorentzSort // Collect[#,TDot[__],FullSimplify]&;
+%//.{g2^2+gY^2->gZ^2}// Collect[#,TDot[__],FullSimplify]&
+%//.{
+  NT[S [dx___,"HuZ"],a___] :> (1/Sqrt[2])NT[S[dx,"HuZR"],a] + (+I/Sqrt[2]) ( S\[Beta] NT[S[dx,"G0"],a] + C\[Beta] NT[S[dx,"A0"],a]),
+  NT[S [dx___,"HdZ"],a___] :> (1/Sqrt[2])NT[S[dx,"HdZR"],a] + (+I/Sqrt[2]) (-C\[Beta] NT[S[dx,"G0"],a] + S\[Beta] NT[S[dx,"A0"],a]),
+  NT[SC[dx___,"HuZ"],a___] :> (1/Sqrt[2])NT[S[dx,"HuZR"],a] + (-I/Sqrt[2]) ( S\[Beta] NT[S[dx,"G0"],a] + C\[Beta] NT[S[dx,"A0"],a]),
+  NT[SC[dx___,"HdZ"],a___] :> (1/Sqrt[2])NT[S[dx,"HdZR"],a] + (-I/Sqrt[2]) (-C\[Beta] NT[S[dx,"G0"],a] + S\[Beta] NT[S[dx,"A0"],a]),
+  vu->v Sin[\[Beta]],
+  vd->v Cos[\[Beta]],
+  gY->gZ Sin[w],
+  g2->gZ Cos[w],
+  gZ->Sqrt[2]mZ/v,
+  S\[Beta]->Sin[\[Beta]],
+  C\[Beta]->Cos[\[Beta]],
+  \[Beta]->Two\[Beta]/2
+}// SortTDot // LorentzSort // Collect[#,TDot[__],TrigExpand@*FullSimplify]&;
+%//.{
+  mHd2->-B Cos[Two\[Beta]]+mHu2-Cos[Two\[Beta]] mZ^2,
+  \[Mu]sq->(B-mHu2-mHd2)/2,
+  b->B Sin[Two\[Beta]]/2
+}  // Collect[#,TDot[__],FullSimplify]&
+tomatrix = %;
+
+
+matrix = (-2)*{
+{Coefficient[#, HdZR, 2],Coefficient[Coefficient[#,HuZR,1], HdZR, 1]/2},
+{Coefficient[Coefficient[#,HuZR,1], HdZR, 1]/2, Coefficient[#, HuZR, 2]}} &@ 
+(tomatrix //. {NT[S["dx",_],___]:>0, NT[S[a_]]:>Symbol[a]})
+Eigenvalues[matrix]//TrigExpand//FullSimplify
+tomatrix //. {"HuZR"->P["C\[Alpha]"]"h"+P["S\[Alpha]"]"H","HdZR"->-P["S\[Alpha]"]"h"+P["C\[Alpha]"]"H",NT[P["C\[Alpha]"]]->C\[Alpha],NT[P["S\[Alpha]"]]->S\[Alpha],C\[Alpha]->Cos[\[Alpha]],S\[Alpha]->Sin[\[Alpha]]
+} // SortTDot //Collect[#,TDot[__],FullSimplify]&
+
+
+MassTerms = Select[Expand[LALLwithVEVs/.{NT[(P|P2|PC)["\[Kappa]"],any___]:>0, NT[_["dx"|"dx2",__],___]:>0}], CountFields[#]==2&] // SortTDot // LorentzSort;
+MassTermsSimplified = MassTerms//. {
+  TDot[a___, NT[p:P[x:RealParameters]],b___]:>PT[x] TDot[a,b],
+  TDot[a___, NT[p:PC[x:RealParameters]],b___]:>PTC[x] TDot[a,b],
+  TDot[a___, NT[p:P2[x:RealParameters]],b___]:>PT[x]^2 TDot[a,b]
 }//.{
-  "vu"->v Sin[\[Beta]],
-  "vd"->v Cos[\[Beta]],
-  "g2"->gZ cw,
-  "gY"->gZ sw
-}//RewriteIndices//Collect[#, TDot[__], FullSimplify]&
+  Conjugate[x:"gY"|"g2"|"b"|"vu"|"vd"|"sw"|"cw"]:>x,
+  PT["vu"]->PT["v"] Sin[\[Beta]],
+  PT["vd"]->PT["v"] Cos[\[Beta]],
+  PT["v"]->Sqrt[2]PT["mZ"]/PT["gZ"],
+  PT["gY"]->PT["sw"]PT["gZ"],
+  PT["g2"]->PT["cw"]PT["gZ"]
+} // SortTDot // RewriteIndices // Collect[#, TDot[__], Simplify[#,PT["cw"]^2+PT["sw"]^2==1]&]&;
+%//.{
+  Cos[\[Beta]]->PT[c\[Beta]],
+  Sin[\[Beta]]->PT[s\[Beta]],
+  Cos[2\[Beta]]->PT[c2\[Beta]],
+  Sin[2\[Beta]]->PT[s2\[Beta]],
+  PT[a_]^2:>StringJoin[{"@P:",TextString[a],"::2@"}],
+  PT[a_]:>StringJoin[{"@P:",TextString[a],"::@"}],
+  PTC[a_]:>StringJoin[{"@PC:",TextString[a],"::@"}]
+};
+ToFile["lag_massterms.raw", ToTeXString[%]];
