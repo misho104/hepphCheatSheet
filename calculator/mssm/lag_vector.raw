@@ -4,10 +4,14 @@
  + \frac{1}{2} \partial_{\mu}g_{\nu}^{a}\partial^{\nu}g^{a\mu}
  - \frac{1}{2} \partial_{\mu}W_{\nu}^{a}\partial^{\mu}W^{a\nu}
  + \frac{1}{2} \partial_{\mu}W_{\nu}^{a}\partial^{\nu}W^{a\mu}
+ + \frac{1}{16} Power[Pi, (-2)] Power[NT[P[g3]], (2)] \epsilon_{\mu\nu\[Rho]\[CapitalSigma]}\Theta_G{}\partial^{\mu}g^{a\nu}\partial^{\[Rho]}g^{\[Alpha]\[CapitalSigma]}
  - g_2\epsilon^{abc}W_{\mu}^{b}W_{\nu}^{c}\partial^{\mu}W^{a\nu}
  - g_3f^{abc}g_{\mu}^{b}g_{\nu}^{c}\partial^{\mu}g^{a\nu}
- - \frac{1}{4} g_2^{2}\epsilon^{abe}\epsilon^{cde}W_{\mu}^{a}W_{\nu}^{b}W^{c\mu}W^{d\nu}
- + \frac{1}{4} g_3^{2}f^{dec}f^{dab}g_{\mu}^{a}g_{\nu}^{b}g^{c\mu}g^{e\nu}
+ + \frac{1}{32} Power[Pi, (-2)] Power[NT[P[g3]], (2)] g_3f^{aba}\epsilon_{\mu\nu\[Rho]\[CapitalSigma]}\Theta_G{}g^{a\[Rho]}g^{b\[CapitalSigma]}\partial^{\mu}g^{\[Alpha]\nu}
+ + \frac{1}{32} Power[Pi, (-2)] Power[NT[P[g3]], (2)] g_3f^{ab\[Alpha]}\epsilon_{\mu\nu\[Rho]\[CapitalSigma]}\Theta_G{}g^{a\[Rho]}g^{b\[CapitalSigma]}\partial^{\mu}g^{a\nu}
+ - \frac{g_2^2}{4}\epsilon^{abe}\epsilon^{cde}W_{\mu}^{a}W_{\nu}^{b}W^{c\mu}W^{d\nu}
+ + \frac{g_3^2}{4}f^{dec}f^{dab}g_{\mu}^{a}g_{\nu}^{b}g^{c\mu}g^{e\nu}
+ - \frac{1}{64} Power[Pi, (-2)] Power[NT[P[g3]], (2)] g_3^2f^{ec\[Alpha]}f^{aba}\epsilon_{\mu\nu\[Rho]\[CapitalSigma]}\Theta_G{}g^{a\mu}g^{b\nu}g^{c\[Rho]}g^{e\[CapitalSigma]}
 \\&=
 -\frac{1}{2} \partial^{\mu}A^{\nu}\partial_{\mu}A_{\nu}
  + \frac{1}{2} \partial^{\nu}A^{\mu}\partial_{\mu}A_{\nu}
@@ -17,6 +21,7 @@
  + \frac{1}{2} \partial^{\nu}Z^{\mu}\partial_{\mu}Z_{\nu}
  - \frac{1}{2} \partial^{\mu}g^{a\nu}\partial_{\mu}g_{\nu}^{a}
  + \frac{1}{2} \partial^{\nu}g^{a\mu}\partial_{\mu}g_{\nu}^{a}
+ + \frac{1}{16} Power[Pi, (-2)] Power[NT[P[g3]], (2)] \Theta_G{}\epsilon_{\mu\nu\[Rho]\[CapitalSigma]}\partial^{\mu}g^{a\nu}\partial^{\[Rho]}g^{\[Alpha]\[CapitalSigma]}
  + {\ii} g_2\co{\mathrm w}W_{\mu}^{-}Z_{\nu}\partial^{\mu}W^{+\nu}
  - {\ii} g_2\co{\mathrm w}W_{\nu}^{-}Z_{\mu}\partial^{\mu}W^{+\nu}
  + {\ii} g_2\co{\mathrm w}W_{\mu}^{+}W_{\nu}^{-}\partial^{\mu}Z^{\nu}
@@ -30,15 +35,18 @@
  + {\ii} g_2\si{\mathrm w}W_{\nu}^{+}A_{\mu}\partial^{\mu}W^{-\nu}
  - {\ii} g_2\si{\mathrm w}W_{\nu}^{+}W_{\mu}^{-}\partial^{\mu}A^{\nu}
  - g_3f^{abc}g_{\mu}^{b}g_{\nu}^{c}\partial^{\mu}g^{a\nu}
- - g_2^{2}W^{+\mu}W_{\mu}^{-}Z^{\nu}Z_{\nu}
- + g_2^{2}W^{+\mu}W^{-\nu}Z_{\mu}Z_{\nu}
- + \frac{1}{2} g_2^{2}W^{+\mu}W_{\mu}^{+}W^{-\nu}W_{\nu}^{-}
- - \frac{1}{2} g_2^{2}W^{+\mu}W^{+\nu}W_{\mu}^{-}W_{\nu}^{-}
- - g_2^{2}\sisi{\mathrm w}W^{+\mu}W_{\mu}^{-}A^{\nu}A_{\nu}
- + g_2^{2}\sisi{\mathrm w}W^{+\mu}W_{\mu}^{-}Z^{\nu}Z_{\nu}
- + g_2^{2}\sisi{\mathrm w}W^{+\mu}W^{-\nu}A_{\mu}A_{\nu}
- - g_2^{2}\sisi{\mathrm w}W^{+\mu}W^{-\nu}Z_{\mu}Z_{\nu}
- + (-2) g_2^{2}\co{\mathrm w}\si{\mathrm w}W^{+\mu}W_{\mu}^{-}A^{\nu}Z_{\nu}
- + g_2^{2}\co{\mathrm w}\si{\mathrm w}W^{+\mu}W^{-\nu}A_{\mu}Z_{\nu}
- + g_2^{2}\co{\mathrm w}\si{\mathrm w}W^{+\mu}W^{-\nu}A_{\nu}Z_{\mu}
- + \frac{1}{4} g_3^{2}f^{dec}f^{dab}g^{c\mu}g^{e\nu}g_{\mu}^{a}g_{\nu}^{b}
+ - g_2^2W^{+\mu}W_{\mu}^{-}Z^{\nu}Z_{\nu}
+ + g_2^2W^{+\mu}W^{-\nu}Z_{\mu}Z_{\nu}
+ + \frac{g_2^2}{2}W^{+\mu}W_{\mu}^{+}W^{-\nu}W_{\nu}^{-}
+ - \frac{g_2^2}{2}W^{+\mu}W^{+\nu}W_{\mu}^{-}W_{\nu}^{-}
+ - g_2^2\sisi{\mathrm w}W^{+\mu}W_{\mu}^{-}A^{\nu}A_{\nu}
+ + g_2^2\sisi{\mathrm w}W^{+\mu}W_{\mu}^{-}Z^{\nu}Z_{\nu}
+ + g_2^2\sisi{\mathrm w}W^{+\mu}W^{-\nu}A_{\mu}A_{\nu}
+ - g_2^2\sisi{\mathrm w}W^{+\mu}W^{-\nu}Z_{\mu}Z_{\nu}
+ + \frac{1}{32} Power[Pi, (-2)] Power[NT[P[g3]], (2)] g_3f^{aba}\Theta_G{}\epsilon_{\mu\nu\[Rho]\[CapitalSigma]}g^{a\[Rho]}g^{b\[CapitalSigma]}\partial^{\mu}g^{\[Alpha]\nu}
+ + \frac{1}{32} Power[Pi, (-2)] Power[NT[P[g3]], (2)] g_3f^{ab\[Alpha]}\Theta_G{}\epsilon_{\mu\nu\[Rho]\[CapitalSigma]}g^{a\[Rho]}g^{b\[CapitalSigma]}\partial^{\mu}g^{a\nu}
+ + (-2) g_2^2\co{\mathrm w}\si{\mathrm w}W^{+\mu}W_{\mu}^{-}A^{\nu}Z_{\nu}
+ + g_2^2\co{\mathrm w}\si{\mathrm w}W^{+\mu}W^{-\nu}A_{\mu}Z_{\nu}
+ + g_2^2\co{\mathrm w}\si{\mathrm w}W^{+\mu}W^{-\nu}A_{\nu}Z_{\mu}
+ + \frac{g_3^2}{4}f^{dec}f^{dab}g^{c\mu}g^{e\nu}g_{\mu}^{a}g_{\nu}^{b}
+ - \frac{1}{64} Power[Pi, (-2)] Power[NT[P[g3]], (2)] g_3^2f^{ec\[Alpha]}f^{aba}\Theta_G{}\epsilon_{\mu\nu\[Rho]\[CapitalSigma]}g^{a\mu}g^{b\nu}g^{c\[Rho]}g^{e\[CapitalSigma]}

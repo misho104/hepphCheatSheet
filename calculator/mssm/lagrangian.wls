@@ -218,9 +218,15 @@ SU2Replace[exp_] := exp //. {
   NT[F["Wi"],NI[1,"SU2F"]] :> (NT[F["WiP"]]+NT[F["WiM"]])/Sqrt[2],
   NT[F["Wi"],NI[2,"SU2F"]] :> (NT[F["WiM"]]-NT[F["WiP"]])/(Sqrt[2]I),
   NT[F["Wi"],NI[3,"SU2F"]] :> NT[F["Wi3"]],
+  NT[F[dx["Wi"]],a:_[_,"lorentz"],NI[1,"SU2F"]] :> (NT[F[dx["WiP"]],a]+NT[F[dx["WiM"]],a])/Sqrt[2],
+  NT[F[dx["Wi"]],a:_[_,"lorentz"],NI[2,"SU2F"]] :> (NT[F[dx["WiM"]],a]-NT[F[dx["WiP"]],a])/(Sqrt[2]I),
+  NT[F[dx["Wi"]],a:_[_,"lorentz"],NI[3,"SU2F"]] :> NT[F[dx["Wi3"]],a],
   NT[FC["Wi"],NI[1,"SU2F"]] :> (NT[FC["WiP"]]+NT[FC["WiM"]])/Sqrt[2],
   NT[FC["Wi"],NI[2,"SU2F"]] :> (NT[FC["WiM"]]-NT[FC["WiP"]])/(-Sqrt[2]I),
   NT[FC["Wi"],NI[3,"SU2F"]] :> NT[FC["Wi3"]],
+  NT[FC[dx["Wi"]],a:_[_,"lorentz"],NI[1,"SU2F"]] :> (NT[FC[dx["WiP"]],a]+NT[FC[dx["WiM"]],a])/Sqrt[2],
+  NT[FC[dx["Wi"]],a:_[_,"lorentz"],NI[2,"SU2F"]] :> (NT[FC[dx["WiM"]],a]-NT[FC[dx["WiP"]],a])/(-Sqrt[2]I),
+  NT[FC[dx["Wi"]],a:_[_,"lorentz"]NI[3,"SU2F"]] :> NT[FC[dx["Wi3",a]]],
   NT[V["W3"], any___] :> TDot[NT[P["cw"]], NT[V["Z"], any]] + TDot[NT[P["sw"]], NT[V["A"], any]],
   NT[V["B"], any___] :> TDot[-NT[P["sw"]], NT[V["Z"], any]] + TDot[NT[P["cw"]], NT[V["A"], any]],
   NT[V[dx["W3"]], any___] :> TDot[NT[P["cw"]], NT[V[dx["Z"]], any]] + TDot[NT[P["sw"]], NT[V[dx["A"]], any]],
@@ -260,7 +266,7 @@ Conj[P[a__]] := PC[a]
 Conj[PC[a__]] := P[a]
 Conj[SF[a__]] := SFC[a]
 Conj[SFC[a__]] := SF[a]
-RealParameters = "gY"|"g2"|"g3"|"cw"|"sw";
+RealParameters = "gY"|"g2"|"g3"|"cw"|"sw"|"vu"|"vd";
 PC[real:RealParameters] := P[real]
 TDot/: TDot[x:OrderlessPatternSequence[any___,
            NT[P[name_], indices___],
@@ -305,7 +311,7 @@ ToTeXString$[name_, indices___] := StringJoin[{
   StringJoin[Cases[{indices}, UI[x_, "lorentz"] :> x]],
   "@"}]
 ToTeXString$ReplaceIndices[exp_] := StringReplace[exp, {"A"|"X"->"a", "B"|"Y"->"b", "C"|"Z"->"c", "D"|"V"->"d", "E"|"W"->"e"}]
-ToTeXString[exp_] := SumToList[exp] //. Times -> TIMES //. {
+ToTeXString[exp_] := SumToList[Collect[exp, TDot[__], Simplify]] //. Times -> TIMES //. {
     Complex[a_, b_] :> ToString[TeXForm[a+b "ii"]],
     Power[2,Rational[-1,2]] :> "\\frac{1}{\\sqrt2}",
     Power[2,Rational[1,2]] :> "{\\sqrt2}",
@@ -441,11 +447,11 @@ VSUSYD = (1/2)D3\[Alpha] RenewIndices[D3\[Alpha]] + (1/2)D2\[Alpha] RenewIndices
 SU2ExpandedSUSYPotential = VSUSYF + VSUSYD // ExpandAll // FillIndices[#, {"SU2I", "SU2F"}]& // SU2Replace // ExpandAll // SortTDot // LorentzSort // RewriteIndices;
 
 
-CountScalar[exp_] := Module[{p1, p2},
+CountFields[exp_] := Module[{p1, p2},
   p1 = Length[Cases[exp,(S|SC|F|FC|V)[_],All]];
   p2 = Length[Cases[exp,S2[_],All]];
   p1+2p2]  
-CountNonVEVScalar[exp_] := CountScalar[exp/.{(S|SC|S2)["HdZ"|"HuZ"]:>Null}]
+CountNonVEVFields[exp_] := CountScalar[exp/.{(S|SC|S2)["HdZ"|"HuZ"]:>Null}]
 
 
 Lgaugino =  Total[{
@@ -469,13 +475,13 @@ VscalarNonSUSYRPC = Total[{
   NT[P["mHu2"]] Hu[a]Conjugate[Hu[a]],
   NT[P["mHd2"]] Hd[a]Conjugate[Hd[a]]
 }] + Total[{
-  -tbU[i,x]Hu[a]NT[P["au"], NI[i,"Gen"], NI[j,"Gen"]] tQQ[b,j,x] \[Epsilon][a,b],
-  +tbD[i,x]Hd[a]NT[P["ad"], NI[i,"Gen"], NI[j,"Gen"]] tQQ[b,j,x] \[Epsilon][a,b],
-  +tbE[i]Hd[a]NT[P["ae"], NI[i,"Gen"], NI[j,"Gen"]] tLL[b,j] \[Epsilon][a,b],
+  -tbU[i,x]Hu[a]NT[P["au"], NI[i,"Gen"], NI[j,"Gen"]] tQQ[j,b,x] \[Epsilon][a,b],
+  +tbD[i,x]Hd[a]NT[P["ad"], NI[i,"Gen"], NI[j,"Gen"]] tQQ[j,b,x] \[Epsilon][a,b],
+  +tbE[i]Hd[a]NT[P["ae"], NI[i,"Gen"], NI[j,"Gen"]] tLL[j,b] \[Epsilon][a,b],
   NT[P["b"]] \[Epsilon][a,b]Hu[a]Hd[b],
-  +tbU[i,x]Conjugate[Hd[a]]NT[P["cu"], NI[i,"Gen"], NI[j,"Gen"]] tQQ[b,j,x],
-  +tbD[i,x]Conjugate[Hu[a]]NT[P["cd"], NI[i,"Gen"], NI[j,"Gen"]] tQQ[b,j,x],
-  +tbE[i]Conjugate[Hu[a]]NT[P["ce"], NI[i,"Gen"], NI[j,"Gen"]] tLL[b,j]
+  +tbU[i,x]Conjugate[Hd[a]]NT[P["cu"], NI[i,"Gen"], NI[j,"Gen"]] tQQ[j,b,x],
+  +tbD[i,x]Conjugate[Hu[a]]NT[P["cd"], NI[i,"Gen"], NI[j,"Gen"]] tQQ[j,b,x],
+  +tbE[i]Conjugate[Hu[a]]NT[P["ce"], NI[i,"Gen"], NI[j,"Gen"]] tLL[j,b]
 }//(#+Conjugate[#])&]
 
 

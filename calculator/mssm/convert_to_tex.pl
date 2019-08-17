@@ -46,6 +46,7 @@ my $param = {
   "sw" => "\\si{\\mathrm w}^{SUP}_{SUB}",
   "cw" => "\\co{\\mathrm w}^{SUP}_{SUB}",
   "\\tau" => "\\tau^{SUP}_{SUB}",
+  "\\[CapitalTheta]G" => "\\Theta_G{}^{SUP}_{SUB}",
 };
 
 my $scalar_conj = {
@@ -218,6 +219,7 @@ foreach my $line(<>){
   $line =~ s/\$/\@/g;
   $line =~ s/\\left\(\s*\(-1\)/\\left\( - /g;
   $line =~ s/\+\s*\(-1\)\s*/- /g;
+  $line =~ s/\^\{2\}/^2/g;
   $line =~ s/\\frac\{(1)\}\{(\d+)\}\s*(g_Y\^2|g_2\^2|g_3\^2)/\\frac{$3}{$2}/g;
   $line =~ s/\\frac\{(\d+)\}\{(\d+)\}\s*(g_Y\^2|g_2\^2|g_3\^2)/\\frac{$1$3}{$2}/g;
   #

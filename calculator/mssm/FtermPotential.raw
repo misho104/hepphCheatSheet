@@ -62,6 +62,6 @@
 \\
 + \lambda''_{ikm}\lambda^{\prime \prime *}_{jlm}\tuR[i]^{x*}\tdR[k]^{y*}\left( \tdR[l]^{y}\tuR[j]^{x} - \tdR[l]^{x}\tuR[j]^{y} \right)
 \\
-+ -\frac{1}{2}\epsilon^{ab}\epsilon^{xyz}\left( \yu[lk]\lambda^{\prime \prime *}_{lij}\hu^{a}\tqL[k]^{bz}\tdR[i]^{x}\tdR[j]^{y} + \lambda''_{lij}\yu[lk]^{*}\tdR[i]^{x*}\tdR[j]^{y*}\hu^{a*}\tqL[k]^{bz*} \right)
+ - \frac{1}{2}\epsilon^{ab}\epsilon^{xyz}\left( \yu[lk]\lambda^{\prime \prime *}_{lij}\hu^{a}\tqL[k]^{bz}\tdR[i]^{x}\tdR[j]^{y} + \lambda''_{lij}\yu[lk]^{*}\tdR[i]^{x*}\tdR[j]^{y*}\hu^{a*}\tqL[k]^{bz*} \right)
 \\
 + \lambda''_{mij}\lambda^{\prime \prime *}_{mkl}\tdR[i]^{x*}\tdR[j]^{y*}\left( -\frac{1}{4}\tdR[k]^{y}\tdR[l]^{x} + \frac{1}{4}\tdR[k]^{x}\tdR[l]^{y} \right)

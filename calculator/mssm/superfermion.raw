@@ -22,7 +22,7 @@
 \\&
 - \epsilon^{ab}\lambda_{ikj}\tlL[i]^{a}\eR[j]^{\cc }\lL[k]^{b}
 \\&
-+ -\frac{1}{2}\epsilon^{ab}\lambda_{jki}\teR[i]^{*}\lL[j]^{a}\lL[k]^{b}
+ - \frac{1}{2}\epsilon^{ab}\lambda_{jki}\teR[i]^{*}\lL[j]^{a}\lL[k]^{b}
 \\&
 - \epsilon^{ab}\lambda'_{ikj}\tlL[i]^{a}\dR[j]^{\cc x}\qL[k]^{bx}
 \\&
@@ -30,6 +30,6 @@
 \\&
 + \epsilon^{ab}\lambda'_{kji}\tdR[i]^{x*}\qL[j]^{ax}\lL[k]^{b}
 \\&
-+ -\frac{1}{2}\epsilon^{xyz}\lambda''_{ijk}\tuR[i]^{x*}\dR[j]^{\cc y}\dR[k]^{\cc z}
+ - \frac{1}{2}\epsilon^{xyz}\lambda''_{ijk}\tuR[i]^{x*}\dR[j]^{\cc y}\dR[k]^{\cc z}
 \\&
 + \epsilon^{xyz}\lambda''_{jik}\tdR[i]^{x*}\uR[j]^{\cc y}\dR[k]^{\cc z}
