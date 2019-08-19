@@ -1,4 +1,4 @@
-%%% Time-Stamp: <2019-08-17 17:55:42>
+%%% Time-Stamp: <2019-08-19 15:16:34 misho>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \pdfoutput=1
 
@@ -165,9 +165,9 @@
 \newcommand\tiw{\tilde w}
 \newcommand\tib{\tilde b}
 
-\newcommand\yu[1][]{y_{\mathrm{u}#1}}
-\newcommand\yd[1][]{y_{\mathrm{d}#1}}
-\newcommand\ye[1][]{y_{\mathrm{e}#1}}
+\newcommand\yu[1][]{y_{u#1}}
+\newcommand\yd[1][]{y_{d#1}}
+\newcommand\ye[1][]{y_{e#1}}
 \newcommand\sw{\si{\mathrm w}}
 \newcommand\cw{\co{\mathrm w}}
 \newcommand\vu{v\w u}
@@ -181,6 +181,12 @@
 \newcommand\bchi{\bar\chi}
 \newcommand\bpsi{\bar\psi}
 \newcommand\blambda{\bar\lambda}
+
+\newcommand\neut[1][\relax]{\tilde\chi^0\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand\charPM[1][\relax]{\tilde\chi^\pm\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand\charP[1][\relax]{\tilde\chi^+\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand\charM[1][\relax]{\tilde\chi^-\ifx#1\relax\relax\else_{#1}\fi}
+
 
 \newcommand\col[1]{\color{magenta}#1}
 

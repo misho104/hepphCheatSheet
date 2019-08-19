@@ -375,7 +375,7 @@ here,
 \end{split}
 \end{equation}
 
-\subsection{Scalar part}
+\subsubsection{Scalar part}
 \begin{equation}
 \begin{split}
   \mathcal L\w{scalar} &=
@@ -547,7 +547,12 @@ with
 \frac{\tan2\alpha}{\tan2\beta} = \frac{m_{A_0}^2+m_Z^2}{m_{A_0}^2-m_Z^2}.
 \end{equation}
 
-\paragraph{Other masses}
+The mixing $\alpha$ is stored in \texttt{ALPHA} block of SLHA, while \texttt{HMIX} stores $\mu$, $\tan\beta$, $\sqrt{2}v$ ($\sim246$) and $2b/\sin2\beta$ at the scale specified.
+The above discussion holds even with $CP$-violation, but quantum corrections mix the three Higgs bosons; such information should be stored in \texttt{(IM)VCHMIX}.
+\TODO{discuss when needed}
+
+
+\paragraph{Mass terms in the Lagrangian}
 The other mass terms are given by
 \begin{equation}
  \begin{split}
@@ -557,7 +562,8 @@ The other mass terms are given by
 \end{equation}
 where, at the tree level, the gauge boson mass $m_W$ and $m_Z$, the gluino mass $M_3$, and matter-fermion masses $\vu\yu$, $\vd\yd$, and $\vd\ye$ are given with the ``correct'' sign (as far as $M_3>0$, etc.).
 
-For neutralinos and charginos,
+\paragraph{Neutralinos and charginos}
+The mass matrices for neutralinos and charginos are given by
 \begin{equation}
 \begin{split}
   -\mathcal L&\supset
@@ -578,6 +584,254 @@ For neutralinos and charginos,
 \pmat{\bar\tiw^+ \\ \bthup}.
 \end{split}
 \end{equation}
+Note that the mass matrices themselves are the same as those in SLHA convention, $\mathcal M_{\tilde\psi^0}$ and $\mathcal M_{\tilde\psi^+}$, while the fields are in different convention.
+Therefore, we continue our discussion based only on the mass matrices so that the discussion is free from the choice of field convention.
+
+As $\mathcal M_{\tilde\psi^0}$ is a complex symmetric matrix, there is a unitary matrix $\tilde N$ such that
+$M_{\tilde\psi^0}=\tilde N^* \mathcal M_{\tilde\psi^0}\tilde N^\dagger$, where $M_{\tilde\psi^0}$ is a \emph{positive} diagonal matrix whose elements are (non-negative) singular values of $\mathcal M_{\tilde\psi^0}$ and in increasing order (Autonne-Takagi factorization).
+In SLHA2 convention with $CP$-violation, this matrix $\tilde N$ is stored as the \texttt{(IM)NMIX} blocks and the (positive) masses are stored in the \texttt{MASS} block.
+Meanwhile, if $M_1$, $M_2$ and $\mu$ are real, $\mathcal M_{\tilde\psi^0}$ is a real symmetric matrix and there is a real orthogonal matrix $\hat N$ such that
+$\hat M_{\tilde\psi^0}=\hat N^* \mathcal M_{\tilde\psi^0}\hat N^\dagger=\hat N \mathcal M_{\tilde\psi^0}\hat N^\TT$, where $\hat M_{\tilde\psi^0}$ is a \emph{real} diagonal matrix whose elements are the eigenvalues of $\mathcal M_{\tilde\psi^0}$ and in absolute-value-increasing order (spectral theorem).
+This matrix $\hat N$ is the \texttt{NMIX} block of SLHA convention and $\hat M_{ii}$ is stored in the \texttt{MASS} block, hence \texttt{MASS} block may have negative values for neutralinos.
+
+The chargino mass matrix $\mathcal M_{\tilde\psi^+}$ is decomposed as
+$M_{\tilde\psi^+}=U^* \mathcal M_{\tilde\psi^+} V^\dagger$, where $U$ and $V$ are unitary matrices and the elements of the diagonal matrix $M_{\tilde\psi^+}$ are singular values of $\mathcal M_{\tilde\psi^+}$ (thus non-negative) and sorted in increasing order (singular value decomposition).
+These $U$ and $V$ are stored in \texttt{(IM)UMIX} and \texttt{(IM)VMIX}, and the singular values are stored in \texttt{MASS} block.
+Because the SVD theorem is closed in $\mathbb R$, if $M_2$ and $\mu$ are real, $U$ and $V$ can be real, and the \texttt{IM}-blocks are omitted.
+
+In summary,
+\begin{align}
+      M_{\tilde\psi^0}&=\tilde N^* \mathcal M_{\tilde\psi^0}\tilde N^\dagger,
+   && \tilde N=\texttt{(IM)NMIX},
+   && \text{(\texttt{MASS})} = [M_{\tilde\psi^0}]_{ii} \ge 0 \quad\text{(singular values)};
+\\
+ \hat M_{\tilde\psi^0}&=\hat   N \mathcal M_{\tilde\psi^0}\hat N^\TT,
+  && \hat N = \texttt{NMIX},
+  &&  \text{(\texttt{MASS})} = [\hat M_{\tilde\psi^0}]_{ii}\in \mathbb R \quad\text{(eigenvalues)};
+\\
+      M_{\tilde\psi^+}&=U^* \mathcal M_{\tilde\psi^+} V^\dagger,
+   && U=\texttt{(IM)UMIX},\quad V=\texttt{(IM)VMIX},
+   && \text{(\texttt{MASS})} = [M_{\tilde\psi^+}]_{ii} \ge 0\quad\text{(singular values)}.
+\end{align}
+Note that the singular values are equal to absolute values of the eigenvalues, which guarantees consistency of the two decomposition.
+
+We then define matrix $N$ by\footnote{The sign of $\varphi_i$ is arbitrary and (should be) unphysical.}
+\begin{align}
+ &N = \begin{cases}
+  \tilde N\\
+  \diag(\varphi_i) \cdot \hat N
+  \end{cases}
+   = \diag(\varphi_i) \cdot\Bigl(\text{(\texttt{NMIX})} + \ii\text{(\texttt{IMNMIX})}\Bigr);
+  &\varphi_i = \begin{cases}
+ 1 & \text{if (\texttt{MASS})$_i\ge0$,}\\
+ \ii & \text{if (\texttt{MASS})$_i<0$.}
+             \end{cases}
+\end{align}
+It gives the proper mass diagonalization in both of the \text{NMIX} convention:
+\begin{equation}
+ N^*\mathcal M_{\tilde\psi^0}N^\dagger
+=
+\begin{cases}
+ \tilde N^*\mathcal M_{\tilde\psi^0}\tilde N^\dagger = M_{\tilde\psi^0},\\
+ \diag(\varphi_i^*)\hat N^* \mathcal M_{\tilde\psi^0}\hat N^{\dagger}\diag(\varphi_i^*)
+ = 
+ \diag(\varphi_i^*)\hat M_{\tilde\psi^0}\diag(\varphi_i^*)
+\end{cases}
+ = M_{\tilde\psi^0}
+ \quad\text{(neutralino masses $\ge 0$)}.
+\end{equation}
+Noting that the discussion up here is irrelevant of the convention, we have the neutralino/chargino mass eigenstates,
+\begin{equation}
+ \neut[i] = N_{ij} \pmat{\tib\\\tiw^3\\\thdz\\\thuz}_j,
+\quad
+ \charP[i] = V_{ij} \pmat{\tiw^+\\\thup}_j,
+\quad
+ \charM[i] = U_{ij} \pmat{\tiw^-\\\thdm}_j,
+\end{equation}
+in our convention and the mass terms are now
+\begin{equation}
+  -\mathcal L\supset
+\frac12(\neut)^\TT M_{\tilde\psi^0} \neut
++ (\charM)^\TT M_{\tilde\psi^+}\charP + \text{h.c.}
+\end{equation}
+
+\paragraph{Quarks, leptons, and super-CKM basis}
+We here take the super-CKM basis.
+In the ``original'' Lagrangian,
+\begin{align}
+ -\mathcal L&\supset
+   \uR^\cc (\vu \yu)\uL
+  +\dR^\cc (\vd \yd)\dL
+  +\eR^\cc (\vd \ye)\eL + \text{h.c.}
+ \\
+&=
+   \uR^\cc (\vu U_u \yu^{\mathrm{diag}} V_u^\dagger)\uL
+  +\dR^\cc (\vd U_d \yd^{\mathrm{diag}} V_d^\dagger)\dL
+  +\eR^\cc (\vd U_e \ye^{\mathrm{diag}} V_e^\dagger)\eL + \text{h.c.},
+\end{align}
+so the super-CKM basis is given by
+\begin{equation}
+ \bigl[
+ Q^1, Q^2, L, U^\cc, D^\cc, E^\cc
+\bigr]_{\text{super-CKM}} =
+ \bigl[
+ V_u^\dagger Q^1, V_d^\dagger Q^2, V_e^\dagger L, U^\cc U_u, D^\cc U_d, E^\cc U_e
+\bigr]_{\text{``original''}}.
+\end{equation}
+Then the CKM mixings appear as, for example,
+\begin{equation}
+ \left[\buL\bsigma^\mu\dL W^+_\mu + \bdL\bsigma^\mu\uL W^-_\mu\right]_{\text{''original''}}
+=
+ \left[\buL V_u^\dagger V_d \bsigma^\mu\dL W^+_\mu + \bdL V_d^\dagger V_u\bsigma^\mu\uL W^-_\mu\right]_{\text{super-CKM}};
+\end{equation}
+i.e., defining
+\begin{equation}
+ V\w{CKM} = V_u^\dagger V_d = \left(
+\begin{smallmatrix}
+ V_{ud} & V_{us} & V_{ub}\\
+ V_{cd} & V_{cs} & V_{cb}\\
+ V_{td} & V_{ts} & V_{tb}
+\end{smallmatrix}
+\right)
+\approx\left(
+\begin{smallmatrix}
+ 1-\lambda^2/2 & \lambda       & A\lambda^3(\rho-\ii \eta)\\
+ -\lambda      & 1-\lambda^2/2 & A\lambda^2\\
+ A\lambda^3(1-\rho-\ii\eta) & -A\lambda^2 & 1
+\end{smallmatrix}\right),
+\end{equation}
+the Lagrangian is amended as $\buL\dL\to \buL V\w{CKM}\dL$, $\tdL^*\tuL\to \tdL^* V^\dagger\w{CKM}\tuL$, etc.
+
+The $\Theta_B$- and $\Theta_W$-terms are now removable.
+To this end, we rotate the matter superfields as
+\begin{equation}
+ Q^1\to\ee^{\ii\theta}Q^1,\quad
+ Q^2\to\ee^{\ii\theta'}Q^2,\quad
+ U^\cc\to\ee^{-\ii\theta}U^\cc,\quad
+ D^\cc\to\ee^{-\ii\theta'}D^\cc,
+\end{equation}
+which induces
+$\Delta \Theta_G=0$,
+$\Delta \Theta_W\propto \theta+\theta'$,
+and
+$\Delta \Theta_B\propto 5\theta+\theta'$, while the Lagrangian is unchanged except for the overall phase of $V\w{CKM}$.
+So we can remove $\Theta_B$ and $\Theta_W$, or in other words, pass the $CP$-violation in $\Theta$-terms to $V\w{CKM}$.\footnote{
+There are other possible transformations $(L_i,E^\cc_i)\to \ee^{(\pm)\ii\theta''_i}(L_i,E^\cc_i)$ and in total we may have $\Delta\Theta_W \propto 3\theta+3\theta'+2\sum\theta''_i$ and
+ $\Delta\Theta_B \propto 5\theta+\theta'+2\sum\theta''_i$.
+To remove both $\Theta$-terms, we have to take $\theta\neq\theta'$ and $V\w{CKM}$ is anyway modified.}
+If one (or more) quarks were massless, we could rotate the corresponding right-handed quark to remove $\Theta_G$ as well.
+
+\paragraph{Squark masses in super-CKM basis}
+Finally, the squark masses are given by
+\begin{equation}
+ \begin{split}
+-\mathcal L&\supset
+ \tuL^*\left(
+   m_{Q}^2
+ +  m_u^2
+ + \frac{3-4\sw^2}{6} \co{2\beta} m_Z^2
+\right)\tuL
+ +\tuR^*\left(
+   m_{U^\cc}^2
+ + m_u^2
+ + \frac{4\sw^2}{6} \co{2\beta} m_Z^2
+\right)\tuR
+\\&
+ + \tuR^*(\vu a_{{\mathrm u}}- \mu^{*}m_{u}\cot\beta)\tuL
+ + \tuL^*(\vu a^{\dagger}_{{\mathrm u}}- \mu m_u\cot\beta)\tuR
+\\&
+ +\tdL^*\left(
+V_d^\dagger (V_u m_{Q}^2 V_u^\dagger)V_d
+ + m_d^2
+ + \frac{-3+2\sw^2}{6} \co{2\beta} m_Z^2
+\right)\tdL
+ +\tdR^*\left(
+   m_{D^\cc}^2
+ + m_d^2
+ + \frac{-2\sw^2}{6} \co{2\beta} m_Z^2
+\right)\tdR
+\\&
+ + \tdR^*(\vd a_d -\mu^{*}m_d\tan\beta)\tdL
+ + \tdL^*(\vd a^{\dagger}_d-\mu m_d\tan\beta)\tdR
+\\&
+ +\tnuL^*\left(
+ m_{L}^2
+ + \frac{1}{2} \co{2\beta} m_Z^2
+ \right)\tnuL
+\\&
+ +\teL^*\left(
+ m_{L}^2
+ + m_e^2
+ + \frac{-1+2\sw^2}{2} \co{2\beta} m_Z^2
+\right)
+ +\teR^*\left(
+  m_{E^\cc}^2
+ + m_e^2
+ + (-\sw^2)\co{2\beta} m_Z^2
+ \right)\teR
+\\&
+ + \teR^*(\vd a_e -\mu^{*}m_e\tan\beta)\teL
+ + \teL^*(\vd a^{\dagger}_e-\mu m_e\tan\beta)\teR,
+ \end{split}
+\end{equation}
+where the sfermion soft masses, yukawas, and $a$-terms are rewritten in super-CKM basis:
+\begin{align}
+& [m_Q^2, m_{U^\cc}^2, m_{D^\cc}^2,m_L^2,m_{E^\cc}^2]_{\text{super-CKM}}
+=
+ [V_u^\dagger m_Q^2 V_u, U_u^\dagger m_{U^\cc}^2 U_u, U_d^\dagger m_{D^\cc}^2 U_d, 
+V_e^\dagger m_L^2 V_e, U_e^\dagger m_{E^\cc}^2 U_e
+]_{\text{``original''}},
+\\
+&[a_u, a_d, a_e]_{\text{super-CKM}}
+=[U_u^\dagger a_u V_u, U_d^\dagger a_d V_d, U_e^\dagger a_e V_e
+]_{\text{``original''}}.
+\end{align}
+In matrix form, 
+\begin{equation}
+\begin{split}
+  -\mathcal L&\supset
+\pmat{\tuL[i]^*& \tuR[i]^*}
+\pmat{
+ [m_Q^2]_{ij}+\left(m_u^2+\frac{3-4\sw^2}{6}\co{2\beta}m_Z^2\right)\delta_{ij} &
+v_u[a_u^\dagger]_{ij}-(\mu m_u\cot\beta)\delta_{ij}\\
+v_u[a_u]_{ij}-(\mu^*m_u\cot\beta)\delta_{ij} &
+ [m_{U^\cc}^2]_{ij}+\left(m_u^2+\frac{2\sw^2}{3}\co{2\beta}m_Z^2\right)\delta_{ij}
+}
+\pmat{\tuL[j]\\\tuR[j]}
+\\&+
+\pmat{\tdL[i]^*& \tdR[i]^*}
+\pmat{
+ [V\w{CKM}^\dagger m_Q^2V\w{CKM}]_{ij}+\left(m_d^2+\frac{-3+2\sw^2}{6}\co{2\beta}m_Z^2\right)\delta_{ij} &
+v_d[a_d^\dagger]_{ij}-(\mu m_d\tan\beta)\delta_{ij}\\
+v_d[a_d]_{ij}-(\mu^*m_d\tan\beta)\delta_{ij} &
+ [m_{D^\cc}^2]_{ij}+\left(m_d^2-\frac{\sw^2}{3}\co{2\beta}m_Z^2\right)\delta_{ij}
+}
+\pmat{\tdL[j]\\\tdR[j]}
+\\&+
+\tnuL[i]^*\Bigl([m_L^2]_{ij}+\left(\tfrac12\co{2\beta}m_Z^2\right)\delta_{ij}\Bigr)\tnuL[j]
+\\&+
+\pmat{\teL[i]^*& \teR[i]^*}
+\pmat{
+ [m_L^2]_{ij}+\left(m_e^2+\frac{-1+2\sw^2}{2}\co{2\beta}m_Z^2\right)\delta_{ij} &
+v_d[a_e^\dagger]_{ij}-(\mu m_e\tan\beta)\delta_{ij}\\
+v_d[a_e]_{ij}-(\mu^*m_e\tan\beta)\delta_{ij} &
+ [m_{E^\cc}^2]_{ij}+\left(m_e^2-\sw^2\co{2\beta}m_Z^2\right)\delta_{ij}
+}
+\pmat{\teL[j]\\\teR[j]}.
+\end{split}
+\end{equation}
+
+\subsubsection{Fermion composition}
+Now we show the fermion-related Lagrangian terms verbosely:
+\begin{equation}
+  \begin{split}
+&  \mathcal L\w{fermions} + \mathcal L\w{SFG}
+\\&=
+\end{split}
+\end{equation}
+
+
+
 
 \newpage
 \begin{wraptable}{r}{200pt}\vspace{-3em}
