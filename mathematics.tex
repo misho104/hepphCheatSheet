@@ -80,4 +80,35 @@ If matrices $t^a$ satisfies $[t^a,t^b]=\ii f^{abc} t^c$ with totally-antisymmetr
 = \left[\ee^{\ii \theta^af^{a}}\right]^{bc} t^c_{ij}
 \end{equation}
 holds for $\theta^a\in\mathbb C$, where $[f^a]_{bc}=f^{abc}$. \TODO{needs verification, generalization/restriction, and a nice proof or reference.}
+
+\subsection{General unitary matrix}
+\begin{equation}
+ U_2 =
+\pmat{1&0\\0&\ee^{\ii\alpha}}\pmat{\co\theta&\si\theta\\-\si\theta&\co\theta}\pmat{\ee^{\ii\beta}&0\\0&\ee^{\ii\gamma}}
+=
+\pmat{\phantom{-}
+\co\theta\ee^{\ii\beta} & \si\theta\ee^{\ii\gamma}\\
+-\si\theta\ee^{\ii(\alpha+\beta)} & \co\theta\ee^{\ii(\alpha+\gamma)}
+}
+\end{equation}
+\begin{align}
+ U_3 &=
+\pmat{1&&\\&\ee^{\ii a}&\\&&\ee^{\ii b}}
+ \pmat{1&&\\&\co{23}&\si{23}\\&-\si{23}&\co{23}}
+ \pmat{\co{13}&&\si{13}\ee^{-\ii\delta}\\&1&\\-\si{13}\ee^{\ii\delta}&&\co{13}}
+ \pmat{\co{12}&\si{12}&\\-\si{12}&\co{12}&\\&&1}
+\pmat{\ee^{\ii c}&&\\&\ee^{\ii d}&\\&&\ee^{\ii e}}
+\\&=
+\pmat{1&&\\&\ee^{\ii a}&\\&&\ee^{\ii b}}
+ \pmat{
+ \co{12} \co{13} & \si{12} \co{13} & \si{13} \ee^{-\ii\delta}\\
+ -\si{12} \co{23} - \co{12} \si{23} \si{13} \ee^{\ii\delta}& \co{12} \co{23} - \si{12}\si{23}\si{13} \ee^{\ii\delta}& \si{23}\co{13}\\
+  \si{12}\si{23} - \co{12} \co{23} \si{13}\ee^{\ii\delta} & -\co{12}\si{23}-\si{12}\co{23}\si{13}\ee^{\ii\delta} & \co{23} \co{13}}
+\pmat{\ee^{\ii c}&&\\&\ee^{\ii d}&\\&&\ee^{\ii e}}
+\end{align}
+
+%
+
+(e.g., hep-ph/9708216)
+
 \end{document}
