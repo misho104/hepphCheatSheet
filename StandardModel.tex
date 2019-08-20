@@ -1,736 +1,159 @@
-%#!platexmake CheatSheet
-%%% Time-Stamp: <2016-01-26 15:28:38 misho>
-%%% 一部で日本語が使用されています。
+\documentclass[CheatSheet]{subfiles}
+\begin{document}
 
+\summarystyle
 \section{Standard Model}
-Any representations assumed to be {\it normalized Hermitian}. Note that the $\gSU(2)$ $\vc{2}$ representation is
-\begin{equation}
- T^a=\frac12\sigma^a;\qquad  \left[T^a,T^b\right]=\ii \epsilon^{abc}T^c;\qquad T^\pm := T^1\pm\ii T^2.
-\end{equation}
-We use the following abridged notations:
-\begin{align}
-  (\partial A)_{\mu\nu}&:=\partial_\mu A_\nu-\partial_\nu A_\mu,&
-  F_{\mu\nu}^a &:= \Pm A^a_\nu- \Pn A^a_\mu + gf^{abc}A^b_\mu A^c_\nu.
-\end{align}
-\subsection{Symmetries and Fields}
-\begin{center}
- \begin{tabular}[b]{@{\Vrule\ }c@{\ }l|c|c|c@{\ \Vrule}}\Hrule
-   & & $\gSU(3)\s{strong}$ & $\gSU(2)\s{weak} $ & $\gU(1)_Y$ \\\Hrule
-&\multicolumn{4}{l@{\Vrule}}{{\bf Matter Fields} (Fermionic / Lorentz Spinor)}\\\hline
- $\PL Q_i$ &: Left-handed quarks              & $\vc 3$ & $\vc 2$ & $1/6$\\\hline
- $\PL U_i$ &: Right-handed up-type quarks     & $\vc 3$ & $\vc 1$ & $2/3$\\\hline
- $\PR D_i$ &: Right-handed down-type quarks   & $\vc 3$ & $\vc 1$ & $-1/3$\\\hline
- $\PR L_i$ &: Left-handed leptons             & $\vc 1$ & $\vc 2$ & $-1/2$\\\hline
- $\PR E_i$ &: Right-handed leptons            & $\vc 1$ & $\vc 1$ & $-1$\\\Hrule
-&\multicolumn{4}{l@{\Vrule}}{{\bf Higgs Field} (Bosonic / Lorentz Scalar)}\\\hline
- $H$   &: Higgs                           & $\vc 1$ & $\vc 2$ & $1/2$\\\Hrule
-&\multicolumn{4}{l@{\Vrule}}{{\bf Gauge Fields} (Bosonic / Lorentz Vector)}\\\hline
- $G$   &: Gluons                          & $\vc 8$ & $\vc 1$ & $0$\\\hline
- $W$   &: Weak bosons                     & $\vc 1$ & $\vc 3$ & $0$\\\hline
- $B$   &: B boson                         & $\vc 1$ & $\vc 1$ & $0$\\\Hrule
-\end{tabular}
-\end{center}
-\paragraph{Full Lagrangian}
-$ \Lag = \Lag\s{gauge}
-       + \Lag\s{Higgs}
-       + \Lag\s{matter}
-       + \Lag\s{湯川}$
-\begin{align}
-\text{where\quad}
-%%% Gauge Boson Kinetic
-\Lag\s{gauge} =&\
- -\frac14B^{\mu\nu}B_{\mu\nu}
- -\frac14W^{a\mu\nu}W^a_{\mu\nu}
- -\frac14G^{a\mu\nu}G^a_{\mu\nu}\\
-%%% Higgs
-\Lag\s{Higgs} =&\
- \left|\left(\partial_\mu-\ii g_2W_\mu-\frac12\ii g_1B_\mu\right)H\right|^2
- - V(H),\\
-%%% MATTERS
-\begin{split}\label{eq:SMLagMatter}
-\Lag\s{matter} =&\
-% Left Quark
- \overline Q_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu-\ii
- g_2W_\mu-\frac16\ii g_1B_\mu\right)\PL Q_i\\
-& % Up Quark
- + \overline U_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu-\frac23\ii g_1B_\mu\right)\PR U_i\\
-& % Down Quark
- + \overline D_i\ii\gamma^\mu\left(\partial_\mu-\ii g_3G_\mu+\frac13\ii g_1B_\mu\right)\PR D_i\\
-& % Left Lepton
- + \overline L_i\ii\gamma^\mu\left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right)\PL L_i\\
-& % Right Electron
- + \overline E_i\ii\gamma^\mu\left(\partial_\mu+\ii g_1B_\mu\right)\PR E_i,
-\end{split}\\
-%%% YUKAWA
-\Lag\s{湯川} =&\
- \overline U_i(y_u)_{ij}H\PL Q_j - \overline D_i (y_d)_{ij}H^\dagger\PL Q_j - \overline E_i(y_e)_{ij}H^\dagger\PL
- L_j + \Hc
-\end{align}
-We have no freedom to add other terms into this Lagrangian of the gauge theory. See Appendix~\ref{sec:no-other-term}.
+(summary page)
 
-\paragraph{Gauge Kinetic Terms}
-the gauge kinetic terms can be expanded as
-\begin{align}
-\Lag\s{gauge}
-=& -\frac14(\partial B)(\partial B)\notag\\
-\label{eq:SMGaugeKineticBWG}
-& -\frac14(\partial W^a)(\partial W^a)
--g_2\epsilon^{abc}(\partial_\mu W_\nu^a)W^{\mu b}W^{\nu c}
--\frac{{g_2}^2}4
- \left(\epsilon^{eab}W_\mu^aW_\nu^b\right)\left(\epsilon^{ecd}W^{c\mu}W^{d\nu}\right)\\
-&-\frac14(\partial G^a)(\partial G^a)
--g_3f^{abc}(\partial_\mu G_\nu^a)G^{\mu b}G^{\nu c}
--\frac{{g_3}^2}4
- \left(f^{eab}G_\mu^aG_\nu^b\right)\left(f^{ecd}G^{c\mu}G^{d\nu}\right).\notag
-\end{align}
-
-\subsection{Higgs Mechanism}
-\paragraph{Higgs Potential}
-\label{sec:higgs-mechanism}
-The (renormalizable) Higgs potential must be
-\begin{equation}
- V(H) = -\mu^2(H^\dagger H) + \lambda\left(H^\dagger H\right)^2.
-\end{equation}
-for the $\gSU(2)$, and $\lambda>0$ in order not to run away the VEVs, while $\mu^2$ is positive for the EWSB.
-
-To discuss this clearly, let us {\em redefine} the Higgs field {\em by gauge-fixing} as
-\begin{equation}
- H = \frac1{\sqrt2}\pmat{\phi_1+\ii\phi_2\\v+(h+\ii\phi_3)}, \where v=\sqrt{\frac{\mu^2}{\lambda}}.
-\end{equation}
-Here $h$ is the ``Higgs boson,'' and $\phi_i$ are 南部--Goldstone bosons.
-
-The Higgs potential becomes
-\begin{equation}
-   V(h) = \frac{\mu^2}{4v^2}h^4 + \frac{\mu^2}v h^3 + \mu^2h^2,
-\end{equation}
-and now we know the Higgs boson has acquired mass $m_h=\sqrt2 \mu$. Also
-\begin{align}
- \Lag\stx{Higgs}&=
-   \left|\left(\partial_\mu-\ii g_2W_\mu-\frac12\ii g_1B_\mu\right)H\right|^2\\
-&= \frac12(\partial_\mu h)^2+\frac{(v+h)^2}8\Bigl[{g_2}^2{W_1}^2+{g_2}^2{W_2}^2+(g_1B-g_2W_3)^2\Bigr].
-\end{align}
-Redefining the gauge fields (with concerning the norms) as
-\begin{align}
- W^\pm_\mu&:=\frac1{\sqrt2}(W^1_\mu\mp\ii W^2_\mu),&
-\pmat{Z_\mu \\ A_\mu}
-&:= \pmat{%
-\cos\theta\s w & -\sin\theta\s w\\
-\sin\theta\s w & \cos\theta\s w
-}
-\pmat{W^3_\mu \\ B_\mu},
-\end{align}
-where
-\begin{align}
- &\tan\theta\s w := \frac{g_1}{g_2},\qquad
- e              := -\frac{g_1g_2}{\sqrt{{g_1}^2+{g_2}^2}};\qquad
- g_Z            := \sqrt{{g_1}^2+{g_2}^2};\\
- &g_1=\frac{|e|}{\cos\theta\s w}=g_Z\sin\theta\s w,\qquad
-  g_2=\frac{|e|}{\sin\theta\s w}=g_Z\cos\theta\s w.
-\end{align}
-We obtain the following terms in $\Lag\s{Higgs}$:
-\begin{equation}
-  \Lag\s{Higgs}
-\supset \frac12(\partial_\mu h)^2+\frac{(v+h)^2}4\Bigl[{g_2}^2{W^+}^\mu W^-_\mu + \frac{{g_Z}^2}{2}Z^\mu Z_\mu\Bigr].
-\end{equation}
-Here we have omitted the 南部--Goldstone bosons.
-
-
-\begin{rightnote}
-Here we present another form:
-\begin{eqnarray}
-  g_1B_\mu
-&=& |e| A_\mu-\tan\theta\s w Z_\mu,\\
- g_2W_\mu
-&=& \frac{g_2}{\sqrt2}\left(W^+_\mu T^+ + W^-_\mu T^-\right)
-   +\left(\frac{|e|}{\tan\theta\s w}Z_\mu+|e|A_\mu\right)T^3,
-\end{eqnarray}
-\begin{equation}
-Z^0_\mu:=\frac1{\sqrt{{g_1}^2+{g_2}^2}}(g_2 W^3_\mu-g_1B_\mu),\quad
-A_\mu:=\frac1{\sqrt{{g_1}^2+{g_2}^2}}(g_1 W^3_\mu+g_2B_\mu)
-\end{equation}\vspace{-2em}
-\end{rightnote}
-
-You can see the gauge bosons have acquired the masses
-\begin{equation}
-  m_A = 0, \quad m_W :=\frac{g_2}2v,\quad m_Z :=\frac{g_Z}2v.
-\end{equation}
-
-
-\paragraph{Gauge Term}
-The $\gSU(2)$ gauge term is converted into
-\begin{align*}
-   W^{a\mu\nu}W^a_{\mu\nu}
-&= (\partial W^3)(\partial W^3) + 2(\partial W^+)(\partial W^-)
-\\&\quad
-- 4\ii g\left[
-     (\partial W^3)^{\mu\nu}W^+_\mu W^-_\nu
-   + (\partial W^+)^{\mu\nu}W^-_\mu W^3_\nu
-   + (\partial W^-)^{\mu\nu}W^3_\mu W^+_\nu
-\right]
-\\&\quad
- -2g^2(\Hmn\Hrs-\Hmr\Hns)
-\left(
-  W^+_\mu W^+_\nu W^-_\rho W^-_\sigma  - 2 W^3_\mu W^3_\nu W^+_\rho W^-_\sigma
-\right),
-\end{align*}
-and therefore the final expression is
-\begin{equation}
-\label{eq:SMGaugeKineticGZG}
-\begin{split}
- \Lag\s{gauge}&:=
--\frac14\left[
-G^{a\mu\nu}G^a_{\mu\nu} + (\partial Z)^{\mu\nu}(\partial Z)_{\mu\nu}+(\partial A)^{\mu\nu}(\partial A)_{\mu\nu}+2(\partial W^+)^{\mu\nu}(\partial W^-)_{\mu\nu}
-\right]\\&\quad
-+\frac{\ii |e|}{\tan\theta\s w}\Bigl[
-(\partial W^+)^{\mu\nu}W^-_\mu Z_\nu + (\partial W^-)^{\mu\nu}Z_\mu W^+_\nu +  (\partial Z)^{\mu\nu}W^+_\mu W^-_\nu
-\Bigr]\\&\quad
-+ \ii |e|\Bigl[
-(\partial W^+)^{\mu\nu}W^-_\mu A_\nu + (\partial W^-)^{\mu\nu}A_\mu W^+_\nu +  (\partial A)^{\mu\nu}W^+_\mu W^-_\nu
-\Bigr]\\&\quad
-+(\Hmn\Hrs-\Hmr\Hns)\left[
-\frac{|e|^2}{2\sin^2\theta\s w}W^+_\mu W^+_\nu W^-_\rho W^-_\sigma
-+\frac{|e|^2}{\tan^2\theta\s w}W^+_\mu Z_\nu W^-_\rho Z_\sigma
-\right.\\&\left.\qquad\qquad\qquad
-+\frac{|e|^2}{\tan\theta\s w}\left(W^+_\mu Z_\nu W^-_\rho A_\sigma + W^+_\mu A_\nu W^-_\rho Z_\sigma\right)
-+|e|^2W^+_\mu A_\nu W^-_\rho A_\sigma\right].
-\end{split}
-\end{equation}
-
-\paragraph{湯川 Term}
-\begin{equation}\begin{split}
- \Lag\s{湯川}=
-&\overline U y_uH\PL Q - \overline D y_dH^\dagger\PL Q - \overline E y_eH^\dagger\PL L
- + \Hc\\
-=
-& \overline U y_u\epsilon^{\alpha\beta}H^{\alpha}\PL Q^{\beta}
- -\overline D y_d{H^\dagger}^{\alpha}\PL Q^\alpha
- -\overline E y_e{H^\dagger}^{\alpha}\PL L^\alpha + \Hc\\
-=
-&-\frac{v+h}{\sqrt2}\left(
-   \overline U y_u\PL Q^1
- + \overline D y_d\PL Q^2
- + \overline E y_e\PL L^2
-\right) + \Hc
-\end{split}\end{equation}
-\subsection{Full Lagrangian After Higgs Mechanism}
-Now we have the following Lagrangian (with omitting $\PL$ etc.):
-\begin{equation}\begin{split}
- \Lag =
-& \Lag\s{gauge}
-{\ +\ }{m_W}^2W^+W^-
-{\ +\ }\frac{{m_Z}^2}2Z^2\\
-%Higgs
-\NOTE{Higgs}&
-{\ +\ }\frac12(\partial_\mu h)^2
-{\ -}\frac12{m_h}^2h^2
-{-}\sqrt{\frac\lambda2}m_h h^3
-{-}\frac14\lambda h^4
-\\&
-{\ +\ }\frac{v{g_2}^2}{4}W^+W^-h
-{\ +\ }\frac{v({g_1}^2+{g_2}^2)}{8}Z^2h\\&
-{\ +\ }\frac{{g_2}^2}{4}W^+W^-h^2
-{\ +\ }\frac{{g_1}^2+{g_2}^2}{8}Z^2h^2\\
-&
-{\ -\ }\left(\frac{1}{\sqrt2}h\bar U y_u Q^1
-{\ +\ }\frac{1}{\sqrt2}h\bar D y_d Q^2
-{\ +\ }\frac{1}{\sqrt2}h\bar E y_e L^2 \ +\ \Hc\right)\\
-%SU(3) Interactions
-\NOTE{$\gSU(3)$}&
-{\ +\ }\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) Q
-{\ +\ }\bar U\left(\ii\slashed\partial+g_3\slashed G\right) U
-{\ +\ }\bar D\left(\ii\slashed\partial+g_3\slashed G\right) D
-{\ +\ }\bar L\left(\ii\slashed\partial\right) L
-{\ +\ }\bar E\left(\ii\slashed\partial\right) E\\
-\NOTE{$W$}&
-{\ +\ }\bar Q\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)Q
-{\ +\ }\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)L\\
-\NOTE{$A$\&$Z^0$}&
-{\ +\ }\bar Q\left[
-    \left(T^3+\frac16\right)|e|\slashed A
-   +\left(\frac{|e|c}{s}T^3-\frac{|e|s}{6c}\right)\slashed Z^0
-  \right] Q\\
-&{\ +\ }\bar U\left(\frac23 |e|\slashed A-\frac{2|e|s}{3c}\slashed Z\right) U\\
-&{\ +\ }\bar D\left(-\frac13 |e|\slashed A+\frac{|e|s}{3c}\slashed Z\right) D\\
-&{\ +\ }\bar L\left[
-    \left(T^3-\frac12\right)|e|\slashed A
-   +\left(\frac{|e|c}{s}T^3+\frac{|e|s}{2c}\right)\slashed Z^0
-  \right] L\\
-&
-{\ +\ }\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) E\\
-\NOTE{湯川項}& % Yukawa
-{\ -\ }\left(\frac{1}{\sqrt2}v\bar U y_u Q^1
-{\ +\ }\frac{1}{\sqrt2}v\bar D y_d Q^2
-{\ +\ }\frac{1}{\sqrt2}v\bar E y_e L^2\ +\ \Hc\right)
-\end{split}\end{equation}
-\subsection{Mass Eigenstates}
-Here we will obtain the mass eigenstates of the fermions, by diagonalizing the 湯川 matrices.
-
-We use the singular value decomposition method to mass matrices $Y_\bullet:=vy_\bullet/\sqrt2$.
-Generally, any matrices can be transformed with two unitary matrices $\Psi$ and $\Phi$ as
-\begin{equation}
- Y=\Phi^\dagger\pmat{m_1&0&0\\0&m_2&0\\0&0&m_3}\Psi =:\Phi^\dagger M\Psi\qquad(m_i\ge0).
-\end{equation}
-Using this $\Psi$ and $\Phi$, we can rotate the basis as
-\begin{align}
- &Q^1\mapsto \Psi_u^\dagger Q^1,\quad
- Q^2\mapsto \Psi_d^\dagger Q^2,\quad
- L\mapsto \Psi_e^\dagger L,\quad
- &U\mapsto \Phi_u^\dagger U,\quad
- D\mapsto \Phi_d^\dagger D,\quad
- E\mapsto \Phi_e^\dagger E,\label{eq:gaugeeig_to_masseig}
-\end{align}
-and now we have the 湯川 terms in mass eigenstates as
-\begin{equation}
-  \Lag\s{湯川}
-= -\left(1+\frac{1}{v}h\right)\left[
-   {(m_u)_i} \overline U_i \PL Q_i^1
- + {(m_d)_i} \overline D_i \PL Q_i^2
- + {(m_e)_i} \overline E_i \PL L_i^2 + \Hc\right].
-\end{equation}
-
-In the transformation from the gauge eigenstates to the mass eigenstates, almost all the terms in the Lagrangian are not modified.
-However, only the terms of quark--quark--$W$ interactions do change drastically, as
-\begin{align}
- \Lag
-&\supset
- \overline Q\ii\gamma^\mu\left(-\ii g_2W_\mu-\frac16\ii g_1B_\mu\right)\PL Q\\
-&=\overline Q\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)\PL Q
-\quad+\quad(\text{interaction terms with $Z$ and $A$})\\
-&\mapsto%
-\frac{g_2}{\sqrt2}
-\pmat{\overline Q^1\Psi_u&\overline Q^2\Psi_d}
-\pmat{0&\slashed W^+\\\slashed W^-&0}\PL\pmat{\Psi_u^\dagger Q^1\\\Psi_d^\dagger Q^2} + (\quad{\cdots}\quad)\\
-&=\frac{g_2}{\sqrt2}\left[\overline Q^2\slashed W^-X \PL Q^1+ \overline Q^1\slashed W^+X^\dagger\PL Q^2\right]+(\quad{\cdots}\quad),
-\end{align}
-where $X:=\Psi_d\Psi_u^\dagger$ is a matrix, so-called the Cabbibo--小林--益川~(CKM) matrix, which is {\em not} diagonal, and {\em not} real, generally.
-These terms violate the flavor symmetry of quarks, and even the $CP$-symmetry.
-\begin{rightnote}
-In our notation, $CP$-transformation of a spinor is described as
-\begin{equation}
- \mathscr{CP}\left(\psi\right)= -\ii\eta^*\trans{(\overline\psi\G2)},\quad
- \mathscr{CP}\left(\overline\psi\right)= \ii\eta\trans{(\G2\psi)},
-\end{equation}
-where $\eta$ is a complex phase ($|\eta|=1$).
-Under this transformation, those terms are transformed as, e.g.,
-\begin{eqnarray}
-\mathscr{CP}\left( \overline Q^2\slashed W^-X \PL Q^1\right)
-&=&
-\trans{(\G2Q^2)} \mathscr{P}(-{\slashed W^+})X\PL\trans{(\overline Q^1\G2)}\notag\\
-&=&-{W_\mu^+}^P\trans{(\G2Q^2)}\trans{(\overline Q^1\trans X\G2\PL\trans{\Gm })}\\
-&=&(\overline Q^1{\slashed W^+}\trans X\PL Q^2).\notag
-\end{eqnarray}
-Therefore, we can see that the $CP$-symmetry is maintained if and only if $\trans X=X^\dagger$, that is, if and only if $X$ is a real matrix.
-\end{rightnote}
-
-Thus the Lagrangian is
-\begin{align}
- \Lag =
-& \Lag\s{gauge}\notag\\
-\NOTE{質量項}& % Yukawa
-{\quad+\quad}{m_W}^2W^+W^-
-{\quad+\quad}\frac{{m_Z}^2}2Z^2
-\notag\\&
-{\quad-\quad}\left(\bar U M_u \PL Q^1
-{\ +\ }\bar D M_d \PL Q^2
-{\ +\ }\bar E M_e \PL L^2\ +\ \Hc\right)
-\notag\\[.5zw]
-%Higgs
-\NOTE{Higgs Field}&
-{\quad+\quad}\frac12(\partial_\mu h)^2
-{\quad-}\frac12{m_h}^2h^2
-{-}\sqrt{\frac\lambda2}m_h h^3
-{-}\frac14\lambda h^4\notag\\
-\NOTE{Higgsとの結合}&
-{\quad+\quad}\frac{v{g_2}^2}{4}W^+W^-h
-{\quad+\quad}\frac{v({g_1}^2+{g_2}^2)}{8}Z^2h\notag\\&
-{\quad+\quad}\frac{{g_2}^2}{4}W^+W^-h^2
-{\quad+\quad}\frac{{g_1}^2+{g_2}^2}{8}Z^2h^2\notag\\
-&
-{\quad-\quad}\left(\frac1v\bar U M_u \PL Q^1h
-{\ +\ }\frac1v\bar D M_d \PL Q^2h
-{\ +\ }\frac1v\bar E M_e \PL L^2h\ +\ \Hc\right)\notag\\[1zw]
-%SU(3) Interactions
-\NOTE{$\gSU(3)$および微分項}&
-{\quad+\quad}\bar Q\left(\ii\slashed\partial+g_3\slashed G\right) \PL Q
-{\quad+\quad}\bar U\left(\ii\slashed\partial+g_3\slashed G\right) \PR U
-{\quad+\quad}\bar D\left(\ii\slashed\partial+g_3\slashed G\right) \PR D\notag\\
-&
-{\quad+\quad}\bar L\left(\ii\slashed\partial\right) \PL L
-{\quad+\quad}\bar E\left(\ii\slashed\partial\right) \PR E\notag\\[1zw]
-\NOTE{$W$ boson}&
-{\quad+\quad}\frac{g_2}{\sqrt2}\left[
-\bar Q^2\slashed W^-X \PL Q^1+ \bar Q^1\slashed W^+X^\dagger \PL Q^2\right]
-\qquad\NOTE{← $CP$ and flavor violating!}
-\notag\\
-&
-{\quad+\quad}\bar L\frac{g_2}{\sqrt2}\left(\slashed W^+ T^+ + \slashed W^- T^-\right)\PL L\notag\\
-\NOTE{$A$\&$Z^0$ boson}&
-{\quad+\quad}\bar Q\left[
-    \left(T^3+\frac16\right)|e|\slashed A
-   +\left(\frac{|e|c}{s}T^3-\frac{|e|s}{6c}\right)\slashed Z^0
-  \right]\PL  Q\notag\\
-&{\quad+\quad}\bar U\left(\frac23 |e|\slashed A-\frac{2|e|s}{3c}\slashed Z\right) \PR U\notag\\
-&{\quad+\quad}\bar D\left(-\frac13 |e|\slashed A+\frac{|e|s}{3c}\slashed Z\right) \PR D\notag\\
-&{\quad+\quad}\bar L\left[
-    \left(T^3-\frac12\right)|e|\slashed A
-   +\left(\frac{|e|c}{s}T^3+\frac{|e|s}{2c}\right)\slashed Z^0
-  \right] \PL L\notag\\
-& 
-{\quad+\quad}\bar E\left(-|e|\slashed A+\frac{|e|s}{c}\slashed Z\right) \PR E.
-\end{align}
 \newpage
-\subsection{Chiral Notation}
-In the chiral expression, the Lagrangian is written as
+\detailstyle
+
+\subsection{Particle content and convention}
+\subsection{Lagrangian}
+\subsection{Higgs mechanism}
+\subsection{Lagrangian in mass eigenstates}
+
+\subsection{CKM matrix and Yukawa convention}\label{sec:SM-CKM}
+Our convention is, with  $Y=UY\wdiag V^\dagger$,
 \begin{align}
- \mathcal L
-=& \text{(Higgs terms)} + \text{(Gauge fields strength)}\notag\\
-& + Q\s L^\dagger\ii\bar\sigma^\mu\left(\partial_\mu-\ii g_3G_\mu-\ii
- g_2W_\mu-\frac16\ii g_1B_\mu\right)Q\s L\notag\\
-& + U\s R^\dagger\ii\sigma^\mu\left(\partial_\mu-\ii g_3G_\mu-\frac23\ii g_1B_\mu\right)U\s R\notag\\
-& + D\s R^\dagger\ii\sigma^\mu\left(\partial_\mu-\ii g_3G_\mu+\frac13\ii g_1B_\mu\right)D\s R\notag\\
-& + L\s L^\dagger\ii\bar\sigma^\mu\left(\partial_\mu-\ii g_2W_\mu+\frac12\ii g_1B_\mu\right)L\s L\notag\\
-& + E\s R^\dagger\ii\sigma^\mu\left(\partial_\mu+\ii g_1B_\mu\right)E\s R\notag\\
-& % Yukawa
- -\left(U^\dagger\s R y_uHQ\s L + D^\dagger\s R y_dH^\dagger Q\s L +
- E^\dagger \s R y_eH^\dagger L\s L + \Hc\right)\notag\\
-=& \text{(Higgs terms)} + \text{(Gauge fields strength)}\notag\\
-&
-+ \ii Q\s L^\dagger\bar\sigma^\mu\partial_\mu Q\s L
-+ \ii U\s R        \bar\sigma^\mu\partial_\mu U\s R^\dagger
-+ \ii D\s R        \bar\sigma^\mu\partial_\mu D\s R^\dagger
-+ \ii L\s L^\dagger\bar\sigma^\mu\partial_\mu L\s L
-+ \ii E\s R        \bar\sigma^\mu\partial_\mu E\s R^\dagger \notag\\
-&
-+ g_3\left(
- Q\s L^\dagger\bar\sigma^\mu G_\mu Q\s L
-+U\s R^\dagger\bar\sigma^\mu G_\mu U\s R
-+D\s R^\dagger\bar\sigma^\mu G_\mu D\s R
-\right)\notag\\
-&
-+ g_2\left(
- Q\s L^\dagger\bar\sigma^\mu W_\mu Q\s L
-+L\s L^\dagger\bar\sigma^\mu W_\mu L\s L
-\right)\notag\\
-&+ g_1\left(
- \frac16 Q\s L^\dagger\bar\sigma^\mu B_\mu Q\s L
-+\frac23 U\s R^\dagger\bar\sigma^\mu B_\mu U\s R
--\frac13 D\s R^\dagger\bar\sigma^\mu B_\mu D\s R
--\frac12 L\s L^\dagger\bar\sigma^\mu B_\mu L\s L
--        E\s R^\dagger\bar\sigma^\mu B_\mu E\s R
-\right)\notag\\
-& % Yukawa
- - \left(U^\dagger\s R y_uHQ\s L + D^\dagger\s R y_dH^\dagger Q\s L +
- E^\dagger \s R y_eH^\dagger L\s L + \Hc\right),
+  \mathcal L&\supset
+  \overline{U}\Yu H \PL Q
+- \overline{D}\Yd H^\dagger \PR Q
+- \overline{E}\Ye H^\dagger \PR L + \text{h.c.}
+\\&=
+  \overline{U_i}\Yu[ij] \epsilon^{ab}H^a \PL Q_j^b
+- \overline{D_i}\Yd[ij] H^{a*} \PL Q_j^a
+- \overline{E_i}\Ye[ij] H^{a*} \PL L_j^a + \text{h.c.}
+\\&=
+  \epsilon^{ab}\overline{U}U_u\Yu\wdiag H^a \PL V_u^\dagger Q^b
+- \overline{D}U_d\Yd\wdiag H^{a*} \PR V_d^\dagger Q^a
+- \overline{E}U_e\Ye\wdiag H^{a*} \PR V_e^\dagger L + \text{h.c.}
+\\&\leadsto
+  -\frac{v}{\sqrt2}\overline{U}U_u\Yu\wdiag V_u^\dagger\PL Q^1
+  -\frac{v}{\sqrt2}\overline{D}U_d\Yd\wdiag V_d^\dagger\PL Q^2
+  -\frac{v}{\sqrt2}\overline{E}U_e\Ye\wdiag V_e^\dagger\PL L^2 + \text{h.c.}
 \end{align}
-and finally we obtain
-\begin{align}
- \Lag =
-& \text{(Gauge bosons and Higgs)}\notag\\
-&
-+ \ii Q\s L^\dagger\bar\sigma^\mu\partial_\mu Q\s L
-+ \ii U\s R        \bar\sigma^\mu\partial_\mu U\s R^\dagger
-+ \ii D\s R        \bar\sigma^\mu\partial_\mu D\s R^\dagger
-+ \ii L\s L^\dagger\bar\sigma^\mu\partial_\mu L\s L
-+ \ii E\s R        \bar\sigma^\mu\partial_\mu E\s R^\dagger \notag\\
-&
-+ g_3\left(
- Q\s L^\dagger\bar\sigma^\mu G_\mu Q\s L
-+U\s R^\dagger\bar\sigma^\mu G_\mu U\s R
-+D\s R^\dagger\bar\sigma^\mu G_\mu D\s R
-\right)\notag\\
-&
--m_u(u\s R^\dagger u\s L+u\s L^\dagger u\s R)-\text{(quarks)}
--m_e(e\s R^\dagger e\s L+e\s L^\dagger e\s R)-\text{(leptons)}
-\notag\\&
--\frac{m_u}v(u\s R^\dagger u\s L+u\s L^\dagger u\s R)h - \text{(quarks)}
--\frac{m_e}v(e\s R^\dagger e\s L+e\s L^\dagger e\s R)h - \text{(leptons)}
-\notag\\
-&+
+Noting that $(\overline{\psi_A}\PL\psi_B)^*=\overline{\psi_B}\PR\psi_A$, this definition is equivalent to
+\begin{equation}
+   \mathcal L\supset
+- \overline{Q^a}\Yu^\dagger \epsilon^{ab}H^{b*} \PR U
+- \overline{Q^a}\Yd^\dagger H^{a} \PR D
+- \overline{L^a}\Ye^\dagger H^{a} \PR E + \text{h.c.}
+\end{equation}
+Moving to the CKM basis, the weak interaction is amended as
+\begin{equation}
+ \mathcal L\supset\overline{Q}\ii\gamma^\mu(-\ii g_2 W_\mu)\PL Q
+\supset
 \frac{g_2}{\sqrt2}\left[
-\pmat{d\s L^\dagger\ s\s L^\dagger\ b\s L^\dagger}
-\bar\sigma^\mu W^-_\mu X \pmat{u\s L\\c\s L\\t\s L}
-+
-\pmat{u\s L^\dagger\ c\s L^\dagger\ t\s L^\dagger}
-\bar\sigma^\mu W^+_\mu X^\dagger \pmat{d\s L\\s\s L\\b\s L}
+\overline{Q^1} \slashed W^+\PL Q^2
++\overline{Q^2}\slashed W^-\PL Q^1
 \right]
-\notag\\&
-+\frac{g_2}{\sqrt2}\left[
-\nu_e^\dagger\bar\sigma^\mu W^+_\mu e\s L + e\s L^\dagger\bar\sigma^\mu W^-_\mu \nu_e
-\right]\notag\\
-&
-+|e|\left[
-  \frac23 u\s L^\dagger \bar\sigma^\mu A_\mu u\s L
-- \frac13 d\s L^\dagger \bar\sigma^\mu A_\mu d\s L
-+ \frac23 u\s R^\dagger     \sigma^\mu A_\mu u\s R
-- \frac13 d\s R^\dagger     \sigma^\mu A_\mu d\s R
-+ \text{(quarks)}
-\right.\notag\\&\left.\qquad\qquad
-- e\s L^\dagger \bar\sigma^\mu A_\mu e\s L
-- e\s R^\dagger     \sigma^\mu A_\mu e\s R
-+ \text{(leptons)}\right]\notag\\
-&%
-+\frac{|e|s}{c}\left[
-  \left(\frac{c^2}{2s^2}-\frac16\right)u\s L^\dagger \bar\sigma^\mu Z_\mu u\s L
-- \left(\frac{c^2}{2s^2}+\frac16\right)d\s L^\dagger \bar\sigma^\mu Z_\mu d\s L
-- \frac23 u\s R^\dagger     \sigma^\mu Z_\mu u\s R
-+ \frac13 d\s R^\dagger     \sigma^\mu Z_\mu d\s R
-\right.\notag\\&\left.\qquad\qquad
-+ \left(\frac{c^2}{2s^2}+\frac12\right)\nu_e^\dagger \bar\sigma^\mu Z_\mu \nu_e
-- \left(\frac{c^2}{2s^2}-\frac12\right)e\s L^\dagger \bar\sigma^\mu Z_\mu e\s L
-+ e\s R^\dagger     \sigma^\mu Z_\mu e\s R
-+ \text{(others)}\right].
-\end{align}
-
-
-\newpage
-
-\subsection{Values of SM Parameters}
-\newcommand{\upd}[1]{{\RED{#1}}}
-\vskip-24pt\hskip200pt{\small(Extracted from PDG 2010 / \upd{2012})}
-\subsubsection{Experimental Values}
-\subparagraph{Theoretical Parameters}
-\NOTE{These values are all in $\overline{\rm{MS}}$ scheme.}
-\begin{align*}
- \alpha^{-1}\s{EM}(0) &= 137.035999\upd{074(44)} &
- G\s{F}       &= \frac{{g_2}^2}{4\sqrt2{m_W}^2} = \frac1{\sqrt2v^2} = 1.16637\upd{87(6)}\EE-5\un{GeV^{-2}}&
-\end{align*}
-\begin{align*}
- \alpha^{-1}\s{EM}(m_Z)    &= 127.9\upd{44(14)} &
- m_W(m_W)                  &= 80.3\upd{85(15)}\un{GeV} &
- \Gamma_W                  &\approx 2.085(42)\un{GeV}
-\\
- \alpha^{-1}\s{EM}(m_\tau) &= 133.4\upd{71(14)} &
- m_Z(m_Z)                  &= 91.1876(21)\un{GeV} &
- \Gamma_Z                  &\approx 2.4952(23)\un{GeV}
-\\
- \alpha\s{s}(m_Z)          &= 0.118\upd{4(7)}  &
- \sin^2\theta\s W(m_Z)     &= 0.23116(1\upd{2}) &
- \sin^2\theta\s{eff}       &= 0.23146(12)
-\end{align*}
-
-\subparagraph{Masses and Lifetimes}
-\NOTE{$t$ pole mass is the ``MC mass''. Quark $\overline{\rm{MS}}$ mass at 1\,GeV can be obtained by $\times 1.35$.}
-\begin{align*}
- e   &: 0.5109989\upd{28(11)}\un{MeV}         &
-\mu  &: 105.6583\upd{715(35)}\un{MeV}         &
-\tau &: 1.77682(16)\un{GeV}                   &
-\end{align*}
-\begin{align*}
-\text{\small [$\overline{\rm MS}$ (2\,GeV)]}\ \
- u   &: \upd{2.3\pmunc{0.7}{0.5}}\un{MeV}    &
-\text{\small [$\overline{\rm MS}$($m$)]}\ \
- c   &: 1.2{\upd{75(25)}}\un{GeV}             &
-\text{\small [pole]}\ \
- c   &: 1.67(7)\un{GeV}
-\\
- d   &: \upd{4.8\pmunc{0.7}{0.3}}\un{MeV}    &
- b   &: 4.1\upd{8(3)}\un{GeV}                 &
- b   &: 4.78(6)\un{GeV}
-\\
- s   &: \upd{95\pm5}\un{MeV}                  &
- t   &: 160\pmunc{5}{4}\un{GeV}              &
- t   &: 17\upd{3.5(6)(8)}\un{GeV}
-\end{align*}
-\begin{align*}
- \pi^\pm &: 139.57018(35)\un{MeV}&
- K^\pm   &: 493.677(16)  \un{MeV}&
- p       &: 938.2720\upd{46(21)} \un{MeV}\\
- \pi^0   &: 134.9766(6)   \un{MeV}&
- K^0     &: 497.614(24)  \un{MeV}&
- n       &: 939.5653\upd{79(21)}\un{MeV}
-\end{align*}
-\begin{align*}
- \mu     &: 2.1969\upd{811(22)}   \un{\mu s} \ (659\un{m}) &
- \pi^\pm &: 2.6033(5)\EE-8        \un{s}&
- K^\pm   &: 1.2380(21)\EE-8       \un{s}     \ (3.7\un{m})\\
- \tau    &: 2.906(10)\EE{-13}     \un{s}     \ (87\un{\mu m})&
- \pi^0   &: 8.\upd{52(18)}\EE-{17}\un{s}&
- K^0\s{S}&: 8.95\upd{64}(33)\EE{-11}\un{s}   \ (2.68\un{cm})&\\
-&&&&
- K^0\s{L}&: 5.116(2\upd{1})\EE-8\un{s}       \ (15.3\un{m})
-\end{align*}
-\subparagraph{Other Important Values}
-\begin{align*}
-     a_e                  &= 11596521.8076(27)\EE{-10} &
- d^{\rm EDM}_e            &< 10.5\EE{-28}e\un{cm}&
-& \Br(\tau\to e)          = 17.83(4)\%
-\\
-     a_\mu                &= 11659209(6)\EE{-10} &
- d^{\rm EDM}_\mu          &= -1(9)\EE{-20}e\un{cm}&
-& \Br(\tau\to \mu)         = 17.41(4)\%
-\\
-&&
- \sin^22\theta_{12} &= 0.857(24)&
-& \Br(\tau\to \text{had})  \sim 64.8\%
-\\
-&&
- \sin^22\theta_{23} &> 0.95&
-& \Delta m_{\nu21}^2 = 7.50(20)\EE-5\eV^2
-\\
-&&
- \sin^22\theta_{13} &= 0.098(13)&
-& \left|\Delta m_{\nu32}^2\right| = 0.00232(^{12}_{08})\eV^2\\
-\end{align*}
-\subparagraph{CKM matrix}
-\begin{equation*}
-  V\s{CKM}=
-\pmat{
-0.97425(22) & 0.2252(9)   & 0.0084(6)\\
-0.230(11)   & 1.006(23)   & 0.0429(26)\\
-0.00415(49) & 0.0409(11)  & 0.89(7)
-}
-\approx
-\pmat{
-0.9742\upd{7(15)}         & 0.225\upd{34(65)}        & 0.003\upd{51(^{15}_{14})}\\
-0.225\upd{20(65)}         & 0.9734\upd{4}(16)        & 0.04\upd{12(^{11}_{05})}\\
-0.008\upd{67(^{29}_{31})} & 0.04\upd{04(^{11}_{05})} & 0.9991\upd{46(^{21}_{46})}
-}
-\end{equation*}
-\begin{align*}
- \lambda &= 0.22535(65),&
- A&=0.811\pmunc{0.022}{0.012},&
- \bar\rho&=0.131\pmunc{0.026}{0.013},&
- \bar\eta&=0.345\pmunc{0.013}{0.014};&
- J&=(2.96\pmunc{20}{16})\EE-5
-\end{align*}
-
-
-\subsubsection{Estimation of SM Parameters}
-For EW scale, we can estimate the values as
-\begin{align}
- |e|&\sim 0.313,& g_1 &\sim 0.357, & g_2 &\sim 0.652, & g_Z &\sim 0.743; &
-  v=\sqrt{\frac{\mu^2}\lambda} &\sim 246\un{GeV}
-\end{align}
-Therefore 湯川 matrices are (after diagonalization), since $vy/\sqrt2=M$,
-\begin{align}
- y_u&\sim \pmat{10^{-5}&0&0\\0&0.007&0\\0&0&0.997}&
- y_d&\sim \pmat{3\times10^{-5}&0&0\\0&0.0005&0\\0&0&0.02}&
- y_e&\sim \pmat{3\times10^{-6}&0&0\\0&0.0006&0\\0&0&0.01}&
-\end{align}
-
-Also, for $m_h\sim 125\un{GeV}$, we can estimate the Higgs potential as $\mu\sim88\un{GeV}$ and $\lambda \sim 0.13$.
-
-\subsection{南部--Goldstone Boson}
-Defining the 南部--Goldstone mode as
-\begin{equation}
- H = \frac1{\sqrt2}\pmat{-\ii \sqrt2 \phi^+(x) \\ v+h(x)+\ii\phi_3(x)}, \where v=\sqrt{\frac{\mu^2}{\lambda}},
+=
+\frac{g_2}{\sqrt2}\left[
+\overline{\hat Q^1} V_u^\dagger\slashed W^+\PL V_d \hat Q^2
++\overline{\hat Q^2}V_d^\dagger\slashed W^-\PL V_u \hat Q^1
+\right],
 \end{equation}
-The Higgs part of the Lagrangian turns out to be
-\begin{align}\begin{split}
- \Lag&\supset \left|\DD_\mu H\right|^2 + \mu^2\left|H\right|^2 - \lambda\left|H\right|^4\\
-&=
-\frac{\lambda}{4}v^4+ \left(1+\frac{2h}{v}\right)\left(m_W^2 W^{+\mu}W^-_\mu + \frac{m_Z^2}2Z^\mu Z_\mu\right)
- -
-\frac{m_h^2}{2}\left(h+\frac{h^2+\phi_3^2+2\phi^+\phi^-}{2v}\right)^2
-\\&\quad
-+m_Z Z^\mu\Pm\phi^3
-+m_W
-\left[
-W^-_\mu\left(
-\partial^\mu
--\ii|e|A^\mu+\frac{\ii|e|s}{c}Z^\mu
-\right)\phi^+
-+\Hc\right]
-\\&\quad
-+\frac12\left(\Pm h-\frac{g_Z}2 Z_\mu\phi_3-\frac{g_2}{2} W_\mu^+\phi^- -\frac{g_2}{2} W_\mu^-\phi^+\right)^2
-\\&\quad
-+
-\frac12\left(\Pm\phi_3+\frac{g_Z}2 Z_\mu h -\frac{\ii g_2}{2}W_\mu^+\phi^- +\frac{\ii g_2}{2}W_\mu^-\phi^+\right)^2
-\\&\quad
-+\abs{\left[\Pm-\ii|e|A_\mu -\frac{\ii|e|s}{c}\left(\frac{c^2}{2s^2}-\frac12\right)
- Z_\mu\right]\phi^+ + \frac{g_2}{2}(h+\ii\phi^3) W^+_\mu}^2,
-\end{split}
-\end{align}
-and the 湯川 interactions are
-\begin{align}
+where hatted fields are in the CKM basis, and we define, with $\si{ij}>0$ and $\co{ij}>0$,
+\begin{equation}
 \begin{split}
-  \Lag&\supset
- \overline U y_uH\PL Q - \overline D y_dH^\dagger\PL Q - \overline E y_eH^\dagger\PL L
- \\&
- =-\frac{v+h+\ii\phi^3}{\sqrt2}\left(
-   \overline U y_u\PL Q^1
- + \overline D y_d\PL Q^2
- + \overline E y_e\PL L^2
- \right)
-\\&\quad
- -\ii
- \left(
- \phi^+ \overline Uy_u\PL Q^2+\phi^-\overline D y_d\PL Q^1+\phi^-\overline Ey_e\PL L^1
- \right).
-\end{split}
-\end{align}
-
-
-\subsection{CKM matrix}\label{sec:CKM}\noindent
-\begin{minipage}[t]{0.53\textwidth}
-\subparagraph{PDG SM convention}(2014 \S12)
-\[
--\mathcal L \supset Y_{ij}^d H^a \overline{Q_i^a} d_j - Y_{ij}^u\epsilon^{ab} H^a\overline{Q_i^b}u_j
-;
-\quad
-Y^{\rm diag} = V_L Y V_R^\dagger
-\]
-\subparagraph{SLHA2 convention}(0801.0045)
-\begin{align*}
-  \Lag&\supset
- \textstyle\int\dd^2\theta\,W
- \supset
- \int\dd^2\theta\,\epsilon^{ab}\left(
-   Y^D_{ij}\Hd^a Q_i^b\bar D_j
- - Y^U_{ij}\Hu^a Q_i^b\bar U_j
- \right)
- \\
- &\therefore -\Lag \supset
-   Y^D_{ij}\HdZ \psi_{Q_i^2}\psi_{\bar D_j}
- + Y^U_{ij}\HuZ \psi_{Q_i^1}\psi_{\bar U_j}
- \quad \text{\footnotesize (See Eq.~43)}
- \\&\qquad\qquad\leadsto
-   (Y^D_{ij})^*\HdZ{}^* \overline{Q_i^2}d_j
- + (Y^U_{ij})^*\HuZ{}^* \overline{Q_i^1}u_j;
- \\
- &Y^{\rm diag} = U^\dagger \trans{Y}V = V^\dagger Y^* U
-\end{align*}
-\end{minipage}%
-\hfill%
-\begin{minipage}[t]{0.44\textwidth}
-In both conventions,
- \begin{align*}
- V\s{CKM} &= V_L^u V_R^{d\dagger} \text{(PDG)} = V_U^\dagger V_D \text{(SLHA)}
- \\& =
- \pmat{V_{ud}&V_{us}&V_{ub}\\V_{cd}&V_{cs}&\cdots};
-\end{align*}
-and in Wolfenstein parameterization, $V\s{CKM}\approx$
-\[
+  V\w{CKM}&=V_u^\dagger V_d
+ =\pmat{
+ V_{ud} & V_{us} & V_{ub}\\
+ V_{cd} & V_{cs} & V_{cb}\\
+ V_{td} & V_{ts} & V_{tb}
+ }
+ =
+%
+ \pmat{1&&\\&\co{23}&\si{23}\\&-\si{23}&\co{23}}
+ \pmat{\co{13}&&\si{13}\ee^{-\ii\delta}\\&1&\\-\si{13}\ee^{\ii\delta}&&\co{13}}
+ \pmat{\co{12}&\si{12}&\\-\si{12}&\co{12}&\\&&1}\ee^{\ii\Theta}
+%
+ \\&=
  \pmat{
- 1-\lambda^2/2 & \lambda       & A\lambda^3(\rho-\ii \eta)\\
- -\lambda      & 1-\lambda^2/2 & A\lambda^2\\
- A\lambda^3(1-\rho-\ii\eta) & -A\lambda^2 & 1
- }.
-\]
-\hfill\NOTE{Be careful of the minus sign before $\eta$.}
-\end{minipage}
-
-Also we have a standard parameterization without approximation:
-\begin{equation}
-  V\s{CKM} =\pmat{
- c_{12} c_{13} & s_{12} c_{13} & s_{13} \ee^{-\ii\delta}\\
- -s_{12} c_{23} - c_{12} s_{23} s_{13} \ee^{\ii\delta}& c_{12} c_{23} - s_{12}s_{23}s_{13} \ee^{\ii\delta}& s_{23}c_{13}\\
-  s_{12}s_{23} - c_{12} c_{23} s_{13}\ee^{\ii\delta} & -c_{12}s_{23}-s_{12}c_{23}s_{13}\ee^{\ii\delta} & c_{23} c_{13}
- },
+ \co{12} \co{13} & \si{12} \co{13} & \si{13} \ee^{-\ii\delta}\\
+ -\si{12} \co{23} - \co{12} \si{23} \si{13} \ee^{\ii\delta}& \co{12} \co{23} - \si{12}\si{23}\si{13} \ee^{\ii\delta}& \si{23}\co{13}\\
+  \si{12}\si{23} - \co{12} \co{23} \si{13}\ee^{\ii\delta} & -\co{12}\si{23}-\si{12}\co{23}\si{13}\ee^{\ii\delta} & \co{23} \co{13}
+ }\ee^{\ii\Theta}.
+\end{split}
 \end{equation}
-which relates to the Wolfenstein parameterization via
+Here, a $3\times3$ unitary matrix has three angles and six phases, among which five phases are removed by the fermion rotation, but another phase $\Theta$ is introduced due to the $\Theta$-term removal.\TODO{link}
+
+\paragraph{PDG convention} (consistent in 2006\S11 and 2018\S12)
+\begin{equation}
+ \mathcal L \supset
+ -\CONV{Y^d_{ij}}\overline{Q_{Li}^I}\CONV{\phi} d_{Rj}^I
+ -\CONV{Y^u_{ij}}\overline{Q_{Li}^I}\CONV{\epsilon\phi^*}u_{Rj}^I,
+\quad Y\wdiag = \CONV{V_L Y V_R^\dagger},
+\quad \CONV{V\w{CKM}} = \CONV{V^u_LV_L^{d\dagger}}.
+\end{equation}
+So, $\CONV{Y^u}=\Yu^\dagger$, $\CONV{Y^d}=\Yd^\dagger$;
+$Y\wdiag = \CONV{V_RY^\dagger V_L^\dagger} = \CONV{V_R}Y\CONV{V_L^\dagger}$ leads $\CONV{V_L}=V^\dagger$, and
+$\CONV{V\w{CKM}}=V_u^\dagger V_d=V\w{CKM}$.
+
+\paragraph{SLHA2 convention} (0801.0045)
 \begin{align}
-  \lambda &= s_{12},& A &= \frac{s_{23}}{\lambda^2},&
- \rho+\ii\eta&=\frac{s_{13}\ee^{\ii\delta}}{A\lambda^3}
- = \frac{(\bar\rho+\ii\bar\eta)\sqrt{1-A^2\lambda^4}}
-        {\sqrt{1-\lambda^2}\left[1-A^2\lambda^4(\bar\rho+\ii\bar\eta)\right]}
- = \left(\bar\rho+\ii\bar\eta\right)\left(1+\frac{\lambda^2}{2}+\Order(\lambda^4)\right).
+ W &\supset \epsilon_{ab}\left[
+(\CONV{Y_E})_{ij}H_1^a L_i^b \bar E_j
++(\CONV{Y_D})_{ij}H_1^a Q_i^b \bar D_j
++(\CONV{Y_U})_{ij}H_2^b Q_i^a \bar U_j
+\right];
+\\
+\mathcal L&\supset
+- \epsilon_{ab}\left[
+(\CONV{Y_E})_{ij}H_1^a \psi_{Li}^b \psi_{\bar Ej}
++(\CONV{Y_D})_{ij}H_1^a \psi_{Qi}^b \bar \psi_{\bar Dj}
++(\CONV{Y_U})_{ij}H_2^b \psi_{Qi}^a \bar \psi_{\bar Uj}
+\right]
+\\&\leadsto
+- \left[
+\psi_{\bar E}\vd \CONV{Y_E^\TT}\psi_L^2
++\psi_{\bar D}\vd\CONV{Y_D^\TT}\psi_Q^2
++\psi_{\bar U}\vu\CONV{Y_U^\TT}\psi_Q^1
+\right];
+\quad
+Y\wdiag = \CONV{U^\dagger Y^\TT V},
+\quad
+\CONV{V\w{CKM}} = \CONV{V_u^\dagger V_d}.
 \end{align}
+Hence, $\CONV{Y_E}=\Ye^\TT$, $\CONV{Y_D}=\Yd^\TT$, $\CONV{Y_U}=\Yu^\TT$;
+$Y\wdiag=\CONV{U^\dagger}Y\CONV{V}$, $\CONV{V}=V$ and $\CONV{V\w{CKM}}=V\w{CKM}$.
 
+\paragraph{Wolfenstein parameterization}
+The CKM matrix is precisely written in terms of $\lambda$, $A$, and $\bar\rho+\ii\bar\eta$.
+\begin{equation}
+  \lambda := \si{12} = \frac{|V_{us}|}{\sqrt{|V_{ud}|^2+|V_{us}|^2}},
+\quad
+  A:=\frac{\si{23}}{\lambda^2}=\lambda^{-1}\left|\frac{V_{cb}}{V_{us}}\right|,
+\quad
+\bar\rho+\ii\bar\eta:=\frac{-V_{ud}V^*_{ub}}{V_{cd}V^*_{cb}}.
+\end{equation}
+They are independent of the phase convention and used for SLHA2 input, i.e., \texttt{VCKMIN} should contain $(\lambda, A, \bar\rho, \bar\eta)$.
 
+Also, $\bar\rho+\ii\eta$ is approximately written by
+\begin{equation}
+ R=\rho+\ii\eta:=\frac{s_{13}\ee^{\ii\delta}}{A\lambda^3}
+=\frac{V^*_{ub}}{A\lambda^3}\frac{V_{ud}}{|V_{ud}|}
+= \frac{(\bar\rho+\ii\bar\eta)\sqrt{1-A^2\lambda^4}}
+        {\sqrt{1-\lambda^2}\left[1-A^2\lambda^4(\bar\rho+\ii\bar\eta)\right]}
+= \left(\bar\rho+\ii\bar\eta\right)\left(1+\frac{\lambda^2}{2}+\Order(\lambda^4)\right),
+\end{equation}
+with which
+\begin{equation}
+ V\w{CKM}
+=\pmat{
+ 1-\lambda^2/2 & \lambda       & A\lambda^3R^*\\
+ -\lambda      & 1-\lambda^2/2 & A\lambda^2\\
+ A\lambda^3(1-R) & -A\lambda^2 & 1
+}\ee^{\ii\Theta}
++\pmat{
+\Order(\lambda^4) & \Order(\lambda^7) & 0\\
+\Order(\lambda^5) & \Order(\lambda^4) & \Order(\lambda^8)\\
+\Order(\lambda^5) & \Order(\lambda^4) & \Order(\lambda^4)
+}.
+\end{equation}
 
+\subsection{Values of SM parameters}
 
+\end{document}
 
-%%% Local Variables:
-%%% TeX-master: "CheatSheet.tex"
-%%% End:

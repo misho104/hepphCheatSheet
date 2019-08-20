@@ -1,4 +1,4 @@
-%%% Time-Stamp: <2019-08-20 15:06:37>
+%%% Time-Stamp: <2019-08-20 22:20:51>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \pdfoutput=1
 
@@ -32,6 +32,7 @@
 \DeclareMathOperator{\diag}{\mathrm{diag}}
 \renewcommand{\Re}{\mathop{\mathrm{Re}}}
 \renewcommand{\Im}{\mathop{\mathrm{Im}}}
+\newcommand{\wdiag}{^{\mathrm{diag}}}
 
 \newcommand\oneone{1}
 \newcommand{\dn}[3]{\frac{\dd^#1 #2}{\dd #3^#1}}
@@ -70,6 +71,9 @@
 %\addtokomafont{caption}{\raggedright}
 \ohead{\texttt{\color{gray}{[NewCheatSheet~@~\mydate\today~\currenttime]}}}
 \bibliographystyle{utphys27mod}
+
+%cleverref
+\crefname{section}{Sec.}{Secs.}
 
 
 %special to this tex
@@ -168,6 +172,11 @@
 \newcommand\yu[1][]{y_{u#1}}
 \newcommand\yd[1][]{y_{d#1}}
 \newcommand\ye[1][]{y_{e#1}}
+\newcommand\Yu[1][]{Y_{u#1}}
+\newcommand\Yd[1][]{Y_{d#1}}
+\newcommand\Ye[1][]{Y_{e#1}}
+\newcommand\PL{P\w L}
+\newcommand\PR{P\w R}
 \newcommand\sw{\si{\mathrm w}}
 \newcommand\cw{\co{\mathrm w}}
 \newcommand\vu{v\w u}
@@ -201,6 +210,8 @@
 \subfile{gaugetheory}
 \clearpage
 \subfile{spinors}
+\clearpage
+\subfile{StandardModel}
 \clearpage
 \subfile{SUSY}
 \clearpage

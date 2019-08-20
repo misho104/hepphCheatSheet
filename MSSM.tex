@@ -62,7 +62,7 @@ For matter spinors, $\psi\w R^\cc:=\bar\psi\w R$ (and $\psi\w R=\bar\psi\w R^\cc
            - \yu[ij] U^\cc_i\Hu Q_j
            + \yd[ij] D^\cc_i\Hd Q_j
            + \ye[ij] E^\cc_i\Hd L_j,\\
- W\w{RPV} &= -\kappa_i L_i\Hu 
+ W\w{RPV} &= -\kappa_i L_i\Hu
            + \frac12 \lambda  _{ijk} L_i L_j E^\cc_k
            +         \lambda' _{ijk} L_i Q_j D^\cc_k
            + \frac12 \lambda''_{ijk} U^\cc_i D^\cc_j D^\cc_k,
@@ -85,7 +85,7 @@ V^{\mathrm{RPV}}_{\text{\cancel{SUSY}}}&=
 \notag\\&\qquad
    + \left(C^1_{ijk}\tlL[i]^*\tqL[j]\tuR[k]^* + C^2_i\hu^*\hd\teR[i]^* + C^3_{ijk}\tdR[i]\tuR[j]^*\teR[k]^*+\frac12C^4_{ijk}\tdR[i]\tqL[j]\tqL[k]+\text{H.c.}\right),
 \end{align}
-($\lambda_{ijk}=-\lambda_{jik}$, $\lambda''_{ijk}=-\lambda''_{ikj}$, and 
+($\lambda_{ijk}=-\lambda_{jik}$, $\lambda''_{ijk}=-\lambda''_{ikj}$, and
 $C^4_{ijk}=C^4_{ikj}$.)
 
 
@@ -126,7 +126,7 @@ The most generic form of the Lagrangian is given by
            + \yd[ij] D^\cc_i\Hd Q_j
            + \ye[ij] E^\cc_i\Hd L_j,
 \\&\qquad
- W\w{RPV} = -\kappa_i L_i\Hu 
+ W\w{RPV} = -\kappa_i L_i\Hu
            + \frac12 \lambda  _{ijk} L_i L_j E^\cc_k
            +         \lambda' _{ijk} L_i Q_j D^\cc_k
            + \frac12 \lambda''_{ijk} U^\cc_i D^\cc_j D^\cc_k;
@@ -166,7 +166,7 @@ Note also that the absence of gauge anomaly means the corresponding gauge transf
 The SU(3) angle $\Theta_g$ forms QCD phase $\Theta\w{QCD}$ together with the phases from Yukawa matrices.
 Then,
 \begin{align}
- \mathcal L\w{matter} &= \sum\w{matters}\Bigl[\DD^\mu\phi^*\DD_\mu\phi+\ii\bpsi\bsigma^\mu\DD_\mu\psi 
+ \mathcal L\w{matter} &= \sum\w{matters}\Bigl[\DD^\mu\phi^*\DD_\mu\phi+\ii\bpsi\bsigma^\mu\DD_\mu\psi
 - \sqrt2\sum\w{gauge} g\left(\lambda^a(\phi^*t^a\psi)+\blambda^a(\bpsi t^a\phi)\right)
 \Bigr] + \text{($F$-terms)},\\
  \mathcal L\w{gauge} &= \sum\w{gauges}\Bigl(-\frac14F^a_{\mu\nu}F^{a\mu\nu}+\ii\blambda^a\bsigma^\mu\DD_\mu\lambda^a\Bigr) + \frac{g_3^2\Theta_g}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}G^a_{\mu\nu}G^a_{\rho\sigma}+ \text{($D$-terms)},
@@ -437,18 +437,17 @@ We perform ``SU(2)-notation fixing'', i.e., use the freedom associated to $T_1$ 
  + \frac{g_Z^2}{8}\left(|\huz|^2 - |\hdz|^2\right)^2
  - \left(b\huz\hdz +\text{H.c.}\right).
 \end{equation}
-We redefine $\Hd$ superfield so that $b>0$.\footnote{
+We redefine $\Hd$ superfield so that $b>0$.\footnote{%
 Note that $T_3$-rotation induces $\huz\to\ee^{\ii\theta/2}\huz$ and $\hdz\to\ee^{-\ii\theta/2}\hdz$; it cannot the remove phase of $b$.}
 Then $\arg\vev{\huz}=-\arg\vev{\hdz}$ and, with $T_3$-rotation, $\vev{\huz}>0$ and $\vev{\hdz}>0$:
 \begin{align}
- &\vev{\huz} =: \vu =: v\sin\beta,\qquad
- \vev{\hdz} =: \vd =: v\cos\beta;
-\\
-& V\w{pot}=
-   (|\mu|^2 + m^2_{\Hu})  v^2\sin^2\beta
- + (|\mu|^2 + m^2_{\Hd}) v^2\cos^2\beta
- + \frac{g_Z^2}{8}v^4\cos^2 2\beta
- - v^2 b\sin2\beta.
+ &\vev{\huz} =: \vu =: \frac{v\w{SM}}{\sqrt2}\sin\beta,\qquad
+ \vev{\hdz} =: \vd =: \frac{v\w{SM}}{\sqrt2}\cos\beta;
+\\& V\w{pot}=
+   \frac12(|\mu|^2 + m^2_{\Hu})  v\w{SM}^2\sin^2\beta
+ + \frac12(|\mu|^2 + m^2_{\Hd}) v\w{SM}^2\cos^2\beta
+ + \frac{g_Z^2}{32}v\w{SM}^4\cos^2 2\beta
+ - \frac12 v\w{SM}^2 b\sin2\beta.
 \end{align}
 This potential can have two minima; one with $0<\beta\le\pi/4$ and the other with $\pi/4\le\beta<\pi/2$:
 \begin{equation}
@@ -456,7 +455,7 @@ This potential can have two minima; one with $0<\beta\le\pi/4$ and the other wit
 \quad
 \left(\cos2\beta = \pm\frac{\sqrt{B^2-4b^2}}{B}\right),
  \qquad
- m_Z^2:=\frac{g_Z^2}{2}v^2 = \left(\pm\frac{m_{\Hd}^2 - m_{\Hu}^2}{\sqrt{B^2-4b^2}}-1\right)B,
+ m_Z^2:=\frac{g_Z^2}{4}v\w{SM}^2 = \left(\pm\frac{m_{\Hd}^2 - m_{\Hu}^2}{\sqrt{B^2-4b^2}}-1\right)B,
 \end{equation}
 where $B:=2|\mu|^2+m_{\Hu}^2+m_{\Hd}^2>2b>0$ and $m_Z$ is the $Z$-boson tree-level mass.
 Also,
@@ -504,7 +503,7 @@ and those for the neutral Higgs bosons are
 \right).
 \end{split}
 \end{equation}
-Therefore, with $m_W:=\cw m_Z$ and 
+Therefore, with $m_W:=\cw m_Z$ and
 \begin{equation}
  \pmat{\hup\\\hd^{-*}} = \pmat{\si\beta & \co\beta \\ -\co\beta & \si\beta} \pmat{-\ii G^+\\H^+},
 \quad
@@ -547,7 +546,14 @@ with
 \frac{\tan2\alpha}{\tan2\beta} = \frac{m_{A_0}^2+m_Z^2}{m_{A_0}^2-m_Z^2}.
 \end{equation}
 
-The mixing $\alpha$ is stored in \texttt{ALPHA} block of SLHA, while \texttt{HMIX} stores $\mu$, $\tan\beta$, $\sqrt{2}v$ ($\sim246$) and $2b/\sin2\beta$ at the scale specified.
+The mixing $\alpha$ is stored in \texttt{ALPHA} block of SLHA, while \texttt{HMIX} stores
+\begin{equation}
+ \CONV{\mu}={\mu},\quad
+ \CONV{\tan\beta}=\tan\beta,\quad
+ \CONV{v}=v\w{SM}(\sim246\GeV),\quad
+ \CONV{m_A^2}=\frac{2b}{\sin2\beta},
+\end{equation}
+at the scale specified.
 The above discussion holds even with $CP$-violation, but quantum corrections mix the three Higgs bosons; such information should be stored in \texttt{(IM)VCHMIX}.
 \TODO{discuss when needed}
 
@@ -634,7 +640,7 @@ It gives the proper mass diagonalization in both of the \text{NMIX} convention:
 \begin{cases}
  \tilde N^*\mathcal M_{\tilde\psi^0}\tilde N^\dagger = M_{\tilde\psi^0},\\
  \diag(\varphi_i^*)\hat N^* \mathcal M_{\tilde\psi^0}\hat N^{\dagger}\diag(\varphi_i^*)
- = 
+ =
  \diag(\varphi_i^*)\hat M_{\tilde\psi^0}\diag(\varphi_i^*)
 \end{cases}
  = M_{\tilde\psi^0}
@@ -684,23 +690,8 @@ Then the CKM mixings appear as, for example,
 =
  \left[\buL V_u^\dagger V_d \bsigma^\mu\dL W^+_\mu + \bdL V_d^\dagger V_u\bsigma^\mu\uL W^-_\mu\right]_{\text{super-CKM}};
 \end{equation}
-i.e., defining
-\begin{equation}
- V\w{CKM} = V_u^\dagger V_d = \left(
-\begin{smallmatrix}
- V_{ud} & V_{us} & V_{ub}\\
- V_{cd} & V_{cs} & V_{cb}\\
- V_{td} & V_{ts} & V_{tb}
-\end{smallmatrix}
-\right)
-\approx\left(
-\begin{smallmatrix}
- 1-\lambda^2/2 & \lambda       & A\lambda^3(\rho-\ii \eta)\\
- -\lambda      & 1-\lambda^2/2 & A\lambda^2\\
- A\lambda^3(1-\rho-\ii\eta) & -A\lambda^2 & 1
-\end{smallmatrix}\right),
-\end{equation}
-the Lagrangian is amended as $\buL\dL\to \buL V\w{CKM}\dL$, $\tdL^*\tuL\to \tdL^* V^\dagger\w{CKM}\tuL$, etc.
+i.e., defining $V\w{CKM} = V_u^\dagger V_d$ as in \cref{sec:SM-CKM},
+the Lagrangian is amended as, e.g., $\buL\dL\to \buL V\w{CKM}\dL$, $\tdL^*\tuL\to \tdL^* V^\dagger\w{CKM}\tuL$.
 
 The $\Theta_B$- and $\Theta_W$-terms are now removable.
 To this end, we rotate the matter superfields as
@@ -715,10 +706,10 @@ $\Delta \Theta_G=0$,
 $\Delta \Theta_W\propto \theta+\theta'$,
 and
 $\Delta \Theta_B\propto 5\theta+\theta'$, while the Lagrangian is unchanged except for the overall phase of $V\w{CKM}$.
-So we can remove $\Theta_B$ and $\Theta_W$, or in other words, pass the $CP$-violation in $\Theta$-terms to $V\w{CKM}$.\footnote{
-There are other possible transformations $(L_i,E^\cc_i)\to \ee^{(\pm)\ii\theta''_i}(L_i,E^\cc_i)$ and in total we may have $\Delta\Theta_W \propto 3\theta+3\theta'+2\sum\theta''_i$ and
- $\Delta\Theta_B \propto 5\theta+\theta'+2\sum\theta''_i$.
-To remove both $\Theta$-terms, we have to take $\theta\neq\theta'$ and $V\w{CKM}$ is anyway modified.}
+So we can remove $\Theta_B$ and $\Theta_W$, or in other words, pass the $CP$-violation in $\Theta$-terms to $V\w{CKM}$.\footnote{%
+There are other possible transformations $(L,E^\cc)\to \ee^{(\pm)\ii\theta''}(L,E^\cc)$ and in total we may have $\Delta\Theta_W \propto \theta+\theta'+2\theta''$ and
+ $\Delta\Theta_B \propto 5\theta+\theta'+6\theta''$.
+ To remove both $\Theta$-terms, we have to take $\theta\neq\theta'$ and $V\w{CKM}$ is anyway modified. The angle may chosen generation-dependently, and then $\Delta\Theta$'s should be read as $\theta\to\sum\theta_i/3$, etc.}
 If one (or more) quarks were massless, we could rotate the corresponding right-handed quark to remove $\Theta_G$ as well.
 
 \paragraph{Squark masses in super-CKM basis}
@@ -778,21 +769,21 @@ where the sfermion soft masses, yukawas, and $a$-terms are rewritten in super-CK
 \begin{align}
 & [m_Q^2, m_{U^\cc}^2, m_{D^\cc}^2,m_L^2,m_{E^\cc}^2]_{\text{super-CKM}}
 =
- [V_u^\dagger m_Q^2 V_u, U_u^\dagger m_{U^\cc}^2 U_u, U_d^\dagger m_{D^\cc}^2 U_d, 
+ [V_d^\dagger m_Q^2 V_d, U_u^\dagger m_{U^\cc}^2 U_u, U_d^\dagger m_{D^\cc}^2 U_d,
 V_e^\dagger m_L^2 V_e, U_e^\dagger m_{E^\cc}^2 U_e
 ]_{\text{``original''}},
 \\
 &[a_u, a_d, a_e]_{\text{super-CKM}}
 =[U_u^\dagger a_u V_u, U_d^\dagger a_d V_d, U_e^\dagger a_e V_e
-]_{\text{``original''}}.
+]_{\text{``original''}}
 \end{align}
-In matrix form, 
-\begin{equation}
+(note that $m_Q^2$ is diagonalied for down-type; not for up-type). In matrix form,
+\begin{align}
 \begin{split}
   -\mathcal L&\supset
 \pmat{\tuL[i]^*& \tuR[i]^*}
 \pmat{
- [m_Q^2]_{ij}+\left(m_u^2+\frac{3-4\sw^2}{6}\co{2\beta}m_Z^2\right)\delta_{ij} &
+ [V\w{CKM}m_Q^2V\w{CKM}^\dagger]_{ij}+\left(m_u^2+\frac{3-4\sw^2}{6}\co{2\beta}m_Z^2\right)\delta_{ij} &
 v_u[a_u^\dagger]_{ij}-(\mu m_u\cot\beta)\delta_{ij}\\
 v_u[a_u]_{ij}-(\mu^*m_u\cot\beta)\delta_{ij} &
  [m_{U^\cc}^2]_{ij}+\left(m_u^2+\frac{2\sw^2}{3}\co{2\beta}m_Z^2\right)\delta_{ij}
@@ -801,7 +792,7 @@ v_u[a_u]_{ij}-(\mu^*m_u\cot\beta)\delta_{ij} &
 \\&+
 \pmat{\tdL[i]^*& \tdR[i]^*}
 \pmat{
- [V\w{CKM}^\dagger m_Q^2V\w{CKM}]_{ij}+\left(m_d^2+\frac{-3+2\sw^2}{6}\co{2\beta}m_Z^2\right)\delta_{ij} &
+ [m_Q^2]_{ij}+\left(m_d^2+\frac{-3+2\sw^2}{6}\co{2\beta}m_Z^2\right)\delta_{ij} &
 v_d[a_d^\dagger]_{ij}-(\mu m_d\tan\beta)\delta_{ij}\\
 v_d[a_d]_{ij}-(\mu^*m_d\tan\beta)\delta_{ij} &
  [m_{D^\cc}^2]_{ij}+\left(m_d^2-\frac{\sw^2}{3}\co{2\beta}m_Z^2\right)\delta_{ij}
@@ -817,9 +808,77 @@ v_d[a_e^\dagger]_{ij}-(\mu m_e\tan\beta)\delta_{ij}\\
 v_d[a_e]_{ij}-(\mu^*m_e\tan\beta)\delta_{ij} &
  [m_{E^\cc}^2]_{ij}+\left(m_e^2-\sw^2\co{2\beta}m_Z^2\right)\delta_{ij}
 }
-\pmat{\teL[j]\\\teR[j]}.
+\pmat{\teL[j]\\\teR[j]}
 \end{split}
+\\&=
+\pmat{\tuL[i]^*& \tuR[i]^*}\mathcal M_u\pmat{\tuL[j]\\\tuR[j]}
++
+\pmat{\tdL[i]^*& \tdR[i]^*}\mathcal M_d\pmat{\tdL[j]\\\tdR[j]}
++
+\tnuL^*\mathcal M_\nu\tnuL
++
+\pmat{\teL[i]^*& \teR[i]^*}\mathcal M_e\pmat{\teL[j]\\\teR[j]}
+\end{align}
+
+
+The sfermion mass matrices are diagonalized by unitary matrices as
+\begin{equation}
+ \mathcal M=R\mathcal M\wdiag R^\dagger;
+\quad
+ \tilde f_i = R_{ij}\pmat{\tilde f\w L\\\tilde f\w R}_j
+=\pmat{R^{\mathrm L}_{ij} & R^{\mathrm R}_{ij}}\pmat{\tilde f_{\mathrm Lj}\\\tilde f_{\mathrm Rj}};\qquad
+\tilde f_{\mathrm Li}= [R^{\mathrm L\dagger}]_{ij}\tilde f_i,\quad
+\tilde f_{\mathrm Ri}= [R^{\mathrm R\dagger}]_{ij}\tilde f_i.
 \end{equation}
+where $R_{ij}$ is $6\times6$ and $R_{ij}^{\mathrm {L,R}}$ are $3\times6$ matrices (except for sneutrinos).
+
+These $R$-matrices are the same as \texttt{DSQMIX} etc.\ of SLHA2 format, but
+note that our notation for the other parameters is slightly different from SLHA's:
+\begin{align}
+ \CONV{m^2_{\tilde Q,\tilde L}} &=  m^2_{Q,L}|_\text{``orig''},&
+ \CONV{m^2_{\tilde u,\tilde d,\tilde e}} &=  (m^2_{U^c,D^c,E^c}|_\text{``orig''})^\TT,&
+ \CONV{T_{U,D,E}} &= (a_{u,d,e}|_\text{``orig''})^\TT,
+\\
+ \CONV{\hat m^2_{\tilde Q,\tilde L}} &=  m^2_{Q,L}|_\text{sCKM},&
+ \CONV{\hat m^2_{\tilde u,\tilde d,\tilde e}} &=
+ \CONV{U^\dagger T^\TT V} = m^2_{U^c,D^c,E^c}|_\text{sCKM},&
+ \CONV{\hat T_{U,D,E}} &= \CONV{U^\dagger T^\TT V} = a_{u,d,e}|\w{sCKM},
+\end{align}
+together with $\CONV{Y_{u,d,e}} = (y_{u,d,e})^\TT$.
+Anyway, the SLHA2 blocks corresponds to the variable in our convention as
+\begin{equation}
+ \texttt{(IM)MSX2(IN)} = m^2_{Q, L, U^\cc, D^\cc, E^\cc}|\w{sCKM;\overline{DR}},
+\quad
+ \texttt{(IM)TX(IN)} =  a_{u,d,e}|\w{sCKM;\overline{DR}},
+\quad
+ \texttt{YX} =  y_{u,d,e}|\w{sCKM;\overline{DR}}.
+\end{equation}
+
+The sfermion mass matrices above are in super-CKM basis, so their off-diagonal entries immediately induce flavor violation or sfermion left-right mixing.
+In old SLHA format, we assume that flavor- and $CP$-violation is absent and left-right mixing is ignorable except for third generation, which leads
+\begin{equation}
+ \mathcal M_d= \left(\begin{smallmatrix}
+  \tilde m^2_{dL11} & & & & &\\
+  & \tilde m^2_{dL22} & & & &\\
+  & & \tilde m^2_{dL33} & & & v_d a_{d33}-\mu m_b\tan\beta\\
+  & & & \tilde m^2_{dR11} & &\\
+  & & & & \tilde m^2_{dR22} &\\
+  & & v_da_{d33}-\mu m_b\tan\beta&& & \tilde m^2_{dR33}
+\end{smallmatrix}\right);\quad
+\left(\begin{smallmatrix}
+\tilde d\w L\\\tilde s\w L \\\tilde b_1\\\tilde d\w R\\\tilde s\w R \\\tilde b_2
+\end{smallmatrix}\right)
+=
+\left(\begin{smallmatrix}
+1&&&&&\\&1&&&&\\
+&&F_{11}&&&F_{12}\\
+&&&1&&\\&&&&1&\\
+&&F_{21}&&&F_{22}\\
+\end{smallmatrix}\right)
+\pmat{\tilde d_{\mathrm Lj}\\\tilde d_{\mathrm Rj}}
+\end{equation}
+and these $F_{ij}$ are stored in \texttt{SBOTMIX} etc.
+
 
 \subsubsection{Fermion composition}
 Now we show the fermion-related Lagrangian terms verbosely:
