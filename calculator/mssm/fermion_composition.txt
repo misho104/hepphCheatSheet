@@ -1,0 +1,253 @@
+%%%gluino
+\sqrt{2} g_3 \tig_0^{a}\left(
+  \tau^{yxa*}\tdR^{y}\dR^{\cc x}
+ +\tau^{yxa*}\tuR^{y}\uR^{\cc x}
+ -\tau^{yxa}\tdL^{y*}\dL^{x}
+ -\tau^{yxa}\tuL^{y*}\uL^{x}
+\right)
+\\&
++\sqrt{2}g_3\bar\tig_0^a\left(
+\tau^{yxa}\tdR^{y*}\bdR^{\cc x}
++\tau^{yxa}\tuR^{y*}\buR^{\cc x}
+-\tau^{yxa*}\tdL^{y}\bdL^{x}
+-\tau^{yxa*}\tuL^{y}\buL^{x}
+\right)
+%%%gluon
+\\&+
+g_3g_\mu^a\left(
+ \tau^{yxa}\bdL^{y}\bsigma^{\mu }\dL^{x}
++\tau^{yxa}\buL^{y}\bsigma^{\mu }\uL^{x}
+- \tau^{yxa*}\bdR^{\cc y}\bsigma^{\mu }\dR^{\cc x}
+-\tau^{yxa*}\buR^{\cc y}\bsigma^{\mu }\uR^{\cc x}
+\right)
+-\ii g_3 f^{abc}g_\mu^a (\bar{\tig}_0^{b}\bsigma^{\mu }\tig_0^{c})
+%%W,Z,A
+\\&+
+A_\mu|e|\left[
+   \frac{2}{3} {\buL\bsigma^{\mu }\uL}
+  -\frac{2}{3} {\buR^{\cc}\bsigma^{\mu }\uR^{\cc}}
+  -\frac{1}{3} {\bdL\bsigma^{\mu }\dL}
+  +\frac13 \bdR^{\cc}\bsigma^{\mu }\dR^{\cc}
+  - {\beL\bsigma^{\mu }\eL}
+  +{\beR^{\cc }\bsigma^{\mu }\eR^{\cc }}
+  + \bcharP[i]\bsigma^{\mu}\charP[i]
+  -\bcharM[i]\bsigma^{\mu}\charM[i]
+\right]
+%
+\\&
++g_Z Z_\mu\left[
+  \frac{3\cw^2-\sw^2}{6} {\buL\bsigma^{\mu }\uL}
+  +\frac{2\sw^2}{3} {\buR^{\cc}\bsigma^{\mu }\uR^{\cc}}
+  +\frac{-3 \cw^2-\sw^2}{6} {\bdL\bsigma^{\mu }\dL}
+  \right.\\&\qquad\left.
+  +\frac{-\sw^2}{3} {\bdR^{\cc}\bsigma^{\mu }\dR^{\cc}}
+  +\frac{1}{2} {\bnuL\bsigma^{\mu }\nuL}
+  +\frac{\sw^2-\cw^2}{2} {\beL\bsigma^{\mu }\eL}
+  - \sw^2{\beR^{\cc }\bsigma^{\mu }\eR^{\cc }}
+  + \frac{N_{j3} N_{i3}^*-N_{j4} N_{i4}^*}{2} \bneut[j]\bsigma^{\mu }\neut[i]
+  \right.\\&\qquad\left.
+  + \left(\cw^2 V_{j1} V_{i1}^*+\frac{V_{j2} V_{i2}^* (\cw^2-\sw^2)}{2}\right) \bcharP[j]\bsigma^{\mu}\charP[i]
+  + \left(\frac{U_{j2} U_{i2}^* (\sw^2-\cw^2)}{2}-\cw^2 U_{j1} U_{i1}^*\right){\bcharM[j]\bsigma^{\mu }\charM[i]}
+\right]
+\\&+\frac{g_2}{\sqrt2}W_\mu^+\left[
+    \buL\bsigma^{\mu }\dL
+    +\bnuL\bsigma^{\mu }\eL
+    + \left({V_{j2} N_{i4}^*}-\sqrt{2}V_{j1} N_{i2}^*\right) \bcharP[j]\bsigma^{\mu }\neut[i]
+    +\left(\sqrt2 N_{j2} U_{i1}^*+N_{j3} U_{i2}^*\right)\bneut[j]\bsigma^{\mu }\charM[i]
+\right]
+\\&+\frac{g_2}{\sqrt2}W_\mu^-\left[
+    \bdL\bsigma^{\mu }\uL
+    +\beL\bsigma^{\mu }\nuL
+    +\left(N_{j4} V_{i2}^*-\sqrt2 N_{j2} V_{i1}^*\right)\bneut[j]\bsigma^{\mu }\charP[i]
+    +\left(\sqrt{2}U_{j1} N_{i2}^*+{U_{j2} N_{i3}^*}\right) \bcharM[j]\bsigma^{\mu }\neut[i]
+\right]
+%%%%% Yukawas
+\\&
++\phi\w u\left(
+-\frac{\yu[ij]}{\sqrt2 }\uR[i]^{\cc}\uL[j]
+-\frac{\yu[ij]^{*}}{\sqrt{2}}\buR[i]^{\cc}\buL[j]
++\frac{N_{i4}^* (g_2 N_{j2}^*-g_Y N_{j1}^*)}{2} {\neut[i]\neut[j]}
++\frac{N_{i4} (g_2 N_{j2}-g_Y N_{j1})}{2} {\bneut[i]\bneut[j]}
+\right.\\&\left.\quad
+-\frac{g_2  U_{i1}^* V_{j2}^*}{\sqrt{2}} \charM[i]\charP[j]
+-\frac{g_2  U_{i1} V_{j2}}{\sqrt{2}}{\bcharM[i]\bcharP[j]}
+\right)
+%
++\phi\w d\left(
+-\frac{\yd[ij]^{*}}{\sqrt2}  \bdR[i]^{\cc}\bdL[j]
+-\frac{\ye[ij]^{*}}{\sqrt2}  \beR[i]^{\cc}\beL[j]
+-\frac{\yd[ij]}{\sqrt2} \dR[i]^{\cc}\dL[j]
+-\frac{\ye[ij]}{\sqrt2} \eR[i]^{\cc}\eL[j]
+\right.\\&\left.\quad
++\frac{N_{i3}   (g_Y N_{j1}-g_2 N_{j2})}{2} \bneut[i]\bneut[j]
++\frac{N_{i3}^* (g_Y N_{j1}^*-g_2 N_{j2}^*)}{2} \neut[i]\neut[j]
+-\frac{g_2  U_{i2}^* V_{j1}^*}{\sqrt{2}}\charM[i]\charP[j]
+-\frac{g_2  U_{i2} V_{j1}}{\sqrt{2}} \bcharM[i]\bcharP[j]
+\right)
+%%%%%%%%
+\\&+\frac{\ii A^0}{\sqrt2}\left[\si{\beta0}\left(
+-{\yd[ij]\dR[i]^{\cc}\dL[j]}
++{\yd[ij]^{*}\bdR[i]^{\cc x}\bdL[j]}
+-{\ye[ij]\eR[i]^{\cc}\eL[j]}
++{\ye[ij]^{*}\beR[i]^{\cc }\beL[j]}
+\right)
++\co{\beta0} \left(
+-{\yu[ij]\uR[i]^{\cc}\uL[j]}
++{\yu[ij]^{*}\buR[i]^{\cc}\buL[j]}
+\right)
+\right.\\&\left.\quad
++g_2  \left(\co{\beta0} U_{i1}^* V_{j2}^*+\si{\beta0} U_{i2}^* V_{j1}^*\right) {\charM[i]\charP[j]}
+-g_2  \left(\co{\beta0} U_{i1} V_{j2}+\si{\beta0} U_{i2} V_{j1}\right) {\bcharM[i]\bcharP[j]}
+\right.\\&\left.\quad
+-\frac{(\si{\beta0} N_{i3}^*-\co{\beta0} N_{i4}^*) (g_Y N_{j1}^*-g_2 N_{j2}^*)}{\sqrt2} {\neut[i]\neut[j]}
++\frac{(\si{\beta0} N_{i3}-\co{\beta0} N_{i4}) (g_Y N_{j1}-g_2 N_{j2})}{\sqrt2} {\bneut[i]\bneut[j]}
+\right]
+%%%%%%%%
+\\&+
+ \co{\beta+} {\yu[ij]H^{+}\uR[i]^{\cc}\dL[j]}
++\co{\beta+} {\yu[ij]^{*}H^{-}\buR[i]^{\cc}\bdL[j]}
++{\yd[ij]H^{-}\dR[i]^{\cc}\uL[j]} \si{\beta+}
++{\yd[ij]^{*}H^{+}\bdR[i]^{\cc}\buL[j]} \si{\beta+}
++{\ye[ij]H^{-}\eR[i]^{\cc }\nuL[j]} \si{\beta+}
+\\&
++{\ye[ij]^{*}H^{+}\beR[i]^{\cc }\bnuL[j]} \si{\beta+}
+\\&
++ \left(\frac{U_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt{2}}-g_2  U_{i1}^* N_{j3}^*\right)  \si{\beta+}{H^{+}\charM[i]\neut[j]}
++ \left(\frac{U_{i2}   (g_Y N_{j1}+g_2 N_{j2})}{\sqrt{2}}-g_2 U_{i1} N_{j3}\right) \si{\beta+} {H^{-}\bcharM[i]\bneut[j]}
+\\&
+- \left(g_2 V_{i1}^* N_{j4}^*+\frac{V_{i2}^* \left(g_Y N_{j1}^*+g_2 N_{j2}^*\right)}{\sqrt2}\right)\co{\beta+} {H^{-}\charP[i]\neut[j]}
+- \left(g_2 V_{i1} N_{j4}+\frac{ V_{i2} \left(g_Y N_{j1}+g_2 N_{j2}\right)}{\sqrt2}\right) \co{\beta+} {H^{+}\bcharP[i]\bneut[j]}
+%%%%%%%%
+\\&+
+\ii G^+\left[
+  -\si{\beta+} {\yu[ij]\uR[i]^{\cc}\dL[j]} 
+  +\co{\beta+} {\yd[ij]^{*}\bdR[i]^{\cc}\buL[j]}
+  +\co{\beta+} {\ye[ij]^{*}\beR[i]^{\cc}\bnuL[j]}
+  +\co{\beta+}  \left(\frac{U_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt2}-g_2 U_{i1}^* N_{j3}^*\right)  {\charM[i]\neut[j]}
+  \right.\\&\left.\quad
+  {}+{}\si{\beta+}  \left(g_2 V_{i1} N_{j4}+\frac{V_{i2} (g_Y N_{j1}+g_2 N_{j2})}{\sqrt2}\right)  {\bcharP[i]\bneut[j]}
+\right]
+%
++ \ii G^-\biggl[
+    \si{\beta+} {\yu[ij]^{*}\buR[i]^{\cc}\bdL[j]}
+  - \co{\beta+} {\yd[ij]\dR[i]^{\cc}\uL[j]}
+  - \co{\beta+} {\ye[ij]\eR[i]^{\cc }\nuL[j]}
+  \biggr.\\&\biggl.\quad
+  {}-{}\co{\beta+} \left(\frac{U_{i2}(g_Y N_{j1}+g_2 N_{j2})}{\sqrt{2}}-g_2 U_{i1} N_{j3}\right) \bcharM[i]\bneut[j]
+  -\si{\beta+} \left(g_2 V_{i1}^* N_{j4}^*+\frac{V_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt{2}}\right) \charP[i]\neut[j]
+\biggr]
+\\&+
+\frac{\ii G^0}{\sqrt2}\biggl[
+  - \si{\beta0} \yu[ij]\uR[i]^{\cc}\uL[j]
+  + \si{\beta0} \yu[ij]^{*}\buR[i]^{\cc x}\buL[j]
+  + \co{\beta0} \yd[ij]\dR[i]^{\cc}\dL[j]
+  - \co{\beta0} \yd[ij]^{*}\bdR[i]^{\cc}\bdL[j]
+  + \co{\beta0} \ye[ij]\eR[i]^{\cc }\eL[j]
+  - \co{\beta0} \ye[ij]^{*}\beR[i]^{\cc }\beL[j]
+  \biggr.\\&\biggl.\quad
++\frac{(g_Y N_{j1}^*-g_2 N_{j2}^*)(\co{\beta0} N_{i3}^*+\si{\beta0} N_{i4}^*)}{\sqrt2} {\neut[i]\neut[j]}
+-\frac{(g_Y N_{j1}-g_2 N_{j2})(\co{\beta0} N_{i3}+\si{\beta0} N_{i4})}{\sqrt2} {\bneut[i]\bneut[j]}
+  \biggr.\\&\biggl.\quad
+-g_2 (\co{\beta0} U_{i2}^* V_{j1}^*-\si{\beta0} U_{i1}^* V_{j2}^*){\charM[i]\charP[j]}
++g_2 (\co{\beta0} U_{i2} V_{j1}-\si{\beta0} U_{i1} V_{j2}) {\bcharM[i]\bcharP[j]}
+\biggr]
+%%%%%%%
+\\&
++V_{i2}^*{\yu[jk]\tdL[k]\uR[j]^{\cc}\charP[i]}
++V_{i2}  {\yu[jk]^{*}\tdL[k]^{*}\buR[j]^{\cc}\bcharP[i]}
++V_{i2}^*{\yu[kj]\tuR[k]^{*}\dL[j]\charP[i]}
++V_{i2}  {\yu[kj]^{*}\tuR[k]\bdL[j]\bcharP[i]}
++ U_{j2} {\yd[ik]^{*}\tuL[k]^{*}\bdR[i]^{\cc}\bcharM[j]}
+\\&
++ U_{j2}^* {\yd[ik]\tuL[k]\dR[i]^{\cc}\charM[j]}
++ U_{j2} {\yd[ki]^{*}\tdR[k]\buL[i]\bcharM[j]}
++ U_{j2}^* {\yd[ki]\tdR[k]^{*}\uL[i]\charM[j]}
+- U_{j1}   g_2 {\tdL[i]\buL[i]\bcharM[j]}
+- U_{j1}^* g_2 {\tdL[i]^{*}\uL[i]\charM[j]}
+\\&
+- V_{i1}   g_2 {\tuL[j]\bdL[j]\bcharP[i]}
+- V_{i1}^* g_2 {\tuL[j]^{*}\dL[j]\charP[i]}
+%%%%%%%
+-V_{i1}    g_2 {\tnuL[j]\beL[j]\bcharP[i]}
+-V_{i1}^*  g_2 {\tnuL[j]^{*}\eL[j]\charP[i]}
+- U_{j1}   g_2 {\teL[i]\bnuL[i]\bcharM[j]}
+\\&
+- U_{j1}^* g_2 {\teL[i]^{*}\nuL[i]\charM[j]}
++ U_{j2}   {\ye[ik]^{*}\tnuL[k]^{*}\beR[i]^{\cc }\bcharM[j]}
++ U_{j2}^* {\ye[ik]\tnuL[k]\eR[i]^{\cc }\charM[j]}
++ U_{j2}   {\ye[ki]^{*}\teR[k]\bnuL[i]\bcharM[j]}
++ U_{j2}^* {\ye[ki]\teR[k]^{*}\nuL[i]\charM[j]}
+%%%%%%%
+\\&
+-\frac{{\tuL[i]^{*}\uL[i]\neut[j]} \left(g_Y N_{j1}^*+3 g_2 N_{j2}^*\right)}{3 \sqrt{2}}
++\frac{2}{3} \sqrt{2} g_Y {\tuR[i]\uR[i]^{\cc x}\neut[j]} N_{j1}^*
+-{\yu[ik]\tuL[k]\uR[i]^{\cc x}\neut[j]} N_{j4}^*
+-{\yu[ki]\tuR[k]^{*}\uL[i]\neut[j]} N_{j4}^*
+\\&
+-\frac{{\tuL[i]\buL[i]\bneut[j]} \left(g_Y N_{j1}+3 g_2 N_{j2}\right)}{3 \sqrt{2}}
++\frac{2}{3} \sqrt{2} g_Y {\tuR[i]^{*}\buR[i]^{\cc x}\bneut[j]} N_{j1}
+-{\yu[ik]^{*}\tuL[k]^{*}\buR[i]^{\cc x}\bneut[j]} N_{j4}
+-{\yu[ki]^{*}\tuR[k]\buL[i]\bneut[j]} N_{j4}
+\\&
+%%%%%%%
+-\frac{{\tdL[i]^{*}\dL[i]\neut[j]} \left(g_Y N_{j1}^*-3 g_2 N_{j2}^*\right)}{3 \sqrt{2}}
+-\frac{1}{3} \sqrt{2} g_Y {\tdR[i]\dR[i]^{\cc x}\neut[j]} N_{j1}^*
+-{\yd[ik]\tdL[k]\dR[i]^{\cc x}\neut[j]} N_{j3}^*
+-{\yd[ki]\tdR[k]^{*}\dL[i]\neut[j]} N_{j3}^*
+\\&
+-\frac{{\tdL[i]\bdL[i]\bneut[j]} \left(g_Y N_{j1}-3 g_2 N_{j2}\right)}{3 \sqrt{2}}
+-\frac{1}{3} \sqrt{2} g_Y {\tdR[i]^{*}\bdR[i]^{\cc x}\bneut[j]} N_{j1}
+-{\yd[ik]^{*}\tdL[k]^{*}\bdR[i]^{\cc x}\bneut[j]} N_{j3}
+-{\yd[ki]^{*}\tdR[k]\bdL[i]\bneut[j]} N_{j3}
+%%%%%%%
+\\&
++\frac{{\tnuL[i]^{*}\nuL[i]\neut[j]} \left(g_Y N_{j1}^*-g_2 N_{j2}^*\right)}{\sqrt{2}}
++\frac{{\tnuL[i]\bnuL[i]\bneut[j]} \left(g_Y N_{j1}-g_2 N_{j2}\right)}{\sqrt{2}}
+%%%%%%%
+\\&
+-\sqrt{2} g_Y {\teR[i]^{*}\beR[i]^{\cc }\bneut[j]} N_{j1}
++\frac{{\teL[i]\beL[i]\bneut[j]} \left(g_Y N_{j1}+g_2 N_{j2}\right)}{\sqrt{2}}
+-{\ye[ik]^{*}\teL[k]^{*}\beR[i]^{\cc }\bneut[j]} N_{j3}
+-{\ye[ki]^{*}\teR[k]\beL[i]\bneut[j]} N_{j3}
+\\&
+-\sqrt{2} g_Y {\teR[i]\eR[i]^{\cc }\neut[j]} N_{j1}^*
++\frac{{\teL[i]^{*}\eL[i]\neut[j]} \left(g_Y N_{j1}^*+g_2 N_{j2}^*\right)}{\sqrt{2}}
+-{\ye[ik]\teL[k]\eR[i]^{\cc }\neut[j]} N_{j3}^*
+-{\ye[ki]\teR[k]^{*}\eL[i]\neut[j]} N_{j3}^*
+%%%%%%%%%%
+\\&
++\lambda_{ijk}\left(
+  -\teR[k]^{*}\nuL[i]\eL[j]
+  -\teL[j]\eR[k]^{\cc }\nuL[i]
+  +\tnuL[j]\eR[k]^{\cc }\eL[i]
+\right)
+  +\lambda^*_{ijk}\left(
+  -\teR[k]\bnuL[i]\beL[j]
+  -\teL[j]^{*}\beR[k]^{\cc }\bnuL[i]
+  +\tnuL[j]^{*}\beR[k]^{\cc }\beL[i]
+\right)
+\\&
++\lambda^{\prime*}_{ijk}\left(
+  -{\tdR[k]\bdL[j]\bnuL[i]}
+  +{\tdR[k]\buL[j]\beL[i]}
+  -{\tdL[j]^{*}\bdR[k]^{\cc}\bnuL[i]}
+  +{\tuL[j]^{*}\bdR[k]^{\cc}\beL[i]}
+  +{\teL[i]^{*}\bdR[k]^{\cc}\buL[j]}
+  -{\tnuL[i]^{*}\bdR[k]^{\cc}\bdL[j]}
+\right)
+\\&
++\lambda'_{ijk}\left(
+  -\tdR[k]^{*}\dL[j]\nuL[i]
+  +\tdR[k]^{*}\uL[j]\eL[i]
+  -\tdL[j]\dR[k]^{\cc}\nuL[i]
+  +\tuL[j]\dR[k]^{\cc}\eL[i]
+  +\teL[i]\dR[k]^{\cc}\uL[j]
+  -\tnuL[i]\dR[k]^{\cc}\dL[j]
+\right)
+\\&
+-\epsilon^{xyz}\left(
+    \lambda''_{ijk}\tdR[k]^{x*}\uR[i]^{\cc y}\dR[j]^{\cc z}
+  + \frac12\lambda''_{kij}\tuR[k]^{x*}\dR[i]^{\cc y}\dR[j]^{\cc z}
+  + \lambda^{\prime \prime *}_{ijk}\tdR[k]^{x}\buR[i]^{\cc y}\bdR[j]^{\cc z}
+  + \frac12\lambda^{\prime \prime *}_{kij}\tuR[k]^{x}\bdR[i]^{\cc y}\bdR[j]^{\cc z}
+\right)

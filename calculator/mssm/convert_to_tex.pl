@@ -19,6 +19,12 @@ my $scalar = {
   "DL"  => "\\tdL[SUB]^{SUP}",
   "NUL" => "\\tnuL[SUB]^{SUP}",
   "EL"  => "\\teL[SUB]^{SUP}",
+  "HuZR" => "\\hu_{SUB}^{0RSUP}",
+  "HdZR" => "\\hd_{SUB}^{0RSUP}",
+  "HP" => "H_{SUB}^{+SUP}",
+  "G0" => "G_{SUB}^{0SUP}",
+  "GP" => "G_{SUB}^{+SUP}",
+  "A0" => "A_{SUB}^{0SUP}",
 };
 
 my $param = {
@@ -66,6 +72,8 @@ my $param = {
   "mEc2" => "[m_{E^\\cc}^2]^{SUP}_{SUB}",
   "mQ2" => "[m_{Q}^2]^{SUP}_{SUB}",
   "mL2" => "[m_{L}^2]^{SUP}_{SUB}",
+  "vu" => "\\vu",
+  "vd" => "\\vd",
 };
 
 my $scalar_conj = {
@@ -84,6 +92,8 @@ my $scalar_conj = {
   "DL"  => "\\tdL[SUB]^{SUP*}",
   "NUL" => "\\tnuL[SUB]^{SUP*}",
   "EL"  => "\\teL[SUB]^{SUP*}",
+  "HP" => "H_{SUB}^{-SUP}",
+  "GP" => "G_{SUB}^{-SUP}",
 };
 
 my $param_conj = {
@@ -164,6 +174,9 @@ my $fermion = {
   "DL"  => "\\dL[SUB]^{SUP}",
   "NUL" => "\\nuL[SUB]^{SUP}",
   "EL"  => "\\eL[SUB]^{SUP}",
+  "Neut"  => "\\neut[SUB]^{SUP}",
+  "CharP"  => "\\charP[SUB]^{SUP}",
+  "CharM"  => "\\charM[SUB]^{SUP}",
 };
 
 my $vector = {
@@ -199,6 +212,9 @@ my $fermion_conj = {
   "DL"  => "\\bdL[SUB]^{SUP}",
   "NUL" => "\\bnuL[SUB]^{SUP}",
   "EL"  => "\\beL[SUB]^{SUP}",
+  "Neut"  => "\\bar\\neut[SUB]^{SUP}",
+  "CharP"  => "\\bar\\charP[SUB]^{SUP}",
+  "CharM"  => "\\bar\\charM[SUB]^{SUP}",
 };
 
 
@@ -234,6 +250,9 @@ sub fieldname_to_tex{
 }
 
 foreach my $line(<>){
+  $line =~ s/\$\\lambda\s*\$/\\[Lambda]/g;
+  $line =~ s/\$\\sigma\s*\$/\\[Sigma]/g;
+  $line =~ s/\$\\backslash\s*\\backslash\s*\$/\\/g;
   $line =~ s/_\{\}//g;
   $line =~ s/\@(P|S|F|V|SF|PC|SC|FC|S2|S4|P2):(.+?):(.*?):(.*?)\@/fieldname_to_tex($1, $2, $3, $4)/ge;
   $line =~ s/@(\\epsilon|f):(.*?):(.*?)@/$1_{$2}^{$3}/g;

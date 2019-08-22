@@ -1,0 +1,50 @@
+{\ii} \bar{\tib}\bsigma^{\mu }\partial_{\mu}\tib
+ + {\ii} \bthdm\bsigma^{\mu }\partial_{\mu}\thdm
+ + {\ii} \bthdz\bsigma^{\mu }\partial_{\mu}\thdz
+ + {\ii} \bthup\bsigma^{\mu }\partial_{\mu}\thup
+ + {\ii} \bthuz\bsigma^{\mu }\partial_{\mu}\thuz
+ + {\ii} \bar{\tiw}^{3}\bsigma^{\mu }\partial_{\mu}\tiw^{3}
+ + {\ii} \bar{\tiw}^{-}\bsigma^{\mu }\partial_{\mu}\tiw^{-}
+ + {\ii} \bar{\tiw}^{+}\bsigma^{\mu }\partial_{\mu}\tiw^{+}
+ - \frac{1}{2} M_1\tib\tib
+ - \frac{1}{2} M_2\tiw^{3}\tiw^{3}
+ - M_2\tiw^{+}\tiw^{-}
+ - \frac{1}{2} M_3\tig^{a}\tig^{a}
+ - \mu\thup\thdm
+ + \mu\thuz\thdz
+ - \frac{1}{2} M_1^{*}\bar{\tib}\bar{\tib}
+ - \frac{1}{2} M_2^{*}\bar{\tiw}^{3}\bar{\tiw}^{3}
+ - M_2^{*}\bar{\tiw}^{+}\bar{\tiw}^{-}
+ - \frac{1}{2} M_3^{*}\bar{\tig}^{a}\bar{\tig}^{a}
+ - \mu^{*}\bthup\bthdm
+ + \mu^{*}\bthuz\bthdz
+ + {\ii} \beR[i]^{\cc }\bsigma^{\mu }\partial_{\mu}\eR[i]^{\cc }
+ + {\ii} \beL[i]\bsigma^{\mu }\partial_{\mu}\eL[i]
+ + {\ii} \bar{\tig}^{a}\bsigma^{\mu }\partial_{\mu}\tig^{a}
+ + {\ii} \bnuL[i]\bsigma^{\mu }\partial_{\mu}\nuL[i]
+ - \kappa_{i}\thup\eL[i]
+ + \kappa_{i}\thuz\nuL[i]
+ - \Kappa^{*}_{i}\bthup\beL[i]
+ + \Kappa^{*}_{i}\bthuz\bnuL[i]
+ + {\ii} \bdR[i]^{\cc x}\bsigma^{\mu }\partial_{\mu}\dR[i]^{\cc x}
+ + {\ii} \buR[i]^{\cc x}\bsigma^{\mu }\partial_{\mu}\uR[i]^{\cc x}
+ + {\ii} \bdL[i]^{x}\bsigma^{\mu }\partial_{\mu}\dL[i]^{x}
+ + {\ii} \buL[i]^{x}\bsigma^{\mu }\partial_{\mu}\uL[i]^{x}
+ - g_2\vd\thdm\tiw^{+}
+ - \frac{1}{\sqrt2} g_2\vd\thdz\tiw^{3}
+ - g_2\vd\bthdm\bar{\tiw}^{+}
+ - \frac{1}{\sqrt2} g_2\vd\bthdz\bar{\tiw}^{3}
+ - g_2\vu\thup\tiw^{-}
+ + \frac{1}{\sqrt2} g_2\vu\thuz\tiw^{3}
+ - g_2\vu\bthup\bar{\tiw}^{-}
+ + \frac{1}{\sqrt2} g_2\vu\bthuz\bar{\tiw}^{3}
+ + \frac{1}{\sqrt2} g_Y\vd\thdz\tib
+ + \frac{1}{\sqrt2} g_Y\vd\bthdz\bar{\tib}
+ - \frac{1}{\sqrt2} g_Y\vu\thuz\tib
+ - \frac{1}{\sqrt2} g_Y\vu\bthuz\bar{\tib}
+ - \yd[ij]\vd\dR[i]^{\cc x}\dL[j]^{x}
+ - \ye[ij]\vd\eR[i]^{\cc }\eL[j]
+ - \yu[ij]\vu\uR[i]^{\cc x}\uL[j]^{x}
+ - \yd[ij]^{*}\vd\bdR[i]^{\cc x}\bdL[j]^{x}
+ - \ye[ij]^{*}\vd\beR[i]^{\cc }\beL[j]
+ - \yu[ij]^{*}\vu\buR[i]^{\cc x}\buL[j]^{x}

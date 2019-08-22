@@ -1,7 +1,7 @@
   m_W^2 W^{+\mu}W_{\mu}^{-}
  + \frac{1}{2} m_Z^2 Z_{\mu}Z^{\mu}
- - \frac{1}{2} M_3\tig^{a}\tig^{a}
- - \frac{1}{2} M_3^{*}\bar{\tig}^{a}\bar{\tig}^{a}
+ - \frac{1}{2} M_3\tig_0^{a}\tig_0^{a}
+ - \frac{1}{2} M_3^{*}\bar{\tig}_0^{a}\bar{\tig}_0^{a}
 \\&
  + \left(
  - \frac{1}{2} M_1\tib\tib

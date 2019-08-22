@@ -166,8 +166,8 @@ fieldType = S | F | V | SC | FC;
 
 Dx[\[Mu]_,  obj:NT[(ft:fieldType)[field_], any___]] := NT[ft["dx", field], UI[\[Mu], "lorentz"], any]
 Dx[,\[Mu]_, obj:NT[(ft:fieldType)[field_], any___]] := NT[ft["dx", field], LI[\[Mu], "lorentz"], any]
-NT[(ft:fieldType)["dx", "dx", field_], x1___, UI[\[Mu]_, "lorentz"], x2___, LI[\[Mu]_, "lorentz"], x3___] /; FreeQ[{x2}, "lorentz"] := NT[ft["dx2", field], x1, x2, x3]
-NT[(ft:fieldType)["dx", "dx", field_], x1___, LI[\[Mu]_, "lorentz"], x2___, UI[\[Mu]_, "lorentz"], x3___] /; FreeQ[{x2}, "lorentz"] := NT[ft["dx2", field], x1, x2, x3]
+NT[(ft:fieldType)["dx", "dx", field_], x1___, UI[\[Mu]_, "lorentz"], x2___, LI[\[Mu]_, "lorentz"], x3___] /; FreeQ[{x1,x2}, "lorentz"] := NT[ft["dx2", field], x1, x2, x3]
+NT[(ft:fieldType)["dx", "dx", field_], x1___, LI[\[Mu]_, "lorentz"], x2___, UI[\[Mu]_, "lorentz"], x3___] /; FreeQ[{x1,x2}, "lorentz"] := NT[ft["dx2", field], x1, x2, x3]
 
 ProdT[NT[f_, x1___, NI[a_, "SU2I"], x2___], A_] /; FreeQ[{x1, x2}, "SU2I"] := Module[{b=Unique["a"]}, T[A, a, b] NT[f, x1, NI[b, "SU2I"], x2]]
 Prod\[Tau][NT[f_, x1___, NI[a_, "SU3I"], x2___], A_] /; FreeQ[{x1, x2}, "SU3I"] := Module[{b=Unique["x"]}, \[Tau][A, a, b] NT[f, x1, NI[b, "SU3I"], x2]]
@@ -200,6 +200,8 @@ TDot[x1___, Dx$operator[var__]] := 0
 TakeConjugate[S|F|V] := #&
 TakeConjugate[SC|FC] := Conjugate
 
+NT[t_[dx___, {a_, index_NI}], any___] := NT[t[dx, a], index, any]
+NT[t_[dx___, {n:NT[(_P|_PC|_P2),___], b__}], any___] := TakeConjugate[t][n] * NT[t[dx,Times[b]],any]
 NT[t_[dx___, Plus[a_, b__]], any___] := NT[t[dx,a],any] + NT[t[dx,Plus[b]],any]
 NT[t_[dx___, Times[a_?NumericQ, b__]], any___] := TakeConjugate[t][a] NT[t[dx,Times[b]],any]
 NT[t_[dx___, Times[a:(_P|_PC|_P2), b__]], any___] := TakeConjugate[t][NT[a]] * NT[t[dx,Times[b]],any]
@@ -236,7 +238,7 @@ DWD\[CapitalPhi][field_] := Module[{delta, result = SuperPotential /. SF->S},
   ReleaseHoldAll[result] /. {NI[Null, "Gen"]->NI["i", "Gen"], NI[Null, "SU2I"]->NI["a", "SU2I"], NI[Null, "SU3I"]->NI["x", "SU3I"]}]
 
 NT /: Conjugate[f:NT["\[Epsilon]", ___]] := f
-NT /: Conjugate[NT[f:(fieldType|P|P2|SF|SFC)[__], x___]] := NT[Conj[f], x]
+NT /: Conjugate[NT[f:(fieldType|P|PC|P2|SF|SFC)[__], x___]] := NT[Conj[f], x]
 NT /: Conjugate[NT["T", NI[a_, "SU2F"], NI[i_, "SU2I"], NI[j_, "SU2I"]]] := T[a,j,i]
 NT /: Conjugate[NT["\[Tau]", NI[a_, "SU3F"], NI[i_, "SU3I"], NI[j_, "SU3I"]]] := \[Tau][a,j,i]
 Conj[S[a__]] := SC[a]
@@ -589,3 +591,61 @@ MassTermsSimplified = MassTerms//. {
   PTC[a_]:>StringJoin[{"@PC:",TextString[a],"::@"}]
 };
 ToFile["lag_massterms.raw", ToTeXString[%]];
+
+
+LwithFermions = Select[LALLwithVEVs // Expand, Not[FreeQ[#, F|FC]]&];
+
+
+Select[SU2Replace[LwithFermions], CountFields[#]>2&] //. {
+  NT[S [dx___,"HuZ"],a___] :> (1/Sqrt[2])NT[S[dx,"HuZR"],a] + (+I/Sqrt[2]) ( S\[Beta]Z NT[S[dx,"G0"],a] + C\[Beta]Z NT[S[dx,"A0"],a]),
+  NT[S [dx___,"HdZ"],a___] :> (1/Sqrt[2])NT[S[dx,"HdZR"],a] + (+I/Sqrt[2]) (-C\[Beta]Z NT[S[dx,"G0"],a] + S\[Beta]Z NT[S[dx,"A0"],a]),
+  NT[SC[dx___,"HuZ"],a___] :> (1/Sqrt[2])NT[S[dx,"HuZR"],a] + (-I/Sqrt[2]) ( S\[Beta]Z NT[S[dx,"G0"],a] + C\[Beta]Z NT[S[dx,"A0"],a]),
+  NT[SC[dx___,"HdZ"],a___] :> (1/Sqrt[2])NT[S[dx,"HdZR"],a] + (-I/Sqrt[2]) (-C\[Beta]Z NT[S[dx,"G0"],a] + S\[Beta]Z NT[S[dx,"A0"],a]),
+  NT[SC[dx___,"HdM"],a___] :> -C\[Beta]P NT[S[dx,-I "GP"],a] + S\[Beta]P NT[S[dx,"HP"],a],
+  NT[S [dx___,"HuP"],a___] :>  S\[Beta]P NT[S[dx,-I "GP"],a] + C\[Beta]P NT[S[dx,"HP"],a],
+  NT[S [dx___,"HdM"],a___] :> -C\[Beta]P NT[SC[dx, -I "GP"],a] + S\[Beta]P NT[SC[dx,"HP"],a],
+  NT[SC[dx___,"HuP"],a___] :>  S\[Beta]P NT[SC[dx, -I "GP"],a] + C\[Beta]P NT[SC[dx,"HP"],a],
+  vu->v Sin[\[Beta]],
+  vd->v Cos[\[Beta]],
+  gY->gZ Sin[w],
+  g2->gZ Cos[w],
+  gZ->Sqrt[2]mZ/v,
+  S\[Beta]->Sin[\[Beta]],
+  C\[Beta]->Cos[\[Beta]],
+  mHd2->-B Cos[2\[Beta]]+mHu2-Cos[2\[Beta]] mZ^2,
+  \[Mu]sq->(B-mHu2-mHd2)/2,
+  b->B Sin[2\[Beta]]/2,
+  "Bi":>Module[{i=Unique[]}, {NT[PC["NN"], NI[i,"Gen"], NI[1,"Gen"]], {"Neut", NI[i,"Gen"]}}],
+  "Wi3":>Module[{i=Unique[]}, {NT[PC["NN"], NI[i,"Gen"], NI[2,"Gen"]], {"Neut", NI[i,"Gen"]}}],
+  "HdZ":>Module[{i=Unique[]}, {NT[PC["NN"], NI[i,"Gen"], NI[3,"Gen"]], {"Neut", NI[i,"Gen"]}}],
+  "HuZ":>Module[{i=Unique[]}, {NT[PC["NN"], NI[i,"Gen"], NI[4,"Gen"]], {"Neut", NI[i,"Gen"]}}],
+  "WiP":>Module[{i=Unique[]}, {NT[PC["VV"], NI[i,"Gen"], NI[1,"Gen"]], {"CharP", NI[i,"Gen"]}}],
+  "HuP":>Module[{i=Unique[]}, {NT[PC["VV"], NI[i,"Gen"], NI[2,"Gen"]], {"CharP", NI[i,"Gen"]}}],
+  "WiM":>Module[{i=Unique[]}, {NT[PC["UU"], NI[i,"Gen"], NI[1,"Gen"]], {"CharM", NI[i,"Gen"]}}],
+  "HdM":>Module[{i=Unique[]}, {NT[PC["UU"], NI[i,"Gen"], NI[2,"Gen"]], {"CharM", NI[i,"Gen"]}}],
+  TDot[a___, NT[p:P[x:RealParameters]],b___]:>PT[x] TDot[a,b],
+  TDot[a___, NT[p:PC[x:RealParameters]],b___]:>PTC[x] TDot[a,b],
+  TDot[a___, NT[p:P2[x:RealParameters]],b___]:>PT[x]^2 TDot[a,b]
+}  // SortTDot // RewriteIndices;
+% //. {
+  TDot[a___, NT[p:P[x:"NN"|"VV"|"UU"],NI[i_,"Gen"],NI[j_,"Gen"]],b___]:>PT[x,i,j] TDot[a,b],
+  TDot[a___, NT[p:PC[x:"NN"|"VV"|"UU"],NI[i_,"Gen"],NI[j_,"Gen"]],b___]:>PTC[x,i,j] TDot[a,b]
+}// SortTDot // Collect[#, TDot[___], FullSimplify]&;
+%/.a_TDot:>ToTeXString[a]//Collect[#,_String,FullSimplify]&;
+%//.{
+  PT[a:"NN"|"VV"|"UU", i_, j_] :> Subscript[StringTake[a,1],TextString[i]<>TextString[j]],
+  PTC[a:"NN"|"VV"|"UU", i_, j_] :> Conjugate[Subscript[StringTake[a,1],TextString[i]<>TextString[j]]],
+  PT[a_]^2:>StringJoin[{"@P:",TextString[a],"::2@"}],
+  PT[a_]:>StringJoin[{"@P:",TextString[a],"::@"}],
+  PTC[a_]:>StringJoin[{"@PC:",TextString[a],"::@"}]
+};
+((ToString@*TeXForm) /@ SumToList[%])  // StringRiffle[#, "\n"]&;
+(*ToFile["tmp", %]*)
+
+
+Select[SU2Replace[LwithFermions], CountFields[#]==2&] // ToTeXString;
+ToFile["fermion_kinetic.raw", %]
+
+
+LwithoutFermions = Select[LALLwithVEVs // Expand, FreeQ[#, F|FC]&];
+Select[LwithoutFermions, CountFields[#]>2&]

@@ -3,10 +3,10 @@
  - g_2\tdL^{*}\uL\tiw^{-}
  - g_2\tdL\buL\bar{\tiw}^{-}
  \\&\quad
- - {\sqrt2} g_3\tuL^{*}\tau^a\uL\tig^{a}
- + {\sqrt2} g_3\tuR^{*}\tau^a\buR^{\cc}\bar{\tig}^{a}
- - {\sqrt2} g_3\tuL\tau^{a*}\buL\bar{\tig}^{a}
- + {\sqrt2} g_3\tuR\tau^{a*}\uR^{\cc}\tig^{a}
+ - {\sqrt2} g_3\tuL^{*}\tau^a\uL\tig_0^{a}
+ + {\sqrt2} g_3\tuR^{*}\tau^a\buR^{\cc}\bar{\tig}_0^{a}
+ - {\sqrt2} g_3\tuL\tau^{a*}\buL\bar{\tig}_0^{a}
+ + {\sqrt2} g_3\tuR\tau^{a*}\uR^{\cc}\tig_0^{a}
  \\&\quad
  - \frac{g_2}{\sqrt2} \tuL^{*}\uL\tiw^{3}
  - \frac{g_2}{\sqrt2} \tuL\buL\bar{\tiw}^{3}
@@ -15,10 +15,10 @@
  - \frac{g_Y}{3\sqrt2} \tuL\buL\bar{\tib}
  + \frac{2\sqrt2g_Y}{3}\tuR\uR^{\cc}\tib
  \\&\quad
- - {\sqrt2} g_3\tdL^{*}\tau^a\dL\tig^{a}
- + {\sqrt2} g_3\tdR^{*}\tau^a\bdR^{\cc}\bar{\tig}^{a}
- - {\sqrt2} g_3\tdL\tau^{a*}\bdL\bar{\tig}^{a}
- + {\sqrt2} g_3\tdR\tau^{a*}\dR^{\cc}\tig^{a}
+ - {\sqrt2} g_3\tdL^{*}\tau^a\dL\tig_0^{a}
+ + {\sqrt2} g_3\tdR^{*}\tau^a\bdR^{\cc}\bar{\tig}_0^{a}
+ - {\sqrt2} g_3\tdL\tau^{a*}\bdL\bar{\tig}_0^{a}
+ + {\sqrt2} g_3\tdR\tau^{a*}\dR^{\cc}\tig_0^{a}
  \\&\quad
  + \frac{g_2}{\sqrt2} \tdL^{*}\dL\tiw^{3}
  + \frac{g_2}{\sqrt2} \tdL\bdL\bar{\tiw}^{3}

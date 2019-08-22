@@ -68,7 +68,7 @@ For matter spinors, $\psi\w R^\cc:=\bar\psi\w R$ (and $\psi\w R=\bar\psi\w R^\cc
            + \frac12 \lambda''_{ijk} U^\cc_i D^\cc_j D^\cc_k,
 \\
 \mathcal L_{\text{\cancel{SUSY}}}&=
-- \frac12\left(M_3\tig\tig+M_2\tiw\tiw+M_1\tib\tib+\text{H.c.}\right)
+- \frac12\left(M_3\tig_0\tig_0+M_2\tiw\tiw+M_1\tib\tib+\text{H.c.}\right)
 -V_{\text{\cancel{SUSY}}};\\
 V^{\mathrm{RPC}}_{\text{\cancel{SUSY}}}&=
 \left(\tqL^*m_Q^2\tqL+\tlL^*m_L^2\tlL+\tuR^* m_{U^\cc}^2\tuR + \tdR^* m_{D^\cc}^2\tdR + \teR^* m_{E^\cc}^2\teR
@@ -134,7 +134,7 @@ The most generic form of the Lagrangian is given by
 \mathcal L\w{FI}=\Lambda\w{FI} D_B;
 \\&
 \mathcal L_{\text{\cancel{SUSY}}}=
-- \frac12\left(M_3\tig\tig+M_2\tiw\tiw+M_1\tib\tib+\text{H.c.}\right)
+- \frac12\left(M_3\tig_0\tig_0+M_2\tiw\tiw+M_1\tib\tib+\text{H.c.}\right)
 -
 \left(
 V^{\mathrm{RPC}}_{\text{\cancel{SUSY}}}
@@ -178,7 +178,7 @@ Then,
 \end{split}\\
 \mathcal L_{\text{\cancel{SUSY}}}
 &=
-- \frac12\left(M_3\tig\tig+M_2\tiw\tiw+M_1\tib\tib+\text{H.c.}\right)
+- \frac12\left(M_3\tig_0\tig_0+M_2\tiw\tiw+M_1\tib\tib+\text{H.c.}\right)
 -
 \left(
 V^{\mathrm{RPC}}_{\text{\cancel{SUSY}}}
@@ -240,7 +240,7 @@ Here the Lagrangian
  \mathcal L\w{fermions}&=
   \ii\bpsi\bsigma^\mu\DD_\mu\psi
  + \ii\blambda^a\bsigma^\mu\DD_\mu\lambda^a
- - \frac12\left(M_3\tig\tig+M_2\tiw\tiw+M_1\tib\tib+\text{H.c.}\right)
+ - \frac12\left(M_3\tig_0\tig_0+M_2\tiw\tiw+M_1\tib\tib+\text{H.c.}\right)
  + \mathcal L\w{super}\big|_{\text{no $F$-terms}},
 \\\mathcal L\w{SFG}&=
  -\sqrt2g\lambda^a(\phi^*t^a\psi) -\sqrt2g\blambda^a(\bpsi t^a\phi),
@@ -253,7 +253,7 @@ Here the Lagrangian
    \mathcal L\w{vector}
  &=
  \input{calculator/mssm/lag_vector.txt},
-\end{split}
+\end{split}\label{eq:Lvector}
 \end{align}
 where
 \begin{align*}
@@ -287,19 +287,19 @@ where
  +  \ii\bthu\bsigma^\mu\left(\partial_\mu - \ii g_2 W_\mu^aT^a - \tfrac12 \ii g_Y B_\mu\right)\thu
  +  \ii\bthd\bsigma^\mu\left(\partial_\mu - \ii g_2 W_\mu^aT^a + \tfrac12 \ii g_Y B_\mu\right)\thd
 \\&\quad
- + \ii\bar\tig^a\bsigma^\mu\left(\partial_\mu\tig^a + g_3f^{abc}g_\mu^b\tig^c\right)
+ + \ii\bar\tig_0^a\bsigma^\mu\left(\partial_\mu\tig_0^a + g_3f^{abc}g_\mu^b\tig_0^c\right)
  + \ii\bar\tiw^a\bsigma^\mu\left(\partial_\mu\tiw^a + g_2\epsilon^{abc}W^b_\mu\tiw^c\right)
  + \ii\bar\tib\bsigma^\mu\partial_\mu\tib
 \\&\quad
- - \frac12\left(M_3\tig^a\tig^a+M_2\tiw^a\tiw^a+M_1\tib\tib+\text{H.c.}\right)
+ - \frac12\left(M_3\tig_0^a\tig_0^a+M_2\tiw^a\tiw^a+M_1\tib\tib+\text{H.c.}\right)
  + \mathcal L\w{super}\big|_{\text{no $F$-terms}}
  \end{split}
 \\
 \begin{split}
 &=
  \ii\bar\tib\bsigma^\mu\partial_\mu\tib - \frac12\left(M_1\tib\tib+M_1^*\bar\tib^a\bar\tib^a\right)
- + \ii\bar\tig^a\bsigma^\mu\partial_\mu\tig^a - \frac12\left(M_3\tig^a\tig^a+M_3^*\bar\tig^a\bar\tig^a\right)
- - \ii g_3 f^{abc} (\bar\tig^a\bsigma^\mu\tig^b) g_\mu^c
+ + \ii\bar\tig_0^a\bsigma^\mu\partial_\mu\tig_0^a - \frac12\left(M_3\tig_0^a\tig_0^a+M_3^*\bar\tig_0^a\bar\tig_0^a\right)
+ - \ii g_3 f^{abc} (\bar\tig_0^a\bsigma^\mu\tig_0^b) g_\mu^c
 \\&\quad
  + \ii\bar\tiw^+\bsigma^\mu \partial_\mu\tiw^+
  + \ii\bar\tiw^-\bsigma^\mu \partial_\mu\tiw^-
@@ -380,14 +380,14 @@ here,
 \begin{split}
   \mathcal L\w{scalar} &=
  \input{calculator/mssm/lag_scalar_kin.txt}
-\\&\quad -\left(V\w{SUSY} + V_{\cancel{\mathrm{SUSY}}}\right),
+\\&\quad -\left(V\w{SUSY} + V_{\cancel{\mathrm{SUSY}}}\right),\label{eq:Lscalar}
 \end{split}
 \end{equation}
 where the scalar potential is given by
 \begin{equation}
   \begin{split}
    V\w{SUSY} &= \input{calculator/mssm/SUSYPotential.txt}.
-  \end{split}
+  \end{split}\label{eq:SUSYpotential}
 \end{equation}
 
 \subsection{Higgs mechanism and fermion composition}
@@ -879,16 +879,393 @@ In old SLHA format, we assume that flavor- and $CP$-violation is absent and left
 \end{equation}
 and these $F_{ij}$ are stored in \texttt{SBOTMIX} etc.
 
+\paragraph{Squark masses in super-CKM basis}
+The gluino mass and phase is given by
+\begin{equation}
+ m_{\tilde g} = |M_3|;
+ \quad
+ M_3=m_{\tilde g}\ee^{\ii\theta_3} = m_{\tilde g}\varphi_{\tilde g}^{-2};\quad
+ \tilde g_0 = \varphi_{\tilde g}\tilde g.
+\end{equation}
+
 
 \subsubsection{Fermion composition}
-Now we show the fermion-related Lagrangian terms verbosely:
+Now we show the fermion-related Lagrangian terms verbosely. In super-CKM basis, the interaction terms are
+\begin{equation}
+  \begin{split}
+&  \mathcal L\w{fermions} + \mathcal L\w{SFG}
+=
+   {\ii} \bneut[i]\bsigma^{\mu }\partial_{\mu}\neut[i]
+ + {\ii} \bcharM[i]\bsigma^{\mu }\partial_{\mu}\charM[i]
+ + {\ii} \bcharP[i]\bsigma^{\mu }\partial_{\mu}\charP[i]
+ + {\ii} \bar{\tig}^{a}\bsigma^{\mu }\partial_{\mu}\tig^{a}
+ + {\ii} \buL[i]\bsigma^{\mu}\partial_{\mu}\uL[i]
+ + {\ii} \buR[i]^{\cc}\bsigma^{\mu }\partial_{\mu}\uR[i]^{\cc}
+\\&
+ + {\ii} \bdL[i]\bsigma^{\mu}\partial_{\mu}\dL[i]
+ + {\ii} \bdR[i]^{\cc}\bsigma^{\mu }\partial_{\mu}\dR[i]^{\cc}
+ + {\ii} \bnuL[i]\bsigma^{\mu }\partial_{\mu}\nuL[i]
+ + {\ii} \beL[i]\bsigma^{\mu }\partial_{\mu}\eL[i]
+ + {\ii} \beR[i]^{\cc}\bsigma^{\mu }\partial_{\mu}\eR[i]^{\cc}
+ - \frac{m_{\tilde g}}{2} (\tig^{a}\tig^{a}+\text{h.c.})
+\\&
+ - m_{\charPM[i]}\bigl(\charM[i]\charP[i] + \bcharM[i]\bcharP[i]\bigr)
+ - m_{di}\left(\dR[i]^{\cc}\dL[i] + \bdR[i]^{\cc}\bdL[i]^{x}\right)
+ - m_{ui}\left(\uR[i]^{\cc}\uL[j]+\buR[i]^{\cc}\buL[i]\right)
+ - m_{ei}\left(\eR[i]^{\cc}\eL[i] + \beR[i]^{\cc}\beL[i]\right)
+%
+%
+%%%gluino
+\\&+\Bigl[
+\sqrt{2} g_3 \varphi_{\tilde g}\tig^{a}\left(
+  \tau^{yxa*}\tdR^{y}\dR^{\cc x}
+ +\tau^{yxa*}\tuR^{y}\uR^{\cc x}
+ -\tau^{yxa}\tdL^{y*}\dL^{x}
+ -\tau^{yxa}\tuL^{y*}\uL^{x}
+\right)+\text{h.c.}\Bigr]
+%%%gluon
+-\ii g_3 f^{abc}g_\mu^a (\bar{\tig}^{b}\bsigma^{\mu }\tig^{c})
+\\&
++
+g_3g_\mu^a\left(
+ \bdL\bsigma^{\mu }\tau^a\dL
++\buL\bsigma^{\mu }\tau^a\uL
+-\bdR^{\cc}\bsigma^{\mu }\tau^{a*}\dR^{\cc}
+-\buR^{\cc}\bsigma^{\mu }\tau^{a*}\uR^{\cc}
+\right)
+%%W,Z,A
++
+A_\mu|e|\Bigl[
+   \frac{2}{3} {\buL\bsigma^{\mu }\uL}
+  -\frac{2}{3} {\buR^{\cc}\bsigma^{\mu }\uR^{\cc}}
+  -\frac{1}{3} {\bdL\bsigma^{\mu }\dL}
+\\&
+  +\frac13 \bdR^{\cc}\bsigma^{\mu }\dR^{\cc}
+  - {\beL\bsigma^{\mu }\eL}
+  +{\beR^{\cc }\bsigma^{\mu }\eR^{\cc }}
+  + \bcharP[i]\bsigma^{\mu}\charP[i]
+  -\bcharM[i]\bsigma^{\mu}\charM[i]
+\Bigr]
+%
++g_Z Z_\mu\Bigl[
+  \frac{3-4\sw^2}{6} {\buL\bsigma^{\mu }\uL}
+  +\frac{2\sw^2}{3} {\buR^{\cc}\bsigma^{\mu }\uR^{\cc}}
+  \\&
+  -\frac{3-2\sw^2}{6} {\bdL\bsigma^{\mu }\dL}
+  -\frac{\sw^2}{3} {\bdR^{\cc}\bsigma^{\mu }\dR^{\cc}}
+  +\frac{1}{2} {\bnuL\bsigma^{\mu }\nuL}
+  +\frac{2\sw^2-1}{2} {\beL\bsigma^{\mu }\eL}
+  - \sw^2{\beR^{\cc }\bsigma^{\mu }\eR^{\cc }}
+  + \frac{N_{j3} N_{i3}^*-N_{j4} N_{i4}^*}{2} \bneut[j]\bsigma^{\mu }\neut[i]
+  \\&
+  + \left(\cw^2 V_{j1} V_{i1}^*+\frac{V_{j2} V_{i2}^* (\cw^2-\sw^2)}{2}\right) \bcharP[j]\bsigma^{\mu}\charP[i]
+  + \left(\frac{U_{j2} U_{i2}^* (\sw^2-\cw^2)}{2}-\cw^2 U_{j1} U_{i1}^*\right){\bcharM[j]\bsigma^{\mu }\charM[i]}
+\Bigr]
+\\&+\frac{g_2}{\sqrt2}W_\mu^+\left[
+    \buL\bsigma^{\mu }V\w{CKM}\dL
+    +\bnuL\bsigma^{\mu }\eL
+    + \left({V_{j2} N_{i4}^*}-\sqrt{2}V_{j1} N_{i2}^*\right) \bcharP[j]\bsigma^{\mu }\neut[i]
+    +\left(\sqrt2 N_{j2} U_{i1}^*+N_{j3} U_{i2}^*\right)\bneut[j]\bsigma^{\mu }\charM[i]
+\right]
+\\&+\frac{g_2}{\sqrt2}W_\mu^-\left[
+    \bdL\bsigma^{\mu }V\w{CKM}^\dagger \uL
+    +\beL\bsigma^{\mu }\nuL
+    +\left(N_{j4} V_{i2}^*-\sqrt2 N_{j2} V_{i1}^*\right)\bneut[j]\bsigma^{\mu }\charP[i]
+    +\left(\sqrt{2}U_{j1} N_{i2}^*+{U_{j2} N_{i3}^*}\right) \bcharM[j]\bsigma^{\mu }\neut[i]
+\right]
+%%%%% Yukawas
+\\&
++\phi\w u\left(
+-\frac{\yu[i]}{\sqrt2 }\uR[i]^{\cc}\uL[i]
++\frac{N_{i4}^* (g_2 N_{j2}^*-g_Y N_{j1}^*)}{2} {\neut[i]\neut[j]}
+-\frac{g_2  U_{i1}^* V_{j2}^*}{\sqrt{2}} \charM[i]\charP[j]
++\text{h.c.}
+\right)
+%
+\\&
++\phi\w d\left(
+-\frac{\yd[i]}{\sqrt2} \dR[i]^{\cc}\dL[i]
+-\frac{\ye[i]}{\sqrt2} \eR[i]^{\cc}\eL[i]
++\frac{N_{i3}^* (g_Y N_{j1}^*-g_2 N_{j2}^*)}{2} \neut[i]\neut[j]
+-\frac{g_2  U_{i2}^* V_{j1}^*}{\sqrt{2}}\charM[i]\charP[j]
++\text{h.c.}
+\right)
+%%%%%%%%
+\\&+\frac{A^0}{\sqrt2}\Bigl[
+-\ii\co{\beta0}{\yu[i]\uR[i]^{\cc}\uL[i]}
+-\ii\si{\beta0}{\yd[i]\dR[i]^{\cc}\dL[i]}
+-\ii\si{\beta0}{\ye[i]\eR[i]^{\cc}\eL[i]}
+-\frac{\ii(\si{\beta0} N_{i3}^*-\co{\beta0} N_{i4}^*) (g_Y N_{j1}^*-g_2 N_{j2}^*)}{\sqrt2} {\neut[i]\neut[j]}
+\\&
++{}\ii g_2  \left(\co{\beta0} U_{i1}^* V_{j2}^*+\si{\beta0} U_{i2}^* V_{j1}^*\right) {\charM[i]\charP[j]}
++\text{h.c.}
+\Bigr]
+%%%%%%%%
++
+\frac{ G^0}{\sqrt2}\Bigl[
+  - \ii\si{\beta0} \yu[i]\uR[i]^{\cc}\uL[i]
+  + \ii\co{\beta0} \yd[i]\dR[i]^{\cc}\dL[i]
+  + \ii\co{\beta0} \ye[i]\eR[i]^{\cc }\eL[i]
+  \\&
+  +\frac{\ii(g_Y N_{j1}^*-g_2 N_{j2}^*)(\co{\beta0} N_{i3}^*+\si{\beta0} N_{i4}^*)}{\sqrt2} {\neut[i]\neut[j]}
+  -\ii g_2 (\co{\beta0} U_{i2}^* V_{j1}^*-\si{\beta0} U_{i1}^* V_{j2}^*){\charM[i]\charP[j]}
+  +\text{h.c.}
+\Bigr]
+%%%%%%%%
+\\&
++\Bigl[
+    \left(\frac{U_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt{2}}-g_2  U_{i1}^* N_{j3}^*\right)  \si{\beta+}{H^{+}\charM[i]\neut[j]}
+  - \left(g_2 V_{i1}^* N_{j4}^*+\frac{V_{i2}^* \left(g_Y N_{j1}^*+g_2 N_{j2}^*\right)}{\sqrt2}\right)\co{\beta+} {H^{-}\charP[i]\neut[j]}
+  \\&
+  + \co{\beta+} (\uR^{\cc}\yu V\w{CKM} \dL)H^+
+  + \si{\beta+} (\dR^{\cc}\yd V\w{CKM}^\dagger \uL)H^-
+  + \si{\beta+} (\eR^{\cc}\ye\nuL)H^-
++\text{h.c.}
+\Bigr]
+%%%%%%%%
+\\&+
+\Bigl[
+    \ii G^+\co{\beta+}  \left(\frac{U_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt2}-g_2 U_{i1}^* N_{j3}^*\right)  {\charM[i]\neut[j]}
+  - \ii G^-\si{\beta+} \left(g_2 V_{i1}^* N_{j4}^*+\frac{V_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt{2}}\right) \charP[i]\neut[j]
+  \\&
+  - \ii \si{\beta+} (\uR^{\cc}\yu V\w{CKM} \dL)G^+
+  - \ii \co{\beta+} (\dR^{\cc}\yd V\w{CKM}^\dagger \uL)G^-
+  - \ii \co{\beta+} (\eR^{\cc}\ye\nuL)G^-
+  + \text{h.c.}
+\Bigr]
+%%%%%%%
+\\&
++\Bigl[
+  -\frac{{\tuL^{*}\uL\neut[j]} \left(g_Y N_{j1}^*+3 g_2 N_{j2}^*\right)}{3 \sqrt{2}}
+  +\frac{2}{3} \sqrt{2} g_Y {\tuR\uR^{\cc}\neut[j]} N_{j1}^*
+  -{\yu[i]\uR[i]^{\cc}\tuL[k]\neut[j]} N_{j4}^*
+  -{\yu[i]\tuR[i]^{*}\uL[i]\neut[j]} N_{j4}^*
+  \\&
+  -\frac{{\tdL[i]^{*}\dL[i]\neut[j]} \left(g_Y N_{j1}^*-3 g_2 N_{j2}^*\right)}{3 \sqrt{2}}
+  -\frac{1}{3} \sqrt{2} g_Y {\tdR[i]\dR[i]^{\cc}\neut[j]} N_{j1}^*
+  -{\yd[i]\tdL[i]\dR[i]^{\cc}\neut[j]} N_{j3}^*
+  -{\yd[i]\tdR[i]^{*}\dL[i]\neut[j]} N_{j3}^*
+  \\&
+  +\frac{{\tnuL[i]^{*}\nuL[i]\neut[j]} \left(g_Y N_{j1}^*-g_2 N_{j2}^*\right)}{\sqrt{2}}
+  -\sqrt{2} g_Y {\teR[i]\eR[i]^{\cc }\neut[j]} N_{j1}^*
+  +\frac{{\teL[i]^{*}\eL[i]\neut[j]} \left(g_Y N_{j1}^*+g_2 N_{j2}^*\right)}{\sqrt{2}}
+  \\&
+  -{\ye[i]\teL[i]\eR[i]^{\cc }\neut[j]} N_{j3}^*
+  -{\ye[i]\teR[i]^{*}\eL[i]\neut[j]} N_{j3}^*
+  +\text{h.c.}
+\Bigr]
++\Bigl[
+  V_{i2}^*{(\uR^{\cc}\yu V\w{CKM}\tdL)\charP[i]}
++ V_{i2}^*{(\tuR^{*}\yu V\w{CKM}\dL)\charP[i]}
+  \\&
++ U_{j2}^* {(\dR^{\cc}\yd V\w{CKM}^\dagger \tuL)\charM[j]}
++ U_{j2}^* {(\tdR^{*}\yd V\w{CKM}^\dagger \uL)\charM[j]}
+- U_{j1}^* g_2 {(\tdL^{*}V\w{CKM}^\dagger\uL)\charM[j]}
+- V_{i1}^* g_2 {(\tuL^{*}V\w{CKM}\dL)\charP[i]}
+  \\&
+- V_{i1}^*  g_2 {\tnuL^{*}\eL\charP[i]}
+- U_{j1}^* g_2 {\teL^{*}\nuL\charM[j]}
++ U_{j2}^* {\ye[i]\tnuL[i]\eR[i]^{\cc }\charM[j]}
++ U_{j2}^* {\ye[i]\teR[i]^{*}\nuL[i]\charM[j]}
++\text{h.c.}\Bigr].
+%%%%%%%%%%
+\\&
+  -\epsilon^{xyz}\left(
+    \lambda''_{ijk}\tdR[k]^{x*}\uR[i]^{\cc y}\dR[j]^{\cc z}
+  + \frac12\lambda''_{kij}\tuR[k]^{x*}\dR[i]^{\cc y}\dR[j]^{\cc z}
+  \right)
+ +\lambda_{ijk}\left(
+  -\teR[k]^{*}\nuL[i]\eL[j]
+  -\teL[j]\eR[k]^{\cc }\nuL[i]
+  +\tnuL[j]\eR[k]^{\cc }\eL[i]
+ \right)
+ \\&
+ +\lambda'_{ijk}\left(
+  -\tdR[k]^{*}\dL[j]\nuL[i]
+  +\tdR[k]^{*}\uL[j]\eL[i]
+  -\tdL[j]\dR[k]^{\cc}\nuL[i]
+  +\tuL[j]\dR[k]^{\cc}\eL[i]
+  +\teL[i]\dR[k]^{\cc}\uL[j]
+  -\tnuL[i]\dR[k]^{\cc}\dL[j]
+ \right)
++\text{h.c.},
+\end{split}
+\end{equation}
+where $R$-parity violating terms are also shown as a reference; they are also redefined in super-CKM basis.
+
+The full Lagrangian is given then by
+\begin{equation}
+ \mathcal L = (\mathcal L\w{fermions}+ \mathcal L\w{SFG}) + \mathcal L\w{vector} + \mathcal L\w{scalar},
+\end{equation}
+where $\mathcal L\w{vector}$ is given by \cref{eq:Lvector}, which should be amended with $m_W^2 W^{+\mu}W^-_\mu+(m_Z^2/2)Z^\mu Z_\mu$,
+mass and kinetic terms of $\mathcal L\w{scalar}$ should be read from this section, and the interaction terms of $\mathcal L\w{scalar}$ should be read from \cref{eq:Lscalar} and \cref{eq:SUSYpotential}, replacing Higgs fields by VEVs, Higgs bosons, and Nambu-Goldstone bosons.
+
+These Weyl fermions are combined to Dirac and Majorana fermions:
+\begin{equation}
+ \neut[i] = \pmat{\neut[i]\\\bneut[i]},
+\quad
+ \charP[i] = \pmat{\charP[i]\\\bcharM[i]},
+\quad
+ f = \pmat{f\w L\\\bar f\w R^{\cc}};
+\quad
+ \overline{\neut[i]} = \pmat{\neut[i]&\bneut[i]},
+\quad
+ \overline{\charP[i]} = \pmat{\charM[i]&\bcharP[i]},
+\quad
+ \overline f = \pmat{f\w R^{\cc}&\bar f\w L}.
+\end{equation}
+For example,
+\begin{align*}
+&  \overline{u}\PL d = \uR^\cc\dL,\quad
+ \overline{u}\PR d = \buL\bdR^\cc,\quad
+\uR^\cc\dL+\text{h.c.} = \overline{u}\PL d + \overline{d}\PR u,\quad
+ \overline{u}\gamma^\mu\PL d = \buL\bsigma^\mu\dL,
+\quad
+ \overline{u}\gamma^\mu\PR d = -\bdR^\cc\bsigma^\mu\uR^\cc;
+\\&
+\neut\uL +\text{h.c.} = \overline{\neut}\PL u + \overline{u}\PR \neut,\quad
+\neut\uR^\cc +\text{h.c.} = \overline{u}\PL\neut + \overline{\neut}\PR u,
+\\&
+ \overline{u}\gamma^\mu P\w{\{L,R\}}\neut = \{\buL\bsigma^\mu\neut ,-\bneut\bsigma^\mu\uR^\cc\},\quad
+ \overline{\neut}\gamma^\mu P\w{\{L,R\}}u = \{\bneut\bsigma\uL, -\buR^\cc\bsigma\neut\},\quad
+\\&
+\bneut[i]\bsigma\neut[j] = \overline{\neut[i]}\gamma^\mu \PL\neut[j] = -\overline{\neut[j]}\gamma^\mu \PR\neut[i].
+\end{align*}
+With abbreviations
+\begin{align*}
+(\mathcal N_{\phi\w u})_{ij} &:= N_{i4}^* (g_2 N_{j2}^*-g_Y N_{j1}^*)\PL  + N_{i4} (g_2 N_{j2}-g_Y N_{j1})\PR,\\
+(\mathcal N_{\phi\w d})_{ij} &:= N_{i3}^* (g_Y N_{j1}^*-g_2 N_{j2}^*)\PL  + N_{i3} (g_Y N_{j1}-g_2 N_{j2})\PR,\\
+(\mathcal N_{A^0})_{ij}      &:= - (\si{\beta0} N_{i3}^*-\co{\beta0} N_{i4}^*) (g_Y N_{j1}^*-g_2 N_{j2}^*)\PL
+  + (\si{\beta0} N_{i3}-\co{\beta0} N_{i4}) (g_Y N_{j1}-g_2 N_{j2})\PR,\\
+(\mathcal N_{G^0})_{ij}      &:= (g_Y N_{j1}^*-g_2 N_{j2}^*)(\co{\beta0} N_{i3}^*+\si{\beta0} N_{i4}^*)\PL
+  - (g_Y N_{j1}-g_2 N_{j2})(\co{\beta0} N_{i3}+\si{\beta0} N_{i4})\PR,\\
+%
+(\mathcal C_{\phi\w u})_{ij} &:=- U_{i1}^* V_{j2}^* \PL - U_{i1} V_{j2} \PR,\\
+(\mathcal C_{\phi\w d})_{ij} &:=- U_{i2}^* V_{j1}^* \PL - U_{i2} V_{j1} \PR,\\
+(\mathcal C_{A^0})_{ij}      &:= (\co{\beta0} U_{i1}^* V_{j2}^*+\si{\beta0} U_{i2}^* V_{j1}^*) \PL -(\co{\beta0} U_{i1}   V_{j2}  +\si{\beta0} U_{i2}   V_{j1})\PR,\\
+(\mathcal C_{G^0})_{ij}      &:=-(\co{\beta0} U_{i2}^* V_{j1}^*-\si{\beta0} U_{i1}^* V_{j2}^*) \PL +(\co{\beta0} U_{i2}   V_{j1}  -\si{\beta0} U_{i1}   V_{j2})\PR,\\
+(\mathcal C_{H^-})_{ij} &:= g_2 V_{i1}^* N_{j4}^*+\frac{V_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt2}\\,
+(\mathcal C_{H^+})_{ij} &:=\frac{U_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt2}-g_2 U_{i1}^* N_{j3}^*\\,
+\end{align*}
+we have
 \begin{equation}
   \begin{split}
 &  \mathcal L\w{fermions} + \mathcal L\w{SFG}
 \\&=
+\frac{1}{2}
+ \overline{\tig^a}\left[(\ii\cancel{\partial}-m_{\tilde g})\delta^{ab}-{\ii} g_3 f^{cab}\cancel{g}^c
+\right]\tig^b
++ \frac{1}{2}  \overline{\neut[i]}\left[\left(\ii\cancel{\partial}-m_{\neut[i]}\right)\delta_{ij}
++ g_Z\left(N_{i3} N_{j3}^*-N_{i4} N_{j4}^*\right)\slashed{Z}\PL
+\right]\neut[j]
+\\&
++ \overline{\charP[i]}\left[
+\left(\ii\cancel{\partial}-m_{\charPM[i]}
+  + |e|\slashed{A}\right)\delta_{ij}
+  + g_Z \slashed{Z}\left(\frac{2\cw^2 V_{i1} V_{j1}^*+\co{2\mathrm w}V_{i2} V_{j2}^*}{2}\PL
+  + \frac{\co{2\mathrm w}U_{i2} U_{j2}^* -2\cw^2 U_{i1} U_{j1}^*}{2}\PR\right)
+\right]\charP[j]
+%
+\\&
+%
+ + \overline{u_i}\left[\ii\cancel{\partial}-m_{ui}+g_3\tau^a \cancel{g}^a+\frac{2|e|}{3}\slashed{A}
++g_Z\slashed{Z}\left(\frac{3-4\sw^2}{6}\PL-\frac{2\sw^2}{3}\PR\right)
+\right]u_i
+\\&
+%
+ + \overline{d_i}\left[\ii\cancel{\partial}-m_{di}+g_3\tau^a \cancel{g}^a-\frac{|e|}{3}\slashed{A}
++g_Z\slashed{Z}\left(-\frac{3-2\sw^2}{6}\PL+\frac{\sw^2}{3}\PR\right)
+\right]d_i
+\\&
+ + \overline{\nu_i}\left(\ii\cancel{\partial}  +\frac{g_Z}2\slashed{Z}\PL\right)\nu_i
+ + \overline{e_i}\left[\ii\cancel{\partial}-m_{ei}-|e|\slashed{A}
++g_Z\slashed{Z}\left(\frac{2\sw^2-1}{2}\PL+\sw^2\PR\right)\right]e_i
+%%%gluino
+\\&+\frac{g_2}{\sqrt2}W_\mu^+\left[
+    \overline{u}\gamma^\mu V\w{CKM}\PL d
+    +\overline{\nu}\gamma^\mu\PL e
+    + \overline{\charP[j]}\gamma^\mu\left(
+     \left(-\sqrt{2}V_{j1} N_{i2}^*+{V_{j2} N_{i4}^*}\right) \PL
+    +\left(-\sqrt2 N_{i2} U_{j1}^*-N_{i3} U_{j2}^*\right)\PR
+    \right)\neut[i]
+\right]
+\\&+\frac{g_2}{\sqrt2}W_\mu^-\left[
+    \overline{d}\gamma^\mu V\w{CKM}^\dagger \PL u
+    +\overline{e}\gamma^\mu\PL\nu
+    +\overline{\neut[i]}\gamma^\mu\left(
+       \left(-\sqrt2 N_{i2} V_{j1}^*+N_{i4} V_{j2}^*\right) \PL
+      +\left(\sqrt{2}U_{j1} N_{i2}^*+{U_{j2} N_{i3}^*}\right) \PR
+    \right)\charP[j]
+\right]
+\\&
+ +\sqrt{2} g_3\Bigl[
+   \overline{\tig^a}(\varphi^*_{\tilde g} \tuR^{*}\PR -\varphi_{\tilde g}\tuL^{*}\PL) \tau^{a}u
+ + \overline{u}\tau^a(\varphi_{\tilde g}\tuR\PL-\varphi^*_{\tilde g}\tuL\PR) \tig^a
+\\&\qquad\qquad
+ + \overline{d}\tau^a(\varphi_{\tilde g}\tdR\PL-\varphi^*_{\tilde g}\tdL\PR) \tig^a
+ + \overline{\tig^a}(\varphi^*_{\tilde g} \tdR^{*}\PR -\varphi_{\tilde g}\tdL^{*}\PL) \tau^{a}d
+\Bigr]
+%%%gluon
+%%%%% Yukawas
++\frac{\yu[i]}{\sqrt2}\overline{u_i}\left(- {\phi\w u}+\ii\gamma_5\co{\beta0}A^0 + \ii\gamma_5\si{\beta0}G^0\right) u_i
+\\&
++\frac{\yd[i]}{\sqrt2}\overline{d_i}\left(- {\phi\w d}+\ii\gamma_5\si{\beta0}A^0 - \ii\gamma_5\co{\beta0}G^0\right) d_i
++\frac{\ye[i]}{\sqrt2}\overline{e_i}\left(- {\phi\w d}+\ii\gamma_5\si{\beta0}A^0 - \ii\gamma_5\co{\beta0}G^0\right) e_i
+\\&
++ \frac12\overline{\neut[i]}\left(
+    \phi\w u \mathcal N_{\phi\w u}  + \phi\w d \mathcal N_{\phi\w d}  + \ii A^0 \mathcal N_{A^0}  + \ii G^0\mathcal N_{G^0}
+  \right)_{ij}\neut[j]
++\frac{g_2}{\sqrt2}\overline{\charP[i]}\left(
+      \phi\w u \mathcal C_{\phi\w u}  + \phi\w d \mathcal C_{\phi\w d}
+    + \ii A_0 \mathcal C_{A^0}  + \ii G_0\mathcal C_{G^0}
+\right)_{ij}\charP[j]
+%%%%%%%%
+\\&
+  - (H^-\co{\beta+}+\ii G^-\si{\beta+}) (\mathcal C_{H^-})_{ij} \overline{\neut[j]}\PL \charP[i]
+  - (H^+\co{\beta+}-\ii G^+\si{\beta+}) (\mathcal C_{H^-})_{ij}^*  \overline{\charP[i]}\PR\neut[j]
+\\&
+  + (H^+\si{\beta+}+\ii G^+\co{\beta+}) (\mathcal C_{H^+})_{ij} \overline{\charP[i]}\PL\neut[j]
+  + (H^-\si{\beta+}-\ii G^-\co{\beta+}) (\mathcal C_{H^+})_{ij}^* \overline{\neut[j]}\PR \charP[i]
+\\&
+  + (H^-\si{\beta+}-\ii G^-\co{\beta+}) \overline{d}\yd V\w{CKM}^\dagger\PL u
+  + (H^-\co{\beta+}+\ii G^-\si{\beta+}) \overline{d}V\w{CKM}^\dagger\yu \PR u
+  + (H^-\si{\beta+}-\ii G^-\co{\beta+}) \overline{e}\ye\PL\nu
+\\&
+  + (H^+\co{\beta+}-\ii G^+\si{\beta+}) \overline{u}\yu V\w{CKM} \PL d
+  + (H^+\si{\beta+}+\ii G^+\co{\beta+}) \overline{u}V\w{CKM}\yd \PR d
+  + (H^+\si{\beta+}+\ii G^+\co{\beta+}) \overline{\nu}\ye\PR e
+%%%%%%%
+\\&+ \left(-\frac{g_Y N_{j1}^*+3g_2 N_{j2}^*}{3\sqrt{2}}\tuL[i]^{*}-\yu[i]N_{j4}^*\tuR[i]^{*}\right){\overline{\neut[j]}\PL u_i}
+   + \left(\frac{2\sqrt2g_Y}{3} N_{j1} \tuR[i]^*-\yu[i]N_{j4}\tuL[i]^* \right){\overline{\neut[j]}\PR u_i}
+\\&+ \left(\frac{2\sqrt2g_Y}{3} N_{j1}^* \tuR[i]-\yu[i]N_{j4}^*\tuL[i] \right){\overline{u_i}\PL \neut[j]}
+   +  \left(-\frac{g_Y N_{j1}+3g_2 N_{j2}}{3\sqrt{2}}\tuL[i]-\yu[i]N_{j4}\tuR[i]\right){\overline{u_i}\PR \neut[j]}
+\\&+ \left(-\frac{g_Y N_{j1}^*-3g_2 N_{j2}^*}{3\sqrt{2}}\tdL[i]^{*}-\yd[i]N_{j3}^*\tdR[i]^{*}\right){\overline{\neut[j]}\PL d_i}
+   +  \left(-\frac{ \sqrt2g_Y}{3} N_{j1} \tdR[i]^*-\yd[i]N_{j3}\tdL[i]^* \right){\overline{\neut[j]}\PR d_i}
+\\&+ \left(-\frac{ \sqrt2g_Y}{3} N_{j1}^* \tdR[i]-\yd[i]N_{j3}^*\tdL[i] \right){\overline{d_i}\PL \neut[j]}
+   + \left(-\frac{g_Y N_{j1}-3g_2 N_{j2}}{3\sqrt{2}}\tdL[i]-\yd[i]N_{j3}\tdR[i]\right){\overline{d_i}\PR \neut[j]}
+\\&+ \left(\frac{g_Y N_{j1}^*+ g_2 N_{j2}^*}{ \sqrt{2}}\teL[i]^{*}-\ye[i]N_{j3}^*\teR[i]^{*}\right){\overline{\neut[j]}\PL e_i}
+   +  \left(-\sqrt{2}       g_Y   N_{j1} \teR[i]^*-\ye[i]N_{j3}\teL[i]^* \right){\overline{\neut[j]}\PR e_i}
+\\&+ \left(-\sqrt{2}       g_Y   N_{j1}^*\teR[i]-\ye[i]N_{j3}^*\teL[i] \right){\overline{e_i}\PL \neut[j]}
+   +  \left(+\frac{g_Y N_{j1}+ g_2 N_{j2}}{ \sqrt{2}}\teL[i]-\ye[i]N_{j3}\teR[i]\right){\overline{e_i}\PR\neut[j]}
+\\&+ \frac{g_Y N_{j1}  -g_2 N_{j2}}  {\sqrt{2}}\tnuL[i]\overline{\nu_i}\PR\neut[j]
+   +  \frac{g_Y N_{j1}^*-g_2 N_{j2}^*}{\sqrt{2}}\tnuL[i]^{*}{\overline{\neut[j]}\PL \nu_i}
+\\&+ \left(U_{i2}^* (\tdR^{*}\yd V\w{CKM}^\dagger)_j - U_{i1}^* g_2 (\tdL^{*}V\w{CKM}^\dagger)_j \right)\overline{\charP[i]}\PL u_j
+   + V_{i2} (\tdL^*V\w{CKM}^\dagger\yu)_j  \overline{\charP[i]}\PR u_j
+\\&+ V_{i2}^* (\yu V\w{CKM}\tdL)_j             \overline{u_j}\PL\charP[i]
+   + \left(U_{i2} (V\w{CKM}\yd\tdR)_j - U_{i1} g_2 (V\w{CKM}\tdL)_j \right)\overline{u_j}\PR \charP[i]
+\\&+\left(- V_{i1}^* g_2 (\tuL^{*}V\w{CKM})_j + V_{i2}^* (\tuR^{*}\yu V\w{CKM})_j \right) \overline{\charM[i]}\PL d_j
+   + U_{i2} (\tuL^*V\w{CKM}\yd)_j          \overline{\charM[i]}\PR d_j
+\\&+ U_{i2}^* (\yd V\w{CKM}^\dagger \tuL)_j    \overline{d_j}\PL\charM[i]
+   +\left(- V_{i1} g_2 (V\w{CKM}^\dagger\tuL)_j + V_{i2} (V\w{CKM}^\dagger \yu \tuR)_j \right) \overline{d_j}\PR\charM[i]
+\\&+\left(- U_{i1}^* g_2 \teL^{*}             + U_{i2}^* \ye[i]\teR[i]^{*}        \right) \overline{\charP[i]}\PL \nu
+   +\left(- U_{i1} g_2 \teL             + U_{i2} \ye[i]\teR[i]        \right) \overline{\nu}\PR \charP[i]
+\\&+ \overline{\charM[i]}\left(- V_{i1}^* g_2 \tnuL^{*}\PL+ U_{i2} \ye[j]\tnuL[j]^*\PR    \right)  e_j
+   + \overline{e_j}\left(U_{i2}^* \ye[j]\tnuL[j]    \PL - V_{i1} g_2 \tnuL \PR\right)\charM[i]
++\text{(RPV part)}.
+%%%%%%%%%%
 \end{split}
 \end{equation}
-
+Note that squarks and sleptons are in super-CKM basis and not in mass eigenstates.
 
 
 
@@ -945,5 +1322,6 @@ In particular, the chargino/neutralino mass terms in RPC case are given by
 \end{align}
 
 \end{document}
+
 
 
