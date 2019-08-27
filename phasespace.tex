@@ -45,52 +45,42 @@ with $\sqrt s = M_0$ or $E\w{CM}$, $\theta$ is the angle between initial and fin
  p_1\cdot p_2 &= \frac{s-(m_1^2+m_2^2)}{2}.
 \end{align*}
 \paragraph{Mandelstam variables} For $(k_1,k_2)\to(p_3,p_4)$ collision,
-\begin{align*}
+\begin{alignat*}{3}
  &s = (k_1+k_2)^2 = (p_3+p_4)^2, \qquad
- t = (p_3-k_1)^2 = (p_4-k_2)^2, \qquad
- u = (p_3-k_2)^2 = (p_4-k_1)^2;\\
- & s+t+u=m_1^2+m_2^2+m_3^2+m_4^2.
-\end{align*}
+ &&t = (p_3-k_1)^2 = (p_4-k_2)^2, \qquad
+ &&u = (p_3-k_2)^2 = (p_4-k_1)^2;\\
+ & k_1\cdot k_2 = (s-m_1^2-m_2^2)/2,
+ &&k_1\cdot p_3 = (m_3^2 + m_1^2 - t)/2,
+ && s+t+u=m_1^2+m_2^2+m_3^2+m_4^2,\\
+ & p_3\cdot p_4 = (s-m_3^2-m_4^2)/2,
+ &&k_1\cdot p_4 = (m_4^2 + m_1^2 - u)/2;
+ \\&(k_1-k_2)^2 =  2(m_1^2+m_2^2)-s,
+  &&(p_3-p_4)^2 = 2(m_3^2 + m_4^2) - s.
+\end{alignat*}
 
-
-\begin{wrapfigure}[2]{r}{12em}\vspace{-3em}
+\begin{wrapfigure}[2]{r}{12em}
  \includegraphics[width=\linewidth,page=1]{figs/collision.pdf}
 \end{wrapfigure}
 
 \noindent
 If the collision is with the ``same mass'' $(m_A,m_A)\to (m_B,m_B)$,
-\begin{align*}
-t &= m_A^2+m_B^2 - s/2+2kp\cos\theta,
-\qquad
-(k_1-k_2)^2=4m_A^2-s,
-\\
+\begin{alignat*}{2}
+t &= m_A^2+m_B^2 - s/2+2kp\cos\theta,\qquad
+&k&={\sqrt{s/4-m_A^2}},\\
 u &= m_A^2+m_B^2 - s/2-2kp\cos\theta,
-\qquad
-(p_3-p_4)^2=4m_B^2-s,
-\\
-k&=\frac{\sqrt{s-4m_A^2}}{2},
-\qquad
-k_1\cdot k_2 = \frac{s}{2}-m_A^2,
-\qquad
-k_1\cdot p_3=k_2\cdot p_4=\frac{m_A^2+m_B^2-t}{2},
-\\
-p&=\frac{\sqrt{s-4m_B^2}}{2},
-\qquad
-p_3\cdot p_4 = \frac{s}{2}-m_B^2,
-\qquad
-k_1\cdot p_4=k_2\cdot p_3=\frac{m_A^2+m_B^2-u}{2}.
-\end{align*}
+&p&={\sqrt{s/4-m_B^2}}.
+\end{alignat*}
 
-\begin{wrapfigure}[2]{r}{12em}\vspace{-1em}
+\begin{wrapfigure}[2]{r}{12em}
  \includegraphics[width=\linewidth,page=2]{figs/collision.pdf}
 \end{wrapfigure}
 
 \noindent
 Instead, if the collision is ``initially massless'' $(0,0)\to (m_3,m_4)$,
 \begin{align*}
- t &= (m_3^2+m_4^2-s)/2+p\sqrt{s}\cos\theta,\\
- u &= (m_3^2+m_4^2-s)/2-p\sqrt{s}\cos\theta,\\
- p &= (\sqrt{s}/2)\mathop{\lambda^{1/2}}\left(1;m_3^2/s,{m_4^2}/{s}\right).
+ t &= (m_3^2+m_4^2-s)/2+p\sqrt{s}\cos\theta,\qquad
+ p = (\sqrt{s}/2)\mathop{\lambda^{1/2}}\left(1;m_3^2/s,{m_4^2}/{s}\right),\\
+ u &= (m_3^2+m_4^2-s)/2-p\sqrt{s}\cos\theta.\\
 \end{align*}
 
 \newpage
