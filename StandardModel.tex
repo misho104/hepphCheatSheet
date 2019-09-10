@@ -11,7 +11,40 @@
 \subsection{Particle content and convention}
 \subsection{Lagrangian}
 \subsection{Higgs mechanism}
+
+A general expression for composing a Dirac fermion from $\psi\w L(T\w{3L}, Y\w L)$ and $\psi\w R(T\w{3R}, Y\w R)$ is given by
+\begin{align}
+& \left(
+  {g_2} \slashedW[_3] T\w{3L}
+ +{g_Y} \slashed{B} Y\w{L}\right)\PL
+ + \left(
+  {g_2} \slashedW[_3] T\w{3R}
+ +{g_Y} \slashed{B} Y\w{R}\right)\PR\\
+&=\Bigl[
+  \left(|e|\slashed A+g_Z\cw^2\slashed Z\right) T\w{3L}
+ +\left(|e|\slashed A-g_Z\sw^2\slashed Z\right) Y\w {L}\Bigr]\PL
+ + \text{(right)}\\
+\begin{split}
+&=
+   \frac{T\w{3L}+T\w{3R}+Y\w L+Y\w R}{2}
+  |e|\slashed A
+  +\frac{T\w{3L}\cw^2 - Y\w {L}\sw^2 + T\w{3R}\cw^2 - Y\w {R}\sw^2}{2}
+  g_Z\slashed Z\\
+&\qquad
+ +\frac{- T\w{3L} - Y\w {L} + T\w{3R} + Y\w {R}}2
+ |e|\slashed A\gamma_5
+ +\frac{ -\cw^2 T\w{3L} +\sw^2 Y\w {L} +\cw^2 T\w{3R} -\sw^2 Y\w {R}}{2}
+ g_Z \slashed Z\gamma_5.
+\end{split}
+\end{align}
+In the SM, $T\w{3L}+Y\w L=Y\w{R}=:Q$ and $T\w{3R}=0$ lead to
+\begin{equation}
+   Q |e|\slashed A
+  +g_Z\slashed Z \left(T\w{3L}\PL - Q\sw^2\right).
+\end{equation}
 \subsection{Lagrangian in mass eigenstates}
+
+\clearpage
 
 \subsection{CKM matrix and Yukawa convention}\label{sec:SM-CKM}
 Our convention is, with  $Y=UY\wdiag V^\dagger$,

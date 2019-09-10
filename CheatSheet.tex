@@ -1,4 +1,4 @@
-%%% Time-Stamp: <2019-08-22 15:28:13>
+%%% Time-Stamp: <2019-09-10 17:12:48>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \pdfoutput=1
 
@@ -202,6 +202,27 @@
 
 
 \newcommand\CONV[1]{{\color{magenta}#1}}  % different-convention marker
+
+% fine tuning of slashed
+\makeatletter
+\def\sla@@#1#2#3#4#5#6{{%
+  \setbox\z@\hbox{$\m@th#5#6$}%
+  \setbox\tw@\hbox{$\m@th#5#1$}%
+  \dimen4\wd\ifdim\wd\z@<\wd\tw@\tw@\else\z@\fi
+  \dimen@\ht\tw@
+  \advance\dimen@-\dp\tw@
+  \advance\dimen@-\ht\z@
+  \advance\dimen@\dp\z@
+  \divide\dimen@\tw@
+  \advance\dimen@-#3\ht\tw@
+  \advance\dimen@-#3\dp\tw@
+  \dimen@ii#2\wd\z@
+  \rlap{\raise-\dimen@\hbox to\dimen4{\hss\kern\dimen@ii\box\tw@\kern-\dimen@ii\hss}}%
+  \hbox{$\m@th#5#6#4$}}}
+\def\slashedW{\@ifnextchar[\slashedW@{\mathpalette{\sla@{/}{0}{0}}W}}
+\def\slashedW@[#1]{\mathpalette{\sla@@{/}{0}{0}{#1}}W}
+\makeatother
+
 
 \title{HEP Cheat Sheet}
 \date{\today}
