@@ -9,4 +9,69 @@
  (\overline{\psi_1}\psi_2)^* = (\psi_2)^\dagger(\overline\psi_1)^\dagger = \overline{\psi_2}\psi_1.
 \end{equation}
 
+
+\subsection{Convention \TODO{WIP!}}
+First we prepare a vector $x^\mu$ and a symmetric matrix $\eta^{\mu\nu}$, which we call ``contravariant vector'' $x^\mu$ and the metric $\eta^{\mu\nu}$.
+Then we perform a Lorentz transformation on $x^\mu$ to obtain $(x')^\mu$, with which we can define a matrix $\Lambda(\vc va,\vc \theta)^{\mu}_{\nu}$ through 
+$\Lambda{}^\mu{}_\nu x^{\nu}=(x')^{\mu}$.
+
+We then consider $\Lambda$s for infinitesimal transformations and define $\vc S$, $\vc J$, and $\vc K$ by
+\begin{align}
+ \Lambda^\mu{}_\nu
+  \simeq \delta^\mu_\nu-\ii(\vc\theta\cdot\vc J^\mu{}_\nu+\vc\beta\cdot\vc K^\mu{}_\nu)
+  \simeq \delta^\mu_\nu-\frac{\ii}{2}  \left[\Lambda^{\alpha\beta}S_{\alpha\beta}\right]^\mu{}_\nu
+\end{align}
+
+Imposing ``Lorentz condition'' (\TODO{what?}), we get the expression for $S=\ii(\delta\cdots)$ and $[J^i,J^j]=\cdots$; further, we get $\Lambda^{\mu}_{\nu}=\exp(-\ii\vc\theta\cdot\vc J -\ii \vc\xi\cdot\vc K)$, $\vc\theta=(\theta_{23},\theta_{31}, \theta_{12})$, $\vc\xi = \hat{\vc v}\tanh^{-1}\|\vc v\|=(\theta^{10},\theta^{20},\theta^{30})$; $J=(S_{23},S_{31},S_{12})$, $K=(S^{01}, S^{02}, S^{03})$....?
+
+
+
+
+Lorentz transformation with a rotation $\theta$ around an axis $\hat{\vc\theta}$ and a boost $\vc v$ are given by
+\begin{equation}
+ \Lambda = \exp\left[-\ii(\vc\theta\cdot\vc J+\vc \beta\cdot \vc K)\right];
+\qquad
+\vc\theta:=\theta\hat{\vc\theta}, \quad \vc\beta := \hat{\vc v}\tanh^{-1}\|\vc v\|,
+\end{equation}
+\TODO{check!}
+
+
+Lorentz transformation (infinitesimal):
+$\Lambda=\pmat{
+  0 &   & \vc{\beta}^\TT & \\
+    & 0 &-\theta_z & \theta_y\\
+  \vc{\beta} & \theta_z & 0 & -\theta_x \\
+   & -\theta_y & \theta_x & 0
+}$
+
+$[J_{\mu\nu}]^{\alpha}{}_{\beta}=
+ \ii(\delta^\alpha_\mu\eta_{\nu\beta}-\delta^\alpha_\nu\eta_{\mu\beta})
+$
+
+\vspace{2em}
+
+Lorentz tensor $
+M^{\mu_1\mu_2\cdots\mu_n}\propto
+\bsigma^{\mu_1\dbeta_1\alpha_1}\cdots M_{\alpha_1\cdots\dbeta_1\cdots}
+$
+
+Especially
+$V^\mu =: \frac12 \bsigma^{\mu\dbeta\alpha}V_{\alpha\dbeta}$,
+$V_{\alpha\dbeta}=V^\mu\sigma_{\mu\alpha\dbeta}$; hermite $V_{\alpha\dbeta}$ $\Leftrightarrow$ $real V^\mu$.
+
+\begin{align}
+ &(V^\TT)_{\alpha\dbeta} = V_{\beta\dalpha},\text{\TODO{(correct? possibly wrong dot-positions?)}}\\
+ &(V^*)_{\dalpha\beta}:= (V_{\alpha\dbeta})^*,\\
+ &(V^\dagger)_{\alpha\dbeta} := (V_{\beta\dalpha})^* = (V^*)_{\dbeta\alpha}
+\end{align}
+\TODO{anyway not very sure about the reasoning; though my old note says like this...}
+
+
+In general, metric is symmetric.
+
+\begin{equation}
+ (\Lambda^{-1})^\mu{}_\nu = \eta_{\nu\rho}\Lambda^{\rho}{}_\sigma(\eta^{-1})^{\sigma\mu}=:\Lambda_\nu{}^\mu
+\end{equation}
+
+
 \end{document}
