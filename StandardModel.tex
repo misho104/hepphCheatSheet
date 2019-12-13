@@ -186,6 +186,89 @@ with which
 }.
 \end{equation}
 
+\subsection{General Higgs doublet and Nambu--Goldstone bosons}
+In linear parameterization,
+\begin{align}
+&H=\frac1{\sqrt2}\pmat{\ii\sqrt2\phi^+ \\ v+h+\ii\phi_3},
+\qquad
+ D_\mu H =
+\pmat{
+ \ii\partial_\mu\phi^+
+ -\frac{\ii g_2}{2}(v+h+\ii\phi_3)W^+_\mu
+ +\left(|e|A_\mu+\frac{\cw^2-\sw^2}{2}g_ZZ_\mu\right)\phi^+
+\\
+ \partial_\mu(h+\ii\phi_3)/\sqrt2
++ \frac{\ii g_Z}{2} Z_\mu(v+h+\ii\phi_3)/\sqrt2
++ g_2 W^-_\mu\phi^+/\sqrt2
+};
+\\
+\begin{split}
+ &|D_\mu H|^2=
+ \frac{(\partial_\mu h)^2 + (\partial_\mu \phi_3)^2}{2} + \partial_\mu \phi^+\partial^\mu\phi^-
+ +
+ \frac{(v+h)^2}{8}(2g_2^2 W^{+\mu}W^-_\mu+g_Z^2Z^\mu Z_\mu)
+ \\&\qquad
+ + \frac{\partial^\mu h}{2}\left[g_2 W^+_\mu\phi^-+g_2W^-_\mu\phi^+-g_Z Z_\mu\phi_3\right]
+ + \frac{\partial^\mu\phi_3}{2}
+         \left[g_Z(v+h)Z_\mu + \ii g_2(W^+_\mu\phi^--W^-_\mu\phi^+)\right]
+ \\&\qquad
++ \left\{
+ \frac{\partial^\mu\phi^+}{2}\left[
+ -g_2(v+h-\ii\phi_3)W^-_\mu + (2|e|A_\mu+(\cw^2-\sw^2)g_Z Z_\mu)\ii\phi^-
+ \right]
+ +\text{H.c.}\right\}
+ \\&\qquad
+ +\frac{\ii g_2(v+h)}{2}(|e|A^\mu-g_Z\sw^2 Z^\mu)(W^-_\mu\phi^+ - W^+_\mu\phi^-)
+ +  \frac{g_2\phi_3}{2}(|e|A^\mu-g_Z\sw^2 Z^\mu)(W^-_\mu\phi^+ + W^+_\mu\phi^-)
+ \\&\qquad
+ +\frac{\phi_3^2}{8}\left(2g_2^2 W^{+\mu}W^-_\mu+g_Z^2Z^\mu Z_\mu\right)
+ +\frac{\phi^+\phi^-}{4}
+ \left[
+ 2g_2^2 W^{+\mu}W^-_\mu + \left(2|e|A_\mu+g_Z(\cw^2-\sw^2)Z_\mu\right)^2
+ \right];
+\end{split}
+\\&V=\lambda|H|^4-\mu^2|H|^2=
+\frac{\lambda}{4}h^4+\lambda v h^3+\frac{2\lambda v^2}{2}h^2-\frac{\lambda}{4}v^4
++\frac{\lambda}{4}(2\phi^+\phi^-+\phi_3^2)^2 + \frac{\lambda}{2}(h^2+2vh)(2\phi^+\phi^-+\phi_3^2),
+\end{align}
+where $v=\mu/\sqrt\lambda\sim246\GeV$, $\lambda\sim0.13$, and $\mu\sim89\GeV$.
+In exponential parameterization,
+\begin{align}
+&H=\frac1{\sqrt2}\exp\left(\frac{\ii}{v}\sigma_i\varphi_i\right)\pmat{0\\v+h},
+\\&
+ D_\mu H
+= \frac1{\sqrt2}\ee^{\ii\sigma_i\varphi_i/v}
+\left[\ii\sigma_i\partial_\mu\varphi_i\pmat{0\\1+h/v} + \pmat{0\\\partial_\mu h}\right]
++\frac1{\sqrt2}\frac{-\ii}{2}(g_2\sigma_i W_{i\mu}+g_Y B_\mu)
+\ee^{\ii\sigma_i\varphi_i/v}\pmat{0\\v+h}
+\\&\phantom{D_\mu H}
+= \frac1{\sqrt2}\ee^{\ii\sigma_i\varphi_i/v}
+\left[
+\pmat{0\\\partial_\mu h}
++
+\ii
+\left(
+\sigma_i\partial_\mu\varphi_i
+-\frac{g_2v}{2}
+\ee^{-\ii\sigma_j\varphi_j/v}
+\sigma_i
+\ee^{\ii\sigma_k\varphi_k/v}
+W_{i\mu}-
+\frac{g_Y v}{2}B_\mu
+\right)
+\pmat{0\\1+h/v}\right],
+\\&V=\lambda|H|^4-\mu^2|H|^2=
+\frac{\lambda}{4}h^4+\lambda v h^3+\frac{2\lambda v^2}{2}h^2-\frac{\lambda}{4}v^4.
+\end{align}
+These expressions have gauge degeneracy (i.e., without gauge-fixing terms and  ghost terms) and thus not ready for calculations.
+If we choose the unitarity gauge, $\phi_i(x)=0$,
+\begin{equation}
+\mathcal L_H= |D_\mu H|^2-V(H)=\frac12(\partial_\mu h)^2-\frac{2\lambda v^2}{2}h^2
+-\frac{\lambda}{4}h^4-\lambda v h^3
+ + \frac{(v+h)^2}{8}(2g_2^2 W^{+\mu}W^-_\mu+g_Z^2Z^\mu Z_\mu)
++\frac{\lambda}{4}v^4.
+\end{equation}
+
 \subsection{Values of SM parameters}
 
 \end{document}
