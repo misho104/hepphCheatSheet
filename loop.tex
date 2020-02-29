@@ -1,0 +1,54 @@
+\documentclass[CheatSheet]{subfiles}
+\begin{document}
+
+\summarystyle
+\section{Loop calculation}
+Notation follows \texttt{LoopTools}~\cite{looptools}; capital $M$s and $P$s respectively denote squared masses and momenta.
+\paragraph{Passarino--Veltman scalar integrals}
+\begin{align}
+& A_0(M)/M = \Delta_\epsilon+\log\mu^2+1-\log M,\\
+& B_0(P, M_0, M_1) = \Delta_\epsilon + \log \mu^2 - \int_0^1\dd x\,\log\left[
+    -x(1-x)P+x M_1+(1-x)M_0
+\right]\\
+& C_0(P_1, P_2, P_3, M_1, M_2, M_3)
+= \int_0^1 \dd x \int_0^1\dd y\,
+  \frac{x}{Q_1}\\
+&\phantom{C_0(P_1, P_2, P_3, M_1, M_2, M_3)}
+= \int_0^1 \dd x \int_0^x\dd y\,
+  \frac{1}{Q_2};
+\\
+&\quad Q_1=x(1-x)(1-y)P_2 + x^2 y(1-y)P_3 + x(1-x)y P_1 - x y M_1 - (1-x) M_2 - x(1-y) M_3,\notag\\
+&\quad Q_2=-P_2x^2-P_1y^2+(P_1+P_2-P_3)x y + (P_2-M_2+M_3)x + (M_2-M_1+P_3-P_2)y-M_3.\notag
+\end{align}
+Kinematical invariance:
+\begin{equation}
+\begin{split}
+ B_0(P, M_0, M_1) &= B_0(P, M_1, M_0),
+ &
+ C_0(P_1,P_2,P_3,M_1,M_2,M_3) &= C_0(P_2,P_3,P_1,M_2,M_3,M_1)
+                        \\&& &= C_0(P_1,P_3,P_2,M_2,M_1,M_3)
+\end{split}
+\end{equation}
+
+
+\clearpage
+\detailstyle
+\changefontsizes{9pt}
+\subsection{Passarino--Veltman scalar integrals}
+See \texttt{calculator/loop/PaVeAnalytic.wl} for validation.
+We use the notation~\cite{romaoAQFT,looptools}
+\begin{align}
+  \Delta_\epsilon &= \frac{2}{4-d}-\gamma+\log4\pi \equiv \texttt{GetDelta[]}\quad\text{($=0$ in $\overline{\text{MS}}$)},
+&
+  \mu^2&\equiv\texttt{GetMudim[]},
+\end{align}
+where $\mu$ is introduced due to the different mass dimension of vector and spinor fields in $d$-dimensional theory:
+\begin{align}
+ &[A_\mu]=1-\frac{4-d}{2},\quad
+  [\psi]=\frac32 - \frac{4-d}{2},\quad
+  [\text{gauge couplings}] = \frac{4-d}{2} \quad \Rightarrow\quad e=  (e)_{\text{4-dim.}}\mu^{(4-d)/2}.
+\end{align}
+The analytic form of scalar integrals are given in Refs.~\cite{Passarino:1978jh,CabralRosetti:1998sp,romaoAQFT}.
+
+\bibliography{CheatSheet}
+\end{document}
