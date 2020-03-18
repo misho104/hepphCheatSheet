@@ -1,0 +1,24 @@
+\documentclass[CheatSheet]{subfiles}
+\newcommand{\ddP}[2][3]{\frac{\dd^{#1}\vc#2}{(2\pi)^{#1}}}
+
+\begin{document}
+
+\section{Cosmology}
+\detailstyle
+\subsection{Cosmology formulae}
+Assuming that $\sigma$ depends only on $s=(p_A+p_B)^2$, \TODO{(or always true?)}
+\begin{align}
+& \int\ddP{p_A}\,\,\ddP{p_B}\ee^{-E_A/T}\ee^{-E_B/T}\sigma(s)v_{\text{M\o l}}
+\\&=4\int\dd\Pi_A\dd\Pi_B\, \ee^{-(E_A+E_B)/T}\sigma(s)\sqrt{(p_A\cdot p_B)^2-m_A^2m_B^2}
+\\&=
+\frac{1}{32\pi^4}
+\int_{(m_A+m_B)^2}^\infty\dd s
+\int_{\sqrt{s}}^\infty\dd E_+\left[\frac{2\sqrt{E_+^2-s}}{s}\mathop{\lambda^{1/2}}(s,m_A^2,m_B^2)\right]
+\ee^{-E_+/T}\sigma(s)\left[\frac12\mathop{\lambda^{1/2}}(s,m_A^2,m_B^2)\right]
+\\&=
+\frac{T}{32\pi^4}
+\int_{(m_A+m_B)^2}^\infty\dd s\,s^{3/2} \mathop{K_1}\left(\frac{\sqrt{s}}{T}\right)
+\mathop{\lambda}\left(1,\frac{m_A^2}s,\frac{m_B^2}s\right)\sigma(s).
+\end{align}
+
+\end{document}
