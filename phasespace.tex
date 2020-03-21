@@ -83,6 +83,27 @@ Instead, if the collision is ``initially massless'' $(0,0)\to (m_3,m_4)$,
  u &= (m_3^2+m_4^2-s)/2-p\sqrt{s}\cos\theta.\\
 \end{align*}
 
+\paragraph{Three-body final state} Mandelstan variables can be defined, for $P\to(p_1,p_2,p_3)$, as
+\begin{equation*}
+s_{ij}=(p_i+p_j)^2;\quad t_{0i}=(P-p_i)^2=s_{jk};\quad s_{12}+s_{23}+s_{31}=P^2+p_1^2+p_2^2+p_3^2.
+\end{equation*}
+For spherically-symmetric processes, the phase-space integral is reduced to, at the center-of-mass frame,
+\begin{align}
+\int\overline{\dd\Pi^3}_{\text{sph.\ sym.}}&(\sqrt{s}, \vc 0)
+=\frac{1}{128\pi^3}\frac{1}{s}
+\int_{(m_2+m_3)^2}^{(\sqrt{s}-m_1)^2}\dd s_{23}\int\dd s_{13};
+\\ (s_{13})^{\text{max}}_{\text{min}} &=
+\frac{(s+m_3^2-m_1^2-m_2^2)^2}{4s_{23}}
+-\frac{1}{4s_{23}}
+\left[\lambda^{1/2}(s,m_1^2,s_{23})\mp\lambda^{1/2}(s_{23},m_2^2,m_3^2)\right]^2
+\\&=(E_1^*+E_3^*)^2-\left(\sqrt{E_1^{*2}-m_1^2}\mp\sqrt{E_3^{*2}-m_3^2}\right)^2,
+\quad
+\end{align}
+where 
+$E_1^*=\frac{s-s_{23}-m_1^2}{2\sqrt{s_{23}}}$, and
+$E_3^*=\frac{s_{23}-m_2^2+m_3^2}{2\sqrt{s_{23}}}$.
+
+
 \newpage
 
 \detailstyle
@@ -165,11 +186,17 @@ As a general representation in any frame,
 \overline{\dd\Pi^2}
 =\frac{\dd p_1\dd\Omega\,p_1^2}{16\pi^2}\frac{\delta(E_0-\sqrt{m_1^2+p_1^2}-\sqrt{m_2^2+\|\vc P_0-\vc p_1\|^2})}{E_1E_2}
 =\frac{1}{8\pi}\dd\cos\theta_{1}\frac{p_1^2}{E_0p_1-P_0E_1\cos\theta_1},
+\label{eq:twobodypsgeneral}
 \end{equation}
 where the momentum $p_1$ is given by
 \begin{equation}
-p_1=\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
- + E_0\sqrt{\mathop{\lambda}(E_0^2,m_1^2,m_2^2)+P_0^4-2P_0^2(E_0^2+m_1^2-2m_1^2\cos^2\theta_1-m_2^2)}
+p_1
+%=\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
+% + E_0\sqrt{\mathop{\lambda}(E_0^2,m_1^2,m_2^2)
+% +P_0^4-2P_0^2(E_0^2+m_1^2-2m_1^2\cos^2\theta_1-m_2^2)}
+% }{2(E_0^2-P_0^2\cos^2\theta_1)}.
+=\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
+ + E_0\sqrt{\mathop{\lambda}(E_0^2-P_0^2,m_1^2,m_2^2)-4m_1^2 P_0^2 \sin^2\theta_1}
 }{2(E_0^2-P_0^2\cos^2\theta_1)}.
 \end{equation}
 CM frame result is recovered by setting $E_0=\sqrt{s}$ and $P_0=0$.
@@ -219,5 +246,103 @@ where $v\w{rel}$ is the actual relative velocity
 (Note that $p_A\cdot p_B/E_AE_B=1$ if $\vc p_A=0$ or $\vc p_B=0$. Also, Each of $v\w{rel}$, $VT$, and $E_AE_Bv_{\text{M\o l}}$ is Lorentz invariant.)
 
 
+\subsection{Three body phase space}
+The phase-space reduction utilizes the identity~\cite{Hitoshi233B}
+\begin{align}
+ 1
+&= \int\frac{\dd^4 p_{ij}}{(2\pi)^4}(2\pi)^4\diracdelta[4](p_{ij}-p_i-p_j)\Theta(p_{ij}^0)
+\\
+&= \int\frac{\dd^4 p_{ij}}{(2\pi)^4}
+\left[\int\frac{\dd s}{2\pi}(2\pi)\diracdelta(s-p_{ij}^2)\right]
+(2\pi)^4\diracdelta[4](p_{ij}-p_i-p_j)\Theta(p_{ij}^0)
+\\
+&= \int\ddP{p_{ij}}
+\frac{\dd s}{2\pi}\frac{1}{2p_{ij}^0}
+(2\pi)^4\diracdelta[4](p_{ij}-p_i-p_j)\Big|_{p_{ij}^0=\sqrt{s+\|\vc p_{ij}\|^2}}.
+\end{align}
+
+For three-body phase space,
+\begin{align}
+\begin{split}
+  \overline{\dd\Pi^3}
+ &= \int\dd\Pi_1
+ \frac{\dd^4 p_2\dd^4 p_3}{(2\pi)^8}
+ (2\pi)\diracdelta(p_2^2-m_2^2)
+ (2\pi)\diracdelta(p_3^2-m_3^2)
+ \Theta(p_2^0)\Theta(p_3^0)
+ (2\pi)^4\diracdelta[4]\left(P-p_1-p_2-p_3\right)
+ \\&\qquad\times
+\ddP{p_{23}}
+\frac{\dd s_{23}}{2\pi}\frac{1}{2p_{23}^0}
+(2\pi)^4\diracdelta[4](p_{23}-p_2-p_3)\Big|_{p_{23}^0=\sqrt{s_{23}+\|\vc p_{23}\|^2}}
+\end{split}
+\\
+\begin{split}
+ &= \int
+\frac{\dd s_{23}}{2\pi}
+\int
+\dd\Pi_1
+\ddP{p_{23}}
+\frac{1}{2p_{23}^0}
+ (2\pi)^4\diracdelta[4](P-p_1-p_{23})
+\Big|_{p_{23}^0=\sqrt{s_{23}+\|\vc p_{23}\|^2}}
+ \\&\qquad\times
+ \frac{\dd^4 p_2\dd^4 p_3}{(2\pi)^8}
+ (2\pi)\diracdelta(p_2^2-m_2^2)
+ (2\pi)\diracdelta(p_3^2-m_3^2)
+ \Theta(p_2^0)\Theta(p_3^0)
+(2\pi)^4\diracdelta[4](p_{23}-p_2-p_3).
+\end{split}
+\\ &= \int
+\frac{\dd s_{23}}{2\pi}
+\int
+\dd\Pi_1
+\ddP{p_{23}}
+\frac{1}{2p_{23}^0}
+ (2\pi)^4\diracdelta[4](P-p_1-p_{23})
+\Big|_{p_{23}^0=\sqrt{s_{23}+\|\vc p_{23}\|^2}}
+\times \overline{\dd\Pi^2}(p^0_{23}, \vc p_{23})
+\end{align}
+and $\overline{\dd\Pi^2}(p^0_{23}, \vc p_{23})$ is given by \cref{eq:twobodypsgeneral}; explicitly,
+\begin{align}
+& \overline{\dd\Pi^2}(p^0_{23}, \vc p_{23}) = 
+\frac{\dd\cos\theta_{2}}{8\pi}
+\frac{p_{2}^2}{p^0_{23}p_2 - \|\vc p_{23}\|\sqrt{p_2^2+m_2^2}\cos\theta_2};
+\\
+&
+p_2=\frac{(s_{23}+m_2^2-m_3^2)\|\vc p_{23}\|\cos\theta_2
+ + p_{23}^0\sqrt{\mathop{\lambda}(s_{23},m_2^2,m_3^2)-4m_2^2 \|\vc p_{23}\|^2 \sin^2\theta_2}
+}{2(s_{23}+\|\vc p_{23}\|^2\sin^2\theta_2)},
+\end{align}
+where $\theta_2$ is the angle between $\vc p_{23}$ and $\vc p_2$ (in the lab frame).
+
+
+If the matrix element to integrate is spherically symmetric, so as $\overline{\dd\Pi^2}(p^0_{23}, \vc p_{23})|\mathcal M|^2$, i.e., it is independent of the angle of $\vc p_{23}$. Then one can simply evaluate  $\int\dd^3\vc p_{23}$, which leads to, in the center-of-mass frame,
+\begin{equation}
+\overline{\dd\Pi^3}_{\text{sph.\ sym.}}(\sqrt{s}, \vc 0)
+=
+\frac{\dd s_{23}\dd\cos\theta_{2}}{64\pi^3}
+\frac{p_1}{\sqrt s}
+\frac{p_{2}^2}{p_2\sqrt{s_{23}+p_1^2} - p_1\sqrt{p_2^2+m_2^2}\cos\theta_2}\Big|_{
+ p_1^2=\lambda(s,m_1^2,s_{23})/4s
+}
+= \frac{s}{128\pi^3}\dd x_1\dd x_2,
+\end{equation}
+where we defined $x_i:={2E_i}/{\sqrt s}$. Noting that $s_{23}=s+m_1^2-2E_1\sqrt{s}=s(1-x_1)+m_1^2$ etc., 
+\begin{equation}
+ \overline{\dd\Pi^3}_{\text{sph.\ sym.}}(\sqrt{s}, \vc 0)
+=
+\frac{1}{128\pi^3}\frac{1}{s}
+\int_{(m_2+m_3)^2}^{(\sqrt{s}-m_1)^2}\dd s_{23}\int\dd s_{13};
+\end{equation}
+\begin{equation}
+ (s_{13})^{\text{max}}_{\text{min}} =
+\frac{(s+m_3^2-m_1^2-m_2^2)^2}{4s_{23}}
+-\frac{1}{4s_{23}}
+\left[\lambda^{1/2}(s,m_1^2,s_{23})\mp\lambda^{1/2}(s_{23},m_2^2,m_3^2)\right]^2.
+\end{equation}
+This is equal to the PDG-Eq.~(47.23)\cite{PDG2018}.
+
+\bibliography{CheatSheet}
 
 \end{document}
