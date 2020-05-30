@@ -28,10 +28,8 @@ Properties:
 &\qquad
  \ee^{YXY^{-1}} &= Y\ee^X Y^{-1},
 \end{alignat*}
-\begin{alignat*}{3}
+\begin{alignat*}{2}
  \det \exp X &= \exp\Tr X,
-&\qquad
- \frac{\dd}{\dd t}\ee^{tX} &= X\ee^{t X} = \ee^{tX} X
 &\qquad
  \ee^{(\alpha+\beta)X} &= \ee^{\alpha X}\ee^{\beta X} \text{~for $\alpha, \beta\in \mathbb C$};
 \end{alignat*}
@@ -71,15 +69,36 @@ g(\ee^y)=\sum_{n=0}^{\infty}\frac{B_ny^n}{n!}
 \Bigl([Y,\Bigr)^{n_k}]\cdots]
 }{m_1!n_1!\cdots m_k!n_k!}
 \end{equation}
-with $[X]:=X$ understood.
+\hfill with $[X]$ being $X$.
+\\
+Derivative:
+\begin{alignat}{1}
+ &\frac{\dd}{\dd t}\ee^{tX} = X\ee^{t X} = \ee^{tX} X\\
+ &\ee^{-X(t)}\left(\frac{\dd}{\dd t}\ee^{X(t)}\right) =
+    \frac{I-\ee^{-\ad_X}}{\ad_X}\left(\frac{\dd X}{\dd t}\right)
+  = X' + \frac{[-X,X']}{2!} + \frac{[-X,[-X,X']]}{3!} + \cdots
+\\
+ &\left(\frac{\dd}{\dd t}\ee^{X(t)}\right)\ee^{-X(t)}
+= X' + \frac{[X,X']}{2!} + \frac{[X,[X,X']]}{3!} + \cdots
+\end{alignat}
+\hfill where $X'=\dd X/\dd t$ and $\ad_X(Y)=[X,Y]$ is the adjoint action of a Lie algebra. Thus, explicitly,
+\begin{alignat}{1}
+\frac{\dd}{\dd t}\ee^{aX(t)}
+  = \ee^{aX}\left\{\sum_{n=0}^\infty\frac{a^{n+1}}{(n+1)!}\Bigl([-X,\Bigr)^n X']\right\}
+  = \left\{\sum_{n=0}^\infty\frac{a^{n+1}}{(n+1)!}\Bigl([X,\Bigr)^n X']\right\}\ee^{aX}
+\end{alignat}
 
-If matrices $t^a$ satisfies $[t^a,t^b]=\ii f^{abc} t^c$ with totally-antisymmetric $f^{abc}\in\mathbb R$,
+\vspace{1em}
+
+\noindent
+Component:\quad If matrices $t^a$ satisfies $[t^a,t^b]=\ii f^{abc} t^c$ with totally-antisymmetric $f^{abc}\in\mathbb R$,
 \begin{equation}
   \left[\ee^{\theta^at^a} t_b \ee^{-\theta^ct^c}\right]_{ij}
 =  \left[\ee^{\theta^a[t^a,}t_b\right]_{ij}
 = \left[\ee^{\ii \theta^af^{a}}\right]^{bc} t^c_{ij}
 \end{equation}
 holds for $\theta^a\in\mathbb C$, where $[f^a]_{bc}=f^{abc}$. \TODO{needs verification, generalization/restriction, and a nice proof or reference.}
+
 
 \subsection{General unitary matrix}
 \begin{equation}
@@ -106,9 +125,6 @@ holds for $\theta^a\in\mathbb C$, where $[f^a]_{bc}=f^{abc}$. \TODO{needs verifi
   \si{12}\si{23} - \co{12} \co{23} \si{13}\ee^{\ii\delta} & -\co{12}\si{23}-\si{12}\co{23}\si{13}\ee^{\ii\delta} & \co{23} \co{13}}
 \pmat{\ee^{\ii c}&&\\&\ee^{\ii d}&\\&&\ee^{\ii e}}
 \end{align}
-
-%
-
-(e.g., hep-ph/9708216)
+(see, e.g., Ref.~\cite{Rasin:1997pn}).
 
 \end{document}
