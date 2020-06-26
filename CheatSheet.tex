@@ -1,4 +1,4 @@
-%%% Time-Stamp: <2020-05-30 13:49:38>
+%%% Time-Stamp: <2020-06-26 16:41:18>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \pdfoutput=1
 
@@ -31,6 +31,7 @@
 \DeclareMathOperator{\sign}{\mathrm{sign}}
 \DeclareMathOperator{\Tr}{\mathrm{Tr}}
 \DeclareMathOperator{\diag}{\mathrm{diag}}
+\DeclareMathOperator{\Br}{\mathrm{Br}}
 \renewcommand{\Re}{\mathop{\mathrm{Re}}}
 \renewcommand{\Im}{\mathop{\mathrm{Im}}}
 \newcommand{\wdiag}{^{\mathrm{diag}}}
@@ -123,6 +124,9 @@
 \newcommand{\TT}{\mathrm{T}}
 \newcommand{\opC}{\mathsf{C}}
 
+\newcommand\unc[2]{\substack{#1\\#2}}
+\newcommand\MSbar{\overline{\mathrm{MS}}}
+
 \newcommand\NAMBU{Nambu}
 
 
@@ -214,6 +218,20 @@
 
 
 \newcommand\CONV[1]{{\color{magenta}#1}}  % different-convention marker
+\newcommand\BLUE[1]{{\color{blue}#1}}
+
+\newcommand\bound[2]{%
+  \ifnum#1=68\stackrel{*}#2\else
+  \ifnum#1=90\stackrel{\diamond}#2\else
+  \ifnum#1=95\stackrel{*\!*}#2\else
+  \ifnum#1=99\stackrel{\diamond\diamond}#2\else
+  \ifnum#1=1\stackrel{*}#2\else
+  \ifnum#1=2\stackrel{*\!*}#2\else
+  \ifnum#1=3\stackrel{*\!*\!*}#2\else
+  \ifnum#1<10\stackrel{#1\sigma}#2\else\stackrel{#1\%}#2\fi\fi\fi\fi\fi\fi\fi\fi
+}
+\newcommand\bounddescription{Confidence levels are shown by the marks $*$, $*\!*$, \mbox{$*\!\!*\!\!*$} (1--3$\sigma$), $\diamond$ (90\%), and $\diamond\diamond$ (99\%).}
+
 
 % fine tuning of slashed
 \makeatletter
@@ -253,6 +271,8 @@
 \subfile{cosmology}
 \clearpage
 \subfile{StandardModel}
+\clearpage
+\subfile{Values}
 \clearpage
 \subfile{SUSY}
 \clearpage
