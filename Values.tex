@@ -10,7 +10,8 @@
 \footnotetext{Data source: \BLUE{\textbf{PDG2020}}. \bounddescription}
 
 
-{\catcode`#=\active \def#{\thinspace}
+{%%%%%%%%%CATCODE MODIFICATION GUARD
+\catcode`#=\active \def#{\thinspace}
 \subparagraph{Mass and width}
 \begin{alignat*}{5}
  e     &: \BLUE{0.510#998#9461(31)}\MeV &&\hspace{14em}
@@ -153,35 +154,71 @@ J=\BLUE{3.00\unc{(+15)}{(-\phantom09)}\EE-5}\\
 
 \newpage
 
-\subparagraph{Standard Model parameter fit}
-\TODO{write down; the following is from the old note}\color{red}{
+\subparagraph{Astrophysical}
 \begin{align*}
- \alpha^{-1}\w{EM}(0) &= 137.035999{074(44)} &
- G\w{F}       &= \frac{{g_2}^2}{4\sqrt2{m_W}^2} = \frac1{\sqrt2v^2} = 1.16637{87(6)}\EE-5\unit{GeV^{-2}}\\
- \alpha^{-1}\w{EM}(m_Z)    &= 127.9{44(14)} &
- \alpha^{-1}\w{EM}(m_\tau) &= 133.4{71(14)} &
+   &T_0=\BLUE{2.7255(6)}\unit{K}&
+   &H_0=100h\unit{km/s/Mpc},~h=\BLUE{0.674(5)}&
+   &M_{\Sun}=\BLUE{1.98841(4)\EE{30}}\unit{kg}\\
+   &n_\gamma = \BLUE{410.7(3)}\hat T_0^3\unit{cm^{-3}}&
+   &\rho\w{crit}=\BLUE{1.053#672(24)\EE-5}h^2\unit{GeV/cm^3}&
+   &M_{\Earth}=\BLUE{5.97217(13)\EE{24}}\unit{kg}\\
+   &\rho_\gamma=\BLUE{0.2606(2)}\hat T_0^4\unit{eV/cm^3}&
+   &G\w{N}=\BLUE{6.708#83(15)\EE{-39}}\unit{GeV^{-2}}&
+   &R_0=\BLUE{8.178(13)(22)}\unit{kpc}\\
+   &s=\BLUE{2891.2}\hat T_0^3\unit{cm^{-3}}&
+   &M\w{Pl}=\BLUE{1.220#890(14)\EE{19}}\GeV&
+   &v_0=\BLUE{240(8)}\unit{km/s}\\
+   &\Omega_{\gamma}h^2=\BLUE{2.473\EE-5}\hat T_0^4&
+   &M_0    =\BLUE{2.435#323(28)\EE{18}}\GeV&
+   &\rho\w{disk}=\BLUE{3.7(5)}\unit{GeV/cm^3}\\
+   &\quad\text{\small{$[\hat T_0=T_0/\BLUE{2.7255}\unit{K}]$}}&
+   &\eta=n\w{b}/n_\gamma\bound{95}{\in}\BLUE{[5.8,6.5]\EE{-10}}&
+\end{align*}
+Planck 2018 6-parameter fit to flat $\Lambda$CDM cosmology:
+\begin{align*}
+ &\{\Omega\w{b} h^2, \Omega\w{CDM} h^2\} = \{\BLUE{0.02237(15)},\BLUE{0.1200(12)}\}&
+ &(z,t)\w{M=R}=\BLUE{3402(26),5.11(8)\EE4}\unit{yr}\\
+ &\Omega\w{\{b,CDM,\Lambda\}}   = \{\BLUE{0.0493(6)}, \BLUE{0.265(7)}, \BLUE{0.685(7)}\}&
+ &(z,t)\w{*}=\BLUE{1089.92(25),3.729(10)\EE5}\unit{yr}\\
+ &\Lambda = \BLUE{1.088(30)\EE{-56}}\unit{cm^{-2}}&
+ &(z,t)\w{i}=\BLUE{7.7(7),6.90(90)\EE{8}}\unit{yr}\\
+ &\Omega_K=\BLUE{0.0007(19)}&
+ &(z,t)\w{q}=\BLUE{0.636(18),7.70(10)\EE9}\unit{yr}\\
+ &N\w{eff}=\BLUE{2.99(17)}&
+ &t_0=\BLUE{1.3797(23)\EE{10}}\unit{yr}\\
+\end{align*}
+\subparagraph{Standard Model parameter fit}
+\begin{align*}
+   &\alpha^{-1}\w{EM}(0) = \BLUE{137.035#999#084(21)}&
+   &\sin^2\theta^{\MSbar}(M_Z)=\BLUE{0.23121(4)}&
+   & \alpha\w{s}(m_Z) = \BLUE{0.1179(10)}\\
+   &\hat\alpha^{(4)}(m_\tau)^{-1}=\BLUE{133.472(7)}&
+   &\sin^2\theta^{\MSbar}(0)=\BLUE{0.23857(5)}&
+   & G\w{F} = \BLUE{1.166#378#7(6)\EE{-5}}\unit{GeV^{-2}}\\
+   &\hat\alpha^{(5)}(m_Z)^{-1}=\BLUE{127.952(9)}&
+   &\sin^2\theta^{\text{on-shell}}=\BLUE{0.22337(10)}&
+   &\phantom{G\w{F}}\stackrel{\text{tree}}=g_2^2/(4\sqrt2 m_W^2)=1/(\sqrt2 v^2)
 \\
- \alpha\w{s}(m_Z)          &= 0.118{4(7)}  &
- \sin^2\theta\w W(m_Z)     &= 0.23116(1{2}) &
-\\ \sin^2\theta\w{eff}       &= 0.23146(12)
+   &\Delta\alpha^{(5)}\w{had}(m_Z) = \BLUE{0.02766(7)}
 \end{align*}
 
-\begin{align}
- |e|&\sim 0.313,& g_1 &\sim 0.357, & g_2 &\sim 0.652, & g_Z &\sim 0.743; &
-  v=\sqrt{\frac{\mu^2}\lambda} &\sim 246\GeV
-\end{align}
-\begin{align}
-  y_u&\sim \spmat{10^{-5}&0&0\\0&0.007&0\\0&0&0.997}&
-  y_d&\sim \spmat{3\times10^{-5}&0&0\\0&0.0005&0\\0&0&0.02}&
-  y_e&\sim \spmat{3\times10^{-6}&0&0\\0&0.0006&0\\0&0&0.01}&
-\end{align}
-Also, for $m_h\sim 125\GeV$, we can estimate the Higgs potential as $\mu\sim88\GeV$ and $\lambda \sim0.13$
-}
-
+$\MSbar$parameters at $Q_0=173.1\GeV$ based on Ref.~\cite{Huang:2020hdv} (cf.~Ref.~\cite{Martin:2019lqd}):
+\begin{align*}
+ g_s&=1.161#8(4#5)&
+ v  &=246.605(12)\GeV\qquad\qquad\qquad  \lambda=0.126#07(30)\\
+ g  &=0.647#653(281)&
+ -m^2&=8612.0(22.8)\GeV^2=(92.80(12)\GeV)^2\\
+ g' &=0.358#542(70)&
+ y_{t,c,u}&=\{0.931(4),0.0341(10),6.8(1.1)\EE{-6}\}\\
+ |e|&=0.313#68(18)&
+ y_{b,s,d}&=\{0.015#53(14),0.000#293(25),1.47(10)\EE{-5}\}\\
+ g_Z&=0.740#27(25)&
+ y_{\tau,\mu,e}&=\{0.009#994#4(8),0.000#588#38(11),2.793#0(2#6)\EE-6\}\\
+\end{align*}
 
 } %%%%%%%%%%%%%%% CATCODE MODIFICATION GUARD END
 
-
+\newpage
 
 \detailstyle
 \begin{tabular}[t]{c@{}c|ccccccccccc}\toprule

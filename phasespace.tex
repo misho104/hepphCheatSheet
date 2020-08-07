@@ -14,36 +14,46 @@
 &\quad&
 \dd\Gamma=
 \frac{\overline{\dd\Pi^{N\w f}}}{2M_0}
-\Bigl|\mathcal M(M_0\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\})\Bigr|^2,
+\Bigl|\mathcal M(M_0\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\})\Bigr|^2.
 \\
 &\text{cross section (Lorentz invariant)}:
 &&
 \dd\sigma =
 \frac{\overline{\dd\Pi^{N\w f}}}{2E_A2E_B\,v_{\text{M\o l}}}
-\Bigl|\mathcal M(p_A,p_B\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\})\Bigr|^2,
+\Bigl|\mathcal M(p_A,p_B\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\})\Bigr|^2.
 \end{alignat}
-where $\overline{\dd\Pi^{n}}$ is $n$-particle Lorentz-invariant phase space with momentum conservation
+\paragraph{Lorentz-invariant phase space integrals}
 \begin{equation}
-  \overline{\dd\Pi^{n}} := \dd\Pi_1\dd\Pi_2\cdots\dd\Pi_n\,(2\pi)^4\diracdelta[4]\left(P_0-\sum p_n\right);
-\quad
- \dd\Pi := \ddP{p}\frac{1}{2E_{\vc p}}.
+ \dd\Pi := \ddP{p}\frac{1}{2E_{\vc p}},\qquad
+  \overline{\dd\Pi^{n}} := \dd\Pi_1\dd\Pi_2\cdots\dd\Pi_n\,(2\pi)^4\diracdelta[4]\left(P_0-\sum p_n\right).
 \end{equation}
-At the CM frame, two-body phase-space are characterized by the final momentum $\|\vc p\|$ and given by
+\paragraph{Two-body final state (CM frame)}
+With the final momentum $\|\vc p\|$ and solid angle $\Omega=(\cos\theta,\phi)$,
 \begin{equation}
-\overline{\dd\Pi^{2}}
+\overline{\dd\Pi^{2}}\Big|\w{CM}
 =\frac{\|\vc p\|}{4\pi\sqrt{s}}\frac{\dd\Omega}{4\pi}
 =
 \frac{\|\vc p\|}{8\pi \sqrt{s}}\dd\cos\theta
 =
-\frac1{16\pi}\sqrt{1-\frac{2 (m_1^2+m_2^2)}{s}+\frac{(m_1^2-m_2^2)^2}{s^2}}\dd\cos\theta
+\frac{\Kallen[1/2](s,m_1^2,m_2^2)}{16\pi s}\dd\cos\theta
+\qquad \Bigl(\text{$\sqrt s = M_0$ or $E\w{CM}$}\Bigr).
 \end{equation}
-with $\sqrt s = M_0$ or $E\w{CM}$, $\theta$ is the angle between initial and final motion, and
 \begin{align*}
 \|\vc p\|&=\frac{\sqrt{s}}{2}\mathop{\lambda^{1/2}}\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right),&
  E_1&=\frac{s+m_1^2-m_2^2}{2\sqrt{s}},&
  E_2&=\frac{s-m_1^2+m_2^2}{2\sqrt{s}},&
  p_1\cdot p_2 &= \frac{s-(m_1^2+m_2^2)}{2}.
 \end{align*}
+2-to-2 cross section:
+\begin{equation}
+\dd\sigma
+= \frac{\overline{\dd\Pi^{2}}}{4E_AE_B\,v_{\text{M\o l}}}|\mathcal M|^2
+= \frac{\overline{\dd\Pi^{2}}}{2\Kallen[1/2](s,m_A^2,m_B^2)}|\mathcal M|^2
+\stackrel{\text{CM}}{=}\frac{1}{32\pi s}
+  \sqrt{\frac{\Kallen(s,m_1^2,m_2^2)}{\Kallen(s,m_A^2,m_B^2)}}
+  \dd\cos\theta\,|\mathcal M|^2
+\end{equation}
+
 \paragraph{Mandelstam variables} For $(k_1,k_2)\to(p_3,p_4)$ collision,
 \begin{alignat*}{3}
  &s = (k_1+k_2)^2 = (p_3+p_4)^2, \qquad
@@ -58,7 +68,7 @@ with $\sqrt s = M_0$ or $E\w{CM}$, $\theta$ is the angle between initial and fin
   &&(p_3-p_4)^2 = 2(m_3^2 + m_4^2) - s.
 \end{alignat*}
 
-\begin{wrapfigure}[2]{r}{12em}
+\begin{wrapfigure}[2]{r}{12em}\vspace{-2em}
  \includegraphics[width=\linewidth,page=1]{figs/collision.pdf}
 \end{wrapfigure}
 
@@ -71,7 +81,7 @@ u &= m_A^2+m_B^2 - s/2-2kp\cos\theta,
 &p&={\sqrt{s/4-m_B^2}}.
 \end{alignat*}
 
-\begin{wrapfigure}[2]{r}{12em}
+\begin{wrapfigure}[2]{r}{12em}\vspace{-2em}
  \includegraphics[width=\linewidth,page=2]{figs/collision.pdf}
 \end{wrapfigure}
 
@@ -232,7 +242,9 @@ VT\overline{\dd\Pi^{N\w f}}\frac{|\mathcal M|^2}{2E_A2E_BV^2}
 where the M\o ller parameter $v_{\text{M\o l}}$ is equal to $v^{\mathrm{NR}}\w{rel}=\|\vc v_A-\vc v_B\|$ if $\vc v_A\parallel\vc v_B$ (cf.~Ref.~\cite{Cannoni:2016hro}).
 Generally,
 \begin{equation}
-  v_{\text{M\o l}}:= \frac{\sqrt{(p_A\cdot p_B)^2-m_A^2m_B^2}}{E_AE_B}
+  v_{\text{M\o l}}:=
+ \frac{\sqrt{(p_A\cdot p_B)^2-m_A^2m_B^2}}{E_AE_B}
+=\frac{\sqrt{\Kallen(s,m_A^2,m_B^2)}}{2E_AE_B}
 =\frac{p_A\cdot p_B}{E_A E_B}v\w{rel}
 =({1-\vc v_A\cdot\vc v_B})v\w{rel},
 \end{equation}

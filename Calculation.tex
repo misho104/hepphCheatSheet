@@ -21,4 +21,111 @@
 \end{alignat}
 where $\epsilon\cdot k = 0$ is assumed and $n^\mu$ should satisfy $\epsilon\cdot n=0$, and $k\cdot n\neq 0$ (usually $n^\mu=(1,0,0,0)^\mu$).
 \TODO{derivation}
+
+\clearpage
+\detailstyle
+
+\subsection{Casas--Ibarra parameterization}
+\paragraph{Set up}
+We start from the neutrino mass matrix
+\begin{equation}
+-\mathcal L\supset \frac12
+ \pmat{\nu & n} \pmat{0 & v Y^\TT/\sqrt2 \\ v Y/\sqrt2 & M_N} \pmat{\nu \\ n}
+= \frac12\pmat{\nu_i & n_a} \pmat{0 & v (Y^\TT)_{ib}/\sqrt2 \\ v Y_{aj}/\sqrt2 & M_{Nab}} \pmat{\nu_j \\ n_b}
+\end{equation}
+(and its Hermitian conjugate), which can be obtained, e.g., from
+\begin{equation}
+ \mathcal L \supset \overline{N}Y H L - \frac12\overline{N}M_N N^\cc + \text{h.c.},
+\qquad
+\vev{H}=\pmat{0\\v/\sqrt2}\text{~with~}v\sim246\GeV,
+\end{equation}
+where the four spinors should be decomposed into Weyl spinors as
+$L^1=\spmat{\nu\\0}$,
+$N=\spmat{0\\\bar n}$.
+
+\paragraph{Generalized CIP}
+The mass matrix can be AT-factorized to yield 6 neutrino masses.
+This ATF can be separated into two steps:
+\begin{equation}
+ \pmat{0 & v Y^\TT/\sqrt2 \\ v Y/\sqrt2 & M_N}
+\longrightarrow
+\pmat{M\w L & 0 \\ 0 & M\w H}
+\stackrel{\text{ATF}}\longrightarrow
+\pmat{M\w L^{\text{diag}} & 0 \\ 0 & M\w H^{\text{diag}}},
+\end{equation}
+where $M\w L$ and $M\w H$ are complex symmetric matrices.
+Explicitly, with unitary matrices  $U_1$, $U_2$, and $U_3$,
+\begin{align}
+\pmat{M\w L & 0 \\ 0 & M\w H}
+&=
+ U_1^\TT \pmat{0 & v Y^\TT/\sqrt2 \\ v Y/\sqrt2 & M_N} U_1,
+&M\w L^\text{diag} &= U_2^\TT M\w L U_2,
+&M\w H^\text{diag} &= U_3^\TT M\w H U_3.
+\end{align}
+The first equation is calculated as an expansion in $v/M_N$:
+\begin{align}
+ U_1  &\simeq \pmat{1 & v Y^\dagger (M_N^*)^{-1}/\sqrt2 \\ -v M_N^{-1}Y/\sqrt2 & 1},
+&M\w L&\simeq -\frac{v^2}{2}Y^\TT M_N^{-1} Y,
+&M\w H&\simeq M_N.
+\end{align}
+These expressions lead to
+\begin{equation}
+  M\w L^{\text{diag}}
+\simeq \frac{-v^2}{2} U_2^\TT Y^\TT U_3(M_H^{\text{diag}})^{-1}U_3^\TT YU_2
+=\frac{-v^2}{2}
+\Bigl[(M_H^{\text{diag}})^{-1/2}U_3^\TT YU_2\Bigr]^\TT
+\Bigl[(M_H^{\text{diag}})^{-1/2}U_3^\TT YU_2\Bigr].
+\end{equation}
+From this expression, one can derive Casas--Ibarra parameterization~\cite{Casas:2001sr}, depending on the scenario considered.
+
+\paragraph{Standard parameterization}
+It is useful to assume $M_N$ is positive diagonal and $Y$ is in the charged-lepton diagonal basis:\footnote{One can reach this basis by ATF of $M_N$ and SVD of $Y^e$, which fixes the basis of $L$ and $\bar N$.}
+\begin{equation}
+-\mathcal L\supset \overline{E}_i Y^e_i H^\dagger \PL L_i - \overline N_a Y_{ai}H\PL L_i + \frac{M_{Na}}2\overline{N}_a\PL N^\cc_a - \frac{g_2}{\sqrt2}W_\mu^+\overline{\nu}_i\gamma^\mu e_{{\mathrm L}i}+\text{h.c.}
+\end{equation}
+Then obviously $U_3=1$, while
+\begin{equation}
+-\mathcal L\supset
+ \frac12 \pmat{\nu & n} \pmat{0 & v Y^\TT/\sqrt2 \\ v Y/\sqrt2 & M_N} \pmat{\nu \\ n}
+= \frac12 \pmat{\nu & n} U_1^*\pmat{U_2^*M\w L^{\text{diag}}U_2^\dagger & 0\\0&M_H} U_1^\dagger\pmat{\nu \\ n},
+\end{equation}
+thus $\nu^{\text{mass}}\simeq U_2^\dagger \nu$, and
+\begin{equation}
+-\mathcal L\supset - \frac{g_2}{\sqrt2}W_\mu^+\overline{\nu}_i\gamma^\mu e_{{\mathrm L}i}
++\text{h.c.}
+=- \frac{g_2}{\sqrt2}W_\mu^+\overline{\nu}^{\text{mass}} U_2^\dagger\gamma^\mu e\w L
++\text{h.c.}
+=
+- \frac{g_2}{\sqrt2}W_\mu^-
+\bar e\w L U_2\gamma^\mu {\nu}^{\text{mass}}+\text{h.c.}
+\end{equation}
+means, comparing with (14.25) of \cite{PDG2020}, $U_2=U\w{PMNS}$.
+Therefore, in this basis, the CIP is constructed from
+\begin{equation}
+  M\w L^{\text{diag}}
+=\frac{-v^2}{2}
+\Bigl[(M_H^{\text{diag}})^{-1/2}YU\w{PMNS}\Bigr]^\TT
+\Bigl[(M_H^{\text{diag}})^{-1/2}YU\w{PMNS}\Bigr].
+\end{equation}
+
+\paragraph{Examples}
+For models with three right-handed neutrinos, if we assume all neutrinos are massive, the matrix
+\begin{equation}
+ R:=\frac{-\ii v}{\sqrt2}(M\w H^\text{diag})^{-1/2}U_3^\TT Y U_2(M\w L^\text{diag})^{-1/2}
+\end{equation}
+satisfies $R^\TT R=1$. Conversely, with a matrix $R$ satisfying $R^\TT R=1$, the Yukawa matrix is given by
+\begin{equation}
+ Y = \frac{\ii\sqrt2}{v} U_3^*(M\w H^\text{diag})^{1/2}R(M\w L^\text{diag})^{1/2}U_2^\dagger.
+\label{eq:CIP}
+\end{equation}
+
+For models with two right-handed neutrinos, one neutrino is massless.
+The same parameterization \cref{eq:CIP} works with\footnote{See, e.g., Ref.~\cite{Brdar:2019iem}. Sho also thanks Kai Schmitz for his note.}
+\begin{align}
+ R_{\text{normal hierarchy}}&=\pmat{0 & \cos z & \zeta\sin z \\ 0 & -\sin z & \zeta \cos z},&
+ R_{\text{inverse hierarchy}}=\pmat{\cos z & \zeta\sin z &0 \\ -\sin z & \zeta \cos z & 0},
+\end{align}
+where $z\in\mathbb C$ and $\zeta=\pm1$.
+Note that, in general set-up, $R R^\TT\neq1$.
+
 \end{document}

@@ -87,4 +87,18 @@ Gell-Mann matrices:
 &=\phi_b^*[\exp(-\ii g \theta^\alpha \tau^{\alpha})]_{ba}
  \simeq \phi_a^* - \ii g \theta^\alpha \phi_b^* \tau^{\alpha}_{ba}
 \end{align*}
+
+\clearpage
+\detailstyle
+
+A Mathematica code for the Gell-Mann matrices is:
+\begin{minted}{wolfram}
+GellMann[0] := DiagonalMatrix[{1,1,1}]/Sqrt[3/2]
+GellMann[8] := DiagonalMatrix[{1,1,-2}]/Sqrt[3]
+GellMann[a:1|2|3|4|5|6|7] := Module[
+   {p=Switch[a,1|2|3,{1,2,0},4|5,{1,0,2},6|7,{0,1,2}]},
+   Table[If[i*j==0, 0, PauliMatrix[{1,2,3,1,2,1,2}[[a]]][[i,j]]], {i,p}, {j,p}]]
+\end{minted}
+
+
 \end{document}

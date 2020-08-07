@@ -127,4 +127,41 @@ holds for $\theta^a\in\mathbb C$, where $[f^a]_{bc}=f^{abc}$. \TODO{needs verifi
 \end{align}
 (see, e.g., Ref.~\cite{Rasin:1997pn}).
 
+\subsection{Matrix diagonalization}
+In this section, $\mathbb K=\mathbb{R}$ or $\mathbb{C}$ and $\mathbb U_{\mathbb K}^{n}\subset \mathbb K^{n\times n}$ is the set of the unitary matrices.
+
+\paragraph{Diagonalization}
+A matrix $M\in\mathbb K^{n\times n}$ is called diagonalizable if $\exists P$ and $\exists D$ s.t.
+\begin{equation}
+ M=PDP^{-1};\qquad
+ P\in\mathbb{K}^{n\times n},\quad
+ D:\text{diagonal matrix}~(D_{ii}\in\mathbb{K}).
+\end{equation}
+In particular,
+\begin{equation}
+ \text{$M$ is normal} \stackrel{\text{def}}\iff M^\dagger M = M M^\dagger \iff
+ \exists P\in\mathbb{U}_{\mathbb K}^{n} \text{~s.t.~} M=PDP^{-1}.
+\end{equation}
+
+
+\paragraph{Singular value decomposition}
+Any $M\in\mathbb{K}^{m\times n}$ can be singular-value decomposed as
+\begin{equation}
+ M=UDV^\dagger;\qquad
+ U\in\mathbb{U}_{\mathbb K}^m,\quad
+ V\in\mathbb{U}_{\mathbb K}^n,\quad
+ D: \text{non-negative real diagonal matrix}~(D_{ii}\ge0).
+\end{equation}
+Here, the matrix $U$ ($V$) diagonalizes $MM^\dagger$ ($M^\dagger M$) and $(D_{ii})^2$ are the eigenvalues of $MM^\dagger$ (and $M^\dagger M$).
+
+
+\paragraph{Autonne-Takagi factorization}
+If $M\in\mathbb{C}^{n\times n}$ is symmetric, it can be decomposed as
+\begin{equation}
+ M=RDR^\TT;\qquad
+ R\in\mathbb{U}_{\mathbb C}^n,\quad
+ D: \text{non-negative real diagonal matrix}~(D_{ii}\ge0).
+\end{equation}
+Real symmetric matrices are normal and thus do not need this factorization; we can apply the above ``diagonalization'' method.
+
 \end{document}

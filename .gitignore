@@ -3,6 +3,7 @@
 /*.pdf
 .*
 \#*
+_minted-*
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

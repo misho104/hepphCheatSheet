@@ -1,5 +1,5 @@
 %!pdflatex
-% Time-stamp: <2020-08-07 18:59:51>
+% Time-stamp: <2020-09-11 15:26:00>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \bibliographystyle{utphys28mod}
 
@@ -8,9 +8,11 @@
 \usepackage[T1,T2A]{fontenc}
 \usepackage[russian,english]{babel}
 \usepackage[fleqn]{amsmath}
-\usepackage{amssymb,url,cite,slashed,cancel,booktabs,hyperref,graphicx,xspace,subcaption,wrapfig,braket}
+\usepackage{amssymb,url,cite,slashed,cancel,booktabs,hyperref,graphicx,xspace,subcaption,wrapfig,braket,tensor,xstring,mathabx}
 \usepackage{newtxtext}
 \usepackage{lmodern} % instead of \usepackage[varg]{newtxmath}
+\usepackage{fancyvrb,fvextra}
+\usepackage{textalpha}
 
 \usepackage[capitalize]{cleveref}
 \renewcommand\citepunct{,\penalty1000\hskip.13emplus.1emminus.1em\relax} % no line-break in \cite
@@ -85,6 +87,9 @@
 %\graphicspath{{images/}{../images/}}
 \usepackage[usenames]{color}
 
+\hypersetup{ bookmarksdepth=1 }
+
+
 \definecolor{navy}{rgb}{0,0,0.5}
 \definecolor{gray}{gray}{0.5}
 \newcommand\package[2][\relax]{\texttt{#2}\ifx#1\relax\relax\else~\texttt{#1}\fi}
@@ -101,13 +106,14 @@
 
 % subfiles; bibliography should appear only once
 \makeatletter
-\@ifclassloaded{subfiles}{
-  \relax
-}{
+%\@ifclassloaded{subfiles}{
+%  \section{EEE}
+%  \relax
+%}{
   \AtEndDocument{\clearpage\orig@bibliography{CheatSheet}}%
   \let\orig@bibliography\bibliography
   \let\bibliography\@gobble
-}
+%}
 \makeatother
 
 
@@ -274,16 +280,42 @@
 \def\slashedW@[#1]{\mathpalette{\sla@@{/}{0}{0}{#1}}W}
 \makeatother
 
+% --- minted experimental
+
+\makeatletter
+\usepackage{ifplatform,listings}
+\lstset{columns=[l]fullflexible,basicstyle=\small\ttfamily,xleftmargin=2em,frame=L,keepspaces=true}
+\CustomVerbatimCommand{\code}{Verb}{fontsize=\small} %,formatcom=\color{black}}
+\ifshellescape
+\usepackage{minted}
+\def\minted@formatter{lib/minted_formatter.py -x}
+\setminted{linenos,xleftmargin=7\fboxsep,breaklines,fontsize=\small,frame=leftline,stepnumber=5,framesep=2\fboxsep,escapeinside=!!,mathescape=true}
+\setminted[console]{xleftmargin=6\fboxsep,frame=none}
+\usemintedstyle[wolfram]{mathematica}
+\else
+\lstnewenvironment{minted}[1]
+  {\csname\@lst @SetFirstNumber\endcsname}
+  {\csname\@lst @SaveFirstNumber\endcsname}
+\def\mintinline#1{\code}
+\fi
+
+\makeatother
+
 % multilingual hacks
 \newcommand\russian[1]{\usefont{T2A}{Tempora-TLF}{m}{n}{\foreignlanguage{russian}{#1}}}
 
-
+% PDG-BIB hack
+\makeatletter
+\let\@bibitem@orig\@bibitem
+\def\@bibitem#1{\IfBeginWith{#1}{PDG20}{\@lbibitem[#1]{#1}}{\@bibitem@orig{#1}}}
+\makeatother
 
 \title{HEP Cheat Sheet}
 \date{\today}
 
 \author{Sho Iwamoto}
 \begin{document}
+\nocite{PDG2018,PDG2020}
 
 \subfile{phasespace}
 \clearpage
