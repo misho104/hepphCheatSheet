@@ -1,0 +1,24 @@
+\documentclass[CheatSheet]{subfiles}
+
+\begin{document}
+\summarystyle
+
+
+
+\section{Calculation techniques}
+\paragraph{Polarization sum}
+\begin{alignat}{2}
+\text{massless:}\quad
+\sum_{\pm}\epsilon^*_\mu(k) \epsilon_\nu(k)
+&=
+-\eta_{\mu\nu} - \frac{n^2 k_\mu k_\nu}{(n\cdot k)^2} + \frac{n_\mu k_\nu + n_\nu k_\mu}{n\cdot k}
+\quad\Bigl(\leadsto -\eta_{\mu\nu}\quad\text{with Ward id.}\Bigr),
+\\
+\text{massive:}\quad
+\sum_{\pm,0}\epsilon^*_\mu(k) \epsilon_\nu(k)
+&=
+-\eta_{\mu\nu}+\frac{k_\mu k_\nu}{m^2},
+\end{alignat}
+where $\epsilon\cdot k = 0$ is assumed and $n^\mu$ should satisfy $\epsilon\cdot n=0$, and $k\cdot n\neq 0$ (usually $n^\mu=(1,0,0,0)^\mu$).
+\TODO{derivation}
+\end{document}
