@@ -1,10 +1,17 @@
-%%% Time-Stamp: <2020-07-03 11:46:23>
+%!pdflatex
+% Time-stamp: <2020-08-07 18:59:51>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
-\pdfoutput=1
+\bibliographystyle{utphys28mod}
 
 % ----------------------------------------------------------- Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[russian,english]{babel}
 \usepackage[fleqn]{amsmath}
 \usepackage{amssymb,url,cite,slashed,cancel,booktabs,hyperref,graphicx,xspace,subcaption,wrapfig,braket}
+\usepackage{newtxtext}
+\usepackage{lmodern} % instead of \usepackage[varg]{newtxmath}
+
 \usepackage[capitalize]{cleveref}
 \renewcommand\citepunct{,\penalty1000\hskip.13emplus.1emminus.1em\relax} % no line-break in \cite
 \renewcommand\thefootnote{*\arabic{footnote}}
@@ -12,20 +19,26 @@
 
 % MATH NOTATION
 \newcommand\w[1]{_{\mathrm{#1}}}
-\newcommand\vc[1]{{\bm{#1}}}
+\newcommand\vc[1]{{\boldsymbol{#1}}}
 \newcommand\dd{\mathop{}\!\mathrm{d}}
 \newcommand\DD{\mathop{}\!\mathrm{D}}
+\newcommand\TT{\mathrm{T}}
+\newcommand\cc{\mathrm{c}}
 \newcommand\ee{\mathop{}\!\mathrm{e}}
 \newcommand\abs[1]{\lvert#1\rvert}
 \newcommand\norm[1]{\lVert#1\rVert}
 \newcommand\Abs[1]{\left\lvert#1\right\rvert}
 \newcommand\Norm[1]{\left\lVert#1\right\rVert}
+
 \newcommand\ii{\mathrm{i}}
 \newcommand\co[1]{\mathrm{c}_{#1}}
 \newcommand\si[1]{\mathrm{s}_{#1}}
+\newcommand\ta[1]{\mathrm{t}_{#1}}
 \newcommand\coco[1]{\mathrm{c}^2_{#1}}
 \newcommand\sisi[1]{\mathrm{s}^2_{#1}}
 \newcommand\pmat[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand\spmat[1]{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
+
 \DeclareMathOperator{\Order}{\mathcal{O}}
 \DeclareMathOperator{\ad}{\mathrm{ad}}
 \DeclareMathOperator{\sign}{\mathrm{sign}}
@@ -40,8 +53,12 @@
 \newcommand{\dn}[3]{\frac{\dd^#1 #2}{\dd #3^#1}}
 \newcommand{\pdn}[3]{\frac{\partial^#1 #2}{\partial #3^#1}}
 \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand\diracdelta[1][\relax]{\qopname\relax o{\ifx#1\relax\delta\else\delta^{(#1)}\fi}}
+\newcommand\parenfrac[3]{\def\temp{#3}\Bigl(\frac{#1}{#2}\Bigr)\ifx\oneone\temp\relax\relax\else^{#3}\fi}
+\newcommand\vev[1]{\langle#1\rangle}
+\newcommand\diracdelta[1][\relax]{\qopname\relax o{\ifx#1\relax\mathrm{\delta}\else\mathrm{\delta}^{(#1)}\fi}}
+\newcommand\Kallen[1][\relax]{\qopname\relax o{\ifx#1\relax\mathrm{\lambda}\else\mathrm{\lambda}^{(#1)}\fi}}
 
+% units
 \newcommand\unit[1]{\,\mathrm{#1}\xspace}
 \newcommand\eV{\unit{eV}}
 \newcommand\keV{\unit{keV}}
@@ -55,7 +72,8 @@
 \newcommand\ifb{\unit{fb^{-1}}}
 \newcommand\ipb{\unit{pb^{-1}}}
 \newcommand\fm{\unit{fm}}
-\newcommand\vev[1]{\langle#1\rangle}
+
+% scientific form of numbers
 \makeatletter
 \def\EE{\@ifnextchar-{\@@EE}{\@EE}}
 \def\@EE#1{\ifnum#1=1 \times\!10 \else \times\!10^{#1}\fi}
@@ -66,13 +84,17 @@
 \usepackage{scrlayer-scrpage,soul,subfiles}
 %\graphicspath{{images/}{../images/}}
 \usepackage[usenames]{color}
+
+\definecolor{navy}{rgb}{0,0,0.5}
+\definecolor{gray}{gray}{0.5}
+\newcommand\package[2][\relax]{\texttt{#2}\ifx#1\relax\relax\else~\texttt{#1}\fi}
+\newcommand\file[1]{\lstinline[basicstyle=\ttfamily\color{navy}]{#1}}
+
 \usepackage[hhmmss]{datetime}
-\definecolor{gray}{gray}{0.3}
 \newdateformat{mydate}{\THEDAY\;\shortmonthname.\;\THEYEAR}
 \addtokomafont{pagehead}{\small\normalfont}
-%\addtokomafont{caption}{\raggedright}
-\ohead{\texttt{\color{gray}{[NewCheatSheet~@~\mydate\today~\currenttime]}}}
-\bibliographystyle{utphys28mod}
+\ohead{\texttt{\fontsize{9}{10}\selectfont{\color{gray}{[NewCheatSheet~@~\mydate\today~\currenttime]}}}}
+\cfoot*[]{\thepage}
 
 %cleverref
 \crefname{section}{Sec.}{Secs.}
@@ -120,8 +142,6 @@
 \DeclareMathOperator{\gSU}{\mathrm SU}
 \DeclareMathOperator{\gU}{\mathrm U}
 \newcommand{\bq}{\bar q}
-\newcommand{\cc}{\mathrm{c}}
-\newcommand{\TT}{\mathrm{T}}
 \newcommand{\opC}{\mathsf{C}}
 
 \newcommand\unc[2]{\substack{#1\\#2}}
@@ -219,6 +239,7 @@
 
 \newcommand\CONV[1]{{\color{magenta}#1}}  % different-convention marker
 \newcommand\BLUE[1]{{\color{blue}#1}}
+\newcommand\GRAY[1]{{\color{gray}#1}}
 
 \newcommand\bound[2]{%
   \ifnum#1=68\stackrel{*}#2\else
@@ -252,6 +273,10 @@
 \def\slashedW{\@ifnextchar[\slashedW@{\mathpalette{\sla@{/}{0}{0}}W}}
 \def\slashedW@[#1]{\mathpalette{\sla@@{/}{0}{0}{#1}}W}
 \makeatother
+
+% multilingual hacks
+\newcommand\russian[1]{\usefont{T2A}{Tempora-TLF}{m}{n}{\foreignlanguage{russian}{#1}}}
+
 
 
 \title{HEP Cheat Sheet}

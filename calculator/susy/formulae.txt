@@ -20,7 +20,7 @@
 ;\end{align*}\vspace{-18pt}\begin{alignat*}{3}
 \sigma^\mu_{\alpha\dalpha} &:= (\vc{1},\vc{\sigma})_{\alpha\dalpha},
 \qquad&
-\sigma^{\mu\nu}{}_\alpha{}^\beta &:= \frac{\ii}{4} (\sigma^\mu\bsigma^\nu-\sigma^\nu\bsigma^\mu)_{\alpha}{}^{\beta},\footnotemark
+\sigma^{\mu\nu}{}_\alpha{}^\beta &:= \frac{\ii}{4} (\sigma^\mu\bsigma^\nu-\sigma^\nu\bsigma^\mu)_{\alpha}{}^{\beta},~\footnotemark
 \qquad&
 &\bigl(
 \sigma^{\mu}_{\alpha \dbeta}=\epsilon_{\alpha \delta}\epsilon_{\dbeta\dgamma}\bsigma^{\mu \dgamma\delta}
@@ -29,7 +29,7 @@
 \bigr)\\
 \bsigma^{\mu\dalpha\alpha} &:= (\vc{1},-\vc{\sigma})^{\dalpha\alpha},
 &
-\bsigma^{\mu\nu}{}^{\dalpha}{}_{\dbeta} &:= \frac{\ii}{4} (\bsigma^\mu\sigma^\nu-\bsigma^\nu\sigma^\mu)^{\dalpha}{}_{\dbeta},\addtocounter{footnote}{-1}\footnotemark
+\bsigma^{\mu\nu}{}^{\dalpha}{}_{\dbeta} &:= \frac{\ii}{4} (\bsigma^\mu\sigma^\nu-\bsigma^\nu\sigma^\mu)^{\dalpha}{}_{\dbeta},~^{\thefootnote}
 \end{alignat*}\vspace{-18pt}
 \begin{align*}
 &(\psi\xi):=\psi^\alpha\xi_\alpha,
