@@ -47,9 +47,9 @@ In the SM, $T\w{3L}+Y\w L=Y\w{R}=:Q$ and $T\w{3R}=0$ lead to
 \clearpage
 
 \subsection{CKM matrix and Yukawa convention}\label{sec:SM-CKM}
-Our convention is, with  $Y=UY\wdiag V^\dagger$,
+We use the following convention for  the Yukawa interaction terms:
 \begin{align}
-  \mathcal L&\supset
+  \mathcal L\w{Yukawa}&=
   \overline{U}\Yu H \PL Q
 - \overline{D}\Yd H^\dagger \PR Q
 - \overline{E}\Ye H^\dagger \PR L + \text{h.c.}
@@ -58,38 +58,52 @@ Our convention is, with  $Y=UY\wdiag V^\dagger$,
 - \overline{D_i}\Yd[ij] H^{a*} \PL Q_j^a
 - \overline{E_i}\Ye[ij] H^{a*} \PL L_j^a + \text{h.c.}
 \\&=
+- \overline{Q^a}\Yu^\dagger \epsilon^{ab}H^{b*} \PR U
+- \overline{Q^a}\Yd^\dagger H^{a} \PR D
+- \overline{L^a}\Ye^\dagger H^{a} \PR E + \text{h.c.},
+\end{align}
+where the last equality uses $(\overline{\psi_A}\PL\psi_B)^*=\overline{\psi_B}\PR\psi_A$.
+
+These terms are diagonalized by the singular value decomposition $Y=UY\wdiag V^\dagger$ (see \cref{app:diagonalization}):
+\begin{align}
+\mathcal L\w{Yukawa}&=
   \epsilon^{ab}\overline{U}U_u\Yu\wdiag H^a \PL V_u^\dagger Q^b
 - \overline{D}U_d\Yd\wdiag H^{a*} \PR V_d^\dagger Q^a
-- \overline{E}U_e\Ye\wdiag H^{a*} \PR V_e^\dagger L + \text{h.c.}
+- \overline{E}U_e\Ye\wdiag H^{a*} \PR V_e^\dagger L^a + \text{h.c.}
 \\&\leadsto
   -\frac{v}{\sqrt2}\overline{U}U_u\Yu\wdiag V_u^\dagger\PL Q^1
   -\frac{v}{\sqrt2}\overline{D}U_d\Yd\wdiag V_d^\dagger\PL Q^2
   -\frac{v}{\sqrt2}\overline{E}U_e\Ye\wdiag V_e^\dagger\PL L^2 + \text{h.c.}
 \end{align}
-Noting that $(\overline{\psi_A}\PL\psi_B)^*=\overline{\psi_B}\PR\psi_A$, this definition is equivalent to
+under the EWSB with $v\simeq246\GeV$. Mass eigenstates are
 \begin{equation}
-   \mathcal L\supset
-- \overline{Q^a}\Yu^\dagger \epsilon^{ab}H^{b*} \PR U
-- \overline{Q^a}\Yd^\dagger H^{a} \PR D
-- \overline{L^a}\Ye^\dagger H^{a} \PR E + \text{h.c.}
+ \{Q^1, Q^2, L, \overline U, \overline D, \overline E\}^\text{mass basis}
+=
+\{V_u^\dagger Q^1, V_d^\dagger Q^2, V_e^\dagger L,
+  \overline UU_u, \overline DU_d, \overline EU_e
+\}
 \end{equation}
-Moving to the CKM basis, the weak interaction is amended as
-\begin{equation}
- \mathcal L\supset\overline{Q}\ii\gamma^\mu(-\ii g_2 W_\mu)\PL Q
+and, since $Q^1$ and $Q^2$ are rotated by different matrices, the weak interaction receives flavor violation.amended as
+\begin{align}
+ \mathcal L&\supset\overline{Q}\ii\gamma^\mu(-\ii g_2 W_\mu)\PL Q
 \supset
 \frac{g_2}{\sqrt2}\left[
 \overline{Q^1} \slashed W^+\PL Q^2
 +\overline{Q^2}\slashed W^-\PL Q^1
 \right]
-=
+\\&=
 \frac{g_2}{\sqrt2}\left[
-\overline{\hat Q^1} V_u^\dagger\slashed W^+\PL V_d \hat Q^2
-+\overline{\hat Q^2}V_d^\dagger\slashed W^-\PL V_u \hat Q^1
+\overline{(Q^1)^{\text{mass}}} V_u^\dagger\slashed W^+\PL V_d (Q^2)^{\text{mass}}
++\overline{(Q^2)^{\text{mass}}}V_d^\dagger\slashed W^-\PL V_u (Q^1)^{\text{mass}}
+\right]
+\\&=
+\frac{g_2}{\sqrt2}\left[
+\overline{(Q^1)^{\text{mass}}} V\w{CKM}\slashed W^+\PL (Q^2)^{\text{mass}}
++\overline{(Q^2)^{\text{mass}}}V\w{CKM}^\dagger \slashed W^-\PL(Q^1)^{\text{mass}}
 \right],
-\end{equation}
-where hatted fields are in the CKM basis, and we define, with $\si{ij}>0$ and $\co{ij}>0$,
-\begin{equation}
-\begin{split}
+\end{align}
+where the CKM matrix are defined with positive angles:
+\begin{align}
   V\w{CKM}&=V_u^\dagger V_d
  =\pmat{
  V_{ud} & V_{us} & V_{ub}\\
@@ -107,12 +121,12 @@ where hatted fields are in the CKM basis, and we define, with $\si{ij}>0$ and $\
  \co{12} \co{13} & \si{12} \co{13} & \si{13} \ee^{-\ii\delta}\\
  -\si{12} \co{23} - \co{12} \si{23} \si{13} \ee^{\ii\delta}& \co{12} \co{23} - \si{12}\si{23}\si{13} \ee^{\ii\delta}& \si{23}\co{13}\\
   \si{12}\si{23} - \co{12} \co{23} \si{13}\ee^{\ii\delta} & -\co{12}\si{23}-\si{12}\co{23}\si{13}\ee^{\ii\delta} & \co{23} \co{13}
- }\ee^{\ii\Theta}.
-\end{split}
-\end{equation}
-Here, a $3\times3$ unitary matrix has three angles and six phases, among which five phases are removed by the fermion rotation, but another phase $\Theta$ is introduced due to the $\Theta$-term removal.\TODO{link}
+ }\ee^{\ii\Theta}\qquad[\si{ij}>0,~\co{ij}>0].
+\end{align}
+A general $3\times3$ unitary matrix has three angles and six phases; here five phases are removed by the fermion rotation, but another phase $\Theta$ is introduced due to the $\Theta$-term removal.\TODO{link}
 
-\paragraph{PDG convention} (consistent in 2006\S11 and 2018\S12)
+
+\paragraph{PDG convention} \cite[\S12]{PDG2018}\cite[\S12]{PDG2020}
 \begin{equation}
  \mathcal L \supset
  -\CONV{Y^d_{ij}}\overline{Q_{Li}^I}\CONV{\phi} d_{Rj}^I
@@ -124,7 +138,7 @@ So, $\CONV{Y^u}=\Yu^\dagger$, $\CONV{Y^d}=\Yd^\dagger$;
 $Y\wdiag = \CONV{V_RY^\dagger V_L^\dagger} = \CONV{V_R}Y\CONV{V_L^\dagger}$ leads $\CONV{V_L}=V^\dagger$, and
 $\CONV{V\w{CKM}}=V_u^\dagger V_d=V\w{CKM}$.
 
-\paragraph{SLHA2 convention} (0801.0045)
+\paragraph{SLHA2 convention} \cite{SLHA2}
 \begin{align}
  W &\supset \epsilon_{ab}\left[
 (\CONV{Y_E})_{ij}H_1^a L_i^b \bar E_j
@@ -268,8 +282,6 @@ If we choose the unitarity gauge, $\phi_i(x)=0$,
  + \frac{(v+h)^2}{8}(2g_2^2 W^{+\mu}W^-_\mu+g_Z^2Z^\mu Z_\mu)
 +\frac{\lambda}{4}v^4.
 \end{equation}
-
-\subsection{Values of SM parameters}
 
 \end{document}
 
