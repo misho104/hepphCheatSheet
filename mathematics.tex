@@ -173,12 +173,13 @@ Real symmetric matrices are normal and thus do not need this factorization; we c
 
 Sample Mathematica code to calculate $\{D,R\}$ (with ordering, if specified) is:
 \begin{minted}{wolfram}
-AutonneTakagi[M_, order_ : None] := Module[{v, p, ord, R, D},
+AutonneTakagi[M_, order_ : None] := Module[{v0, v, p, ord, R, D},
   ord = If[order === None, Range[Length[M]], order];
-  v = Transpose[SingularValueDecomposition[M][[3]]];
-  p = DiagonalMatrix[(#/Abs[#])^(-1/2) & /@ Diagonal[v.M.Transpose[v]]];
-  R = ConjugateTranspose[Reverse[p.v][[ord]]];
+  v0 = Eigenvectors[Conjugate[M].M];
+  v = Eigenvectors[v0.M.Transpose[v0]].v0; (*resolve degenerate eigenvalues*)
+  p = DiagonalMatrix[If[Abs[#] > 0, (#/Abs[#])^(-1/2), 1] & /@ Diagonal[v.M.Transpose[v]]];
+  R = ConjugateTranspose[Reverse[p.v][[ord]] // Orthogonalize];
   D = ConjugateTranspose[R].M.Conjugate[R];
-  {D, R} ];
+  {D, R}];
 \end{minted}
 \end{document}
