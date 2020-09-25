@@ -127,7 +127,7 @@ holds for $\theta^a\in\mathbb C$, where $[f^a]_{bc}=f^{abc}$. \TODO{needs verifi
 \end{align}
 (see, e.g., Ref.~\cite{Rasin:1997pn}).
 
-\subsection{Matrix diagonalization}
+\subsection{Matrix diagonalization}\label{app:diagonalization}
 In this section, $\mathbb K=\mathbb{R}$ or $\mathbb{C}$ and $\mathbb U_{\mathbb K}^{n}\subset \mathbb K^{n\times n}$ is the set of the unitary matrices.
 
 \paragraph{Diagonalization}
@@ -154,6 +154,13 @@ Any $M\in\mathbb{K}^{m\times n}$ can be singular-value decomposed as
 \end{equation}
 Here, the matrix $U$ ($V$) diagonalizes $MM^\dagger$ ($M^\dagger M$) and $(D_{ii})^2$ are the eigenvalues of $MM^\dagger$ (and $M^\dagger M$).
 
+The calculation on Mathematica is straightforward for this convention:
+\begin{minted}{wolfram}
+{u, d, v} = SingularValueDecomposition[M]
+\end{minted}
+
+
+
 
 \paragraph{Autonne-Takagi factorization}
 If $M\in\mathbb{C}^{n\times n}$ is symmetric, it can be decomposed as
@@ -164,4 +171,14 @@ If $M\in\mathbb{C}^{n\times n}$ is symmetric, it can be decomposed as
 \end{equation}
 Real symmetric matrices are normal and thus do not need this factorization; we can apply the above ``diagonalization'' method.
 
+Sample Mathematica code to calculate $\{D,R\}$ (with ordering, if specified) is:
+\begin{minted}{wolfram}
+AutonneTakagi[M_, order_ : None] := Module[{v, p, ord, R, D},
+  ord = If[order === None, Range[Length[M]], order];
+  v = Transpose[SingularValueDecomposition[M][[3]]];
+  p = DiagonalMatrix[(#/Abs[#])^(-1/2) & /@ Diagonal[v.M.Transpose[v]]];
+  R = ConjugateTranspose[Reverse[p.v][[ord]]];
+  D = ConjugateTranspose[R].M.Conjugate[R];
+  {D, R} ];
+\end{minted}
 \end{document}
