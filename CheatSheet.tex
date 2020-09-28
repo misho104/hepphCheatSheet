@@ -1,5 +1,5 @@
 %!pdflatex
-% Time-stamp: <2020-09-11 15:26:00>
+% Time-stamp: <2020-09-25 20:06:45>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \bibliographystyle{utphys28mod}
 
@@ -7,6 +7,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[russian,english]{babel}
+\usepackage{CJKutf8}
 \usepackage[fleqn]{amsmath}
 \usepackage{amssymb,url,cite,slashed,cancel,booktabs,hyperref,graphicx,xspace,subcaption,wrapfig,braket,tensor,xstring,mathabx}
 \usepackage{newtxtext}
@@ -149,6 +150,7 @@
 \DeclareMathOperator{\gU}{\mathrm U}
 \newcommand{\bq}{\bar q}
 \newcommand{\opC}{\mathsf{C}}
+\newcommand{\TO}{\text{--}}
 
 \newcommand\unc[2]{\substack{#1\\#2}}
 \newcommand\MSbar{\overline{\mathrm{MS}}}
@@ -175,6 +177,7 @@
 \newcommand\nuL[1][]{\nu_{\mathrm{L}#1}}
 \newcommand\eL[1][]{e_{\mathrm{L}#1}}
 \newcommand\eR[1][]{e_{\mathrm{R}#1}}
+\newcommand\nR[1][]{n_{\mathrm{R}#1}}
 \newcommand\bqL[1][]{\bar q_{\mathrm{L}#1}}
 \newcommand\buL[1][]{\bar u_{\mathrm{L}#1}}
 \newcommand\bdL[1][]{\bar d_{\mathrm{L}#1}}
@@ -184,6 +187,7 @@
 \newcommand\bnuL[1][]{\bar \nu_{\mathrm{L}#1}}
 \newcommand\beL[1][]{\bar e_{\mathrm{L}#1}}
 \newcommand\beR[1][]{\bar e_{\mathrm{R}#1}}
+\newcommand\bnR[1][]{\bar n_{\mathrm{R}#1}}
 
 \newcommand\Hu{H\w u}
 \newcommand\Hd{H\w d}
@@ -217,6 +221,7 @@
 \newcommand\Yu[1][]{Y_{u#1}}
 \newcommand\Yd[1][]{Y_{d#1}}
 \newcommand\Ye[1][]{Y_{e#1}}
+\newcommand\Yn[1][]{Y_{n#1}}
 \newcommand\PL{P\w L}
 \newcommand\PR{P\w R}
 \newcommand\sw{\si{\mathrm w}}
@@ -303,6 +308,7 @@
 
 % multilingual hacks
 \newcommand\russian[1]{\usefont{T2A}{Tempora-TLF}{m}{n}{\foreignlanguage{russian}{#1}}}
+\newcommand\japanese[1]{\begin{CJK}{UTF8}{goth}#1\end{CJK}} % ugly font...
 
 % PDG-BIB hack
 \makeatletter

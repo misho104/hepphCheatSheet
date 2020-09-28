@@ -124,8 +124,22 @@ holds for $\theta^a\in\mathbb C$, where $[f^a]_{bc}=f^{abc}$. \TODO{needs verifi
  -\si{12} \co{23} - \co{12} \si{23} \si{13} \ee^{\ii\delta}& \co{12} \co{23} - \si{12}\si{23}\si{13} \ee^{\ii\delta}& \si{23}\co{13}\\
   \si{12}\si{23} - \co{12} \co{23} \si{13}\ee^{\ii\delta} & -\co{12}\si{23}-\si{12}\co{23}\si{13}\ee^{\ii\delta} & \co{23} \co{13}}
 \pmat{\ee^{\ii c}&&\\&\ee^{\ii d}&\\&&\ee^{\ii e}}
+\label{eq:GeneralUnitary33}
 \end{align}
 (see, e.g., Ref.~\cite{Rasin:1997pn}).
+
+\begin{minted}{wolfram}
+U3 = Dot[
+  DiagonalMatrix[Exp[I {0, a, b}]],
+  RotationMatrix[\[Theta]23, {-1, 0, 0}],
+  DiagonalMatrix[Exp[I {0,0,+\[Delta]}]],
+  RotationMatrix[\[Theta]13, {0, 1, 0}],
+  DiagonalMatrix[Exp[I {0,0,-\[Delta]}]],
+  RotationMatrix[\[Theta]12, {0, 0, -1}],
+  DiagonalMatrix[Exp[I {c, d, e}]]
+]
+\end{minted}
+
 
 \subsection{Matrix diagonalization}\label{app:diagonalization}
 In this section, $\mathbb K=\mathbb{R}$ or $\mathbb{C}$ and $\mathbb U_{\mathbb K}^{n}\subset \mathbb K^{n\times n}$ is the set of the unitary matrices.
