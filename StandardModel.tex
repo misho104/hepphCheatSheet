@@ -114,16 +114,16 @@ where the CKM matrix are defined with positive angles:
 %
  \pmat{1&&\\&\co{23}&\si{23}\\&-\si{23}&\co{23}}
  \pmat{\co{13}&&\si{13}\ee^{-\ii\delta}\\&1&\\-\si{13}\ee^{\ii\delta}&&\co{13}}
- \pmat{\co{12}&\si{12}&\\-\si{12}&\co{12}&\\&&1}\ee^{\ii\Theta}
+ \pmat{\co{12}&\si{12}&\\-\si{12}&\co{12}&\\&&1}
 %
  \\&=
  \pmat{
  \co{12} \co{13} & \si{12} \co{13} & \si{13} \ee^{-\ii\delta}\\
  -\si{12} \co{23} - \co{12} \si{23} \si{13} \ee^{\ii\delta}& \co{12} \co{23} - \si{12}\si{23}\si{13} \ee^{\ii\delta}& \si{23}\co{13}\\
   \si{12}\si{23} - \co{12} \co{23} \si{13}\ee^{\ii\delta} & -\co{12}\si{23}-\si{12}\co{23}\si{13}\ee^{\ii\delta} & \co{23} \co{13}
- }\ee^{\ii\Theta}\qquad[\si{ij}>0,~\co{ij}>0].
+ }\qquad[\si{ij}>0,~\co{ij}>0].
 \end{align}
-A general $3\times3$ unitary matrix has three angles and six phases; here five phases are removed by the fermion rotation, but another phase $\Theta$ is introduced due to the $\Theta$-term removal.\TODO{link}
+Here in the Standard Model, five phases in a unitary matrix \eqref{eq:GeneralUnitary33} are removed by rotating fermion phases.
 
 
 \paragraph{PDG convention} \cite[\S12]{PDG2018}\cite[\S12]{PDG2020}
@@ -135,8 +135,8 @@ A general $3\times3$ unitary matrix has three angles and six phases; here five p
 \quad \CONV{V\w{CKM}} = \CONV{V^u_LV_L^{d\dagger}}.
 \end{equation}
 So, $\CONV{Y^u}=\Yu^\dagger$, $\CONV{Y^d}=\Yd^\dagger$;
-$Y\wdiag = \CONV{V_RY^\dagger V_L^\dagger} = \CONV{V_R}Y\CONV{V_L^\dagger}$ leads $\CONV{V_L}=V^\dagger$, and
-$\CONV{V\w{CKM}}=V_u^\dagger V_d=V\w{CKM}$.
+$Y\wdiag = \CONV{V_RY^\dagger V_L^\dagger} = \CONV{V_R}Y\CONV{V_L^\dagger}$ leads $\CONV{V_L}=V^\dagger$, and the CKM matrix (and components) is in the same convention: $\CONV{V\w{CKM}}=V_u^\dagger V_d=V\w{CKM}$.
+
 
 \paragraph{SLHA2 convention} \cite{SLHA2}
 \begin{align}
@@ -282,6 +282,58 @@ If we choose the unitarity gauge, $\phi_i(x)=0$,
  + \frac{(v+h)^2}{8}(2g_2^2 W^{+\mu}W^-_\mu+g_Z^2Z^\mu Z_\mu)
 +\frac{\lambda}{4}v^4.
 \end{equation}
+
+
+\subsection[CP-violating FFdual terms]{CP-violating $F\tilde F$ terms}
+\label{sec:SM-FFdual}
+The Standard Model contains CP-violating terms
+\begin{equation}
+ \mathcal L_{\text{gauge},\cancel{CP}}
+=
+\frac{g_3^2\Theta_g}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}G^a_{\mu\nu}G^a_{\rho\sigma}
++\frac{g_2^2\Theta_W}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}W^a_{\mu\nu}W^a_{\rho\sigma}
++\frac{g_Y^2\Theta_B}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}B_{\mu\nu}B_{\rho\sigma}.
+\end{equation}
+We here discuss we can ignore $\Theta_W$ and $\Theta_B$, while $\Theta_g$ causes the strong $CP$ roblem.
+
+One should first note that the value of $\Theta_i$ depends on the basis of the chiral fermions: in \cref{sec:SM-CKM} fermions are redefined by rotations. These rotations generate these terms and the angles are modified.
+It is then found that $\Theta_W$ can be rotated away.
+Let us see this explicitly, starting from the mass basis, i.e., $Y_{u,d,e}$ are positive diagonal and $\gSU(2)$ interactions are amended by $V\w{CKM}$.
+As we do not introduce phases in, e.g., $W$--$u$--$d$ interaction and fermion mass matrix, the possible rotation is limited to
+\begin{equation}
+ (Q,U,D)\to\ee^{\ii\theta}(Q,U,D), \qquad
+ (L_i, E_i)\to\ee^{\ii\theta_i}(L_i,E_i).
+\end{equation}
+These rotations affect the CP-violating terms (Cf.~Fujikawa method):\footnote{%
+Fail-safe memo:
+chiral transformation $\psi\to\exp[\ii\gamma_5\alpha(x)]\psi$ generates
+$\Delta\mathcal L = -(g^2/16\pi^2)\Tr[\alpha F\tilde F]$ (cf.~Weinberg II Eq.(2.2.24) but the overall sign may differ). For a constant (and non-matrix) $\alpha$, 
+$\Delta\mathcal L = -(\alpha g^2/32\pi^2)F^a\tilde F^a$.
+Also, the absence of gauge anomaly means the corresponding gauge transformations do not induce additional $\Theta$-terms.
+}
+\begin{align}
+ \Delta \Theta_W &\propto 9\theta_Q + \sum\theta_{L_i} = 9\theta + \sum\theta_i&
+ \Delta \Theta_B &\propto \frac12 \theta_Q + \frac32 \theta_L - (4\theta_U+\theta_D+3\sum\theta_{E_i}) = -\frac92 \theta - \frac12 \sum\theta_i,
+\end{align}
+which means either $\Theta_W$ or $\Theta_B$ can be rotated away.
+As we discuss below, it is convenient to set $\Theta_W=0$ and $\Theta_B\neq 0$.
+
+Meanwhile, as $\Delta\Theta_g=0$, we cannot remove $\Theta_g$.
+We define $\Theta\w{QCD}:=(\text{$\Theta_g$ in the mass basis})$; it is in general non-zero and induces $CP$-violation in the strong sector.
+However, such $CP$-violation is not observed yet; this contradiction is called strong $CP$ problem.
+
+The form $\epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\mu\nu}$ is a total derivative and the effect is pushed away to the surface.\footnote{%
+  Sho thanks to Kyohei Mukaida and Teppei Kitahara for a very useful discussion.
+}
+As discussed in \cite[\S23]{WeinbergQFT2}, the $\gU(1)_Y$ surface term does not do anything (in the simple spacetime) but the $\gSU(N)$ surface term corresponds to topologically non-trivial configuration of the gauge fields, labeled by a winding number $\nu$.
+Such different configuration should be summed up in, e.g., the path integral formalism, and observed as the instanton effect (``sphaleron'' for $\gSU(2)_W$).
+If $\Theta_W\neq 0$, the processes $\nu\to\nu\pm1$ would have different rate and $CP$ would be violated in the processes.
+As $\Theta_B$ is not related to such process, we take $\Theta_W=0$ and, though $\Theta_B\neq 0$, do not further consider $\Theta_B$.
+
+
+
+
+
 
 \end{document}
 

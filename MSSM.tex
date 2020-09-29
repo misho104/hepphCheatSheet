@@ -156,14 +156,8 @@ V^{\mathrm{RPV}}_{\text{\cancel{SUSY}}}
 \notag\\&\qquad\qquad\qquad
    + \left(C^1_{ijk}\tlL[i]^*\tqL[j]\tuR[k]^* + C^2_i\hu^*\hd\teR[i]^* + C^3_{ijk}\tdR[i]\tuR[j]^*\teR[k]^*+\frac12C^4_{ijk}\tdR[i]\tqL[j]\tqL[k]+\text{H.c.}\right).
 \end{align}
-As usual, we remove $\Theta_W$ and $\Theta_B$ by rotating fermions\footnote{%
-Fail-safe memo:
-The $\Theta$-terms are total derivatives and relevant in non-perturbative discussion.
-Redefinition of chiral fermions generates those terms (Fujikawa method) as a non-perturbative effect, so we can remove $\Theta$-terms as long as we have such freedoms.
-Note also that the absence of gauge anomaly means the corresponding gauge transformations do not induce additional $\Theta$-terms.
-}
-, which is compatible with mass diagonalization (discussed later), and assume the absence of Fayet-Illiopoulos term: $\Lambda\w{FI}=0$.
-The SU(3) angle $\Theta_g$ forms QCD phase $\Theta\w{QCD}$ together with the phases from Yukawa matrices.
+Hereafter we do not consider $\Theta_W$ and $\Theta_B$ as in the Standard Model (\cref{sec:SM-FFdual})\footnote{The rotations to remove $\Theta_W$ may generate phases in the RPV terms. In other words, we define the RPV terms in the $\Theta_W=0$ basis.}, while the SU(3) angle $\Theta_g$ forms QCD phase $\Theta\w{QCD}$ together with the phases from Yukawa matrices.
+Also we assume the absence of Fayet-Illiopoulos term: $\Lambda\w{FI}=0$.
 Then,
 \begin{align}
  \mathcal L\w{matter} &= \sum\w{matters}\Bigl[\DD^\mu\phi^*\DD_\mu\phi+\ii\bpsi\bsigma^\mu\DD_\mu\psi
@@ -438,7 +432,7 @@ We perform ``SU(2)-notation fixing'', i.e., use the freedom associated to $T_1$ 
  - \left(b\huz\hdz +\text{H.c.}\right).
 \end{equation}
 We redefine $\Hd$ superfield so that $b>0$.\footnote{%
-Note that $T_3$-rotation induces $\huz\to\ee^{\ii\theta/2}\huz$ and $\hdz\to\ee^{-\ii\theta/2}\hdz$; it cannot the remove phase of $b$.}
+Note that $T_3$-rotation induces $\huz\to\ee^{\ii\theta/2}\huz$ and $\hdz\to\ee^{-\ii\theta/2}\hdz$; it cannot remove the phase of $b$.}
 Then $\arg\vev{\huz}=-\arg\vev{\hdz}$ and, with $T_3$-rotation, $\vev{\huz}>0$ and $\vev{\hdz}>0$:
 \begin{align}
  &\vev{\huz} =: \vu =: \frac{v\w{SM}}{\sqrt2}\sin\beta,\qquad
@@ -693,24 +687,6 @@ Then the CKM mixings appear as, for example,
 i.e., defining $V\w{CKM} = V_u^\dagger V_d$ as in \cref{sec:SM-CKM},
 the Lagrangian is amended as, e.g., $\buL\dL\to \buL V\w{CKM}\dL$, $\tdL^*\tuL\to \tdL^* V^\dagger\w{CKM}\tuL$.
 
-The $\Theta_B$- and $\Theta_W$-terms are now removable.
-To this end, we rotate the matter superfields as
-\begin{equation}
- Q^1\to\ee^{\ii\theta}Q^1,\quad
- Q^2\to\ee^{\ii\theta'}Q^2,\quad
- U^\cc\to\ee^{-\ii\theta}U^\cc,\quad
- D^\cc\to\ee^{-\ii\theta'}D^\cc,
-\end{equation}
-which induces
-$\Delta \Theta_G=0$,
-$\Delta \Theta_W\propto \theta+\theta'$,
-and
-$\Delta \Theta_B\propto 5\theta+\theta'$, while the Lagrangian is unchanged except for the overall phase of $V\w{CKM}$.
-So we can remove $\Theta_B$ and $\Theta_W$, or in other words, pass the $CP$-violation in $\Theta$-terms to $V\w{CKM}$.\footnote{%
-There are other possible transformations $(L,E^\cc)\to \ee^{(\pm)\ii\theta''}(L,E^\cc)$ and in total we may have $\Delta\Theta_W \propto \theta+\theta'+2\theta''$ and
- $\Delta\Theta_B \propto 5\theta+\theta'+6\theta''$.
- To remove both $\Theta$-terms, we have to take $\theta\neq\theta'$ and $V\w{CKM}$ is anyway modified. The angle may chosen generation-dependently, and then $\Delta\Theta$'s should be read as $\theta\to\sum\theta_i/3$, etc.}
-If one (or more) quarks were massless, we could rotate the corresponding right-handed quark to remove $\Theta_G$ as well.
 
 \paragraph{Squark masses in super-CKM basis}
 Finally, the squark masses are given by
