@@ -1,115 +1,342 @@
 \documentclass[CheatSheet]{subfiles}
 
+\newcommand\MD[1][]{M_{\mathrm{D}#1}}
+\newcommand\MN[1][]{M_{N#1}}
+
+
 \begin{document}
 \summarystyle
 \section{Neutrino}
 
 (summary page)
 
-\clearpage
 \detailstyle
+\clearpage
+\subsection{Convention}
+We extend the SM Yukawa \eqref{eq:SMyukawa} to include the neutrino mass terms:
+\begin{align}
+   \mathcal L\w{Y+\nu}&=
+  \overline{U}\Yu H \PL Q
+- \overline{D}\Yd H^\dagger \PL Q
++ \overline{N}\Yn H \PL L
+- \overline{E}\Ye H^\dagger \PL L
+- \frac{1}{2}\overline{N}\MN N^\cc
++ \text{h.c.}
+\\&=
+- \overline{Q^a}\Yu^\dagger \epsilon^{ab}H^{b*} \PR U
+- \overline{Q^a}\Yd^\dagger H^{a} \PR D
+- \overline{L^a}\Yn^\dagger \epsilon^{ab}H^{b*} \PR N
+- \overline{L^a}\Ye^\dagger H^{a} \PR E
+- \frac{1}{2}\overline{N}\MN N^\cc + \text{h.c.},
+\end{align}
+where $\MN$, a \emph{complex symmetric} Majorana mass matrix, may be absent.
+
+As we explicitly describe in \cref{sec:PMNS}, we use the standard convention for the PMNS matrix \GRAY{(Pontecorvo--\japanese{牧}--\japanese{中川}--\japanese{坂田})}:
+\begin{equation}
+ \ket{\nu_\alpha^{\text{flavor}}} = [U\w{PMNS}]_{\alpha i}^*\ket{\nu_i^{\text{mass}}},
+\qquad
+ \nu^\text{flavor} = U\w{PMNS}\nu^{\text{mass}}, \qquad[\alpha=e,\mu,\tau,\mathrm{r}_1,\mathrm{r}_2,\dots]\label{eq:PMNS-defining}
+\end{equation}
+where the ``flavor basis'' is defined by the charged lepton mass basis for first three elements, while in most cases by the basis that diagonalizes Majorana mass term for the rest.
+
+
+\paragraph{Dirac neutrino}
+If $\MN$ is absent, neutrinos become Dirac fermions and the discussion goes parallel to the CKM matrix:
+\begin{equation}
+ \Yn = U_n Y_n\wdiag V_n^\dagger,\qquad
+\{\nuL, \eL, \overline N, \overline E\}^{\text{mass basis}} = \{V_n^\dagger L^1, V_e^\dagger L^2, \overline N U_n, \overline E U_e\}
+\end{equation}
+and
+\begin{align}
+ \mathcal L&\supset\overline{L}\ii\gamma^\mu(-\ii g_2 W_\mu)\PL L
+\supset
+\frac{g_2}{\sqrt2}\left[
+\overline{L^1} \slashed W^+\PL L^2
++\overline{L^2}\slashed W^-\PL L^1
+\right]
+\\&=
+\frac{g_2}{\sqrt2}\left[
+\overline{(L^1)^{\text{mass}}} V_n^\dagger V_e\slashed W^+\PL (L^2)^{\text{mass}}
++\overline{(L^2)^{\text{mass}}}V_e^\dagger V_n\slashed W^-\PL(L^1)^{\text{mass}}
+\right]
+\\&=
+\frac{g_2}{\sqrt2}\left[
+\overline{\nuL^{\text{mass}}} [U\w{PMNS}]^\dagger\slashed W^+\eL^{\text{mass}}
++\overline{\eL^{\text{mass}}}[U\w{PMNS}] \slashed W^-\nuL^{\text{mass}}
+\right].
+\end{align}
+The mass eigenstate Dirac field is given by
+\begin{equation}
+ \nu^{\text{mass}} = \pmat{\nuL^{\text{mass}}\\N^{\text{mass}}} = 
+\nuL^{\text{mass}}+N^{\text{mass}}=
+V_n^\dagger L^1 + U_n^\dagger N
+\qquad
+ \Bigl(L^1 = \PL V_n \nu^{\text{mass}},~
+ N = \PR U_n \nu^{\text{mass}}\Bigr).
+\end{equation}
+The PMNS matrix is given in \emph{the opposite manner} to the CKM matrix:
+\begin{equation}
+ U\w{PMNS}^{\text{(Dirac)}}=V_e^\dagger V_n.
+\end{equation}
+In general, $\Yn\in\mathbb C^{n\times3}$, $V_n\in\mathbb U_{\mathbb C}^3$, $U_n\in\mathbb U_{\mathbb C}^n$, and the Dirac-PMNS matrix is also a $3\times 3$ unitary matrix.
+Models with $n<3$ yields $3-n$ massless left-handed neutrinos, while $n>3$ results in $n-3$ massless right-handed neutrinos.
+
+
+\paragraph{Majorana neutrino}
+Models with $\MN\neq0$ generate so-called Majorana neutrino masses.
+If $n<3$, the model has $3-n$ massless neutrinos and $2n$ massive neutrinos, while all neutrinos are massive if $n\ge 3$.
+
+Using Weyl spinor,
+\begin{align}
+& L^1 = \pmat{\nuL\\0},\quad
+ N   = \pmat{0\\\bnR},\quad
+ \MD := \frac{v}{\sqrt2}Y_n,\quad
+ \MD\wdiag := U_n \MD Y_n^\dagger,\\
+&\label{eq:MajoranaNuLag}
+ \mathcal L\w{Y+\nu} 
+\supset
+ -\frac{v}{\sqrt2}\overline{N}Y_n \PL L^1 - \frac{1}{2}\overline{N}\MN N^\cc + \text{h.c.}
+=
+ -\frac{v}{\sqrt2}\nR Y_n \nuL - \frac{1}{2}\nR \MN\nR + \text{h.c.}\\
+&\phantom{ \mathcal L\w{Y+\nu}}
+=-\frac12\pmat{\nuL & \nR}\pmat{0 & \MD^\TT \\ \MD & \MN} \pmat{\nuL \\ \nR} + \text{h.c.} =: -\frac12\tilde\nu^\TT \tilde M\tilde \nu+\text{h.c.}
+\end{align}
+As $\tilde M$ is a complex symmetric $(3+n)\times(3+n)$ matrix, it can be AT-diagonalized:
+\begin{equation}
+  \tilde M = \tilde R \tilde M\wdiag \tilde R^\TT;
+\qquad
+-\mathcal L\w{Y+\nu}\supset
+\frac12\tilde \nu^\TT \tilde M\tilde\nu
+=\frac12(\tilde\nu^{\text{mass}})^\TT \tilde M\wdiag \tilde\nu^{\text{mass}};\qquad \tilde\nu^{\text{mass}} =\tilde R^\TT\tilde\nu
+\end{equation}
+and $\tilde M$ gives the neutrino masses.
+The neutrino mixing is then given by
+\begin{align}
+ \pmat{\nuL\\\nR} = \tilde R^*\pmat{\nu_{1\TO3} \\ \nu_{4\TO}}
+\end{align}
+and find that the PMNS matrix is now extended to a $3\times n$ matrix $V_e^\dagger [\tilde R^*]\w{upper}$.
+
+Usually the discussion should be start from the basis in which $Y_e$ and $M_N$ are positive diagonal with increasing diagonal elements (``charged lepton mass basis'' combined with ``Majorana mass basis'').
+Then
+\begin{equation}
+\tilde M = \pmat{0 & \MD^\TT \\ \MD & \MN\wdiag},
+\quad
+\pmat{\nuL\\\nR}
+=
+\pmat{\begin{smallmatrix}\nu_e\\\nu_\mu\\\nu_\tau\end{smallmatrix}\\\nu_{\text{sterile};i}}
+=\tilde R^*\pmat{\nu_{1\TO3}\\\nu_{4\TO}}.
+\end{equation}
+The PMNS matrix appears as a submatrices, which is no longer unitary:
+\begin{equation}
+\tilde R^*
+=:
+\pmat{ R_{11}^* & R_{12}^* \\ R_{21}^* & R_{22}^*}
+=:
+\pmat{U\w{PMNS}^{\text{Majorana}} & U_{\text{active-heavy}}\\
+U_{\text{sterile-light}} & U_{\text{sterile-heavy}}
+}.
+\end{equation}
+
+
+\paragraph{Connection of the above two formalism}
+If we apply AT-diagonalization to the Dirac case (with $n=3$), we obtain
+\begin{align}
+\tilde M = \frac12\pmat{0 & (U_n\MD\wdiag V_n^\dagger)^\TT \\ U_n\MD\wdiag V_n^\dagger & 0},\quad
+  \tilde R=\pmat{V_n^* & \ii V_n^* \\ U_n & -\ii U_n},\quad
+  \tilde M\wdiag=\pmat{\MD\wdiag & 0 \\ 0 & \MD\wdiag}
+\end{align}
+and find that three pairs of degenerate Weyl fermions form three Dirac neutrinos. 
+
+
+\paragraph{PMNS matrix}\label{sec:PMNS}
+In the Dirac neutrino models the PMNS matrix is unitary, which we parameterize
+\begin{equation}
+\begin{split}
+   U\w{PMNS}^{\text{Dirac}}&=V_e^\dagger V_n
+ =\pmat{
+ U_{e1} & U_{e2} & U_{e3}\\
+ U_{\mu1} & U_{\mu2} & U_{\mu3}\\
+ U_{\tau1} & U_{\tau2} & U_{\tau3}
+ }
+ =
+ %
+ \pmat{1&&\\&\co{23}&\si{23}\\&-\si{23}&\co{23}}
+ \pmat{\co{13}&&\si{13}\ee^{-\ii\delta\w{CP}}\\&1&\\-\si{13}\ee^{\ii\delta\w{CP}}&&\co{13}}
+ \pmat{\co{12}&\si{12}&\\-\si{12}&\co{12}&\\&&1}
+ %
+ \\&=
+ \pmat{
+ \co{12} \co{13} & \si{12} \co{13} & \si{13} \ee^{-\ii\delta\w{CP}}\\
+ -\si{12} \co{23} - \co{12} \si{23} \si{13} \ee^{\ii\delta\w{CP}}& \co{12} \co{23} - \si{12}\si{23}\si{13} \ee^{\ii\delta\w{CP}}& \si{23}\co{13}\\
+  \si{12}\si{23} - \co{12} \co{23} \si{13}\ee^{\ii\delta\w{CP}} & -\co{12}\si{23}-\si{12}\co{23}\si{13}\ee^{\ii\delta\w{CP}} & \co{23} \co{13}
+},
+\end{split}
+\end{equation}
+where $\theta_{ij}\in[0,\pi/2]$ and $\delta\w{CP}\in[0,2\pi]$ as shown in \cref{eq:GeneralUnitary33} and the five phases are removed as done in \cref{sec:SM-CKM}.
+Note that the discussion in \cref{sec:SM-FFdual} holds and $\Theta_W W\tilde W$ term is rotated away.
+
+If the Majorana mass terms are present, $U\w{PMNS}^{\text{(Majorana)}}$, which is defined by \cref{eq:PMNS-defining}, is no longer unitary.
+However, if $\MN\gg\MD$, it is approximately unitary:
+\begin{equation}
+   U\w{PMNS}^{\text{Majorana}}=
+\pmat{
+ U_{e1} & U_{e2} & U_{e3}\\
+ U_{\mu1} & U_{\mu2} & U_{\mu3}\\
+ U_{\tau1} & U_{\tau2} & U_{\tau3}
+ }
+\approx
+U\w{PMNS}^{\text{Dirac}}
+\pmat{\ee^{\ii\eta_1} \\ & \ee^{\ii\eta_2}\\&&1}.
+\end{equation}
+Here additional two phases are introduced because we can no longer rotate $\nR$; three among $(a,b,c,d,e)$ in \cref{eq:GeneralUnitary33} are removed by rotating $L_i$, and two remains.
+
+Current experiments measure the value of the matrix and the above parameterization still works well (cf.~Ref.~\cite{NUFIT}).
+Thus we hereafter identify the Dirac PMNS matrix as $U\w{PMNS}$:
+\begin{align}
+ &U\w{PMNS}:=U\w{PMNS}^{\text{(Dirac)}}=
+ \pmat{
+ \co{12} \co{13} & \si{12} \co{13} & \si{13} \ee^{-\ii\delta\w{CP}}\\
+ -\si{12} \co{23} - \co{12} \si{23} \si{13} \ee^{\ii\delta\w{CP}}& \co{12} \co{23} - \si{12}\si{23}\si{13} \ee^{\ii\delta\w{CP}}& \si{23}\co{13}\\
+  \si{12}\si{23} - \co{12} \co{23} \si{13}\ee^{\ii\delta\w{CP}} & -\co{12}\si{23}-\si{12}\co{23}\si{13}\ee^{\ii\delta\w{CP}} & \co{23} \co{13}
+};\\
+ &U\w{PMNS}^{\text{(Majorana)}} = U\w{PMNS}\pmat{\ee^{\ii\eta_1} \\ & \ee^{\ii\eta_2}\\&&1}
++\Order\left(\frac{\MD}{\MN}\right).
+\end{align}
+Accordingly, the components $U_{\alpha i}$ is in general slightly different from $(\alpha,i)$ component of $U\w{PMNS}$, e.g.,
+\begin{equation*}
+ U_{e1}\approx \co{12}\co{13}
+\end{equation*}
+with the exactness recovered in the Dirac case.
+
+
+
+
+
+\paragraph{PDG and NuFIT convention} The convention agrees with PDG \cite[\S14]{PDG2020} and NuFIT~\cite[v5.0]{NUFIT}. Compared with PDG,\footnote{Sho thinks Eq.~(14.9) of PDG2020 lacks 1/2 in the right-most term.}
+\begin{align*}
+& \mathcal L
+\supset
+ -\CONV{\bar\nu_s} \CONV{M_D} \nu_L
+ -\frac12\CONV{\bar\nu_s} \CONV{M_N} \CONV{\nu^c_s}
+ -\overline{L^2}\CONV{M_l}\PR E\quad\text{(14.6)+(14.27)},\\
+&
+\Bigl\{\CONV{(V^{\nu})^\TT \spmat{0&M_D^\TT \\ M_D &M_N} V^\nu}\text{~or~}\CONV{V_R^{\nu\dagger}M_D V^\nu}\Bigr\}=\diag(m_i)\quad
+\text{(Majorana; 14.9)+(Dirac; 14.15)},\\
+&\nu_{L}=\PL\CONV{V^\nu}\nu^{\text{mass}}\quad\text{(14.14)\&(14.18)},\qquad
+\CONV{V^{l\dagger}M_l V^l_R}=\diag(m_e,m_\mu,m_\tau)\quad\text{(14.31)}.
+\end{align*}
+These leads to $\CONV{V^\nu_R}=U_n$ and $\CONV{V^\nu}=V_n$ in Dirac case, $\CONV{M_D} = \Yn v/\sqrt2=\MD$, $\CONV{M_N}=M_N$, and $\CONV{V^\nu}=R^*$ in Majorana case, and $\CONV{V^{l}}=V_e$ and $\CONV{V_R^l}=U_e$ (note $\CONV{M_l}=Y_e^\dagger v/\sqrt{2}$).
+So
+\begin{equation*}
+ \CONV{U_{ij}} = \text{(diagonal phases)}\times\CONV{V^{l\dagger}}\CONV{V^{\nu}}\times\text{(diagonal phases)}=\text{(phases)}V_e^\dagger \{V_\nu\text{~or~}R^*\}\text{(phases)}= U\w{PMNS}^{\text{(Dirac/Majorana)}}
+\end{equation*}
+
+
 
 \subsection{Casas--Ibarra parameterization}
-\paragraph{Set up}
+\paragraph{General basis}
 We start from the neutrino mass matrix
 \begin{equation}
 -\mathcal L\supset \frac12
- \pmat{\nu & n} \pmat{0 & v Y^\TT/\sqrt2 \\ v Y/\sqrt2 & M_N} \pmat{\nu \\ n}
-= \frac12\pmat{\nu_i & n_a} \pmat{0 & v (Y^\TT)_{ib}/\sqrt2 \\ v Y_{aj}/\sqrt2 & M_{Nab}} \pmat{\nu_j \\ n_b}
+ \pmat{\nuL & \nR} \pmat{0 & \MD^\TT \\ \MD & \MN} \pmat{\nuL \\ \nR}+\text{h.c.}
+= \frac12\pmat{\nuL[i] & \nR[a]}
+\pmat{0_{ij} & (\MD^\TT)_{ib} \\ \MD[aj] & \MN[ab]}
+\pmat{\nuL[j] \\ \nR[b]}+\text{h.c.}
 \end{equation}
-(and its Hermitian conjugate), which can be obtained, e.g., from
+The AT-factorization can be separated into two steps:
 \begin{equation}
- \mathcal L \supset \overline{N}Y H L - \frac12\overline{N}M_N N^\cc + \text{h.c.},
-\qquad
-\vev{H}=\pmat{0\\v/\sqrt2}\text{~with~}v\sim246\GeV,
-\end{equation}
-where the four spinors should be decomposed into Weyl spinors as
-$L^1=\spmat{\nu\\0}$,
-$N=\spmat{0\\\bar n}$.
-
-\paragraph{Generalized CIP}
-The mass matrix can be AT-factorized to yield 6 neutrino masses.
-This ATF can be separated into two steps:
-\begin{equation}
- \pmat{0 & v Y^\TT/\sqrt2 \\ v Y/\sqrt2 & M_N}
+ \tilde M=\pmat{0 & \MD^\TT \\ \MD & \MN}
 \longrightarrow
 \pmat{M\w L & 0 \\ 0 & M\w H}
 \stackrel{\text{ATF}}\longrightarrow
-\pmat{M\w L^{\text{diag}} & 0 \\ 0 & M\w H^{\text{diag}}},
+\pmat{M\w L\wdiag & 0 \\ 0 & M\w H\wdiag}=\tilde M\wdiag,
 \end{equation}
-where $M\w L$ and $M\w H$ are complex symmetric matrices.
-Explicitly, with unitary matrices  $U_1$, $U_2$, and $U_3$,
+where intermediate matrices $M\w L$ and $M\w H$ are complex symmetric.
+This is expressed with unitary matrices $U$, $U_1$, and $U_2$:
+\begin{equation}
+ \tilde M =
+U \pmat{M\w L & 0 \\ 0 & M\w H} U_1^\TT =
+U \pmat{U_1 M\w L\wdiag U_1^\TT & 0 \\ 0 & U_2 M\w H\wdiag U_2^\TT} U^\TT,
+\end{equation}
+following the convention in \cref{eq:ATF}.
+The first equality is calculated as an expansion in $\MD/\MN$ once we assume the see-saw mechanism:
 \begin{align}
-\pmat{M\w L & 0 \\ 0 & M\w H}
-&=
- U_1^\TT \pmat{0 & v Y^\TT/\sqrt2 \\ v Y/\sqrt2 & M_N} U_1,
-&M\w L^\text{diag} &= U_2^\TT M\w L U_2,
-&M\w H^\text{diag} &= U_3^\TT M\w H U_3.
+ U&\simeq \pmat{1 & \MD^\TT\MN^{-1} \\ -\MN^{-1}\MD^* & 1}
+ - \frac12\pmat{\MD^\TT\MN^{-2}\MD^* & 0 \\ 0 & \MN^{-1}\MD^*\MD^\TT \MN^{-1}} + \cdots,\\
+ M\w L&\simeq -\MD^\TT \MN^{-1} \MD+\cdots,\\
+ M\w H&\simeq \MN + \frac12 (\MD\MD^\dagger\MN^{-1}+\MN^{-1}\MD^*\MD^\TT)+\cdots,
 \end{align}
-The first equation is calculated as an expansion in $v/M_N$:
-\begin{align}
- U_1  &\simeq \pmat{1 & v Y^\dagger (M_N^*)^{-1}/\sqrt2 \\ -v M_N^{-1}Y/\sqrt2 & 1},
-&M\w L&\simeq -\frac{v^2}{2}Y^\TT M_N^{-1} Y,
-&M\w H&\simeq M_N.
-\end{align}
-These expressions lead to
+At the leading order,
+\begin{equation*}
+ U_1 M\w L\wdiag U_1^\TT = [U^\dagger \tilde M U^*]_{\text{upper left}} \approx -\MD^\TT \MN^{-1}\MD
+\approx -\MD^\TT M\w H^{-1}\MD = -\MD^\TT (U_2 M\w H\wdiag U_2^\TT)^{-1}\MD,
+\end{equation*}
+or
+\begin{equation*}
+ -M\w L\wdiag \approx U_1^\dagger \MD^\TT U_2^*(M\w H\wdiag)^{-1}U_2^\dagger\MD U_1^*.
+\end{equation*}
+This is decomposed to
 \begin{equation}
-  M\w L^{\text{diag}}
-\simeq \frac{-v^2}{2} U_2^\TT Y^\TT U_3(M_H^{\text{diag}})^{-1}U_3^\TT YU_2
-=\frac{-v^2}{2}
-\Bigl[(M_H^{\text{diag}})^{-1/2}U_3^\TT YU_2\Bigr]^\TT
-\Bigl[(M_H^{\text{diag}})^{-1/2}U_3^\TT YU_2\Bigr].
+ [\ii M\w L\wdiag]^{1/2}[\ii M\w L\wdiag]^{1/2} = 
+[(M\w H\wdiag)^{-1/2}U_2^\dagger\MD U_1^*]^\TT
+[(M\w H\wdiag)^{-1/2}U_2^\dagger\MD U_1^*].
 \end{equation}
-From this expression, one can derive Casas--Ibarra parameterization~\cite{Casas:2001sr}, depending on the scenario considered.
+This is the master equation for Casas-Ibarra parameterization~\cite{Casas:2001sr}.
 
-\paragraph{Standard parameterization}
-It is useful to assume $M_N$ is positive diagonal and $Y$ is in the charged-lepton diagonal basis:\footnote{One can reach this basis by ATF of $M_N$ and SVD of $Y^e$, which fixes the basis of $L$ and $\bar N$.}
-\begin{equation}
--\mathcal L\supset \overline{E}_i Y^e_i H^\dagger \PL L_i - \overline N_a Y_{ai}H\PL L_i + \frac{M_{Na}}2\overline{N}_a\PL N^\cc_a - \frac{g_2}{\sqrt2}W_\mu^+\overline{\nu}_i\gamma^\mu e_{{\mathrm L}i}+\text{h.c.}
-\end{equation}
-Then obviously $U_3=1$, while
-\begin{equation}
--\mathcal L\supset
- \frac12 \pmat{\nu & n} \pmat{0 & v Y^\TT/\sqrt2 \\ v Y/\sqrt2 & M_N} \pmat{\nu \\ n}
-= \frac12 \pmat{\nu & n} U_1^*\pmat{U_2^*M\w L^{\text{diag}}U_2^\dagger & 0\\0&M_H} U_1^\dagger\pmat{\nu \\ n},
-\end{equation}
-thus $\nu^{\text{mass}}\simeq U_2^\dagger \nu$, and
-\begin{equation}
--\mathcal L\supset - \frac{g_2}{\sqrt2}W_\mu^+\overline{\nu}_i\gamma^\mu e_{{\mathrm L}i}
-+\text{h.c.}
-=- \frac{g_2}{\sqrt2}W_\mu^+\overline{\nu}^{\text{mass}} U_2^\dagger\gamma^\mu e\w L
-+\text{h.c.}
-=
-- \frac{g_2}{\sqrt2}W_\mu^-
-\bar e\w L U_2\gamma^\mu {\nu}^{\text{mass}}+\text{h.c.}
-\end{equation}
-means, comparing with (14.25) of \cite{PDG2020}, $U_2=U\w{PMNS}$.
-Therefore, in this basis, the CIP is constructed from
-\begin{equation}
-  M\w L^{\text{diag}}
-=\frac{-v^2}{2}
-\Bigl[(M_H^{\text{diag}})^{-1/2}YU\w{PMNS}\Bigr]^\TT
-\Bigl[(M_H^{\text{diag}})^{-1/2}YU\w{PMNS}\Bigr].
-\end{equation}
 
-\paragraph{Examples}
-For models with three right-handed neutrinos, if we assume all neutrinos are massive, the matrix
+\paragraph{``Standard'' parameterization}
+Let us assume that we started from the above-discussed $(Y_e,\MN)$-diagonal basis.
+Then, noting
 \begin{equation}
- R:=\frac{-\ii v}{\sqrt2}(M\w H^\text{diag})^{-1/2}U_3^\TT Y U_2(M\w L^\text{diag})^{-1/2}
+ \tilde R=U\pmat{U_1\\&U_2}\approx \pmat{U_1 & \MD^\TT\MN^{-1}U_2 \\ -\MN^{-1}\MD^* U_1 & U_2},
 \end{equation}
-satisfies $R^\TT R=1$. Conversely, with a matrix $R$ satisfying $R^\TT R=1$, the Yukawa matrix is given by
+we can identify $U_1^*\approx U^{\text{(Majorana)}}\w{PMNS}$ and $U_2\approx 1$; the master equation now becomes
 \begin{equation}
- Y = \frac{\ii\sqrt2}{v} U_3^*(M\w H^\text{diag})^{1/2}R(M\w L^\text{diag})^{1/2}U_2^\dagger.
-\label{eq:CIP}
+ [\ii M\w L\wdiag]^{1/2}[\ii M\w L\wdiag]^{1/2} =
+[(M\w H\wdiag)^{-1/2}\MD U^{\text{(Majorana)}}\w{PMNS}]^\TT
+[(M\w H\wdiag)^{-1/2}\MD U^{\text{(Majorana)}}\w{PMNS}].
 \end{equation}
+We will use this parameterization below.
 
-For models with two right-handed neutrinos, one neutrino is massless.
-The same parameterization \cref{eq:CIP} works with\footnote{See, e.g., Ref.~\cite{Brdar:2019iem}. Sho also thanks Kai Schmitz for his note.}
+\paragraph{Example: three right-handed neutrinos}
+Let us assume all the neutrinos are massive thanks to three right-handed neutrinos. Then $M\w L\wdiag$ is invertible and
+\begin{equation}
+ R:=-\ii (M\w H\wdiag)^{-1/2}\MD  U^{\text{(Majorana)}}\w{PMNS}  (M\w L^\text{diag})^{-1/2}
+\quad\Longrightarrow\quad R^\TT R=1.
+\end{equation}
+Conversely, with a matrix $R$ satisfying $R^\TT R=1$, the ``Yukawa matrix'' is given by
+\begin{equation}
+ \MD = \ii \sqrt{M\w H^\text{diag}}R\sqrt{M\w L^\text{diag}}(U^{\text{(Majorana)}}\w{PMNS} )^\dagger.
+\end{equation}
+Now we successfully parameterized $Y_n$ by a ``complex orthogonal'' matrix $R$.
+
+
+Such $R$ is given by\footnote{For $w\in\mathbb C$, $\sin z_1=w$ and $\cos z_2=w$ always have solutions $z_{1,2}\in\mathbb C$. Meanwhile, $\tan z=w$ has no solution if and only if $w=\pm \ii$. Then, using this fact, one first expresses $R_{i3}$ components by $\zeta\w{A,B,C}=\pm1$ and $\theta\w{A,B}\in\mathbb C$, restricting $0\le\Re\theta\w{A,B}\le\pi/2$ ($\Leftrightarrow\Re{\sin{\theta}}\ge0\land\Re\cos\theta\ge0$), and then get an expression of $R$ with three angles and six signs. Five signs are absorbed by enlarging $\Re\theta$ and one sign remains, which is $\zeta$.}
+\begin{equation}
+ R=\pmat{
+ \co{12} \co{13} & \si{12} \co{13} & \si{13} \\
+ -\zeta \si{12} \co{23}-\co{12} \si{23} \si{13} & \zeta \co{12} \co{23} -\si{12} \si{23} \si{13} & \si{23} \co{13} \\
+  \zeta \si{12} \si{23}-\co{12} \co{23} \si{13} & -\zeta\co{12} \si{23} -\si{12} \co{23} \si{13} & \co{23} \co{13}
+},
+\end{equation}
+where $\co{12}\equiv \cos{\theta_{12}}$ etc.\ and
+\begin{equation}
+ \zeta=\pm1; \qquad
+(\theta_{12},\theta_{23},\theta_{13})\in\mathbb C,\quad
+|\Re\theta_{12}|\le\pi, \quad |\Re\theta_{23}|\le\pi,  \quad |\Re\theta_{13}|\le\frac{\pi}{2}.
+\end{equation}
+This $R$ satisfies $RR^\TT=1$, which however is not general (as in the next example).
+
+\paragraph{Example: two right-handed neutrinos}
+For models with two right-handed neutrinos, one neutrino is massless and $M\w L\wdiag$ is not invertible. However the parameterization
+\begin{equation}
+ \MD = \ii \sqrt{M\w H^\text{diag}}R\sqrt{M\w L^\text{diag}}(U^{\text{(Majorana)}}\w{PMNS} )^\dagger
+\end{equation}
+works with\footnote{See, e.g., Ref.~\cite{Brdar:2019iem}. Sho also thanks Kai Schmitz for his note.}
 \begin{align}
  R_{\text{normal hierarchy}}&=\pmat{0 & \cos z & \zeta\sin z \\ 0 & -\sin z & \zeta \cos z},&
  R_{\text{inverse hierarchy}}=\pmat{\cos z & \zeta\sin z &0 \\ -\sin z & \zeta \cos z & 0},
 \end{align}
 where $z\in\mathbb C$ and $\zeta=\pm1$.
-Note that, in general set-up, $R R^\TT\neq1$.
 
 \end{document}

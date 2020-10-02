@@ -1,5 +1,5 @@
 % UT Physics bibliographic style, ver. 2.8 + Modified by Sho Iwamoto. Based on:
-% Time-Stamp: <2020-02-28 14:16:33>
+% Time-Stamp: <2020-10-01 17:22:50>
 %
 %X     IEEE Transactions bibliography style (29-Jan-88 version)
 %X       numeric labels, order-of-reference, IEEE abbreviations,
@@ -205,6 +205,7 @@ ENTRY
     archivePrefix
     primaryClass
     url
+    urldate
     doi
     targets
   }
@@ -520,6 +521,17 @@ FUNCTION {format.url}
 { url empty$
     { "" }
     {"\url{" url * "}" *}
+  if$
+}
+
+FUNCTION {format.url.urldate}
+{ url empty$
+    { "" }
+    { urldate empty$
+        { "\url{" url "}" * *}
+        { "\url{" url "}$^{\text{(" urldate ")}}$" * * * * }
+      if$
+    }
   if$
 }
 
@@ -1287,7 +1299,7 @@ FUNCTION {misc}
   format.date output
   new.block
   doi missing$
-    { format.url output }
+    { format.url.urldate output }
     { "{\ttfamily doi:" doi "}" * * add.doi output }
   if$
   new.sentence
