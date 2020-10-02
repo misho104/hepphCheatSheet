@@ -76,7 +76,7 @@ V_n^\dagger L^1 + U_n^\dagger N
 \end{equation}
 The PMNS matrix is given in \emph{the opposite manner} to the CKM matrix:
 \begin{equation}
- U\w{PMNS}^{\text{(Dirac)}}=V_e^\dagger V_n.
+ U\w{PMNS}^{\text{Dirac}}=V_e^\dagger V_n.
 \end{equation}
 In general, $\Yn\in\mathbb C^{n\times3}$, $V_n\in\mathbb U_{\mathbb C}^3$, $U_n\in\mathbb U_{\mathbb C}^n$, and the Dirac-PMNS matrix is also a $3\times 3$ unitary matrix.
 Models with $n<3$ yields $3-n$ massless left-handed neutrinos, while $n>3$ results in $n-3$ massless right-handed neutrinos.
@@ -173,9 +173,8 @@ In the Dirac neutrino models the PMNS matrix is unitary, which we parameterize
 \end{split}
 \end{equation}
 where $\theta_{ij}\in[0,\pi/2]$ and $\delta\w{CP}\in[0,2\pi]$ as shown in \cref{eq:GeneralUnitary33} and the five phases are removed as done in \cref{sec:SM-CKM}.
-Note that the discussion in \cref{sec:SM-FFdual} holds and $\Theta_W W\tilde W$ term is rotated away.
 
-If the Majorana mass terms are present, $U\w{PMNS}^{\text{(Majorana)}}$, which is defined by \cref{eq:PMNS-defining}, is no longer unitary.
+If the Majorana mass terms are present, $U\w{PMNS}^{\text{Majorana}}$, which is defined by \cref{eq:PMNS-defining}, is no longer unitary.
 However, if $\MN\gg\MD$, it is approximately unitary:
 \begin{equation}
    U\w{PMNS}^{\text{Majorana}}=
@@ -193,13 +192,13 @@ Here additional two phases are introduced because we can no longer rotate $\nR$;
 Current experiments measure the value of the matrix and the above parameterization still works well (cf.~Ref.~\cite{NUFIT}).
 Thus we hereafter identify the Dirac PMNS matrix as $U\w{PMNS}$:
 \begin{align}
- &U\w{PMNS}:=U\w{PMNS}^{\text{(Dirac)}}=
+ &U\w{PMNS}:=U\w{PMNS}^{\text{Dirac}}=
  \pmat{
  \co{12} \co{13} & \si{12} \co{13} & \si{13} \ee^{-\ii\delta\w{CP}}\\
  -\si{12} \co{23} - \co{12} \si{23} \si{13} \ee^{\ii\delta\w{CP}}& \co{12} \co{23} - \si{12}\si{23}\si{13} \ee^{\ii\delta\w{CP}}& \si{23}\co{13}\\
   \si{12}\si{23} - \co{12} \co{23} \si{13}\ee^{\ii\delta\w{CP}} & -\co{12}\si{23}-\si{12}\co{23}\si{13}\ee^{\ii\delta\w{CP}} & \co{23} \co{13}
 };\\
- &U\w{PMNS}^{\text{(Majorana)}} = U\w{PMNS}\pmat{\ee^{\ii\eta_1} \\ & \ee^{\ii\eta_2}\\&&1}
+ &U\w{PMNS}^{\text{Majorana}} = U\w{PMNS}\pmat{\ee^{\ii\eta_1} \\ & \ee^{\ii\eta_2}\\&&1}
 +\Order\left(\frac{\MD}{\MN}\right).
 \end{align}
 Accordingly, the components $U_{\alpha i}$ is in general slightly different from $(\alpha,i)$ component of $U\w{PMNS}$, e.g.,
@@ -208,6 +207,9 @@ Accordingly, the components $U_{\alpha i}$ is in general slightly different from
 \end{equation*}
 with the exactness recovered in the Dirac case.
 
+It should be noted that the discussion in \cref{sec:SM-FFdual} holds.
+As far as the baryon number is conserved, we can remove the $\Theta_W W\tilde W$ term by quark rotation.
+Hence, the above-discussed models have CP violation only in the CKM and (extended) PMNS matrices.
 
 
 
@@ -290,28 +292,28 @@ Then, noting
 \begin{equation}
  \tilde R=U\pmat{U_1\\&U_2}\approx \pmat{U_1 & \MD^\TT\MN^{-1}U_2 \\ -\MN^{-1}\MD^* U_1 & U_2},
 \end{equation}
-we can identify $U_1^*\approx U^{\text{(Majorana)}}\w{PMNS}$ and $U_2\approx 1$; the master equation now becomes
+we can identify $U_1^*\approx U^{\text{Majorana}}\w{PMNS}$ and $U_2\approx 1$; the master equation now becomes
 \begin{equation}
  [\ii M\w L\wdiag]^{1/2}[\ii M\w L\wdiag]^{1/2} =
-[(M\w H\wdiag)^{-1/2}\MD U^{\text{(Majorana)}}\w{PMNS}]^\TT
-[(M\w H\wdiag)^{-1/2}\MD U^{\text{(Majorana)}}\w{PMNS}].
+[(M\w H\wdiag)^{-1/2}\MD U^{\text{Majorana}}\w{PMNS}]^\TT
+[(M\w H\wdiag)^{-1/2}\MD U^{\text{Majorana}}\w{PMNS}].
 \end{equation}
 We will use this parameterization below.
 
 \paragraph{Example: three right-handed neutrinos}
 Let us assume all the neutrinos are massive thanks to three right-handed neutrinos. Then $M\w L\wdiag$ is invertible and
 \begin{equation}
- R:=-\ii (M\w H\wdiag)^{-1/2}\MD  U^{\text{(Majorana)}}\w{PMNS}  (M\w L^\text{diag})^{-1/2}
+ R:=-\ii (M\w H\wdiag)^{-1/2}\MD  U^{\text{Majorana}}\w{PMNS}  (M\w L^\text{diag})^{-1/2}
 \quad\Longrightarrow\quad R^\TT R=1.
 \end{equation}
 Conversely, with a matrix $R$ satisfying $R^\TT R=1$, the ``Yukawa matrix'' is given by
 \begin{equation}
- \MD = \ii \sqrt{M\w H^\text{diag}}R\sqrt{M\w L^\text{diag}}(U^{\text{(Majorana)}}\w{PMNS} )^\dagger.
+ \MD = \ii \sqrt{M\w H^\text{diag}}R\sqrt{M\w L^\text{diag}}(U^{\text{Majorana}}\w{PMNS} )^\dagger.
 \end{equation}
 Now we successfully parameterized $Y_n$ by a ``complex orthogonal'' matrix $R$.
 
 
-Such $R$ is given by\footnote{For $w\in\mathbb C$, $\sin z_1=w$ and $\cos z_2=w$ always have solutions $z_{1,2}\in\mathbb C$. Meanwhile, $\tan z=w$ has no solution if and only if $w=\pm \ii$. Then, using this fact, one first expresses $R_{i3}$ components by $\zeta\w{A,B,C}=\pm1$ and $\theta\w{A,B}\in\mathbb C$, restricting $0\le\Re\theta\w{A,B}\le\pi/2$ ($\Leftrightarrow\Re{\sin{\theta}}\ge0\land\Re\cos\theta\ge0$), and then get an expression of $R$ with three angles and six signs. Five signs are absorbed by enlarging $\Re\theta$ and one sign remains, which is $\zeta$.}
+Such $R$ is given by\footnote{For $w\in\mathbb C$, $\sin z_1=w$ and $\cos z_2=w$ always have solutions $z_{1,2}\in\mathbb C$. Meanwhile, $\tan z=w$ has no solution if and only if $w=\pm \ii$. Then, using this fact, one first expresses $R_{i3}$ components by $\zeta\w{A,B,C}=\pm1$ and $\theta\w{A,B}\in\mathbb C$, restricting $0\le\Re\theta\w{A,B}\le\pi/2$ ($\Leftrightarrow\Re{\sin{\theta}}\ge0\land\Re\cos\theta\ge0$), and then gets an expression of $R$ with three angles and six signs. Five signs are absorbed by enlarging $\Re\theta$ and one sign remains, which is $\zeta$.}
 \begin{equation}
  R=\pmat{
  \co{12} \co{13} & \si{12} \co{13} & \si{13} \\
@@ -330,7 +332,7 @@ This $R$ satisfies $RR^\TT=1$, which however is not general (as in the next exam
 \paragraph{Example: two right-handed neutrinos}
 For models with two right-handed neutrinos, one neutrino is massless and $M\w L\wdiag$ is not invertible. However the parameterization
 \begin{equation}
- \MD = \ii \sqrt{M\w H^\text{diag}}R\sqrt{M\w L^\text{diag}}(U^{\text{(Majorana)}}\w{PMNS} )^\dagger
+ \MD = \ii \sqrt{M\w H^\text{diag}}R\sqrt{M\w L^\text{diag}}(U^{\text{Majorana}}\w{PMNS} )^\dagger
 \end{equation}
 works with\footnote{See, e.g., Ref.~\cite{Brdar:2019iem}. Sho also thanks Kai Schmitz for his note.}
 \begin{align}
