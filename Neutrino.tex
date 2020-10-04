@@ -311,9 +311,24 @@ Conversely, with a matrix $R$ satisfying $R^\TT R=1$, the ``Yukawa matrix'' is g
  \MD = \ii \sqrt{M\w H^\text{diag}}R\sqrt{M\w L^\text{diag}}(U^{\text{Majorana}}\w{PMNS} )^\dagger.
 \end{equation}
 Now we successfully parameterized $Y_n$ by a ``complex orthogonal'' matrix $R$.
+The extended PMNS matrix is given by
+\begin{equation}
+ \approx \pmat{
+  U_1^* & \MD^\dagger \MN^{-1}U_2^*\\
+  -\MN^{-1}\MD U_1^* & U_2^*
+}
+\approx
+\pmat{
+ U^{\text{Majorana}}\w{PMNS} & -\ii U^{\text{Majorana}}\w{PMNS} 
+\sqrt{M\w L^\text{diag}}R^\dagger
+(M\w H^\text{diag})^{-1/2}\\
+  -\ii(M\w H^\text{diag})^{-1/2}R\sqrt{M\w L^\text{diag}}
+&1
+}.
+\end{equation}
 
 
-Such $R$ is given by\footnote{For $w\in\mathbb C$, $\sin z_1=w$ and $\cos z_2=w$ always have solutions $z_{1,2}\in\mathbb C$. Meanwhile, $\tan z=w$ has no solution if and only if $w=\pm \ii$. Then, using this fact, one first expresses $R_{i3}$ components by $\zeta\w{A,B,C}=\pm1$ and $\theta\w{A,B}\in\mathbb C$, restricting $0\le\Re\theta\w{A,B}\le\pi/2$ ($\Leftrightarrow\Re{\sin{\theta}}\ge0\land\Re\cos\theta\ge0$), and then gets an expression of $R$ with three angles and six signs. Five signs are absorbed by enlarging $\Re\theta$ and one sign remains, which is $\zeta$.}
+The parameter matrix $R$ is given by\footnote{For $w\in\mathbb C$, $\sin z_1=w$ and $\cos z_2=w$ always have solutions $z_{1,2}\in\mathbb C$. Meanwhile, $\tan z=w$ has no solution if and only if $w=\pm \ii$. Then, using this fact, one first expresses $R_{i3}$ components by $\zeta\w{A,B,C}=\pm1$ and $\theta\w{A,B}\in\mathbb C$, restricting $0\le\Re\theta\w{A,B}\le\pi/2$ ($\Leftrightarrow\Re{\sin{\theta}}\ge0\land\Re\cos\theta\ge0$), and then gets an expression of $R$ with three angles and six signs. Five signs are absorbed by enlarging $\Re\theta$ and one sign remains, which is $\zeta$.}
 \begin{equation}
  R=\pmat{
  \co{12} \co{13} & \si{12} \co{13} & \si{13} \\
