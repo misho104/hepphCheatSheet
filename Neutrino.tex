@@ -86,20 +86,21 @@ Models with $n<3$ yields $3-n$ massless left-handed neutrinos, while $n>3$ resul
 Models with $\MN\neq0$ generate so-called Majorana neutrino masses.
 If $n<3$, the model has $3-n$ massless neutrinos and $2n$ massive neutrinos, while all neutrinos are massive if $n\ge 3$.
 
-Using Weyl spinor,
-\begin{align}
-& L^1 = \pmat{\nuL\\0},\quad
- N   = \pmat{0\\\bnR},\quad
+Together with the Dirac mass $\MD$, we introduce left-handed Weyl spinors $\xi$ and $\chi$ to avoid notational confusion:
+\begin{equation}
+ L^1 = \pmat{\xi\\0},\quad
+ N   = \pmat{0\\\bar\chi},\quad
  \MD := \frac{v}{\sqrt2}Y_n,\quad
- \MD\wdiag := U_n \MD Y_n^\dagger,\\
-&\label{eq:MajoranaNuLag}
+ \MD\wdiag := U_n \MD Y_n^\dagger.
+\end{equation}
+Note that $\xi\equiv\nuL$ but $\bar\chi\equiv\nR$ and $\chi$ is the conjugate of a right-handed fermion $\nR$. Then,
+\begin{align}
+\label{eq:MajoranaNuLag}
  \mathcal L\w{Y+\nu} 
-\supset
+&\supset
  -\frac{v}{\sqrt2}\overline{N}Y_n \PL L^1 - \frac{1}{2}\overline{N}\MN N^\cc + \text{h.c.}
-=
- -\frac{v}{\sqrt2}\nR Y_n \nuL - \frac{1}{2}\nR \MN\nR + \text{h.c.}\\
-&\phantom{ \mathcal L\w{Y+\nu}}
-=-\frac12\pmat{\nuL & \nR}\pmat{0 & \MD^\TT \\ \MD & \MN} \pmat{\nuL \\ \nR} + \text{h.c.} =: -\frac12\tilde\nu^\TT \tilde M\tilde \nu+\text{h.c.}
+\\&
+=-\frac12\pmat{\xi & \chi}\pmat{0 & \MD^\TT \\ \MD & \MN} \pmat{\xi \\ \chi} + \text{h.c.} =: -\frac12\tilde\nu^\TT \tilde M\tilde \nu+\text{h.c.}
 \end{align}
 As $\tilde M$ is a complex symmetric $(3+n)\times(3+n)$ matrix, it can be AT-diagonalized:
 \begin{equation}
@@ -112,7 +113,7 @@ As $\tilde M$ is a complex symmetric $(3+n)\times(3+n)$ matrix, it can be AT-dia
 and $\tilde M$ gives the neutrino masses.
 The neutrino mixing is then given by
 \begin{align}
- \pmat{\nuL\\\nR} = \tilde R^*\pmat{\nu_{1\TO3} \\ \nu_{4\TO}}
+ \pmat{\xi\\\chi} \equiv \pmat{\nuL\\(\nR)^\dagger} = \tilde R^*\pmat{\nu_{1\TO3} \\ \nu_{4\TO}}
 \end{align}
 and find that the PMNS matrix is now extended to a $3\times n$ matrix $V_e^\dagger [\tilde R^*]\w{upper}$.
 
@@ -121,9 +122,9 @@ Then
 \begin{equation}
 \tilde M = \pmat{0 & \MD^\TT \\ \MD & \MN\wdiag},
 \quad
-\pmat{\nuL\\\nR}
+\pmat{\xi\\\chi}
 =
-\pmat{\begin{smallmatrix}\nu_e\\\nu_\mu\\\nu_\tau\end{smallmatrix}\\\nu_{\text{sterile};i}}
+\pmat{\begin{smallmatrix}\nu_e\\\nu_\mu\\\nu_\tau\end{smallmatrix}\\(\nu_{\text{sterile}})^\dagger_{i}}
 =\tilde R^*\pmat{\nu_{1\TO3}\\\nu_{4\TO}}.
 \end{equation}
 The PMNS matrix appears as a submatrices, which is no longer unitary:
@@ -148,7 +149,7 @@ If we apply AT-diagonalization to the Dirac case (with $n=3$), we obtain
 and find that three pairs of degenerate Weyl fermions form three Dirac neutrinos. 
 
 
-\paragraph{PMNS matrix}\label{sec:PMNS}
+\subsection{PMNS matrix}\label{sec:PMNS}
 In the Dirac neutrino models the PMNS matrix is unitary, which we parameterize
 \begin{equation}
 \begin{split}
@@ -240,10 +241,10 @@ So
 We start from the neutrino mass matrix
 \begin{equation}
 -\mathcal L\supset \frac12
- \pmat{\nuL & \nR} \pmat{0 & \MD^\TT \\ \MD & \MN} \pmat{\nuL \\ \nR}+\text{h.c.}
-= \frac12\pmat{\nuL[i] & \nR[a]}
+ \pmat{\xi & \chi} \pmat{0 & \MD^\TT \\ \MD & \MN} \pmat{\xi \\ \chi}+\text{h.c.}
+= \frac12\pmat{\xi_i & \chi_a}
 \pmat{0_{ij} & (\MD^\TT)_{ib} \\ \MD[aj] & \MN[ab]}
-\pmat{\nuL[j] \\ \nR[b]}+\text{h.c.}
+\pmat{\xi_j \\ \chi_b}+\text{h.c.}
 \end{equation}
 The AT-factorization can be separated into two steps:
 \begin{equation}
