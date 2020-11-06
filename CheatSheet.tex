@@ -88,9 +88,6 @@
 %\graphicspath{{images/}{../images/}}
 \usepackage[usenames]{color}
 
-\hypersetup{ bookmarksdepth=1 }
-
-
 \definecolor{navy}{rgb}{0,0,0.5}
 \definecolor{gray}{gray}{0.5}
 \newcommand\package[2][\relax]{\texttt{#2}\ifx#1\relax\relax\else~\texttt{#1}\fi}
@@ -101,6 +98,15 @@
 \addtokomafont{pagehead}{\small\normalfont}
 \ohead{\texttt{\fontsize{9}{10}\selectfont{\color{gray}{[NewCheatSheet~@~\mydate\today~\currenttime]}}}}
 \cfoot*[]{\thepage}
+
+\hypersetup{
+  bookmarksdepth=1,
+  pdfauthor={Sho Iwamoto},
+  pdftitle={HEP-PH Cheet Sheet by Sho Iwamoto}
+}
+
+
+
 
 %cleverref
 \crefname{section}{Sec.}{Secs.}
