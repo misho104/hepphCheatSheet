@@ -191,25 +191,33 @@ where the boundary of $E_-$ is given by
 \end{align*}
 
 \paragraph{Two-body phase space with momentum conservation}
-As a general representation in any frame,
-\begin{equation}
+In a frame with total four-momentum being $(E_0,\vc P_0)$,
+\begin{align}
 \overline{\dd\Pi^2}
-=\frac{\dd p_1\dd\Omega\,p_1^2}{16\pi^2}\frac{\delta(E_0-\sqrt{m_1^2+p_1^2}-\sqrt{m_2^2+\|\vc P_0-\vc p_1\|^2})}{E_1E_2}
+&=\frac{\dd p_1\dd\Omega\,p_1^2}{16\pi^2}\frac{\delta(E_0-\sqrt{m_1^2+p_1^2}-\sqrt{m_2^2+\|\vc P_0-\vc p_1\|^2})}{E_1E_2}
 =\frac{1}{8\pi}\dd\cos\theta_{1}\frac{p_1^2}{E_0p_1-P_0E_1\cos\theta_1},
 \label{eq:twobodypsgeneral}
-\end{equation}
-where the momentum $p_1$ is given by
-\begin{equation}
+\\
+&\quad
 p_1
-%=\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
+%&=\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
 % + E_0\sqrt{\mathop{\lambda}(E_0^2,m_1^2,m_2^2)
 % +P_0^4-2P_0^2(E_0^2+m_1^2-2m_1^2\cos^2\theta_1-m_2^2)}
-% }{2(E_0^2-P_0^2\cos^2\theta_1)}.
+% }{2(E_0^2-P_0^2\cos^2\theta_1)}\\
 =\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
  + E_0\sqrt{\mathop{\lambda}(E_0^2-P_0^2,m_1^2,m_2^2)-4m_1^2 P_0^2 \sin^2\theta_1}
 }{2(E_0^2-P_0^2\cos^2\theta_1)}.
-\end{equation}
-CM frame result is recovered by setting $E_0=\sqrt{s}$ and $P_0=0$.
+\end{align}
+The CM-frame result is recovered by $E_0=\sqrt{s}$ and $P_0=0$.
+Otherwise, the momentum $p_1$ depends on the emitting angle $\theta_1$:
+\begin{align}
+ \cos\theta&=\frac{-(E_0^2+m_1^2-m_2^2-P_0^2)+2E_0\sqrt{p_1^2+m_1^2}}{2P_0 p_1},
+\qquad p_1>0, \quad -1\le\cos\theta_1\le1;
+\\
+\frac{\dd\cos\theta}{\dd p_1}
+&= \frac{E_0}{P_0\sqrt{p_1^2+m_1^2}}-\frac{\cos\theta}{p_1}
+ = \frac{E_0^2+m_1^2-m_2^2-P_0^2-2E_0m_1^2/\sqrt{p_1^2+m_1^2}}{2P_0 p_1^2}.
+\end{align}
 
 \subsection{Decay rate and Cross section}
 As
