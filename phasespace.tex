@@ -192,32 +192,29 @@ where the boundary of $E_-$ is given by
 
 \paragraph{Two-body phase space with momentum conservation}
 In a frame with total four-momentum being $(E_0,\vc P_0)$,
-\begin{align}
+\begin{equation}
 \overline{\dd\Pi^2}
-&=\frac{\dd p_1\dd\Omega\,p_1^2}{16\pi^2}\frac{\delta(E_0-\sqrt{m_1^2+p_1^2}-\sqrt{m_2^2+\|\vc P_0-\vc p_1\|^2})}{E_1E_2}
-=\frac{1}{8\pi}\dd\cos\theta_{1}\frac{p_1^2}{E_0p_1-P_0E_1\cos\theta_1},
+=\frac{\dd^3\vc p_1}{16\pi^2}\frac{\delta(E_0-\sqrt{m_1^2+p_1^2}-\sqrt{m_2^2+\|\vc P_0-\vc p_1\|^2})}{E_1E_2}
+=\frac{1}{8\pi}\frac{\dd E_1}{P_0}
+~~\left(=\frac{1}{8\pi}\frac{p_1^2\dd\cos\theta_{1}}{E_0p_1-P_0E_1\cos\theta_1}\right),
 \label{eq:twobodypsgeneral}
-\\
-&\quad
-p_1
-%&=\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
-% + E_0\sqrt{\mathop{\lambda}(E_0^2,m_1^2,m_2^2)
-% +P_0^4-2P_0^2(E_0^2+m_1^2-2m_1^2\cos^2\theta_1-m_2^2)}
-% }{2(E_0^2-P_0^2\cos^2\theta_1)}\\
-=\frac{(E_0^2+m_1^2-m_2^2-P_0^2)P_0\cos\theta_1
- + E_0\sqrt{\mathop{\lambda}(E_0^2-P_0^2,m_1^2,m_2^2)-4m_1^2 P_0^2 \sin^2\theta_1}
-}{2(E_0^2-P_0^2\cos^2\theta_1)}.
-\end{align}
-The CM-frame result is recovered by $E_0=\sqrt{s}$ and $P_0=0$.
-Otherwise, the momentum $p_1$ depends on the emitting angle $\theta_1$:
-\begin{align}
- \cos\theta&=\frac{-(E_0^2+m_1^2-m_2^2-P_0^2)+2E_0\sqrt{p_1^2+m_1^2}}{2P_0 p_1},
-\qquad p_1>0, \quad -1\le\cos\theta_1\le1;
-\\
-\frac{\dd\cos\theta}{\dd p_1}
-&= \frac{E_0}{P_0\sqrt{p_1^2+m_1^2}}-\frac{\cos\theta}{p_1}
- = \frac{E_0^2+m_1^2-m_2^2-P_0^2-2E_0m_1^2/\sqrt{p_1^2+m_1^2}}{2P_0 p_1^2}.
-\end{align}
+\end{equation}
+where $\cos\theta_1$ and $p_1$ are related by
+\begin{equation}
+ 2P_0 p_1\cos\theta_1 = 2E_0 \sqrt{p_1^2+m_1^2}-\mathcal M;
+\qquad \mathcal M := E_0^2 - P_0^2 +  m_1^2 - m_2^2.
+\label{eq:twobodyanglemomentum}
+\end{equation}
+If $\vc P_0=\vc 0$, \cref{eq:twobodyanglemomentum} fixes $p_1$ and any $\theta_1$ is allowed, which is the CM result ($E_0=\sqrt s$).
+Otherwise, \cref{eq:twobodyanglemomentum} gives
+\begin{equation}
+ \cos\theta_1 = \frac{2E_0E_1-\mathcal M}{2P_0p_1},\qquad
+p_1=\frac{\mathcal MP_0\cos\theta_1
+ \pm E_0\sqrt{\mathcal M^2-4m_1^2(E_0^2-P_0^2\cos^2\theta_1)}
+}{2(E_0^2-P_0^2\cos^2\theta_1)},
+\end{equation}
+where the first equation gives the allowed range of $\cos\theta_1$.
+Note that a value of $\theta_1$ may correspond to two values of $p_1$.
 
 \subsection{Decay rate and Cross section}
 As
