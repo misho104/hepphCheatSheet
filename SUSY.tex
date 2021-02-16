@@ -82,7 +82,7 @@ W(\Phi_i)\Big|_{\theta^2} + \text{H.c.}
  &\equiv \ii\bar{\lambda}\bsigma^{\mu}\DD_{\mu}\lambda
  +\frac12DD
  -\frac14F_{\mu\nu}F^{\mu\nu}
- +\frac{g^2\Theta}{64\pi^2}\epsilon^{\mu \nu\rho\sigma}
+ +\frac{g^2\Theta}{64\pi^2}\vep^{\mu \nu\rho\sigma}
  F_{\mu\nu}F_{\rho\sigma},
 \end{split}
 \end{equation}\vskip-18pt
@@ -148,7 +148,7 @@ W(\Phi)\Big|_{\theta^2} + \text{H.c.}
 \ii\lambda^a\sigma^{\mu}\DD_{\mu}\bar{\lambda}^a
 +\frac12D^a D^a
 -\frac14F^a_{\mu\nu}F^{a\mu\nu}
-+\frac{g^2\Theta}{64\pi^2}\epsilon^{\mu \nu\rho\sigma}
++\frac{g^2\Theta}{64\pi^2}\vep^{\mu \nu\rho\sigma}
 F^a_{\mu\nu}F^a_{\rho\sigma};
 \end{split}
 \end{equation}\vskip-18pt
@@ -239,7 +239,7 @@ $\OD_\alpha$ etc.~works as covariant derivatives because of the commutation rela
 
 \begin{align*}
 &
-\epsilon^{\alpha\beta}\frac{\partial}{\partial\theta^\beta}=-\frac{\partial}{\partial\theta_\alpha}
+\vep^{\alpha\beta}\frac{\partial}{\partial\theta^\beta}=-\frac{\partial}{\partial\theta_\alpha}
 &&
 \frac{\partial}{\partial \theta^{\alpha}}\theta \theta =2 \theta_{\alpha}
 &&
@@ -247,15 +247,15 @@ $\OD_\alpha$ etc.~works as covariant derivatives because of the commutation rela
 &&
 \frac{\partial}{\partial \btheta^{\dalpha}}\frac{\partial}{\partial \btheta_{\dbeta}}\btheta\btheta=2 \delta^{\dbeta}_{\dalpha}
 \\&
-\epsilon_{\alpha\beta}\frac{\partial}{\partial\theta_\beta}=-\frac{\partial}{\partial\theta^\alpha}
+\vep_{\alpha\beta}\frac{\partial}{\partial\theta_\beta}=-\frac{\partial}{\partial\theta^\alpha}
 &&
 \frac{\partial}{\partial \theta_{\alpha}}\theta \theta =-2 \theta^{\alpha}
 &&
-\frac{\partial}{\partial \theta_{\alpha}}\frac{\partial}{\partial \theta_{\beta}}\theta \theta =2 \epsilon^{\alpha \beta}
+\frac{\partial}{\partial \theta_{\alpha}}\frac{\partial}{\partial \theta_{\beta}}\theta \theta =2 \vep^{\alpha \beta}
 &&
-\frac{\partial}{\partial \btheta_{\dalpha}}\frac{\partial}{\partial \btheta_{\dbeta}}\btheta\btheta=-2 \epsilon^{\dalpha\dbeta}
+\frac{\partial}{\partial \btheta_{\dalpha}}\frac{\partial}{\partial \btheta_{\dbeta}}\btheta\btheta=-2 \vep^{\dalpha\dbeta}
 \\&
-\epsilon^{\dalpha\dbeta}\frac{\partial}{\partial\btheta^\dbeta}=-\frac{\partial}{\partial\btheta_\dalpha}
+\vep^{\dalpha\dbeta}\frac{\partial}{\partial\btheta^\dbeta}=-\frac{\partial}{\partial\btheta_\dalpha}
 &&
 \frac{\partial}{\partial \btheta_{\dalpha}}\btheta\btheta=2 \btheta^{\dalpha}
 &&
@@ -263,13 +263,13 @@ $\OD_\alpha$ etc.~works as covariant derivatives because of the commutation rela
 &&
 \frac{\partial}{\partial \btheta_{\dalpha}}\frac{\partial}{\partial \btheta^{\dbeta}}\btheta\btheta=-2 \delta^{\dalpha}_{\dbeta}
 \\&
-\epsilon_{\dalpha\dbeta}\frac{\partial}{\partial\btheta_\dbeta}=-\frac{\partial}{\partial\btheta^\dalpha}
+\vep_{\dalpha\dbeta}\frac{\partial}{\partial\btheta_\dbeta}=-\frac{\partial}{\partial\btheta^\dalpha}
 &&
 \frac{\partial}{\partial \btheta^{\dalpha}}\btheta\btheta=-2 \btheta_{\dalpha}
 &&
-\frac{\partial}{\partial \theta^{\alpha}}\frac{\partial}{\partial \theta^{\beta}}\theta \theta =-2 \epsilon_{\alpha \beta}
+\frac{\partial}{\partial \theta^{\alpha}}\frac{\partial}{\partial \theta^{\beta}}\theta \theta =-2 \vep_{\alpha \beta}
 &&
-\frac{\partial}{\partial \btheta^{\dalpha}}\frac{\partial}{\partial \btheta^{\dbeta}}\btheta\btheta=2 \epsilon_{\dalpha\dbeta}
+\frac{\partial}{\partial \btheta^{\dalpha}}\frac{\partial}{\partial \btheta^{\dbeta}}\btheta\btheta=2 \vep_{\dalpha\dbeta}
 \end{align*}
 
 In addition, we define
@@ -591,7 +591,7 @@ We thus define a chiral superfield from $\ee^{V}$:
 \Bigr);\footnotemark
 \end{align}%
 \footnotetext{\TODO{This equivalence should be checked/explained in gauge-theory section; especially, the sign is not verified and might be opposite.}}%
-it is not supergauge- or Lorentz-invariatn, but $\Tr(\mathcal W^\alpha \mathcal W_\alpha) = \Tr(\epsilon^{\alpha\beta}\mathcal W_\beta \mathcal W_\alpha)$ is supergauge- and Lorentz-invariant, and its $\theta^2$-term is SUSY-invariant, which becomes a candidate in SUSY Lagrangian with its Hermitian conjugate.
+it is not supergauge- or Lorentz-invariatn, but $\Tr(\mathcal W^\alpha \mathcal W_\alpha) = \Tr(\vep^{\alpha\beta}\mathcal W_\beta \mathcal W_\alpha)$ is supergauge- and Lorentz-invariant, and its $\theta^2$-term is SUSY-invariant, which becomes a candidate in SUSY Lagrangian with its Hermitian conjugate.
 
 In Wess-Zumino gauge, it is given by
 \begin{align}
@@ -607,7 +607,7 @@ In Wess-Zumino gauge, it is given by
 \right.\\&\qquad\qquad\qquad\left.
 +\frac{\ii\theta^2(\sigma^{\mu}\btheta)_{\alpha}}{2} \left(\partial_{\mu}D^{a}
 +\ii\partial^\nu F^a_{\mu\nu}
-- gf^{abc}\epsilon_{\mu\nu \rho\sigma}  A^{\nu b}\partial^{\rho}A^{\sigma c}
+- gf^{abc}\vep_{\mu\nu \rho\sigma}  A^{\nu b}\partial^{\rho}A^{\sigma c}
 \right)\right]T^{a},
 \end{split}
 \end{align}
@@ -626,7 +626,7 @@ Also,
 \ii\lambda^a\sigma^{\mu}\DD_{\mu}\bar{\lambda}^{b}
 +\ii\lambda^b\sigma^{\mu}\DD_{\mu}\bar{\lambda}^{a}
 +D^a D^{b}
--\frac{1}{4}\left(\ii \epsilon^{\sigma\mu \nu\rho}+2\eta^{\mu\rho}\eta^{\nu\sigma}\right)
+-\frac{1}{4}\left(\ii \vep^{\sigma\mu \nu\rho}+2\eta^{\mu\rho}\eta^{\nu\sigma}\right)
 F^a_{\mu\nu}F^b_{\rho\sigma}
 \right]
 \Tr(t^at^b)
@@ -635,7 +635,7 @@ F^a_{\mu\nu}F^b_{\rho\sigma}
 \ii\lambda^a\sigma^{\mu}\DD_{\mu}\bar{\lambda}^a
 +\frac12D^a D^a
 -\frac14F^a_{\mu\nu}F^{a\mu\nu}
-+\frac{\ii}{8}\epsilon^{\mu \nu\rho\sigma}
++\frac{\ii}{8}\vep^{\mu \nu\rho\sigma}
 F^a_{\mu\nu}F^a_{\rho\sigma},
 \\
  \left[\Tr(\mathcal W^\alpha\mathcal W_\alpha)\right]_{\theta^4}
@@ -655,7 +655,7 @@ For Abelian theory,
 \ii\lambda\sigma^{\mu}\DD_{\mu}\bar{\lambda}
 +\frac12DD
 -\frac14F_{\mu\nu}F^{\mu\nu}
-+\frac{\ii}{8}\epsilon^{\mu \nu\rho\sigma}
++\frac{\ii}{8}\vep^{\mu \nu\rho\sigma}
 F_{\mu\nu}F_{\rho\sigma}\right).
 \end{align}
 

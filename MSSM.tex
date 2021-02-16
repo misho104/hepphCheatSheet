@@ -163,7 +163,7 @@ Then,
  \mathcal L\w{matter} &= \sum\w{matters}\Bigl[\DD^\mu\phi^*\DD_\mu\phi+\ii\bpsi\bsigma^\mu\DD_\mu\psi
 - \sqrt2\sum\w{gauge} g\left(\lambda^a(\phi^*t^a\psi)+\blambda^a(\bpsi t^a\phi)\right)
 \Bigr] + \text{($F$-terms)},\\
- \mathcal L\w{gauge} &= \sum\w{gauges}\Bigl(-\frac14F^a_{\mu\nu}F^{a\mu\nu}+\ii\blambda^a\bsigma^\mu\DD_\mu\lambda^a\Bigr) + \frac{g_3^2\Theta_g}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}G^a_{\mu\nu}G^a_{\rho\sigma}+ \text{($D$-terms)},
+ \mathcal L\w{gauge} &= \sum\w{gauges}\Bigl(-\frac14F^a_{\mu\nu}F^{a\mu\nu}+\ii\blambda^a\bsigma^\mu\DD_\mu\lambda^a\Bigr) + \frac{g_3^2\Theta_g}{64\pi^2}\vep^{\mu\nu\rho\sigma}G^a_{\mu\nu}G^a_{\rho\sigma}+ \text{($D$-terms)},
 \\
 \begin{split}
   \mathcal L\w{super} &=
@@ -229,7 +229,7 @@ Here the Lagrangian
 \begin{align}
  \mathcal L\w{vector}&=
 - \frac14F^a_{\mu\nu}F^{a\mu\nu}
-+ \frac{g_3^2\Theta_g}{64\pi^2}\epsilon^{\mu\nu\rho\sigma}G^a_{\mu\nu}G^a_{\rho\sigma},
++ \frac{g_3^2\Theta_g}{64\pi^2}\vep^{\mu\nu\rho\sigma}G^a_{\mu\nu}G^a_{\rho\sigma},
 \\
  \mathcal L\w{fermions}&=
   \ii\bpsi\bsigma^\mu\DD_\mu\psi
@@ -282,7 +282,7 @@ where
  +  \ii\bthd\bsigma^\mu\left(\partial_\mu - \ii g_2 W_\mu^aT^a + \tfrac12 \ii g_Y B_\mu\right)\thd
 \\&\quad
  + \ii\bar\tig_0^a\bsigma^\mu\left(\partial_\mu\tig_0^a + g_3f^{abc}g_\mu^b\tig_0^c\right)
- + \ii\bar\tiw^a\bsigma^\mu\left(\partial_\mu\tiw^a + g_2\epsilon^{abc}W^b_\mu\tiw^c\right)
+ + \ii\bar\tiw^a\bsigma^\mu\left(\partial_\mu\tiw^a + g_2\nep^{abc}W^b_\mu\tiw^c\right)
  + \ii\bar\tib\bsigma^\mu\partial_\mu\tib
 \\&\quad
  - \frac12\left(M_3\tig_0^a\tig_0^a+M_2\tiw^a\tiw^a+M_1\tib\tib+\text{H.c.}\right)
@@ -399,7 +399,7 @@ The scalar potential includes
 \end{split}
 \\
 V_{\text{\cancel{SUSY}}}&\supset
-       m^2_{\Hu}|\hu|^2 + m^2_{\Hd}|\hd|^2 +\epsilon^{ab}\left(b\hu^a\hd^b + b^*\hu^{a*}\hd^{b*}
+       m^2_{\Hu}|\hu|^2 + m^2_{\Hd}|\hd|^2 +\nep^{ab}\left(b\hu^a\hd^b + b^*\hu^{a*}\hd^{b*}
        -b_i\tlL[i]^a\hu^b-b_i^*\tlL[i]^{a*}\hu^{b*}\right)+\tlL[i]^*M^{2}_{Li}\hd + \tlL[i]M^{2*}_{Li}\hd^*;
 \end{align}
 the Higgs mass term is given by
@@ -414,7 +414,7 @@ the Higgs mass term is given by
 \end{equation}
 while corresponding fermion terms are
 \begin{equation}
- \mathcal L\supset \epsilon^{ab}\left(
+ \mathcal L\supset \nep^{ab}\left(
   -\mu\thu^a\thd^b-\kappa_i\thu^a\lL[i]^b
 \right).
 \end{equation}
@@ -1046,7 +1046,7 @@ A_\mu|e|\Bigl[
 +\text{h.c.}\Bigr].
 %%%%%%%%%%
 \\&
-  -\epsilon^{xyz}\left(
+  -\nep^{xyz}\left(
     \lambda''_{ijk}\tdR[k]^{x*}\uR[i]^{\cc y}\dR[j]^{\cc z}
   + \frac12\lambda''_{kij}\tuR[k]^{x*}\dR[i]^{\cc y}\dR[j]^{\cc z}
   \right)

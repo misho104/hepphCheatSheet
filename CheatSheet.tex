@@ -1,5 +1,5 @@
 %!pdflatex
-% Time-stamp: <2020-10-22 11:07:21>
+% Time-stamp: <2021-02-16 14:55:18>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \bibliographystyle{utphys28mod}
 
@@ -33,6 +33,10 @@
 \newcommand\norm[1]{\lVert#1\rVert}
 \newcommand\Abs[1]{\left\lvert#1\right\rvert}
 \newcommand\Norm[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\vep}{\varepsilon} % \vep^{12} = \vep^{0123} = 1 but \vep_{12} = \vep_{0123} = -1.
+\newcommand{\nep}{\epsilon}    % to distinguish from vep:  \nep^{12} = \nep_{12} = +1.
+
 
 \newcommand\ii{\mathrm{i}}
 \newcommand\co[1]{\mathrm{c}_{#1}}
