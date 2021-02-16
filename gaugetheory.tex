@@ -3,48 +3,62 @@
 \summarystyle
 
 \section{Gauge theory}
-\paragraph{SU(2)}
-Fundamental representation $\TWO=(T^a)_{ij}$,
-adjoint representation $\text{adj.}=(\epsilon^{a})^{bc}$.%
-\footnote{We do not distinguish sub- and superscripts for gauge indices.}
+\paragraph{SU(N)}Fundamental rep.~$\boldsymbol N\sim (\tau^{a})_{ij}$ (Hermitian), $\overline{\boldsymbol N}\sim(-\tau^{a*})_{ij}$, and adjoint rep.~$\text{\textbf{adj.}}\sim (f^a)^{bc}$.\footnote{Upper and lower gauge indices are equivalent, while Lorentz indices and Weyl-spinor indices are different for super- and subscripts because they are raised/lowered by, e.g., metric tensors.}
 \begin{align*}
- T_a &= \frac{1}{2} \sigma_a,
-&
- \Tr(T_a T_b) &= \frac{1}{2}\delta_{ab},
-&
- [T_a, T_b] &= \ii \epsilon^{abc}T^c,
-&
- \epsilon^{abc}\epsilon^{ade} &= \delta_{bd}\delta_{ce} - \delta_{be}\delta_{cd}
+ &\Tr(\tau_a\tau_b)=\frac12\delta_{ab},\qquad
+ [\tau_a,\tau_b]=\ii f_{abc}\tau_c,&
+ &[\tau_a,[\tau_b,\tau_c]] = [[\tau_a,\tau_b],\tau_c] + [\tau_b,[\tau_a,\tau_c]],\\
+ &f^{abc}=-2\ii\Tr([\tau^a,\tau^b]\tau^c): \text{real, anti-symmetric},&
+ &f^{ade}f^{bcd} + f^{bde}f^{cad} + f^{cde}f^{abd} = 0.
 \end{align*}
-Since
-$\overline{\TWO}
-  = -(T^a)^*_{ij}$
-has identities
- $-\epsilon T^a \epsilon = -T^{a*}$ and
- $-\epsilon (-T^{a*}) \epsilon = T^a$,
-%
-%\begin{equation}
-% $-\epsilon T^a \epsilon = -T^{a*}$,
-%\end{equation}
-%  = -\epsilon^{ik}T^a_{kl}\epsilon^{lj}
-%  = (\epsilon T^a\epsilon^{-1})_{ij}
-we see that $\epsilon^{ab}\TWO^b$ transforms as $\overline{\TWO}^a$:
+\begin{align}
+ \boldsymbol{N}_i
+&\mapsto [\exp(\ii g\theta^a \tau^a)]_{ij}\boldsymbol{N}_j
+\simeq  \boldsymbol{N}_i + \ii g\theta^a \tau^a_{ij}\boldsymbol{N}_j\\\notag
+ \overline{\boldsymbol{N}}_i
+&\mapsto
+\overline{\boldsymbol{N}}_j [\exp(-\ii g\theta^a \tau^a)]_{ji}
+= [\exp(-\ii g\theta^a \tau^{a*})]_{ij} \overline{\boldsymbol{N}}_j \qquad\text{(i.e., $\overline{\boldsymbol{N}}_i=\boldsymbol N_i^*$)}\\
+&\simeq\overline{\boldsymbol{N}}_j -\ii g\theta^a \overline{\boldsymbol{N}}_j\tau^a_{ji}
+\simeq \overline{\boldsymbol{N}}_j -\ii g\theta^a \tau^{a*}_{ij} \overline{\boldsymbol{N}}_j\end{align}
+
+\paragraph{SU(2)} Fundamental representation $\TWO\sim T^a \equiv \sigma^a/2$ and adjoint representation $\THREE\sim \nep^{abc}$.
+\begin{equation*}
+ \Tr(T_aT_b)=\frac12\delta_{ab},\qquad
+ [T_a,T_b]=\ii \nep_{abc}T_c,\qquad
+ \overline\TWO = \TWO^* = \nep\TWO\quad (\because T^*=\nep T \nep=-\nep T\nep^{-1}),
+\end{equation*}
+where the last identity comes as follows:
 \begin{equation}
- \epsilon^{ab}\TWO^b
-\to
- \epsilon^{ab}[\exp\left(\ii g \theta^\alpha T^\alpha\right)]^{bc}\TWO^{c}
-=
- \epsilon^{ab}[\exp\left(\ii g \theta^\alpha T^\alpha\right)]^{bc}(\epsilon^{-1})^{cd}(\epsilon^{de}\TWO^e)
-=
- [\exp\left(-\ii g \theta^\alpha T^{\alpha*}\right)]^{ab}(\epsilon^{bc}\TWO^c).
+\nep_{ij} \TWO_j
+\mapsto
+\nep_{ij}\left(
+[\exp(\ii g\theta^a T^a)]_{jk}\TWO_k
+\right)
+= [\nep\exp(\ii g\theta^a T^a)\nep^{-1}]_{ij}\nep\TWO_j
+= [\exp(-\ii g\theta^a T^{a*})]_{ij}(\nep_{jk}\TWO_k).
 \end{equation}
 
-\paragraph{SU(3)}
-Fundamental representation $\THREE=(\tau^a)_{ij}$,
-$\THREEbar=-(\tau^{a})^*_{ij}$;
-adjoint representation $\text{adj.}=\bm{8}=(f^{a})^{bc}$.%
+\paragraph{SU(3)} Fundamental rep.~$\THREE\sim\tau^a\equiv \lambda^a/2$, $\overline\THREE\sim(-\tau^{a*})$, and adjoint rep.~$\boldsymbol8\sim (f^a)^{bc}$.
+\begin{align}\notag
+\THREE:~\phi_a&
+  \to [\exp(\ii g \theta^\alpha \tau^\alpha)]_{ab}\phi_b,
+&
+\THREEbar:~\phi_a&
+  \to[\exp(-\ii g \theta^\alpha \tau^{\alpha*})]_{ab}\phi_b,
+\\
+\phi_a^*&
+  \to[\exp(-\ii g \theta^\alpha \tau^{\alpha*})]_{ab}\phi_b^*,
+&
+\phi_a^*&
+  \to[\exp(\ii g \theta^\alpha \tau^{\alpha})]_{ab}\phi_b^*.
+\end{align}
 
-Gell-Mann matrices:
+\clearpage
+\detailstyle
+
+\subsection{Gell-Mann matrices}
+Gell-Mann matrices and a Mathematica code to generate them are:
 \begin{align}
  \lambda_{1\text{--}8} &=
   \left(\begin{smallmatrix} 0&1&0 \\ 1&0&0 \\ 0&0&0 \end{smallmatrix}\right),
@@ -56,42 +70,6 @@ Gell-Mann matrices:
   \left(\begin{smallmatrix} 0&0&0 \\ 0&0&-\ii \\ 0&\ii&0  \end{smallmatrix}\right),
   \tfrac1{\sqrt3}\left(\begin{smallmatrix} 1&0&0 \\ 0&1&0 \\ 0&0&-2 \end{smallmatrix}\right).
 \end{align}
-
-\begin{align*}
- \tau_a &= \frac{1}{2} \lambda_a,
-&
- \Tr(\tau_a \tau_b) &= \frac{1}{2}\delta_{ab},
-&
- [\tau_a, \tau_b] &= \ii f^{abc}\tau^c,
-&
- f^{ade}f^{bcd} + f^{bde}f^{cad} + f^{cde}f^{abd} &= 0.
-\end{align*}
-
-\begin{align*}
-\THREE:~\phi_a&
-  \to [\exp(\ii g \theta^\alpha \tau^\alpha)]_{ab}\phi_b
-  \simeq \phi_a + \ii g \theta^\alpha \tau^\alpha_{ab}\phi_b
-&
-\THREEbar:~\phi_a&
-  \to[\exp(-\ii g \theta^\alpha \tau^{\alpha*})]_{ab}\phi_b
-  \simeq \phi_a - \ii g \theta^\alpha \tau^{\alpha*}_{ab}\phi_b
-\\
-\phi_a^*&
-  \to[\exp(-\ii g \theta^\alpha \tau^{\alpha*})]_{ab}\phi_b^*
- \simeq \phi_a^* - \ii g \theta^\alpha \tau^{\alpha*}_{ab}\phi_b^*
-&
-\phi_a^*&
-  \to[\exp(\ii g \theta^\alpha \tau^{\alpha})]_{ab}\phi_b^*
-  \simeq \phi_a^* + \ii g \theta^\alpha \tau^{\alpha}_{ab}\phi_b^*
-\\
-&=\phi_b^*[\exp(-\ii g \theta^\alpha \tau^{\alpha})]_{ba}
- \simeq \phi_a^* - \ii g \theta^\alpha \phi_b^* \tau^{\alpha}_{ba}
-\end{align*}
-
-\clearpage
-\detailstyle
-
-A Mathematica code for the Gell-Mann matrices is:
 \begin{minted}{wolfram}
 GellMann[0] := DiagonalMatrix[{1,1,1}]/Sqrt[3/2]
 GellMann[8] := DiagonalMatrix[{1,1,-2}]/Sqrt[3]

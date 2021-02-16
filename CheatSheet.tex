@@ -64,7 +64,7 @@
 \newcommand\parenfrac[3]{\def\temp{#3}\Bigl(\frac{#1}{#2}\Bigr)\ifx\oneone\temp\relax\relax\else^{#3}\fi}
 \newcommand\vev[1]{\langle#1\rangle}
 \newcommand\diracdelta[1][\relax]{\qopname\relax o{\ifx#1\relax\mathrm{\delta}\else\mathrm{\delta}^{(#1)}\fi}}
-\newcommand\Kallen[1][\relax]{\qopname\relax o{\ifx#1\relax\mathrm{\lambda}\else\mathrm{\lambda}^{(#1)}\fi}}
+\newcommand\Kallen[1][\relax]{\qopname\relax o{\ifx#1\relax\mathrm{\lambda}\else\mathrm{\lambda}^{#1}\fi}}
 
 % units
 \newcommand\unit[1]{\,\mathrm{#1}\xspace}

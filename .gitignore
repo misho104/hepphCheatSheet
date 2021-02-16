@@ -4,6 +4,7 @@
 .*
 \#*
 _minted-*
+*.pyg
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
