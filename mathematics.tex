@@ -4,7 +4,7 @@
 \detailstyle
 \section{Mathematics}
 \subsection{Matrix exponential}
-Excerpted from \S2 and \S5 of Hall 2015 \cite{hall2015}:
+Excerpted from \S2 and \S5 of Hall 2015 \cite{Hall2015}:
 \begin{alignat}{2}
  &\ee^X := \sum_{m=0}^\infty \frac{X^m}{m!} \text{~~(converges for any $X$)},
 \quad&
@@ -198,4 +198,143 @@ AutonneTakagi[M_, order_ : None] := Module[{v0, v, p, ord, R, D},
   D = ConjugateTranspose[R].M.Conjugate[R];
   {D, R}];
 \end{minted}
+
+
+\subsection{Group theory}\label{sec:group-theory}
+
+\paragraph{Lie Groups}
+This section is mainly based on Ref.~\cite{Hall2015}. Also, $\KK=\mathbb{R}$ or $\mathbb{C}$ and $M^n_\KK=\KK^{n\times n}$.
+
+With $\Omega=\spmat{0&I_{n/2}\\-I_{n/2}}$ and $H=\spmat{I_p&0\\0&-I_q}$,
+\begin{align}
+ \mathop{\mathrm  {GL}}(n;\KK) &= \{g\in M^n_\KK\mathbin|\det g\neq 0\},&
+ \mathop{\mathfrak{gl}}(n;\KK) &= \{a\in M^n_\KK\},\\
+%
+ \mathop{\mathrm  {SL}}(n;\KK) &= \{g\in M^n_\KK\mathbin|\det g=1\},&
+ \mathop{\mathfrak{sl}}(n;\KK) &= \{a\in M^n_\KK\mathbin|\Tr a=0\},\\
+%
+ \mathop{\mathrm  {SU}}(n) &= \{g\in M^n_{\mathbb C}\mathbin|g^\dagger g=1\land\det g=1\},&
+ \mathop{\mathfrak{su}}(n) &= \{a\in M^n_{\mathbb C}\mathbin|a+a^\dagger=0\land\Tr a=0\},\\
+%
+ \mathop{\mathrm  {SO}}(n) &= \{g\in M^n_{\mathbb R}\mathbin|g^\TT g=1\land\det g=1\},&
+ \mathop{\mathfrak{so}}(n) &= \{a\in M^n_{\mathbb R}\mathbin|a+a^\TT=0\},\\
+%
+ \mathop{\mathrm  {SO}}(n;\mathbb C) &= \{g\in M^n_{\mathbb C}\mathbin|g^\TT g=1\land\det g=1\},&
+ \mathop{\mathfrak{so}}(n;\mathbb C) &= \{a\in M^n_{\mathbb C}\mathbin|a+a^\TT=0\},\\
+%
+ \mathop{\mathrm  {SO}}(p,q) &= \{g\in M^{p+q}_{\mathbb R}\mathbin|H g^\TT H=g^{-1}\land\det g=1\},&
+ \mathop{\mathfrak{so}}(p,q) &= \{a\in M^{p+q}_{\mathbb R}\mathbin|H a^\TT H=-a\},\\
+%
+ \mathop{\mathrm  {Sp}}(n;\KK) &= \{g\in M^n_\KK\mathbin|\Omega g^\TT \Omega=-g^{-1}\},&
+ \mathop{\mathfrak{sp}}(n;\KK) &= \{g\in M^n_\KK\mathbin|\Omega a^\TT \Omega=a\},\\
+%
+ \mathop{\mathrm  {Sp}}(n) &= \{g\in M^n_{\mathbb C}\mathbin|\epsilon g^\TT \epsilon=-g^{-1}\land g^\dagger g=1\},&
+ \mathop{\mathfrak{sp}}(n) &= \{g\in M^n_{\mathbb C}\mathbin|\epsilon a^\TT \epsilon=a\land a^\dagger+a=0\}.
+\end{align}
+Of course, $\mathop{\mathrm{U}}(n)$ and $\mathop{\mathrm{O}}(n;\KK)$ (and corresponding Lie algebra) are obtained by removing the condition $\det g=1$ (and $\Tr a=0$).
+
+
+Important identities are:
+\begin{equation}
+ \gSp(2;\KK)=\gSL(2;\KK),\quad \gSp(2)=\gSU(2),
+\end{equation}
+
+
+
+The complexification of a finite-dimensional \emph{real} vector space $V$ is defined by
+\begin{equation}
+ V_{\mathbb C}=V\otimes\mathbb C=\{v_1+\ii v_2\mathbin|v_1,v_2\in V\}\cong V+\ii V.
+\end{equation}
+Then, complexification of a Lie algebra $\mathfrak a$ of a matrix Lie group is defined as follows.
+Since $\mathfrak a$ is a \emph{real} Lie algebra, it can be complexified to $\mathfrak a_{\mathbb C}$, where its bracket operation has a unique extension so that $\mathfrak a_{\mathbb C}$ is a \emph{complex} lie algebra.
+The complex Lie algebra $\mathfrak a_{\mathbb C}$ is called the complexification of $\mathfrak a$.
+In particular,
+\begin{align}\notag
+ &
+ \mathop{\mathfrak{gl}}(n;\mathbb R)_{\mathbb C}
+ \cong \mathop{\mathfrak{u}}(n)_{\mathbb C}
+ \cong \mathop{\mathfrak{gl}}(n;\mathbb C),&
+ &
+ \mathop{\mathfrak{so}}(n)_{\mathbb C}
+ \cong \mathop{\mathfrak{so}}(n;\mathbb C),\\
+ &
+ \mathop{\mathfrak{sl}}(n;\mathbb R)_{\mathbb C}
+ \cong \mathop{\mathfrak{su}}(n)_{\mathbb C}
+ \cong \mathop{\mathfrak{sl}}(n;\mathbb C),&
+ &
+ \mathop{\mathfrak{sp}}(n;\mathbb R)_{\mathbb C}
+ \cong \mathop{\mathfrak{sp}}(n)_{\mathbb C}
+ \cong \mathop{\mathfrak{sp}}(n;\mathbb C).
+\end{align}
+On the other hand, a complex simple Lie algebra $\mathfrak a$ can be, on the other hand, viewed as a real Lie algebra, whose (real) dimension is twice as the original (complex) dimension.
+We describe such real Lie algebra by $\mathfrak a_{\mathbb R}$.
+
+Important identities are:
+\begin{align}
+ &\aSO(3,1)\cong \aSL(2;\mathbb C)_{\mathbb R},&
+ &\aSO(3,1)_{\mathbb C}\cong \aSL(2;\mathbb C)\oplus\aSL(2;\mathbb C).
+\end{align}
+
+
+\paragraph{Clifford algebra and spin group}\TODO{needs experts...}
+We just provide a little information on spin group $\mathop{\mathrm Spin}(1,3)$ associated to (our) Minkowski metric $\eta=\diag(+,-,-,-)$:~\cite{RauschdeTraubenberg:2005aa,Wikipedia:Clifford_Algebra}. To define the Clifford algebra $\mathfrak C(V,Q)$, let
+\begin{itemize}
+ \item[$V$]: a vector space over a field $K$; in our case, $V=\mathbb R^{1,3}$ and $K=\mathbb R$.
+ \item[$Q$]: a quadratic form on $V$,
+ \item[$A$]: %
+  a unital associative algebra over $K$; it means that $(A, +, \ast)$ is a ring and is also a vector space on $K$, it should satisfy
+  $(k a_1)\ast a_2=a_1\ast(ka_2)=k(a_1\ast a_2)$ for $a_i\in A$ and $k\in K$, and it should contain $1_A$ such that $1_A\ast a=a\ast 1_A=a$;
+  here a map $f:K\to A$ with $f(k)=k1_A$ is an injective ring homomorphism, with which $K$ can be included in $A$.
+\end{itemize}
+Then we can define a linear map $i:V\to \mathfrak C(V,Q)$ satisfying $i(v)\ast i(v)=Q(v)1_A$ for all $v\in V$ as follows, which defines the Clifford algebra.
+Given a linear map $j:V\to A$ satisfying $j(v)\ast j(v)=Q(v)1_A$ for all $v\in V$, there is a unique algebra homomorphism $f:\mathfrak C(V,Q)\to A$ such that $f\circ i=j$.
+
+We focus on $\mathbb R^{1,3}$ and $Q(v)=\eta_{\mu\nu}v^\mu v^\nu$ (Minkowski norm). Then, by introducing the basis $e_\mu$ of $V$, the condition yields
+\begin{align}
+& (v^2+2v^\mu w_\mu + w^2)1_A = [j(v)+j(w)]\ast[j(v)+j(w)] = (v^2+w^2)1_A+j(v)\ast j(w)+j(w)\ast j(v),\notag\\
+&\therefore \{j(v),j(w)\}=2v^\mu w_\mu 1_A
+\text{~~and thus~~} \{e_\mu,e_\nu\}=2\eta_{\mu\nu} 1_A.\label{eq:ClifAl}
+\end{align}
+The Clifford algebra $\mathfrak C(\mathbb R^{1,3},\eta)$ is thus seen as the associative algebra generated by $\{1_A, e_0, e_1, e_2, e_3\}$ satisfying \cref{eq:ClifAl}.
+
+Several properties of the Clifford algebra $\mathfrak C_{1,3}$ is in order:
+\begin{itemize}
+ \item It is of dimension $2^4=16$ and the basis is given by
+$\{1, e_\mu, (e_\mu e_\nu)_{\mu<\nu}, (e_\mu e_\nu e_\rho)_{\mu<\nu<\rho}, e_0e_1e_2e_3\}.$
+ \item It contains a subalgebra $\mathfrak C^0_{1,3}$ spanned by $\{1, e_\mu e_\nu, e_0e_1e_2e_3\}$, while the remaining vector space $\mathfrak C^1_{1,3}$ is by $\{e_\mu, e_\mu e_\nu e_\rho\}$.
+ \item We define $\epsilon=e_0e_1e_2e_3$, which satisfies $\epsilon^2=-1$ and $[\epsilon,\mathfrak C^0_{1,3}]=\{\epsilon,\mathfrak C^1_{1,3}\}=0$.
+ \item $\aSO(1,3)\subset\mathfrak C_{1,3}$; explicitly, the generators are given by $S_{\mu\nu}:={[e_\mu,e_\nu]}/{4}$, which satisfy
+\begin{equation}
+ [S_{\mu\nu},e_\rho] = e_\mu\eta_{\nu\rho}-e_\nu\eta_{\mu\rho},\qquad
+ [S_{\mu\nu},S_{\rho\sigma}] = 
+-\eta_{\mu\rho}S_{\nu\sigma}
++\eta_{\nu\rho}S_{\mu\sigma}
++\eta_{\mu\sigma}S_{\nu\rho}
+-\eta_{\nu\sigma}S_{\mu\rho}.
+\end{equation}
+\end{itemize}
+
+The Clifford group is defined by
+\begin{equation}
+\Gamma_{1,3}=\{x\in\mathfrak C_{1,3}\mathbin|\forall v\in \mathbb R^{1,3}, xvx^{-1}\in \mathbb R^{1,3}\},
+\end{equation}
+i.e., $x$ should return a ``vector'' $v^\nu e_\nu\in \mathbb R^{1,3}$ into another ``vector'', which in fact corresponds to the Lorentz transformation:
+$xe_\nu x^{-1} = (\Lambda^{-1})_\nu{}^\mu e_\mu$.
+The correspondence is however one-to-$N$, and thus it should be normalized by the squared-norm $N(x)$
+\begin{equation}
+ N(x)=x\overline{x};\qquad\overline{e_\mu}=e_\mu,\quad\overline{ke_\mu e_\nu e_\rho}=ke_\rho e_\nu e_\mu, \text{etc., where $k\in\mathbb R$}.
+\end{equation}
+Then, we define
+\begin{align*}
+ \mathop{\mathrm{Pin}}(1,3)&=\{x\in\Gamma_{1,3}\mathbin||N(x)|=1\},&
+ \mathop{\mathrm{Spin}}(1,3)&=\mathop{\mathrm{Pin}}(1,3)\cap \mathfrak C^0_{1,3},&
+ \mathop{\mathrm{Spin}}(1,3)^+&=\{x\in\mathop{\mathrm{Spin}}(1,3)\mathbin|N(x)=1\},
+\end{align*}
+whose properties are in order:
+\begin{itemize}
+ \item $\mathop{\mathrm{[S]pin}}(1,3)$ is a double covering of $\mathop{\mathrm{[S]O}}(1,3)$ but it is not connected.
+ \item $\mathop{\mathrm{Spin}}(1,3)^+$ is a connected Lie group and is a double covering of $\gSO(1,3)^+$.
+ \item $\mathop{\mathrm{Spin}}(1,3)^+\cong\gSL(2;\mathbb C)\cong\gSp(2;\mathbb C)$.
+\end{itemize}
+
 \end{document}

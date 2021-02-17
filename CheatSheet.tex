@@ -1,5 +1,5 @@
 %!pdflatex
-% Time-stamp: <2021-02-16 14:55:18>
+% Time-stamp: <2021-02-17 14:56:03>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \bibliographystyle{utphys28mod}
 
@@ -7,7 +7,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[russian,english]{babel}
-\usepackage{CJKutf8}
+\usepackage{bxcjkjatype}
 \usepackage[fleqn]{amsmath}
 \usepackage{amssymb,url,cite,slashed,cancel,booktabs,hyperref,graphicx,xspace,subcaption,wrapfig,braket,tensor,xstring,mathabx}
 \usepackage{newtxtext}
@@ -29,6 +29,7 @@
 \newcommand\TT{\mathrm{T}}
 \newcommand\cc{\mathrm{c}}
 \newcommand\ee{\mathop{}\!\mathrm{e}}
+\newcommand\KK{\mathbb{K}}
 \newcommand\abs[1]{\lvert#1\rvert}
 \newcommand\norm[1]{\lVert#1\rVert}
 \newcommand\Abs[1]{\left\lvert#1\right\rvert}
@@ -158,7 +159,15 @@
 \newcommand{\boldNbar}{\overline{\bm N}}
 \newcommand{\TODO}[1]{{\color{red}{$\clubsuit$\texttt{TODO:}#1$\clubsuit$}}}
 \DeclareMathOperator{\gSU}{\mathrm SU}
+\DeclareMathOperator{\gSO}{\mathrm SO}
+\DeclareMathOperator{\gSL}{\mathrm SL}
+\DeclareMathOperator{\gSp}{\mathrm Sp}
 \DeclareMathOperator{\gU}{\mathrm U}
+\DeclareMathOperator{\gO}{\mathrm O}
+\DeclareMathOperator{\aSU}{\mathfrak{su}}
+\DeclareMathOperator{\aSO}{\mathfrak{so}}
+\DeclareMathOperator{\aSL}{\mathfrak{sl}}
+\DeclareMathOperator{\aSp}{\mathfrak{sp}}
 \newcommand{\bq}{\bar q}
 \newcommand{\opC}{\mathsf{C}}
 \newcommand{\TO}{\text{--}}
@@ -319,7 +328,7 @@
 
 % multilingual hacks
 \newcommand\russian[1]{\usefont{T2A}{Tempora-TLF}{m}{n}{\foreignlanguage{russian}{#1}}}
-\newcommand\japanese[1]{\begin{CJK}{UTF8}{goth}#1\end{CJK}} % ugly font...
+\newcommand\japanese[1]{\begin{CJK*}{UTF8}{mc}#1\end{CJK*}}  % mc, mg, or gt.
 
 % PDG-BIB hack
 \makeatletter

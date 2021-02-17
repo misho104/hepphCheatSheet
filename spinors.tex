@@ -1,4 +1,7 @@
 \documentclass[CheatSheet]{subfiles}
+
+\newcommand{\LorTr}[2]{\Lambda^{#1}{}_{#2}}
+\newcommand\defeq{\mathrel{\stackrel{\text{def}}=}}
 \begin{document}
 
 \changefontsizes{10pt}
@@ -8,6 +11,172 @@
 \begin{equation}
  (\overline{\psi_1}\psi_2)^* = (\psi_2)^\dagger(\overline\psi_1)^\dagger = \overline{\psi_2}\psi_1.
 \end{equation}
+
+
+\subsection{Verbose derivation}
+We here derive the fermion convention under the most generic with signs $h_i=\pm1$, following
+Refs.~\cite{Kugo1}.
+
+\paragraph{Lorentz group and Lorentz tensors}
+The Lorentz transformation $\LorTr\mu\nu$ is defined as a linear transformation $x^\mu\mapsto\LorTr\mu\nu x^\nu$ that conserves $x^2=\eta_{\mu\nu}x^\mu x^\nu$, where $x^\mu$ is a spacetime point and $\eta$ is the Minkowski metric:
+\begin{equation}
+ \eta^{\mu\nu}=\eta_{\mu\nu}\defeq h_\eta\times\diag(+1,-1,-1,-1),\qquad
+ \eta^{\mu\alpha}\eta_{\alpha\nu}=\delta^{\mu}_\nu;\qquad
+ \eta_{\rho\sigma}\defeq\eta_{\mu\nu}\LorTr\mu\rho\LorTr\nu\sigma ~\text{(defining equation)}.
+\label{eq:LorTr}
+\end{equation}
+Its nice to denote its inverse, which satisfies $x_\nu\mapsto x_\mu(\Lambda^{-1})^\mu{}_\nu$, by $\Lambda_\nu{}^\mu$:
+\begin{equation}
+ (\Lambda^{-1})^\mu{}_\nu = \eta^{\mu\alpha}\LorTr\beta\alpha\eta_{\beta\nu}
+\equiv \Lambda_\nu{}^\mu;\qquad
+x_\mu\mapsto \Lambda_\mu{}^\nu x_\nu,\qquad
+\delta^\alpha_\beta
+%=(\Lambda^{-1})^\alpha{}_\mu\LorTr\mu\beta
+%=\LorTr\alpha\mu (\Lambda^{-1})^\mu{}_\beta
+=\Lambda_\mu{}^\alpha\LorTr\mu\beta
+=\LorTr\alpha\mu \Lambda_\beta{}^\mu.
+\end{equation}
+They form a group $L\cong\gO(1,3)$ (Lorentz group), which has four disconnected parts:
+\begin{align}
+ L\w 0  &=\{\Lambda\mathbin|\det\Lambda=+1, \LorTr00\ge1\}\cong \mathop{\mathrm{SO^+}}(1,3),&
+ L\w P  &=\{\Lambda\mathbin|\det\Lambda=-1, \LorTr00\ge1\},\notag\\
+ L\w T  &=\{\Lambda\mathbin|\det\Lambda=+1, \LorTr00\le-1\},&
+ L\w{PT}&=\{\Lambda\mathbin|\det\Lambda=-1, \LorTr00\le-1\}.
+\end{align}
+
+Tensors $T^{\mu_1\mu_2\cdots}_{\nu_1\nu_2\cdots}$ and pseudo-tensors $\tilde T^{\mu_1\mu_2\cdots}_{\nu_1\nu_2\cdots}$ are objects that satisfy
+\begin{equation}
+ T^{\mu_1\mu_2\cdots}_{\nu_1\nu_2\cdots}\mapsto
+\LorTr{\mu_1}{\alpha_1}\cdots
+\Lambda_{\nu_1}{}^{\beta_1}\cdots
+ T^{\alpha_1\alpha_2\cdots}_{\beta_1\beta_2\cdots},
+\qquad
+ \tilde T^{\mu_1\mu_2\cdots}_{\nu_1\nu_2\cdots}\mapsto(\det\Lambda)
+\LorTr{\mu_1}{\alpha_1}\cdots
+\Lambda_{\nu_1}{}^{\beta_1}\cdots
+ \tilde T^{\alpha_1\alpha_2\cdots}_{\beta_1\beta_2\cdots}.
+\end{equation}
+There are two constants that qualify to be (pseudo-)tensors: $\eta^{\mu\nu}$ (and $\eta_{\mu\nu}$, $\delta^{\mu}_\nu$) and the anti-symmetric tensor $\vep^{\mu\nu\rho\sigma}$:
+\begin{equation}
+\eta^{\mu\nu}\mapsto \LorTr\mu\alpha\LorTr\mu\beta\eta^{\alpha\beta}=\eta^{\mu\nu},\qquad
+ \vep^{\mu\nu\rho\sigma}\mapsto \LorTr\mu\alpha\LorTr\nu\beta\LorTr\rho\gamma\LorTr\sigma\delta\vep^{\alpha\beta\gamma\delta}=(\det\Lambda)\vep^{\mu\nu\rho\sigma};\qquad
+ \vep^{0123}\defeq1,\quad \vep_{0123}=-1.
+\end{equation}
+
+\paragraph{Infinitesimal transformation and Lorentz algebra}
+Equation~\eqref{eq:LorTr} gives the representation for a proper orthochronous Lorentz transformation $\Lambda\in L_0$:
+\begin{equation}
+ \Lambda= 1 + \lambda + \Order(\lambda^2);\quad
+\lambda=\spmat{
+ 0 & -\omega_x & -\omega_y & -\omega_z \\
+ -\omega_x & 0        &+\theta_z &-\theta_y\\
+ -\omega_y &-\theta_z & 0        &+\theta_x\\
+ -\omega_z &+\theta_y &-\theta_x & 0
+}
+~\defeq~
+\ii\vc{\omega}\cdot\vc K+\ii\vc\theta\cdot\vc J
+~\defeq~
+\frac{-\ii}{2}d^{\mu\nu}M_{\mu\nu}
+\label{eq:LorTrInf}
+\end{equation}
+where $\theta_i$ is the angle of a \emph{passive} rotation around $i$-axis and $\omega_i$ describes the \emph{passive} boost along $i$-axis with velocity $\beta=\tanh\omega$.
+
+The last definition of Eq.~\eqref{eq:LorTrInf} is used to consider Lorentz algebra $\{M\}$.
+As $[M_{\rho\sigma}]{}^\mu{}_\nu$ should be a tensor, the parameter $d$ should also be a tensor and thus $d^{\mu\nu}=k\cdot\eta^{\mu\rho}\lambda{}^\nu{}_\rho$ ($k$ is a constant), i.e.,
+\begin{equation}
+ M_{\mu\nu}=-M_{\nu\mu}, \qquad
+ d^{\mu\nu}=-d^{\nu\mu}, \qquad
+ \{d^{01},d^{02},d^{03}\}=kh_\eta\times\vc\omega,\qquad
+ \{d^{32},d^{13},d^{21}\}=kh_\eta\times\vc\theta.
+\end{equation}
+Then the element of the Lorentz algebra is given by
+$ (M_{\rho\sigma}){}^\mu{}_\nu=
+(\ii/k)(\delta^\mu_\rho\eta_{\nu\sigma}-\delta^\mu_\sigma \eta_{\nu\rho})
+$, which gives the Lorentz algebra
+\begin{equation}
+[M_{\mu\nu},M_{\rho\sigma}] = 
+(-\ii/k)\left(\eta_{\mu\rho}M_{\nu\sigma}-\eta_{\mu\sigma}M_{\nu\rho}
++\eta_{\nu\sigma}M_{\mu\rho}-\eta_{\nu\rho}M_{\mu\sigma}
+\right).
+\label{eq:LorentzAlgebra}
+\end{equation}
+We will take $k=+1$ to match the notation of Ref.~\cite{Kugo1}.
+
+\paragraph{Rotation and boost}
+The boost and rotation operators, $\vc K$ and $\vc J$, are now given in an abstract form by
+\begin{equation}
+ \vc J = h_\eta (M_{23}, M_{31}, M_{12}), \qquad
+ \vc K = -h_\eta(M_{01}, M_{02}, M_{03}),
+\end{equation}
+so their commutation relation is read from \cref{eq:LorentzAlgebra}:
+\begin{align}
+ [J_i, J_j] &= \ii \epsilon_{ijk}J_k,&
+ [J_i, K_j] &= \ii \epsilon_{ijk}K_k,&
+ [K_i, K_j] &= -\ii \epsilon_{ijk}J_k,
+\end{align}
+which leads to
+\begin{align}
+ \vc A&\defeq\frac{\vc J+\ii \vc K}{2},&
+ \vc B&\defeq\frac{\vc J-\ii \vc K}{2};&
+ [A_i, A_j] &= \ii \epsilon_{ijk}A_k,&
+ [B_i, B_j] &= \ii \epsilon_{ijk}B_k,&
+ [A_i, B_j] &= 0.
+\end{align}
+This means $\aSO(1,3)$ is somewhat similar to $\aSU(2)\oplus \aSU(2)$, or in fact,
+as discussed in \cref{sec:group-theory},
+$\aSO(1,3)_{\mathbb C}\cong \aSU(2)_{\mathbb C}\oplus\aSU(2)_{\mathbb C}$.
+
+\paragraph{More isomorphism}
+Let us see a bit more of  mathematical structure, following the discussion in \cref{sec:group-theory}.
+The isomorphic groups
+$\mathop{\mathrm{Spin}}(1,3)^+\cong\gSL(2,\mathbb C)\cong\gSp(2,\mathbb C)$
+is a double cover of $L_0$;
+in particular, $L_0\cong \mathop{\mathrm{PSL}}(2;\mathbb C)=\gSL(2;\mathbb C)/\mathbb Z_2$.
+
+Meanwhile, the Lorentz algebra $\aSO(1,3)$ is isomorphic to $\aSL(2;\mathbb C)$ viewed as a real Lie albegra~\cite[\S7.8]{Hall2015},
+and its complexification
+$\aSO(1,3)_{\mathbb C}$ is isomorphic to $
+\aSU(2)_{\mathbb C}\oplus\aSU(2)_{\mathbb C}
+=\aSL(2,\mathbb C)\oplus\aSL(2,\mathbb C)$.
+
+\paragraph{Spinors from Clifford algebra}
+First we construct spinors from Clifford algebra $\mathfrak C_{1,3}$ given in \cref{sec:group-theory}. A matrix representation $\gamma^\mu$ of $\mathfrak C_{1,3}$ and spinors $\psi$ are introduced:
+\begin{equation}
+ \overline\psi = \psi^\dagger\beta, \quad\beta\beta=1,\qquad
+\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}, \quad
+\gamma_5 = h_5\times\ii\gamma^0\gamma^1\gamma^2\gamma^3; \qquad
+\psi\mapsto T\psi,\quad
+\overline\psi\mapsto \overline\psi\beta T^\dagger \beta;\quad T\in \Gamma_{1,3}.
+\end{equation}
+Thus, in order that $\overline\psi\psi$ and $\overline\psi\gamma^\mu\psi$ be respectively scalar and vector, $T$ should satisfy
+\begin{equation}
+ T^{-1}\gamma^\mu T = \LorTr\mu\nu\gamma^\nu,\quad
+ \beta T^\dagger \beta T=1,
+\end{equation}
+or in infinitesimal form $T=1+(-\ii/2)d^{\mu\nu}S_{\mu\nu}$,
+\begin{equation}
+ (S_{\mu\nu})^\dagger = \beta S_{\mu\nu} \beta,\quad
+[S_{\mu\nu},\gamma^\alpha] = -(M_{\mu\nu})^{\alpha}{}_\beta\gamma^\beta;
+\qquad
+\therefore S_{\mu\nu}=\frac{\ii}{4}[\gamma_\mu,\gamma_\nu];
+\quad
+[\gamma_\mu^\dagger, \gamma_\nu^\dagger]=\beta[\gamma_\mu,\gamma_\nu]\beta;
+\end{equation}
+finally, a representation of the Lorentz group is constructed as
+\begin{equation}
+\Lambda\stackrel{\text{rep}}=
+ \exp\left(\frac{-\ii}{2}d^{\mu\nu}S_{\mu\nu}\right);\qquad
+ [S_{\mu\nu},S_{\rho\sigma}] = -\ii\left(
+\eta_{\mu\rho} S_{\nu\sigma}
+-\eta_{\nu\rho} S_{\mu\sigma}
++\eta_{\mu\sigma} S_{\nu\rho}
+-\eta_{\nu\sigma} S_{\mu\rho}\right),
+\end{equation}
+which is exactly the same as \cref{eq:LorentzAlgebra}.
+
+
+
+
 
 
 \subsection[Convention]{Convention \TODO{WIP!}}
