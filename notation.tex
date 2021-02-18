@@ -1,0 +1,69 @@
+\documentclass[CheatSheet]{subfiles}
+
+\begin{document}
+
+\summarystyle
+\setcounter{section}{-1}
+\section{Notation and Convention}
+This note uses the following notation and conventions unless otherwise stated.
+
+\paragraph{Mathematics}
+\begin{alignat}{2}
+&\text{Pauli matrices}:&\quad&
+ \sigma_0 = \spmat{1&0\\0&1},~
+\sigma_x = \spmat{0&1\\1&0},~
+\sigma_y = \spmat{0&-\ii\\\ii&0},~
+\sigma_z = \spmat{1&0\\0&-1};\quad
+\sigma^\mu=(1,\vc\sigma),~
+\bar\sigma^\mu=(1,-\vc\sigma);
+\notag\\
+&&&
+\sigma_+ = \tfrac12(\sigma_x+\ii\sigma_y) = \spmat{0&1\\0&0},\quad
+\sigma_- = \tfrac12(\sigma_x-\ii\sigma_y) = \spmat{0&0\\1&0};
+\\
+&\text{Fourier transf.}:&&
+ \tilde f(k) := \int\dd^4x\ \ee^{\ii kx}f(x); \qquad
+        f(x) = \int\ddP[4]{k}\ \ee^{-\ii kx}\tilde f(k).
+\end{alignat}
+
+
+\paragraph{Relativity}
+\begin{alignat}{2}
+&\text{Minkowski metric}:&\quad&
+\eta_{\mu\nu} = \eta^{\mu\nu}=\diag(+,-,-,-),
+\qquad
+\vep^{0123}_{0123}=\pm1.
+\\
+&\text{coordinates}:&&
+x^\mu=(t,x,y,z),\quad
+\partial_\mu=(\tfrac{\partial}{\partial t},\vc\nabla)
+\\
+&\text{electromagnetism\footnotemark}:&&
+A^\mu=(\phi,\vc A),\quad
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu;\qquad
+\epsilon^{\mu\nu\rho\sigma}\partial_\nu F_{\rho\sigma}=0,~
+\partial_\mu  F^{\mu\nu}=e j^\nu.
+\\
+&\text{Gamma matrices}:&&
+\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu},~
+\gamma_5=\ii\gamma^0\gamma^1\gamma^2\gamma^3;\quad
+\{\gamma^\mu,\gamma_5\}=0,~
+\gamma^5\gamma^5=1.
+\\&&&\text{\textbf{[Chiral notation]}}\quad
+ \gamma^\mu=\pmat{0&\sigma^\mu\\\bar\sigma^\mu&0},\quad \gamma_5=\pmat{-1&0\\0&1}.
+\end{alignat}
+\footnotetext{
+$\vc E=-\vc\nabla\phi+\dot{\vc A}$ and
+$\vc B=\vc\nabla\!\times\!\vc A$, which lead to
+$F_{\mu\nu}
+=\spmat{0 & & \vc E & \\ & 0 & -B_3 & B_2 \\ -\vc E&B_3&0&-B_1\\&-B_2&B_1&0}_{\mu\nu}$,
+$F_{\mu\nu} F^{\mu\nu}=2(\|\vc B\|^2-\|\vc E\|)$, 
+ and the Maxwell equations
+ $\vc\nabla\!\cdot\!\vc E = ej^0$,
+ $\vc\nabla\!\cdot\!\vc B = 0$,
+ $\vc\nabla\!\times\!\vc E+\dot{\vc B}=0$,
+ $\vc\nabla\!\times\!\vc B-\dot{\vc E}=e\vc j.$
+}
+
+\end{document}
+

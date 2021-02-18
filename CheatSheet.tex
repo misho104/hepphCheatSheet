@@ -1,5 +1,5 @@
 %!pdflatex
-% Time-stamp: <2021-02-17 14:56:03>
+% Time-stamp: <2021-02-18 20:45:03>
 \documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
 \bibliographystyle{utphys28mod}
 
@@ -66,6 +66,8 @@
 \newcommand\vev[1]{\langle#1\rangle}
 \newcommand\diracdelta[1][\relax]{\qopname\relax o{\ifx#1\relax\mathrm{\delta}\else\mathrm{\delta}^{(#1)}\fi}}
 \newcommand\Kallen[1][\relax]{\qopname\relax o{\ifx#1\relax\mathrm{\lambda}\else\mathrm{\lambda}^{#1}\fi}}
+
+\newcommand{\ddP}[2][3]{\frac{\dd^{#1}\vc#2}{(2\pi)^{#1}}}
 
 % units
 \newcommand\unit[1]{\,\mathrm{#1}\xspace}
@@ -343,6 +345,8 @@
 \begin{document}
 \nocite{PDG2018,PDG2020}
 
+\subfile{notation}
+\clearpage
 \subfile{phasespace}
 \clearpage
 \subfile{gaugetheory}
