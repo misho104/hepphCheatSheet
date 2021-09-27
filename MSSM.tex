@@ -558,7 +558,7 @@ The other mass terms are given by
  \begin{split}
 \mathcal L&\supset
    \input{calculator/mssm/lag_massterms.txt},
- \end{split}
+ \end{split}\label{eq:lag-massterms}
 \end{equation}
 where, at the tree level, the gauge boson mass $m_W$ and $m_Z$, the gluino mass $M_3$, and matter-fermion masses $\vu\yu$, $\vd\yd$, and $\vd\ye$ are given with the ``correct'' sign (as far as $M_3>0$, etc.).
 
@@ -656,8 +656,7 @@ in our convention and the mass terms are now
 \end{equation}
 
 \paragraph{Quarks, leptons, and super-CKM basis}
-We here take the super-CKM basis.
-In the ``original'' Lagrangian,
+The Lagrangian in any basis (i.e., the "original" basis) contains
 \begin{align}
  -\mathcal L&\supset
    \uR^\cc (\vu \yu)\uL
@@ -667,9 +666,9 @@ In the ``original'' Lagrangian,
 &=
    \uR^\cc (\vu U_u \yu^{\mathrm{diag}} V_u^\dagger)\uL
   +\dR^\cc (\vd U_d \yd^{\mathrm{diag}} V_d^\dagger)\dL
-  +\eR^\cc (\vd U_e \ye^{\mathrm{diag}} V_e^\dagger)\eL + \text{h.c.},
+  +\eR^\cc (\vd U_e \ye^{\mathrm{diag}} V_e^\dagger)\eL + \text{h.c.}.
 \end{align}
-so the super-CKM basis is given by
+Thus, a conveneint basis (``super-CKM basis'') for the superfields is given by
 \begin{equation}
  \bigl[
  Q^1, Q^2, L, U^\cc, D^\cc, E^\cc
@@ -684,17 +683,30 @@ Then the CKM mixings appear as, for example,
 =
  \left[\buL V_u^\dagger V_d \bsigma^\mu\dL W^+_\mu + \bdL V_d^\dagger V_u\bsigma^\mu\uL W^-_\mu\right]_{\text{super-CKM}};
 \end{equation}
-i.e., defining $V\w{CKM} = V_u^\dagger V_d$ as in \cref{sec:SM-CKM},
-the Lagrangian is amended as, e.g., $\buL\dL\to \buL V\w{CKM}\dL$, $\tdL^*\tuL\to \tdL^* V^\dagger\w{CKM}\tuL$.
+where $V\w{CKM} = V_u^\dagger V_d$ as in \cref{sec:SM-CKM}.
+One may identify this operation as replacements $\buL\dL\to \buL V\w{CKM}\dL$, $\tdL^*\tuL\to \tdL^* V^\dagger\w{CKM}\tuL$, etc.
 
 
 \paragraph{Squark masses in super-CKM basis}
-Finally, the squark masses are given by
+Now we rewrite the squark mass terms, \cref{eq:lag-massterms}, with sfermions the super-CKM basis.
+Yukawa matrices are now replaced by diagonal quark masses, while the sfermion mass terms and $a$-terms also fit in the super-CKM basis:
+\begin{align}
+& [m_Q^2, m_{U^\cc}^2, m_{D^\cc}^2,m_L^2,m_{E^\cc}^2]_{\text{super-CKM}}
+=
+ [V_d^\dagger m_Q^2 V_d, U_u^\dagger m_{U^\cc}^2 U_u, U_d^\dagger m_{D^\cc}^2 U_d,
+V_e^\dagger m_L^2 V_e, U_e^\dagger m_{E^\cc}^2 U_e
+]_{\text{``original''}},
+\\
+&[a_u, a_d, a_e]_{\text{super-CKM}}
+=[U_u^\dagger a_u V_u, U_d^\dagger a_d V_d, U_e^\dagger a_e V_e
+]_{\text{``original''}}.
+\end{align}
+Using these, we obtain%
+\footnote{2021-Sep quick fix is given in \RED{RED}.}
 \begin{equation}
  \begin{split}
 -\mathcal L&\supset
- \tuL^*\left(
-   m_{Q}^2
+ \tuL^*\left(\RED{V_u^\dagger(V_d m_Q^2 V_d^\dagger) V_u}
  +  m_u^2
  + \frac{3-4\sw^2}{6} \co{2\beta} m_Z^2
 \right)\tuL
@@ -708,7 +720,7 @@ Finally, the squark masses are given by
  + \tuL^*(\vu a^{\dagger}_{{\mathrm u}}- \mu m_u\cot\beta)\tuR
 \\&
  +\tdL^*\left(
-V_d^\dagger (V_u m_{Q}^2 V_u^\dagger)V_d
+\RED{m_{Q}^2}
  + m_d^2
  + \frac{-3+2\sw^2}{6} \co{2\beta} m_Z^2
 \right)\tdL
@@ -741,18 +753,6 @@ V_d^\dagger (V_u m_{Q}^2 V_u^\dagger)V_d
  + \teL^*(\vd a^{\dagger}_e-\mu m_e\tan\beta)\teR,
  \end{split}
 \end{equation}
-where the sfermion soft masses, yukawas, and $a$-terms are rewritten in super-CKM basis:
-\begin{align}
-& [m_Q^2, m_{U^\cc}^2, m_{D^\cc}^2,m_L^2,m_{E^\cc}^2]_{\text{super-CKM}}
-=
- [V_d^\dagger m_Q^2 V_d, U_u^\dagger m_{U^\cc}^2 U_u, U_d^\dagger m_{D^\cc}^2 U_d,
-V_e^\dagger m_L^2 V_e, U_e^\dagger m_{E^\cc}^2 U_e
-]_{\text{``original''}},
-\\
-&[a_u, a_d, a_e]_{\text{super-CKM}}
-=[U_u^\dagger a_u V_u, U_d^\dagger a_d V_d, U_e^\dagger a_e V_e
-]_{\text{``original''}}
-\end{align}
 (note that $m_Q^2$ is diagonalied for down-type; not for up-type). In matrix form,
 \begin{align}
 \begin{split}
@@ -797,14 +797,15 @@ v_d[a_e]_{ij}-(\mu^*m_e\tan\beta)\delta_{ij} &
 \end{align}
 
 
-The sfermion mass matrices are diagonalized by unitary matrices as
+The sfermion mass matrices are diagonalized by unitary matrices as%
+\footnote{2021-Sep quick fix is given in \RED{RED}.}
 \begin{equation}
- \mathcal M=R\mathcal M\wdiag R^\dagger;
+ \RED{\mathcal M\wdiag}=R\RED{\mathcal M} R^\dagger;
 \quad
  \tilde f_i = R_{ij}\pmat{\tilde f\w L\\\tilde f\w R}_j
 =\pmat{R^{\mathrm L}_{ij} & R^{\mathrm R}_{ij}}\pmat{\tilde f_{\mathrm Lj}\\\tilde f_{\mathrm Rj}};\qquad
-\tilde f_{\mathrm Li}= [R^{\mathrm L\dagger}]_{ij}\tilde f_i,\quad
-\tilde f_{\mathrm Ri}= [R^{\mathrm R\dagger}]_{ij}\tilde f_i.
+\tilde f_{\mathrm Li}= [R^{\mathrm L\dagger}]_{ij}\tilde f_j,\quad
+\tilde f_{\mathrm Ri}= [R^{\mathrm R\dagger}]_{ij}\tilde f_j.
 \end{equation}
 where $R_{ij}$ is $6\times6$ and $R_{ij}^{\mathrm {L,R}}$ are $3\times6$ matrices (except for sneutrinos).
 
@@ -822,13 +823,19 @@ note that our notation for the other parameters is slightly different from SLHA'
 \end{align}
 together with $\CONV{Y_{u,d,e}} = (y_{u,d,e})^\TT$.
 Anyway, the SLHA2 blocks corresponds to the variable in our convention as
-\begin{equation}
-  \texttt{(IM)MSX2(IN)} = m^2_{Q, L, U^\cc, D^\cc, E^\cc}|\w{sCKM; $\overline{\mathrm{DR}}$},
+\begin{align}
+&  \texttt{(IM)MSX2(IN)} = m^2_{Q, L, U^\cc, D^\cc, E^\cc}|\w{sCKM; $\overline{\mathrm{DR}}$},
 \quad
   \texttt{(IM)TX(IN)} =  a_{u,d,e}|\w{sCKM; $\overline{\mathrm{DR}}$},
 \quad
-  \texttt{YX} =  y_{u,d,e}|\w{sCKM; $\overline{\mathrm{DR}}$}.
-\end{equation}
+  \texttt{YX} =  y_{u,d,e}|\w{sCKM; $\overline{\mathrm{DR}}$},\\
+&
+\texttt{DSQMIX} = R_d,
+\quad
+\texttt{USQMIX} = R_u,
+\quad
+\texttt{SELMIX} = R_e.
+\end{align}
 
 The sfermion mass matrices above are in super-CKM basis, so their off-diagonal entries immediately induce flavor violation or sfermion left-right mixing.
 In old SLHA format, we assume that flavor- and $CP$-violation is absent and left-right mixing is ignorable except for third generation, which leads
