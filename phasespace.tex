@@ -371,6 +371,33 @@ where we defined $x_i:={2E_i}/{\sqrt s}$. Noting that $s_{23}=s+m_1^2-2E_1\sqrt{
 \end{equation}
 This is equal to the PDG-Eq.~(47.23)\cite{PDG2018}.
 
-\bibliography{CheatSheet}
+
+\subsection{Two-body decay of boosted particles}
+A particle with $(P, \Theta, \Phi; M)$ decaying to two particles; at the CM frame the momenta of the decay products are characterized by $\vc q=(q,\theta,\phi)$ with $q=(M_0/2)\Kallen[1/2](1,m_1^2/M_0^2,m_2^2/M_0^2)$. Their lab-frame momenta are given by
+\begin{align}
+ P &=
+\begin{pmatrix}
+  E_0\\
+ {P_0} \si\Theta \co\Phi \\
+ {P_0} \si\Theta \si\Phi \\
+ {P_0} \co\Theta \\
+\end{pmatrix},&
+ p_1&=
+\begin{pmatrix}
+  ({E_0 \mathcal{E}_1+P_0 q \co\theta})/{M_0} \\
+ q \co\Theta \co\Phi \si\theta \co\phi - q \si\Phi \si\theta \si\phi + r_1 \si\Theta \co\Phi \\
+ q \co\Theta \si\Phi \si\theta \co\phi + q \co\Phi \si\theta \si\phi   + r_1 \si\Theta \si\Phi \\
+ -q \si\Theta \si\theta \co\phi + r_1 \co\Theta\\
+\end{pmatrix},&
+p_2&=
+\begin{pmatrix}
+  ({E_0 \mathcal{E}_2-P_0 q \co\theta})/{M_0} \\
+ -q \co\Theta \co\Phi \si\theta \co\phi + q \si\Phi \si\theta \si\phi + r_2 \si\Theta \co\Phi \\
+ -q \co\Theta \si\Phi \si\theta \co\phi - q \co\Phi \si\theta \si\phi + r_2 \si\Theta\si\Phi  \\
+  q \si\Theta \si\theta \co\phi+r_2 \co\Theta \\
+\end{pmatrix}
+\end{align}
+with $r_1=(P_0\mathcal{E}_1+E_0q\co\theta)/M_0$, $r_2=(P_0\mathcal{E}_2-E_0q\co\theta)$, and $\mathcal{E}_i=\sqrt{m_i^2+q^2}$.
+
 
 \end{document}
