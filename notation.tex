@@ -1,77 +1,87 @@
+%#!lualatex
 \documentclass[CheatSheet]{subfiles}
 
 \begin{document}
 
 \summarystyle
-\setcounter{section}{-1}
 \section{Notation and Convention}
-This note uses the following notation and conventions unless otherwise stated.
-
-\paragraph{Mathematics}
-\begin{alignat}{2}
-&\text{Pauli matrices}:&\quad&
- \sigma_0 = \spmat{1&0\\0&1},~
-\sigma_x = \spmat{0&1\\1&0},~
-\sigma_y = \spmat{0&-\ii\\\ii&0},~
-\sigma_z = \spmat{1&0\\0&-1};\quad
-\sigma^\mu=(1,\vc\sigma),~
-\bar\sigma^\mu=(1,-\vc\sigma);
+\paragraph{Convention}
+\begin{lalignat}{2}
+&\text{Pauli matrices:}&\quad&
+ \sigma_0 \coloneq {\pmat{1&\!\!0\\0&\!\!1}},~
+ \sigma_x \coloneq {\pmat{0&\!\!1\\1&\!\!0}},~
+ \sigma_y \coloneq {\pmat{0&\!\!-\ii\\\ii&\!\!0}},~
+ \sigma_z \coloneq {\pmat{1&\!\!0\\0&\!\!-1}};
+\quad
+\sigma^\mu\coloneq(1,\vc\sigma),~
+\bar\sigma^\mu\coloneq(1,-\vc\sigma);
 \notag\\
 &&&
-\sigma_+ = \tfrac12(\sigma_x+\ii\sigma_y) = \spmat{0&1\\0&0},\quad
-\sigma_- = \tfrac12(\sigma_x-\ii\sigma_y) = \spmat{0&0\\1&0};
+\sigma_\pm \coloneq \frac12\left(\sigma_x\pm\ii\sigma_y\right) = \pmat{0&\!\!1\\0&\!\!0} \Big/ \pmat{0&\!\!0\\1&\!\!0},~
+\quad
+\sigma_x = \sigma_++\sigma_-,\quad
+\sigma_y = -\ii(\sigma_+-\sigma_-).
 \\
-&\text{Fourier transf.}:&&
- \tilde f(k) := \int\dd^4x\ \ee^{\ii kx}f(x); \qquad
+&\text{Fourier transf.:}&&
+ \tilde f(k) \coloneq \int\dd^4x\ \ee^{\ii kx}f(x); \quad
         f(x) = \int\ddP[4]{k}\ \ee^{-\ii kx}\tilde f(k).
-\end{alignat}
+\end{lalignat}
 
-
-\paragraph{Relativity}
-\begin{alignat}{2}
-&\text{Minkowski metric}:&\quad&
-\eta_{\mu\nu} = \eta^{\mu\nu}=\diag(+,-,-,-),
-\qquad
-\vep^{0123}_{0123}=\pm1.
+\begin{lalignat}{2}
+&\text{Minkowski metric:}&\quad&
+\eta_{\mu\nu} \coloneq \eta^{\mu\nu}=\diag(+,-,-,-),
+\quad
+\vep^{0123}\coloneq1,
+\quad
+\vep_{0123}=-1.
 \\
-&\text{coordinates}:&&
-x^\mu=(t,x,y,z),\quad
-\partial_\mu=(\tfrac{\partial}{\partial t},\vc\nabla)
-\\
-&\text{electromagnetism\footnotemark}:&&
-A^\mu=(\phi,\vc A),\quad
-F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu;\qquad
-\epsilon^{\mu\nu\rho\sigma}\partial_\nu F_{\rho\sigma}=0,~
-\partial_\mu  F^{\mu\nu}=e j^\nu.
-\end{alignat}\footnotetext{
-$\vc E=-\vc\nabla\phi+\dot{\vc A}$ and
-$\vc B=\vc\nabla\!\times\!\vc A$, which lead to
-$F_{\mu\nu}
-=\spmat{0 & & \vc E & \\ & 0 & -B_3 & B_2 \\ -\vc E&B_3&0&-B_1\\&-B_2&B_1&0}_{\mu\nu}$,
-$F_{\mu\nu} F^{\mu\nu}=2(\|\vc B\|^2-\|\vc E\|)$, 
- and the Maxwell equations
- $\vc\nabla\!\cdot\!\vc E = ej^0$,
- $\vc\nabla\!\cdot\!\vc B = 0$,
- $\vc\nabla\!\times\!\vc E+\dot{\vc B}=0$,
- $\vc\nabla\!\times\!\vc B-\dot{\vc E}=e\vc j.$
-}
+&\text{coordinates:}&&
+x^\mu\coloneq(t,x,y,z),\quad
+\partial_\mu=\left(\frac{\partial}{\partial t},\vc\nabla\right),\quad
+p^\mu=(E, p_x, p_y, p_z).
+\end{lalignat}
 
-\paragraph{Spinors}
-\begin{alignat}{2}
-&\text{Gamma matrices}:&\quad&
-\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu},~
-\gamma_5=\ii\gamma^0\gamma^1\gamma^2\gamma^3;\quad
-\{\gamma^\mu,\gamma_5\}=0,~
+\begin{lalignat}{2}
+&\text{gamma matrices:}&\quad&
+\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu},\quad
+\gamma_5\coloneq\ii\gamma^0\gamma^1\gamma^2\gamma^3;\quad
+\{\gamma^\mu,\gamma_5\}=0,\quad
 \gamma^5\gamma^5=1.
 \\
-&\text{chiral notation}:&&
- \overline{\psi}=\psi^\dagger\gamma^0;~
- \gamma^\mu=\pmat{0&\sigma^\mu\\\bar\sigma^\mu&0},~
- \gamma_5=\pmat{-1&0\\0&1};~
- \PL = \frac{1-\gamma_5}{2},~
+&\text{chiral notation:}&&
+ \overline{\psi}\coloneq\psi^\dagger\gamma^0;\quad
+ \gamma^\mu\coloneq\pmat{0&\sigma^\mu\\\bar\sigma^\mu&0},\quad
+ \gamma_5=\pmat{-1&0\\0&1};\quad
+ \PL = \frac{1-\gamma_5}{2},\quad
  \PR = \frac{1+\gamma_5}{2}.
-\end{alignat}
+\end{lalignat}
 
+\paragraph{Electromagnetism}
+
+\begin{align}
+&A^\mu=(\phi,\vc A),\addnote*{%
+  The definition of $A^\mu$ is determined by that of $x^\mu$ (up to an overall sign). We cannot lower the index.}
+\quad
+\vc E=-\vc\nabla\phi-\dot{\vc A},\quad
+\vc B=\vopro\nabla A.\\
+&F_{\mu\nu}\coloneq
+\partial_\mu A_\nu-\partial_\nu A_\mu,\quad
+\{F_{01},F_{02},F_{03}\} = \vc E,\quad
+\{F_{23},F_{31},F_{12}\} = -\vc B;\quad
+F_{\mu\nu}F^{\mu\nu} = 2(\vnorm B^2-\vnorm E^2).
+\\\
+&\makebox[18em]{Maxwell equations:\hfill$\epsilon^{\mu\nu\rho\sigma}\partial_\nu F_{\rho\sigma}=0$}
+\quad\Longleftrightarrow\quad
+\vipro\nabla{B}=0,\quad
+\vopro\nabla E+\dot{\vc B}=0,
+\notag\\
+&\makebox[18em]{\hfill$\partial_\mu  F^{\mu\nu}=j^\nu\coloneq(\rho,\vc j)$}
+\quad\Longleftrightarrow\quad
+\vipro\nabla{E}=\rho,\quad
+\vopro\nabla{B}-\dot{\vc{E}} = \vc j.
+\end{align}
+
+\OutputNote
 
 \end{document}
 

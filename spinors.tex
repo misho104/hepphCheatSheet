@@ -1,7 +1,5 @@
 \documentclass[CheatSheet]{subfiles}
 
-\newcommand{\LorTr}[2]{\Lambda^{#1}{}_{#2}}
-\newcommand\defeq{\mathrel{\stackrel{\text{def}}=}}
 \begin{document}
 
 \summarystyle
@@ -64,9 +62,9 @@ Refs.~\cite{Kugo1}.
 \paragraph{Lorentz group and Lorentz tensors}
 The Lorentz transformation $\LorTr\mu\nu$ is defined as a linear transformation $x^\mu\mapsto\LorTr\mu\nu x^\nu$ that conserves $x^2=\eta_{\mu\nu}x^\mu x^\nu$, where $x^\mu$ is a spacetime point and $\eta$ is the Minkowski metric:
 \begin{equation}
- \eta^{\mu\nu}=\eta_{\mu\nu}\defeq h_\eta\times\diag(+1,-1,-1,-1),\qquad
+ \eta^{\mu\nu}=\eta_{\mu\nu}\eqdef h_\eta\times\diag(+1,-1,-1,-1),\qquad
  \eta^{\mu\alpha}\eta_{\alpha\nu}=\delta^{\mu}_\nu;\qquad
- \eta_{\rho\sigma}\defeq\eta_{\mu\nu}\LorTr\mu\rho\LorTr\nu\sigma ~\text{(defining equation)}.
+ \eta_{\rho\sigma}\eqdef\eta_{\mu\nu}\LorTr\mu\rho\LorTr\nu\sigma ~\text{(defining equation)}.
 \label{eq:LorTr}
 \end{equation}
 Its nice to denote its inverse, which satisfies $x_\nu\mapsto x_\mu(\Lambda^{-1})^\mu{}_\nu$, by $\Lambda_\nu{}^\mu$:
@@ -104,10 +102,10 @@ There are two constants that qualify to be (pseudo-)tensors: $\eta^{\mu\nu}$ (an
 \begin{equation}
 \eta^{\mu\nu}\mapsto \LorTr\mu\alpha\LorTr\mu\beta\eta^{\alpha\beta}=\eta^{\mu\nu},\qquad
  \vep^{\mu\nu\rho\sigma}\mapsto \LorTr\mu\alpha\LorTr\nu\beta\LorTr\rho\gamma\LorTr\sigma\delta\vep^{\alpha\beta\gamma\delta}=(\det\Lambda)\vep^{\mu\nu\rho\sigma};\qquad
- \vep^{0123}\defeq1,\quad \vep_{0123}=-1.
+ \vep^{0123}\eqdef1,\quad \vep_{0123}=-1.
 \end{equation}
 
-\paragraph{Infinitesimal transformation and Lorentz algebra}
+\paragraph{Infinitesimal transformation}
 Equation~\eqref{eq:LorTr} gives the representation for a proper orthochronous Lorentz transformation $\Lambda\in L_0$:
 \begin{equation}
  \Lambda= 1 + \lambda + \Order(\lambda^2);\quad
@@ -117,9 +115,9 @@ Equation~\eqref{eq:LorTr} gives the representation for a proper orthochronous Lo
  -\omega_y &-\theta_z & 0        &+\theta_x\\
  -\omega_z &+\theta_y &-\theta_x & 0
 }
-~\defeq~
+~\eqdef~
 \ii\vc{\omega}\cdot\vc K+\ii\vc\theta\cdot\vc J
-~\defeq~
+~\eqdef~
 \frac{-\ii}{2}d^{\mu\nu}M_{\mu\nu}
 \label{eq:LorTrInf}
 \end{equation}
@@ -160,8 +158,8 @@ so their commutation relation is read from \cref{eq:LorentzAlgebra}:
 \end{align}
 which leads to
 \begin{align}
- \vc A&\defeq\frac{\vc J+\ii \vc K}{2},&
- \vc B&\defeq\frac{\vc J-\ii \vc K}{2};&
+ \vc A&\eqdef\frac{\vc J+\ii \vc K}{2},&
+ \vc B&\eqdef\frac{\vc J-\ii \vc K}{2};&
  [A_i, A_j] &= \ii \epsilon_{ijk}A_k,&
  [B_i, B_j] &= \ii \epsilon_{ijk}B_k,&
  [A_i, B_j] &= 0.

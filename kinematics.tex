@@ -5,29 +5,29 @@
 \summarystyle
 \section{Kinematics}
 
-\paragraph{Decay rate and cross section}  (Note: $\mathcal M$ has a mass dimension of $4-N\w i-N\w f$.)
-\begin{alignat}{2}
+\paragraph{Decay rate and cross section}  ($\mathcal M$ has a mass dimension of $4-N\w i-N\w f$.)
+\begin{lalignat}{2}
 &
-\text{decay rate (rest frame; $\sqrt{s}=M_0$)}:
+\text{decay rate (rest frame; $\sqrt{s}=M_0$):}
 &\quad&
 \dd\Gamma=
 \frac{\overline{\dd\Pi^{N\w f}}}{2M_0}
-\Bigl|\mathcal M(M_0\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\})\Bigr|^2.
+\Bigl|\mathcal M\left(M_0\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\}\right)\Bigr|^2.
 \\
-&\text{cross section (Lorentz invariant)}:
+&\text{cross section (Lorentz invariant):}
 &&
 \dd\sigma =
 \frac{\overline{\dd\Pi^{N\w f}}}{4E_AE_B\,v_{\text{M\o l}}}
-\Bigl|\mathcal M(p_A,p_B\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\})\Bigr|^2,
+\Bigl|\mathcal M\left(k_A,k_B\to\left\{p_1, p_2,\cdots, p_{N\w f}\right\}\right)\Bigr|^2,
 \\
-&\text{Lorentz-invariant phase space}:\notag
+&\text{Lorentz-invariant phase space:}\notag
 &&
- \dd\Pi := \ddP{p}\frac{1}{2E_{\vc p}},\quad
-  \overline{\dd\Pi^{n}} := {\textstyle \dd\Pi_1\cdots\dd\Pi_n\,(2\pi)^4\diracdelta[4](P_0-\sum p_n)},\\
-&\text{M\o ller parameter}:\notag
+ \dd\Pi \coloneq  \ddP{p}\frac{1}{2E_{\vc p}},\quad
+  \overline{\dd\Pi^{n}} \coloneq  {\textstyle \dd\Pi_1\cdots\dd\Pi_n\,(2\pi)^4\diracdelta[4]\left(P_0-\sum p_n\right)},\\
+&\text{M\o ller parameter:}\notag
 &&
  4E_AE_B v_{\text{M\o l}}= 2s\Kallen[1/2](1,m_A^2/s,m_B^2/s).
-\end{alignat}
+\end{lalignat}
 
 
 \paragraph{Mandelstam variables} For $(k_A,k_B)\to(p_1,p_2)$ collision,
@@ -114,7 +114,7 @@ For spherically-symmetric processes, the phase-space integral is reduced to, at 
 \frac{(s+m_3^2-m_1^2-m_2^2)^2}{4s_{23}}
 -\frac{1}{4s_{23}}
 \left[\Kallen[1/2](s,m_1^2,s_{23})\mp\Kallen[1/2](s_{23},m_2^2,m_3^2)\right]^2
-\\&=(E_1^*+E_3^*)^2-\left(\sqrt{E_1^{*2}-m_1^2}\mp\sqrt{E_3^{*2}-m_3^2}\right)^2,
+\notag\\&=(E_1^*+E_3^*)^2-\left(\sqrt{E_1^{*2}-m_1^2}\mp\sqrt{E_3^{*2}-m_3^2}\right)^2,
 \quad
 \end{align}
 where 
@@ -210,7 +210,7 @@ In a frame with total four-momentum being $(E_0,\vc P_0)$,
 where $\cos\theta_1$ and $p_1$ are related by
 \begin{equation}
  2P_0 p_1\cos\theta_1 = 2E_0 \sqrt{p_1^2+m_1^2}-\mathcal M;
-\qquad \mathcal M := E_0^2 - P_0^2 +  m_1^2 - m_2^2.
+\qquad \mathcal M \coloneq  E_0^2 - P_0^2 +  m_1^2 - m_2^2.
 \label{eq:twobodyanglemomentum}
 \end{equation}
 If $\vc P_0=\vc 0$, \cref{eq:twobodyanglemomentum} fixes $p_1$ and any $\theta_1$ is allowed, which is the CM result ($E_0=\sqrt s$).
@@ -240,14 +240,14 @@ $\braket{\text{out}|\text{in}}=(2\pi)^4\diracdelta[4](p\w i-p\w f)\ii\mathcal M$
 Therefore, decay rate (at the rest frame) is given by
 \begin{equation}
  \dd\Gamma
-:= \frac{1}{T}\frac{\dd N\w{ev}}{N\w{particle}}
+\coloneq  \frac{1}{T}\frac{\dd N\w{ev}}{N\w{particle}}
  = \frac{1}{T}VT\overline{\dd\Pi^{N\w f}}\frac{|\mathcal M|^2}{(2E)V}
  = \frac{1}{2M_0}\overline{\dd\Pi^{N\w f}}{|\mathcal M|^2}.
 \end{equation}
-We also define Lorentz-invariant cross section $\sigma$ by $N\w{ev}=:(n_A v_{\text{M\o l}}T\sigma)N_B=(n_A v_{\text{M\o l}}T\sigma)(n_B V)$ with
+We also define Lorentz-invariant cross section $\sigma$ by $N\w{ev}\eqcolon(n_A v_{\text{M\o l}}T\sigma)N_B=(n_A v_{\text{M\o l}}T\sigma)(n_B V)$ with
 number density $n$, or
 \begin{equation}
-\dd\sigma:=\frac{\dd N\w{ev}}{n_A v_{\text{M\o l}}TN_B}
+\dd\sigma\coloneq \frac{\dd N\w{ev}}{n_A v_{\text{M\o l}}TN_B}
 =
 \frac{V}{v_{\text{M\o l}}T}
 VT\overline{\dd\Pi^{N\w f}}\frac{|\mathcal M|^2}{2E_A2E_BV^2}
@@ -258,7 +258,7 @@ VT\overline{\dd\Pi^{N\w f}}\frac{|\mathcal M|^2}{2E_A2E_BV^2}
 where the M\o ller parameter $v_{\text{M\o l}}$ is equal to $v^{\mathrm{NR}}\w{rel}=\|\vc v_A-\vc v_B\|$ if $\vc v_A\parallel\vc v_B$ (cf.~Ref.~\cite{Cannoni:2016hro}).
 Generally,
 \begin{equation}
-  v_{\text{M\o l}}:=
+  v_{\text{M\o l}}\coloneq 
  \frac{\sqrt{(p_A\cdot p_B)^2-m_A^2m_B^2}}{E_AE_B}
 =\frac{\sqrt{\Kallen(s,m_A^2,m_B^2)}}{2E_AE_B}
 =\frac{p_A\cdot p_B}{E_A E_B}v\w{rel}
@@ -356,7 +356,7 @@ If the matrix element to integrate is spherically symmetric, so as $\overline{\d
 }
 = \frac{s}{128\pi^3}\dd x_1\dd x_2,
 \end{equation}
-where we defined $x_i:={2E_i}/{\sqrt s}$. Noting that $s_{23}=s+m_1^2-2E_1\sqrt{s}=s(1-x_1)+m_1^2$ etc., 
+where we defined $x_i\coloneq {2E_i}/{\sqrt s}$. Noting that $s_{23}=s+m_1^2-2E_1\sqrt{s}=s(1-x_1)+m_1^2$ etc., 
 \begin{equation}
  \overline{\dd\Pi^3}_{\text{sph.\ sym.}}(\sqrt{s}, \vc 0)
 =

@@ -45,7 +45,7 @@ Here, each of the column groups shows (from left to right) superfield name, char
 
 
 \paragraph{``c''-notation}
-For scalars, $\tilde\phi\w R^\cc:=\phi\w R^*=\opC \phi\w R\opC$ (because the intrinsic phase for $\mathsf C$ is $+1$ for quarks and leptons.)
+For scalars, $\tilde\phi\w R^\cc:=\phi\w R^*={\mathsf C}\phi\w R{\mathsf C}$ (because the intrinsic phase for $\mathsf C$ is $+1$ for quarks and leptons.)
 
 For matter spinors, $\psi\w R^\cc:=\bar\psi\w R$ (and $\psi\w R=\bar\psi\w R^\cc$); Dirac spinors are thus
 \begin{equation*}
@@ -281,9 +281,9 @@ where
  +  \ii\bthu\bsigma^\mu\left(\partial_\mu - \ii g_2 W_\mu^aT^a - \tfrac12 \ii g_Y B_\mu\right)\thu
  +  \ii\bthd\bsigma^\mu\left(\partial_\mu - \ii g_2 W_\mu^aT^a + \tfrac12 \ii g_Y B_\mu\right)\thd
 \\&\quad
- + \ii\bar\tig_0^a\bsigma^\mu\left(\partial_\mu\tig_0^a + g_3f^{abc}g_\mu^b\tig_0^c\right)
- + \ii\bar\tiw^a\bsigma^\mu\left(\partial_\mu\tiw^a + g_2\nep^{abc}W^b_\mu\tiw^c\right)
- + \ii\bar\tib\bsigma^\mu\partial_\mu\tib
+ + \ii\bar{\tig}_0^a\bsigma^\mu\left(\partial_\mu\tig_0^a + g_3f^{abc}g_\mu^b\tig_0^c\right)
+ + \ii\bar{\tiw}^a\bsigma^\mu\left(\partial_\mu\tiw^a + g_2\nep^{abc}W^b_\mu\tiw^c\right)
+ + \ii\bar{\tib}\bsigma^\mu\partial_\mu\tib
 \\&\quad
  - \frac12\left(M_3\tig_0^a\tig_0^a+M_2\tiw^a\tiw^a+M_1\tib\tib+\text{H.c.}\right)
  + \mathcal L\w{super}\big|_{\text{no $F$-terms}}
@@ -291,15 +291,15 @@ where
 \\
 \begin{split}
 &=
- \ii\bar\tib\bsigma^\mu\partial_\mu\tib - \frac12\left(M_1\tib\tib+M_1^*\bar\tib^a\bar\tib^a\right)
- + \ii\bar\tig_0^a\bsigma^\mu\partial_\mu\tig_0^a - \frac12\left(M_3\tig_0^a\tig_0^a+M_3^*\bar\tig_0^a\bar\tig_0^a\right)
- - \ii g_3 f^{abc} (\bar\tig_0^a\bsigma^\mu\tig_0^b) g_\mu^c
+ \ii\bar{\tib}\bsigma^\mu\partial_\mu\tib - \frac12\left(M_1\tib\tib+M_1^*\bar{\tib}^a\bar{\tib}^a\right)
+ + \ii\bar{\tig}_0^a\bsigma^\mu\partial_\mu\tig_0^a - \frac12\left(M_3\tig_0^a\tig_0^a+M_3^*\bar{\tig}_0^a\bar{\tig}_0^a\right)
+ - \ii g_3 f^{abc} (\bar{\tig}_0^a\bsigma^\mu\tig_0^b) g_\mu^c
 \\&\quad
- + \ii\bar\tiw^+\bsigma^\mu \partial_\mu\tiw^+
- + \ii\bar\tiw^-\bsigma^\mu \partial_\mu\tiw^-
- + \ii\bar\tiw^3\bsigma^\mu \partial_\mu\tiw^3
- -\left(M_2\tiw^+\tiw^- + M_2^*\bar\tiw^+\bar\tiw^-\right)
- -\frac12\left(M_2\tiw^3\tiw^3 + M_2^*\bar\tiw^3\bar\tiw^3\right)
+ + \ii\bar{\tiw}^+\bsigma^\mu \partial_\mu\tiw^+
+ + \ii\bar{\tiw}^-\bsigma^\mu \partial_\mu\tiw^-
+ + \ii\bar{\tiw}^3\bsigma^\mu \partial_\mu\tiw^3
+ -\left(M_2\tiw^+\tiw^- + M_2^*\bar{\tiw}^+\bar{\tiw}^-\right)
+ -\frac12\left(M_2\tiw^3\tiw^3 + M_2^*\bar{\tiw}^3\bar{\tiw}^3\right)
 \\&\quad
  + g_2(\bar{\tiw}^{3}\bsigma^\mu\tiw^{-} - \bar{\tiw}^{+}\bsigma^\mu\tiw^{3})W_{\mu}^{+}
  - g_2(\bar{\tiw}^{3}\bsigma^\mu\tiw^{+} - \bar{\tiw}^{-}\bsigma^\mu\tiw^{3})W_{\mu}^{-}
@@ -423,7 +423,7 @@ Then lepton and $\thd$ are mixed.\footnote{If we separated leptons and $\thd$ fi
 With $R$-parity conservation, we do not suffer from these mixings.
 
 \subsubsection{Higgs potential and induced mass in  R-parity conserved case}
-We perform ``SU(2)-notation fixing'', i.e., use the freedom associated to $T_1$ and $T_2$ of SU(2), so that $\vev{\hup}=0$. Then $\vev{\hdm}=0$ and effectively
+We perform ``SU(2)-notation fixing'', i.e., use the freedom associated to $T_1$ and $T_2$ of SU(2), so that $\mean{\hup}=0$. Then $\mean{\hdm}=0$ and effectively
 \begin{equation}
  V\w{pot}=
    (|\mu|^2 + m^2_{\Hu})  |\huz|^2
@@ -433,10 +433,10 @@ We perform ``SU(2)-notation fixing'', i.e., use the freedom associated to $T_1$ 
 \end{equation}
 We redefine $\Hd$ superfield so that $b>0$.\footnote{%
 Note that $T_3$-rotation induces $\huz\to\ee^{\ii\theta/2}\huz$ and $\hdz\to\ee^{-\ii\theta/2}\hdz$; it cannot remove the phase of $b$.}
-Then $\arg\vev{\huz}=-\arg\vev{\hdz}$ and, with $T_3$-rotation, $\vev{\huz}>0$ and $\vev{\hdz}>0$:
+Then $\arg\mean{\huz}=-\arg\mean{\hdz}$ and, with $T_3$-rotation, $\mean{\huz}>0$ and $\mean{\hdz}>0$:
 \begin{align}
- &\vev{\huz} =: \vu =: \frac{v\w{SM}}{\sqrt2}\sin\beta,\qquad
- \vev{\hdz} =: \vd =: \frac{v\w{SM}}{\sqrt2}\cos\beta;
+ &\mean{\huz} =: \vu =: \frac{v\w{SM}}{\sqrt2}\sin\beta,\qquad
+ \mean{\hdz} =: \vd =: \frac{v\w{SM}}{\sqrt2}\cos\beta;
 \\& V\w{pot}=
    \frac12(|\mu|^2 + m^2_{\Hu})  v\w{SM}^2\sin^2\beta
  + \frac12(|\mu|^2 + m^2_{\Hd}) v\w{SM}^2\cos^2\beta
@@ -461,7 +461,7 @@ Also,
 are satisfied in both solutions.
 
 \paragraph{Higgs sector}
-The \NAMBU-Goldstone--Higgs mixings and the mass terms for the charged Higgs bosons are given by
+The \Nambu-Goldstone--Higgs mixings and the mass terms for the charged Higgs bosons are given by
 \begin{equation}
 \begin{split}
   \mathcal L&\supset
@@ -542,10 +542,10 @@ with
 
 The mixing $\alpha$ is stored in \texttt{ALPHA} block of SLHA, while \texttt{HMIX} stores
 \begin{equation}
- \CONV{\mu}={\mu},\quad
- \CONV{\tan\beta}=\tan\beta,\quad
- \CONV{v}=v\w{SM}(\sim246\GeV),\quad
- \CONV{m_A^2}=\frac{2b}{\sin2\beta},
+ \C{\mu}={\mu},\quad
+ \C{\tan\beta}=\tan\beta,\quad
+ \C{v}=v\w{SM}(\sim246\GeV),\quad
+ \C{m_A^2}=\frac{2b}{\sin2\beta},
 \end{equation}
 at the scale specified.
 The above discussion holds even with $CP$-violation, but quantum corrections mix the three Higgs bosons; such information should be stored in \texttt{(IM)VCHMIX}.
@@ -579,9 +579,9 @@ The mass matrices for neutralinos and charginos are given by
 +\pmat{\tiw^- & \thdm}
 \pmat{ M_2& \sqrt2\si\beta m_W\\ \sqrt2\co\beta m_W& \mu}
 \pmat{\tiw^+ \\ \thup}
-+\pmat{\bar\tiw^- & \bthdm}
++\pmat{\bar{\tiw}^- & \bthdm}
 \pmat{ M_2^*& \sqrt2\si\beta m_W\\ \sqrt2\co\beta m_W& \mu^*}
-\pmat{\bar\tiw^+ \\ \bthup}.
+\pmat{\bar{\tiw}^+ \\ \bthup}.
 \end{split}
 \end{equation}
 Note that the mass matrices themselves are the same as those in SLHA convention, $\mathcal M_{\tilde\psi^0}$ and $\mathcal M_{\tilde\psi^+}$, while the fields are in different convention.
@@ -702,11 +702,11 @@ V_e^\dagger m_L^2 V_e, U_e^\dagger m_{E^\cc}^2 U_e
 ]_{\text{``original''}}.
 \end{align}
 Using these, we obtain%
-\footnote{2021-Sep quick fix is given in \RED{RED}.}
+\footnote{2021-Sep quick fix is given in \PINK{this color}.}
 \begin{equation}
  \begin{split}
 -\mathcal L&\supset
- \tuL^*\left(\RED{V_u^\dagger(V_d m_Q^2 V_d^\dagger) V_u}
+ \tuL^*\left(\PINK{V_u^\dagger(V_d m_Q^2 V_d^\dagger) V_u}
  +  m_u^2
  + \frac{3-4\sw^2}{6} \co{2\beta} m_Z^2
 \right)\tuL
@@ -720,7 +720,7 @@ Using these, we obtain%
  + \tuL^*(\vu a^{\dagger}_{{\mathrm u}}- \mu m_u\cot\beta)\tuR
 \\&
  +\tdL^*\left(
-\RED{m_{Q}^2}
+\PINK{m_{Q}^2}
  + m_d^2
  + \frac{-3+2\sw^2}{6} \co{2\beta} m_Z^2
 \right)\tdL
@@ -798,9 +798,9 @@ v_d[a_e]_{ij}-(\mu^*m_e\tan\beta)\delta_{ij} &
 
 
 The sfermion mass matrices are diagonalized by unitary matrices as%
-\footnote{2021-Sep quick fix is given in \RED{RED}.}
+\footnote{2021-Sep quick fix is given in \PINK{this color}.}
 \begin{equation}
- \RED{\mathcal M\wdiag}=R\RED{\mathcal M} R^\dagger;
+ \PINK{\mathcal M\wdiag}=R\PINK{\mathcal M} R^\dagger;
 \quad
  \tilde f_i = R_{ij}\pmat{\tilde f\w L\\\tilde f\w R}_j
 =\pmat{R^{\mathrm L}_{ij} & R^{\mathrm R}_{ij}}\pmat{\tilde f_{\mathrm Lj}\\\tilde f_{\mathrm Rj}};\qquad
@@ -812,23 +812,23 @@ where $R_{ij}$ is $6\times6$ and $R_{ij}^{\mathrm {L,R}}$ are $3\times6$ matrice
 These $R$-matrices are the same as \texttt{DSQMIX} etc.\ of SLHA2 format, but
 note that our notation for the other parameters is slightly different from SLHA's:
 \begin{align}
- \CONV{m^2_{\tilde Q,\tilde L}} &=  m^2_{Q,L}|_\text{``orig''},&
- \CONV{m^2_{\tilde u,\tilde d,\tilde e}} &=  (m^2_{U^c,D^c,E^c}|_\text{``orig''})^\TT,&
- \CONV{T_{U,D,E}} &= (a_{u,d,e}|_\text{``orig''})^\TT,
+ \C{m^2_{\tilde Q,\tilde L}} &=  m^2_{Q,L}|_\text{``orig''},&
+ \C{m^2_{\tilde u,\tilde d,\tilde e}} &=  (m^2_{U^c,D^c,E^c}|_\text{``orig''})^\TT,&
+ \C{T_{U,D,E}} &= (a_{u,d,e}|_\text{``orig''})^\TT,
 \\
- \CONV{\hat m^2_{\tilde Q,\tilde L}} &=  m^2_{Q,L}|_\text{sCKM},&
- \CONV{\hat m^2_{\tilde u,\tilde d,\tilde e}} &=
- \CONV{U^\dagger T^\TT V} = m^2_{U^c,D^c,E^c}|_\text{sCKM},&
- \CONV{\hat T_{U,D,E}} &= \CONV{U^\dagger T^\TT V} = a_{u,d,e}|\w{sCKM},
+ \C{\hat m^2_{\tilde Q,\tilde L}} &=  m^2_{Q,L}|_\text{sCKM},&
+ \C{\hat m^2_{\tilde u,\tilde d,\tilde e}} &=
+ \C{U^\dagger T^\TT V} = m^2_{U^c,D^c,E^c}|_\text{sCKM},&
+ \C{\hat T_{U,D,E}} &= \C{U^\dagger T^\TT V} = a_{u,d,e}|\w{sCKM},
 \end{align}
-together with $\CONV{Y_{u,d,e}} = (y_{u,d,e})^\TT$.
+together with $\C{Y_{u,d,e}} = (y_{u,d,e})^\TT$.
 Anyway, the SLHA2 blocks corresponds to the variable in our convention as
 \begin{align}
-&  \texttt{(IM)MSX2(IN)} = m^2_{Q, L, U^\cc, D^\cc, E^\cc}|\w{sCKM; $\overline{\mathrm{DR}}$},
+&  \texttt{(IM)MSX2(IN)} = m^2_{Q, L, U^\cc, D^\cc, E^\cc}|\w*{sCKM; $\overline{\mathrm{DR}}$},
 \quad
-  \texttt{(IM)TX(IN)} =  a_{u,d,e}|\w{sCKM; $\overline{\mathrm{DR}}$},
+  \texttt{(IM)TX(IN)} =  a_{u,d,e}|\w*{sCKM; $\overline{\mathrm{DR}}$},
 \quad
-  \texttt{YX} =  y_{u,d,e}|\w{sCKM; $\overline{\mathrm{DR}}$},\\
+  \texttt{YX} =  y_{u,d,e}|\w*{sCKM; $\overline{\mathrm{DR}}$},\\
 &
 \texttt{DSQMIX} = R_d,
 \quad
@@ -1254,21 +1254,21 @@ we have, noting that squarks and sleptons are in super-CKM basis and not in mass
 \begin{wraptable}{r}{220pt}\vspace{-3em}
  \begin{tabular}[t]{c@{\,}c@{\,}c@{\,}c@{\,}c}\toprule
  SLHA  && our notation && Martin/DHM\\\midrule
- $\CONV{(H_1, H_2)}$              &$=$& $(\Hd, \Hu)$ \\\midrule
- $\CONV{Y_{\mathrm{u,d,e}}}$      &$=$& $(y_{\mathrm{u,d,e}})^\TT$\\
- $\CONV{T_{\mathrm{u,d,e}}}$      &$=$& $(a_{\mathrm{u,d,e}})^\TT$\\
- $\CONV{A_{\mathrm{u,d,e}}}$      &$=$& $(A_{\mathrm{u,d,e}})^\TT$\\
- $\CONV{m^2_{U^\cc,D^\cc, E\cc}}$ &$=$& $(m^2_{U^\cc,D^\cc, E^\cc})^\dagger$\\
- $\CONV{M_{1,2,3}}$               &$=$& $-M_{1,2,3}$\\
- $\CONV{m_3^2}$                   &$=$& $b$\\
- $\CONV{m_A^2}$                   &$=$& $m^2_{A_0}$ (tree)\\\midrule
- &&$\kappa_i$ &$=$& $\CONV{-\mu_i'}$ \footnotesize{(rarely used)}\\
- $\CONV{D_i}$                     &$=$& $b_i$\\
- $\CONV{m^2_{\tilde L_iH_1}}$     &$=$& $M^2_{Li}$ \\\bottomrule
+ $\C{(H_1, H_2)}$              &$=$& $(\Hd, \Hu)$ \\\midrule
+ $\C{Y_{\mathrm{u,d,e}}}$      &$=$& $(y_{\mathrm{u,d,e}})^\TT$\\
+ $\C{T_{\mathrm{u,d,e}}}$      &$=$& $(a_{\mathrm{u,d,e}})^\TT$\\
+ $\C{A_{\mathrm{u,d,e}}}$      &$=$& $(A_{\mathrm{u,d,e}})^\TT$\\
+ $\C{m^2_{U^\cc,D^\cc, E\cc}}$ &$=$& $(m^2_{U^\cc,D^\cc, E^\cc})^\dagger$\\
+ $\C{M_{1,2,3}}$               &$=$& $-M_{1,2,3}$\\
+ $\C{m_3^2}$                   &$=$& $b$\\
+ $\C{m_A^2}$                   &$=$& $m^2_{A_0}$ (tree)\\\midrule
+ &&$\kappa_i$ &$=$& $\C{-\mu_i'}$ \footnotesize{(rarely used)}\\
+ $\C{D_i}$                     &$=$& $b_i$\\
+ $\C{m^2_{\tilde L_iH_1}}$     &$=$& $M^2_{Li}$ \\\bottomrule
  \end{tabular}
 \end{wraptable}
 
-The SLHA convention \cite{SLHA} is different from our notation; the reinterpretation rules for the MSSM parameters are given in the right table  (\textbf{\CONV{magenta color}} for objects in other conventions), while
+The SLHA convention \cite{SLHA} is different from our notation; the reinterpretation rules for the MSSM parameters are given in the right table  (\textbf{\C{magenta color}} for objects in other conventions), while
 \begin{equation*}
   \mu, b, m^2_{Q, L, \Hu, \Hd}, \text{RPV-trilinears ($\lambda$s and $T$s)}
 \end{equation*}
@@ -1282,8 +1282,8 @@ In particular, the chargino/neutralino mass terms in RPC case are given by
 \begin{align}
  \mathcal L\supset
 &\left[
-  \frac12{\CONV{M_1}}\tib\tib
-+ \frac12{\CONV{M_2}}\tiw\tiw
+  \frac12{\C{M_1}}\tib\tib
++ \frac12{\C{M_2}}\tiw\tiw
 - \mu\thu\thd
 - \frac{g_Y}{2\sqrt2} \left(\hu^*\thu-\hd^*\thd\right)\tib
 - \sqrt{2}{g_2} \left(\hu^*T^a\thu+\hd^*T_a\thd\right)\tiw

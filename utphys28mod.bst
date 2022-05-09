@@ -1,5 +1,5 @@
 % UT Physics bibliographic style, ver. 2.8 + Modified by Sho Iwamoto. Based on:
-% Time-Stamp: <2021-12-26 11:05:09>
+% Time-Stamp: <2022-05-16 17:19:47>
 %
 %X     IEEE Transactions bibliography style (29-Jan-88 version)
 %X       numeric labels, order-of-reference, IEEE abbreviations,
@@ -71,6 +71,7 @@
 %%%%   - not show YEAR for arxiv-only entry
 %%%%   - use DOI field instead of URL field if present
 %%%%   - show EDITOR field even in ARTICLE if present
+%%%%   - show URLDATE field if exists
 %%%%--------------------------------------------------------------------------------
 
 % HyperTeX Wizardry:
@@ -205,6 +206,7 @@ ENTRY
     archivePrefix
     primaryClass
     url
+    urldate
     doi
     targets
   }
@@ -385,6 +387,20 @@ FUNCTION {format.collaboration.strip}
   if$
 }
 
+FUNCTION {n.dottify}
+{ 't :=
+  ""
+  { t empty$ not }
+  {
+    t #1 #1 substring$ "-" =
+      { "." * }
+	    { t #1 #1 substring$ * }
+    if$
+    t #2 global.max$ substring$ 't :=
+  }
+  while$
+}
+
 FUNCTION {format.collaboration}
 { collaboration empty$
     { "" }
@@ -524,7 +540,13 @@ FUNCTION {format.eprint}{
 FUNCTION {format.url}
 { url empty$
     { "" }
-    {"\url{" url * "}" *}
+    {
+      "\linebreak[4]\mbox{\href{" url * "}{\ttfamily{" * url * "}}}" *
+      urldate empty$
+        'skip$
+        { " {\footnotesize (access: " * urldate n.dottify * ")}" * }
+      if$
+    }
   if$
 }
 

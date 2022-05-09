@@ -1,165 +1,52 @@
-%!pdflatex
-% Time-stamp: <2021-09-27 15:55:55>
-\documentclass[a4paper,10pt,captions=tableheading,DIV=14]{scrartcl}
+%#!lualatex
+% Time-stamp: <2022-05-16 16:51:58>
+
+\begin{filecontents*}{\jobname.xmpdata}
+  \Author{Sho Iwamoto / Misho}
+  \Title{HEP-PH Cheat Sheet}
+  \Keywords{physics \sep high-energy physics \sep particle physics}
+  \Copyright{2009–2022 Sho Iwamoto / Misho}
+  \CopyrightURL{https://www.misho-web.com/}
+  \PublicationType{manual}
+  \Language{en-US}
+\end{filecontents*}
+
+\documentclass{CheatSheet}
+\usepackage{subfiles}
 \bibliographystyle{utphys28mod}
 
-% ----------------------------------------------------------- Packages
-\usepackage[utf8]{inputenc}
-\usepackage[T1,T2A]{fontenc}
-\usepackage[russian,english]{babel}
-\usepackage{bxcjkjatype}
-\usepackage[fleqn]{amsmath}
-\usepackage{amssymb,url,cite,slashed,cancel,booktabs,hyperref,graphicx,xspace,subcaption,wrapfig,braket,tensor,xstring,mathabx}
-\usepackage{newtxtext}
-\usepackage{lmodern} % instead of \usepackage[varg]{newtxmath}
-\usepackage{fancyvrb,fvextra}
-\usepackage{textalpha}
-\usepackage{AllocateSignatureField}
+\usepackage{tensor}
+%\usepackage{amssymb,url,cite,slashed,cancel,booktabs,hyperref,graphicx,xspace,subcaption,wrapfig,braket,tensor,xstring,mathabx}
 
-\usepackage[capitalize]{cleveref}
-\renewcommand\citepunct{,\penalty1000\hskip.13emplus.1emminus.1em\relax} % no line-break in \cite
-\renewcommand\thefootnote{*\arabic{footnote}}
-\numberwithin{equation}{section}
-
-% MATH NOTATION
-\newcommand\w[1]{_{\text{#1}}}
-\newcommand\vc[1]{{\boldsymbol{#1}}}
-\newcommand\dd{\mathop{}\!\mathrm{d}}
-\newcommand\DD{\mathop{}\!\mathrm{D}}
-\newcommand\TT{\mathrm{T}}
-\newcommand\cc{\mathrm{c}}
-\newcommand\ee{\mathop{}\!\mathrm{e}}
-\newcommand\KK{\mathbb{K}}
-\newcommand\abs[1]{\lvert#1\rvert}
-\newcommand\norm[1]{\lVert#1\rVert}
-\newcommand\Abs[1]{\left\lvert#1\right\rvert}
-\newcommand\Norm[1]{\left\lVert#1\right\rVert}
-
-\newcommand{\vep}{\varepsilon} % \vep^{12} = \vep^{0123} = 1 but \vep_{12} = \vep_{0123} = -1.
-\newcommand{\nep}{\epsilon}    % to distinguish from vep:  \nep^{12} = \nep_{12} = +1.
-
-
-\newcommand\ii{\mathrm{i}}
-\newcommand\co[1]{\mathrm{c}_{#1}}
-\newcommand\si[1]{\mathrm{s}_{#1}}
-\newcommand\ta[1]{\mathrm{t}_{#1}}
-\newcommand\coco[1]{\mathrm{c}^2_{#1}}
-\newcommand\sisi[1]{\mathrm{s}^2_{#1}}
-\newcommand\pmat[1]{\begin{pmatrix}#1\end{pmatrix}}
-\newcommand\spmat[1]{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
-
-\DeclareMathOperator{\Order}{\mathcal{O}}
-\DeclareMathOperator{\ad}{\mathrm{ad}}
-\DeclareMathOperator{\sign}{\mathrm{sign}}
-\DeclareMathOperator{\Tr}{\mathrm{Tr}}
-\DeclareMathOperator{\diag}{\mathrm{diag}}
-\DeclareMathOperator{\Br}{\mathrm{Br}}
-\renewcommand{\Re}{\mathop{\mathrm{Re}}}
-\renewcommand{\Im}{\mathop{\mathrm{Im}}}
-\newcommand{\wdiag}{^{\text{diag}}}
-
-\newcommand\oneone{1}
-\newcommand{\dn}[3]{\frac{\dd^#1 #2}{\dd #3^#1}}
-\newcommand{\pdn}[3]{\frac{\partial^#1 #2}{\partial #3^#1}}
-\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand\parenfrac[3]{\def\temp{#3}\Bigl(\frac{#1}{#2}\Bigr)\ifx\oneone\temp\relax\relax\else^{#3}\fi}
-\newcommand\vev[1]{\langle#1\rangle}
-\newcommand\diracdelta[1][\relax]{\qopname\relax o{\ifx#1\relax\mathrm{\delta}\else\mathrm{\delta}^{(#1)}\fi}}
-\newcommand\Kallen[1][\relax]{\qopname\relax o{\ifx#1\relax\mathrm{\lambda}\else\mathrm{\lambda}^{#1}\fi}}
-
-\newcommand{\ddP}[2][3]{\frac{\dd^{#1}\vc#2}{(2\pi)^{#1}}}
-
-% units
-\newcommand\unit[1]{\,\mathrm{#1}\xspace}
-\newcommand\eV{\unit{eV}}
-\newcommand\keV{\unit{keV}}
-\newcommand\MeV{\unit{MeV}}
-\newcommand\GeV{\unit{GeV}}
-\newcommand\TeV{\unit{TeV}}
-\newcommand\PeV{\unit{PeV}}
-\newcommand\fb{\unit{fb}}
-\newcommand\pb{\unit{pb}}
-\newcommand\iab{\unit{ab^{-1}}}
-\newcommand\ifb{\unit{fb^{-1}}}
-\newcommand\ipb{\unit{pb^{-1}}}
-\newcommand\fm{\unit{fm}}
-
-% scientific form of numbers
 \makeatletter
-\def\EE{\@ifnextchar-{\@@EE}{\@EE}}
-\def\@EE#1{\ifnum#1=1 \times\!10 \else \times\!10^{#1}\fi}
-\def\@@EE#1#2{\times\!10^{-#2}}
-\makeatother
-
-% ---------------------------------------------------- For Sho's Notes
-\usepackage{scrlayer-scrpage,soul,subfiles}
-%\graphicspath{{images/}{../images/}}
-\usepackage[usenames]{color}
-
-\definecolor{navy}{rgb}{0,0,0.5}
-\definecolor{gray}{gray}{0.5}
-\newcommand\package[2][\relax]{\texttt{#2}\ifx#1\relax\relax\else~\texttt{#1}\fi}
-\newcommand\file[1]{\lstinline[basicstyle=\ttfamily\color{navy}]{#1}}
-
-\usepackage[hhmmss]{datetime}
-\newdateformat{mydate}{\THEDAY\;\shortmonthname.\;\THEYEAR}
-\addtokomafont{pagehead}{\small\normalfont}
-\ohead{\texttt{\fontsize{9}{10}\selectfont{\color{gray}{[NewCheatSheet~@~\mydate\today~\currenttime]}}}}
-\cfoot*[]{\thepage}
-
-\hypersetup{
-  bookmarksdepth=1,
-  pdfauthor={Sho Iwamoto},
-  pdftitle={HEP-PH Cheet Sheet by Sho Iwamoto}
-}
-
-
-
-
-%cleverref
-\crefname{section}{Sec.}{Secs.}
-
-% subfiles; bibliography should appear only once
-\makeatletter
-%\@ifclassloaded{subfiles}{
-%  \section{EEE}
-%  \relax
-%}{
-  \AtEndDocument{\clearpage\orig@bibliography{CheatSheet}}%
+  % automatic bibliography
+  \AtEndDocument{\clearpage\raggedright\orig@bibliography{CheatSheet}}%
   \let\orig@bibliography\bibliography
   \let\bibliography\@gobble
-%}
+
+  % fine tuning of slashed
+  \def\sla@@#1#2#3#4#5#6{{%
+    \setbox\z@\hbox{$\m@th#5#6$}%
+    \setbox\tw@\hbox{$\m@th#5#1$}%
+    \dimen4\wd\ifdim\wd\z@<\wd\tw@\tw@\else\z@\fi
+    \dimen@\ht\tw@
+    \advance\dimen@-\dp\tw@
+    \advance\dimen@-\ht\z@
+    \advance\dimen@\dp\z@
+    \divide\dimen@\tw@
+    \advance\dimen@-#3\ht\tw@
+    \advance\dimen@-#3\dp\tw@
+    \dimen@ii#2\wd\z@
+    \rlap{\raise-\dimen@\hbox to\dimen4{\hss\kern\dimen@ii\box\tw@\kern-\dimen@ii\hss}}%
+    \hbox{$\m@th#5#6#4$}}}
+  \def\slashedW{\@ifnextchar[\slashedW@{\mathpalette{\sla@{/}{0}{0}}W}}
+  \def\slashedW@[#1]{\mathpalette{\sla@@{/}{0}{0}{#1}}W}
+
+  % BIBTeX hack for PDG
+  \let\@bibitem@orig\@bibitem
+  \def\@bibitem#1{\IfBeginWith{#1}{PDG20}{\@lbibitem[#1]{#1}}{\@bibitem@orig{#1}}}
 \makeatother
 
-
-%special to this tex
-\let\defaultabovedisplayskip\abovedisplayskip % 9+1.8-5.4
-\let\defaultbelowdisplayskip\belowdisplayskip % 9+1.8-5.4
-\let\defaultabovedisplayshortskip\abovedisplayshortskip % 0+2.7
-\let\defaultbelowdisplayshortskip\belowdisplayshortskip % 5.4+2.7-2.7
-\newcommand{\summarystyle}{%
-  \changefontsizes{10pt}%
-  \let\defaultabovedisplayskip\abovedisplayskip%
-  \let\defaultbelowdisplayskip\belowdisplayskip%
-  \let\defaultabovedisplayshortskip\abovedisplayshortskip%
-  \let\defaultbelowdisplayshortskip\belowdisplayshortskip%
-}
-\newcommand{\detailstyle}{%
-  \changefontsizes{9pt}%
-  \setlength{\abovedisplayskip}{2pt plus 2pt minus 1pt}%
-  \setlength{\belowdisplayskip}{2pt plus 2pt minus 1pt}%
-  \setlength{\abovedisplayshortskip}{0pt plus 2pt}%
-  \setlength{\belowdisplayshortskip}{2pt plus 2pt minus 1pt}%
-}
-\usepackage{bm}
-
-\renewcommand{\parallel}{\mathrel{/\mkern-5mu/}}
-\newcommand{\THREE}{\bm 3}
-\newcommand{\TWO}{\bm 2}
-\newcommand{\boldN}{\bm N}
-\newcommand{\THREEbar}{\overline{\bm 3}}
-\newcommand{\boldNbar}{\overline{\bm N}}
-\newcommand{\TODO}[1]{{\color{red}{$\clubsuit$\texttt{TODO:}#1$\clubsuit$}}}
 \DeclareMathOperator{\gSU}{\mathrm SU}
 \DeclareMathOperator{\gSO}{\mathrm SO}
 \DeclareMathOperator{\gSL}{\mathrm SL}
@@ -170,112 +57,103 @@
 \DeclareMathOperator{\aSO}{\mathfrak{so}}
 \DeclareMathOperator{\aSL}{\mathfrak{sl}}
 \DeclareMathOperator{\aSp}{\mathfrak{sp}}
-\newcommand{\bq}{\bar q}
-\newcommand{\opC}{\mathsf{C}}
-\newcommand{\TO}{\text{--}}
 
-\newcommand\unc[2]{\substack{#1\\#2}}
-\newcommand\MSbar{\overline{\mathrm{MS}}}
+\newcommand{\LorTr}[2]{\Lambda^{#1}{}_{#2}}
 
-\newcommand\NAMBU{Nambu}
+\newcommand*{\ddP}[2][3]{\frac{\dd^{#1}\ifx3#1\relax\vc{#2}\else#2\fi}{(2\pi)^{#1}}}
 
+\newcommand*\tqL[1][]{\tilde q_{\mathrm{L}#1}}
+\newcommand*\tuL[1][]{\tilde u_{\mathrm{L}#1}}
+\newcommand*\tdL[1][]{\tilde d_{\mathrm{L}#1}}
+\newcommand*\tuR[1][]{\tilde u_{\mathrm{R}#1}}
+\newcommand*\tdR[1][]{\tilde d_{\mathrm{R}#1}}
+\newcommand*\tlL[1][]{\tilde l_{\mathrm{L}#1}}
+\newcommand*\tnuL[1][]{\tilde \nu_{\mathrm{L}#1}}
+\newcommand*\teL[1][]{\tilde e_{\mathrm{L}#1}}
+\newcommand*\teR[1][]{\tilde e_{\mathrm{R}#1}}
 
-\newcommand\tqL[1][]{\tilde q_{\mathrm{L}#1}}
-\newcommand\tuL[1][]{\tilde u_{\mathrm{L}#1}}
-\newcommand\tdL[1][]{\tilde d_{\mathrm{L}#1}}
-\newcommand\tuR[1][]{\tilde u_{\mathrm{R}#1}}
-\newcommand\tdR[1][]{\tilde d_{\mathrm{R}#1}}
-\newcommand\tlL[1][]{\tilde l_{\mathrm{L}#1}}
-\newcommand\tnuL[1][]{\tilde \nu_{\mathrm{L}#1}}
-\newcommand\teL[1][]{\tilde e_{\mathrm{L}#1}}
-\newcommand\teR[1][]{\tilde e_{\mathrm{R}#1}}
+\newcommand*\qL[1][]{q_{\mathrm{L}#1}}
+\newcommand*\uL[1][]{u_{\mathrm{L}#1}}
+\newcommand*\dL[1][]{d_{\mathrm{L}#1}}
+\newcommand*\uR[1][]{u_{\mathrm{R}#1}}
+\newcommand*\dR[1][]{d_{\mathrm{R}#1}}
+\newcommand*\lL[1][]{l_{\mathrm{L}#1}}
+\newcommand*\nuL[1][]{\nu_{\mathrm{L}#1}}
+\newcommand*\eL[1][]{e_{\mathrm{L}#1}}
+\newcommand*\eR[1][]{e_{\mathrm{R}#1}}
+\newcommand*\nR[1][]{n_{\mathrm{R}#1}}
+\newcommand*\bqL[1][]{\bar q_{\mathrm{L}#1}}
+\newcommand*\buL[1][]{\bar u_{\mathrm{L}#1}}
+\newcommand*\bdL[1][]{\bar d_{\mathrm{L}#1}}
+\newcommand*\buR[1][]{\bar u_{\mathrm{R}#1}}
+\newcommand*\bdR[1][]{\bar d_{\mathrm{R}#1}}
+\newcommand*\blL[1][]{\bar l_{\mathrm{L}#1}}
+\newcommand*\bnuL[1][]{\bar \nu_{\mathrm{L}#1}}
+\newcommand*\beL[1][]{\bar e_{\mathrm{L}#1}}
+\newcommand*\beR[1][]{\bar e_{\mathrm{R}#1}}
+\newcommand*\bnR[1][]{\bar n_{\mathrm{R}#1}}
 
-\newcommand\qL[1][]{q_{\mathrm{L}#1}}
-\newcommand\uL[1][]{u_{\mathrm{L}#1}}
-\newcommand\dL[1][]{d_{\mathrm{L}#1}}
-\newcommand\uR[1][]{u_{\mathrm{R}#1}}
-\newcommand\dR[1][]{d_{\mathrm{R}#1}}
-\newcommand\lL[1][]{l_{\mathrm{L}#1}}
-\newcommand\nuL[1][]{\nu_{\mathrm{L}#1}}
-\newcommand\eL[1][]{e_{\mathrm{L}#1}}
-\newcommand\eR[1][]{e_{\mathrm{R}#1}}
-\newcommand\nR[1][]{n_{\mathrm{R}#1}}
-\newcommand\bqL[1][]{\bar q_{\mathrm{L}#1}}
-\newcommand\buL[1][]{\bar u_{\mathrm{L}#1}}
-\newcommand\bdL[1][]{\bar d_{\mathrm{L}#1}}
-\newcommand\buR[1][]{\bar u_{\mathrm{R}#1}}
-\newcommand\bdR[1][]{\bar d_{\mathrm{R}#1}}
-\newcommand\blL[1][]{\bar l_{\mathrm{L}#1}}
-\newcommand\bnuL[1][]{\bar \nu_{\mathrm{L}#1}}
-\newcommand\beL[1][]{\bar e_{\mathrm{L}#1}}
-\newcommand\beR[1][]{\bar e_{\mathrm{R}#1}}
-\newcommand\bnR[1][]{\bar n_{\mathrm{R}#1}}
+\newcommand*\Hu{H\w u}
+\newcommand*\Hd{H\w d}
+\newcommand*\hu{h\w u}
+\newcommand*\huz{h\w u^0}
+\newcommand*\hup{h\w u^+}
+\newcommand*\hd{h\w d}
+\newcommand*\hdz{h\w d^0}
+\newcommand*\hdm{h\w d^-}
 
-\newcommand\Hu{H\w u}
-\newcommand\Hd{H\w d}
-\newcommand\hu{h\w u}
-\newcommand\huz{h\w u^0}
-\newcommand\hup{h\w u^+}
-\newcommand\hd{h\w d}
-\newcommand\hdz{h\w d^0}
-\newcommand\hdm{h\w d^-}
+\newcommand*\thu{\tilde h\w u}
+\newcommand*\thuz{\tilde h\w u^0}
+\newcommand*\thup{\tilde h\w u^+}
+\newcommand*\thd{\tilde h\w d}
+\newcommand*\thdz{\tilde h\w d^0}
+\newcommand*\thdm{\tilde h\w d^-}
+\newcommand*\bthu{\bar{\tilde h}\w u}
+\newcommand*\bthuz{\bar{\tilde h}\w u^0}
+\newcommand*\bthup{\bar{\tilde h}\w u^+}
+\newcommand*\bthd{\bar{\tilde h}\w d}
+\newcommand*\bthdz{\bar{\tilde h}\w d^0}
+\newcommand*\bthdm{\bar{\tilde h}\w d^-}
 
-\newcommand\thu{\tilde h\w u}
-\newcommand\thuz{\tilde h\w u^0}
-\newcommand\thup{\tilde h\w u^+}
-\newcommand\thd{\tilde h\w d}
-\newcommand\thdz{\tilde h\w d^0}
-\newcommand\thdm{\tilde h\w d^-}
-\newcommand\bthu{\bar{\tilde h}\w u}
-\newcommand\bthuz{\bar{\tilde h}\w u^0}
-\newcommand\bthup{\bar{\tilde h}\w u^+}
-\newcommand\bthd{\bar{\tilde h}\w d}
-\newcommand\bthdz{\bar{\tilde h}\w d^0}
-\newcommand\bthdm{\bar{\tilde h}\w d^-}
+\newcommand*\tig{\tilde g}
+\newcommand*\tiw{\tilde w}
+\newcommand*\tib{\tilde b}
 
-\newcommand\tig{\tilde g}
-\newcommand\tiw{\tilde w}
-\newcommand\tib{\tilde b}
+\newcommand*\yu[1][]{y_{u#1}}
+\newcommand*\yd[1][]{y_{d#1}}
+\newcommand*\ye[1][]{y_{e#1}}
+\newcommand*\Yu[1][]{Y_{u#1}}
+\newcommand*\Yd[1][]{Y_{d#1}}
+\newcommand*\Ye[1][]{Y_{e#1}}
+\newcommand*\Yn[1][]{Y_{n#1}}
+\newcommand*\PL{P_{\,\mathrm L}}
+\newcommand*\PR{P_{\,\mathrm R}}
+\newcommand*\sw{\si{\mathrm w}}
+\newcommand*\cw{\co{\mathrm w}}
+\newcommand*\vu{v\w u}
+\newcommand*\vd{v\w d}
+\newcommand*\dalpha{{\dot\alpha}}
+\newcommand*\dbeta{{\dot\beta}}
+\newcommand*\dgamma{{\dot\gamma}}
+\newcommand*\ddelta{{\dot\delta}}
+\newcommand*\bsigma{\bar\sigma}
+\newcommand*\btheta{\bar\theta}
+\newcommand*\bchi{\bar\chi}
+\newcommand*\bpsi{\bar\psi}
+\newcommand*\blambda{\bar\lambda}
 
-\newcommand\yu[1][]{y_{u#1}}
-\newcommand\yd[1][]{y_{d#1}}
-\newcommand\ye[1][]{y_{e#1}}
-\newcommand\Yu[1][]{Y_{u#1}}
-\newcommand\Yd[1][]{Y_{d#1}}
-\newcommand\Ye[1][]{Y_{e#1}}
-\newcommand\Yn[1][]{Y_{n#1}}
-\newcommand\PL{P\w L}
-\newcommand\PR{P\w R}
-\newcommand\sw{\si{\mathrm w}}
-\newcommand\cw{\co{\mathrm w}}
-\newcommand\vu{v\w u}
-\newcommand\vd{v\w d}
-\newcommand\dalpha{{\dot\alpha}}
-\newcommand\dbeta{{\dot\beta}}
-\newcommand\dgamma{{\dot\gamma}}
-\newcommand\ddelta{{\dot\delta}}
-\newcommand\bsigma{\bar\sigma}
-\newcommand\btheta{\bar\theta}
-\newcommand\bchi{\bar\chi}
-\newcommand\bpsi{\bar\psi}
-\newcommand\blambda{\bar\lambda}
+\newcommand*\neut[1][\relax]{\tilde\chi^0\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand*\charPM[1][\relax]{\tilde\chi^\pm\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand*\charP[1][\relax]{\tilde\chi^+\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand*\charM[1][\relax]{\tilde\chi^-\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand*\bneut[1][\relax]{{\bar{\tilde\chi}}^0\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand*\bcharPM[1][\relax]{{\bar{\tilde\chi}}^\pm\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand*\bcharP[1][\relax]{{\bar{\tilde\chi}}^+\ifx#1\relax\relax\else_{#1}\fi}
+\newcommand*\bcharM[1][\relax]{{\bar{\tilde\chi}}^-\ifx#1\relax\relax\else_{#1}\fi}
 
-\newcommand\neut[1][\relax]{\tilde\chi^0\ifx#1\relax\relax\else_{#1}\fi}
-\newcommand\charPM[1][\relax]{\tilde\chi^\pm\ifx#1\relax\relax\else_{#1}\fi}
-\newcommand\charP[1][\relax]{\tilde\chi^+\ifx#1\relax\relax\else_{#1}\fi}
-\newcommand\charM[1][\relax]{\tilde\chi^-\ifx#1\relax\relax\else_{#1}\fi}
-\newcommand\bneut[1][\relax]{{\bar{\tilde\chi}}^0\ifx#1\relax\relax\else_{#1}\fi}
-\newcommand\bcharPM[1][\relax]{{\bar{\tilde\chi}}^\pm\ifx#1\relax\relax\else_{#1}\fi}
-\newcommand\bcharP[1][\relax]{{\bar{\tilde\chi}}^+\ifx#1\relax\relax\else_{#1}\fi}
-\newcommand\bcharM[1][\relax]{{\bar{\tilde\chi}}^-\ifx#1\relax\relax\else_{#1}\fi}
-
-
-\newcommand\CONV[1]{{\color{magenta}#1}}  % different-convention marker
-\newcommand\BLUE[1]{{\color{blue}#1}}
-\newcommand\GRAY[1]{{\color{gray}#1}}
-\newcommand\RED[1]{{\color{red}#1}}
-
-\newcommand\bound[2]{%
+% for uncertainties and bounds
+\newcommand*\unc[2]{\substack{#1\\#2}}
+\newcommand*\bound[2]{%
   \ifnum#1=68\stackrel{*}#2\else
   \ifnum#1=90\stackrel{\diamond}#2\else
   \ifnum#1=95\stackrel{*\!*}#2\else
@@ -287,72 +165,39 @@
 }
 \newcommand\bounddescription{Confidence levels are shown by the marks $*$, $*\!*$, \mbox{$*\!\!*\!\!*$} (1--3$\sigma$), $\diamond$ (90\%), and $\diamond\diamond$ (99\%).}
 
+% text-like
+\newcommand*\ech{\abs{e}}
+\newcommand*\TWO{\mathbf{2}}
+\newcommand*\THREE{\mathbf{3}}
+\newcommand*\THREEbar{\overline{\mathbf{3}}}
+\newcommand*\MSbar{\overline{\mathrm{MS}}\xspace}
+\newcommand*\Nambu{\JAPANESE{南部}\xspace}
+\newcommand*\Lubanski{Luba\'nski\xspace}
 
-% fine tuning of slashed
-\makeatletter
-\def\sla@@#1#2#3#4#5#6{{%
-  \setbox\z@\hbox{$\m@th#5#6$}%
-  \setbox\tw@\hbox{$\m@th#5#1$}%
-  \dimen4\wd\ifdim\wd\z@<\wd\tw@\tw@\else\z@\fi
-  \dimen@\ht\tw@
-  \advance\dimen@-\dp\tw@
-  \advance\dimen@-\ht\z@
-  \advance\dimen@\dp\z@
-  \divide\dimen@\tw@
-  \advance\dimen@-#3\ht\tw@
-  \advance\dimen@-#3\dp\tw@
-  \dimen@ii#2\wd\z@
-  \rlap{\raise-\dimen@\hbox to\dimen4{\hss\kern\dimen@ii\box\tw@\kern-\dimen@ii\hss}}%
-  \hbox{$\m@th#5#6#4$}}}
-\def\slashedW{\@ifnextchar[\slashedW@{\mathpalette{\sla@{/}{0}{0}}W}}
-\def\slashedW@[#1]{\mathpalette{\sla@@{/}{0}{0}{#1}}W}
-\makeatother
-
-% --- minted experimental
-
-\makeatletter
-\usepackage{ifplatform,listings}
-\lstset{columns=[l]fullflexible,basicstyle=\small\ttfamily,xleftmargin=2em,frame=L,keepspaces=true}
-\CustomVerbatimCommand{\code}{Verb}{fontsize=\small} %,formatcom=\color{black}}
-\ifshellescape
-\usepackage{minted}
-\def\minted@formatter{lib/minted_formatter.py -x}
-\setminted{linenos,xleftmargin=7\fboxsep,breaklines,fontsize=\small,frame=leftline,stepnumber=100000,framesep=2\fboxsep,escapeinside=!!,mathescape=true}
-\setminted[console]{xleftmargin=6\fboxsep,frame=none}
-\usemintedstyle[wolfram]{mathematica}
-\else
-\lstnewenvironment{minted}[1]
-  {\csname\@lst @SetFirstNumber\endcsname}
-  {\csname\@lst @SaveFirstNumber\endcsname}
-\def\mintinline#1{\code}
-\fi
-
-\makeatother
-
-% multilingual hacks
-\newcommand\russian[1]{\usefont{T2A}{Tempora-TLF}{m}{n}{\foreignlanguage{russian}{#1}}}
-\newcommand\japanese[1]{\begin{CJK*}{UTF8}{mc}#1\end{CJK*}}  % mc, mg, or gt.
-
-% PDG-BIB hack
-\makeatletter
-\let\@bibitem@orig\@bibitem
-\def\@bibitem#1{\IfBeginWith{#1}{PDG20}{\@lbibitem[#1]{#1}}{\@bibitem@orig{#1}}}
-\makeatother
-
-\title{HEP Cheat Sheet}
-\date{\today}
-
-\author{Sho Iwamoto}
 \begin{document}
+\setcounter{page}{0}
 \nocite{PDG2018,PDG2020}
+\begin{maketitle}
+\vspace{20mm}
+\subsection*{Important notes}
+\begin{itemize}
+ \item Minkowski metric: $\eta=(+,-,-,-)$ unless otherwise noted.
+ \item Levi-Civita symbol: $\nep^{12}=\nep_{12}=\nep^{123}=\nep_{123}=\nep^{1234}=\nep_{1234}=\cdots=1$.
+ \item Levi-Civita Lorentz tensor: $\vep^{0123}=-\vep_{0123}=1$.
+ \item Pauli matrices: $\sigma^i\coloneq\{\sigma_x, \sigma_y, \sigma_z\}$,  hence $\sigma_i = -\sigma^i$ for $i=1,2,3$, unless otherwise noted.
+ \item Symbols with $\C{\text{this color}}$ follows a locally-defined ``different'' convention.
+ \item Elementary charge: $\ech\simeq0.303$, always in absolute-value symbols. Note $\epsilon_0=1/(\mu_0c^2)=1$.
+\end{itemize}
+\end{maketitle}
 
 \subfile{notation}
 \clearpage
-\subfile{phasespace}
+\subfile{kinematics}
 \clearpage
 \subfile{gaugetheory}
 \clearpage
 \subfile{spinors}
+%\subfile{spinors_more}
 \clearpage
 \subfile{Calculation}
 \clearpage

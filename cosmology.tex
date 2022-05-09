@@ -1,4 +1,4 @@
-% Time-Stamp: <2021-02-18 20:44:55>
+% Time-Stamp: <2022-05-16 15:23:42>
 
 
 \documentclass[CheatSheet]{subfiles}
@@ -13,15 +13,15 @@
   \frac{\dd r^2}{1-K r^2}+r^2\dd\theta^2+r^2\sin^2\theta\dd\phi^2
 \right]
 \end{equation}\vspace{-2em}
-\begin{align*}
-\text{comoving coordinate~~}& \vc r=(r\sin\theta\cos\phi,r\sin\theta\cos\phi,r\cos\theta),\\
-\text{proper coordinate~~}& \vc x(t)=a(t)\vc r,\\
-\text{comoving distance~~}& \chi_{AB}=\int_{r_A}^{r_B}\frac{\dd r}{\sqrt{1-Kr^2}},\\
-\text{proper distance~~}& d_{AB}(t)=a(t)\chi_{AB}.
-\end{align*}
+\begin{alignat*}{2}
+  &\text{comoving coordinate~~}&& \vc r=(r\si\theta\co\phi,r\si\theta\co\phi,r\co\theta),\\
+  &\text{proper coordinate~~}&& \vc x(t)=a(t)\vc r,\\
+  &\text{comoving distance~~}&& \chi_{AB}=\int_{r_A}^{r_B}\frac{\dd r}{\sqrt{1-Kr^2}},\\
+  &\text{proper distance~~}&& d_{AB}(t)=a(t)\chi_{AB}.
+\end{alignat*}
 \end{minipage}
-\begin{minipage}{0.395\textwidth}
-\hfill\includegraphics[width=0.9\textwidth]{figs/expansion.pdf}
+\begin{minipage}{0.39\textwidth}
+\hfill\includegraphics[width=0.99\textwidth]{figs/expansion.pdf}
 \end{minipage}
 
 \vspace{0.5em}
@@ -64,7 +64,7 @@ g\ee^{\mu/T}\frac{T^3}{(2\pi)^{3/2}}x^{3/2}\ee^{-x},\\
 \clearpage
 
 \subsection{FLRW metric}
-Two conventions are known for FLRW \GRAY{(\russian{Фр\'{и}дман}-Lema\^{i}tre-Robertson-Walker)} metric:
+Two conventions are known for FLRW \GRAY{(\RUSSIAN{Фр\'{и}дман}-Lema\^{i}tre-Robertson-Walker)} metric:
 \begin{align}
   \dd s^2
 &= \dd t^2-a^2(t)\left[\frac{\dd r^2}{1- K r^2}+ r^2\dd\theta^2+ r^2\sin^2\theta\dd\phi^2\right]
@@ -140,7 +140,7 @@ Note the pressure is (momentum)$\times$(flux per time) on a ``wall''; assuming M
 
 A thermal average of a cross section $\sigma(s)$ is schematically given by
 \begin{equation}
- \vev{\sigma v}_{AB\to12\cdots n}(T)
+ \mean{\sigma v}_{AB\to12\cdots n}(T)
 =\frac{1}{n_An_B}\int\ddP{k_A}\ddP{k_B}\left(
 f_A f_B\right)\Bigl\{\phi_1 \cdots \phi_n\sigma(s)\Bigr\}
 v_{\text{M\o l}};\qquad \phi_X = \ee^{(E-\mu)/T}f_X/g,
@@ -148,7 +148,7 @@ v_{\text{M\o l}};\qquad \phi_X = \ee^{(E-\mu)/T}f_X/g,
 Here, the final state statistical factor $\phi_1\cdots\phi_n$ are subject to the phase space integral of the calculation of $\sigma(s)$. They are specifically given by $\phi\w{MB}=1$, $\phi\w{BE}=1+f\w{BE}/g$, and $\phi\w{FD}=1-f\w{FD}/g$.
 Similarly, a thermal averaged decay rate is given by
 \begin{equation}
- \vev{\Gamma}_{A\to12\cdots n}
+ \mean{\Gamma}_{A\to12\cdots n}
 =\frac{1}{n_A}\int\ddP{k_A}
 f_A \left\{\phi_1 \cdots \phi_n
 \frac{m_A}{E_A}\Gamma\right\}.
@@ -157,7 +157,7 @@ f_A \left\{\phi_1 \cdots \phi_n
 
 With MB approximation,
 \begin{align}
- \vev{\sigma v}
+ \mean{\sigma v}
 &=
 \frac{g_Ag_B}{n_An_B}
 \ee^{(\mu_A+\mu_B)/T}
@@ -178,7 +178,7 @@ With MB approximation,
 \cdot2E_A2E_Bv_{\text{M\o l}}\sigma(s)
 \quad(\times1/2),
 \\
- \vev{\Gamma}
+ \mean{\Gamma}
  &=\frac{K_1(m_A/T)}{K_2(m_A/T)}\Gamma.
 \end{align}
 

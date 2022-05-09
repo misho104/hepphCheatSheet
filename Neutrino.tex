@@ -1,9 +1,5 @@
 \documentclass[CheatSheet]{subfiles}
 
-\newcommand\MD[1][]{M_{\mathrm{D}#1}}
-\newcommand\MN[1][]{M_{N#1}}
-\newcommand{\nRHN}{n_{\text{RHN}}}
-
 \begin{document}
 \summarystyle
 \section{Neutrino}
@@ -27,9 +23,9 @@ We, in this note, use the term ``PMNS (matrix)'' only if the neutrino mixing mat
 
 \subsection{Models}
 \paragraph{Dirac neutrino model}
-The simplest model for neutrino masses are given by extending the SM Yukawa \eqref{eq:SMyukawa} with ($\nRHN$ copies of) right-handed neutrino $N$:
+The simplest model for neutrino masses are given by extending the SM Yukawa \eqref{eq:SMyukawa} with ($n\w{RHN}$ copies of) right-handed neutrino $N$:
 \begin{align}
-   \mathcal L\w{Dirac-$\nu$}&=
+   \mathcal L\w*{Dirac-$\nu$}&=
 \left(  \overline{U}\Yu H \PL Q
 - \overline{D}\Yd H^\dagger \PL Q
 + \overline{N}\Yn H \PL L
@@ -47,7 +43,7 @@ Neutrinos become Dirac fermions and the discussion goes parallel to the CKM matr
  \Yn = U_n Y_n\wdiag V_n^\dagger,\qquad
 \{\nuL, \eL, \overline N, \overline E\}^{\text{mass basis}} = \{V_n^\dagger L^1, V_e^\dagger L^2, \overline N U_n, \overline E U_e\},
 \end{equation}
-where  $\Yn\in\mathbb C^{\nRHN\times3}$, $V_n\in\mathbb U_{\mathbb C}^3$, and $U_n\in\mathbb U_{\mathbb C}^{\nRHN}$.
+where  $\Yn\in\mathbb C^{n\w{RHN}\times3}$, $V_n\in\mathbb U_{\mathbb C}^3$, and $U_n\in\mathbb U_{\mathbb C}^{n\w{RHN}}$.
 The Lagrangian is now given by
 \begin{align}
  \mathcal L&\supset\overline{L}\ii\gamma^\mu(-\ii g_2 W_\mu)\PL L
@@ -83,7 +79,7 @@ V_n^\dagger L^1 + U_n^\dagger N
  \Bigl(L^1 = \PL V_n \nu^{\text{mass}},~
  N = \PR U_n \nu^{\text{mass}}\Bigr).
 \end{equation}
-Note that $\nRHN=\{2,3\}$ because models with $\nRHN<3$ yields $3-\nRHN$ massless left-handed neutrinos, while $\nRHN>3$ results in $\nRHN-3$ massless right-handed neutrinos.
+Note that $n\w{RHN}=\{2,3\}$ because models with $n\w{RHN}<3$ yields $3-n\w{RHN}$ massless left-handed neutrinos, while $n\w{RHN}>3$ results in $n\w{RHN}-3$ massless right-handed neutrinos.
 
 \paragraph{Type-I see-saw}
 The type-I see-saw models are given by 
@@ -93,39 +89,39 @@ The type-I see-saw models are given by
 - \overline{D}\Yd H^\dagger \PL Q
 + \overline{N}\Yn H \PL L
 - \overline{E}\Ye H^\dagger \PL L
-- \frac{1}{2}\overline{N}\MN N^\cc
+- \frac{1}{2}\overline{N}M_N  N^\cc
 \right)+ \text{h.c.}
 \\&=
 \left(- \overline{Q^a}\Yu^\dagger \epsilon^{ab}H^{b*} \PR U
 - \overline{Q^a}\Yd^\dagger H^{a} \PR D
 - \overline{L^a}\Yn^\dagger \epsilon^{ab}H^{b*} \PR N
 - \overline{L^a}\Ye^\dagger H^{a} \PR E
-- \frac{1}{2}\overline{N}\MN N^\cc\right) + \text{h.c.},
+- \frac{1}{2}\overline{N}M_N  N^\cc\right) + \text{h.c.},
 \label{eq:type-1-lagrangian}
 \end{align}
-where $M_N$ is a $\nRHN\times\nRHN$ complex symmetric matrix.
-Models with $\nRHN\ge2$ are viable, because $\nRHN<3$ gives $3-\nRHN$ massless (Weyl) neutrinos and $2\nRHN$ massive (Majorana) neutrinos, while all neutrinos acquire Majorana mass  if $\nRHN\ge 3$.
+where $M_N$ is a $n\w{RHN}\times n\w{RHN}$ complex symmetric matrix.
+Models with $n\w{RHN}\ge2$ are viable, because $n\w{RHN}<3$ gives $3-n\w{RHN}$ massless (Weyl) neutrinos and $2n\w{RHN}$ massive (Majorana) neutrinos, while all neutrinos acquire Majorana mass  if $n\w{RHN}\ge 3$.
 
-We introduce left-handed Weyl spinors $\xi$ and $\chi$ to avoid notational confusion and diagonalize the Dirac mass term $\MD$:
+We introduce left-handed Weyl spinors $\xi$ and $\chi$ to avoid notational confusion and diagonalize the Dirac mass term $M\w{D}$:
 \begin{equation}
  L^1 \equiv \pmat{\xi\\0}\equiv \pmat{\nuL\\0},\quad
  N   \equiv \pmat{0\\\bar\chi}\equiv \pmat{0\\\nR},\quad
- \MD := \frac{v}{\sqrt2}Y_n,\quad
- \MD\wdiag := U_n \MD Y_n^\dagger.
+ M\w{D} := \frac{v}{\sqrt2}Y_n,\quad
+ M\w{D}\wdiag := U_n M\w{D} Y_n^\dagger.
 \end{equation}
 Then the mass term is written in matrix form:
 \begin{align}
 \label{eq:MajoranaNuLag}
  \mathcal L_{\text{type-I}}
 \supset
- -\frac{v}{\sqrt2}\overline{N}Y_n \PL L^1 - \frac{1}{2}\overline{N}\MN N^\cc + \text{h.c.}
-=-\frac12\pmat{\xi & \chi}\pmat{0 & \MD^\TT \\ \MD & \MN} \pmat{\xi \\ \chi} + \text{h.c.} =: -\frac12\tilde\nu^\TT \tilde M\tilde \nu+\text{h.c.},
+ -\frac{v}{\sqrt2}\overline{N}Y_n \PL L^1 - \frac{1}{2}\overline{N}M_N  N^\cc + \text{h.c.}
+=-\frac12\pmat{\xi & \chi}\pmat{0 & M\w{D}^\TT \\ M\w{D} & M_N } \pmat{\xi \\ \chi} + \text{h.c.} =: -\frac12\tilde\nu^\TT \tilde M\tilde \nu+\text{h.c.},
 \end{align}
-where tildes denote ``larger'' objects. We can AT-diagonalize $\tilde M$, which is a symmetric $\mathbb{C}^{(3+\nRHN)\times(3+\nRHN)}$ matrix, as usual:
+where tildes denote ``larger'' objects. We can AT-diagonalize $\tilde M$, which is a symmetric $\mathbb{C}^{(3+n\w{RHN})\times(3+n\w{RHN})}$ matrix, as usual:
 \begin{equation}
   \tilde M = \tilde R \tilde M\wdiag \tilde R^\TT;
 \qquad
--\mathcal L\w{Dirac-$\nu$}\supset
+-\mathcal L\w*{Dirac-$\nu$}\supset
 \frac12\tilde \nu^\TT \tilde M\tilde\nu
 =\frac12(\tilde\nu^{\text{mass}})^\TT \tilde M\wdiag \tilde\nu^{\text{mass}};\qquad \tilde\nu^{\text{mass}} =\tilde R^\TT\tilde\nu.
 \end{equation}
@@ -141,11 +137,11 @@ where $Y_e$ comes from the charged lepton mass diagonalization, while $X$ is a u
 
 
 \paragraph{Connection of the above two models}
-If we set $\MN=0$ in the Type-I see-saw ($\nRHN=3$), the AT-diagonalization becomes
+If we set $M_N =0$ in the Type-I see-saw ($n\w{RHN}=3$), the AT-diagonalization becomes
 \begin{align}
-\tilde M = \frac12\pmat{0 & (U_n\MD\wdiag V_n^\dagger)^\TT \\ U_n\MD\wdiag V_n^\dagger & 0},\quad
+\tilde M = \frac12\pmat{0 & (U_nM\w{D}\wdiag V_n^\dagger)^\TT \\ U_nM\w{D}\wdiag V_n^\dagger & 0},\quad
   \tilde R=\pmat{V_n^* & \ii V_n^* \\ U_n & -\ii U_n},\quad
-  \tilde M\wdiag=\pmat{\MD\wdiag & 0 \\ 0 & \MD\wdiag}.
+  \tilde M\wdiag=\pmat{M\w{D}\wdiag & 0 \\ 0 & M\w{D}\wdiag}.
 \end{align}
 As three pairs of degenerate Weyl fermions form three Dirac neutrinos, the Dirac neutrino model is reproduced as expected.
 
@@ -176,16 +172,16 @@ The matrix $U'$ is theoretically given with some matrix $\Theta$ by~\cite{Blenno
 but practically we derive it in perturbative expansion.
 For example, the type-I case is evaluated as\footnote{Cf.~\texttt{calculator/neutrino/diagonalization\_perturbative.wl}}
 \begin{align}
- \text{(diag.)} = U^\TT\pmat{0 & \MD^\TT \\ \MD & \MN} U;\qquad
+ \text{(diag.)} = U^\TT\pmat{0 & M\w{D}^\TT \\ M\w{D} & M_N} U;\qquad
 &U'\approx\pmat{
   1-\frac12 \Theta_0^\dagger \Theta_0&
   -\Theta_0^\dagger\\
  \Theta_0&
   1-\frac12\Theta_0\Theta_0^\dagger
-};\quad \Theta_0:=-\MN^{-1}\MD,
+};\quad \Theta_0:=-M_N^{-1}M\w{D},
 \label{eq:typeIseesaw-blockdiag-1}\\
-&\text{(block diag.)}=U'^\TT\pmat{0 & \MD^\TT \\ \MD & \MN} U'\approx\pmat{
-  -\MD^\TT\MN^{-1}\MD & 0 \\ 0 & \MN
+&\text{(block diag.)}=U'^\TT\pmat{0 & M\w{D}^\TT \\ M\w{D} & M_N} U'\approx\pmat{
+  -M\w{D}^\TT M_N^{-1}M\w{D} & 0 \\ 0 & M_N
 },
 \label{eq:typeIseesaw-blockdiag-2}
 \end{align}
@@ -215,7 +211,7 @@ Note also that, as $[U]\w{upper left}$ seems to be invertible, these decompositi
 
 \subsection{PMNS matrix}\label{sec:PMNS}
 As experiments have not found any deviation from $[U]\w{upper left}$ being unitary, we express the mixing with the PMNS matrix
- \GRAY{(Pontecorvo--\japanese{牧}--\japanese{中川}--\japanese{坂田})}
+ \GRAY{(Pontecorvo--\JAPANESE{牧}--\JAPANESE{中川}--\JAPANESE{坂田})}
 parameterized by
 \begin{equation}
 \begin{split}
@@ -248,7 +244,7 @@ Our convention is the same with PDG \cite[\S14]{PDG2020}~\footnote{Sho thinks Eq
 
 It also agrees with NuFIT~\cite[v5.0]{NUFIT} (their convention is given in Ref.~\cite{Esteban:2018azc}) except for the Majorana phases,
 $
- \eta_i = \CONV{\alpha_i}.
+ \eta_i = \C{\alpha_i}.
 $
 
 
@@ -256,15 +252,15 @@ $
 \subsection{Casas--Ibarra parameterization}
 We start from the approximation given in Eq.~\eqref{eq:typeIseesaw-blockdiag-2}:
 \begin{equation}
- m\w L \approx -U\w{PMNS}^\TT \MD^\TT \MN^{-1}\MD U\w{PMNS},\qquad
- m\w H \approx U_X^\TT \MN U_X,
+ m\w L \approx -U\w{PMNS}^\TT M\w{D}^\TT M_N^{-1}M\w{D} U\w{PMNS},\qquad
+ m\w H \approx U_X^\TT M_N U_X,
 \end{equation}
 where $m\w L$ and $m\w H$ are diagonal mass matrices for three light neutrinos and heavier neutrinos.
 We then obtain
 \begin{equation}
   m\w L
-\approx -U\w{PMNS}^\TT \MD^\TT (U_X^* m\w H U_X^\dagger)^{-1}\MD U\w{PMNS}
-=       -U\w{PMNS}^\TT \MD^\TT U_Xm\w H^{-1}U_X^\TT\MD U\w{PMNS}
+\approx -U\w{PMNS}^\TT M\w{D}^\TT (U_X^* m\w H U_X^\dagger)^{-1}M\w{D} U\w{PMNS}
+=       -U\w{PMNS}^\TT M\w{D}^\TT U_Xm\w H^{-1}U_X^\TT M\w{D} U\w{PMNS}
 \end{equation}
 and decompose it as
 \begin{equation}
@@ -273,12 +269,12 @@ and decompose it as
 \end{equation}
 which is the master equation for Casas-Ibarra parameterization~\cite{Casas:2001sr}.
 Note that $U_X$ is unphysical, i.e., we can fix the basis of $\nR$ so that $U_X=1$.
-This basis is equivalent (under our approximation) to the basis in which $\MN$ becomes diagonal.
+This basis is equivalent (under our approximation) to the basis in which $M_N$ becomes diagonal.
 
 \paragraph{Example: three right-handed neutrinos}
 Let us assume all the neutrinos are massive thanks to three right-handed neutrinos. Then $M\w L\wdiag$ is invertible and
 \begin{equation}
- R:=-\ii m\w H^{-1/2}U_X^\TT \MD  U\w{PMNS}  m\w L^{-1/2}
+ R:=-\ii m\w H^{-1/2}U_X^\TT M\w{D}  U\w{PMNS}  m\w L^{-1/2}
 \quad\Longrightarrow\quad R^\TT R\approx1.
 \end{equation}
 Conversely, with a matrix $R$ satisfying $R^\TT R=1$, the Yukawa matrix is given by
@@ -288,7 +284,7 @@ Conversely, with a matrix $R$ satisfying $R^\TT R=1$, the Yukawa matrix is given
 \end{equation}
 or
 \begin{equation}
- \frac{v}{\sqrt2}Y_n\Big|\w{$\MN$ being diagonal}
+ \frac{v}{\sqrt2}Y_n\Big|\w*{$M_N$ being diagonal}
   \approx \ii \sqrt{m\w H}R\sqrt{m\w L}U\w{PMNS}^\dagger.
 \end{equation}
 
@@ -308,12 +304,12 @@ where $\co{12}\equiv \cos{\theta_{12}}$ etc.\ and
 \end{equation}
 This $R$ satisfies $RR^\TT=1$, which however is not general (as in the next example).
 
-With this parameterization, the neutrino mixing matrix is given by, in the basis with $\MN$ being diagonal,
+With this parameterization, the neutrino mixing matrix is given by, in the basis with $M_N$ being diagonal,
 \begin{equation}
  U \approx \pmat{
   U\w{PMNS}
-  &  \MD^\dagger \MN^{*-1} U_X
-  \\ -\MN^{-1} \MD U\w{PMNS}
+  &  M\w{D}^\dagger M_N^{*-1} U_X
+  \\ -M_N^{-1} M\w{D} U\w{PMNS}
   &  U_X
 }
 \approx\pmat{U\w{PMNS}&0\\0&1}\pmat{

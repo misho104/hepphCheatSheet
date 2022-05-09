@@ -1,9 +1,9 @@
-% Time-Stamp: <2022-05-09 21:10:41>
+% Time-Stamp: <2022-05-16 17:16:50>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{CheatSheet}[2022/05/10 Sho Iwamoto]
 
 \LoadClass[a4paper,10pt]{article}
-\usepackage[fleqn]{amsmath}\automatichyphenmode=1
+\usepackage[fleqn]{amsmath}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -12,25 +12,30 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\automatichyphenmode=1
 \def\misho@font@english{STIXTwoText}
 \def\misho@font@sf{Roboto}
 \def\misho@font@tt{Roboto Mono}
 %\def\misho@font@math{latinmodern-math.otf}
 \def\misho@font@math{STIXTwoMath-Regular.otf}
 
-\usepackage[luatexrenderer=OpenType]{polyglossia} % automatically load fontspec
-    % no particular reason to avoid Harfbuzz
+\usepackage[quiet]{fontspec}
+\usepackage[luatexrenderer=OpenType]{polyglossia}
 \newfontfamily{\englishfont}[Ligatures={TeX}]{\misho@font@english}
 \newfontfamily{\englishfontsf}[Scale=0.91]{\misho@font@sf}
 \newfontfamily{\englishfonttt}[Scale=0.85]{\misho@font@tt}
-\newfontfamily{\japanesefont}{HaranoAjiMincho-Regular.otf}
+\newfontfamily{\japanesefont}[
+  ItalicFont=HaranoAjiMincho-Regular.otf,
+  ItalicFeatures={FakeSlant}
+]{HaranoAjiMincho-Regular.otf}
 \setmainfont{\misho@font@english}
 \setsansfont[Scale=0.91]{\misho@font@sf}
 \setmonofont[Scale=0.85]{\misho@font@tt}
 \setdefaultlanguage[variant=us]{english}
-\setotherlanguages{japanese}
+\setotherlanguages{japanese,russian}
 
 \newcommand*\JAPANESE[1]{\japanese#1\endjapanese}
+\newcommand*\RUSSIAN[1]{\russian#1\endrussian}
 
 % MathFont setting copied from MySlideFont.sty
   \usepackage{unicode-math}
@@ -137,15 +142,13 @@
   \let\scriptsize  \cheatsheet@d@scriptsize%
   \setlength\parindent{9\p@}\normalsize}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[hhmmss]{datetime}
 \newdateformat{mydate}{\THEDAY-\shortmonthname-\THEYEAR}
 
-\def\EvenFootPlain{}
 \def\ps@plain{%
-  \def\@evenfoot{} % \hfil\color{dimgray}{\fontsize{8}{12}\selectfont\EvenFootPlain}}
+  \def\@evenfoot{}
   \let\@oddfoot\@evenfoot
   \def\@evenhead{%
   \kern2mm{}\hfil{\fontsize{9}{12}\selectfont\color{lightgray}\texttt{[\jobname\,@\,\mydate\today~\currenttime]}}%
@@ -156,24 +159,64 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\def\maketitle{%
+\begin{titlepage}%
+  \setcounter{page}{0}
+  \let\footnoterule\relax
+  \let \footnote \thanks
+  \setlength\@tempdima{25.5mm}%
+  \advance\@tempdima 32mm%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=\@total@leftsep,yshift=-\@tempdima] at (current page.north west) {%
+      \begin{tikzpicture}[remember picture, overlay]
+        \fill[lightgray!50] (0,0) rectangle (\textwidth,32mm); % (2,16,2)mm plus 12mm space
+        \draw (2mm,20mm) rectangle (\textwidth-2mm, 30mm) {};
+        \node[fill=lightgray!50,anchor=south west,xshift= 5mm,yshift=15.7mm]
+          {\normalfont\fontsize{24}{24}\selectfont\bfseries\strut\xmp@Title};
+        \node[anchor=south west,xshift=85mm,yshift=7.5mm]
+          {\headfont\fontsize{16}{16}\selectfont \xmp@Author\strut};
+        \node[anchor=south west,xshift=85mm,yshift=3mm]
+          {\ttfamily\mydate\today~\currenttime\strut};
+        \node[anchor=south west,xshift=85mm,yshift=-1mm]
+          {\href{\xmp@CopyrightURL}{\sffamily\small\color{gray}\copyright\xmp@Copyright}\strut};
+      \end{tikzpicture}
+    };
+    \node[xshift=\@total@leftsep,yshift=25.5mm,anchor=south west,align=left,text width=\textwidth] at (current page.south west) {%
+      \href{https://creativecommons.org/licenses/by-nc/4.0/}{\includegraphics[width=2.2cm]{figs/by-nc.pdf}}\\[.4em]
+      \noindent\textsf{\color{gray}\small%
+      Visit \url{https://github.com/misho104/hepphCheatSheet} for further information, updates, and reporting issues.}
+    };
+    \node[xshift=-\@total@leftsep+26mm,yshift=32mm,align=left,text width=\textwidth,anchor=south east] at (current page.south east) {%
+      \noindent\textsf{\small\color{gray}%
+      This document is licensed under
+      \href{https://creativecommons.org/licenses/by-nc/4.0/}{the Creative Commons CC--BY--NC 4.0 International Public License.}\\
+      You may use this document only if you do in compliance with the license.}
+    };
+  \end{tikzpicture}%
+  \vskip28mm%
+}
+\def\endmaketitle{\par\vfil\null\end{titlepage}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
                                    {2.3ex \@plus.2ex}%
                                    {\headfont\Large\bfseries}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                                      {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                     {1.5ex \@plus .2ex}%
+                                     {1.0ex \@plus .2ex}%
                                      {\headfont\large\bfseries}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                                      {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                     {1.5ex \@plus .2ex}%
+                                     {1.0ex \@plus .2ex}%
                                      {\headfont\normalsize\bfseries}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                    {3.25ex \@plus1ex \@minus.2ex}%
+                                    {2.25ex \@plus1ex \@minus.2ex}%
                                     {-1em}%
                                     {\headfont\normalsize\bfseries}}
 \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-                                       {3.25ex \@plus1ex \@minus .2ex}%
+                                       {2.25ex \@plus1ex \@minus .2ex}%
                                        {-1em}%
                                       {\headfont\normalsize\bfseries}}
 
@@ -193,6 +236,7 @@
 
 % these are color command but should be considered as emphasize commands
 \newcommand\@colored[2]{{\color{#1}#2}}
+\newcommand\GRAY {\@colored{gray}}
 \newcommand\BLUE {\@colored{pBlue}}
 \newcommand\PINK {\@colored{pPink}}
 \newcommand\GREEN{\@colored{pGreen}}
@@ -202,6 +246,11 @@
 \hypersetup{
   pdfborder=0 0 0,
   colorlinks=true, urlcolor=pBlue, linkcolor=pBlue, citecolor=pGreen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{lalignat}{\begingroup\@mathmargin\z@\start@align\z@\st@rredfalse}{\endalign\endgroup}
+\newenvironment{lalignat*}{\begingroup\@mathmartin\z@\start@align\z@\st@rredtrue}{\endalign\endgroup}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -224,7 +273,7 @@
 \NoteBoxWidthA\textwidth
 \advance\NoteBoxWidthA-15mm
 
-\DeclareTColorBox[use counter=NoteBox]{NoteBox}{o}{%
+\DeclareTColorBox[use counter=NoteBox]{NoteBox}{O{}}{%
   reset,enhanced,
   title={\theNoteBox},
   boxrule=0pt,frame hidden,
@@ -234,9 +283,9 @@
   scale=0.85,
   attach title to upper,after title={:~},#1
 }
-\newcommand*\Note[1]{\NoteBox #1\endNoteBox}
+\newcommand\Note[1]{\begin{NoteBox}#1\end{NoteBox}}
 
-\DeclareTColorBox[use counter=NoteBox]{RemarkBox}{o}{%
+\DeclareTColorBox[use counter=NoteBox]{RemarkBox}{O{}}{%
   reset,enhanced,
   title={Remark \theNoteBox},
   boxrule=0pt,frame hidden,
@@ -253,6 +302,8 @@
   left skip=15mm,left=0pt,boxrule=0pt,right=0pt
 }
 
+\renewcommand\theNoteBox{$\sharp$\@arabic\c@NoteBox}
+
 \newcommand\g@bble@put[1]{#1}
 \DeclareDocumentCommand{\RefBox}{O{6cm} O{text width=5cm} > { \TrimSpaces } m}{%
   \begin{tikzpicture}[overlay,anchor=north east,remember picture,every node/.style={#2}]%
@@ -261,9 +312,23 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcounter{NoteAnchor}
+
+\def\NoteBoxStack{}
+\NewDocumentCommand\addnote{som}{%
+  \stepcounter{NoteAnchor}%
+  \IfValueTF{#2}{\def\notetag{#2}}{\let\notetag\theNoteAnchor}%
+  \IfBooleanTF{#1}{\def\@NoteBoxStack{}}{\let\@NoteBoxStack\NoteBoxStack}%
+  \global\edef\NoteBoxStack{\@NoteBoxStack\noexpand\OutputNote@{\notetag}{#3}}%
+  \mbox{$^{\text{\ref{Note:\notetag}}}$}\relax}
+\def\OutputNote@#1#2{{\NoteBox[label=Note:#1]{#2}\endNoteBox}\relax}
+\def\OutputNote{\NoteBoxStack\global\def\NoteBoxStack{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{fancyvrb,ifplatform,listings}
 \lstset{columns=[l]fullflexible,basicstyle=\ttfamily\small,xleftmargin=15mm,frame=L,keepspaces=true}
-\CustomVerbatimCommand{\code}{Verb}{} %,formatcom=\color{black}}
+\CustomVerbatimCommand{\code}{Verb}{}
 \ifshellescape
 \usepackage{minted}
 \def\minted@formatter{lib/minted_formatter.py -x}
@@ -281,7 +346,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% ReDeclareMathCommand
 % https://tex.stackexchange.com/questions/175251/
 \newcommand*\RedeclareMathOperator{%
   \@ifstar{\def\rmo@s{m}\rmo@redeclare}{\def\rmo@s{o}\rmo@redeclare}%
@@ -298,8 +362,8 @@
 
 \newcommand*\ii{{\mathrm{i}}}
 \newcommand*\ee{{\mathrm{e}}}
-\newcommand*\dd{\mathop{\mathrm{d}}}
-\newcommand*\DD{\mathop{\mathrm{D}}}
+\newcommand*\dd{{\mathrm{d}}}
+\newcommand*\DD{{\mathrm{D}}}
 \newcommand*\TT{{\mathrm{T}}}
 \newcommand*\cc{{\mathrm{c}}}
 \newcommand*\RR{{\mathbb{R}}}
@@ -310,16 +374,17 @@
 \newcommand*\vep{\varepsilon} % \vep^{12} = \vep^{0123} = 1 but \vep_{12} = \vep_{0123} = -1.
 \newcommand*\nep{\epsilon}    % to distinguish from vep:  \nep^{12} = \nep_{12} = +1.
 
-\newcommand*\vc[1]{{\symbfit{#1}}}
+\newcommand*\vc[1]{{\mathbf{#1}}}
 \newcommand*\vipro[2]{\vc{#1}\cdot\vc{#2}}
 \newcommand*\vopro[2]{\vc{#1}\times\vc{#2}}
 
-\NewDocumentCommand\w  {sm}{\IfBooleanTF{#1}{_{\text{#2}}{_{\mathrm{#2}}}}}
-\NewDocumentCommand\wup{sm}{\IfBooleanTF{#1}{^{\text{#2}}{^{\mathrm{#2}}}}}
+\NewDocumentCommand\w  {sm}{\IfBooleanTF{#1}{_{\text{#2}}}{_{\mathrm{#2}}}}
+\NewDocumentCommand\wup{sm}{\IfBooleanTF{#1}{^{\text{#2}}}{^{\mathrm{#2}}}}
 
-\NewDocumentCommand\abs  {sm}{\IfBooleanTF{#1}{\lvert#1\rvert}{\left\lvert#1\right\rvert}}
-\NewDocumentCommand\norm {sm}{\IfBooleanTF{#1}{\lVert#1\rVert}{\left\lVert#1\right\rVert}}
-\NewDocumentCommand\vnorm{sm}{\norm#1{\vc #2}}
+\NewDocumentCommand\abs  {sm}{\IfBooleanTF{#1}{\left\lvert#2\right\rvert}{\lvert#2\rvert}}
+\NewDocumentCommand\norm {sm}{\IfBooleanTF{#1}{\left\lVert#2\right\rVert}{\lVert#2\rVert}}
+\NewDocumentCommand\vnorm{sm}{\IfBooleanTF{#1}{\left\lVert\vc{#2}\right\rVert}{\lVert\vc{#2}\rVert}}
+\NewDocumentCommand\mean {sm}{\IfBooleanTF{#1}{\left\langle#2\right\rangle}{\langle#2\rangle}}
 
 \newcommand*{\wdiag}{^{\text{diag}}}
 
@@ -338,6 +403,7 @@
 \DeclareMathOperator{\sech}   {\mathrm{sech}}
 \DeclareMathOperator{\csch}   {\mathrm{csch}}
 \DeclareMathOperator{\Tr}     {\mathrm{Tr}}
+\DeclareMathOperator{\rank}   {\mathrm{rank}}
 \DeclareMathOperator{\diag}   {\mathrm{diag}}
 \DeclareMathOperator{\ad}     {\mathrm{ad}}
 \DeclareMathOperator{\Order}  {\symcal{O}}
@@ -376,11 +442,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{slashed,xspace}
+\usepackage{slashed,xspace,xstring,wrapfig,braket}
+
+\def\url#1{\href{#1}{\texttt{#1}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[capitalize]{cleveref}
+
+\renewcommand\thefootnote{*\arabic{footnote}}
+\numberwithin{equation}{section}
+
 \newcommand\package[2][\relax]{\texttt{#2}\ifx#1\relax\relax\else~\texttt{#1}\fi}
 
 \newcommand{\TODO}[1]{{\color{red}{$\clubsuit$\texttt{TODO:}#1$\clubsuit$}}}

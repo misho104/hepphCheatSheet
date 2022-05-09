@@ -1,12 +1,10 @@
-%%% Time-Stamp: <2020-08-07 16:06:29>
+%%% Time-Stamp: <2022-06-17 19:19:25>
 \documentclass[CheatSheet]{subfiles}
 
-\newcommand{\OQ}{{\mathcal Q}}
-\newcommand{\OD}{{\mathcal D}}
 \begin{document}
 
 \summarystyle
-\section[Supersymmetry with (+,-,-,-)]{Supersymmetry with $\bm{\eta=\mathop{\mathsf{diag}}(+,-,-,-)}$}
+\section[Supersymmetry with (+,-,-,-)]{Supersymmetry with $\mathbf{\eta=\mathop{\mathsf{diag}}(+,-,-,-)}$}
 
 \input{calculator/susy/formulae.txt}
 
@@ -44,10 +42,10 @@
 \end{align}
 \paragraph{With a U(1) gauge symmetry}
 \footnote{
-  We use the convention with $V\ni\lambda(x)\theta\btheta^2$, which corresponds to $\lambda=\ii\CONV{\lambda\w{SLHA}}$. In SLHA convention, the scalar-fermion-gaugino interaction is replaced to 
+  We use the convention with $V\ni\lambda(x)\theta\btheta^2$, which corresponds to $\lambda=\ii\C{\lambda\w{SLHA}}$. In SLHA convention, the scalar-fermion-gaugino interaction is replaced to 
 \begin{equation*}
-  -\sqrt{2}g{\CONV{\ii\lambda^a\w{SLHA}}} (\phi^*t^a\psi)
- -\sqrt{2}g{\CONV{(-\ii\blambda^a\w{SLHA})}}(\bar\psi t^a\phi).
+  -\sqrt{2}g{\C{\ii\lambda^a\w{SLHA}}} (\phi^*t^a\psi)
+ -\sqrt{2}g{\C{(-\ii\blambda^a\w{SLHA})}}(\bar\psi t^a\phi).
 \end{equation*}
 }%
 \begin{equation}
@@ -176,15 +174,15 @@ In all of the above three theories,
 \begin{align}
 & \mathcal L\supset
 F^*_i F_i
-+ F_i\pd{W}{\Phi_i}\Big|\w{scalar}
-+ F_i^*\pd{W^*}{\Phi_i^*}\Big|\w{scalar}
++ F_i\pdiff{W}{\Phi_i}\Big|\w{scalar}
++ F_i^*\pdiff{W^*}{\Phi_i^*}\Big|\w{scalar}
 +\frac12 D^aD^a + g D^a(\phi^*t^a\phi);
 \\&
- \vev{F^*_i} = -\pd{W}{\Phi_i}\Big|\w{scalar},\qquad
- \vev{D^a} = -g\phi^*t^a\phi;
+ \mean{F^*_i} = -\pdiff{W}{\Phi_i}\Big|\w{scalar},\qquad
+ \mean{D^a} = -g\phi^*t^a\phi;
 \\&
  \mathcal L\supset -V\w{SUSY} = -
-\left[\vev{F^*_i}\vev{F_i}+\frac{g^2}2 (\phi^*t^a\phi)(\phi^*t^a\phi)\right].
+\left[\mean{F^*_i}\mean{F_i}+\frac{g^2}2 (\phi^*t^a\phi)(\phi^*t^a\phi)\right].
 \end{align}
 
 
@@ -201,38 +199,38 @@ We define the generators as
  P_\mu
  &:= \ii\partial_\mu,
 \quad&
- \{\OQ_\alpha, \bar \OQ_\dalpha\}
+ \{{\mathcal Q}_\alpha, \bar {\mathcal Q}_\dalpha\}
  &= -2\ii\sigma^{\mu}_{\alpha\dalpha}\partial_\mu = -2\sigma^{\mu}_{\alpha\dalpha}P_\mu,
 \quad&
-  \{\OQ_\alpha, \OQ_\beta\} =   \{\bar \OQ_\dalpha, \bar \OQ_\dbeta\} = 0,
+  \{{\mathcal Q}_\alpha, {\mathcal Q}_\beta\} =   \{\bar {\mathcal Q}_\dalpha, \bar {\mathcal Q}_\dbeta\} = 0,
 \end{alignat}
 which is realized by
 \begin{align*}
-\OQ_\alpha &= \frac{\partial}{\partial \theta^{\alpha}}+\ii (\sigma^{\mu}\btheta){}_{\alpha}\partial_{\mu},
+{\mathcal Q}_\alpha &= \frac{\partial}{\partial \theta^{\alpha}}+\ii (\sigma^{\mu}\btheta){}_{\alpha}\partial_{\mu},
 &
-\bar \OQ_\dalpha&=-\frac{\partial}{\partial \btheta^{\dalpha}}-\ii (\theta \sigma^{\mu}){}_{\dalpha}\partial_{\mu},
+\bar {\mathcal Q}_\dalpha&=-\frac{\partial}{\partial \btheta^{\dalpha}}-\ii (\theta \sigma^{\mu}){}_{\dalpha}\partial_{\mu},
 &
-\OQ^\alpha&=-\frac{\partial}{\partial \theta_{\alpha}}-\ii (\btheta\bsigma^{\mu})^{\alpha}\partial_{\mu},
+{\mathcal Q}^\alpha&=-\frac{\partial}{\partial \theta_{\alpha}}-\ii (\btheta\bsigma^{\mu})^{\alpha}\partial_{\mu},
 &
-\bar \OQ^{\dalpha}&=\frac{\partial}{\partial \btheta_{\dalpha}}+\ii (\bsigma^{\mu}\theta)^{\dalpha}\partial_{\mu},
+\bar {\mathcal Q}^{\dalpha}&=\frac{\partial}{\partial \btheta_{\dalpha}}+\ii (\bsigma^{\mu}\theta)^{\dalpha}\partial_{\mu},
 \\
-\OD_\alpha&=\frac{\partial}{\partial \theta^{\alpha}}-\ii (\sigma^{\mu}\btheta){}_{\alpha}\partial_{\mu},
+{\mathcal D}_\alpha&=\frac{\partial}{\partial \theta^{\alpha}}-\ii (\sigma^{\mu}\btheta){}_{\alpha}\partial_{\mu},
 &
-\bar \OD_\dalpha&=-\frac{\partial}{\partial \btheta^{\dalpha}}+\ii (\theta \sigma^{\mu}){}_{\dalpha}\partial_{\mu},
+\bar {\mathcal D}_\dalpha&=-\frac{\partial}{\partial \btheta^{\dalpha}}+\ii (\theta \sigma^{\mu}){}_{\dalpha}\partial_{\mu},
 &
-\OD^\alpha&=-\frac{\partial}{\partial \theta_{\alpha}}+\ii (\btheta\bsigma^{\mu})^{\alpha}\partial_{\mu},
+{\mathcal D}^\alpha&=-\frac{\partial}{\partial \theta_{\alpha}}+\ii (\btheta\bsigma^{\mu})^{\alpha}\partial_{\mu},
 &
-\bar \OD^\dalpha&=\frac{\partial}{\partial \btheta_{\dalpha}}-\ii (\bsigma^{\mu}\theta)^{\dalpha}\partial_{\mu};
+\bar {\mathcal D}^\dalpha&=\frac{\partial}{\partial \btheta_{\dalpha}}-\ii (\bsigma^{\mu}\theta)^{\dalpha}\partial_{\mu};
 \end{align*}
-$\OD_\alpha$ etc.~works as covariant derivatives because of the commutation relations
+${\mathcal D}_\alpha$ etc.~works as covariant derivatives because of the commutation relations
 \begin{align*}
-\{\OD_\alpha, \bar \OD_\dalpha\}&=+2\ii\sigma^{\mu}_{\alpha\dalpha}\partial_\mu,&
-\{\OQ_\alpha, \OD_\beta\}&=
-\{\OQ_\alpha, \bar \OD_\dbeta\}=
-\{\bar \OQ_\dalpha, \OD_\beta\}=
-\{\bar \OQ_\dalpha, \bar \OD_\dbeta\}=
-\{\OD_\alpha, \OD_\beta\}=
-\{\bar \OD_\dalpha, \bar \OD_\dbeta\}=0.
+\{{\mathcal D}_\alpha, \bar {\mathcal D}_\dalpha\}&=+2\ii\sigma^{\mu}_{\alpha\dalpha}\partial_\mu,&
+\{{\mathcal Q}_\alpha, {\mathcal D}_\beta\}&=
+\{{\mathcal Q}_\alpha, \bar {\mathcal D}_\dbeta\}=
+\{\bar {\mathcal Q}_\dalpha, {\mathcal D}_\beta\}=
+\{\bar {\mathcal Q}_\dalpha, \bar {\mathcal D}_\dbeta\}=
+\{{\mathcal D}_\alpha, {\mathcal D}_\beta\}=
+\{\bar {\mathcal D}_\dalpha, \bar {\mathcal D}_\dbeta\}=0.
 \end{align*}
 
 \paragraph{Derivative formulae}
@@ -276,15 +274,15 @@ In addition, we define
 \begin{align}
  & (y,\theta',\btheta'):=(x-\ii\theta\sigma^\mu\btheta,\theta,\btheta):
  \\&
-\bar\OD_\dalpha = -\pd{}{\btheta^{\prime\dalpha}};\qquad
- \left(\begin{matrix}\pd{}{x^\mu}\\\pd{}{\theta^\alpha}\\\pd{}{\btheta^\dalpha}\end{matrix}\right)
+\bar{\mathcal D}_\dalpha = -\pdiff{}{\btheta^{\prime\dalpha}};\qquad
+ \left(\begin{matrix}\pdiff{}{x^\mu}\\\pdiff{}{\theta^\alpha}\\\pdiff{}{\btheta^\dalpha}\end{matrix}\right)
 =\left(\begin{smallmatrix}\delta^\nu_\mu&0&0\\-\ii(\sigma^\nu\btheta)_\alpha&\delta^\beta_\alpha&0\\\ii(\theta\sigma^\nu)_\dalpha&0&\delta^\dbeta_\dalpha
        \end{smallmatrix}\right)
- \left(\begin{matrix}\pd{}{y^\nu}\\\pd{}{\theta^{\prime\beta}}\\\pd{}{\btheta^{\prime\dbeta}}\end{matrix}\right),\quad
- \left(\begin{matrix}\pd{}{y^\nu}\\\pd{}{\theta^{\prime\beta}}\\\pd{}{\btheta^{\prime\dbeta}}\end{matrix}\right)
+ \left(\begin{matrix}\pdiff{}{y^\nu}\\\pdiff{}{\theta^{\prime\beta}}\\\pdiff{}{\btheta^{\prime\dbeta}}\end{matrix}\right),\quad
+ \left(\begin{matrix}\pdiff{}{y^\nu}\\\pdiff{}{\theta^{\prime\beta}}\\\pdiff{}{\btheta^{\prime\dbeta}}\end{matrix}\right)
 =\left(\begin{smallmatrix}\delta^\mu_\nu&0&0\\\ii(\sigma^\mu\btheta)_\beta&\delta_\beta^\alpha&0\\-\ii(\theta\sigma^\mu)_\dbeta&0&\delta_\dbeta^\dalpha
        \end{smallmatrix}\right)
- \left(\begin{matrix}\pd{}{x^\mu}\\\pd{}{\theta^\alpha}\\\pd{}{\btheta^\dalpha}\end{matrix}\right),
+ \left(\begin{matrix}\pdiff{}{x^\mu}\\\pdiff{}{\theta^\alpha}\\\pdiff{}{\btheta^\dalpha}\end{matrix}\right),
 \end{align}
 and a function $f:\mathbb C^4\to \mathbb C$ (independent of $\theta'$ and $\btheta'$) is expanded as
 \begin{equation}
@@ -301,7 +299,7 @@ f(x)+\ii (\theta \sigma^{\mu}\btheta) \partial_{\mu}f^*(x)-\frac{1}{4} \theta^4 
 
 \subsection{Superfields}
 \paragraph{SUSY-invariant Lagrangian}
-SUSY transformation is induced by $\xi \OQ + \bar\xi\bar \OQ = \xi^\alpha\partial_\alpha + \bar\xi_\dalpha\partial^{\dalpha} + \ii(\xi\sigma^\mu\btheta+\bar\xi\bar\sigma^\mu\theta)\partial_\mu$.
+SUSY transformation is induced by $\xi {\mathcal Q} + \bar\xi\bar {\mathcal Q} = \xi^\alpha\partial_\alpha + \bar\xi_\dalpha\partial^{\dalpha} + \ii(\xi\sigma^\mu\btheta+\bar\xi\bar\sigma^\mu\theta)\partial_\mu$.
 Therefore, for an object $\Psi$ in the superspace,
 \begin{equation}
  \bigl[\Psi\bigr]_{\theta^4}\xrightarrow{\text{SUSY}}
@@ -314,14 +312,14 @@ which means $\bigl[\Psi\bigr]_{\theta^4}$ is SUSY-invariant up to total derivati
 \begin{equation}
   \bigl[\Psi\bigr]_{\theta^2}\xrightarrow{\text{SUSY}}
  \left[\Psi + \bar\xi_\dalpha\left(\partial^{\dalpha} + \ii(\bar\sigma^{\mu}\theta)^\dalpha\partial_\mu\right)\Psi\right]_{\theta^2}
-=\left[\Psi + \bar\xi_\dalpha\bar \OD^\dalpha\Psi+2\ii(\bar\sigma^{\mu}\theta)^\dalpha\partial_\mu\Psi\right]_{\theta^2}
+=\left[\Psi + \bar\xi_\dalpha\bar {\mathcal D}^\dalpha\Psi+2\ii(\bar\sigma^{\mu}\theta)^\dalpha\partial_\mu\Psi\right]_{\theta^2}
 \end{equation}
-will be SUSY-invariant if $\bar \OD_\dalpha\Psi=0$, i.e., $\Psi$ is a chiral superfield. Therefore, SUSY-invariant Lagrangian is given by
+will be SUSY-invariant if $\bar {\mathcal D}_\dalpha\Psi=0$, i.e., $\Psi$ is a chiral superfield. Therefore, SUSY-invariant Lagrangian is given by
 \begin{equation}
  \mathcal L = \bigl[\text{(any real superfield)}\Bigr]_{\theta^4} + \bigl[\text{(any chiral superfield)}\Bigr]_{\theta^2} + \bigl[\text{(any chiral superfield)}^*\Bigr]_{\btheta^2}.
 \label{eq:susy-inv}
 \end{equation}
-\paragraph{Chiral superfield} A chiral superfield is a superfield that satisfies $\bar \OD_\dalpha \Phi = 0$, i.e.,
+\paragraph{Chiral superfield} A chiral superfield is a superfield that satisfies $\bar {\mathcal D}_\dalpha \Phi = 0$, i.e.,
 we find
 \begin{align}
  \Phi
@@ -380,7 +378,7 @@ note that $\Phi_i\Phi_j$, $\Phi_i\Phi_j\Phi_k$, and $\ee^{k\Phi}$ are all chiral
 
 \paragraph{Vector superfield}
 A vector superfield is a superfield $V$ that satisfies $V=V^*$.
-It is given by real fields $\{C, M, N, D, A_\mu\}$ and Grassmann fields $\{\chi, \lambda\}$ as\footnote{Different coordination of ``$\ii$''s are found in literature. Take care, especially, $\lambda(\text{ours})=\ii{\CONV{\lambda(\text{Wess-Bagger})}}=\ii{\CONV{\lambda(\text{SLHA})}}$.}
+It is given by real fields $\{C, M, N, D, A_\mu\}$ and Grassmann fields $\{\chi, \lambda\}$ as\footnote{Different coordination of ``$\ii$''s are found in literature. Take care, especially, $\lambda(\text{ours})=\ii{\C{\lambda(\text{Wess-Bagger})}}=\ii{\C{\lambda(\text{SLHA})}}$.}
 \begin{equation}
 \begin{split}
   V(x,\theta,\btheta)
@@ -581,7 +579,7 @@ V +2(\btheta\bsigma^{\mu}\theta)\partial_{\mu}\phi
 The real superfield $\ee^{V}$ is gauge-invariant in Abelian case and a candidate in Lagrangian term, but this is not case in non-Abelian case.
 We thus define a chiral superfield from $\ee^{V}$:
 \begin{align}
-& \mathcal W_\alpha = \frac14\bar\OD_\dalpha\bar\OD^\dalpha\left(\ee^{-2gV}\OD_\alpha\ee^{2gV}\right);\\
+& \mathcal W_\alpha = \frac14\bar{\mathcal D}_\dalpha\bar{\mathcal D}^\dalpha\left(\ee^{-2gV}{\mathcal D}_\alpha\ee^{2gV}\right);\\
 &\mathcal W_\alpha\xrightarrow{\text{gauge}}
 \ee^{2\ii g \Omega}\mathcal W_{\alpha}\ee^{-2\ii g \Omega}
 \quad
@@ -647,8 +645,8 @@ F^a_{\mu\nu}F^a_{\rho\sigma},
 
 For Abelian theory,
 \begin{align}
-& \mathcal W_\alpha = \frac14\bar\OD_\dalpha\bar\OD^\dalpha\left(\ee^{-2gV}\OD_\alpha\ee^{2gV}\right)
-=\frac14\bar\OD_\dalpha\bar\OD^\dalpha\OD_\alpha(2gV),
+& \mathcal W_\alpha = \frac14\bar{\mathcal D}_\dalpha\bar{\mathcal D}^\dalpha\left(\ee^{-2gV}{\mathcal D}_\alpha\ee^{2gV}\right)
+=\frac14\bar{\mathcal D}_\dalpha\bar{\mathcal D}^\dalpha{\mathcal D}_\alpha(2gV),
 \\
 & \mathcal W^\alpha\mathcal W_\alpha\Big|_{\theta^2}
 =2\left(

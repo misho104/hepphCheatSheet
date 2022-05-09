@@ -129,42 +129,42 @@ Here in the Standard Model, five phases in a unitary matrix \eqref{eq:GeneralUni
 \paragraph{PDG convention} \cite[\S12]{PDG2018}\cite[\S12]{PDG2020}
 \begin{equation}
  \mathcal L \supset
- -\CONV{Y^d_{ij}}\overline{Q_{Li}^I}\CONV{\phi} d_{Rj}^I
- -\CONV{Y^u_{ij}}\overline{Q_{Li}^I}\CONV{\epsilon\phi^*}u_{Rj}^I,
-\quad Y\wdiag = \CONV{V_L Y V_R^\dagger},
-\quad \CONV{V\w{CKM}} = \CONV{V^u_LV_L^{d\dagger}}.
+ -\C{Y^d_{ij}}\overline{Q_{Li}^I}\C{\phi} d_{Rj}^I
+ -\C{Y^u_{ij}}\overline{Q_{Li}^I}\C{\epsilon\phi^*}u_{Rj}^I,
+\quad Y\wdiag = \C{V_L Y V_R^\dagger},
+\quad \C{V\w{CKM}} = \C{V^u_LV_L^{d\dagger}}.
 \end{equation}
-So, $\CONV{Y^u}=\Yu^\dagger$, $\CONV{Y^d}=\Yd^\dagger$;
-$Y\wdiag = \CONV{V_RY^\dagger V_L^\dagger} = \CONV{V_R}Y\CONV{V_L^\dagger}$ leads $\CONV{V_L}=V^\dagger$, and the CKM matrix (and components) is in the same convention: $\CONV{V\w{CKM}}=V_u^\dagger V_d=V\w{CKM}$.
+So, $\C{Y^u}=\Yu^\dagger$, $\C{Y^d}=\Yd^\dagger$;
+$Y\wdiag = \C{V_RY^\dagger V_L^\dagger} = \C{V_R}Y\C{V_L^\dagger}$ leads $\C{V_L}=V^\dagger$, and the CKM matrix (and components) is in the same convention: $\C{V\w{CKM}}=V_u^\dagger V_d=V\w{CKM}$.
 
 
 \paragraph{SLHA2 convention} \cite{SLHA2}
 \begin{align}
  W &\supset \epsilon_{ab}\left[
-(\CONV{Y_E})_{ij}H_1^a L_i^b \bar E_j
-+(\CONV{Y_D})_{ij}H_1^a Q_i^b \bar D_j
-+(\CONV{Y_U})_{ij}H_2^b Q_i^a \bar U_j
+(\C{Y_E})_{ij}H_1^a L_i^b \bar E_j
++(\C{Y_D})_{ij}H_1^a Q_i^b \bar D_j
++(\C{Y_U})_{ij}H_2^b Q_i^a \bar U_j
 \right];
 \\
 \mathcal L&\supset
 - \epsilon_{ab}\left[
-(\CONV{Y_E})_{ij}H_1^a \psi_{Li}^b \psi_{\bar Ej}
-+(\CONV{Y_D})_{ij}H_1^a \psi_{Qi}^b \bar \psi_{\bar Dj}
-+(\CONV{Y_U})_{ij}H_2^b \psi_{Qi}^a \bar \psi_{\bar Uj}
+(\C{Y_E})_{ij}H_1^a \psi_{Li}^b \psi_{\bar Ej}
++(\C{Y_D})_{ij}H_1^a \psi_{Qi}^b \bar \psi_{\bar Dj}
++(\C{Y_U})_{ij}H_2^b \psi_{Qi}^a \bar \psi_{\bar Uj}
 \right]
 \\&\leadsto
 - \left[
-\psi_{\bar E}\vd \CONV{Y_E^\TT}\psi_L^2
-+\psi_{\bar D}\vd\CONV{Y_D^\TT}\psi_Q^2
-+\psi_{\bar U}\vu\CONV{Y_U^\TT}\psi_Q^1
+\psi_{\bar E}\vd \C{Y_E^\TT}\psi_L^2
++\psi_{\bar D}\vd\C{Y_D^\TT}\psi_Q^2
++\psi_{\bar U}\vu\C{Y_U^\TT}\psi_Q^1
 \right];
 \quad
-Y\wdiag = \CONV{U^\dagger Y^\TT V},
+Y\wdiag = \C{U^\dagger Y^\TT V},
 \quad
-\CONV{V\w{CKM}} = \CONV{V_u^\dagger V_d}.
+\C{V\w{CKM}} = \C{V_u^\dagger V_d}.
 \end{align}
-Hence, $\CONV{Y_E}=\Ye^\TT$, $\CONV{Y_D}=\Yd^\TT$, $\CONV{Y_U}=\Yu^\TT$;
-$Y\wdiag=\CONV{U^\dagger}Y\CONV{V}$, $\CONV{V}=V$ and $\CONV{V\w{CKM}}=V\w{CKM}$.
+Hence, $\C{Y_E}=\Ye^\TT$, $\C{Y_D}=\Yd^\TT$, $\C{Y_U}=\Yu^\TT$;
+$Y\wdiag=\C{U^\dagger}Y\C{V}$, $\C{V}=V$ and $\C{V\w{CKM}}=V\w{CKM}$.
 
 \paragraph{Wolfenstein parameterization}
 The CKM matrix is precisely written in terms of $\lambda$, $A$, and $\bar\rho+\ii\bar\eta$.
@@ -318,7 +318,7 @@ Also, the absence of gauge anomaly means the corresponding gauge transformations
 which means either $\Theta_W$ or $\Theta_B$ can be rotated away.
 As we discuss below, it is convenient to set $\Theta_W=0$ and $\Theta_B\neq 0$.
 
-Meanwhile, as $\Delta\Theta_g=0$, we cannot remove $\Theta_g$.\footnote{If, e.g., $u$ were massless, we can take $\theta_{\uR}\neq\theta_Q$ and rotate $\Theta_g$ away.}
+Meanwhile, because $\Delta\Theta_g=0$, we cannot remove $\Theta_g$.\footnote{If, e.g., $u$ were massless, we can take $\theta_{\uR}\neq\theta_Q$ and rotate $\Theta_g$ away.}
 We define $\Theta\w{QCD}:=(\text{$\Theta_g$ in the mass basis})$, which induces $CP$-violation in the strong sector.
 However, such $CP$-violation is not observed yet; this contradiction is called strong $CP$ problem.
 
