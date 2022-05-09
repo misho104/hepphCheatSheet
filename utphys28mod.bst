@@ -1,5 +1,5 @@
 % UT Physics bibliographic style, ver. 2.8 + Modified by Sho Iwamoto. Based on:
-% Time-Stamp: <2020-10-01 17:22:50>
+% Time-Stamp: <2021-12-26 11:05:09>
 %
 %X     IEEE Transactions bibliography style (29-Jan-88 version)
 %X       numeric labels, order-of-reference, IEEE abbreviations,
@@ -205,7 +205,6 @@ ENTRY
     archivePrefix
     primaryClass
     url
-    urldate
     doi
     targets
   }
@@ -213,7 +212,7 @@ ENTRY
   { label }
 
 INTEGERS { output.state before.all mid.sentence after.quote after.sentence
-		after.quoted.block after.block etalthres etalnames }
+		after.quoted.block after.block etalthres names.show total.show }
 
 FUNCTION {init.state.consts}
 { #0 'before.all :=
@@ -408,58 +407,63 @@ FUNCTION {insert.space.after.dot}
 }
 
 
-
+% etalthres: if #names > etalthres, use (etalthres-1) names + "et al."
+% s: names to format
 FUNCTION {format.names}
 { 'etalthres :=
   's :=
   s insert.space.after.dot 's :=
-  #1 'etalnames :=
-  #1 'nameptr :=
   s num.names$ 'numnames :=
 
-  numnames etalthres >
-    { etalnames #1 + 'namesleft :=
-      { namesleft #0 > }
-      { s nameptr "{f.~~}{vv~}{ll}{, jj}" format.name$ 't :=
-        nameptr #1 >
-          { t "others" = {#1 'namesleft :=} 'skip$ if$
-            namesleft #1 =
-              {", {\em et al.}" * }
-              {", " * t * }
-            if$
-          }
-          't
-        if$
-        nameptr #1 + 'nameptr :=
-        namesleft #1 - 'namesleft :=
-      }
-      while$
+  % ----- decice how many names to print
+  % names.show does not include "others"
+  % total.show includes "others"
+  s numnames "{f.~~}{vv~}{ll}{, jj}" format.name$ "others" =
+  {  % if the last name is "others"
+    numnames etalthres >
+    { etalthres #1 - 'names.show := names.show #1 + 'total.show := }
+    { numnames  #1 - 'names.show := names.show #1 + 'total.show := }
+    if$
+  }{ % if not "others"
+    numnames etalthres >
+    { etalthres #1 - 'names.show := names.show #1 + 'total.show := }
+    { numnames       'names.show := names.show      'total.show := }
+    if$
+  }
+  if$
+
+  #1 'nameptr :=
+  total.show #1 =
+  { % ----- special case: if total.show is one
+    s nameptr "{f.~~}{vv~}{ll}{, jj}" format.name$
+  }
+  { % ----- usual case: loop from 1 to (total.show - 1)
+    { nameptr total.show < } {
+      s nameptr "{f.~~}{vv~}{ll}{, jj}" format.name$ 't :=
+      nameptr #1 =
+        { t }
+        { ", " * t * }
+      if$
+      nameptr #1 + 'nameptr :=
+    }
+    while$
+    nameptr #2 =
+    {
+      % add last item: case with A and B
+      total.show names.show =
+      { " and " * s nameptr "{f.~~}{vv~}{ll}{, jj}" format.name$ * }
+      { " \emph{et al}." * }
+      if$
     }
     {
-      numnames 'namesleft :=
-      { namesleft #0 > }
-      { s nameptr "{f.~~}{vv~}{ll}{, jj}" format.name$ 't :=
-        nameptr #1 >
-          { namesleft #1 >
-              { ", " * t * }
-              { numnames #2 >
-                  { "," * }
-                  'skip$
-                if$
-                t "others" =
-                  { " {\em et~al.}" * }
-                  { string.and * t * }
-                if$
-              }
-            if$
-          }
-          't
-        if$
-        nameptr #1 + 'nameptr :=
-        namesleft #1 - 'namesleft :=
-      }
-      while$
+      % add last item: case with A, B, and C
+      total.show names.show =
+      { ", and " * s nameptr "{f.~~}{vv~}{ll}{, jj}" format.name$ * }
+      { ", \emph{et al}." * }
+      if$
     }
+    if$
+  }
   if$
 }
 
@@ -524,17 +528,6 @@ FUNCTION {format.url}
   if$
 }
 
-FUNCTION {format.url.urldate}
-{ url empty$
-    { "" }
-    { urldate empty$
-        { "\url{" url "}" * *}
-        { "\url{" url "}$^{\text{(" urldate ")}}$" * * * * }
-      if$
-    }
-  if$
-}
-
 FUNCTION {note.or.addendum.output}
 { addendum empty$
     {new.sentence note output}
@@ -563,7 +556,7 @@ FUNCTION {add.doi}
 {
    doi empty$
      'skip$
-     { "https://dx.doi.org/" doi * add.href }
+     { "https://doi.org/" doi * add.href }
    if$
 }
 
@@ -578,7 +571,7 @@ FUNCTION {format.howpublished}
 FUNCTION {format.editors}
 { editor empty$
     { "" }
-    { editor #5 format.names
+    { editor #2 format.names
       editor num.names$ #1 >
 	{ string.editors * }
 	{ string.editor * }
@@ -1009,7 +1002,12 @@ FUNCTION {article}
 { output.bibitem
   editor empty$
     { format.authors "author" output.check }
-    { format.editors "author and editor" output.check }
+    {
+      collaboration empty$
+        { format.editors "author and editor" output.check }
+        { format.authors "author" output.check }
+      if$
+    }
   if$
   journal missing$
     {format.title.p "title" output.check}
@@ -1189,7 +1187,7 @@ FUNCTION {inproceedings}
 { output.bibitem
 %  format.collaboration output
   format.authors "author" output.check
-%  format.title add.doi "title" output.check
+  format.title add.doi "title" output.check
   blank.sep
   crossref missing$
     { format.in.ed.booktitle "booktitle" output.check
@@ -1299,7 +1297,7 @@ FUNCTION {misc}
   format.date output
   new.block
   doi missing$
-    { format.url.urldate output }
+    { format.url output }
     { "{\ttfamily doi:" doi "}" * * add.doi output }
   if$
   new.sentence
@@ -1453,7 +1451,7 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\providecommand{\href}[2]{#2}"
-  "\begingroup\raggedright\begin{thebibliography}{" * longest.label  * 
+  "\begingroup\begin{thebibliography}{" * longest.label  * 
   "}" * write$ newline$ }
 
 EXECUTE {begin.bib}

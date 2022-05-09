@@ -5,6 +5,7 @@
 \#*
 _minted-*
 *.pyg
+*.xmpi
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

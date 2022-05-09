@@ -1,0 +1,181 @@
+%#!lualatex
+\documentclass{CheatSheet}
+
+\newcommand{\Lubanski}{Luba\'nski\xspace}
+\newcommand{\slaP}{}
+\DeclareMathOperator\rank{\mathrm{rank}}
+\newcommand{\RANK}[1]{\langle #1\rangle}
+\bibliographystyle{utphys28mod}
+\def\EvenFootPlain{%
+This document by Sho Iwamoto is licensed under the Creative Commons CC--BY--NC 4.0 International Public License.}
+
+\begin{document}
+
+\summarystyle
+
+hogehoge
+
+\clearpage
+
+\detailstyle
+
+\subsection{Dirac spinors for massive fermions}
+\RefBox{\S2 of \cite{kugo1}; \cite{Kryuchkov:2015acw}}
+Dirac equation $(\ii\slashed{\partial}-m)\psi(x)=0$ has plain-wave solutions $\tilde u(p)\ee^{-\ii p x}$, i.e., $(\slashed{p}-m)\tilde u(p)=0$ with $m>0$.
+Non-zero solution is available if and only if $\det(\slashed p-m)=0\Leftrightarrow p^2=m^2$.
+We hereafter fix $p^0>0$ and consider
+\begin{equation}
+ u(\vc p)\text{~satisfying~}(\slashed p-m)u(\vc p)=0,
+\qquad
+ v(\vc p)\text{~satisfying~}(\slashed p+m)v(\vc p)=0,
+\end{equation}
+where the general solution of the Dirac equation is given by linear combination of $\{u(\vc p)\ee^{-\ii px}, v(\vc p)\ee^{\ii px}\}_{p^0>0}$.
+
+As $\rank(\slashed p\pm m)=2$, each equation has $4-2 = \text{two}$ linear-independent solutions\footnote{%
+  Let $X^\pm=\slashed{p}\pm m$. Denote $\det A$ by $|A|$, and $\rank A$ by $\RANK{A}$.
+  As Lorentz invariance guarantees $|X^\pm|$ is a function of $p^2$, $|A^+|=|A^-|$.
+  Then $|A^+||A^-| = (p^2-m^2)^4$ gives $|A^\pm|=(p^2-m^2)^2$.
+  One can show that $\RANK{A^\pm}=2$ if $p^2=m^2$ as follows:
+\\%
+Frobenius inequality:\qquad $\RANK{AB}+\RANK{BC}\le \RANK B + \RANK{ABC}$\qquad
+$\therefore 2\RANK{A^\pm}=\RANK{A^\pm\gamma_5\gamma_5} + \RANK{\gamma_5A^\mp\gamma_5} \le \RANK{\gamma_5}+\RANK{A^\pm\gamma_5\gamma_5A^\mp\gamma_5}=4$,
+\\%
+rank subadditivity:\qquad$\RANK{A+B}\le\RANK{A}+\RANK{B}$\qquad
+$\therefore4\le\RANK{A^+}+\RANK{-A^-}.$
+
+Similar discussion applies for Pauli--\Lubanski operator: as $[\det(\gamma_5\slashed{e}-x)]^2=-e^2-x^2$, it has eigenvalues $\pm1/2$ for $u(\vc p)$ and $v(\vc p)$, and 
+$B^\pm=(\gamma_5\slashed e\slashed p\pm m/2)$ both have rank-2.
+Furthermore, \TOCHECK as $B^+$ should have solutions in both subspaces spanned by $u(\vc p)$ and $v(\vc p)$, each subspace is spanned by eigenstates with different eigenvalues for the Pauli--\Lubanski operator and thus the label is used to distinguish two $u$s (and $v$s).
+}, for which we introduce another label $s=1,2$.
+We use the following convention, noting the inner product of this vector space is $(\psi,\psi)=\overline\psi\psi$:
+\begin{equation}
+ v^s(\vc p)\coloneq C[\overline{u}^s(\vc p)]^\TT,\qquad
+ \overline u^s(\vc p)u^t(\vc p)\coloneq 2m\delta^{st}.
+\end{equation}
+Then $\gamma^\mu v = (h_\beta/h_C)C\beta^\TT(\gamma^\mu u)^*$, for which $v(\vc p)$ satisfies $(\slashed{p}+m)v(\vc p)=0$ as requested.
+Orthogonality for $s\neq t$ is guaranteed by its definition given later.
+Also, as $u$ and $v$ have different eigenvalues of the matrix $\slashed p$,
+\begin{equation}
+  \overline v^s(\vc p)v^t(\vc p)=-2m\delta^{st},\qquad
+ \overline u^s(\vc p)v^t(\vc p)=\overline v^s(\vc p)u^t(\vc p)=0.
+\end{equation}
+
+Several conventions for the label $s$ are available:\vspace{-1em}
+\begin{DownPara}
+\paragraph{Pauli--\Lubanski pseudovector operator} gives the most generic definition for the spin of a moving particle:
+\begin{equation}
+ w^\mu = \frac1{2m}\epsilon^{\mu\nu\rho\sigma}P_\nu M_{\rho\sigma}.
+\end{equation}
+With a reference vector $e^\mu$ such that $e^2=-1$ and $e^\mu p_\mu=0$,
+\begin{equation}
+ e_\mu w^\mu
+= e_\mu \frac1{2m} \epsilon^{\mu\nu\rho\sigma}p_\nu \frac{\ii}{4}[\gamma_\rho,\gamma_\sigma]
+= \frac\ii{4m} \epsilon^{\mu\nu\rho\sigma}e_\mu p_\nu \gamma_\rho\gamma_\sigma
+= \frac1{2m}\gamma_5 \slashed e \slashed p
+\end{equation}
+commutes with $(\slashed p\pm m)$ and thus $s=\pm$ may denote the eigenvalue of this operator $\pm1/2$.
+
+
+\paragraph{Helicity operator}
+A simpler option is the eigenvalues $\pm1$ of the helicity operator $h=\vc\sigma\cdot\vc p/\|\vc p\|=:\vc\sigma\cdot\vc n$.
+This is in fact a special case of Pauli--\Lubanski operator with $e^\mu= (\|\vc p\|/m,p_0\vc n/m)$, which is verified by
+\begin{align}
+& h
+=\epsilon^{0\nu\rho\sigma}(-n_\nu) S_{\rho\sigma}
+=\frac{1}{2\ii}\epsilon^{0\nu\rho\sigma}n_\nu \gamma_\rho\gamma_\sigma
+=\frac{\eta^{\mu0}}{2\ii}\epsilon_{\mu\nu\rho\sigma}n^\nu \gamma^\rho\gamma^\sigma
+=\frac{\gamma_5}{2}\gamma_5[\slashed{n},\gamma^0]
+=\frac{\gamma_5}{\|\vc p\|}({\{\slashed{p},\gamma^0\}}/{2}-\gamma^0\slashed{p});
+\\&
+w_\mu e^\mu 
+=\frac{1}{2\|\vc p\|}\gamma_5(p^0-\gamma^0\slashed{p})\sim \frac{h}{2}.
+\end{align}
+
+% Low\[Epsilon][m_,n_,r_,s_]:=-LeviCivitaTensor[4][[m+1,n+1,r+1,s+1]]
+% Low\[Epsilon][0,1,2,3]
+% Sum[Low\[Epsilon][m,n,r,s]S[m]p[n]GammaMatrix[r,None] . GammaMatrix[s,None],{m,0,3},{n,0,3},{r,0,3},{s,0,3}];
+% -2I LorSum[S[#]GammaMatrix[None,#]&] . LorSum[p[#]GammaMatrix[None,#]&] . GammaFive;
+% Expand[%%-%]//.{p[0] S[0]->p[1]S[1]+p[2]S[2]+p[3]S[3]}//Simplify
+
+\TODO{Discuss Poincare group before introducing PL operator.: \cite{WeinbergQFT1}, \cite{Kryuchkov:2015acw}}
+
+\TODO{We have not defined the relation between $S_{\mu\nu}$ and $\sigma_i$ etc.; verify for more general case, including the proof of $\epsilon_{\mu\nu\rho\sigma}\gamma^\rho\gamma^\sigma=-\ii\gamma_5[\gamma_\mu,\gamma_\nu]$.}
+\end{DownPara}
+
+Projection operators for the subspaces spanned by $u^s$ ($v^s$) are given by
+\begin{equation}
+ P_u=\frac{m+\slashed p}{2m}, \quad P_v=\frac{m-\slashed p}{2m}.
+\end{equation}
+As $\{u^1, u^2, v^1, v^2\}$ is a basis of the vector space $\mathbb C^4$ with inner product $(\psi,\psi)=\overline\psi\psi$, we immediately have 
+\begin{equation}
+ \sum_{s=1,2}u^s(\vc p)\overline u^s(\vc p)=P_u \overline u^s(\vc p)u^s(\vc p) = \slashed p+m,\qquad
+ \sum_{s=1,2}v^s(\vc p)\overline v^s(\vc p)=\slashed p-m.
+\end{equation}
+Similarly, using projection operator $P'_{\pm}=(1\pm\gamma_5\slashed e\slashed p/m)/2$,
+\begin{align}
+ &u^s(\vc p)\overline u^s(\vc p) = 2m P'_{\pm}P_u = \frac12(\slashed p+m)(1+s\gamma_5\slashed e),\\\
+ &v^s(\vc p)\overline v^s(\vc p) = C(u^s\overline u^s)^\TT \beta^*C^\dagger\beta
+=\frac12(m+h_C \slashed p)(1-s h_C \gamma_5\slashed e )C\beta^*C^\dagger \beta
+\leadsto
+\frac12(\slashed p-m)(1+s\gamma_5\slashed e)
+\end{align}
+for $s=\pm1$.
+
+\subsection{Chiral notation}
+In the chiral notation, $\beta=\gamma^0$ and $C=-\ii\gamma^2\gamma^0$, and $h_\beta=1$ and $h_C=-1$, the plain-wave spinors are given by
+\begin{equation}
+ u^s(\vc p) = \pmat{\sqrt{\sigma\cdot p}\xi^s\\\sqrt{\bar\sigma\cdot p}\xi^s},\quad
+ v^s(\vc p) = \pmat{\sqrt{\sigma\cdot p}\eta^s\\-\sqrt{\bar\sigma\cdot p}\eta^s};\qquad
+ \eta^s = \pmat{\eta^s_1\\\eta^s_2} \coloneq  \pmat{-(\xi^s_2)^*\\(\xi^s_1)^*},\quad
+(\xi^s)^\dagger(\xi^t) = (\eta^s)^\dagger(\eta^t) = \delta^{st},
+\end{equation}
+where $\{\xi^1,\xi^2\}$ are the orthonormal basis, which fixes the definition of $\eta$, and\footnote{%
+The notation is justified by
+\begin{equation*}
+\sqrt{\sigma\cdot p}\sqrt{\sigma\cdot p} ={\sigma\cdot p},\qquad
+\sqrt{\bar\sigma\cdot p}\sqrt{\bar\sigma\cdot p} ={\bar\sigma\cdot p},\qquad
+\sqrt{\sigma\cdot p}\sqrt{\bar\sigma\cdot p}=m.
+\end{equation*}}
+\begin{equation}
+  \sqrt{\sigma\cdot p} \coloneq  \frac{m+p^\mu\sigma_\mu}{\sqrt{2(m+p^0)}},
+\qquad
+ \sqrt{\bar\sigma\cdot p} \coloneq  \frac{m+p^\mu\bar\sigma_\mu}{\sqrt{2(m+p^0)}}.
+\end{equation}
+\footnote{It is straightforward to verify the above-given equations:
+\begin{align}
+&
+ \overline u u = 2m\delta^{st},\quad
+ \overline v v = -2m\delta^{st},\quad
+ \overline u v = \overline v u = 0,\quad
+ u^\dagger u = v^\dagger v = 2p^0\delta^{st},\quad
+\\&
+ u^\dagger(\vc p)u(-\vc p)= v^\dagger(\vc p)v(-\vc p)=2m\delta^{st},\quad
+ u^\dagger(\vc p)v(-\vc p)= v^\dagger(\vc p)u(-\vc p)=0,\quad
+ \overline u(\vc p)u(-\vc p)= -\overline v(\vc p)v(-\vc p)=2p^0\delta^{st}.
+\end{align}
+}
+So that the basis $\xi$ has eigenvalue $\pm1/2$ for the Pauli--\Lubanski operator, it should satisfy
+\begin{equation}
+ \frac12 \gamma_5\slashed{e} U \pmat{\xi^s\\\xi^s} = \left(\pm\frac12\right)U\pmat{\xi^s\\\xi^s};\qquad
+\text{where~}
+ U\coloneq \pmat{\sqrt{\sigma\cdot p} & 0 \\ 0 & \sqrt{\bar\sigma\cdot p}},\quad
+ U^{-1}=\frac{1}{m}\pmat{\sqrt{\bar\sigma\cdot p} & 0 \\ 0 & \sqrt{\sigma\cdot p}}.
+\end{equation}
+Thus, by calculating the eigensystem of $U^{-1}\gamma_5\slashed {e} U$, one can get
+\begin{equation}
+ \xi^+ = \frac{1}{\sqrt{2(1-\phi^3)}}\pmat{\phi^1-\ii \phi^2 \\ 1-\phi^3},\quad
+ \xi^- = \frac{1}{\sqrt{2(1-\phi^3)}}\pmat{1-\phi^3\\-\phi^1-\ii \phi^2};\qquad
+ \phi^\mu = e^\mu-\frac{e^0p^\mu}{m+p^0}.
+\end{equation}
+If we use reference vector for the helicity, 
+\begin{equation}
+ \xi^+ = \frac1{\sqrt{2-2n^3}}\pmat{n^1-\ii n^2\\1-n^3}
+       =\pmat{\ee^{-\ii\phi}\cos(\theta/2)\\\sin(\theta/2)},\quad
+ \xi^- = \frac1{\sqrt{2-2n^3}}\pmat{1-n^3\\-n^1-\ii n^2}
+       =\pmat{\sin(\theta/2)\\-\ee^{\ii\phi}\cos(\theta/2)}
+\end{equation}
+with $(n^1,n^2,n^3)=(\si\theta\co\phi,\si\theta\si\phi,\co\theta)$ is the direction of the momentum.
+
+
+\bibliography{CheatSheet}
+\end{document}
