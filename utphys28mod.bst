@@ -1,5 +1,5 @@
 % UT Physics bibliographic style, ver. 2.8 + Modified by Sho Iwamoto. Based on:
-% Time-Stamp: <2022-05-16 17:19:47>
+% Time-Stamp: <2022-05-16 17:42:31>
 %
 %X     IEEE Transactions bibliography style (29-Jan-88 version)
 %X       numeric labels, order-of-reference, IEEE abbreviations,
@@ -541,7 +541,7 @@ FUNCTION {format.url}
 { url empty$
     { "" }
     {
-      "\linebreak[4]\mbox{\href{" url * "}{\ttfamily{" * url * "}}}" *
+      "\url{" url * "}" *
       urldate empty$
         'skip$
         { " {\footnotesize (access: " * urldate n.dottify * ")}" * }

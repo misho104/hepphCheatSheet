@@ -1,4 +1,4 @@
-% Time-Stamp: <2022-05-16 17:16:50>
+% Time-Stamp: <2022-05-16 18:19:39>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{CheatSheet}[2022/05/10 Sho Iwamoto]
 
@@ -219,6 +219,18 @@
                                        {2.25ex \@plus1ex \@minus .2ex}%
                                        {-1em}%
                                       {\headfont\normalsize\bfseries}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% technical modification of URL fields in bibliography
+\let\original@thebibliography\thebibliography
+\let\original@bibitem\bibitem
+\def\thebibliography{%
+  \gdef\url##1{\rightskip 1em plus 1fil\linebreak[0]\mbox{\href{##1}{\hyper@normalise{\ttfamily{##1}}}}}%
+  \original@thebibliography%
+}
+\def\bibitem{\rightskip0em\original@bibitem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -444,7 +456,7 @@
 
 \usepackage{slashed,xspace,xstring,wrapfig,braket}
 
-\def\url#1{\href{#1}{\texttt{#1}}}
+\def\url#1{\href{#1}{\hyper@normalise{\ttfamily{#1}}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
