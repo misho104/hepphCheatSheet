@@ -21,6 +21,7 @@
 
 \usepackage[quiet]{fontspec}
 \usepackage[luatexrenderer=OpenType]{polyglossia}
+    % no particular reason to avoid Harfbuzz
 \newfontfamily{\englishfont}[Ligatures={TeX}]{\misho@font@english}
 \newfontfamily{\englishfontsf}[Scale=0.91]{\misho@font@sf}
 \newfontfamily{\englishfonttt}[Scale=0.85]{\misho@font@tt}
@@ -454,8 +455,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{slashed,xspace,xstring,wrapfig,braket}
-
+\usepackage{subcaption,booktabs,wrapfig,slashed,xspace,xstring,braket,cancel}
 \def\url#1{\href{#1}{\hyper@normalise{\ttfamily{#1}}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
