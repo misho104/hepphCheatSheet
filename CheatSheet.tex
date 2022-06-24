@@ -1,5 +1,5 @@
 %#!lualatex
-% Time-stamp: <2022-06-16 12:44:37>
+% Time-stamp: <2022-06-24 23:40:39>
 
 \begin{filecontents*}{\jobname.xmpdata}
   \Author{Sho Iwamoto / Misho}
@@ -11,12 +11,14 @@
   \Language{en-US}
 \end{filecontents*}
 
-\documentclass{CheatSheet}
-\usepackage{subfiles}
+\documentclass[10pt]{CheatSheet}
+\usepackage{subfiles,tensor}
 \bibliographystyle{utphys28mod}
 
-\usepackage{tensor}
-%\usepackage{amssymb,url,cite,slashed,cancel,booktabs,hyperref,graphicx,xspace,subcaption,wrapfig,braket,tensor,xstring,mathabx}
+\setdefaultlanguage[variant=us]{english}
+\setotherlanguages{japanese,russian}
+\newcommand*\JAPANESE[1]{\japanese#1\endjapanese}
+\newcommand*\RUSSIAN[1]{\russian#1\endrussian}
 
 \makeatletter
   % automatic bibliography
@@ -192,6 +194,24 @@
  \item Symbols with $\C{\text{this color}}$ follows a locally-defined ``different'' convention.
  \item Elementary charge: $\ech\simeq0.303$, always in absolute-value symbols. Note $\epsilon_0=1/(\mu_0c^2)=1$.
 \end{itemize}
+
+\makeatletter
+\begin{tikzpicture}[remember picture,overlay]
+  \node[xshift=\@total@leftsep,yshift=25.5mm,anchor=south west,align=left,text width=\textwidth] at (current page.south west) {%
+    \href{https://creativecommons.org/licenses/by-nc/4.0/}{\includegraphics[width=2.2cm]{figs/by-nc.pdf}}\\[.4em]
+    \noindent\textsf{\color{gray}\small%
+    Visit \url{https://github.com/misho104/hepphCheatSheet} for further information, updates, and to report issues.}
+  };
+  \node[xshift=-\@total@leftsep+26mm,yshift=32mm,align=left,text width=\textwidth,anchor=south east] at (current page.south east) {%
+    \noindent\textsf{\small\color{gray}%
+    This document is licensed under
+    \href{https://creativecommons.org/licenses/by-nc/4.0/}{the Creative Commons CC--BY--NC 4.0 International Public License.}\\
+    You may use this document only if you do in compliance with the license.}
+  };
+\end{tikzpicture}
+\makeatother
+
+
 \end{maketitle}
 
 \subfile{notation}
