@@ -1,53 +1,92 @@
-% Time-Stamp: <2022-06-24 23:47:03>
+% Time-Stamp: <2022-06-25 16:11:17>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{MishoNote}[2022/06/24 Sho Iwamoto]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newif\ifmisho@cmyk
-\newif\ifmisho@reloadhyper
+\newcount\misho@pdftype
 \DeclareOption{10pt}{\def\misho@font@size{10pt}}
 \DeclareOption{11pt}{\def\misho@font@size{11pt}}
 \DeclareOption{draft}{\def\misho@isdraft{draft}}
 \DeclareOption{final}{\def\misho@isdraft{final}}
-\DeclareOption{pdf0}{\misho@cmyktrue \def\misho@pdfx{x-4} \misho@reloadhypertrue}
-\DeclareOption{pdfx}{\misho@cmyktrue \def\misho@pdfx{x-4} \misho@reloadhyperfalse}
-\DeclareOption{pdfa}{\misho@cmykfalse\def\misho@pdfx{a-2u}\misho@reloadhyperfalse}
+\DeclareOption{pdf0}{\misho@cmyktrue \misho@pdftype=0\def\misho@hropt{bookmarks=True}}
+\DeclareOption{pdfx}{\misho@cmyktrue \misho@pdftype=1\def\misho@hropt{bookmarks=False}}
+\DeclareOption{pdfa}{\misho@cmykfalse\misho@pdftype=2\def\misho@hropt{bookmarks=True}}
 \ExecuteOptions{11pt,final,pdf0}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcount\pdfminorversion
-\pdfminorversion=6
 \pdfvariable omitcidset=1
 \LoadClass[a4paper,\misho@font@size,\misho@isdraft]{article}
+\usepackage{hyperxmp}
+\usepackage[final,keeppdfinfo,psdextra,pdfversion=1.6,\misho@hropt]{hyperref}
+\hypersetup{
+  breaklinks=True, pdfborder=0 0 0,
+  colorlinks=true, urlcolor=pBlue, linkcolor=pBlue, citecolor=pGreen}
 
-\ifmisho@reloadhyper
-  \usepackage[pdfversion=1.6]{hyperref}
-  \let\misho@linkfile \hyper@linkfile
-  \let\misho@linkurl  \hyper@linkurl
-  \let\misho@linkstart\hyper@linkstart
-  \let\misho@linkend  \hyper@linkend
-  \let\misho@SLN      \Hy@StartlinkName
-  \let\misho@CPL      \close@pdflink
-  \let\misho@AM       \AcrobatMenu
-  \usepackage[pdf16,mathxmp,\misho@pdfx]{pdfx}
-  \let\hyper@linkfile \misho@linkfile
-  \let\hyper@linkurl  \misho@linkurl
-  \let\hyper@linkstart\misho@linkstart
-  \let\hyper@linkend  \misho@linkend
-  \let\Hy@StartlinkName\misho@SLN
-  \let\close@pdflink   \misho@CPL
-  \let\AcrobatMenu     \misho@AM
-\else
-  \usepackage[pdf16,mathxmp,\misho@pdfx]{pdfx}
+\ifnum\misho@pdftype=1\relax%
+  \dimen0=0.996264009963\paperwidth\relax
+  \edef\pdfx@mwidth{\strip@pt\dimen0}%
+  \advance\dimen0 -25\p@
+  \edef\pdfx@twidth{\strip@pt\dimen0}%
+  \dimen0=0.996264009963\paperheight\relax
+  \edef\pdfx@mheight{\strip@pt\dimen0}%
+  \advance\dimen0 -20\p@
+  \edef\pdfx@theight{\strip@pt\dimen0}%
+  \edef\mypdfpageattr{
+    /MediaBox[0 0 \pdfx@mwidth\space \pdfx@mheight]^^J
+    /BleedBox[0 0 \pdfx@mwidth\space \pdfx@mheight]^^J
+    /CropBox[0 0 \pdfx@mwidth\space \pdfx@mheight]^^J
+    /TrimBox[25 20 \pdfx@twidth\space \pdfx@theight]
+  }
+  \expandafter\pdfpageattr\expandafter{\mypdfpageattr}
+  \immediate\pdfobj stream attr{/N 4} file{FOGRA39L_coated.icc}
+  \pdfcatalog{%
+    /OutputIntents [<<
+      /Type /OutputIntent
+      /S /GTS_PDFX
+      /OutputCondition(FOGRA39L Coated)
+      /OutputConditionIdentifier (Offset printing, according to ISO 12647-2:2004/Amd 1, OFCOM, paper type 1 or 2 = coated art, 115 g/m2, tone value increase curves A (CMY) and B (K))
+      /DestOutputProfile \the\pdflastobj\space 0 R
+      /RegistryName(http://www.fogra.org)
+      /Info (FOGRA39L coated) >>]}
+  \hypersetup{pdfxstandard={PDF/X-4},pdftrapped=True,pdfpagemode=UseNone,pdfstartview=}
+  \global\def\hyper@linkfile#1#2#3{\Hy@colorlink\@filecolor#1\Hy@xspace@end}
+  \global\def\hyper@linkurl#1#2{\Hy@colorlink\@urlcolor#1\endgroup\Hy@xspace@end}
+  \global\def\hyper@linkstart#1#2#3{\Hy@colorlink\@linkcolor#3\endgroup\Hy@xspace@end}
+  \global\let\hyper@linkend\relax
+  \global\def\Hy@StartlinkName#1#2{}
+  \global\def\close@pdflink{\Hy@VerboseLinkStop\Hy@endcolorlink}%
+  \global\def\AcrobatMenu#1#2{#2}
+\fi
+\ifnum\misho@pdftype=2\relax%
+  \immediate\pdfobj stream attr{/N 3} file{sRGB.icc}
+  \pdfcatalog{%
+    /OutputIntents [<<
+      /Type /OutputIntent
+      /S /GTS_PDFA1
+      /DestOutputProfile \the\pdflastobj\space 0 R
+      /OutputConditionIdentifier (sRGB)
+      /Info (sRGB) >>]}
+  \hypersetup{pdfa,pdfapart=2,pdfaconformance=u,pdftrapped=True}
 \fi
 
-\hypersetup{
-  final, breaklinks=True, bookmarks=True,
-  pdfborder=0 0 0,
-  colorlinks=true, urlcolor=pBlue, linkcolor=pBlue, citecolor=pGreen}
+\ifmisho@cmyk
+  \usepackage[hyperref,cmyk]{xcolor}
+\else
+  \usepackage[hyperref,rgb]{xcolor}
+\fi
+
+\def\title@cr{}
+\def\title@ce{}
+\def\title@cu{}
+\def\title@lu{}
+\define@key{Hyp}{pdfcopyright}{\hyxmp@pdfstringdef\@pdfcopyright{#1}\def\title@cr{#1}}
+\define@key{Hyp}{pdfcontactemail}{\hyxmp@pdfstringdef\@pdfcontactemail{#1}\def\title@ce{#1}}
+\define@key{Hyp}{pdfcontacturl}{\hyxmp@pdfstringdef\@pdfcontacturl{#1}\def\title@cu{#1}}
+\define@key{Hyp}{pdflicenseurl}{\hyxmp@pdfstringdef\@pdflicenseurl{#1}\def\title@lu{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -213,21 +252,21 @@
 \def\link@ifurl#1#2{\IfStrEq{#1}{}{#2}{\href{#1}{#2}}}
 \def\maketitle{%
 \begin{titlepage}%
-  \IfStrEq{\xmp@Copyright}{}{\setlength\@tempdimb{6mm}}{\setlength\@tempdimb{7.5mm}}
+  \IfStrEq{\title@cr}{}{\setlength\@tempdimb{6mm}}{\setlength\@tempdimb{7.5mm}}
   \setcounter{page}{0}
   \let\footnoterule\relax
   \let\footnote\thanks
   \@headframebox{%
     \node[fill=lightgray!50,anchor=south west,xshift= 5mm,yshift=15.7mm]
-      {\normalfont\fontsize{24}{24}\selectfont\bfseries\strut\xmp@Title};
+      {\normalfont\fontsize{24}{24}\selectfont\bfseries\strut\@title};
     \node[anchor=south west,xshift=85mm,yshift=\@tempdimb]
-      {\headfont\fontsize{16}{16}\selectfont \xmp@Author\strut};
+      {\headfont\fontsize{16}{16}\selectfont \@author\strut};
     \advance\@tempdimb -4.5mm%
     \node[anchor=south west,xshift=85mm,yshift=\@tempdimb]
       {\ttfamily\mydate\today~\currenttime\strut};
-    \IfStrEq{\xmp@Copyright}{}{}{%
+    \IfStrEq{\title@cr}{}{}{%
       \node[anchor=south west,xshift=85mm,yshift=-1mm]{%
-        \link@ifurl{\xmp@CopyrightURL}{\sffamily\small\color{gray}\copyright\xmp@Copyright}\strut};
+        \link@ifurl{\title@lu}{\sffamily\small\color{gray}\copyright\title@cr}\strut};
     }
 }}
 \def\endmaketitle{\par\vfil\null\end{titlepage}}
