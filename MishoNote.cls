@@ -1,6 +1,17 @@
-% Time-Stamp: <2022-06-25 16:11:17>
+% Time-Stamp: <2024-06-15 00:15:41>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{MishoNote}[2022/06/24 Sho Iwamoto]
+\ProvidesClass{MishoNote}[2022/11/23 Sho Iwamoto]
+
+\usepackage{luacode}
+\begin{luacode*}
+function unit(t)
+  tex.sprint(t:sub(1, 1) == "/" and "" or "\\,", "\\mathrm{", t, "}\\xspace")
+end
+function removeLF(t)
+  tex.print(({t:gsub("\\textLF.*", "")})[1])
+end
+\end{luacode*}
+\def\IfEmpty#1#2#3{\if1\directlua{tex.sprint(\luastring{#1} == "" and "1")}\relax#2\else#3\fi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -8,22 +19,39 @@
 \newcount\misho@pdftype
 \DeclareOption{10pt}{\def\misho@font@size{10pt}}
 \DeclareOption{11pt}{\def\misho@font@size{11pt}}
+\DeclareOption{12pt}{\def\misho@font@size{12pt}}
 \DeclareOption{draft}{\def\misho@isdraft{draft}}
 \DeclareOption{final}{\def\misho@isdraft{final}}
 \DeclareOption{pdf0}{\misho@cmyktrue \misho@pdftype=0\def\misho@hropt{bookmarks=True}}
 \DeclareOption{pdfx}{\misho@cmyktrue \misho@pdftype=1\def\misho@hropt{bookmarks=False}}
 \DeclareOption{pdfa}{\misho@cmykfalse\misho@pdftype=2\def\misho@hropt{bookmarks=True}}
-\ExecuteOptions{11pt,final,pdf0}
+
+\newif\ifmisho@japanese\misho@japanesefalse
+\DeclareOption{ja}\misho@japanesetrue
+\DeclareOption{en}\misho@japanesefalse
+
+\newif\ifmisho@lastpage\misho@lastpagefalse
+\DeclareOption{lastpage}{\misho@lastpagetrue}
+\newif\ifmisho@minititle\misho@minititlefalse
+\DeclareOption{minititle}{\misho@minititletrue}
+
+\ExecuteOptions{11pt,final,pdf0,en}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pdfvariable omitcidset=1
-\LoadClass[a4paper,\misho@font@size,\misho@isdraft]{article}
+\ifmisho@japanese
+  \LoadClass[a4paper,\misho@font@size,\misho@isdraft]{ltjsarticle}
+  \usepackage{luatexja}
+\else
+  \LoadClass[a4paper,\misho@font@size,\misho@isdraft]{article}
+\fi
+
+\usepackage[final,pdfversion=1.6,\misho@hropt]{hyperref}
 \usepackage{hyperxmp}
-\usepackage[final,keeppdfinfo,psdextra,pdfversion=1.6,\misho@hropt]{hyperref}
 \hypersetup{
-  breaklinks=True, pdfborder=0 0 0,
+  keeppdfinfo,     psdextra,       breaklinks=True, pdfborder=0 0 0,
   colorlinks=true, urlcolor=pBlue, linkcolor=pBlue, citecolor=pGreen}
 
 \ifnum\misho@pdftype=1\relax%
@@ -70,20 +98,20 @@
       /DestOutputProfile \the\pdflastobj\space 0 R
       /OutputConditionIdentifier (sRGB)
       /Info (sRGB) >>]}
-  \hypersetup{pdfa,pdfapart=2,pdfaconformance=u,pdftrapped=True}
+  \hypersetup{pdfapart=2,pdfaconformance=u,pdftrapped=True}
 \fi
 
 \ifmisho@cmyk
-  \usepackage[hyperref,cmyk]{xcolor}
+  \usepackage[cmyk]{xcolor}
 \else
-  \usepackage[hyperref,rgb]{xcolor}
+  \usepackage[rgb]{xcolor}
 \fi
 
 \def\title@cr{}
 \def\title@ce{}
 \def\title@cu{}
 \def\title@lu{}
-\define@key{Hyp}{pdfcopyright}{\hyxmp@pdfstringdef\@pdfcopyright{#1}\def\title@cr{#1}}
+\define@key{Hyp}{pdfcopyright}{\hyxmp@pdfstringdef\@pdfcopyright{#1}\def\title@cr{\directlua{removeLF(\luastringN{#1})}}}
 \define@key{Hyp}{pdfcontactemail}{\hyxmp@pdfstringdef\@pdfcontactemail{#1}\def\title@ce{#1}}
 \define@key{Hyp}{pdfcontacturl}{\hyxmp@pdfstringdef\@pdfcontacturl{#1}\def\title@cu{#1}}
 \define@key{Hyp}{pdflicenseurl}{\hyxmp@pdfstringdef\@pdflicenseurl{#1}\def\title@lu{#1}}
@@ -94,23 +122,35 @@
 \def\misho@font@english{STIXTwoText}
 \def\misho@font@sf{Roboto}
 \def\misho@font@tt{Roboto Mono}
+\def\misho@font@ja  {HaranoAjiMincho-Regular.otf}
+\def\misho@font@jabf{HaranoAjiGothic-Bold.otf}
+\def\misho@font@jasf{HaranoAjiGothic-Regular.otf}
 %\def\misho@font@math{latinmodern-math.otf}
 \def\misho@font@math{STIXTwoMath-Regular.otf}
 
 \usepackage[quiet]{fontspec}
-\usepackage[luatexrenderer=OpenType]{polyglossia}
-    % no particular reason to avoid Harfbuzz
 \newfontfamily{\englishfont}[Ligatures={TeX}]{\misho@font@english}
 \newfontfamily{\englishfontsf}[Scale=0.91]{\misho@font@sf}
 \newfontfamily{\englishfonttt}[Scale=0.85]{\misho@font@tt}
-\newfontfamily{\japanesefont}[
-  ItalicFont=HaranoAjiMincho-Regular.otf,
-  ItalicFeatures={FakeSlant}
-]{HaranoAjiMincho-Regular.otf}
-\setdefaultlanguage[variant=us]{english}
-\setmainfont{\misho@font@english}
-\setsansfont[Scale=0.91]{\misho@font@sf}
-\setmonofont[Scale=0.85]{\misho@font@tt}
+\newfontfamily{\japanesefont}  [BoldFont=\misho@font@jabf,ItalicFont=\misho@font@ja,  ItalicFeatures={FakeSlant}]{\misho@font@ja}
+\newfontfamily{\japanesefontsf}[BoldFont=\misho@font@jabf,ItalicFont=\misho@font@jasf,ItalicFeatures={FakeSlant}]{\misho@font@jasf}
+\newfontfamily{\japanesefonttt}[BoldFont=\misho@font@jabf,ItalicFont=\misho@font@jasf,ItalicFeatures={FakeSlant}]{\misho@font@jasf}
+% Polyglossia must be loaded after newfontfamily (/ -> 2215 bug)
+\usepackage[luatexrenderer=OpenType]{polyglossia}
+    % no particular reason to avoid Harfbuzz
+\ifmisho@japanese
+  \setdefaultlanguage{japanese}
+  \setotherlanguages{english}
+  \setmainfont[BoldFont=\misho@font@jabf,ItalicFont=\misho@font@ja,  ItalicFeatures={FakeSlant}]{\misho@font@ja}
+  \setsansfont[BoldFont=\misho@font@jabf,ItalicFont=\misho@font@jasf,ItalicFeatures={FakeSlant}]{\misho@font@jasf}
+  \setmonofont[BoldFont=\misho@font@jabf,ItalicFont=\misho@font@jasf,ItalicFeatures={FakeSlant}]{\misho@font@jasf}
+\else
+  \setdefaultlanguage[variant=us]{english}
+  \setotherlanguage{japanese}
+  \setmainfont[Ligatures={TeX}]{\misho@font@english}
+  \setsansfont[Scale=0.91]{\misho@font@sf}
+  \setmonofont[Scale=0.85]{\misho@font@tt}
+\fi
 
 % MathFont setting copied from MySlideFont.sty
   \usepackage{unicode-math}
@@ -132,14 +172,31 @@
   % fine tuning of some letters
   % https://tex.stackexchange.com/questions/364310/
   \setmathfont{latinmodern-math.otf}[range={\mupUpsilon,\mitUpsilon,\mbfUpsilon,\mbfitUpsilon}]
+  \setmathfont{texgyreschola-math.otf}[range={\hat,\tilde,\bar}]
   \setmathfont{\misho@font@math}[range=\int]
   \AtBeginDocument{\renewcommand*\Upsilon{\mupUpsilon}}
 
+% Language Shortcuts
+\let\JA\relax
+\let\EN\relax
+\ifmisho@japanese
+  \def\EN#1{{\english{#1}\endenglish}}
+\else
+  \def\JA#1{{\japanese{#1}\endjapanese}}
+\fi
+
 % Logical fonts
-\newcommand*{\headfont}{\normalcolor\sffamily\bfseries}
+\ifmisho@japanese
+  \relax
+\else
+  \newcommand*{\headfont}{\normalcolor\sffamily}
+\fi
 
 % More math fonts (but not ever used)
 % \usepackage{wasysym}
+% yhmath is INCOMPATIBLE!
+%\DeclareSymbolFont{yhlargesymbols}{OMX}{yhex}{m}{n}
+%\DeclareMathAccent{\yhwidehat}{\mathord}{yhlargesymbols}{"62}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -174,7 +231,8 @@
 \evensidemargin\oddsidemargin\relax
 
 % baselineskip = 1.242em = 4.77988mm
-\parskip=1mm plus .5mm minus 1mm
+\parskip=0mm plus .5mm
+\parsep=1mm plus .5mm minus 1mm
 
 \abovedisplayskip=12pt plus 3pt minus 9pt
 \belowdisplayskip=12pt plus 3pt minus 9pt
@@ -192,25 +250,47 @@
 \def\leftmark{\expandafter\@leftmark\firstmark\@empty\@empty}
 \def\rightmark{\expandafter\@rightmark\botmark\@empty\@empty}
 
-\def\head@hrule{} % \lower1mm\null\vadjust{{\color{lightgray}\hrule height .7mm}\vskip-2mm}
-\def\head@h{}     % \ifnum \c@secnumdepth >\z@ \leftmark\fi
-\def\head@j{[\jobname\,@\,\mydate\today~\currenttime]}
-\def\head@hstyle{\sffamily\small}
-\def\head@jstyle{\fontsize{9}{12}\selectfont\color{lightgray}\texttt}
+\def\head@hrule{\lower1mm\null\vadjust{{\color{lightgray}\hrule height .7mm}\vskip-2mm}}
+\def\head@h{\ifnum \c@secnumdepth >\z@ \leftmark\fi}
+\def\head@j{\mydate\today~\currenttime}
+\ifmisho@lastpage
+  \usepackage{lastpage}
+  \def\head@p{\thepage/\NoHyper\pageref{LastPage}\endNoHyper}
+\else
+  \def\head@p{\thepage}
+\fi
+
+\def\head@hstyle{\fontsize{9}{12}\selectfont\color{lightgray}\sffamily}
+\def\head@jstyle{\fontsize{9}{12}\selectfont\color{dimgray}\ttfamily}
 \def\head@pstyle{\fontsize{12}{12}\selectfont\sffamily\bfseries}
+\def\head@minititleheadstyle{\fontsize{9}{12}\selectfont\color{gray}\ttfamily}
 \def\ps@plain{%
   \def\@evenfoot{} % {\reset@font\hfil\thepage\hfil}
   \let\@oddfoot\@evenfoot
   \def\@evenhead{%
     \kern2mm{\head@hstyle{\head@h}}\hfil{\head@jstyle{\head@j}}%
-    \makebox[3em][r]{\head@pstyle\thepage}\kern2mm%
+    \makebox[3em][r]{\head@pstyle\head@p}\kern2mm%
     \aftergroup\head@hrule}%
   \let\@oddhead\@evenhead
+}
+\def\ps@minititle{%
+  \def\@evenfoot{} % {\reset@font\hfil\thepage\hfil}
+  \let\@oddfoot\@evenfoot
+  \def\@evenhead{%
+    \hfil{\head@minititleheadstyle{\@author, \head@j}}%
+    \makebox[3em][r]{\head@pstyle\head@p}\kern2mm%
+    \aftergroup\head@hrule}%
+  \let\@oddhead\@evenhead
+}
+\AtBeginDocument{
+  \markboth{\@title}{\relax}
 }
 \def\sectionmark#1{\markright{\ifnum \c@secnumdepth >\z@ %
   {\thesection}\hskip1em
 \fi #1}}%
 \pagestyle{plain}
+
+\newcommand\SetHead[2]{\expandafter\gdef\csname head@#1\endcsname{#2}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -219,7 +299,7 @@
   \advance\@tempdima 32mm%
   \begin{tikzpicture}[remember picture,overlay]
     \node[xshift=\@total@leftsep,yshift=-\@tempdima] at (current page.north west) {%
-      \begin{tikzpicture}[remember picture, overlay]
+      \begin{tikzpicture}[overlay]
         \fill[lightgray!50] (0,0) rectangle (\textwidth,32mm); % (2,16,2)mm plus 12mm space
         \draw (2mm,20mm) rectangle (\textwidth-2mm, 30mm) {}; #1 %
       \end{tikzpicture}
@@ -241,35 +321,41 @@
                                      {1.5ex \@plus .2ex}%
                                      {\headfont\normalsize\bfseries}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                    {3.25ex \@plus1ex \@minus.2ex}%
+                                    {2\parsep}%
                                     {-1em}%
                                     {\headfont\normalsize\bfseries}}
 \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-                                       {3.25ex \@plus1ex \@minus .2ex}%
+                                       {2\parsep}%
                                        {-1em}%
                                       {\headfont\normalsize\bfseries}}
 
-\def\link@ifurl#1#2{\IfStrEq{#1}{}{#2}{\href{#1}{#2}}}
-\def\maketitle{%
-\begin{titlepage}%
-  \IfStrEq{\title@cr}{}{\setlength\@tempdimb{6mm}}{\setlength\@tempdimb{7.5mm}}
-  \setcounter{page}{0}
-  \let\footnoterule\relax
-  \let\footnote\thanks
-  \@headframebox{%
-    \node[fill=lightgray!50,anchor=south west,xshift= 5mm,yshift=15.7mm]
-      {\normalfont\fontsize{24}{24}\selectfont\bfseries\strut\@title};
-    \node[anchor=south west,xshift=85mm,yshift=\@tempdimb]
-      {\headfont\fontsize{16}{16}\selectfont \@author\strut};
-    \advance\@tempdimb -4.5mm%
-    \node[anchor=south west,xshift=85mm,yshift=\@tempdimb]
-      {\ttfamily\mydate\today~\currenttime\strut};
-    \IfStrEq{\title@cr}{}{}{%
-      \node[anchor=south west,xshift=85mm,yshift=-1mm]{%
-        \link@ifurl{\title@lu}{\sffamily\small\color{gray}\copyright\title@cr}\strut};
-    }
-}}
-\def\endmaketitle{\par\vfil\null\end{titlepage}}
+\def\link@ifurl#1#2{\IfEmpty{#1}{#2}{\href{#1}{#2}}}
+\def\maketitle{\ifmisho@minititle%
+  \thispagestyle{minititle}%
+  \newpage\global\@topnum\z@\newpage%
+  \begin{flushleft}%
+  {\headfont\LARGE\bfseries \@title\par}%
+  \end{flushleft}\@afterheading\ignorespaces%
+\else
+  \begin{titlepage}%
+    \IfEmpty{\title@cr}{\setlength\@tempdimb{6mm}}{\setlength\@tempdimb{7.5mm}}
+    \setcounter{page}{0}
+    \let\footnoterule\relax
+    \let\footnote\thanks
+    \@headframebox{%
+      \node[fill=lightgray!50,anchor=south west,xshift= 5mm,yshift=15.7mm]
+        {\normalfont\fontsize{24}{24}\selectfont\bfseries\strut\@title};
+      \node[anchor=south west,xshift=85mm,yshift=\@tempdimb]
+        {\headfont\fontsize{16}{16}\selectfont \@author\strut};
+      \advance\@tempdimb -4.5mm%
+      \node[anchor=south west,xshift=85mm,yshift=\@tempdimb]
+        {\ttfamily\mydate\today~\currenttime\strut};
+      \IfEmpty{\title@cr}{}{%
+        \node[anchor=south west,xshift=85mm,yshift=-1mm]{%
+          \link@ifurl{\title@lu}{\sffamily\small\color{gray}\copyright\title@cr}\strut};
+    }}%
+\fi}
+\def\endmaketitle{\ifmisho@minititle\relax\else\par\vfil\null\end{titlepage}\fi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -312,11 +398,37 @@
 \newcommand\BLUE {\@colored{pBlue}}
 \newcommand\PINK {\@colored{pPink}}
 \newcommand\GREEN{\@colored{pGreen}}
+\newcommand\RED  {\@colored{AltDefA}}
 \newcommand\C    {\@ifstar{\@colored{AltDefB}}{\@colored{AltDefA}}}
+
+\let\misho@C\C
+%\def\C#1{\@ifnextchar_{\misho@C@d{#1}}{\misho@C@x{#1}}}
+%\def\misho@C@d#1_#2{\@ifnextchar^{\misho@C@du#1_#2}{\misho@C{{#1}_{#2}}}}
+%\def\misho@C@du#1_#2^#3{\misho@C{{#1}_{#2}^{#3}}}
+%\def\misho@C@x#1{\@ifnextchar^{\misho@C@u{#1}}{\misho@C{#1}}}
+%\def\misho@C@u#1^#2{\@ifnextchar_{\misho@C@ud#1^#2}{\misho@C{{#1}^{#2}}}}
+%\def\misho@C@ud#1^#2_#3{\misho@C{{#1}^{#2}_{#3}}}
+%\def\C#1{\@ifnextchar_{\misho@C@d{#1}}{\@ifnextchar'{\misho@C@p{#1}}{\misho@C@x{#1}}}}
+%\def\misho@C@d#1_#2{\@ifnextchar^{\misho@C@du#1_#2}{\misho@C{{#1}_{#2}}}}
+%\def\misho@C@du#1_#2^#3{\misho@C{{#1}_{#2}^{#3}}}
+%\def\misho@C@x#1{\@ifnextchar^{\misho@C@u{#1}}{\misho@C{#1}}}
+%\def\misho@C@u#1^#2{\@ifnextchar_{\misho@C@ud#1^#2}{\misho@C{{#1}^{#2}}}}
+%\def\misho@C@ud#1^#2_#3{\misho@C{{#1}^{#2}_{#3}}}
+%\def\misho@C@p#1'{\@ifnextchar_{\misho@C@pd#1'}{\misho@C{#1'}}}
+%\def\misho@C@pd#1'_#2{\misho@C{#1'_{#2}}}
+\def\C#1{\@ifnextchar_{\misho@C@d{#1}}{\@ifnextchar'{\misho@C@p{#1}}{\misho@C@x{#1}}}}
+\def\misho@C@d#1_#2{\@ifnextchar^{\misho@C@du#1_#2}{\misho@C{#1}_{\misho@C{#2}}}}
+\def\misho@C@du#1_#2^#3{\misho@C{#1}_{\misho@C{#2}}^{#3}}
+\def\misho@C@x#1{\@ifnextchar^{\misho@C@u{#1}}{\misho@C{#1}}}
+\def\misho@C@u#1^#2{\@ifnextchar_{\misho@C@ud#1^#2}{\misho@C{#1}^{#2}}}
+\def\misho@C@ud#1^#2_#3{\misho@C{#1}^{#2}_{\misho@C{#3}}}
+\def\misho@C@p#1'{\@ifnextchar_{\misho@C@pd#1'}{\misho@C{#1'}}}
+\def\misho@C@pd#1'_#2{\misho@C{#1'_{#2}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[xparse,skins]{tcolorbox}
+\tcbuselibrary{breakable,theorems}
 \tcbsetforeverylayer{
   parbox=false,
   boxsep=0mm,
@@ -341,19 +453,19 @@
   boxrule=0pt,frame hidden,
   borderline west={2mm}{\z@}{gray!50},colback=gray!10,
   left skip=17.647mm, left=4.706mm, width=1.176\NoteBoxWidthA,
-  coltitle=black,fonttitle=\headfont,
+  coltitle=black,fonttitle=\headfont\bfseries,
   scale=0.85,
   attach title to upper,after title={:~},#1
 }
 \newcommand\Note[1]{\begin{NoteBox}#1\end{NoteBox}}
 
-\DeclareTColorBox[use counter=NoteBox]{RemarkBox}{O{}}{%
+\DeclareTColorBox{RemarkBox}{O{}}{%
   reset,enhanced,
-  title={Remark \theNoteBox},
+  title={Remark},
   boxrule=0pt,frame hidden,
   borderline west={2mm}{\z@}{gray!50},colback=gray!10,
   left skip=15mm, left=4mm,
-  coltitle=black,fonttitle=\headfont,
+  coltitle=black,fonttitle=\headfont\bfseries,
   attach title to upper,after title={:~},#1
 }
 \newcommand*\Remark[1]{\RemarkBox #1\endRemarkBox}
@@ -366,11 +478,13 @@
 
 \renewcommand\theNoteBox{$\sharp$\@arabic\c@NoteBox}
 
-\newcommand\g@bble@put[1]{#1}
-\DeclareDocumentCommand{\RefBox}{O{6cm} O{text width=5cm} > { \TrimSpaces } m}{%
-  \begin{tikzpicture}[overlay,anchor=north east,remember picture,every node/.style={#2}]%
-  \draw [draw=none] (\textwidth,3\baselineskip) node {\hfill\colorbox{pGreen!10}{\small\GREEN{#3}}};%
-  \end{tikzpicture}\g@bble@put}
+\DeclareDocumentCommand{\WithRefBox}{mm}{
+  \begin{tcolorbox}[reset,enhanced,frame hidden,interior hidden,
+    boxrule=0mm,boxsep=0mm,left=0mm,right=0mm,top=0mm,bottom=0mm,
+    overlay={\node[fill=pGreen!10!white,anchor=north east] at ([yshift=-1mm]frame.north east) {\small\GREEN{#2}};}]%
+    #1
+  \end{tcolorbox}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -381,16 +495,134 @@
   \stepcounter{NoteAnchor}%
   \IfValueTF{#2}{\def\notetag{#2}}{\let\notetag\theNoteAnchor}%
   \IfBooleanTF{#1}{\def\@NoteBoxStack{}}{\let\@NoteBoxStack\NoteBoxStack}%
-  \global\edef\NoteBoxStack{\@NoteBoxStack\noexpand\OutputNote@{\notetag}{#3}}%
+  \protected@xdef\NoteBoxStack{\@NoteBoxStack\noexpand\OutputNote@{\notetag}{#3}}%
   \mbox{$^{\text{\ref{Note:\notetag}}}$}\relax}
 \def\OutputNote@#1#2{{\NoteBox[label=Note:#1]{#2}\endNoteBox}\relax}
 \def\OutputNote{\NoteBoxStack\global\def\NoteBoxStack{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% paragraph continuation after tcolorbox
+% https://tex.stackexchange.com/questions/568782/
+\tcbset{%
+  after={\ifx\tcb@drawcolorbox\tcb@drawcolorbox@breakable\else\@endparenv\fi}%
+}
+\appto\tcb@use@after@lastbox{\@endparenv\@doendpe}
+
+\tcbset{mytheobox/.style={%
+  reset,theorem style=standard,breakable,sharp corners,enhanced,
+  fonttitle=\sffamily\bfseries\upshape,
+  colframe=pBlue,colback=pBlue!10,colbacktitle=pBlue,
+  boxsep=1.5mm,boxrule=0mm,borderline south={.7mm}{-.7mm}{pBlue},
+  left*=3mm,right*=3mm,
+},myproofbox/.style={%
+  reset,enhanced,sidebyside,sidebyside align=top,
+  lefthand width=15mm,lower separated=false,
+  interior hidden,frame hidden,left=0mm,boxrule=0mm,right=0mm,
+  boxsep=0mm,sidebyside gap=0mm,middle=0mm
+},myprobbox/.style={%
+  reset,enhanced,sharp corners,
+  boxrule=.7mm, colframe=pLightOrange,colback=pLightOrange!30,
+  boxsep=4.3mm,top=0mm,bottom=0mm,right=0mm,left=0mm,
+  before skip balanced=24pt plus 3pt minus 21pt,
+},myquizbox/.style={%
+  reset,enhanced,boxrule=0pt,frame hidden,
+  borderline west={2mm}{\z@}{pLightOrange},colback=pLightOrange!30,
+  left skip=15mm, left=4mm,
+}}
+
+\newtcbtheorem{theorem}{Theorem}{mytheobox}{thm}
+\newtcbtheorem[use counter from=theorem]{definition}{Definition}{mytheobox}{def}
+\newtcbtheorem[use counter from=theorem]{claim}{Claim}{mytheobox}{clm}
+
+\newtcbtheorem[use counter from=theorem]{example}{Example}{
+  reset,enhanced,frame hidden,interior hidden,
+  borderline west={0.7mm}{0.65mm}{pBlue},
+  left skip=15mm,left=4mm,top=2mm,bottom=2mm,toptitle=1mm,bottomtitle=1mm,
+  coltitle=pBlue,fonttitle=\headfont\bfseries,
+  underlay unbroken and first={\draw[line width=1pt,dashed,pBlue]
+      ([xshift=2.5mm]title.south west)--([xshift=-70mm]title.south east);}}{exa}
+
+\newenvironment{proof}{%
+  \begin{tcolorbox}[myproofbox]\hfil\itshape{Proof.}\tcblower%
+}{\qed\end{tcolorbox}}
+\DeclareRobustCommand{\qed}{%
+  \ifmmode $\QED$\else\leavevmode\unskip\penalty9999 \hbox{}\nobreak%
+  \hfill\quad\hbox{$\QED$}\fi}
+
+\newenvironment{ProblemBox}{\begin{tcolorbox}[myprobbox]}{\end{tcolorbox}}
+\newenvironment{QuizBox}   {\begin{tcolorbox}[myquizbox]}{\end{tcolorbox}}
+
+\newenvironment{problems}{%
+  \begin{tcolorbox}[myprobbox]
+   \list{}{\labelwidth2.5em\leftmargin2.5em\itemsep4mm\labelsep.7em\itemindent\z@%
+    \let\makelabel\descriptionlabel}%
+}{\endlist\end{tcolorbox}}
+
+\newenvironment{quizzes}{%
+  \begin{tcolorbox}[myquizbox]
+   \list{}{\labelwidth\z@ \itemsep4mm \leftmargin0mm \itemindent-\leftmargin%
+     \let\makelabel\descriptionlabel}
+}{\endlist\end{tcolorbox}}
+
+\newcommand*\problem@label[1]{\hspace\labelsep\sffamily\bfseries #1}
+\newcounter{Problem}
+\renewcommand\theProblem{\thesection.\@arabic\c@Problem}
+\@addtoreset{Problem}{section}
+\NewDocumentCommand\new@problem{mmm}{%
+  \stepcounter{Problem}%
+  \item[#1~\theProblem]\IfValueTF{#2}{{\sffamily[$\medblackstar$#2]\kern1em}}{}\relax\relax#3}
+\NewDocumentCommand\Quiz{om}{\new@problem{Quiz}{#1}{#2}}
+\NewDocumentCommand\Problem{som}{\new@problem{\IfBooleanTF{#1}{Problem}{Problem\*}}{#2}{#3}}
+
+\newenvironment{miniitemize}{\itemize\@topsep=\parsep\parskip=0mm}{\enditemize}
+
+\newcommand\UseSimpleTheoremStyle{
+  \tcbset{mytheobox/.style={%
+    reset,theorem style=standard,breakable,sharp corners,enhanced,
+    separator sign={~~~},detach title,before upper={\makebox[30mm][l]{\raisebox{1.5mm}{\tcbtitle}}},
+    fonttitle=\sffamily\bfseries\upshape,coltitle=black,boxrule=0.25mm,
+    boxsep=1.5mm,top=0mm,left*=3mm,right*=3mm,
+    interior code={
+      \path[draw=black,fill=white](interior.south west) rectangle (interior.north east);
+      \path[draw=black,line width=0.25mm]
+        ([xshift=00mm,yshift=-5.5mm]interior.north west)
+      --([xshift=28mm,yshift=-5.5mm]interior.north west)
+      --([xshift=28mm,yshift=0mm]interior.north west);
+    },
+}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\theenumi{\@roman\c@enumi}
+\renewcommand\theenumii{\@alph\c@enumii}
+\renewcommand\theenumiii{\@arabic\c@enumiii}
+\renewcommand\theenumiv{\@Alph\c@enumiv}
+\renewcommand\labelenumi{{\sffamily\theenumi.}}
+\renewcommand\labelenumii{{\sffamily(\theenumii)}}
+\renewcommand\labelenumiii{{\sffamily\theenumiii.}}
+\renewcommand\labelenumiv{{\sffamily\theenumiv.}}
+\renewcommand\p@enumii{{\sffamily\theenumi}}
+\renewcommand\p@enumiii{{\sffamily\theenumi(\theenumii)}}
+\renewcommand\p@enumiv{{\sffamily\p@enumiii\theenumiii}}
+
+\DeclareRobustCommand\misho@ref[4]{%
+  #1~\ref{#2#3}\if#4\relax\relax\else.{\sffamily\@roman#4}\fi}
+\newcommand{\thmref}[2][\relax]{\misho@ref{Theorem}{thm:}{#2}{#1}}
+\newcommand{\defref}[2][\relax]{\misho@ref{Definition}{def:}{#2}{#1}}
+\newcommand{\exaref}[2][\relax]{\misho@ref{Example}{exa:}{#2}{#1}}
+
+\NewDocumentCommand\keyref{sm}{%
+  \IfBooleanTF{#1}{{\sffamily\@roman#2}}{{\bfseries\sffamily\@roman#2)}}}
+
+\DeclareRobustCommand\Advanced{\BLUE{$\clubsuit$}~}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{fancyvrb,ifplatform,listings}
 \lstset{columns=[l]fullflexible,basicstyle=\ttfamily\small,xleftmargin=15mm,frame=L,keepspaces=true}
 \CustomVerbatimCommand{\code}{Verb}{}
+\CustomVerbatimCommand{\filepath}{Verb}{formatcom=\color{pGreen}\bfseries}
 \ifshellescape
 \usepackage{minted}
 \def\minted@formatter{lib/minted_formatter.py -x}
@@ -402,6 +634,7 @@
   {\csname\@lst @SetFirstNumber\endcsname}
   {\csname\@lst @SaveFirstNumber\endcsname}
 \def\mintinline#1{\code}
+\newcommand\inputminted[3][]{\lstinputlisting[#1]{#3}}
 \fi
 
 %\DeclareUnicodeCharacter{02BC}{'}
@@ -428,6 +661,8 @@
 \newcommand*\DD{{\mathrm{D}}}
 \newcommand*\TT{{\mathrm{T}}}
 \newcommand*\cc{{\mathrm{c}}}
+\newcommand*\NN{{\mathbb{N}}}
+\newcommand*\ZZ{{\mathbb{Z}}}
 \newcommand*\RR{{\mathbb{R}}}
 \newcommand*\CC{{\mathbb{C}}}
 \newcommand*\KK{{\mathbb{K}}}
@@ -447,6 +682,8 @@
 \NewDocumentCommand\norm {sm}{\IfBooleanTF{#1}{\left\lVert#2\right\rVert}{\lVert#2\rVert}}
 \NewDocumentCommand\vnorm{sm}{\IfBooleanTF{#1}{\left\lVert\vc{#2}\right\rVert}{\lVert\vc{#2}\rVert}}
 \NewDocumentCommand\mean {sm}{\IfBooleanTF{#1}{\left\langle#2\right\rangle}{\langle#2\rangle}}
+
+\NewDocumentCommand\then{s}{\IfBooleanTF{#1}{\quad\Longrightarrow\quad}{\hskip.5em\Longrightarrow\hskip.5em}}
 
 \newcommand*{\wdiag}{^{\text{diag}}}
 
@@ -477,8 +714,9 @@
 \newcommand*\@@EE[2]{\times\!10^{-#2}}
 
 \NewDocumentCommand\pfrac{omm}{\left(\frac{#2}{#3}\right)\IfValueT{#1}{^#1}}
-\NewDocumentCommand\diff{O{\dd}omm}{\IfValueTF{#2}{\frac{#1^#2#3}{#1#4^#2}}{\frac{#1#3}{#1#4}}}
-\newcommand*\pdiff[3][]{\diff{\partial}{#1}{#2}{#3}}
+\NewDocumentCommand\gdiff{O{\dd}omm}{\IfValueTF{#2}{\frac{#1^#2#3}{#1#4^#2}}{\frac{#1#3}{#1#4}}}
+\NewDocumentCommand\diff{omm}{\gdiff[\dd][#1]{#2}{#3}}
+\NewDocumentCommand\pdiff{omm}{\gdiff[\partial][#1]{#2}{#3}}
 
 \newcommand*\diracdelta[1][]{\qopname\relax o{\ifx\\#1\\\mathrm{\delta}\else\mathrm{\delta}^{(#1)}\fi}}
 \newcommand*\Kallen    [1][]{\qopname\relax o{\ifx\\#1\\\mathrm{\lambda}\else\mathrm{\lambda}^{#1}\fi}}
@@ -486,7 +724,7 @@
 \newcommand*\pmat[1]{\begin{pmatrix}#1\end{pmatrix}}
 \newcommand*\spmat[1]{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
 
-\newcommand\unit[1]{\,\mathrm{#1}\xspace}
+\newcommand\unit[1]{\directlua{unit(\luastring{#1})}}
 \newcommand\eV {\unit{eV}}
 \newcommand\keV{\unit{keV}}
 \newcommand\MeV{\unit{MeV}}
@@ -504,19 +742,22 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{subcaption,booktabs,wrapfig,slashed,xspace,xstring,braket,cancel}
+\usepackage{subcaption,booktabs,wrapfig,slashed,xspace,braket,cancel}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[capitalize]{cleveref}
+\usepackage[capitalize,english]{cleveref}
 
 \renewcommand\thefootnote{*\arabic{footnote}}
 \numberwithin{equation}{section}
 
+\urlstyle{englishfonttt}
+\DeclareTextFontCommand{\textbfsf}{\bfseries\sffamily}
+\DeclareRobustCommand{\Emph}{\@ifstar\textbfsf\textbf}
+
 \newcommand\package[2][\relax]{\texttt{#2}\ifx#1\relax\relax\else~\texttt{#1}\fi}
 
-\newcommand{\TODO}[1]{{\color{red}{$\clubsuit$\texttt{TODO:}#1$\clubsuit$}}}
-\newcommand{\TOCHECK}[1][needs proofreeding]{{\color{red}{$\clubsuit$#1$\clubsuit$}}}
+\newcommand{\TODO}[1]{\RED{$\spadesuit$\texttt{TODO:}#1$\spadesuit$}}
+\newcommand{\TOCHECK}[1][needs proofreeding]{\RED{$\spadesuit$#1$\spadesuit$}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-

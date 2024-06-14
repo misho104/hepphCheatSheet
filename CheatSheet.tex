@@ -1,5 +1,5 @@
 %#!lualatex
-% Time-stamp: <2022-06-25 16:07:37>
+% Time-stamp: <2024-06-14 22:34:45>
 \documentclass[10pt]{CheatSheet}
 \usepackage{subfiles,tensor}
 \bibliographystyle{utphys28mod}
@@ -7,19 +7,17 @@
 \title{HEP-PH Cheat Sheet}
 
 \hypersetup{
-  pdflang={en−US},
-  pdfkeywords={Physics,Particle physics,hep-ph},
-  pdfsubject={Physics},
-  pdfcopyright={2009–2022 Sho Iwamoto},
-  pdfcontactemail={sho.iwamoto@ttk.elte.hu},
+  pdflang={en-US},
+  pdfauthortitle={Assistant Professor, National Sun Yat-sen University},
+  pdfsubject={Sho Iwamoto's cheat sheet for high-energy physics calculation},
+  pdfcaptionwriter={Sho Iwamoto},
+  pdfcontactemail={iwamoto@g-mail.nsysu.edu.tw},
   pdfcontacturl={https://www.misho-web.com/},
-  pdflicenseurl={https://www.misho-web.com/},
-  pdfpubstatus={AO},
+  pdfcopyright={2009–2024 Sho Iwamoto\textLF This document is licensed under the Creative Commons CC–BY–NC 4.0 International Public License.},
+  pdflicenseurl={https://creativecommons.org/licenses/by-nc/4.0/},
 }
 
-\setdefaultlanguage[variant=us]{english}
-\setotherlanguages{japanese,russian}
-\newcommand*\JAPANESE[1]{\japanese#1\endjapanese}
+\setotherlanguages{russian}
 \newcommand*\RUSSIAN[1]{\russian#1\endrussian}
 
 \makeatletter
@@ -47,8 +45,15 @@
   \def\slashedW@[#1]{\mathpalette{\sla@@{/}{0}{0}{#1}}W}
 
   % BIBTeX hack for PDG
-  \let\@bibitem@orig\@bibitem
-  \def\@bibitem#1{\IfBeginWith{#1}{PDG20}{\@lbibitem[#1]{#1}}{\@bibitem@orig{#1}}}
+  \let\bibitemGeneral\@bibitem
+  \let\bibitemPDG\@lbibitem
+  \begin{luacode*}
+  function bibitem(t)
+    tex.sprint(t:sub(1, 5) == "PDG20" and "\\bibitemPDG[" .. t .. "]" or "\\bibitemGeneral", "{", t, "}")
+  end
+  \end{luacode*}
+  \def\@bibitem#1{\directlua{bibitem(\luastring{#1})}}
+ % tex.print(string.sub(\luastring{#1}, 1, 5) == "PDG20" and "\\bibitemPDG[#1]" or "\\bibitemGeneral")}{#1}}
 \makeatother
 
 \DeclareMathOperator{\gSU}{\mathrm SU}
@@ -176,7 +181,7 @@
 \newcommand*\THREE{\mathbf{3}}
 \newcommand*\THREEbar{\overline{\mathbf{3}}}
 \newcommand*\MSbar{\overline{\mathrm{MS}}\xspace}
-\newcommand*\Nambu{\JAPANESE{南部}\xspace}
+\newcommand*\Nambu{\JA{南部}\xspace}
 \newcommand*\Lubanski{Luba\'nski\xspace}
 \newcommand*\AstroSun{☉}
 \newcommand*\AstroEarth{⊕}
