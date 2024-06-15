@@ -370,6 +370,7 @@ here,
 \end{equation}
 
 \subsubsection{Scalar part}
+(see next page)\newpage
 \begin{equation}
 \begin{split}
   \mathcal L\w{scalar} &=
@@ -873,7 +874,7 @@ The gluino mass and phase is given by
 
 
 \subsubsection{Fermion composition}
-Now we show the fermion-related Lagrangian terms verbosely. In super-CKM basis, the interaction terms are
+In super-CKM basis, the fermion-related interaction terms are
 \begin{equation}
   \begin{split}
 &  \mathcal L\w{fermions} + \mathcal L\w{SFG}
@@ -941,8 +942,8 @@ A_\mu|e|\Bigl[
   - \sw^2{\beR^{\cc }\bsigma^{\mu }\eR^{\cc }}
   + \frac{N_{j3} N_{i3}^*-N_{j4} N_{i4}^*}{2} \bneut[j]\bsigma^{\mu }\neut[i]
   \\&
-  + \left(\cw^2 V_{j1} V_{i1}^*+\frac{V_{j2} V_{i2}^* (\cw^2-\sw^2)}{2}\right) \bcharP[j]\bsigma^{\mu}\charP[i]
-  + \left(\frac{U_{j2} U_{i2}^* (\sw^2-\cw^2)}{2}-\cw^2 U_{j1} U_{i1}^*\right){\bcharM[j]\bsigma^{\mu }\charM[i]}
+  + \left[\cw^2 V_{j1} V_{i1}^*+{V_{j2} V_{i2}^* (\cw^2-\sw^2)}/{2}\right] \bcharP[j]\bsigma^{\mu}\charP[i]
+  + \left[{U_{j2} U_{i2}^* (\sw^2-\cw^2)}/{2}-\cw^2 U_{j1} U_{i1}^*\right]{\bcharM[j]\bsigma^{\mu }\charM[i]}
 \Bigr]
 \\&+\frac{g_2}{\sqrt2}W_\mu^+\left[
     \buL\bsigma^{\mu }V\w{CKM}\dL
@@ -1130,7 +1131,8 @@ With abbreviations
 (\mathcal C_{H^-})_{ij} &:= g_2 V_{i1}^* N_{j4}^*+\frac{V_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt2}\\,
 (\mathcal C_{H^+})_{ij} &:=\frac{U_{i2}^* (g_Y N_{j1}^*+g_2 N_{j2}^*)}{\sqrt2}-g_2 U_{i1}^* N_{j3}^*\\,
 \end{align*}
-we have, noting that squarks and sleptons are in super-CKM basis and not in mass eigenstates,
+we have, noting that squarks and sleptons are in super-CKM basis and not in mass eigenstates: (next page)
+\clearpage
 \begin{align}
 &  \mathcal L\w{fermions} + \mathcal L\w{SFG}
 \notag\\&=
@@ -1227,9 +1229,9 @@ we have, noting that squarks and sleptons are in super-CKM basis and not in mass
    + \left(-\frac{g_Y N_{j1}-3g_2 N_{j2}}{3\sqrt{2}}\tdL[i]-\yd[i]N_{j3}\tdR[i]\right){\overline{d_i}\PR \neut[j]}
 \notag\\&+ \left(\frac{g_Y N_{j1}^*+ g_2 N_{j2}^*}{ \sqrt{2}}\teL[i]^{*}-\ye[i]N_{j3}^*\teR[i]^{*}\right){\overline{\neut[j]}\PL e_i}
    +  \left(-\sqrt{2}       g_Y   N_{j1} \teR[i]^*-\ye[i]N_{j3}\teL[i]^* \right){\overline{\neut[j]}\PR e_i}
+   + \frac{g_Y N_{j1}  -g_2 N_{j2}}  {\sqrt{2}}\tnuL[i]\overline{\nu_i}\PR\neut[j]
 \notag\\&+ \left(-\sqrt{2}       g_Y   N_{j1}^*\teR[i]-\ye[i]N_{j3}^*\teL[i] \right){\overline{e_i}\PL \neut[j]}
    +  \left(+\frac{g_Y N_{j1}+ g_2 N_{j2}}{ \sqrt{2}}\teL[i]-\ye[i]N_{j3}\teR[i]\right){\overline{e_i}\PR\neut[j]}
-\notag\\&+ \frac{g_Y N_{j1}  -g_2 N_{j2}}  {\sqrt{2}}\tnuL[i]\overline{\nu_i}\PR\neut[j]
    +  \frac{g_Y N_{j1}^*-g_2 N_{j2}^*}{\sqrt{2}}\tnuL[i]^{*}{\overline{\neut[j]}\PL \nu_i}
 \notag\\&+ \left(U_{i2}^* (\tdR^{*}\yd V\w{CKM}^\dagger)_j - U_{i1}^* g_2 (\tdL^{*}V\w{CKM}^\dagger)_j \right)\overline{\charP[i]}\PL u_j
    + V_{i2} (\tdL^*V\w{CKM}^\dagger\yu)_j  \overline{\charP[i]}\PR u_j
@@ -1251,7 +1253,15 @@ we have, noting that squarks and sleptons are in super-CKM basis and not in mass
 
 \newpage
 \subsection{SLHA convention}
-\begin{wraptable}{r}{220pt}\vspace{-3em}
+\begin{minipage}[t]{0.5\textwidth}
+  The SLHA convention \cite{SLHA} is different from our notation.
+  the reinterpretation rules for the parameters are given in the right table  (\textbf{\C{magenta color}} for objects in other conventions), while
+  \[
+    \mu, b, m^1_{Q, L, \Hu, \Hd}, \text{RPV-trilinears ($\lambda$s and $T$s)}
+  \]
+   are in common.
+\end{minipage}
+\begin{minipage}[t]{0.48\textwidth}\hfill
  \begin{tabular}[t]{c@{\,}c@{\,}c@{\,}c@{\,}c}\toprule
  SLHA  && our notation && Martin/DHM\\\midrule
  $\C{(H_1, H_2)}$              &$=$& $(\Hd, \Hu)$ \\\midrule
@@ -1266,15 +1276,7 @@ we have, noting that squarks and sleptons are in super-CKM basis and not in mass
  $\C{D_i}$                     &$=$& $b_i$\\
  $\C{m^2_{\tilde L_iH_1}}$     &$=$& $M^2_{Li}$ \\\bottomrule
  \end{tabular}
-\end{wraptable}
-
-The SLHA convention \cite{SLHA} is different from our notation; the reinterpretation rules for the MSSM parameters are given in the right table  (\textbf{\C{magenta color}} for objects in other conventions), while
-\begin{equation*}
-  \mu, b, m^2_{Q, L, \Hu, \Hd}, \text{RPV-trilinears ($\lambda$s and $T$s)}
-\end{equation*}
- are in common.
-
-
+\end{minipage}
 
 \clearpage
 

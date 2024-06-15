@@ -10,3 +10,6 @@ clean:
 
 pip:
 	pip install pygments-mathematica
+rye:
+	uv venv
+	uv pip install pygments-mathematica

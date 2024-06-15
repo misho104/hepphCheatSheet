@@ -22,7 +22,7 @@
 
 \makeatletter
   % automatic bibliography
-  \AtEndDocument{\clearpage\orig@bibliography{CheatSheet}}%
+  \AtEndDocument{\clearpage\begingroup\hbadness=8000\orig@bibliography{CheatSheet}\endgroup}%
   \let\orig@bibliography\bibliography
   \let\bibliography\@gobble
 
@@ -189,7 +189,7 @@
 
 \begin{document}
 \setcounter{page}{0}
-\nocite{PDG2018,PDG2020}
+\nocite{PDG2018,PDG2020,PDG2024}
 \begin{maketitle}
 \vspace{20mm}
 \subsection*{Important notes}
