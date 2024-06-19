@@ -1,7 +1,7 @@
 .PHONY: clean CheatSheet.pdf
 
 CheatSheet.pdf:
-	latexmk -lualatex -shell-escape CheatSheet
+	source ./.venv/bin/activate && latexmk -lualatex -shell-escape CheatSheet
 
 clean:
 	@rm -f *.dvi *.aux *.fls *.ps *.log *.fdb_latexmk *~ *.out *.blg *.bbl *.synctex.gz *.bak *.xmpi *.xmpdata
@@ -12,4 +12,4 @@ pip:
 	pip install pygments-mathematica
 rye:
 	uv venv
-	uv pip install pygments-mathematica
+	uv pip install pygments-mathematica pdg jinja2

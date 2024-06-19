@@ -1,0 +1,143 @@
+\section[SM Values]{Standard Model Values\footnotemark}
+
+\footnotetext{Data source: \BLUE{\textbf{PDG2020}}, \PINK{\textbf{PDG2022}}, \GREEN{\textbf{PDG2024}}. \bounddescription}
+
+{%%%%%%%%%CATCODE MODIFICATION GUARD
+\catcode`#=\active \def#{\thinspace}
+\subparagraph{Mass and width}
+\begin{alignat*}{5}
+ e     &: \PINK{0.510#998#950#00(15)}\MeV \kern-.3em&&\hspace{13em}
+ &&% m_{\nu;\text{tot}}<\PINK{0.09\text{--}0.16}\eV ~&
+\\
+ \mu   &: \PINK{105.658#3755(23)}\MeV, && \BLUE{2.196#9811(22)}\unit{\mu s}=\BLUE{659}\unit{m}
+ &h&: \GREEN{125.20(11)}\GeV, &~& \GREEN{3.7\unc{+1.9}{-1.4}}\MeV
+\\
+ \tau  &: \GREEN{1776.93(9)}\MeV,     && \BLUE{2.903(5)\EE{-13}}\unit{s}=\BLUE{87.0}\unit{\mu m}
+ &W&: \GREEN{80.3692(133)}\GeV,  &~& \BLUE{2.085(42)}\GeV
+\\
+ t     &: \GREEN{172.57(29)}\GeV\footnotemark, && \BLUE{1.42\unc{(19)}{(15)}}\GeV
+ &Z&: \GREEN{91.1880(20)}\GeV,  &~& \GREEN{2.4955(23)}\GeV
+\end{alignat*}
+\footnotetext{Cross section measurement gives $\MSbar$ top mass $\PINK{162.5\unc{+2.1}{-1.5}}\GeV$, equivalent to $\GREEN{172.4(7)}\GeV$.}
+
+\vspace{-3em}
+
+\begin{align*}
+ (u,d,s)^{\MSbar}_{2\GeV} &: \GREEN{2.16(7)}\bound{90}{}, \GREEN{4.70(7)}\bound{90}{}, \GREEN{93.5(8)}\bound{90}{}\MeV\footnotemark
+&
+c&: \GREEN{1.2730(46)}\bound{90}{}\GeV{}^{\MSbar}_{m_c}\quad(\GREEN{1.67(7)}\bound{90}{}\GeV{}^{\text{pole}})
+\\
+ (\tfrac{u+d}{2},\tfrac{u}{d},\tfrac{2s}{u+d})^{\MSbar}_{2\GeV} &: \GREEN{3.49(7)}\bound{90}{}\MeV, \GREEN{0.462(20)}\bound{90}{}, \GREEN{27.33\unc{(18)}{(14)}}\bound{90}{}
+&
+b&: \GREEN{4.183(7)}\bound{90}{}\GeV{}^{\MSbar}_{m_b}\quad(\GREEN{4.78(6)}\bound{90}{}\GeV{}^{\text{pole}})
+\end{align*}
+\footnotetext{$m^{\MSbar}_{1\GeV}=m^{\MSbar}_{2\GeV}\times1.35$.}
+
+\vspace{-3em}
+
+\begin{align*}
+ \pi^\pm  &: \BLUE{139.570#39(18)}\MeV&
+ \rho_{770}^\pm &: \BLUE{775.11(34)}\MeV&
+ \eta_c(1S)   &: \GREEN{2984.1(4)}\MeV
+\\
+ \pi^0    &: \GREEN{134.976#8(5)}\MeV&
+ \rho_{770}^0   &: \PINK{775.26(23)}\MeV&
+ J/\psi(1S)   &: \BLUE{3096.900(6)}\MeV
+\\
+ \eta     &: \BLUE{547.862(17)}\MeV&
+ \phi_{1020}     &: \BLUE{1019.461(16)}\MeV&
+ \eta_b(1S)   &: \BLUE{9398.7(2.0)}\MeV
+\\
+ \eta'    &: \BLUE{957.78(6)}\MeV&
+ \omega_{782}   &: \PINK{782.66(13)}\MeV&
+ \Upsilon(1S)   &: \GREEN{9460.40(10)}\MeV
+\\
+ K^\pm    &: \GREEN{493.677(15)}\MeV&
+ K^{*\pm}_{892} &: \PINK{891.67(26)}\MeV&
+ \Upsilon(2S)   &: \GREEN{10023.4(5)}\MeV
+\\
+ K^0      &: \GREEN{497.611(13)}\MeV&
+ K^{*0}_{892} &: \BLUE{895.55(20)}\MeV&
+ \Upsilon(3S)   &: \GREEN{10355.1(5)}\MeV
+\\
+ D^0      &: \PINK{1864.84(5)}\MeV&
+ B^\pm    &: \GREEN{5279.41(7)}\MeV&
+ \Upsilon(4S)   &: \BLUE{10579.4(1.2)}\MeV
+\\
+ D^\pm    &: \BLUE{1869.65(5)}\MeV&
+ B^0      &: \GREEN{5279.72(8)}\MeV&
+p      &: \PINK{938.272#088#16(29)}\MeV
+\\
+ D_s^\pm  &: \PINK{1968.35(7)}\MeV&
+ B_s      &: \GREEN{5366.93(10)}\MeV&
+ n      &: \PINK{939.565#420#5(5)}\MeV
+\\
+&& B_c^\pm  &: \PINK{6274.47(32)}\MeV
+\end{align*}
+
+\vspace{-3em}
+
+\begin{align*}
+ \pi^\pm  &: \BLUE{26.033(5)}\unit{ns}=\BLUE{7.81}\unit{m} &
+ K^\pm    &: \BLUE{1.2380(20)\EE{-8}}\unit{s}=\BLUE{3.71}\unit{m} &
+ p      & >\GREEN{9\EE{29}}\bound{90}{}\unit{yr}\\
+ \pi^0    &: \PINK{8.43(13)\EE{-17}}\unit{s}=\PINK{25.3}\unit{nm} &
+ K^0\w S  &: \BLUE{8.954(4)\EE{-11}}\unit{s}=\BLUE{26.8}\unit{mm} &
+ n       &: \PINK{878.4(5)}\unit{s}
+\\
+&&
+ K^0\w L  &: \BLUE{5.116(21)\EE{-8}}\unit{s}=\BLUE{15.3}\unit{m}
+\end{align*}
+
+\vspace{-1em}
+
+\begin{tabular}[t]{c@{}c|ccccccccccc}\toprule
+$n\,^{2s+1}l_J$ & $J^{PC}$ & $I=1$ & $I=1/2$ & \multicolumn{2}{c}{$I=0$} &   $c\bar c$ & $b\bar b$ & \multicolumn{2}{c}{charm} & \multicolumn{3}{c}{bottom}\\\midrule
+$1\,^{1}S_0$    & $0^{-+}$ & $\pi$ & $K$ & $\eta$ & $\eta'_{958}$ & $\eta_c(1S)$ & $\eta_b(1S)$ & $D$ & $D_s$ & $B$ & $B_s$ & $B_c$\\
+$1\,^{1}S_1$    & $1^{--}$ & $\rho_{770}$ & $K^*_{892}$ & $\phi_{1020}$ & $\omega_{782}$ & $J/\psi(1S)$ & $\Upsilon(1S)$ & $D^*$ & $D^*_s$ & $B^*$ & $B^*_s$ & \\
+\bottomrule
+\end{tabular}
+
+
+\subparagraph{Electric and magnetic moment, important branching ratios, and neutrino property}
+%{For neutrino property, see NuFIT~\cite{NUFIT} as well.}}
+\begin{align*}
+   &a_e = \GREEN{0.001#159#652#180#62(12)}&
+   &\Br(\tau\to e,\mu)\simeq35.2\%&
+   &%\Delta m_{21}^2/\text{eV}^2 = \BLUE{7.53(18)\EE-5}
+\\
+   &a_\mu = \GREEN{0.001#165#920#59(22)}&
+   &\Br(\tau\to \text{had})\simeq64.8\%&
+   &%\Delta m_{32}^2/\text{eV}^2 =
+\\[-.3em]
+   &a_\tau \GREEN{-0.057--0.024}\bound{95}{}&
+   &\Br(\tau;\text{1-prong})\simeq85.2\%&
+   &%\quad\PINK{+2.453(33)\EE-3} \text{ (NH)}
+\\
+   &\mu_p = \BLUE{2.792#847#344#6(8)}\mu_N&
+   &\Br(\tau;\text{3-prong})\simeq14.6\%&
+   &%\quad\PINK{-2.536(34)\EE-3}\text{ (IH)}
+\\
+   &\mu_n = \BLUE{-1.913#042#7(5)}\mu_N&
+   &\Br(Z\to \text{had})=\BLUE{69.911(56)}\%&
+   &%\sin^2\theta_{12} = \BLUE{0.307(13)}
+\\[-.3em]
+   &d_e <\GREEN{4.1\EE{-30}}\bound{90}{}\ech\unit{cm}&
+   &\quad\Br(Z\to b\bar b)=\BLUE{15.12(5)}\%&
+   &%\sin^2\theta_{13}=\PINK{0.0220(7)}
+\\[-.3em]
+   &d_\mu <\BLUE{1.8\EE{-19}}\bound{95}{}\ech\unit{cm}&
+   &\Br(Z\to{\textstyle\sum e,\mu,\tau})  \simeq  10.10\%&
+   &%\sin^2\theta_{23}\text{(NH)} = \PINK{0.546(21)}
+\\[-.3em]
+   &d_p <\BLUE{2.1\EE{-25}}\ech\unit{cm}&
+   &\Br(Z\to \text{inv})=\BLUE{20.000(55)}\%&
+   &%\sin^2\theta_{23}\text{(IH)} = \PINK{0.539(22)}
+\\[-.3em]
+   &d_n <\BLUE{1.8\EE{-26}}\bound{90}{}\ech\unit{cm}&
+   &\Br(W\to \text{had})=\BLUE{67.41(27)}\%&
+   &%\delta=\PINK{1.36\unc{+0.20}{-0.16}\pi}
+\end{align*}
+
+
+} %%%%%%%%%%%%%%% CATCODE MODIFICATION GUARD END

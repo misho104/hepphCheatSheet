@@ -1,0 +1,143 @@
+\section[SM Values]{Standard Model Values\footnotemark}
+
+\footnotetext{Data source: <<source>>. \bounddescription}
+
+{%%%%%%%%%CATCODE MODIFICATION GUARD
+\catcode`#=\active \def#{\thinspace}
+\subparagraph{Mass and width}
+\begin{alignat*}{5}
+ e     &: <<m(11)>> \kern-.3em&&\hspace{13em}
+ &&% m_{\nu;\text{tot}}<\PINK{0.09\text{--}0.16}\eV ~&
+\\
+ \mu   &: <<m(13)>>, && <<g.sm(13)>>
+ &h&: <<m(25)>>, &~& <<g(25)>>
+\\
+ \tau  &: <<m(15)>>,     && <<g.sm(15)>>
+ &W&: <<m(24)>>,  &~& <<g(24)>>
+\\
+ t     &: <<m("6p")>>\footnotemark, && <<g(6)>>
+ &Z&: <<m(23)>>,  &~& <<g(23)>>
+\end{alignat*}
+\footnotetext{Cross section measurement gives $\MSbar$ top mass $<<m("6x")>>$, equivalent to $<<m("6i")>>$.}
+
+\vspace{-3em}
+
+\begin{align*}
+ (u,d,s)^{\MSbar}_{2\GeV} &: <<m.nu("Q123UM")>>, <<m.nu("Q123DM")>>, <<m.nu("Q123SM")>>\MeV\footnotemark
+&
+c&: <<m("4m")>>{}^{\MSbar}_{m_c}\quad(<<m("4p")>>{}^{\text{pole}})
+\\
+ (\tfrac{u+d}{2},\tfrac{u}{d},\tfrac{2s}{u+d})^{\MSbar}_{2\GeV} &: <<m("Q123MR4")>>, <<m("Q123MR0")>>, <<m("Q123MR5")>>
+&
+b&: <<m("5m")>>{}^{\MSbar}_{m_b}\quad(<<m("5p")>>{}^{\text{pole}})
+\end{align*}
+\footnotetext{$m^{\MSbar}_{1\GeV}=m^{\MSbar}_{2\GeV}\times1.35$.}
+
+\vspace{-3em}
+
+\begin{align*}
+ \pi^\pm  &: <<m(211)>>&
+ \rho_{770}^\pm &: <<m(213)>>&
+ \eta_c(1S)   &: <<m(441)>>
+\\
+ \pi^0    &: <<m(111)>>&
+ \rho_{770}^0   &: <<m(113)>>&
+ J/\psi(1S)   &: <<m(443)>>
+\\
+ \eta     &: <<m(221)>>&
+ \phi_{1020}     &: <<m(333)>>&
+ \eta_b(1S)   &: <<m(551)>>
+\\
+ \eta'    &: <<m(331)>>&
+ \omega_{782}   &: <<m(223)>>&
+ \Upsilon(1S)   &: <<m(553)>>
+\\
+ K^\pm    &: <<m(321)>>&
+ K^{*\pm}_{892} &: <<m(323)>>&
+ \Upsilon(2S)   &: <<m(100553)>>
+\\
+ K^0      &: <<m(311)>>&
+ K^{*0}_{892} &: <<m(313)>>&
+ \Upsilon(3S)   &: <<m(200553)>>
+\\
+ D^0      &: <<m(421)>>&
+ B^\pm    &: <<m(521)>>&
+ \Upsilon(4S)   &: <<m(300553)>>
+\\
+ D^\pm    &: <<m(411)>>&
+ B^0      &: <<m(511)>>&
+p      &: <<m(2212)>>
+\\
+ D_s^\pm  &: <<m(431)>>&
+ B_s      &: <<m(531)>>&
+ n      &: <<m(2112)>>
+\\
+&& B_c^\pm  &: <<m(541)>>
+\end{align*}
+
+\vspace{-3em}
+
+\begin{align*}
+ \pi^\pm  &: <<g.sm(211)>> &
+ K^\pm    &: <<g.sm(321)>> &
+ p      & <<g(2212)>>\\
+ \pi^0    &: <<g.sm(111)>> &
+ K^0\w S  &: <<g.sm(310)>> &
+ n       &: <<g(2112)>>
+\\
+&&
+ K^0\w L  &: <<g.sm(130)>>
+\end{align*}
+
+\vspace{-1em}
+
+\begin{tabular}[t]{c@{}c|ccccccccccc}\toprule
+$n\,^{2s+1}l_J$ & $J^{PC}$ & $I=1$ & $I=1/2$ & \multicolumn{2}{c}{$I=0$} &   $c\bar c$ & $b\bar b$ & \multicolumn{2}{c}{charm} & \multicolumn{3}{c}{bottom}\\\midrule
+$1\,^{1}S_0$    & $0^{-+}$ & $\pi$ & $K$ & $\eta$ & $\eta'_{958}$ & $\eta_c(1S)$ & $\eta_b(1S)$ & $D$ & $D_s$ & $B$ & $B_s$ & $B_c$\\
+$1\,^{1}S_1$    & $1^{--}$ & $\rho_{770}$ & $K^*_{892}$ & $\phi_{1020}$ & $\omega_{782}$ & $J/\psi(1S)$ & $\Upsilon(1S)$ & $D^*$ & $D^*_s$ & $B^*$ & $B^*_s$ & \\
+\bottomrule
+\end{tabular}
+
+
+\subparagraph{Electric and magnetic moment, important branching ratios, and neutrino property}
+%{For neutrino property, see NuFIT~\cite{NUFIT} as well.}}
+\begin{align*}
+   &a_e = <<m("S003MM")>>&
+   &\Br(\tau\to e,\mu)\simeq35.2\%&
+   &%\Delta m_{21}^2/\text{eV}^2 = \BLUE{7.53(18)\EE-5}
+\\
+   &a_\mu = <<m("S004MM")>>&
+   &\Br(\tau\to \text{had})\simeq64.8\%&
+   &%\Delta m_{32}^2/\text{eV}^2 =
+\\[-.3em]
+   &a_\tau <<m("S035MM")>>&
+   &\Br(\tau;\text{1-prong})\simeq85.2\%&
+   &%\quad\PINK{+2.453(33)\EE-3} \text{ (NH)}
+\\
+   &\mu_p = <<m("S016MM")>>&
+   &\Br(\tau;\text{3-prong})\simeq14.6\%&
+   &%\quad\PINK{-2.536(34)\EE-3}\text{ (IH)}
+\\
+   &\mu_n = <<m("S017MM")>>&
+   &\Br(Z\to \text{had})=<<m("S044.7")>>&
+   &%\sin^2\theta_{12} = \BLUE{0.307(13)}
+\\[-.3em]
+   &d_e <<m("S003EDM")>>&
+   &\quad\Br(Z\to b\bar b)=<<m("S044.6")>>&
+   &%\sin^2\theta_{13}=\PINK{0.0220(7)}
+\\[-.3em]
+   &d_\mu <<m("S004EDM")>>&
+   &\Br(Z\to{\textstyle\sum e,\mu,\tau})  \simeq  10.10\%&
+   &%\sin^2\theta_{23}\text{(NH)} = \PINK{0.546(21)}
+\\[-.3em]
+   &d_p <<m("S016EDM")>>&
+   &\Br(Z\to \text{inv})=<<m("S044.9")>>&
+   &%\sin^2\theta_{23}\text{(IH)} = \PINK{0.539(22)}
+\\[-.3em]
+   &d_n <<m("S017EDM")>>&
+   &\Br(W\to \text{had})=<<m("S043.8")>>&
+   &%\delta=\PINK{1.36\unc{+0.20}{-0.16}\pi}
+\end{align*}
+
+
+} %%%%%%%%%%%%%%% CATCODE MODIFICATION GUARD END

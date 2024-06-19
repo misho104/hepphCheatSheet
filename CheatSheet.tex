@@ -1,5 +1,5 @@
 %#!lualatex
-% Time-stamp: <2024-06-14 22:34:45>
+% Time-stamp: <2024-06-19 12:23:29>
 \documentclass[10pt]{CheatSheet}
 \usepackage{subfiles,tensor}
 \bibliographystyle{utphys28mod}
@@ -160,19 +160,23 @@
 \newcommand*\bcharP[1][\relax]{{\bar{\tilde\chi}}^+\ifx#1\relax\relax\else_{#1}\fi}
 \newcommand*\bcharM[1][\relax]{{\bar{\tilde\chi}}^-\ifx#1\relax\relax\else_{#1}\fi}
 
-% for uncertainties and bounds
+% for uncertainties and bound
+\makeatletter
 \newcommand*\unc[2]{\substack{#1\\#2}}
 \newcommand*\bound[2]{%
-  \ifnum#1=68\stackrel{*}#2\else
-  \ifnum#1=90\stackrel{\diamond}#2\else
-  \ifnum#1=95\stackrel{*\!*}#2\else
-  \ifnum#1=99\stackrel{\diamond\diamond}#2\else
-  \ifnum#1=1\stackrel{*}#2\else
-  \ifnum#1=2\stackrel{*\!*}#2\else
-  \ifnum#1=3\stackrel{*\!*\!*}#2\else
-  \ifnum#1<10\stackrel{#1\sigma}#2\else\stackrel{#1\%}#2\fi\fi\fi\fi\fi\fi\fi\fi
+  \ifnum#1=68\@bound{*}{#2\relax}\else
+  \ifnum#1=90\@bound{\diamond}{#2\relax}\else
+  \ifnum#1=95\@bound{*\!*}{#2\relax}\else
+  \ifnum#1=99\@bound{\diamond\diamond}{#2\relax}\else
+  \ifnum#1=1\@bound{*}{#2\relax}\else
+  \ifnum#1=2\@bound{*\!*}{#2\relax}\else
+  \ifnum#1=3\@bound{*\!*\!*}{#2\relax}\else
+  \ifnum#1<10\@bound{#1\sigma}{#2\relax}\else\@bound{#1\%}{#2\relax}\fi\fi\fi\fi\fi\fi\fi\fi
 }
+\newcommand*\@bound[2]{\ifx\relax#2\relax{}^{#1}\else\stackrel{#1}{#2}\fi}
+
 \newcommand\bounddescription{Confidence levels are shown by the marks $*$, $*\!*$, \mbox{$*\!\!*\!\!*$} (1--3$\sigma$), $\diamond$ (90\%), and $\diamond\diamond$ (99\%).}
+\makeatother
 
 % text-like
 \newcommand*\ech{\abs{e}}

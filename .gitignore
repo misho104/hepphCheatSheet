@@ -40,3 +40,7 @@ _minted-*
 # Feynman diagrams
 /feynman/*
 !/feynman/feynmp.mp
+
+
+__pycache__
+*.sqlite
