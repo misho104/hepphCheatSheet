@@ -1,4 +1,4 @@
-% Time-Stamp: <2024-06-15 23:04:34>
+% Time-Stamp: <2024-07-09 14:00:00>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{MishoNote}[2022/11/23 Sho Iwamoto]
 
@@ -201,7 +201,7 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand*\@convertto[2]{\strip@pt\dimexpr #2*65536/\number\dimexpr 1#1}
-\newcommand*\ShowLength[1]{\@convertto{em}{#1}em = \@convertto{mm}{#1}mm} % for debugging
+\newcommand*\ShowLength[1]{\@convertto{em}{#1}em = \@convertto{mm}{#1}mm = \@convertto{pt}{#1}pt} % for debugging
 
 \setlength\textwidth{160mm}  % 25mm margin
 \setlength\textheight{237mm}  % 30mm margin
@@ -282,6 +282,14 @@ end
     \aftergroup\head@hrule}%
   \let\@oddhead\@evenhead
 }
+\def\ps@titlepage{%
+  \def\@evenfoot{} % {\reset@font\hfil\thepage\hfil}
+  \let\@oddfoot\@evenfoot
+  \def\@evenhead{%
+    \hfil\makebox[3em][r]{\head@pstyle\head@p}\kern2mm%
+    \aftergroup\head@hrule}%
+  \let\@oddhead\@evenhead
+}
 \AtBeginDocument{
   \markboth{\@title}{\relax}
 }
@@ -331,15 +339,15 @@ end
 
 \def\link@ifurl#1#2{\IfEmpty{#1}{#2}{\href{#1}{#2}}}
 \def\maketitle{\ifmisho@minititle%
-  \thispagestyle{minititle}%
   \newpage\global\@topnum\z@\newpage%
+  \thispagestyle{minititle}%
   \begin{flushleft}%
   {\headfont\LARGE\bfseries \@title\par}%
-  \end{flushleft}\@afterheading\ignorespaces%
+  \end{flushleft}\par\@afterheading\@afterindentfalse\ignorespaces%
 \else
   \begin{titlepage}%
+    \thispagestyle{titlepage}%
     \IfEmpty{\title@cr}{\setlength\@tempdimb{6mm}}{\setlength\@tempdimb{7.5mm}}
-    \setcounter{page}{0}
     \let\footnoterule\relax
     \let\footnote\thanks
     \@headframebox{%
@@ -355,7 +363,7 @@ end
           \link@ifurl{\title@lu}{\sffamily\small\color{gray}\copyright\title@cr}\strut};
     }}%
 \fi}
-\def\endmaketitle{\ifmisho@minititle\relax\else\par\vfil\null\end{titlepage}\fi}
+\def\endmaketitle{\ifmisho@minititle\relax\else\@thanks\par\vfil\null\end{titlepage}\fi\stepcounter{page}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -522,12 +530,12 @@ end
   boxsep=0mm,sidebyside gap=0mm,middle=0mm
 },myprobbox/.style={%
   reset,enhanced,sharp corners,
-  boxrule=.7mm, colframe=pLightOrange,colback=pLightOrange!30,
+  boxrule=.5mm, colframe=pLightOrange,colback=pLightOrange!15,
   boxsep=4.3mm,top=0mm,bottom=0mm,right=0mm,left=0mm,
   before skip balanced=24pt plus 3pt minus 21pt,
 },myquizbox/.style={%
   reset,enhanced,boxrule=0pt,frame hidden,
-  borderline west={2mm}{\z@}{pLightOrange},colback=pLightOrange!30,
+  borderline west={2mm}{\z@}{pLightOrange},colback=pLightOrange!15,
   left skip=15mm, left=4mm,
 }}
 
@@ -554,12 +562,14 @@ end
 \newenvironment{QuizBox}   {\begin{tcolorbox}[myquizbox]}{\end{tcolorbox}}
 
 \newenvironment{problems}{%
+  \advance\@enumdepth\@ne
   \begin{tcolorbox}[myprobbox]
-   \list{}{\labelwidth2.5em\leftmargin2.5em\itemsep4mm\labelsep.7em\itemindent\z@%
+   \list{}{\labelwidth2.5em\leftmargin2.5em\itemsep4mm\labelsep.5em\itemindent\z@%
     \let\makelabel\descriptionlabel}%
 }{\endlist\end{tcolorbox}}
 
 \newenvironment{quizzes}{%
+  \advance\@enumdepth\@ne
   \begin{tcolorbox}[myquizbox]
    \list{}{\labelwidth\z@ \itemsep4mm \leftmargin0mm \itemindent-\leftmargin%
      \let\makelabel\descriptionlabel}
@@ -577,19 +587,28 @@ end
 
 \newenvironment{miniitemize}{\itemize\@topsep=\parsep\parskip=0mm}{\enditemize}
 
-\newcommand\UseSimpleTheoremStyle{
-  \tcbset{mytheobox/.style={%
-    reset,theorem style=standard,breakable,sharp corners,enhanced,
-    separator sign={~~~},detach title,before upper={\makebox[30mm][l]{\raisebox{1.5mm}{\tcbtitle}}},
-    fonttitle=\sffamily\bfseries\upshape,coltitle=black,boxrule=0.25mm,
-    boxsep=1.5mm,top=0mm,left*=3mm,right*=3mm,
-    interior code={
-      \path[draw=black,fill=white](interior.south west) rectangle (interior.north east);
-      \path[draw=black,line width=0.25mm]
-        ([xshift=00mm,yshift=-5.5mm]interior.north west)
-      --([xshift=28mm,yshift=-5.5mm]interior.north west)
-      --([xshift=28mm,yshift=0mm]interior.north west);
-    },
+\newcommand\UseSimpleTheoremStyle{\tcbset{
+  mytheobox/.style={%
+  reset,theorem style=standard,breakable,sharp corners,enhanced,
+  separator sign={~~~},detach title,before upper={\makebox[30mm][l]{\raisebox{1.5mm}{\tcbtitle}}},
+  fonttitle=\sffamily\bfseries\upshape,coltitle=black,boxrule=0.25mm,
+  boxsep=1.5mm,top=0mm,left*=3mm,right*=3mm,
+  interior code={
+    \path[draw=black,fill=white](interior.south west) rectangle (interior.north east);
+    \path[draw=black,line width=0.25mm]
+      ([xshift=00mm,yshift=-5.5mm]interior.north west)
+    --([xshift=28mm,yshift=-5.5mm]interior.north west)
+    --([xshift=28mm,yshift=0mm]interior.north west);
+  }%
+},myprobbox/.style={
+  reset,enhanced,sharp corners,
+  boxrule=.5mm, colframe=black!30,colback=white,
+  boxsep=4.3mm,top=0mm,bottom=0mm,right=0mm,left=0mm,
+  before skip balanced=24pt plus 3pt minus 21pt,
+},myquizbox/.style={%
+  reset,enhanced,boxrule=0pt,frame hidden,
+  borderline west={2mm}{\z@}{black!30},colback=white,
+  left skip=15mm, left=4mm,
 }}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -710,6 +729,7 @@ end
 \DeclareMathOperator{\Order}  {\symcal{O}}
 \DeclareMathOperator{\sign}   {\mathrm{sign}}
 \DeclareMathOperator{\Br}     {\mathrm{Br}}
+\newcommand*\defeq{\coloneq}
 
 \newcommand*\EE{\@ifnextchar-{\@@EE}{\@EE}}
 \newcommand*\@EE[1]{\ifnum#1=1 \times\!10 \else \times\!10^{#1}\fi}
@@ -763,3 +783,16 @@ end
 \newcommand{\TOCHECK}[1][needs proofreeding]{\RED{$\spadesuit$#1$\spadesuit$}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               plain itemize  mini
+% topsep                9pt
+% partopsep             3pt
+% itemsep               4.5pt
+% parsep                4.5pt
+% parskip       0       4.5pt   0
+% leftmargin            2.5em
+% rightmargin           0
+% listparindent         0
+% parindent     17pt    (0)
+% itemindent            0
+% labelwidth            2em
+% labelsep              0.5em
