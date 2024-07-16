@@ -1,7 +1,9 @@
 %#!lualatex
-% Time-stamp: <2024-06-19 12:23:29>
+% Time-stamp: <2024-07-15 19:54:25>
 \documentclass[10pt]{CheatSheet}
 \usepackage{subfiles,tensor}
+\usepackage[inline,shortlabels]{enumitem}
+
 \bibliographystyle{utphys28mod}
 \author{Sho Iwamoto / Misho}
 \title{HEP-PH Cheat Sheet}
@@ -10,10 +12,10 @@
   pdflang={en-US},
   pdfauthortitle={Assistant Professor, National Sun Yat-sen University},
   pdfsubject={Sho Iwamoto's cheat sheet for high-energy physics calculation},
-  pdfcaptionwriter={Sho Iwamoto},
   pdfcontactemail={iwamoto@g-mail.nsysu.edu.tw},
-  pdfcontacturl={https://www.misho-web.com/},
-  pdfcopyright={2009–2024 Sho Iwamoto\textLF This document is licensed under the Creative Commons CC–BY–NC 4.0 International Public License.},
+  pdfcontacturl={https://www2.nsysu.edu.tw/iwamoto/},
+  pdfcaptionwriter={Sho Iwamoto},
+  pdfcopyright={2009–2024 Sho Iwamoto\textLF This document is licensed under the Creative Commons CC BY–NC 4.0 International Public License.},
   pdflicenseurl={https://creativecommons.org/licenses/by-nc/4.0/},
 }
 
@@ -68,7 +70,17 @@
 \DeclareMathOperator{\aSp}{\mathfrak{sp}}
 
 \newcommand{\LorTr}[2]{\Lambda^{#1}{}_{#2}}
-
+\def\RANK#1{\langle#1\rangle}
+\DeclareMathOperator{\Cl}     {\mathrm{Cl}}
+\DeclareMathOperator{\GeoA}     {\mathcal{G}}
+\DeclareMathOperator{\Pin}{\mathrm{Pin}}
+\DeclareMathOperator{\Spin}{\mathrm{Spin}}
+%\DeclareMathSymbol{\setdiff}{\mathbin}{AMSb}{"025B5}
+\newcommand{\setdiff}{\mathbin{\vartriangle}}
+\AtBeginDocument{
+%\UnicodeMathSymbol{"025B5}{\setdiff}{\mathbin}{diff}
+}
+\newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
 \newcommand*{\ddP}[2][3]{\frac{\dd^{#1}\ifx3#1\relax\vc{#2}\else#2\fi}{(2\pi)^{#1}}}
 
 \newcommand*\tqL[1][]{\tilde q_{\mathrm{L}#1}}
@@ -202,7 +214,7 @@
  \item Levi-Civita symbol: $\nep^{12}=\nep_{12}=\nep^{123}=\nep_{123}=\nep^{1234}=\nep_{1234}=\cdots=1$.
  \item Levi-Civita Lorentz tensor: $\vep^{0123}=-\vep_{0123}=1$.
  \item Pauli matrices: $\sigma^i\coloneq\{\sigma_x, \sigma_y, \sigma_z\}$,  hence $\sigma_i = -\sigma^i$ for $i=1,2,3$, unless otherwise noted.
- \item Symbols with $\C{\text{this color}}$ follows a locally-defined ``different'' convention.
+ \item Symbols with $\C{\text{this color}}$ are under a locally-defined convention different from this CheatSheet.
  \item Elementary charge: $\ech\simeq0.303$, always in absolute-value symbols. Note $\epsilon_0=1/(\mu_0c^2)=1$.
 \end{itemize}
 
@@ -229,10 +241,10 @@
 \clearpage
 \subfile{kinematics}
 \clearpage
-\subfile{gaugetheory}
-\clearpage
 \subfile{spinors}
 %\subfile{spinors_more}
+\clearpage
+\subfile{gaugetheory}
 \clearpage
 \subfile{Calculation}
 \clearpage

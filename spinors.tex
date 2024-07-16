@@ -3,35 +3,36 @@
 \begin{document}
 
 \summarystyle
-
 \section{Spinors}
-\begin{alignat}{2}
-&\text{Gamma matrices}:&\quad&
-\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu},~
-\gamma_5=\ii\gamma^0\gamma^1\gamma^2\gamma^3;\quad
-\{\gamma^\mu,\gamma_5\}=0,~
-\gamma^5\gamma^5=1.
-\\
-&\text{conjugates}:&&
-\overline{\psi}=\psi^\dagger \beta,\qquad
-\psi^\cc=C(\overline\psi)^\TT
-\end{alignat}
+\begin{enumerate}[label={}]
+  \item Gamma matrices: \quad
+$\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}$,\quad
+$\gamma_5=\ii\gamma^0\gamma^1\gamma^2\gamma^3$;\quad
+$\{\gamma^\mu,\gamma_5\}=0$,~
+$\gamma^5\gamma^5=1$.
+ \item Conjugates: $\overline{\psi} \deq \psi^\dagger \beta,$\qquad $\psi^\cc\deq C(\overline\psi)^\TT$
+\end{enumerate}
 
-\paragraph{chiral notation}
+\paragraph{Chiral notation}
 \begin{align}\label{eq:chiralnotation}
 & \overline{\psi}=\psi^\dagger\gamma^0;~
  \gamma^\mu=\pmat{0&\sigma^\mu\\\bar\sigma^\mu&0},~
  \gamma_5=\pmat{-1&0\\0&1};~
  \PL = \frac{1-\gamma_5}{2},~
- \PR = \frac{1+\gamma_5}{2}.
+ \PR = \frac{1+\gamma_5}{2};\qquad C=-\ii\gamma^2\gamma^0.
 \\&
 (\gamma^\mu)^\dagger = \gamma^0\gamma^\mu\gamma^0,~
 (\gamma^\mu)^*       = \gamma^2\gamma^\mu\gamma^2,~
-(\gamma^\mu)^\TT     = \gamma^0\gamma^2\gamma^\mu\gamma^2\gamma^0,
+(\gamma^\mu)^\TT     = \gamma^0\gamma^2\gamma^\mu\gamma^2\gamma^0;
+\\&
+C\gamma^\mu C^\dagger = -(\gamma^\mu)^\dagger,~
+C=C^*=-C^{-1}=-C^\dagger=-C^\TT
+\end{align}
+\begin{align}
+  \psi=
 \end{align}
 
-
-\paragraph{(cf.~Dirac notation)}
+\begin{RemarkBox}Dirac notation is given by
 \begin{align}\label{eq:diracnotation}
 & %\overline{\psi}=\psi^\dagger\hat\gamma^0;~
  \hat\gamma^0=\pmat{1&0\\0&-1},~
@@ -44,6 +45,7 @@
 (\hat\gamma^\mu)^*       = \hat\gamma^2\hat\gamma^\mu\hat\gamma^2,~
 (\hat\gamma^\mu)^\TT     = \hat\gamma^0\hat\gamma^2\hat\gamma^\mu\hat\gamma^2\hat\gamma^0,
 \end{align}
+\end{RemarkBox}
 
 
 
@@ -56,27 +58,34 @@
 \detailstyle
 
 \subsection{Verbose derivation}
-We here derive the fermion convention under the most generic with signs $h_i=\pm1$, following
-Refs.~\cite{Kugo1}.
+We provide a discussion on the fermion convention, introducing various signs $h_i=\pm1$ in order to keep generality as much as possible. We follow Ref.~\cite{Kugo1}.
 
 \paragraph{Lorentz group and Lorentz tensors}
-The Lorentz transformation $\LorTr\mu\nu$ is defined as a linear transformation $x^\mu\mapsto\LorTr\mu\nu x^\nu$ that conserves $x^2=\eta_{\mu\nu}x^\mu x^\nu$, where $x^\mu$ is a spacetime point and $\eta$ is the Minkowski metric:
+The Lorentz transformation $\LorTr\mu\nu$ is defined as a linear transformation $x^\mu\mapsto\LorTr\mu\nu x^\nu$ conserving $x^2=\eta_{\mu\nu}x^\mu x^\nu$, where $x^\mu$ is a spacetime point and $\eta$ is the Minkowski metric:
 \begin{equation}
  \eta^{\mu\nu}=\eta_{\mu\nu}\eqdef h_\eta\times\diag(+1,-1,-1,-1),\qquad
  \eta^{\mu\alpha}\eta_{\alpha\nu}=\delta^{\mu}_\nu;\qquad
  \eta_{\rho\sigma}\eqdef\eta_{\mu\nu}\LorTr\mu\rho\LorTr\nu\sigma ~\text{(defining equation)}.
 \label{eq:LorTr}
 \end{equation}
-Its nice to denote its inverse, which satisfies $x_\nu\mapsto x_\mu(\Lambda^{-1})^\mu{}_\nu$, by $\Lambda_\nu{}^\mu$:
+Consequently, $
+  \delta^\beta_\sigma
+  = (\eta_{\alpha\mu}\eta^{\beta\nu}\LorTr\mu\nu)\LorTr\alpha\sigma
+  \eqcolon (\Lambda^{-1})^\beta{}_\alpha\LorTr\alpha\sigma$
+should define the inverse of $\Lambda$:
 \begin{equation}
- (\Lambda^{-1})^\mu{}_\nu = \eta^{\mu\alpha}\LorTr\beta\alpha\eta_{\beta\nu}
-\equiv \Lambda_\nu{}^\mu;\qquad
-x_\mu\mapsto \Lambda_\mu{}^\nu x_\nu,\qquad
-\delta^\alpha_\beta
-%=(\Lambda^{-1})^\alpha{}_\mu\LorTr\mu\beta
-%=\LorTr\alpha\mu (\Lambda^{-1})^\mu{}_\beta
-=\Lambda_\mu{}^\alpha\LorTr\mu\beta
-=\LorTr\alpha\mu \Lambda_\beta{}^\mu.
+  \Lambda_\beta{}^\alpha
+  \deq (\Lambda^{-1})^\beta{}_\alpha
+  = \eta_{\alpha\mu}\eta^{\beta\nu}\LorTr\mu\nu;
+  \qquad
+  x_\nu
+  \mapsto x_\mu(\Lambda^{-1})^\mu{}_\nu
+  =\Lambda_\mu{}^\nu x_\nu,\qquad
+  \delta^\alpha_\beta
+  %=(\Lambda^{-1})^\alpha{}_\mu\LorTr\mu\beta
+  %=\LorTr\alpha\mu (\Lambda^{-1})^\mu{}_\beta
+  =\Lambda_\mu{}^\alpha\LorTr\mu\beta
+  =\LorTr\alpha\mu \Lambda_\beta{}^\mu,
 \end{equation}
 They form a group $L\cong\gO(1,3)$ (Lorentz group), which has four disconnected parts:
 \begin{align}
@@ -98,65 +107,67 @@ Tensors $T^{\mu_1\mu_2\cdots}_{\nu_1\nu_2\cdots}$ and pseudo-tensors $\tilde T^{
 \Lambda_{\nu_1}{}^{\beta_1}\cdots
  \tilde T^{\alpha_1\alpha_2\cdots}_{\beta_1\beta_2\cdots}.
 \end{equation}
-There are two constants that qualify to be (pseudo-)tensors: $\eta^{\mu\nu}$ (and $\eta_{\mu\nu}$, $\delta^{\mu}_\nu$) and the anti-symmetric tensor $\vep^{\mu\nu\rho\sigma}$:
-\begin{equation}
-\eta^{\mu\nu}\mapsto \LorTr\mu\alpha\LorTr\mu\beta\eta^{\alpha\beta}=\eta^{\mu\nu},\qquad
- \vep^{\mu\nu\rho\sigma}\mapsto \LorTr\mu\alpha\LorTr\nu\beta\LorTr\rho\gamma\LorTr\sigma\delta\vep^{\alpha\beta\gamma\delta}=(\det\Lambda)\vep^{\mu\nu\rho\sigma};\qquad
- \vep^{0123}\eqdef1,\quad \vep_{0123}=-1.
-\end{equation}
+In particular, metrics and the antisymmetric tensors are constant (pseudo-)tensors.
+\begin{align}
+&\eta^{\mu\nu}\mapsto \LorTr\mu\alpha\LorTr\mu\beta\eta^{\alpha\beta}=\eta^{\mu\nu},\qquad
+ \vep^{\mu\nu\rho\sigma}\mapsto \LorTr\mu\alpha\LorTr\nu\beta\LorTr\rho\gamma\LorTr\sigma\delta\vep^{\alpha\beta\gamma\delta}=(\det\Lambda)\vep^{\mu\nu\rho\sigma};\\
+&\vep^{0123}\deq1,\quad \vep_{0123}=-1.
+\end{align}
 
-\paragraph{Infinitesimal transformation}
-Equation~\eqref{eq:LorTr} gives the representation for a proper orthochronous Lorentz transformation $\Lambda\in L_0$:
+\paragraph{Infinitesimal transformation} In order to consider infinitesimal transformation of a proper orthochronous Lorentz transformation $\Lambda\in L_0$, we identify $\Lambda$ as a matrix:
+\[ \LorTr\mu\nu \circeq \tilde\Lambda\stackrel{\text{def}}\Longleftrightarrow\LorTr\mu\nu=\tilde\Lambda_{\mu+1,\nu+1};\qquad
+\tilde\eta\deq h_\eta\diag(+1,-1,-1,-1).\]
+Then, Eq.~\eqref{eq:LorTr} is read by $\tilde\eta=\tilde\Lambda^\TT\tilde\eta\tilde\Lambda$ and the infinitesimal transformation given by $\tilde\Lambda=1+\tilde\lambda+\Order(\lambda^2)$ must satisfy
 \begin{equation}
- \Lambda= 1 + \lambda + \Order(\lambda^2);\quad
-\lambda=\spmat{
- 0 & -\omega_x & -\omega_y & -\omega_z \\
- -\omega_x & 0        &+\theta_z &-\theta_y\\
- -\omega_y &-\theta_z & 0        &+\theta_x\\
- -\omega_z &+\theta_y &-\theta_x & 0
-}
-~\eqdef~
-\ii\vc{\omega}\cdot\vc K+\ii\vc\theta\cdot\vc J
-~\eqdef~
-\frac{-\ii}{2}d^{\mu\nu}M_{\mu\nu}
-\label{eq:LorTrInf}
+\lambda^\mu{}_\nu
+= -\eta_{\nu\alpha}\eta^{\mu\beta} \lambda^\alpha{}_\beta\Longleftrightarrow
+\tilde\lambda^\TT = -\tilde\eta\tilde\lambda\tilde\eta.
+\qquad\therefore\quad
+  \tilde\lambda=\spmat{
+    0 & -\omega_x & -\omega_y & -\omega_z \\
+    -\omega_x & 0        &+\theta_z &-\theta_y\\
+    -\omega_y &-\theta_z & 0        &+\theta_x\\
+    -\omega_z &+\theta_y &-\theta_x & 0
+  }\eqcolon\ii\vc{\omega}\cdot\vc K+\ii\vc\theta\cdot\vc J,
 \end{equation}
-where $\theta_i$ is the angle of a \emph{passive} rotation around $i$-axis and $\omega_i$ describes the \emph{passive} boost along $i$-axis with velocity $\beta=\tanh\omega$.
-
-The last definition of Eq.~\eqref{eq:LorTrInf} is used to consider Lorentz algebra $\{M\}$.
-As $[M_{\rho\sigma}]{}^\mu{}_\nu$ should be a tensor, the parameter $d$ should also be a tensor and thus $d^{\mu\nu}=k\cdot\eta^{\mu\rho}\lambda{}^\nu{}_\rho$ ($k$ is a constant), i.e.,
+where we can interpret $\theta_i$ as the \Emph{passive} rotation angle about $i$-axis and $\omega_i$ as the \Emph{passive} boost along $i$-axis with velocity $\beta=\tanh\omega$.
+The operators $J_i$ and $K_i$ are defined to be pure-imaginary; $J_i$ is Hermitian, $K_i$ is pseudo-Hermitian, and
 \begin{equation}
- M_{\mu\nu}=-M_{\nu\mu}, \qquad
- d^{\mu\nu}=-d^{\nu\mu}, \qquad
- \{d^{01},d^{02},d^{03}\}=kh_\eta\times\vc\omega,\qquad
- \{d^{32},d^{13},d^{21}\}=kh_\eta\times\vc\theta.
+  [J_i, J_j] = \ii \epsilon_{ijk}J_k,\qquad
+  [J_i, K_j] = \ii \epsilon_{ijk}K_k,\qquad
+  [K_i, K_j] = -\ii \epsilon_{ijk}J_k.
 \end{equation}
-Then the element of the Lorentz algebra is given by
-$ (M_{\rho\sigma}){}^\mu{}_\nu=
-(\ii/k)(\delta^\mu_\rho\eta_{\nu\sigma}-\delta^\mu_\sigma \eta_{\nu\rho})
-$, which gives the Lorentz algebra
+Noticing that $\tilde\eta\tilde\lambda$ is anti-symmetric, we can express the infinitesimal parameters by anti-symmetric coefficients
+\[
+d^{\mu\nu} \deq h_dh_\eta\lambda^\mu{}_\alpha\eta^{\alpha\nu};\qquad d^{\mu\nu}=-d^{\nu\mu},\qquad
+\{d^{01},d^{02},d^{03}\}=h_d\vc\omega,\qquad
+\{d^{32},d^{13},d^{21}\}=h_d\vc\theta.
+\]
+The corresponding generators are then given by anti-symmetric matrices
+\[
+ \{\tilde M_{01},\tilde M_{02},\tilde M_{03}\}=-h_M \vc K,\qquad \{\tilde M_{32},\tilde M_{13},\tilde M_{21}\}=-h_M \vc J;\qquad
+ \tilde M\circeq (M_{\rho\sigma})^\mu{}_\nu\deq h_M h_\eta\cdot\ii(\delta^\mu_\rho\eta_{\nu\sigma}-\delta^\mu_\sigma\eta_{\nu\rho}).
+\]
+The infinitesimal transformation is given by
 \begin{equation}
-[M_{\mu\nu},M_{\rho\sigma}] = 
-(-\ii/k)\left(\eta_{\mu\rho}M_{\nu\sigma}-\eta_{\mu\sigma}M_{\nu\rho}
+\tilde\lambda = -h_Mh_d\frac{\ii}{2} d^{\mu\nu}\tilde M_{\mu\nu}.
+\label{eq:infinitesimal}
+\end{equation}
+The Lorentz algebra is given by
+\begin{equation}
+h_Mh_\eta[M_{\mu\nu},M_{\rho\sigma}] = 
+-\ii\left(\eta_{\mu\rho}M_{\nu\sigma}-\eta_{\mu\sigma}M_{\nu\rho}
 +\eta_{\nu\sigma}M_{\mu\rho}-\eta_{\nu\rho}M_{\mu\sigma}
 \right).
 \label{eq:LorentzAlgebra}
 \end{equation}
-We will take $k=+1$ to match the notation of Ref.~\cite{Kugo1}.
 
-\paragraph{Rotation and boost}
-The boost and rotation operators, $\vc K$ and $\vc J$, are now given in an abstract form by
-\begin{equation}
- \vc J = h_\eta (M_{23}, M_{31}, M_{12}), \qquad
- \vc K = -h_\eta(M_{01}, M_{02}, M_{03}),
-\end{equation}
-so their commutation relation is read from \cref{eq:LorentzAlgebra}:
-\begin{align}
- [J_i, J_j] &= \ii \epsilon_{ijk}J_k,&
- [J_i, K_j] &= \ii \epsilon_{ijk}K_k,&
- [K_i, K_j] &= -\ii \epsilon_{ijk}J_k,
-\end{align}
-which leads to
+In literature, the sign $h_\eta$ is first determined; $h_M$ is fixed by the Lorentz algebra \eqref{eq:LorentzAlgebra} and then $h_d$ is set by \eqref{eq:infinitesimal}.
+
+%The signs in Ref.~\cite{Kugo1} are $h_d=h_\eta=1$ and $h_M=1$.
+
+\paragraph{Isomorphism of Lorentz Algebra}
+The commutation relations of $\vc J$ and $\vc K$ lead to
 \begin{align}
  \vc A&\eqdef\frac{\vc J+\ii \vc K}{2},&
  \vc B&\eqdef\frac{\vc J-\ii \vc K}{2};&
@@ -167,23 +178,18 @@ which leads to
 This means $\aSO(1,3)$ is somewhat similar to $\aSU(2)\oplus \aSU(2)$, or in fact,
 as discussed in \cref{sec:group-theory},
 $\aSO(1,3)_{\mathbb C}\cong \aSU(2)_{\mathbb C}\oplus\aSU(2)_{\mathbb C}$.
+Explicitly,
+\[
+\tilde M^{\pm}_{\alpha\beta} =
+\frac{\ii}{2}\left(\pm M_{\alpha\beta} + \frac{-1}{2}\eta_{\alpha\mu}\eta_{\beta\nu}\ii\epsilon^{\mu\nu\rho\sigma}M_{\rho\sigma}\right),\qquad
+\{\tilde M^+_{01},\tilde M^+_{02},\tilde M^+_{03}\}=-h_M\vc A,\qquad
+\{\tilde M^-_{01},\tilde M^-_{02},\tilde M^-_{03}\}=-h_M\vc B.
+\]
 
-\paragraph{More isomorphism}
-Let us see a bit more of  mathematical structure, following the discussion in \cref{sec:group-theory} (cf.~Refs.~\cite{RauschdeTraubenberg:2005aa,Yamaguchi:spinor}).
-The isomorphic groups
-$\mathop{\mathrm{Spin}}(1,3)^+\cong\gSL(2,\mathbb C)\cong\gSp(2,\mathbb C)$
-is a double cover of $L_0$;
-in particular, $L_0\cong \mathop{\mathrm{PSL}}(2;\mathbb C)=\gSL(2;\mathbb C)/\mathbb Z_2$.
+\TODO{reviewed upto here}
 
-Meanwhile, the Lorentz algebra $\aSO(1,3)$ is isomorphic to $\aSL(2;\mathbb C)$ viewed as a real Lie albegra~\cite[\S7.8]{Hall2015},
-and its complexification
-$\aSO(1,3)_{\mathbb C}$ is isomorphic to $
-\aSU(2)_{\mathbb C}\oplus\aSU(2)_{\mathbb C}
-=\aSL(2,\mathbb C)\oplus\aSL(2,\mathbb C)$.
 
 \paragraph{Representation of Clifford algebra}
-As summarized in \cref{sec:group-theory}, the spin group $\mathop{\mathrm{Spin}}(1,3)^+$ generated by Clifford algebra $\mathfrak C_{1,3}$ is a double cover of $L_0$, and thus we can consider a representation of $L_0$ based on $\mathfrak C_{1,3}$.
-
 To construct an irreducible representation of $\mathfrak C_{1,3}$, we utilize the fact that we can form two sets of creation-annihilation operators
 \begin{align}
  a^\pm = \sqrt{h_\eta}\frac{e^0\pm e^3}{2},\quad
@@ -293,47 +299,7 @@ It is thus useful to use a specific notation for further discussion.
 
 For example, the construction of a Majorana spinor $\psi\w M$, which satisfies $(\psi\w M)^\cc=\psi\w M$, is simply done as $\psi\w{M}\propto\psi+\psi^\cc$ if $\eta\w{cc}=1$, but needs some phases if $\eta\w{cc}=-1$.
 
-\paragraph{Weyl spinor}
-
-
-\subsection[Convention]{Convention \TODO{WIP!}}
-First we prepare a vector $x^\mu$ and a symmetric matrix $\eta^{\mu\nu}$, which we call ``contravariant vector'' $x^\mu$ and the metric $\eta^{\mu\nu}$.
-Then we perform a Lorentz transformation on $x^\mu$ to obtain $(x')^\mu$, with which we can define a matrix $\Lambda(\vc va,\vc \theta)^{\mu}_{\nu}$ through 
-$\Lambda{}^\mu{}_\nu x^{\nu}=(x')^{\mu}$.
-
-We then consider $\Lambda$s for infinitesimal transformations and define $\vc S$, $\vc J$, and $\vc K$ by
-\begin{align}
- \Lambda^\mu{}_\nu
-  \simeq \delta^\mu_\nu-\ii(\vc\theta\cdot\vc J^\mu{}_\nu+\vc\beta\cdot\vc K^\mu{}_\nu)
-  \simeq \delta^\mu_\nu-\frac{\ii}{2}  \left[\Lambda^{\alpha\beta}S_{\alpha\beta}\right]^\mu{}_\nu
-\end{align}
-
-Imposing ``Lorentz condition'' (\TODO{what?}), we get the expression for $S=\ii(\delta\cdots)$ and $[J^i,J^j]=\cdots$; further, we get $\Lambda^{\mu}_{\nu}=\exp(-\ii\vc\theta\cdot\vc J -\ii \vc\xi\cdot\vc K)$, $\vc\theta=(\theta_{23},\theta_{31}, \theta_{12})$, $\vc\xi = \hat{\vc v}\tanh^{-1}\|\vc v\|=(\theta^{10},\theta^{20},\theta^{30})$; $J=(S_{23},S_{31},S_{12})$, $K=(S^{01}, S^{02}, S^{03})$....?
-
-
-
-
-Lorentz transformation with a rotation $\theta$ around an axis $\hat{\vc\theta}$ and a boost $\vc v$ are given by
-\begin{equation}
- \Lambda = \exp\left[-\ii(\vc\theta\cdot\vc J+\vc \beta\cdot \vc K)\right];
-\qquad
-\vc\theta:=\theta\hat{\vc\theta}, \quad \vc\beta := \hat{\vc v}\tanh^{-1}\|\vc v\|,
-\end{equation}
-\TODO{check!}
-
-
-Lorentz transformation (infinitesimal):
-$\Lambda=\pmat{
-  0 &   & \vc{\beta}^\TT & \\
-    & 0 &-\theta_z & \theta_y\\
-  \vc{\beta} & \theta_z & 0 & -\theta_x \\
-   & -\theta_y & \theta_x & 0
-}$
-
-$[J_{\mu\nu}]^{\alpha}{}_{\beta}=
- \ii(\delta^\alpha_\mu\eta_{\nu\beta}-\delta^\alpha_\nu\eta_{\mu\beta})
-$
-
+\paragraph{fragments}
 \vspace{2em}
 
 Lorentz tensor $
@@ -352,12 +318,165 @@ $V_{\alpha\dbeta}=V^\mu\sigma_{\mu\alpha\dbeta}$; hermite $V_{\alpha\dbeta}$ $\L
 \end{align}
 \TODO{anyway not very sure about the reasoning; though my old note says like this...}
 
-
-In general, metric is symmetric.
-
+\subsection{Dirac spinors for massive fermions}
+%\RefBox{\S2 of \cite{kugo1}; \cite{Kryuchkov:2015acw}}
+Dirac equation $(\ii\slashed{\partial}-m)\psi(x)=0$ has plain-wave solutions $\tilde u(p)\ee^{-\ii p x}$, i.e., $(\slashed{p}-m)\tilde u(p)=0$ with $m>0$.
+Non-zero solution is available if and only if $\det(\slashed p-m)=0\Leftrightarrow p^2=m^2$.
+We hereafter fix $p^0>0$ and consider
 \begin{equation}
- (\Lambda^{-1})^\mu{}_\nu = \eta_{\nu\rho}\Lambda^{\rho}{}_\sigma(\eta^{-1})^{\sigma\mu}=:\Lambda_\nu{}^\mu
+ u(\vc p)\text{~satisfying~}(\slashed p-m)u(\vc p)=0,
+\qquad
+ v(\vc p)\text{~satisfying~}(\slashed p+m)v(\vc p)=0,
 \end{equation}
+where the general solution of the Dirac equation is given by linear combination of $\{u(\vc p)\ee^{-\ii px}, v(\vc p)\ee^{\ii px}\}_{p^0>0}$.
+
+As $\rank(\slashed p\pm m)=2$, each equation has $4-2 = \text{two}$ linear-independent solutions\footnote{%
+  Let $X^\pm=\slashed{p}\pm m$. Denote $\det A$ by $|A|$, and $\rank A$ by $\RANK{A}$.
+  As Lorentz invariance guarantees $|X^\pm|$ is a function of $p^2$, $|A^+|=|A^-|$.
+  Then $|A^+||A^-| = (p^2-m^2)^4$ gives $|A^\pm|=(p^2-m^2)^2$.
+  One can show that $\RANK{A^\pm}=2$ if $p^2=m^2$ as follows:
+\\%
+Frobenius inequality:\qquad $\RANK{AB}+\RANK{BC}\le \RANK B + \RANK{ABC}$\qquad
+$\therefore 2\RANK{A^\pm}=\RANK{A^\pm\gamma_5\gamma_5} + \RANK{\gamma_5A^\mp\gamma_5} \le \RANK{\gamma_5}+\RANK{A^\pm\gamma_5\gamma_5A^\mp\gamma_5}=4$,
+\\%
+rank subadditivity:\qquad$\RANK{A+B}\le\RANK{A}+\RANK{B}$\qquad
+$\therefore4\le\RANK{A^+}+\RANK{-A^-}.$
+
+Similar discussion applies for Pauli--\Lubanski operator: as $[\det(\gamma_5\slashed{e}-x)]^2=-e^2-x^2$, it has eigenvalues $\pm1/2$ for $u(\vc p)$ and $v(\vc p)$, and 
+$B^\pm=(\gamma_5\slashed e\slashed p\pm m/2)$ both have rank-2.
+Furthermore, \TOCHECK as $B^+$ should have solutions in both subspaces spanned by $u(\vc p)$ and $v(\vc p)$, each subspace is spanned by eigenstates with different eigenvalues for the Pauli--\Lubanski operator and thus the label is used to distinguish two $u$s (and $v$s).
+}, for which we introduce another label $s=1,2$.
+We use the following convention, noting the inner product of this vector space is $(\psi,\psi)=\overline\psi\psi$:
+\begin{equation}
+ v^s(\vc p)\coloneq C[\overline{u}^s(\vc p)]^\TT,\qquad
+ \overline u^s(\vc p)u^t(\vc p)\coloneq 2m\delta^{st}.
+\end{equation}
+Then $\gamma^\mu v = (h_\beta/h_C)C\beta^\TT(\gamma^\mu u)^*$, for which $v(\vc p)$ satisfies $(\slashed{p}+m)v(\vc p)=0$ as requested.
+Orthogonality for $s\neq t$ is guaranteed by its definition given later.
+Also, as $u$ and $v$ have different eigenvalues of the matrix $\slashed p$,
+\begin{equation}
+  \overline v^s(\vc p)v^t(\vc p)=-2m\delta^{st},\qquad
+ \overline u^s(\vc p)v^t(\vc p)=\overline v^s(\vc p)u^t(\vc p)=0.
+\end{equation}
+
+Several conventions for the label $s$ are available:\vspace{-1em}
+\begin{DownPara}
+\paragraph{Pauli--\Lubanski pseudovector operator} gives the most generic definition for the spin of a moving particle:
+\begin{equation}
+ w^\mu = \frac1{2m}\epsilon^{\mu\nu\rho\sigma}P_\nu M_{\rho\sigma}.
+\end{equation}
+With a reference vector $e^\mu$ such that $e^2=-1$ and $e^\mu p_\mu=0$,
+\begin{equation}
+ e_\mu w^\mu
+= e_\mu \frac1{2m} \epsilon^{\mu\nu\rho\sigma}p_\nu \frac{\ii}{4}[\gamma_\rho,\gamma_\sigma]
+= \frac\ii{4m} \epsilon^{\mu\nu\rho\sigma}e_\mu p_\nu \gamma_\rho\gamma_\sigma
+= \frac1{2m}\gamma_5 \slashed e \slashed p
+\end{equation}
+commutes with $(\slashed p\pm m)$ and thus $s=\pm$ may denote the eigenvalue of this operator $\pm1/2$.
+
+
+\paragraph{Helicity operator}
+A simpler option is the eigenvalues $\pm1$ of the helicity operator $h=\vc\sigma\cdot\vc p/\|\vc p\|=:\vc\sigma\cdot\vc n$.
+This is in fact a special case of Pauli--\Lubanski operator with $e^\mu= (\|\vc p\|/m,p_0\vc n/m)$, which is verified by
+\begin{align}
+& h
+=\epsilon^{0\nu\rho\sigma}(-n_\nu) S_{\rho\sigma}
+=\frac{1}{2\ii}\epsilon^{0\nu\rho\sigma}n_\nu \gamma_\rho\gamma_\sigma
+=\frac{\eta^{\mu0}}{2\ii}\epsilon_{\mu\nu\rho\sigma}n^\nu \gamma^\rho\gamma^\sigma
+=\frac{\gamma_5}{2}\gamma_5[\slashed{n},\gamma^0]
+=\frac{\gamma_5}{\|\vc p\|}({\{\slashed{p},\gamma^0\}}/{2}-\gamma^0\slashed{p});
+\\&
+w_\mu e^\mu 
+=\frac{1}{2\|\vc p\|}\gamma_5(p^0-\gamma^0\slashed{p})\sim \frac{h}{2}.
+\end{align}
+
+% Low\[Epsilon][m_,n_,r_,s_]:=-LeviCivitaTensor[4][[m+1,n+1,r+1,s+1]]
+% Low\[Epsilon][0,1,2,3]
+% Sum[Low\[Epsilon][m,n,r,s]S[m]p[n]GammaMatrix[r,None] . GammaMatrix[s,None],{m,0,3},{n,0,3},{r,0,3},{s,0,3}];
+% -2I LorSum[S[#]GammaMatrix[None,#]&] . LorSum[p[#]GammaMatrix[None,#]&] . GammaFive;
+% Expand[%%-%]//.{p[0] S[0]->p[1]S[1]+p[2]S[2]+p[3]S[3]}//Simplify
+
+\TODO{Discuss Poincare group before introducing PL operator.: \cite{WeinbergQFT1}, \cite{Kryuchkov:2015acw}}
+
+\TODO{We have not defined the relation between $S_{\mu\nu}$ and $\sigma_i$ etc.; verify for more general case, including the proof of $\epsilon_{\mu\nu\rho\sigma}\gamma^\rho\gamma^\sigma=-\ii\gamma_5[\gamma_\mu,\gamma_\nu]$.}
+\end{DownPara}
+
+Projection operators for the subspaces spanned by $u^s$ ($v^s$) are given by
+\begin{equation}
+ P_u=\frac{m+\slashed p}{2m}, \quad P_v=\frac{m-\slashed p}{2m}.
+\end{equation}
+As $\{u^1, u^2, v^1, v^2\}$ is a basis of the vector space $\mathbb C^4$ with inner product $(\psi,\psi)=\overline\psi\psi$, we immediately have 
+\begin{equation}
+ \sum_{s=1,2}u^s(\vc p)\overline u^s(\vc p)=P_u \overline u^s(\vc p)u^s(\vc p) = \slashed p+m,\qquad
+ \sum_{s=1,2}v^s(\vc p)\overline v^s(\vc p)=\slashed p-m.
+\end{equation}
+Similarly, using projection operator $P'_{\pm}=(1\pm\gamma_5\slashed e\slashed p/m)/2$,
+\begin{align}
+ &u^s(\vc p)\overline u^s(\vc p) = 2m P'_{\pm}P_u = \frac12(\slashed p+m)(1+s\gamma_5\slashed e),\\\
+ &v^s(\vc p)\overline v^s(\vc p) = C(u^s\overline u^s)^\TT \beta^*C^\dagger\beta
+=\frac12(m+h_C \slashed p)(1-s h_C \gamma_5\slashed e )C\beta^*C^\dagger \beta
+\leadsto
+\frac12(\slashed p-m)(1+s\gamma_5\slashed e)
+\end{align}
+for $s=\pm1$.
+
+\subsection{Chiral notation}
+In the chiral notation, $\beta=\gamma^0$ and $C=-\ii\gamma^2\gamma^0$, and $h_\beta=1$ and $h_C=-1$, the plain-wave spinors are given by
+\begin{equation}
+ u^s(\vc p) = \pmat{\sqrt{\sigma\cdot p}\xi^s\\\sqrt{\bar\sigma\cdot p}\xi^s},\quad
+ v^s(\vc p) = \pmat{\sqrt{\sigma\cdot p}\eta^s\\-\sqrt{\bar\sigma\cdot p}\eta^s};\qquad
+ \eta^s = \pmat{\eta^s_1\\\eta^s_2} \coloneq  \pmat{-(\xi^s_2)^*\\(\xi^s_1)^*},\quad
+(\xi^s)^\dagger(\xi^t) = (\eta^s)^\dagger(\eta^t) = \delta^{st},
+\end{equation}
+where $\{\xi^1,\xi^2\}$ are the orthonormal basis, which fixes the definition of $\eta$, and\footnote{%
+The notation is justified by
+\begin{equation*}
+\sqrt{\sigma\cdot p}\sqrt{\sigma\cdot p} ={\sigma\cdot p},\qquad
+\sqrt{\bar\sigma\cdot p}\sqrt{\bar\sigma\cdot p} ={\bar\sigma\cdot p},\qquad
+\sqrt{\sigma\cdot p}\sqrt{\bar\sigma\cdot p}=m.
+\end{equation*}}
+\begin{equation}
+  \sqrt{\sigma\cdot p} \coloneq  \frac{m+p^\mu\sigma_\mu}{\sqrt{2(m+p^0)}},
+\qquad
+ \sqrt{\bar\sigma\cdot p} \coloneq  \frac{m+p^\mu\bar\sigma_\mu}{\sqrt{2(m+p^0)}}.
+\end{equation}
+\footnote{It is straightforward to verify the above-given equations:
+\begin{align}
+&
+ \overline u u = 2m\delta^{st},\quad
+ \overline v v = -2m\delta^{st},\quad
+ \overline u v = \overline v u = 0,\quad
+ u^\dagger u = v^\dagger v = 2p^0\delta^{st},\quad
+\\&
+ u^\dagger(\vc p)u(-\vc p)= v^\dagger(\vc p)v(-\vc p)=2m\delta^{st},\quad
+ u^\dagger(\vc p)v(-\vc p)= v^\dagger(\vc p)u(-\vc p)=0,\quad
+ \overline u(\vc p)u(-\vc p)= -\overline v(\vc p)v(-\vc p)=2p^0\delta^{st}.
+\end{align}
+}
+So that the basis $\xi$ has eigenvalue $\pm1/2$ for the Pauli--\Lubanski operator, it should satisfy
+\begin{equation}
+ \frac12 \gamma_5\slashed{e} U \pmat{\xi^s\\\xi^s} = \left(\pm\frac12\right)U\pmat{\xi^s\\\xi^s};\qquad
+\text{where~}
+ U\coloneq \pmat{\sqrt{\sigma\cdot p} & 0 \\ 0 & \sqrt{\bar\sigma\cdot p}},\quad
+ U^{-1}=\frac{1}{m}\pmat{\sqrt{\bar\sigma\cdot p} & 0 \\ 0 & \sqrt{\sigma\cdot p}}.
+\end{equation}
+Thus, by calculating the eigensystem of $U^{-1}\gamma_5\slashed {e} U$, one can get
+\begin{equation}
+ \xi^+ = \frac{1}{\sqrt{2(1-\phi^3)}}\pmat{\phi^1-\ii \phi^2 \\ 1-\phi^3},\quad
+ \xi^- = \frac{1}{\sqrt{2(1-\phi^3)}}\pmat{1-\phi^3\\-\phi^1-\ii \phi^2};\qquad
+ \phi^\mu = e^\mu-\frac{e^0p^\mu}{m+p^0}.
+\end{equation}
+If we use reference vector for the helicity, 
+\begin{equation}
+ \xi^+ = \frac1{\sqrt{2-2n^3}}\pmat{n^1-\ii n^2\\1-n^3}
+       =\pmat{\ee^{-\ii\phi}\cos(\theta/2)\\\sin(\theta/2)},\quad
+ \xi^- = \frac1{\sqrt{2-2n^3}}\pmat{1-n^3\\-n^1-\ii n^2}
+       =\pmat{\sin(\theta/2)\\-\ee^{\ii\phi}\cos(\theta/2)}
+\end{equation}
+with $(n^1,n^2,n^3)=(\si\theta\co\phi,\si\theta\si\phi,\co\theta)$ is the direction of the momentum.
+
+
+
 
 
 \end{document}
