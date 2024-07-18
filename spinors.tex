@@ -28,11 +28,44 @@ $\gamma^5\gamma^5=1$.
 C\gamma^\mu C^\dagger = -(\gamma^\mu)^\dagger,~
 C=C^*=-C^{-1}=-C^\dagger=-C^\TT
 \end{align}
-\begin{align}
-  \psi=
-\end{align}
-
-\begin{RemarkBox}Dirac notation is given by
+ \begin{align}
+  \psi&=\pmat{\psi\w L\\[.5em]\psi\w R}=\pmat{\xi_\alpha\\[.5em]\bar\chi^\dalpha}
+       =\spmat{\xi_1\\\xi_2\\\bar\chi^{\dot1}\\\bar\chi^{\dot2}}&
+  &\buildrel{C}\over{\longrightarrow}&
+  \psi^\cc &=
+  C(\overline\psi)^\TT=
+  -\ii\gamma^2\psi^*=\spmat{-\!\!&(\bar\chi^{\dot2})^*\\&(\bar\chi^{\dot1})^*\\&(\xi_2)^*\\-\!\!&(\xi_1)^*}
+               =\spmat{-\!\!&\chi^2 \\ &\chi^1\\&\bar\xi_{\dot2}\\ -\!\!&\bar\xi_{\dot1}}
+               =\pmat{\chi_\alpha \\[.5em] \bar\xi^\dalpha}\\
+  \overline\psi&=\pmat{\chi^\alpha&\bar\xi_\dalpha}
+          =\spmat{\chi^1&\chi^2&\bar\xi_{\dot 1}&\bar\xi_{\dot 2}}&
+  &\buildrel{C}\over{\longrightarrow}&
+  \overline{\psi^\cc} &=\psi^\TT C=\ii\psi^\TT\gamma^0\gamma^2
+                =\spmat{\xi_2&-\xi_1&-\bar\chi^{\dot2}&\bar\chi^{\dot1}}
+                =\pmat{\xi^\alpha&\bar\chi_{\dalpha}}
+  \end{align}
+  It is instructive to write, e.g., for $e=e^-$ and $e^\cc=e^+$,
+  \begin{align*}
+  &\psi_e=\pmat{e\w L\\e\w R}=\pmat{e_\alpha\\(\bar{e}^\cc)^\dalpha},
+  &&\psi_{e^\cc}=\pmat{e^\cc_\alpha\\(\bar{e})^\dalpha}=\pmat{e^\cc_\alpha\\(\bar{e}^{\alpha})^*},
+  &&\overline\psi_e=\pmat{e^{\cc\alpha}&\bar e_\dalpha},
+  &&\overline\psi_{e^\cc}=\pmat{e^{\alpha}&\bar e^\cc_\dalpha},
+  \end{align*}
+  where $\bar e^\cc$ should be read as ``bar of $e^\cc$'', namely $(\bar{e}^\cc)^\dalpha=((e^\cc)^{\alpha})^*$ and $(\bar e)^\dalpha=(e^\alpha)^*$. Then
+     \begin{align}
+   &A^\alpha B_\alpha = \overline\psi_{A^\cc}\PL\psi_{B} = \overline\psi_{B^\cc}\PL\psi_{A},\qquad
+   \bar A_\dalpha\bar B^\dalpha = \overline\psi_A\PR\psi_{B^\cc} = \overline\psi_B\PR\psi_{A^\cc},\\
+    &\bar A\bsigma B=\overline\psi_{A}\gamma^\mu\PL\psi_{B}
+    =-B\sigma^{\mu}\bar A=-\overline\psi_{B^\cc}\gamma^\mu\PR\psi_{A^\cc}
+    =(\bar B\bsigma A)^*=(\overline\psi_{B}\gamma^\mu\PL\psi_{A})^*
+    =-(\overline\psi_{A^\cc}\gamma^\mu\PR\psi_{B^\cc})^*,\\
+ &(\overline{\psi_A}\psi_B)^* = (\psi_B)^\dagger(\overline\psi_A)^\dagger = \overline{\psi_B}\psi_A
+ =A^\alpha B_\alpha+\bar{A}^\cc_\dalpha\bar B^{\cc\dalpha},\\
+    &\overline \psi_A\gamma^\mu \psi_B
+    = \overline\psi_A\gamma^\mu\PL \psi_B + \overline \psi_A\gamma^\mu\PR \psi_B
+    = \overline\psi_A\gamma^\mu\PL \psi_B - \overline \psi_{B^\cc}\gamma^\mu\PL \psi_{A^\cc}.
+   \end{align}
+ \begin{RemarkBox}Dirac notation is given by
 \begin{align}\label{eq:diracnotation}
 & %\overline{\psi}=\psi^\dagger\hat\gamma^0;~
  \hat\gamma^0=\pmat{1&0\\0&-1},~
@@ -46,13 +79,6 @@ C=C^*=-C^{-1}=-C^\dagger=-C^\TT
 (\hat\gamma^\mu)^\TT     = \hat\gamma^0\hat\gamma^2\hat\gamma^\mu\hat\gamma^2\hat\gamma^0,
 \end{align}
 \end{RemarkBox}
-
-
-
-
-\begin{equation}
- (\overline{\psi_1}\psi_2)^* = (\psi_2)^\dagger(\overline\psi_1)^\dagger = \overline{\psi_2}\psi_1.
-\end{equation}
 
 \newpage
 \detailstyle
@@ -93,6 +119,7 @@ They form a group $L\cong\gO(1,3)$ (Lorentz group), which has four disconnected 
  L\w P  &=\{\Lambda\mathbin|\det\Lambda=-1, \LorTr00\ge1\},\notag\\
  L\w T  &=\{\Lambda\mathbin|\det\Lambda=+1, \LorTr00\le-1\},&
  L\w{PT}&=\{\Lambda\mathbin|\det\Lambda=-1, \LorTr00\le-1\}.
+\label{eq:lorentz4parts}
 \end{align}
 
 Tensors $T^{\mu_1\mu_2\cdots}_{\nu_1\nu_2\cdots}$ and pseudo-tensors $\tilde T^{\mu_1\mu_2\cdots}_{\nu_1\nu_2\cdots}$ are objects that satisfy

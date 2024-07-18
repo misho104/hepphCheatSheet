@@ -6,9 +6,9 @@
 \subsection{Matrix exponential}
 Excerpted from \S2 and \S5 of Hall 2015 \cite{Hall2015}:
 \begin{alignat}{2}
- &\ee^X := \sum_{m=0}^\infty \frac{X^m}{m!} \text{~~(converges for any $X$)},
+ &\ee^X \deq \sum_{m=0}^\infty \frac{X^m}{m!} \text{~~(converges for any $X$)},
 \quad&
- &\log X := \sum_{m=1}^\infty (-1)^{m+1}\frac{(A-1)^m}{m} \text{~~(conv.~if $\|A-I\|<1$)}.
+ &\log X \deq \sum_{m=1}^\infty (-1)^{m+1}\frac{(A-1)^m}{m} \text{~~(conv.~if $\|A-I\|<1$)}.
 \end{alignat}
 \begin{alignat}{2}
  &\ee^{\log A} = A \text{~~(if $\|A-I\|<1$)},
@@ -16,7 +16,7 @@ Excerpted from \S2 and \S5 of Hall 2015 \cite{Hall2015}:
  &\log \ee^X = X \text{~and~} \|\ee^X-1\| < 1 \text{~~(if $\|X\|<\log2$).}
 \end{alignat}
 \begin{equation}
- \text{Hilbert-Schmidt norm}:~\|X\|^2 := \sum_{i,j}|X_{ij}|^2 = {\Tr X^\dagger X}.
+ \text{Hilbert-Schmidt norm:}~\|X\|^2 \deq \sum_{i,j}|X_{ij}|^2 = {\Tr X^\dagger X}.
 \end{equation}
 Properties:
 \begin{alignat*}{4}
@@ -150,7 +150,7 @@ A matrix $M\in\mathbb K^{n\times n}$ is called diagonalizable if $\exists P$ and
 \begin{equation}
  M=PDP^{-1};\qquad
  P\in\mathbb{K}^{n\times n},\quad
- D:\text{diagonal matrix}~(D_{ii}\in\mathbb{K}).
+ D\colon\text{diagonal matrix}~(D_{ii}\in\mathbb{K}).
 \end{equation}
 In particular,
 \begin{equation}
@@ -165,7 +165,7 @@ Any $M\in\mathbb{K}^{m\times n}$ can be singular-value decomposed as
  M=UDV^\dagger;\qquad
  U\in\mathbb{U}_{\mathbb K}^m,\quad
  V\in\mathbb{U}_{\mathbb K}^n,\quad
- D: \text{non-negative real diagonal matrix}~(D_{ii}\ge0).
+ D\colon \text{non-negative real diagonal matrix}~(D_{ii}\ge0).
 \end{equation}
 Here, the matrix $U$ ($V$) diagonalizes $MM^\dagger$ ($M^\dagger M$) and $(D_{ii})^2$ are the eigenvalues of $MM^\dagger$ (and $M^\dagger M$).
 
@@ -182,7 +182,7 @@ If $M\in\mathbb{C}^{n\times n}$ is symmetric, it can be decomposed as
 \begin{equation}
  M=RDR^\TT;\qquad
  R\in\mathbb{U}_{\mathbb C}^n,\quad
- D: \text{non-negative real diagonal matrix}~(D_{ii}\ge0).
+ D\colon \text{non-negative real diagonal matrix}~(D_{ii}\ge0).
  \label{eq:ATF}
 \end{equation}
 Real symmetric matrices are normal and thus do not need this factorization; we can apply the above ``diagonalization'' method.
@@ -207,29 +207,29 @@ This section is mainly based on Ref.~\cite{Hall2015}. Also, $\KK=\mathbb{R}$ or 
 
 With $\Omega=\spmat{0&I_{n/2}\\-I_{n/2}}$ and $H=\spmat{I_p&0\\0&-I_q}$,
 \begin{align}
- \mathop{\mathrm  {GL}}(n;\KK) &= \{g\in M^n_\KK\mathbin|\det g\neq 0\},&
+ \mathop{\mathrm  {GL}}(n;\KK) &= \{g\in M^n_\KK\mathbin\mid \det g\neq 0\},&
  \mathop{\mathfrak{gl}}(n;\KK) &= \{a\in M^n_\KK\},\\
 %
- \mathop{\mathrm  {SL}}(n;\KK) &= \{g\in M^n_\KK\mathbin|\det g=1\},&
- \mathop{\mathfrak{sl}}(n;\KK) &= \{a\in M^n_\KK\mathbin|\Tr a=0\},\\
+ \mathop{\mathrm  {SL}}(n;\KK) &= \{g\in M^n_\KK\mathbin\mid \det g=1\},&
+ \mathop{\mathfrak{sl}}(n;\KK) &= \{a\in M^n_\KK\mathbin\mid \Tr a=0\},\\
 %
- \mathop{\mathrm  {SU}}(n) &= \{g\in M^n_{\mathbb C}\mathbin|g^\dagger g=1\land\det g=1\},&
- \mathop{\mathfrak{su}}(n) &= \{a\in M^n_{\mathbb C}\mathbin|a+a^\dagger=0\land\Tr a=0\},\\
+ \mathop{\mathrm  {SU}}(n) &= \{g\in M^n_{\mathbb C}\mathbin\mid g^\dagger g=1\land\det g=1\},&
+ \mathop{\mathfrak{su}}(n) &= \{a\in M^n_{\mathbb C}\mathbin\mid a+a^\dagger=0\land\Tr a=0\},\\
 %
- \mathop{\mathrm  {SO}}(n) &= \{g\in M^n_{\mathbb R}\mathbin|g^\TT g=1\land\det g=1\},&
- \mathop{\mathfrak{so}}(n) &= \{a\in M^n_{\mathbb R}\mathbin|a+a^\TT=0\},\\
+ \mathop{\mathrm  {SO}}(n) &= \{g\in M^n_{\mathbb R}\mathbin\mid g^\TT g=1\land\det g=1\},&
+ \mathop{\mathfrak{so}}(n) &= \{a\in M^n_{\mathbb R}\mathbin\mid a+a^\TT=0\},\\
 %
- \mathop{\mathrm  {SO}}(n;\mathbb C) &= \{g\in M^n_{\mathbb C}\mathbin|g^\TT g=1\land\det g=1\},&
- \mathop{\mathfrak{so}}(n;\mathbb C) &= \{a\in M^n_{\mathbb C}\mathbin|a+a^\TT=0\},\\
+ \mathop{\mathrm  {SO}}(n;\mathbb C) &= \{g\in M^n_{\mathbb C}\mathbin\mid g^\TT g=1\land\det g=1\},&
+ \mathop{\mathfrak{so}}(n;\mathbb C) &= \{a\in M^n_{\mathbb C}\mathbin\mid a+a^\TT=0\},\\
 %
- \mathop{\mathrm  {SO}}(p,q) &= \{g\in M^{p+q}_{\mathbb R}\mathbin|H g^\TT H=g^{-1}\land\det g=1\},&
- \mathop{\mathfrak{so}}(p,q) &= \{a\in M^{p+q}_{\mathbb R}\mathbin|H a^\TT H=-a\},\\
+ \mathop{\mathrm  {SO}}(p,q) &= \{g\in M^{p+q}_{\mathbb R}\mathbin\mid H g^\TT H=g^{-1}\land\det g=1\},&
+ \mathop{\mathfrak{so}}(p,q) &= \{a\in M^{p+q}_{\mathbb R}\mathbin\mid H a^\TT H=-a\},\\
 %
- \mathop{\mathrm  {Sp}}(n;\KK) &= \{g\in M^n_\KK\mathbin|\Omega g^\TT \Omega=-g^{-1}\},&
- \mathop{\mathfrak{sp}}(n;\KK) &= \{g\in M^n_\KK\mathbin|\Omega a^\TT \Omega=a\},\\
+ \mathop{\mathrm  {Sp}}(n;\KK) &= \{g\in M^n_\KK\mathbin\mid \Omega g^\TT \Omega=-g^{-1}\},&
+ \mathop{\mathfrak{sp}}(n;\KK) &= \{g\in M^n_\KK\mathbin\mid \Omega a^\TT \Omega=a\},\\
 %
- \mathop{\mathrm  {Sp}}(n) &= \{g\in M^n_{\mathbb C}\mathbin|\epsilon g^\TT \epsilon=-g^{-1}\land g^\dagger g=1\},&
- \mathop{\mathfrak{sp}}(n) &= \{g\in M^n_{\mathbb C}\mathbin|\epsilon a^\TT \epsilon=a\land a^\dagger+a=0\}.
+ \mathop{\mathrm  {Sp}}(n) &= \{g\in M^n_{\mathbb C}\mathbin\mid \epsilon g^\TT \epsilon=-g^{-1}\land g^\dagger g=1\},&
+ \mathop{\mathfrak{sp}}(n) &= \{g\in M^n_{\mathbb C}\mathbin\mid \epsilon a^\TT \epsilon=a\land a^\dagger+a=0\}.
 \end{align}
 Of course, $\mathop{\mathrm{U}}(n)$ and $\mathop{\mathrm{O}}(n;\KK)$ (and corresponding Lie algebra) are obtained by removing the condition $\det g=1$ (and $\Tr a=0$).
 
@@ -243,7 +243,7 @@ Important identities are:
 
 The complexification of a finite-dimensional \emph{real} vector space $V$ is defined by
 \begin{equation}
- V_{\mathbb C}=V\otimes\mathbb C=\{v_1+\ii v_2\mathbin|v_1,v_2\in V\}\cong V+\ii V.
+ V_{\mathbb C}=V\otimes\mathbb C=\{v_1+\ii v_2\mathbin\mid v_1,v_2\in V\}\cong V+\ii V.
 \end{equation}
 Then, complexification of a Lie algebra $\mathfrak a$ of a matrix Lie group is defined as follows.
 Since $\mathfrak a$ is a \emph{real} Lie algebra, it can be complexified to $\mathfrak a_{\mathbb C}$, where its bracket operation has a unique extension so that $\mathfrak a_{\mathbb C}$ is a \emph{complex} lie algebra.
@@ -277,8 +277,9 @@ Important identities are:
 
 
 \subsection{Mathematical Foundations for Spinors}
+\subsubsection{Clifford Algebra}
 \paragraph{Quadratic form}
-Let~\cite[\S6.3]{Jacobson} $V$ be an $n$-dimensional vector space over a field $K$. A quadratic form $Q$ on $V$ is defined by
+Let~\cite[\S6.3]{Jacobson1} $V$ be an $n$-dimensional vector space over a field $K$. A quadratic form $Q$ on $V$ is defined by
 \begin{equation}
 \begin{split}
    Q\colon V\to K,\qquad
@@ -289,45 +290,48 @@ Let~\cite[\S6.3]{Jacobson} $V$ be an $n$-dimensional vector space over a field $
 The bilinear form $B$ satisfies $B(x,x)=2Q(x)$. As long as the characteristic of $F$ is not two, $Q$ is determined by $B$.
 
 Equivalently, $Q$ is characterized by a symmetric ``matrix'' $\hat Q$ such that $Q(v)=v^\TT \hat Q v$.
-Focusing on $K=\RR$, $\hat Q$ is a real symmetric matrix and thus diagonalizable. Sylvester's law of inertia states that there exists a basis such that $\hat Q=\diag(1,1,\cdots,1,-1,-1,\cdots,-1)$, where the number of $+1$ and $-1$ are respectively $p$ and $q$.
-The pair $(p,q)$ is unique and is called the signature of $Q$, where $\rank \hat Q=p+q$.
+Focusing on $K=\RR$, $\hat Q$ is a real symmetric matrix and thus diagonalizable. Sylvester's law of inertia states that there exists a basis such that $\hat Q=\diag(1,1,\cdots,1,-1,-1,\cdots,-1,0,\cdots,0)$, where the number of $+1$ and $-1$ are respectively $p$ and $q$.
+The pair $(p,q)$ is unique and is called the signature of $Q$, where $\rank \hat Q=p+q~~(\le n)$.
+Meanwhile, if $K$ is algebraically closed such as $\CC$, we can take $\hat Q=\diag(1,1,\cdots,1,0,\cdots,0)$ and the algebra is characterized by $\rank\hat Q$.
 
-Quadratic form induces orthogonality: a basis $\{e_i\}$ of $V$ is called orthogonal [orthonormal] under $Q$ if
+
+Quadratic form induces orthogonality: a basis $\{e_i\}$ of $V$ is called
 \begin{equation}
-  B(e_i,e_j)\propto \delta_{ij}\qquad\Bigl[B(e_i,e_j)=c_i\delta_{ij}\text{~with~}c_i\in\{2,0,-2\}\Bigr]
+  \text{orthogonal under $Q$}\stackrel{\text{def}}\iff B(e_i,e_j)\propto \delta_{ij}\qquad
+  \Bigl[\text{orthonormal under $Q$}\stackrel{\text{def}}\iff B(e_i,e_j)=c_i\delta_{ij}\text{~with~}c_i\in\{2,0,-2\}\Bigr]
 \end{equation}
 and $(V,Q)$ has an orthogonal basis as long as the characteristic of $K$ is not two.
 If $K$ is a ``spin field'' such as $\RR$ or $\CC$ (or, precisely, $\forall \alpha\in K,\exists \beta\in K$ s.t. $\alpha=\beta^2$ or $-\beta^2$), $(V,Q)$ has an orthonormal basis.
 
 \paragraph{Geometric algebra}
-Let~\cite{0907.5356} $V$ be an $n$-dimensional vector space over a field $K$. Let $Q$ be a quadratic form on $V$.
+Let~\cite{Lundholm:2009xd} $V$ be an $n$-dimensional vector space over a field $K$. Let $Q$ be a quadratic form on $V$.
 Tensor algebra on $V$ is defined by
 \begin{equation}
   T(V) = \bigoplus_{k} V^{\otimes k}
-       = K\oplus V\oplus (V\otimes V)\oplus\cdots.
+       = K\oplus V\oplus (V\otimes V)\oplus(V\otimes V\otimes V)\oplus\cdots.
 \end{equation}
 It has an ideal $K_Q$ generated by $\{v\otimes v - Q(v)\mid v\in V\}$:
 \begin{equation}
-  K_Q = \left\{\sum_{i} a_i\otimes(v_i\otimes v_i-Q(v_i))\otimes b_i\relmiddle| v_i\in V, a_i,b_i \in T(V)\right\}.
+  K_Q = \left\{\sum_{i} a_i\otimes(v_i\otimes v_i-Q(v_i))\otimes b_i\relmiddle| v_i\in V, a_i,b_i \in T(V)\right\},
 \end{equation}
-Then the Geometric algebra $\GeoA(V,Q)$ is defined by $T(V)/K_Q$. This is isomorphic to $\Cl(E, K, q_E)$ defined below.
+and the geometric algebra $\GeoA(V,Q)\deq T(V)/K_Q$.
+The product in $\GeoA(V,Q)$ is written by $vw \deq [v\otimes w]=v\otimes w+K_q$. Particularly, $v^2 = Q(v)\in K$ and $vw+wv=B(v,w)\in K$.
 
-The product in $\GeoA(V,Q)$ is written by $vw \deq [v\otimes w]=v\otimes w+K_q$. Particularly, $v^2 = Q(v)$ and $vw+wv=B(v,w)$.
+The pseudoscalar $I$ is defined by $I\deq e_1e_2\cdots e_n$ with the basis $\{e_i\}$. For $\GeoA(\RR^{s,t,u})$, $I^2=(-1)^{n(n-1)/2+t}\delta_{0u}$ and $I$ commutes (anti-commutes) with all $e_i$ if $n$ is even (odd).
+
 
 \paragraph{Clifford Algebra}
-For a finite set $X$, a commutative ring $R$ with unit,
+For a finite set $X$ and a commutative ring $R$ with unit,
 the Clifford algebra $\Cl(X,R,r)$ is defined as the free $R$-module generated by the set $2^X$ of all subset of $X$.
 Here, $r\colon X\to R$ is an arbitrary function thought of as a signature.
-
 The Clifford algebra $\mathrm{Cl}$ has
 addition $\mathrm{Cl}\times\mathrm{Cl}\to\mathrm{Cl}$,
 scalar multiplication $R\times\mathrm{Cl}\to\mathrm{Cl}$, and
 product
 \begin{equation}
   \mathrm{Cl}\times\mathrm{Cl}\to\mathrm{Cl}\ni AB
-  \deq \tau(A,B)A\setdiff B,
+  \deq \tau(A,B)A\setdiff B
 \end{equation}
-where $A\setdiff B=(A\cup B)\setminus(B\cap A)$,
 defined based on the following map $\tau\colon2^X\times2^X\to R$:
 \begin{equation}
   \begin{split}
@@ -335,9 +339,18 @@ defined based on the following map $\tau\colon2^X\times2^X\to R$:
   &\tau(A,B)\tau(A\setdiff B,C)=\tau(A,B\setdiff C)\tau(B,C)\quad\forall A,B,C\in 2^X,\\
   &\tau(\{y\},\{x\}) = -\tau(\{x\},\{y\})\quad\forall x,y\in X,x\neq y,&
   &\tau(\emptyset,A)=\tau(A,\emptyset)=1\quad\forall A\in2^X,\\
-  &\tau(A,B)\in\{-1,1\}\quad \text{if}~A\cap B=\emptyset.
+  &\tau(A,B)\in\{-1,1\}\quad \text{if}~A\cap B=\emptyset,
   \end{split}
 \end{equation}
+where $A\setdiff B=(A\cup B)\setminus(B\cap A)$. Namely,
+\begin{equation}
+  \{x\}\{x\} = r(x)\emptyset,\quad
+  \{x\}\{y\}=-\{y\}\{x\},\quad
+  \emptyset A=A\emptyset=A,\quad
+  (AB)C=A(BC),\quad
+  A\cap B=\emptyset\Rightarrow AB=\pm1(A\cup B).
+\end{equation}
+
 
 Several standard operations are defined: for $A\in2^X$ and $k=\binom{|A|}{2}$,
 \begin{equation}
@@ -345,7 +358,7 @@ Several standard operations are defined: for $A\in2^X$ and $k=\binom{|A|}{2}$,
 \text{Reversion}\quad A^\dagger\deq(-1)^{k}A,\qquad
 \text{Clifford conjugate}\quad A^\mdlgwhtsquare\deq A^{\star\dagger}.
 \end{equation}
-The sign of grade involution (reversion) is negative iff $|A|$ mod 4 is 1 or 3 (2 or 3).
+The sign of grade involution (reversion) is negative iff $|A|$ mod 4 is 1 or 3 (2 or 3). Also, $(xy)^\star=x^\star y^\star$ and $(xy)^\dagger=y^\dagger x^\dagger$.
 
 
 Let $(V,Q)$ be an $n$-dimensional vector space $V$ over a field $K$ equipped with a quadratic form $Q$. Let $E=\{e_i\}$ be an orthogonal basis of $(V,Q)$.
@@ -353,6 +366,7 @@ Then
 \begin{equation}
   \Cl(E, K, Q|_E) \cong \GeoA(V,Q).
 \end{equation}
+
 The Clifford algebra $\Cl(X,R,r)$ has subspaces of $k$-vectors $\mathrm{Cl}^k$ and of even and odd vectors $\mathrm{Cl}^\pm$:
 \[
 \Cl(X,R,r)=\mathrm{Cl}^+\oplus\mathrm{Cl}^-=
@@ -360,27 +374,242 @@ The Clifford algebra $\Cl(X,R,r)$ has subspaces of $k$-vectors $\mathrm{Cl}^k$ a
 \]
 In particular, $\mathrm{Cl}^+$ is a subalgebra.
 
+\paragraph{Isomorphisms}
+There are several algebra-isomorphisms~\cite{Lundholm:2009xd}:
+\begin{align*}
+&\GeoA(\RR^{s,t})\cong \GeoA(\RR^{t+1,s-1}),\quad
+\GeoA^+(\RR^{s,t})\cong \GeoA(\RR^{s,t-1})\cong \GeoA(\RR^{t,s-1})\cong\GeoA^+(\RR^{t,s}),\\
+&\GeoA(\RR^{n+2,0})\cong\GeoA(\RR^{0,n})\otimes\GeoA(\RR^{2,0}),\quad
+\GeoA(\RR^{0,n+2})\cong\GeoA(\RR^{n,0})\otimes\GeoA(\RR^{0,2}),\quad
+\GeoA(\RR^{s+1,t+1})\cong\GeoA(\RR^{s,t})\otimes\GeoA(\RR^{1,1}),\\
+&\GeoA(\RR^{1,0})\cong\RR\oplus\RR,\quad
+\GeoA(\RR^{0,1})\cong\CC,\quad
+\GeoA(\RR^{2,0})\cong\RR^{2\times2},\quad
+\GeoA(\RR^{0,2})\cong\mathbb{H},\\
+&\GeoA(\CC^{s+t})\cong\GeoA(\RR^{s,t})\otimes_\RR\CC,\quad
+\GeoA(\CC^{0})\cong\CC,\quad
+\GeoA(\CC^{1})\cong\CC\oplus\CC,\quad
+\GeoA(\CC^{n+2})\cong\GeoA(\CC^2)\otimes_\CC\GeoA(\CC^n)\cong\GeoA(\CC^n)\otimes_\CC \CC^{2\times2},
+\end{align*}
+\[
+  \text{$s+t$ is odd and $I^2=-1$}\then \GeoA(\RR^{s,t})\cong\GeoA^+(\RR^{t,s})\otimes \CC\cong\GeoA(\CC^{s+t-1}).
+\]
+
+\paragraph{Orthogonal Group}
+The orthogonal (and related) group for $(V,Q)$ is defined by
+\begin{align*}
+&\gO(V,Q)\deq \{f\colon V\to V\colon\text{linear bijection s.t. $Q\circ f=Q$, i.e., $\forall v\in V, Q(f(v))=f(v)$}\},\\
+&\gSO(V,Q)\deq \{f\in\gO(V,Q)\mid \det f=1\},\qquad\gSO(V,Q)\deq\text{the part of $\gSO(V,Q)$ connected to 1},
+\end{align*}
+where the determinant is defined with identifying $V\to V$ as a matrix.
+
 \paragraph{Groups in Geometric Algebra}
-The following groups are embedded in $\GeoA(V,Q)$,
-where $V^\times=\{v\in V\mid Q(v)\neq 0\}$:
+Here we assume $K=\RR$ and $\GeoA$ is non-degenerate, having $\GeoA(\RR^{s,t})$ in mind.
+The geometric algebra $\GeoA(V,Q)$ contains a group
+\begin{equation}
+\GeoA^\times \deq \{g\in\GeoA\mid \exists g^{-1}\in\GeoA, gg^{-1}=g^{-1}g=1\}
+\end{equation}
+with its addition and scalar multiplication being forgotten.
+Furthermore, with $V^\times=\{v\in V\mid Q(v)\neq 0\}$, it contains
 \begin{align}
-  &\GeoA^\times \deq \{g\in\GeoA\mid \exists g^{-1}\in\GeoA, gg^{-1}=g^{-1}g=1\},
-  \qquad \Gamma\deq\{v_1v_2\cdots v_n\mid v_i\in V^\times\},
+  &
+  \Gamma\deq\{v_1v_2\cdots v_n\mid v_i\in V^\times\},
   \qquad \tilde \Gamma\deq \{g\in\GeoA^\times\mid gVg^{-1}\in V\},
 \notag\\
   &\Pin\deq\{x\in \Gamma\mid xx^\dagger = \pm1\},
  \qquad\Spin\deq \Pin\cap\GeoA^+,
- \qquad\Spin^+\deq \{x\in\Spin\mid xx^\dagger=1\},
+ \qquad\Spin^+\deq \{x\in\Spin\mid xx^\dagger=1\}.
 \end{align}
 The Lipschitz group $\tilde\Gamma$ is actually equal to the versor group $\Gamma$ and is the smallest group that contains $V^\times$. To summarize,
 \[\GeoA\supset\GeoA^\times\supset \Gamma=\tilde\Gamma\supset V^\times;\qquad\Gamma\supset\Pin\supset\Spin\supset\Spin^+.\]
 
-There are surjective homomorphisms with kernel $\pm1$ for
+Consider a function $R\colon \RR\to\Spin^+(V,Q)$. It is known that $R'(0)\in\GeoA^2(V,Q)$, i.e., with considering the rotor group $\Spin^+$ as a Lie group, we see the corresponding Lie algebra $\mathfrak{spin}$ is equal to $\GeoA^2$ (bivector Lie algebra), where the product of $\mathfrak{spin}$ is the commutator in $\GeoA$.
+Namely,
+\begin{equation}
+\aSO(V,Q)\cong\mathfrak{spin}(V,Q)=\GeoA^2(V,Q),\qquad
+\pm\exp\left(\GeoA^2(V,Q)\right)\subset\Spin^+(V,Q).
+\end{equation}
+
+
+There is an epimorphism with kernel $\RR^\times$
+\begin{equation}
+\tAd\colon \Gamma(V,Q)\to\gO(V,Q),\quad g\to (v\mapsto g^\star v g^{-1}),\qquad(\therefore\quad \Gamma(V,Q)/\RR^\times\cong\gO(V,Q)).
+\end{equation}
+Here, $v\in V$, $g\in \Gamma$, and it is easily shown that $g^\star v g^{-1}\in V$, which concludes $v\mapsto g^\star v g^{-1}$ is a linear bijection $V\to V$.
+
+\medskip
+
+Focusing on $\GeoA(\RR^{s,t})$, we have epimorphisms with kernel $\pm1$:
 \begin{equation}
   \Pin(s,t)\to\gO(s,t),\qquad
   \Spin(s,t)\to\gSO(s,t),\qquad
-  \Spin^+(s,t)\to\gSO^+(s,t).
+  \Spin^+(s,t)\to\gSO^+(s,t),
 \end{equation}
+Furthermore, if $s\ge1$ and $t\ge 1$, $\Spin^+$ is of importance because, with any $e^\pm\in V$ s.t. $e^\pm e^\pm=\pm1$ and $e^+e^-+e^-e^+=0$,
+\begin{equation}
+\Pin(s,t)=\Spin^+(s,t)\cdot\{1,e^+,e^-,e^+e^-\},\qquad
+\Spin(s,t)=\Spin^+(s,t)\cdot\{1,e^+e^-\}.
+\end{equation}
+It is also known that 
+\begin{align}
+&\text{$\Spin^+(s,t)$ is simply connected for $(s,t)=(\text{1~or~0},n)$ and $(n,\text{1~or~0})$ with $n\ge3$},\\
+&
+\text{if $s\le1$ or $t\le1$, }\Spin^+({s,t})=\pm\exp\left(\GeoA^2(\RR^{s,t})\right)
+\end{align}
+with the minus part requires only for $(0,0)$, $(1,0\text{--}3)$, and $(0\text{--}3,1)$.
+
+
+\subsubsection{Representations}
+\paragraph{Primer}
+As given in \eqref{eq:lorentz4parts},
+a Lorentz transformation is an element of $\gO(1,3)$ and the proper orthochronous part $L_0$ is isomorphic to $\gSO^+(1,3)$, which is doubly covered by $\Spin^+(1,3)=\pm\exp(\GeoA^2(\RR^{1,3}))$.
+The corresponding geometric algebra $\GeoA(\RR^{1,3})$ can be embedded in $\GeoA(\CC^4)\cong\CC^{4\times 4}$ and thus has a representation by complex $4\times4$ matrices:
+\begin{align*}
+&L_0\cong \gSO^+(1,3)\cong\Spin^+(1,3)/\ZZ_2\subset L\cong \gO(1,3)\cong\Pin(1,3)/\ZZ_2 \subset \Gamma(\RR^{1,3})\subset \GeoA^\times(\RR^{1,3})\qquad\text{(as groups)},\\
+&\GeoA(\RR^{1,3})\cong\GeoA(\RR^4)\cong\GeoA(\RR^{0,2})\otimes\GeoA(\RR^{2,0})\cong\RR^{2\times2}\otimes\mathbb{H},\qquad
+\GeoA(\RR^{1,3})\otimes_\RR \CC\cong\GeoA(\CC^4)\cong\CC^{4\times4},\\
+&\GeoA(\CC^4)\cong\GeoA(\RR^{1,4})\quad\text{if $(e_0e_1e_2e_3e_4)^2=-1$ }\qquad\text{(as algebras)}.
+\end{align*}
+The above equations are slightly modified for $(\mppp)$-metric. In particular,
+$\GeoA(\RR^{3,1})\cong\GeoA(\RR^{2,0})\otimes\GeoA(\RR^{1,1})\cong\RR^{4\times 4}$ and
+$\GeoA(\RR^{3,1})\otimes_\RR \CC\cong\CC^{4\times4}$.
+
+The isomorphism $\GeoA(\RR^{1,3})\cong\RR^{2\times2}\otimes\mathbb{H}$ motivates the representation
+\begin{equation}
+  g^\mu\req\left\{\spmat{1&0\\0&-1},\spmat{0&\ii\\\ii&0},\spmat{0&\mathrm{j}\\\mathrm{j}&0},\spmat{0&\mathrm{k}\\\mathrm{k}&0}\right\}.
+\end{equation}
+Here and hereafter, $\req$ denotes that the algebraic object in the left-hand side is represented by a matrix in the right-hand side.
+The basis of $\GeoA(\RR^{1,3})$ is represented by, with representing the elementary quaternions $\mathrm{i,j,k}$ by $q$,
+\[
+  1\req\spmat{1&0\\0&1},~~
+  g^\mu\req\spmat{1&0\\0&-1},\spmat{0&q\\q&0},~~
+  \tfrac12[g^0,g^i]\req\spmat{0&q\\-q&0},~~
+  \tfrac12[g^{i+1},g^{i+2}]\req\spmat{q&0\\0&q},~~
+  g^\mu I\req\spmat{0&-1\\-1&0},\spmat{q&0\\0&-q},~~
+  I\req\spmat{0&-1\\1&0},
+\]
+which explicitly shows that they span $\RR^{2\times2}\otimes\mathbb{H}$.
+However, this representation has little connection to the popular ones.
+Although we get $4\times4$ matrices
+$
+  g^\mu=\left\{\spmat{1&0\\0&-1},-\ii\spmat{0&\sigma_i\\-\sigma_i&0}\right\}
+$
+by replacing quaternions by Pauli matrices $\mathrm{\{i,j,k\}}\mapsto-\ii\{\sigma_1,\sigma_2,\sigma_3\}$, we need to perform a basis change, $\hat\gamma^\mu=\hat R^{-1}g^\mu \hat R$ with $\hat R=\diag(1,1,\ii,\ii)$, to reach the Dirac representation, but this is not allowed within $V=\RR$.
+
+\paragraph{Dirac and Chiral representations}
+We instead use the isomorphism $\GeoA(\RR^{2,3})\cong\GeoA(\CC^4)$. By defining $g^5\deq\ii g^0g^1g^2g^3$,
+\[
+\{g^0,g^1,g^2,g^3,g^5\}\req \left\{\spmat{1&0\\0&-1},-\ii\spmat{0&\sigma_i\\-\sigma_i&0},\spmat{0&-\ii\\\ii&0}\right\}
+\]
+forms a basis of $\GeoA(\RR^{2,3})$ and thus the 32 combinations among them form a basis of $\CC^{4\times4}$.
+Then, we are allowed to use the above $\hat R=\diag(1,1,\ii,\ii)$ to get the Dirac representation and the Chiral representation:
+\begin{align}
+&\hat\gamma^0=\hat R^{-1}g^0 \hat R=\spmat{1&0\\0&-1},\quad
+\hat\gamma^i=\hat R^{-1}g^i \hat R=\spmat{0&\sigma^i\\-\sigma^i&0},\quad
+\hat\gamma^5=\hat R^{-1}g^5 \hat R=\ii\hat\gamma^0\hat\gamma^1\hat\gamma^2\hat\gamma^3=\spmat{0&1\\1&0},\\
+&\gamma^0=R^{-1}g^0 R=\spmat{0&1\\1&0},\quad
+\gamma^i=R^{-1}g^i R=\spmat{0&\sigma^i\\-\sigma^i&0},\quad
+\gamma^5=R^{-1}g^5 R=\ii\gamma^0\gamma^1\gamma^2\gamma^3=\spmat{-1&0\\0&1};\quad
+R\deq\spmat{1&1\\-\ii&\ii}.
+\end{align}
+The pseudoscalar is $I=-\ii$ in both representations.
+(Notice that, for $(\mppp)$-metric, we should use $\GeoA(\RR^{4,1})\cong\GeoA(\CC^4)$ by defining $g^5\deq g^0g^1g^2g^3$, where $I=-\ii$; this choice is not included in the following discussion.)
+
+In Chiral or Dirac representation, the conjugate operations are given by, with $A^{\TT*}$ being  the conjugate-transpose of $A$,
+\begin{equation}
+  \text{Grade involution:}\quad -\gamma^2 A^* \gamma^2,\qquad
+  \text{Reversion}\quad \gamma^1\gamma^3 A^\TT \gamma^3\gamma^1,\qquad
+  \text{Clifford conjugate}\quad \gamma^5\gamma^0A^{\TT*}\gamma^0\gamma^5.
+\end{equation}
+Note that $\gamma^a$ and $\hat\gamma^a$ are all unitary (and traceless) and the 32 basis matrices are all unitary.
+
+Let us give the explicit expressions for the spaces. The vector space $V$ is given by
+\begin{equation}
+V=\{v_0\gamma^0+\cdots+v_4\gamma^5\mid v_i\in\RR\},
+\end{equation}
+where all the elements are traceless.
+The inner product and norm are given by
+\begin{equation}
+B(v,w)=(vw+wv)/2=(v_0w_0-v_1w_1-v_2w_2-v_3w_3+v_4w_4)E,\quad
+Q(v)=vv=(v_0^2-v_1^2-v_2^2-v_3^2+v_4^2)E,
+\end{equation}
+where $E$ is the $4\times 4$ identity matrix. Since $v^\dagger=v$, $v^\star=-v$, and $vv^\dagger =Q(v)$, and $\det v=Q(v)^2$ for $v\in V$,
+\begin{equation}
+V^\times=\{v\in V \mid  \det v>0\},\quad
+v^{-1}=v/Q(v).
+\end{equation}
+The versor group $\Gamma$ is characterized by the invertible matrices $v_1,\dots, v_n$, and thus $5n$ real numbers $v_{10},\dots, v_{n4}$:
+\begin{equation}
+  \Gamma(2,3)=\{v_1v_2\cdots v_n\mid v_i\in V, \det v_i>0\}.
+\end{equation}
+For $x=v_1\cdots v_n\in \Gamma$, $xx^\dagger = v_1\cdots v_n v_n^\dagger\cdots v_1^\dagger=\prod Q(v_i)$. Therefore,
+\begin{equation}\begin{split}
+  &\Pin(2,3)=\{v_1v_2\cdots v_n\mid v_i\in V, \det v_i=1\},\\
+  &\Spin(2,3)=\{v_1v_2\cdots v_{2n}\mid v_i\in V, \det v_i=1\},\qquad
+  \Spin^+(2,3)=\{v_1v_2\cdots v_{2n}\mid v_i\in V, Q(v_i)=1\}.
+\end{split}\end{equation}
+The epimorphism $\tAd$, which induces the isomorphism $\Gamma(2,3)/\RR^\times\cong\Pin(2,3)/\ZZ_2\cong \gO(2,3)$, is described as
+\begin{align*}
+&x\in\Gamma,\quad x\req x_1\cdots x_n,\quad x_i\in V, \\
+&v\in V, \quad v \req v_0\gamma^0+\cdots+v_4\gamma^5,\quad v_a\in\RR,\qquad
+\tAd_x(v)=x^\star v x^{-1}\in V
+\end{align*}
+and it preserves the norm: $Q(\tAd_x(v))=\tAd_x(v)\tAd_x(v)=Q(v)=vv$.
+If $s\in\Pin(2,3)$,
+\[
+\tAd_s(v)=s^\star v s^{-1}=(-1)^ns_1\cdots s_n\,v\,s_n\cdots s_1.
+\]
+
+\paragraph{Lorentz Group} Consider $\tAd_w(v)$ with $w=w_a\gamma^a$ limited to $V$. If $w_5=0$, $\tAd_w$ does not modify the fifth component. So, we can restrict $\Gamma(2,3)$ to $\Gamma(1,3)$ and so on:
+\begin{align}
+  &V_4=\{v_0\gamma^0+\cdots+v_3\gamma^3\mid v_i\in\RR\};\\
+  &\text{for~} x\in \{x_1x_2\cdots x_n\mid x_i\in V_4,\det x_i=1\},\qquad \tAd_x\text{~corresponds to an element in~}\gO(1,3) \quad\text{(double cover)}.
+\end{align}
+Note that, for $v\in V_4$,
+\[
+  v^{-1}=v/Q(v),\quad
+  v^*=-\gamma^2 v^\star \gamma^2=\gamma^2 A\gamma^2,\quad
+  v^\TT=\gamma^1\gamma^3 v\gamma^3\gamma^1,\quad
+  v^{\TT*}=\gamma^0 v\gamma^0.
+\]
+
+The group $\Spin^+(1,3)$ is simply connected and isomorphic to $\pm\exp(\GeoA^2(\RR^{1,3}))$, where
+\begin{equation}
+  \GeoA^2(\RR^{1,3})=\mathop{\mathrm{span}}\left[
+    \gamma^0\gamma^i\req\spmat{-\sigma^i&0\\0&\sigma^i},\quad
+    \gamma^i\gamma^j\req\epsilon^{ijk}\spmat{-\ii\sigma^k&0\\0&-\ii\sigma^k}.
+   \right],
+\end{equation}
+and, in this representation, the isomorphism \TODO{???} is explicit.
+
+\paragraph{Spinor} In Chiral representation, a matrix $v=v_0\gamma^0+\cdots+v_3\gamma^3$ in $V_4$ can be expressed by
+\[
+ v = \psi\psi^{\TT*}\gamma^0;\quad \psi\deq
+ \frac{1}{\sqrt{2(v_0-m)}}
+ \left[(v_0 - m)\gamma^0 + v_1\gamma^1 + v_2\gamma^2 + v_3\gamma^3\right],\quad m\deq\sqrt{v_0^2-v_1^2-v_2^2-v_3^2}.
+\]
+Thus, the operation $\tAd_s(v)$ is written by
+\[
+\tAd_s(v)=s^\star v s^{-1}
+=(-1)^ns_1\cdots s_n \psi\psi^{\TT*}\gamma^0 s_n\cdots s_1
+=(-1)^n(s_1\cdots s_n \psi)(s_1\cdots s_n\psi)^{\TT*}\gamma^0.
+\]
+and each column of $\psi$ is understood as a Dirac spinor.
+With identifying, as usual, $v_\mu$ as the momentum, we have
+\[
+\psi= \frac{1}{\sqrt{2\tilde E}}\pmat{
+  0 & 0 & \tilde E+p_z & \rho^* \\
+  0 & 0 & \rho & \tilde E-p_z \\
+  \tilde E-p_z & -\rho^* & 0 & 0 \\
+  -\rho & \tilde E+p_z & 0 & 0 \\
+};\qquad \rho\deq p_x+\ii p_y\in\CC,\quad \tilde E\deq E-m\in\RR.
+\]
+
+
+
+
+\subsubsection{Fragments}
+\paragraph{For Minkowski spacetime}
 Also, for our interest, there are isomorphisms~\cite{RauschdeTraubenberg:2005aa,Yamaguchi:spinor}
 \begin{equation}
   \GeoA(\RR^{4,1})\cong \GeoA(\RR^{1,3})\otimes \CC \cong \GeoA(\CC^4)\cong\CC^{4\times4},\qquad
@@ -393,67 +622,7 @@ $\aSO(1,3)_{\mathbb C}$ is isomorphic to $
 \aSU(2)_{\mathbb C}\oplus\aSU(2)_{\mathbb C}
 =\aSL(2,\mathbb C)\oplus\aSL(2,\mathbb C)$.
 
+\TODO{SO algebra and Grade-2 Clifford Algebra}
 
-
-\paragraph{Clifford algebra and spin group}\TODO{needs experts...}
-We just provide a little information on spin group $\mathop{\mathrm Spin}(1,3)$ associated to (our) Minkowski metric $\eta=\diag(+,-,-,-)$:~\cite{RauschdeTraubenberg:2005aa,Yamaguchi:spinor,Wikipedia:Clifford_Algebra}. To define the Clifford algebra $\mathfrak C(V,Q)$, let
-\begin{itemize}
- \item[$V$]: a vector space over a field $K$; in our case, $V=\mathbb R^{1,3}$ and $K=\mathbb R$.
- \item[$Q$]: a quadratic form on $V$,
- \item[$A$]: %
-  a unital associative algebra over $K$; it means that $(A, +, \ast)$ is a ring and is also a vector space on $K$, it should satisfy
-  $(k a_1)\ast a_2=a_1\ast(ka_2)=k(a_1\ast a_2)$ for $a_i\in A$ and $k\in K$, and it should contain $1_A$ such that $1_A\ast a=a\ast 1_A=a$;
-  here a map $f:K\to A$ with $f(k)=k1_A$ is an injective ring homomorphism, with which $K$ can be included in $A$.
-\end{itemize}
-Then we can define a linear map $i:V\to \mathfrak C(V,Q)$ satisfying $i(v)\ast i(v)=Q(v)1_A$ for all $v\in V$ as follows, which defines the Clifford algebra.
-Given a linear map $j:V\to A$ satisfying $j(v)\ast j(v)=Q(v)1_A$ for all $v\in V$, there is a unique algebra homomorphism $f:\mathfrak C(V,Q)\to A$ such that $f\circ i=j$.
-
-We focus on $\mathbb R^{1,3}$ and $Q(v)=\eta_{\mu\nu}v^\mu v^\nu$ (Minkowski norm). Then, by introducing the basis $e_\mu$ of $V$, the condition yields
-\begin{align}
-& (v^2+2v^\mu w_\mu + w^2)1_A = [j(v)+j(w)]\ast[j(v)+j(w)] = (v^2+w^2)1_A+j(v)\ast j(w)+j(w)\ast j(v),\notag\\
-&\therefore \{j(v),j(w)\}=2v^\mu w_\mu 1_A
-\text{~~and thus~~} \{e_\mu,e_\nu\}=2\eta_{\mu\nu} 1_A.\label{eq:ClifAl}
-\end{align}
-The Clifford algebra $\mathfrak C(\mathbb R^{1,3},\eta)$ is thus seen as the associative algebra generated by $\{1_A, e_0, e_1, e_2, e_3\}$ satisfying \cref{eq:ClifAl}.
-
-Several properties of the Clifford algebra $\mathfrak C_{1,3}$ is in order:
-\begin{itemize}
- \item It is of dimension $2^4=16$ and the basis is given by
-$\{1, e_\mu, (e_\mu e_\nu)_{\mu<\nu}, (e_\mu e_\nu e_\rho)_{\mu<\nu<\rho}, e_0e_1e_2e_3\}.$
- \item It contains a subalgebra $\mathfrak C^0_{1,3}$ spanned by $\{1, e_\mu e_\nu, e_0e_1e_2e_3\}$, while the remaining vector space $\mathfrak C^1_{1,3}$ is by $\{e_\mu, e_\mu e_\nu e_\rho\}$.
- \item We define $\epsilon=e_0e_1e_2e_3$, which satisfies $\epsilon^2=-1$ and $[\epsilon,\mathfrak C^0_{1,3}]=\{\epsilon,\mathfrak C^1_{1,3}\}=0$.
- \item $\aSO(1,3)\subset\mathfrak C_{1,3}$; explicitly, the generators are given by $S_{\mu\nu}:={[e_\mu,e_\nu]}/{4}$, which satisfy
-\begin{equation}
- [S_{\mu\nu},e_\rho] = e_\mu\eta_{\nu\rho}-e_\nu\eta_{\mu\rho},\qquad
- [S_{\mu\nu},S_{\rho\sigma}] = 
--\eta_{\mu\rho}S_{\nu\sigma}
-+\eta_{\nu\rho}S_{\mu\sigma}
-+\eta_{\mu\sigma}S_{\nu\rho}
--\eta_{\nu\sigma}S_{\mu\rho}.
-\end{equation}
-\end{itemize}
-
-The Clifford group is defined by
-\begin{equation}
-\Gamma_{1,3}=\{x\in\mathfrak C_{1,3}\mathbin|\forall v\in \mathbb R^{1,3}, xvx^{-1}\in \mathbb R^{1,3}\},
-\end{equation}
-i.e., $x$ should return a ``vector'' $v^\nu e_\nu\in \mathbb R^{1,3}$ into another ``vector'', which in fact corresponds to the Lorentz transformation:
-$xe_\nu x^{-1} = (\Lambda^{-1})_\nu{}^\mu e_\mu$.
-The correspondence is however one-to-$N$, and thus it should be normalized by the squared-norm $N(x)$
-\begin{equation}
- N(x)=x\overline{x};\qquad\overline{e_\mu}=e_\mu,\quad\overline{ke_\mu e_\nu e_\rho}=ke_\rho e_\nu e_\mu, \text{etc., where $k\in\mathbb R$}.
-\end{equation}
-Then, we define
-\begin{align*}
- \mathop{\mathrm{Pin}}(1,3)&=\{x\in\Gamma_{1,3}\mathbin||N(x)|=1\},&
- \mathop{\mathrm{Spin}}(1,3)&=\mathop{\mathrm{Pin}}(1,3)\cap \mathfrak C^0_{1,3},&
- \mathop{\mathrm{Spin}}(1,3)^+&=\{x\in\mathop{\mathrm{Spin}}(1,3)\mathbin|N(x)=1\},
-\end{align*}
-whose properties are in order:
-\begin{itemize}
- \item $\mathop{\mathrm{[S]pin}}(1,3)$ is a double covering of $\mathop{\mathrm{[S]O}}(1,3)$ but it is not connected.
- \item $\mathop{\mathrm{Spin}}(1,3)^+$ is a connected Lie group and is a double covering of $\gSO(1,3)^+$.
- \item $\mathop{\mathrm{Spin}}(1,3)^+\cong\gSL(2;\mathbb C)\cong\gSp(2;\mathbb C)$.
-\end{itemize}
 
 \end{document}

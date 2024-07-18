@@ -1,4 +1,4 @@
-% Time-Stamp: <2024-07-11 15:07:46>
+% Time-Stamp: <2024-07-18 09:46:00>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{MishoNote}[2022/11/23 Sho Iwamoto]
 

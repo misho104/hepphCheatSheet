@@ -1,5 +1,5 @@
 %#!lualatex
-% Time-stamp: <2024-07-15 19:54:25>
+% Time-stamp: <2024-08-02 20:36:25>
 \documentclass[10pt]{CheatSheet}
 \usepackage{subfiles,tensor}
 \usepackage[inline,shortlabels]{enumitem}
@@ -21,6 +21,7 @@
 
 \setotherlanguages{russian}
 \newcommand*\RUSSIAN[1]{\russian#1\endrussian}
+\setmathfont{FiraMath-Regular.otf}[range={\dot,\ddot,\dddot}]
 
 \makeatletter
   % automatic bibliography
@@ -75,6 +76,9 @@
 \DeclareMathOperator{\GeoA}     {\mathcal{G}}
 \DeclareMathOperator{\Pin}{\mathrm{Pin}}
 \DeclareMathOperator{\Spin}{\mathrm{Spin}}
+\DeclareMathOperator{\tAd}{\widetilde{\mathrm{Ad}}}
+\newcommand*\req{\circeq}
+
 %\DeclareMathSymbol{\setdiff}{\mathbin}{AMSb}{"025B5}
 \newcommand{\setdiff}{\mathbin{\vartriangle}}
 \AtBeginDocument{
@@ -201,7 +205,8 @@
 \newcommand*\Lubanski{Luba\'nski\xspace}
 \newcommand*\AstroSun{☉}
 \newcommand*\AstroEarth{⊕}
-
+\newcommand*\pmmm{\mathord{+}\mathord{-}\mathord{-}\mathord{-}}
+\newcommand*\mppp{\mathord{-}\mathord{+}\mathord{+}\mathord{+}}
 
 \begin{document}
 \setcounter{page}{0}
