@@ -1,4 +1,4 @@
-% Time-Stamp: <2024-07-18 09:46:00>
+% Time-Stamp: <2025-02-09 19:02:09>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{MishoNote}[2022/11/23 Sho Iwamoto]
 
@@ -230,7 +230,7 @@ end
 \oddsidemargin\@tempdima\relax
 \evensidemargin\oddsidemargin\relax
 
-% baselineskip = 1.242em = 4.77988mm
+% baselineskip = 1.242em = 4.77988mm = 13.6pt if 11pt (defined in size11.clo)
 \parskip=0mm plus .5mm
 \parsep=1mm plus .5mm minus 1mm
 
@@ -435,10 +435,13 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{amsmath}
+\usepackage[capitalize,english]{cleveref}
+\usepackage[inline,shortlabels]{enumitem}
+
 \usepackage[xparse,skins]{tcolorbox}
 \tcbuselibrary{breakable,theorems}
 \tcbsetforeverylayer{
-  parbox=false,
   boxsep=0mm,
   before skip balanced=12pt plus 3pt minus 9pt,
   after skip balanced=12pt plus 3pt minus 9pt
@@ -451,18 +454,24 @@ end
 % invert-rescaling only for margin and padding, not for bar.
 % width = textwidth - trueleftskip
 
+\newlength\BaseShift\setlength\BaseShift{15mm}
+\newlength\BaseTab  \setlength\BaseTab  {2.5em}
+
+\newcommand\TAB[1][1]{\hspace*{#1\BaseTab}}
+
 \newdimen\NoteBoxWidthA
 \NoteBoxWidthA\textwidth
-\advance\NoteBoxWidthA-15mm
+\advance\NoteBoxWidthA-\BaseShift
 
 \DeclareTColorBox[use counter=NoteBox]{NoteBox}{O{}}{%
   reset,enhanced,
   title={\theNoteBox},
   boxrule=0pt,frame hidden,
   borderline west={2mm}{\z@}{gray!50},colback=gray!10,
-  left skip=17.647mm, left=4.706mm, width=1.176\NoteBoxWidthA,
+  left skip=1.176\BaseShift, left=4.706mm, width=1.176\NoteBoxWidthA,
   coltitle=black,fonttitle=\headfont\bfseries,
   scale=0.85,
+  before skip=0mm, after skip=0mm,
   attach title to upper,after title={:~},#1
 }
 \newcommand\Note[1]{\begin{NoteBox}#1\end{NoteBox}}
@@ -472,7 +481,7 @@ end
   title={Remark},
   boxrule=0pt,frame hidden,
   borderline west={2mm}{\z@}{gray!50},colback=gray!10,
-  left skip=15mm, left=4mm,
+  left skip=\BaseShift, left=4mm,
   coltitle=black,fonttitle=\headfont\bfseries,
   attach title to upper,after title={:~},#1
 }
@@ -481,7 +490,7 @@ end
 \DeclareTColorBox[]{DownPara}{}{%
   reset,enhanced,
   interior hidden,frame hidden,
-  left skip=15mm,left=0pt,boxrule=0pt,right=0pt
+  left skip=\BaseShift,left=0pt,boxrule=0pt,right=0pt
 }
 
 \renewcommand\theNoteBox{$\sharp$\@arabic\c@NoteBox}
@@ -496,6 +505,33 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\renewcommand\theenumi{\@roman\c@enumi}
+\renewcommand\theenumii{\@alph\c@enumii}
+\renewcommand\theenumiii{\@arabic\c@enumiii}
+\renewcommand\theenumiv{\@Alph\c@enumiv}
+\renewcommand\labelenumi{{\sffamily\theenumi.}}
+\renewcommand\labelenumii{{\sffamily(\theenumii)}}
+\renewcommand\labelenumiii{{\sffamily\theenumiii.}}
+\renewcommand\labelenumiv{{\sffamily\theenumiv.}}
+\renewcommand\p@enumii{{\sffamily\theenumi}}
+\renewcommand\p@enumiii{{\sffamily\theenumi(\theenumii)}}
+\renewcommand\p@enumiv{{\sffamily\p@enumiii\theenumiii}}
+
+\DeclareRobustCommand\styleproblem[1]{{\sffamily\bfseries #1}}
+
+%%% To be rewritten
+%\DeclareRobustCommand\misho@ref[4]{%
+%  #1~\ref{#2#3}\if#4\relax\relax\else.{\sffamily\@roman#4}\fi}
+%\newcommand{\thmref}[2][\relax]{\misho@ref{Theorem}{thm:}{#2}{#1}}
+%\newcommand{\defref}[2][\relax]{\misho@ref{Definition}{def:}{#2}{#1}}
+%\newcommand{\exaref}[2][\relax]{\misho@ref{Example}{exa:}{#2}{#1}}
+%\newcommand{\eqnref}[2][\relax]
+%
+%\NewDocumentCommand\keyref{sm}{%
+%  \IfBooleanTF{#1}{{\sffamily\@roman#2}}{{\bfseries\sffamily\@roman#2)}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcounter{NoteAnchor}
 
 \def\NoteBoxStack{}
@@ -506,7 +542,7 @@ end
   \protected@xdef\NoteBoxStack{\@NoteBoxStack\noexpand\OutputNote@{\notetag}{#3}}%
   \mbox{$^{\text{\ref{Note:\notetag}}}$}\relax}
 \def\OutputNote@#1#2{{\NoteBox[label=Note:#1]{#2}\endNoteBox}\relax}
-\def\OutputNote{\NoteBoxStack\global\def\NoteBoxStack{}}
+\def\OutputNote{\par\vspace{3mm}\NoteBoxStack\global\def\NoteBoxStack{}\par\vspace{3mm}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -525,7 +561,7 @@ end
   left*=3mm,right*=3mm,
 },myproofbox/.style={%
   reset,enhanced,sidebyside,sidebyside align=top,
-  lefthand width=15mm,lower separated=false,
+  lefthand width=\BaseShift,lower separated=false,
   interior hidden,frame hidden,left=0mm,boxrule=0mm,right=0mm,
   boxsep=0mm,sidebyside gap=0mm,middle=0mm
 },myprobbox/.style={%
@@ -536,7 +572,7 @@ end
 },myquizbox/.style={%
   reset,enhanced,boxrule=0pt,frame hidden,
   borderline west={2mm}{\z@}{pLightOrange},colback=pLightOrange!15,
-  left skip=15mm, left=4mm,
+  left skip=\BaseShift, left=4mm,
 }}
 
 \newtcbtheorem{theorem}{Theorem}{mytheobox}{thm}
@@ -546,7 +582,7 @@ end
 \newtcbtheorem[use counter from=theorem]{example}{Example}{
   reset,enhanced,frame hidden,interior hidden,
   borderline west={0.7mm}{0.65mm}{pBlue},
-  left skip=15mm,left=4mm,top=2mm,bottom=2mm,toptitle=1mm,bottomtitle=1mm,
+  left skip=\BaseShift,left=4mm,top=2mm,bottom=2mm,toptitle=1mm,bottomtitle=1mm,
   coltitle=pBlue,fonttitle=\headfont\bfseries,
   underlay unbroken and first={\draw[line width=1pt,dashed,pBlue]
       ([xshift=2.5mm]title.south west)--([xshift=-70mm]title.south east);}}{exa}
@@ -558,32 +594,23 @@ end
   \ifmmode $\QED$\else\leavevmode\unskip\penalty9999 \hbox{}\nobreak%
   \hfill\quad\hbox{$\QED$}\fi}
 
-\newenvironment{ProblemBox}{\begin{tcolorbox}[myprobbox]}{\end{tcolorbox}}
-\newenvironment{QuizBox}   {\begin{tcolorbox}[myquizbox]}{\end{tcolorbox}}
+\SetEnumitemKey{ProblemList}{align=left,labelwidth=\BaseTab,itemsep=4mm,labelsep=.5em,labelindent=\z@}
+\SetEnumitemKey{QuizList}   {align=left,labelwidth=\BaseTab,leftmargin=\z@,itemsep=4mm,itemindent=\BaseTab}
 
-\newenvironment{problems}{%
-  \advance\@enumdepth\@ne
-  \begin{tcolorbox}[myprobbox]
-   \list{}{\labelwidth2.5em\leftmargin2.5em\itemsep4mm\labelsep.5em\itemindent\z@%
-    \let\makelabel\descriptionlabel}%
-}{\endlist\end{tcolorbox}}
-
-\newenvironment{quizzes}{%
-  \advance\@enumdepth\@ne
-  \begin{tcolorbox}[myquizbox]
-   \list{}{\labelwidth\z@ \itemsep4mm \leftmargin0mm \itemindent-\leftmargin%
-     \let\makelabel\descriptionlabel}
-}{\endlist\end{tcolorbox}}
-
-\newcommand*\problem@label[1]{\hspace\labelsep\sffamily\bfseries #1}
 \newcounter{Problem}
-\renewcommand\theProblem{\thesection.\@arabic\c@Problem}
-\@addtoreset{Problem}{section}
-\NewDocumentCommand\new@problem{mmm}{%
-  \stepcounter{Problem}%
-  \item[#1~\theProblem]\IfValueTF{#2}{{\sffamily[$\medblackstar$#2]\kern1em}}{}\relax\relax#3}
-\NewDocumentCommand\Quiz{om}{\new@problem{Quiz}{#1}{#2}}
-\NewDocumentCommand\Problem{som}{\new@problem{\IfBooleanTF{#1}{Problem}{Problem\*}}{#2}{#3}}
+%\renewcommand\theProblem{\thesection.\@arabic\c@Problem}
+%\@addtoreset{Problem}{section}
+\newenvironment{problems}{%
+  \begin{tcolorbox}[myprobbox]\stepcounter{Problem}%
+  \begin{enumerate}[ProblemList,start=\value{Problem},label=\styleproblem{Problem~\Alph*}]%
+}{\end{enumerate}\end{tcolorbox}\setcounter{Problem}{\value{enumi}}}
+\newenvironment{quizzes}{%
+  \begin{tcolorbox}[myquizbox]\stepcounter{Problem}%
+  \begin{enumerate}[QuizList,start=\value{Problem},label=\styleproblem{Quiz~\Alph*}]%
+}{\end{enumerate}\end{tcolorbox}\setcounter{Problem}{\value{enumi}}}
+\NewDocumentCommand\new@problem{+m}{\refstepcounter{Problem}\item}
+\let\Problem\new@problem % should be customized in each style
+\let\Quiz\new@problem    % should be customized in each style
 
 \newenvironment{miniitemize}{\itemize\@topsep=\parsep\parskip=0mm}{\enditemize}
 
@@ -608,44 +635,19 @@ end
 },myquizbox/.style={%
   reset,enhanced,boxrule=0pt,frame hidden,
   borderline west={2mm}{\z@}{black!30},colback=white,
-  left skip=15mm, left=4mm,
+  left skip=\BaseShift, left=4mm,
 }}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand\theenumi{\@roman\c@enumi}
-\renewcommand\theenumii{\@alph\c@enumii}
-\renewcommand\theenumiii{\@arabic\c@enumiii}
-\renewcommand\theenumiv{\@Alph\c@enumiv}
-\renewcommand\labelenumi{{\sffamily\theenumi.}}
-\renewcommand\labelenumii{{\sffamily(\theenumii)}}
-\renewcommand\labelenumiii{{\sffamily\theenumiii.}}
-\renewcommand\labelenumiv{{\sffamily\theenumiv.}}
-\renewcommand\p@enumii{{\sffamily\theenumi}}
-\renewcommand\p@enumiii{{\sffamily\theenumi(\theenumii)}}
-\renewcommand\p@enumiv{{\sffamily\p@enumiii\theenumiii}}
-
-\DeclareRobustCommand\misho@ref[4]{%
-  #1~\ref{#2#3}\if#4\relax\relax\else.{\sffamily\@roman#4}\fi}
-\newcommand{\thmref}[2][\relax]{\misho@ref{Theorem}{thm:}{#2}{#1}}
-\newcommand{\defref}[2][\relax]{\misho@ref{Definition}{def:}{#2}{#1}}
-\newcommand{\exaref}[2][\relax]{\misho@ref{Example}{exa:}{#2}{#1}}
-
-\NewDocumentCommand\keyref{sm}{%
-  \IfBooleanTF{#1}{{\sffamily\@roman#2}}{{\bfseries\sffamily\@roman#2)}}}
-
-\DeclareRobustCommand\Advanced{\BLUE{$\clubsuit$}~}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \usepackage{fancyvrb,ifplatform,listings}
-\lstset{columns=[l]fullflexible,basicstyle=\ttfamily\small,xleftmargin=15mm,frame=L,keepspaces=true}
+\lstset{columns=[l]fullflexible,basicstyle=\ttfamily\small,xleftmargin=\BaseShift,frame=L,keepspaces=true}
 \CustomVerbatimCommand{\code}{Verb}{}
 \CustomVerbatimCommand{\filepath}{Verb}{formatcom=\color{pGreen}\bfseries}
 \ifshellescape
 \usepackage{minted}
-\def\minted@formatter{lib/minted_formatter.py -x}
-\setminted{linenos,xleftmargin=15mm,breaklines,fontsize=\small,frame=leftline,stepnumber=5,framesep=2\fboxsep,escapeinside=!!,mathescape=true}
+\def\minted@formatter{lib/minted_formatter.py -x} % just in case of customized minted
+\setminted{linenos,xleftmargin=\BaseShift,breaklines,fontsize=\small,frame=leftline,stepnumber=5,framesep=2\fboxsep,escapeinside=!!,mathescape=true}
 %\setminted[console]{xleftmargin=1fboxsep,frame=none}
 \usemintedstyle[wolfram]{mathematica}
 \else
@@ -766,18 +768,18 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{subcaption,booktabs,wrapfig,slashed,xspace,braket,cancel,amsmath}
+\usepackage{subcaption,booktabs,wrapfig,slashed,xspace,braket,cancel}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[capitalize,english]{cleveref}
-
 \renewcommand\thefootnote{*\arabic{footnote}}
 \numberwithin{equation}{section}
+\newcommand\hrefFN[2]{\href{#1}{#2}\addnote{\url{#1}}}
 
 \urlstyle{englishfonttt}
 \DeclareTextFontCommand{\textbfsf}{\bfseries\sffamily}
 \DeclareRobustCommand{\Emph}{\@ifstar\textbfsf\textbf}
+\DeclareRobustCommand\Advanced{\BLUE{$\clubsuit$}~}
 
 \newcommand\package[2][\relax]{\texttt{#2}\ifx#1\relax\relax\else~\texttt{#1}\fi}
 

@@ -1,4 +1,4 @@
-% Time-Stamp: <2022-06-24 23:32:55>
+% Time-Stamp: <2025-02-09 17:12:58>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{CheatSheet}[2022/05/10 Sho Iwamoto]
 
@@ -73,5 +73,5 @@
                                       {\headfont\normalsize\bfseries}}
 
 \newenvironment{lalignat}{\begingroup\@mathmargin\z@\start@align\z@\st@rredfalse}{\endalign\endgroup}
-\newenvironment{lalignat*}{\begingroup\@mathmartin\z@\start@align\z@\st@rredtrue}{\endalign\endgroup}
-
+\newenvironment{lalignat*}{\begingroup\@mathmargin\z@\start@align\z@\st@rredtrue}{\endalign\endgroup}
+\newcommand\llabel[1]{&\text{#1}\quad&&}

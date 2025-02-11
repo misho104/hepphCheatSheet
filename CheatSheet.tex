@@ -1,5 +1,5 @@
 %#!lualatex
-% Time-stamp: <2024-08-02 20:36:25>
+% Time-stamp: <2025-02-10 09:14:14>
 \documentclass[10pt]{CheatSheet}
 \usepackage{subfiles,tensor}
 \usepackage[inline,shortlabels]{enumitem}
@@ -19,12 +19,13 @@
   pdflicenseurl={https://creativecommons.org/licenses/by-nc/4.0/},
 }
 
-\setotherlanguages{russian}
-\newcommand*\RUSSIAN[1]{\russian#1\endrussian}
-\setmathfont{FiraMath-Regular.otf}[range={\dot,\ddot,\dddot}]
-
 \makeatletter
-  % automatic bibliography
+
+  \setotherlanguages{russian}
+  \newcommand*\RUSSIAN[1]{\russian#1\endrussian}
+  \setmathfont{\misho@font@math}[range={\dot,\ddot,\dddot},FakeBold=3]
+
+% automatic bibliography
   \AtEndDocument{\clearpage\begingroup\hbadness=8000\orig@bibliography{CheatSheet}\endgroup}%
   \let\orig@bibliography\bibliography
   \let\bibliography\@gobble
@@ -59,6 +60,9 @@
  % tex.print(string.sub(\luastring{#1}, 1, 5) == "PDG20" and "\\bibitemPDG[#1]" or "\\bibitemGeneral")}{#1}}
 \makeatother
 
+\newcommand*\diracdeltabar[1][]{\qopname\relax o{\ifx\\#1\\\overline{\mathrm{2\pi\delta}}\else\overline{\mathrm{2\pi\delta}^{(#1)}}\fi}}
+
+
 \DeclareMathOperator{\gSU}{\mathrm SU}
 \DeclareMathOperator{\gSO}{\mathrm SO}
 \DeclareMathOperator{\gSL}{\mathrm SL}
@@ -85,7 +89,7 @@
 %\UnicodeMathSymbol{"025B5}{\setdiff}{\mathbin}{diff}
 }
 \newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
-\newcommand*{\ddP}[2][3]{\frac{\dd^{#1}\ifx3#1\relax\vc{#2}\else#2\fi}{(2\pi)^{#1}}}
+\newcommand*{\ddP}[2][3]{\frac{\dd^{#1}\ifx3#1\relax\vc #2\else#2\fi}{(2\pi)^{#1}}}
 
 \newcommand*\tqL[1][]{\tilde q_{\mathrm{L}#1}}
 \newcommand*\tuL[1][]{\tilde u_{\mathrm{L}#1}}
