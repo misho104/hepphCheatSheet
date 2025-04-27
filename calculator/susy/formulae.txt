@@ -169,10 +169,10 @@ Noting that complex conjugate reverses spinor order: $(\psi^\alpha\xi^\beta)^* :
 \qquad
 \bigl(\bar{\xi}\bsigma^{\mu}\chi\bigr)^*=\bar{\chi}\bsigma^{\mu}\xi
 \qquad
-\bigl(\bar{\chi}\bsigma^{\mu}\sigma^{\nu}\bar{\xi}\bigr)^*=\xi \sigma^{\nu}\bsigma^{\mu}\chi
-\qquad
-(\xi[\text{$\sigma$s}]\chi)^* = \bar\chi[\text{$\sigma$s$_\text{reversed}$}]\bar\xi
+\bigl(\bar{\chi}\bsigma^{\mu}\sigma^{\nu}\bar{\xi}\bigr)^*=\chi \sigma^{\mu}\bsigma^{\nu}\xi=\xi \sigma^{\nu}\bsigma^{\mu}\chi
 \\&
+(\xi[\sigma\sigma\cdots]\chi)^* = \bar\chi[\sigma\sigma\cdots]_\text{reversed}\bar\xi
+\qquad
 (\xi \chi)\psi^{\alpha}=-(\psi \xi)\chi^{\alpha}-(\psi \chi)\xi^{\alpha}
 \qquad
 (\xi \chi)\bar{\psi}_{\dalpha}=\tfrac{1}{2} (\xi \sigma^{\mu}\bar{\psi})(\chi \sigma_{\mu})_{\dalpha}

@@ -304,7 +304,7 @@ FillIndices$sub[a:TDot[RepeatedNull[TensorType]], indextypes_List] := Module[{tm
   indices = Select[FindIndicesToContract[tmp], MemberQ[indextypes, #[[2]]]&];
   If[Length[indices] > 0, SumIndex[tmp, Evaluate[indices[[1]]]], tmp]];
 FillIndices[exp_, indextypes_List] := Module[{tmp = ReleaseHoldAll[exp]},
-  FixedPoint[(# /. {a:TDot[RepeatedNull[TensorType]] :> FillIndices$sub[a, indextypes]})&, tmp]]
+  FixedPoint[(# /. {a:TDot[RepeatedNull[TensorType]] :> ReleaseHoldAll[FillIndices$sub[a, indextypes]]})&, tmp]]
 FillIndices[exp_, indextypes_] := FillIndices[exp, {indextypes}]
 
 

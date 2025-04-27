@@ -1,3 +1,4 @@
+%!TEX program = lualatex
 \documentclass[CheatSheet]{subfiles}
 
 \begin{document}
@@ -79,6 +80,34 @@ C=C^*=-C^{-1}=-C^\dagger=-C^\TT
 (\hat\gamma^\mu)^\TT     = \hat\gamma^0\hat\gamma^2\hat\gamma^\mu\hat\gamma^2\hat\gamma^0,
 \end{align}
 \end{RemarkBox}
+
+
+Defining
+\begin{align}
+ &S^i = \{1\},~~
+&&V^i = \{\gamma^\mu\},~~
+&&T^i = \{\sigma^{\mu\nu}\},~~
+&&A^i = \{\ii\gamma^\mu\gamma_5\},~~
+&&P^i = \{\gamma_5\},\\
+%
+ &S_i = \{1\},~~
+&&V_i = \{\gamma_\mu\},~~
+&&T_i = \{\sigma_{\mu\nu}\},~~
+&&A_i = \{\ii\gamma_\mu\gamma_5\},~~
+&&P_i = \{\gamma_5\},\\
+%
+\end{align}
+
+
+
+\paragraph{Fierz Transformation}
+\begin{align}
+  &(AD)(BC)=-\frac12(AB)(CD)-\frac18(A\sigma^{\mu\nu}B)(C\sigma_{\mu\nu}D)
+  \\
+  &(\bar A\bar D)(\bar B\bar C)=-\frac12(\bar A\bar B)(\bar C\bar D)-\frac18(\bar A\bar \sigma^{\mu\nu}\bar B)(\bar C\bar \sigma_{\mu\nu}\bar D)
+  \\
+  &(AD)(\bar B\bar C)=-\frac12(A\sigma^\mu\bar B)(\bar C\bar\sigma_\mu D)
+\end{align}
 
 \newpage
 \detailstyle

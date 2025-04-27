@@ -184,18 +184,18 @@ TestConjugate[exp1_, exp2_, spinorindices_List, indices_List] := Module[{diff, r
 
 
 (* ::Code:: *)
-(*TestForMatrix[\[Sigma]M[\[Mu]].\[Sigma]bM[\[Nu]], \[Eta]U[\[Mu],\[Nu]]HiddenOne - 2I \[Sigma]M[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
-(*TestForMatrix[\[Sigma]M[\[Mu]].\[Sigma]bM[\[Nu]].\[Sigma]M[\[Rho]] + \[Sigma]M[\[Rho]].\[Sigma]bM[\[Nu]].\[Sigma]M[\[Mu]], 2(\[Eta]U[\[Mu],\[Nu]]\[Sigma]M[\[Rho]]+\[Eta]U[\[Rho],\[Nu]]\[Sigma]M[\[Mu]]-\[Eta]U[\[Mu],\[Rho]]\[Sigma]M[\[Nu]]), {\[Mu], \[Nu], \[Rho]}]*)
+(*TestForMatrix[\[Sigma]M[\[Mu]] . \[Sigma]bM[\[Nu]], \[Eta]U[\[Mu],\[Nu]]HiddenOne - 2I \[Sigma]M[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[\[Sigma]M[\[Mu]] . \[Sigma]bM[\[Nu]] . \[Sigma]M[\[Rho]] + \[Sigma]M[\[Rho]] . \[Sigma]bM[\[Nu]] . \[Sigma]M[\[Mu]], 2(\[Eta]U[\[Mu],\[Nu]]\[Sigma]M[\[Rho]]+\[Eta]U[\[Rho],\[Nu]]\[Sigma]M[\[Mu]]-\[Eta]U[\[Mu],\[Rho]]\[Sigma]M[\[Nu]]), {\[Mu], \[Nu], \[Rho]}]*)
 (**)
-(*TestForMatrix[\[Sigma]bM[\[Mu]].\[Sigma]M[\[Nu]], \[Eta]U[\[Mu],\[Nu]]HiddenOne - 2I \[Sigma]bM[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
-(*TestForMatrix[\[Sigma]M[\[Mu]].\[Sigma]bM[\[Nu]].\[Sigma]M[\[Rho]] - \[Sigma]M[\[Rho]].\[Sigma]bM[\[Nu]].\[Sigma]M[\[Mu]], 2I \[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]\[Sigma]M[,\[CapitalSigma]], {\[Mu], \[Nu], \[Rho]}]*)
+(*TestForMatrix[\[Sigma]bM[\[Mu]] . \[Sigma]M[\[Nu]], \[Eta]U[\[Mu],\[Nu]]HiddenOne - 2I \[Sigma]bM[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[\[Sigma]M[\[Mu]] . \[Sigma]bM[\[Nu]] . \[Sigma]M[\[Rho]] - \[Sigma]M[\[Rho]] . \[Sigma]bM[\[Nu]] . \[Sigma]M[\[Mu]], 2I \[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]\[Sigma]M[,\[CapitalSigma]], {\[Mu], \[Nu], \[Rho]}]*)
 (**)
-(*TestForMatrix[Tr[\[Sigma]M[\[Mu]].\[Sigma]bM[\[Nu]]], 2\[Eta]U[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
-(*TestForMatrix[Tr[\[Sigma]bM[\[Mu]].\[Sigma]M[\[Nu]]], 2\[Eta]U[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
-(*TestForMatrix[\[Sigma]bM[\[Mu]].\[Sigma]M[\[Nu]].\[Sigma]bM[\[Rho]] + \[Sigma]bM[\[Rho]].\[Sigma]M[\[Nu]].\[Sigma]bM[\[Mu]], 2(\[Eta]U[\[Mu],\[Nu]]\[Sigma]bM[\[Rho]]+\[Eta]U[\[Rho],\[Nu]] \[Sigma]bM[\[Mu]]-\[Eta]U[\[Mu],\[Rho]]\[Sigma]bM[\[Nu]]), {\[Mu], \[Nu], \[Rho]}]*)
+(*TestForMatrix[Tr[\[Sigma]M[\[Mu]] . \[Sigma]bM[\[Nu]]], 2\[Eta]U[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[Tr[\[Sigma]bM[\[Mu]] . \[Sigma]M[\[Nu]]], 2\[Eta]U[\[Mu],\[Nu]], {\[Mu],\[Nu]}]*)
+(*TestForMatrix[\[Sigma]bM[\[Mu]] . \[Sigma]M[\[Nu]] . \[Sigma]bM[\[Rho]] + \[Sigma]bM[\[Rho]] . \[Sigma]M[\[Nu]] . \[Sigma]bM[\[Mu]], 2(\[Eta]U[\[Mu],\[Nu]]\[Sigma]bM[\[Rho]]+\[Eta]U[\[Rho],\[Nu]] \[Sigma]bM[\[Mu]]-\[Eta]U[\[Mu],\[Rho]]\[Sigma]bM[\[Nu]]), {\[Mu], \[Nu], \[Rho]}]*)
 (**)
 (*Test[\[Sigma][\[Mu],a,a]\[Sigma]b[,\[Mu],b,b],  2\[Delta][a,b]\[Delta]d[b,a], {a,OverDot[a],b,OverDot[b]}]*)
-(*TestForMatrix[\[Sigma]bM[\[Mu]].\[Sigma]M[\[Nu]].\[Sigma]bM[\[Rho]] - \[Sigma]bM[\[Rho]].\[Sigma]M[\[Nu]].\[Sigma]bM[\[Mu]], -2I \[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]] \[Sigma]bM[,\[CapitalSigma]],{\[Mu], \[Nu], \[Rho]}]*)
+(*TestForMatrix[\[Sigma]bM[\[Mu]] . \[Sigma]M[\[Nu]] . \[Sigma]bM[\[Rho]] - \[Sigma]bM[\[Rho]] . \[Sigma]M[\[Nu]] . \[Sigma]bM[\[Mu]], -2I \[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]] \[Sigma]bM[,\[CapitalSigma]],{\[Mu], \[Nu], \[Rho]}]*)
 (**)
 (*Test[\[Sigma][,\[Mu],a,a]\[Sigma][\[Mu],b,b],   2\[Epsilon]L[a,b]\[Epsilon]Ld[a,b], {a,OverDot[a],b,OverDot[b]}]*)
 (*Test[TDot[\[Epsilon]Ld[b,a], \[Sigma]b[\[Mu],a,a]] == TDot[\[Epsilon]Ld[b,a], \[Epsilon]U[a,c], \[Epsilon]Ud[a,c], \[Sigma][\[Mu],c,c]] == TDot[\[Epsilon]U[a,c], \[Sigma][\[Mu],c,b]], {\[Mu], a, OverDot[b]}]*)
@@ -205,11 +205,11 @@ TestConjugate[exp1_, exp2_, spinorindices_List, indices_List] := Module[{diff, r
 (**)
 (*TestForMatrix[Tr[\[Sigma]M[\[Mu], \[Nu]]], 0, {\[Mu],\[Nu]}]*)
 (*TestForMatrix[Tr[\[Sigma]bM[\[Mu], \[Nu]]], 0, {\[Mu],\[Nu]}]*)
-(*TestForMatrix[Tr[\[Sigma]M[\[Mu],\[Nu]].\[Sigma]M[\[Rho],\[CapitalSigma]]], ((1/2)(\[Eta]U[\[Mu],\[Rho]]\[Eta]U[\[Nu],\[CapitalSigma]] - \[Eta]U[\[Mu],\[CapitalSigma]]\[Eta]U[\[Nu],\[Rho]])+(-I/2)\[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]) , {\[Mu], \[Nu], \[Rho], \[CapitalSigma]}]*)
+(*TestForMatrix[Tr[\[Sigma]M[\[Mu],\[Nu]] . \[Sigma]M[\[Rho],\[CapitalSigma]]], ((1/2)(\[Eta]U[\[Mu],\[Rho]]\[Eta]U[\[Nu],\[CapitalSigma]] - \[Eta]U[\[Mu],\[CapitalSigma]]\[Eta]U[\[Nu],\[Rho]])+(-I/2)\[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]) , {\[Mu], \[Nu], \[Rho], \[CapitalSigma]}]*)
 (**)
 (*TestForMatrix[\[Sigma]bM[\[Mu],\[Nu]], -\[Sigma]bM[\[Nu],\[Mu]], {\[Mu],\[Nu]}]*)
 (*TestForMatrix[\[Sigma]M[\[Mu],\[Nu]], -\[Sigma]M[\[Nu],\[Mu]], {\[Mu],\[Nu]}]*)
-(*TestForMatrix[Tr[\[Sigma]bM[\[Mu],\[Nu]].\[Sigma]bM[\[Rho],\[CapitalSigma]]], ((1/2)(\[Eta]U[\[Mu],\[Rho]]\[Eta]U[\[Nu],\[CapitalSigma]] - \[Eta]U[\[Mu],\[CapitalSigma]]\[Eta]U[\[Nu],\[Rho]])+(I/2)\[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]) , {\[Mu], \[Nu], \[Rho], \[CapitalSigma]}]*)
+(*TestForMatrix[Tr[\[Sigma]bM[\[Mu],\[Nu]] . \[Sigma]bM[\[Rho],\[CapitalSigma]]], ((1/2)(\[Eta]U[\[Mu],\[Rho]]\[Eta]U[\[Nu],\[CapitalSigma]] - \[Eta]U[\[Mu],\[CapitalSigma]]\[Eta]U[\[Nu],\[Rho]])+(I/2)\[Epsilon]U[\[Mu],\[Nu],\[Rho],\[CapitalSigma]]) , {\[Mu], \[Nu], \[Rho], \[CapitalSigma]}]*)
 
 
 (* ::Code:: *)
@@ -247,6 +247,11 @@ Test[TDot[\[Xi][b],\[Chi][,b],\[Psi][a]], -TDot[\[Psi][b],\[Xi][,b],\[Chi][a]]-T
 Test[TDot[\[Xi][b],\[Chi][,b],\[Psi]b[,a]], (1/2)TDot[\[Xi][b], \[Sigma][\[Mu], b, c], \[Psi]b[c], \[Chi][c],\[Sigma][,\[Mu],c,a]], {OverDot[a]}]
 
 
+Test[TDot[\[Psi][a],\[Theta][,a],\[Chi][b],\[Xi][,b]], -TDot[\[Psi][a],\[Chi][,a],\[Xi][d],\[Theta][,d]] + (1/8)TDot[\[Psi][a],\[Sigma][\[Mu],a,b],\[Sigma]b[\[Nu],b,c],\[Chi][,c]]TDot[\[Xi][d],\[Sigma][,\[Mu],d,e],\[Sigma]b[,\[Nu],e,f],\[Theta][,f]] , {}]
+Test[TDot[\[Psi]b[,a],\[Theta]b[a],\[Chi]b[,b],\[Xi]b[b]], -TDot[\[Psi]b[,a],\[Chi]b[a],\[Xi]b[,d],\[Theta]b[d]] + (1/8)TDot[\[Psi]b[,a],\[Sigma]b[\[Mu],a,b],\[Sigma][\[Nu],b,c],\[Chi]b[c]]TDot[\[Xi]b[,d],\[Sigma]b[,\[Mu],d,e],\[Sigma][,\[Nu],e,f],\[Theta]b[f]] , {}]
+Test[TDot[\[Psi][a],\[Theta][,a],\[Chi]b[,b],\[Xi]b[b]], -1/2 TDot[\[Psi][a],\[Sigma][\[Mu],a,b],\[Chi]b[b]]TDot[\[Xi]b[,d],\[Sigma]b[,\[Mu],d,e],\[Theta][,e]] , {}]
+
+
 filehandle = OpenWrite["formulae.raw"];
 Do[
   tmp = TeXConvert[t];
@@ -254,3 +259,10 @@ Do[
   WriteString[filehandle, "\n\\\\&\n"];
   , {t, ToTeX}];
 Close[filehandle];  
+
+
+Test[TDot[\[Epsilon]L[a,b],\[Epsilon]L[c,d]], -TDot[\[Epsilon]L[a,c],\[Epsilon]L[d,b]]-TDot[\[Epsilon]L[a,d],\[Epsilon]L[b,c]], {a, b, c, d}]
+Test[TDot[\[Epsilon]L[a,b],\[Epsilon]L[c,d]], -TDot[\[Epsilon]L[a,c],\[Epsilon]L[d,b]]-TDot[\[Epsilon]L[a,d],\[Epsilon]L[b,c]], {a, b, c, d}]
+
+
+
