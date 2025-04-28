@@ -217,40 +217,74 @@ where the boundary of $E_-$ is given by
 \end{align*}
 
 \paragraph{Two-body phase space with momentum conservation}
-In a frame with total four-momentum being $(E_0,\vc P_0)$,
+We consider general two-body phase-space integrals,
 \begin{equation}
-\overline{\dd\Pi^{(2)}}
-=\frac{\dd^3\vc p_1}{16\pi^2}\frac{\delta(E_0-\sqrt{m_1^2+\tilde p_1^2}-\sqrt{m_2^2+\|\vc P_0-\vc p_1\|^2})}{E_1E_2}
-=\frac{1}{8\pi}\frac{\tilde p_1\dd \tilde p_1}{E_1\tilde P_0}
-=\frac{\dd E_1}{8\pi\tilde P_0}
-~~\left(=\frac{1}{8\pi}\frac{\tilde p_1^2\,\dd\cos\theta_{1}}{E_0\tilde p_1-\tilde P_0E_1\cos\theta_1}\right),
-\label{eq:twobodypsgeneral}
+ \overline{\dd\Pi^{(2)}}\times I
+   = \dd\Pi_1\dd\Pi_2\,\diracdeltabar[4](P^\mu-p_1^\mu-p_2^\mu)\times I
+   =\frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}\frac{\dd^3{\vc p_2}}{2E_2}\diracdelta[4](P^\mu-p_1^\mu-p_2^\mu)\times I
 \end{equation}
-where $\cos\theta_1$ and $\tilde p_1$ are related by
-\begin{equation}
- 2\tilde P_0 \tilde p_1\cos\theta_1 = 2E_0 \sqrt{\tilde p_1^2+m_1^2}-\mathcal Q;
-\qquad \mathcal Q \coloneq  E_0^2 -\tilde P_0^2 +  m_1^2 - m_2^2.
-\label{eq:twobodyanglemomentum}
-\end{equation}
-If $\vc P_0=\vc 0$, \cref{eq:twobodyanglemomentum} fixes $\tilde p_1$ and any $\theta_1$ is allowed, so the CM result is recovered:
-\begin{equation}
-\tilde p_1\equiv\|\vc p\|=\frac{\sqrt{s}}{2}\Kallen[1/2]\left(1,\frac{m_1^2}{s},\frac{m_2^2}{s}\right),\quad
-\int\overline{\dd\Pi^{(2)}}
-=\int\frac{1}{8\pi}\frac{\tilde p_1^2\dd\cos\theta_{1}}{E_0\tilde p_1-\tilde P_0E_1\cos\theta_1}
-\stackrel{\text{CM}}{=} \int_{-1}^1\frac{1}{8\pi}\frac{\tilde p_1\,\dd\cos\theta_{1}}{E_0}
-\end{equation}
-Otherwise, \cref{eq:twobodyanglemomentum} associates $\theta_1$ with zero, one, or two values of $\tilde p_1$:
-\begin{equation}
- \cos\theta_1 = \frac{2E_0E_1-\mathcal Q}{2\tilde P_0\tilde p_1},\qquad
-p_1=\frac{\mathcal Q\tilde P_0\cos\theta_1
- \pm \mathcal R E_0
-}{2(E_0^2-\tilde P_0^2\cos^2\theta_1)},\qquad
-E_1=\frac{\mathcal QE_0
- \pm \mathcal R\tilde P_0\cos\theta_1
-}{2(E_0^2-\tilde P_0^2\cos^2\theta_1)}
-\end{equation}
-with $\mathcal R = \sqrt{\mathcal Q^2-4m_1^2(E_0^2-\tilde P_0^2\cos^2\theta_1)}$.
+with $I$ being the integrand, $P^\mu=(E_0, \vc P_0)$, and $S_0=E_0^2-\tilde P_0^2$, assuming $S_0>0$. First, with carrying out $\vc p_2$ integral,
 
+\begin{align}
+ \overline{\dd\Pi^{(2)}}\times I
+  &= \frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}{\dd^4 p_2^\mu}
+  \diracdelta((p_2^0)^2-\|\vc p_2\|^2-m_2^2)\Theta(p_2^0)
+  \diracdelta[4](P^\mu-p_1^\mu-p_2^\mu)\times I
+  \\&=
+   \frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}
+  \diracdelta((E_0-E_1)^2-\|\vc P_0-\vc p_1\|^2-m_2^2)\Theta(E_0-E_1)\times I
+  \\&=
+   \frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}
+  \diracdelta(S_0-2E_0E_1+2\vc P_0\cdot\vc p_1+m_1^2-m_2^2)\Theta(E_0-E_1)\times I
+  \\&=
+   \frac{\tilde p_1\dd E_1\dd\cos\theta\dd\phi}{8\pi^2}
+  \diracdelta(S_0-2E_0E_1+2\tilde P_0\tilde p_1\cos\theta+m_1^2-m_2^2)\Theta(E_0-E_1)\times I~\Big|_{\tilde p_1=(E_1^2-m_1^2)^{1/2}}.
+\end{align}
+
+
+Now, we continue for a constant $I$.  If $\tilde P_0=0$, then $\sqrt {S_0}=E_0$ and
+\begin{equation}
+ \overline{\dd\Pi^{(2)}}
+  =
+   \frac{(E_1^2-m_1^2)^{1/2}\dd E_1}{2\pi}
+  \diracdelta(2\sqrt{S_0}\mathcal E-2E_0E_1)\Theta(E_0-E_1)
+  =
+   \frac{\phi}{4\pi\sqrt{S_0}}
+\end{equation}
+to recover the CM result with the constants
+\begin{equation}
+  \mathcal E=\frac{S_0+m_1^2-m_2^2}{2\sqrt{S_0}},\qquad
+  \phi=\frac{\Kallen[1/2](S_0,m_1^2,m_2^2)}{2\sqrt{S_0}}=\sqrt{\mathcal E^2-m_1^2}.
+\end{equation}
+
+Because the result is Lorentz scalar, the result is unchanged even if $\tilde P_0\neq 0$ as we explicitly check by integrating $\cos\theta$; the integration gives the Heaviside function and
+\begin{align}
+ \overline{\dd\Pi^{(2)}}
+&=
+   \frac{1}{8\pi\tilde P_0}\int_{m_1}^{E_0}{\dd E_1}\,
+  \Theta\left(-1<c(E_1)<1\right);\qquad
+  c(E_1)\coloneq \frac{E_0E_1-\sqrt{S_0}\mathcal E}{\tilde P_0(E_1^2-m_1^2)^{1/2}}.
+\end{align}
+There,
+\begin{align}
+  &E_{\text{1; max}}=\frac{E_0\mathcal E+\tilde P_0\phi}{\sqrt {S_0}}
+  \quad\iff\quad
+\tilde p_1=\frac{\tilde P_0\mathcal E+E_0\phi}{\sqrt{S_0}}
+  \quad\then c=+1,
+\\&
+  E_{\text{1; min}}=\frac{E_0\mathcal E-\tilde P_0\phi}{\sqrt {S_0}}
+  \quad\iff\quad
+\tilde p_1=\left|\frac{\tilde P_0\mathcal E-E_0\phi}{\sqrt{S_0}}\right|
+  \quad\then c = \sign(\tilde P_0\mathcal E-E_0\phi).
+\end{align}
+If $\tilde P_0\mathcal E-E_0\phi<0$, the first derivative $c'(E_1)$ cannot be zero between $E_{\text{1; min}}$ and $E_{\text{1; max}}$, so $c(E_1)$ is monotonically increasing and $E_1$ and $\cos\theta$ are in one-to-one correspondence. Meanwhile, if $\tilde P_0\mathcal E-E_0\phi>0$, then $c(E_1)$ has a minimum
+\begin{equation}
+  c\w{min}=c\left(\frac{E_0m_1^2}{S_0\mathcal E}\right)
+  = \frac{\sqrt{E_0^2 m_1^2-S \mathcal E^2}}{\tilde P_0 m_1}=\sqrt{1-\frac{S \phi ^2}{m_1^2\tilde P_0^2}}.
+\end{equation}
+In any cases, all $E_1$ between them are allowed, and we evaluate $\overline{\dd\Pi^{(2)}}
+=
+   (E_{\text{1; max}}-E_{\text{1; min}})/8\pi\tilde P_0=\phi/4\pi\sqrt{S_0}$ as expected.
 
 
 \subsection{Decay rate and Cross section}
