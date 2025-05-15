@@ -122,6 +122,12 @@
 \\&
 \bsigma^{\mu \dalpha\alpha}\bsigma^{\nu \dbeta\beta}+\bsigma^{\nu \dalpha\alpha}\bsigma^{\mu \dbeta\beta}=4 \vep^{\alpha \gamma}\sigma^{\sigma \nu}{}_{\gamma}{}^{\beta}\bsigma^{\rho \mu \dalpha}{}_{\dgamma}\vep^{\dgamma\dbeta}\eta_{\rho \sigma}+\vep^{\alpha \beta}\vep^{\dalpha\dbeta}\eta^{\mu \nu}
 \\&
+\sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\sigma_{\mu \nu \gamma}{}^{\delta}=\delta^{\delta}_{\alpha}\delta^{\gamma}_{\beta}+\vep_{\alpha \gamma}\vep^{\beta \delta}
+\\&
+\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\bsigma_{\mu \nu}{}^{\dgamma}{}_{\ddelta}=\delta^{\dalpha}_{\ddelta}\delta^{\dgamma}_{\dbeta}+\vep^{\dalpha\dgamma}\vep_{\dbeta\ddelta}
+\\&
+\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\sigma_{\mu \nu \gamma}{}^{\delta}=0
+\\&
 (\bar{\xi}\bsigma^{\mu}\chi)=-(\chi \sigma^{\mu}\bar{\xi})
 \\&
 (\bar{\xi}\bsigma^{\mu}\sigma^{\nu}\bar{\chi})=(\bar{\chi}\bsigma^{\nu}\sigma^{\mu}\bar{\xi})
@@ -139,4 +145,10 @@
 (\xi \chi)\psi^{\alpha}=-(\psi \xi)\chi^{\alpha}-(\psi \chi)\xi^{\alpha}
 \\&
 (\xi \chi)\bar{\psi}_{\dalpha}=\tfrac{1}{2} (\xi \sigma^{\mu}\bar{\psi})(\chi \sigma_{\mu})_{\dalpha}
+\\&
+(\psi \theta)(\chi \xi)=\tfrac{1}{8} (\xi \sigma_{\mu}\bsigma_{\nu}\theta)(\psi \sigma^{\mu}\bsigma^{\nu}\chi)-(\psi \chi)(\xi \theta)
+\\&
+(\bar{\psi}\btheta)(\bar{\chi}\bar{\xi})=\tfrac{1}{8} (\bar{\xi}\bsigma_{\mu}\sigma_{\nu}\btheta)(\bar{\psi}\bsigma^{\mu}\sigma^{\nu}\bar{\chi})-(\bar{\psi}\bar{\chi})(\bar{\xi}\btheta)
+\\&
+(\psi \theta)(\bar{\chi}\bar{\xi})=-\tfrac{1}{2} (\psi \sigma^{\mu}\bar{\chi})(\bar{\xi}\bsigma_{\mu}\theta)
 \\&

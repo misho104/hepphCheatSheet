@@ -235,6 +235,10 @@ TestConjugate[exp1_, exp2_, spinorindices_List, indices_List] := Module[{diff, r
 (*Test[*)
 (*  TDot[\[Sigma]b[\[Mu],a,a], \[Sigma]b[\[Nu],b,b]] + TDot[\[Sigma]b[\[Nu],a,a], \[Sigma]b[\[Mu],b,b]],*)
 (*  \[Eta]U[\[Mu],\[Nu]]\[Epsilon]Ud[a,b]\[Epsilon]U[a,b] + 4 \[Eta]L[\[Rho],\[CapitalSigma]]\[Sigma]b[\[Rho],\[Mu],a,c]\[Epsilon]Ud[c,b]\[Epsilon]U[a,c]\[Sigma][\[CapitalSigma],\[Nu],c,b],   {a,OverDot[b],b,OverDot[a],\[Mu],\[Nu]}]*)
+(**)
+(*Test[TDot[\[Sigma][\[Mu],\[Nu],a,b],\[Sigma][,\[Mu],\[Nu],c,d]], TDot[\[Epsilon]L[a,c],\[Epsilon]U[b,d]]+TDot[\[Delta][d,a],\[Delta][c,b]],{a, b,c,d}]*)
+(*Test[TDot[\[Sigma]b[\[Mu],\[Nu],a,b],\[Sigma]b[,\[Mu],\[Nu],c,d]], TDot[\[Epsilon]Ud[a,c],\[Epsilon]Ld[b,d]]+TDot[\[Delta]d[a,d],\[Delta]d[c,b]],{OverDot[a],OverDot[b],OverDot[c],OverDot[d]}]*)
+(*Test[TDot[\[Sigma]b[\[Mu],\[Nu],a,b],\[Sigma][,\[Mu],\[Nu],c,d]], 0,{OverDot[a], OverDot[b],c,d}]*)
 
 
 Test[TDot[\[Xi]b[,a], \[Sigma]b[\[Mu],a,b], \[Chi][,b]], -TDot[\[Chi][a], \[Sigma][\[Mu],a,b], \[Xi]b[b]], {\[Mu]}]

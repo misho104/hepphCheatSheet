@@ -101,7 +101,7 @@ Noting that complex conjugate reverses spinor order: $(\psi^\alpha\xi^\beta)^* :
 &&
 (\sigma^{\mu}\btheta){}_{\alpha}(\theta \sigma^{\nu}\btheta)=\tfrac{1}{2} (\btheta\btheta)(\sigma^{\mu}\bsigma^{\nu}\theta){}_{\alpha}
 \end{alignat*}
-\vspace{-9pt}
+\vspace{-16pt}
 \begin{align*}&
 %%%%%%
 \sigma^{\mu}\bsigma^{\nu}=\eta^{\mu \nu}-2 \ii \sigma^{\mu \nu}
@@ -155,7 +155,14 @@ Noting that complex conjugate reverses spinor order: $(\psi^\alpha\xi^\beta)^* :
 \sigma_{\rho \sigma}\vep^{\mu \nu \rho \sigma}=2 \ii \sigma^{\mu \nu}
 &&
 \bsigma^{\mu \dalpha\alpha}\bsigma^{\nu \dbeta\beta}+\bsigma^{\nu \dalpha\alpha}\bsigma^{\mu \dbeta\beta}=4 \vep^{\alpha \gamma}\sigma^{\sigma \nu}{}_{\gamma}{}^{\beta}\bsigma^{\rho \mu \dalpha}{}_{\dgamma}\vep^{\dgamma\dbeta}\eta_{\rho \sigma}+\vep^{\alpha \beta}\vep^{\dalpha\dbeta}\eta^{\mu \nu}
+\\&
+\sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\sigma_{\mu \nu \gamma}{}^{\delta}=\delta^{\delta}_{\alpha}\delta^{\gamma}_{\beta}+\vep_{\alpha \gamma}\vep^{\beta \delta}
+&&
+\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\bsigma_{\mu \nu}{}^{\dgamma}{}_{\ddelta}=\delta^{\dalpha}_{\ddelta}\delta^{\dgamma}_{\dbeta}+\vep^{\dalpha\dgamma}\vep_{\dbeta\ddelta}
+\qquad
+\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\sigma_{\mu \nu \gamma}{}^{\delta}=0
 \end{align*}
+\vspace{-5pt}
 \begin{align*}&
 \bar{\xi}\bsigma^{\mu}\chi=-\chi \sigma^{\mu}\bar{\xi}
 \qquad
