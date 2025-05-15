@@ -1,22 +1,22 @@
-\epsilon^{0123}=-\epsilon_{0123}=1
+\vep^{0123}=-\vep_{0123}=1
 \\&
-\epsilon^{12}=\epsilon_{21}=\epsilon^{\dot{1}\dot{2}}=\epsilon_{\dot{2}\dot{1}}=1
+\vep^{12}=\vep_{21}=\vep^{\dot{1}\dot{2}}=\vep_{\dot{2}\dot{1}}=1
 \\&
-\epsilon^{21}=\epsilon_{12}=\epsilon^{\dot{2}\dot{1}}=\epsilon_{\dot{1}\dot{2}}=-1
+\vep^{21}=\vep_{12}=\vep^{\dot{2}\dot{1}}=\vep_{\dot{1}\dot{2}}=-1
 \\&
-\epsilon_{\alpha \beta}\epsilon^{\beta \gamma}=\epsilon^{\alpha \beta}\epsilon_{\beta \gamma}=\delta^{\alpha}_{\gamma}
+\vep_{\alpha \beta}\vep^{\beta \gamma}=\vep^{\alpha \beta}\vep_{\beta \gamma}=\delta^{\alpha}_{\gamma}
 \\&
-\psi^{\alpha}=(\epsilon \psi)^{\alpha}
+\psi^{\alpha}=(\vep \psi)^{\alpha}
 \\&
-\psi_{\alpha}=\epsilon_{\alpha \beta}\psi^{\beta}
+\psi_{\alpha}=\vep_{\alpha \beta}\psi^{\beta}
 \\&
-\bar{\psi}^{\dalpha}=\epsilon^{\dalpha\dbeta}\bar{\psi}_{\dbeta}
+\bar{\psi}^{\dalpha}=\vep^{\dalpha\dbeta}\bar{\psi}_{\dbeta}
 \\&
-\bar{\psi}_{\dalpha}=(\epsilon \bar{\psi})_{\dalpha}
+\bar{\psi}_{\dalpha}=(\vep \bar{\psi})_{\dalpha}
 \\&
-\sigma^{\mu}_{\alpha \dbeta}=\epsilon_{\alpha \delta}\epsilon_{\dbeta\dgamma}\bsigma^{\mu \dgamma\delta}
+\sigma^{\mu}_{\alpha \dbeta}=\vep_{\alpha \delta}\vep_{\dbeta\dgamma}\bsigma^{\mu \dgamma\delta}
 \\&
-\bsigma^{\mu \dalpha\beta}=\epsilon^{\dalpha\ddelta}\epsilon^{\beta \gamma}\sigma^{\mu}_{\gamma \ddelta}
+\bsigma^{\mu \dalpha\beta}=\vep^{\dalpha\ddelta}\vep^{\beta \gamma}\sigma^{\mu}_{\gamma \ddelta}
 \\&
 \bigl(\psi^{\alpha}\bigr)^*=\bar{\psi}^{\dalpha}
 \\&
@@ -26,31 +26,31 @@
 \\&
 \bigl(\sigma^{\mu}_{\alpha \dbeta}\bigr){}^*=\bsigma^{\mu}{}_{\dalpha\beta}
 \\&
-\bsigma^{\mu}{}_{\dalpha\beta}=\epsilon_{\beta \delta}\epsilon_{\dalpha\dgamma}\bsigma^{\mu \dgamma\delta}
+\bsigma^{\mu}{}_{\dalpha\beta}=\vep_{\beta \delta}\vep_{\dalpha\dgamma}\bsigma^{\mu \dgamma\delta}
 \\&
 \bigl(\sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\bigr){}^*=\bsigma^{\mu \nu \dbeta}{}_{\dalpha}
 \\&
-\bsigma^{\mu \nu \dbeta}{}_{\dalpha}=\epsilon^{\dbeta\ddelta}\epsilon_{\dalpha\dgamma}\bsigma^{\mu \nu \dgamma}{}_{\ddelta}
+\bsigma^{\mu \nu \dbeta}{}_{\dalpha}=\vep^{\dbeta\ddelta}\vep_{\dalpha\dgamma}\bsigma^{\mu \nu \dgamma}{}_{\ddelta}
 \\&
 \bigl(\bsigma^{\mu \dalpha\beta}\bigr)^*=\sigma^{\mu \alpha \dbeta}
 \\&
-\sigma^{\mu \alpha \dbeta}=\epsilon^{\dbeta\ddelta}\epsilon^{\alpha \gamma}\sigma^{\mu}_{\gamma \ddelta}
+\sigma^{\mu \alpha \dbeta}=\vep^{\dbeta\ddelta}\vep^{\alpha \gamma}\sigma^{\mu}_{\gamma \ddelta}
 \\&
 \bigl(\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\bigr){}^*=\sigma^{\mu \nu}{}_{\beta}{}^{\alpha}
 \\&
-\sigma^{\mu \nu}{}_{\beta}{}^{\alpha}=\epsilon_{\beta \delta}\epsilon^{\alpha \gamma}\sigma^{\mu \nu}{}_{\gamma}{}^{\delta}
+\sigma^{\mu \nu}{}_{\beta}{}^{\alpha}=\vep_{\beta \delta}\vep^{\alpha \gamma}\sigma^{\mu \nu}{}_{\gamma}{}^{\delta}
 \\&
-\theta^{\alpha}\theta^{\beta}=-\tfrac{1}{2} (\theta \theta)\epsilon^{\alpha \beta}
+\theta^{\alpha}\theta^{\beta}=-\tfrac{1}{2} (\theta \theta)\vep^{\alpha \beta}
 \\&
-\btheta^{\dalpha}\btheta^{\dbeta}=\tfrac{1}{2} (\btheta\btheta)\epsilon^{\dalpha\dbeta}
+\btheta^{\dalpha}\btheta^{\dbeta}=\tfrac{1}{2} (\btheta\btheta)\vep^{\dalpha\dbeta}
 \\&
 (\theta \xi)(\theta \chi)=-\tfrac{1}{2} (\theta \theta)(\xi \chi)
 \\&
 (\theta \sigma^{\nu}\btheta)\theta^{\alpha}=\tfrac{1}{2} (\theta \theta)(\btheta\bsigma^{\nu})^{\alpha}
 \\&
-\theta_{\alpha}\theta_{\beta}=\tfrac{1}{2} (\theta \theta)\epsilon_{\alpha \beta}
+\theta_{\alpha}\theta_{\beta}=\tfrac{1}{2} (\theta \theta)\vep_{\alpha \beta}
 \\&
-\btheta_{\dalpha}\btheta_{\dbeta}=-\tfrac{1}{2} (\btheta\btheta)\epsilon_{\dalpha\dbeta}
+\btheta_{\dalpha}\btheta_{\dbeta}=-\tfrac{1}{2} (\btheta\btheta)\vep_{\dalpha\dbeta}
 \\&
 (\btheta\bar{\xi})(\btheta\bar{\chi})=-\tfrac{1}{2} (\btheta\btheta)(\bar{\xi}\bar{\chi})
 \\&
@@ -74,7 +74,7 @@
 \\&
 \bsigma^{\mu}\sigma^{\nu}=\eta^{\mu \nu}-2 \ii \bsigma^{\mu \nu}
 \\&
-\sigma^{\mu}\bsigma^{\nu}\sigma^{\rho}-\sigma^{\rho}\bsigma^{\nu}\sigma^{\mu}=2 \ii \sigma_{\sigma}\epsilon^{\mu \nu \rho \sigma}
+\sigma^{\mu}\bsigma^{\nu}\sigma^{\rho}-\sigma^{\rho}\bsigma^{\nu}\sigma^{\mu}=2 \ii \sigma_{\sigma}\vep^{\mu \nu \rho \sigma}
 \\&
 \Tr\left(\sigma^{\mu}\bsigma^{\nu}\right)=2 \eta^{\mu \nu}
 \\&
@@ -84,43 +84,43 @@
 \\&
 \sigma^{\mu}_{\alpha \dalpha}\bsigma_{\mu}{}^{\dbeta\beta}=2 \delta^{\dbeta}_{\dalpha}\delta^{\alpha}_{\beta}
 \\&
-\bsigma^{\mu}\sigma^{\nu}\bsigma^{\rho}-\bsigma^{\rho}\sigma^{\nu}\bsigma^{\mu}=-2 \ii \bsigma_{\sigma}\epsilon^{\mu \nu \rho \sigma}
+\bsigma^{\mu}\sigma^{\nu}\bsigma^{\rho}-\bsigma^{\rho}\sigma^{\nu}\bsigma^{\mu}=-2 \ii \bsigma_{\sigma}\vep^{\mu \nu \rho \sigma}
 \\&
-\sigma_{\mu \alpha \dalpha}\sigma^{\mu}_{\beta \dbeta}=2 \epsilon_{\alpha \beta}\epsilon_{\dalpha\dbeta}
+\sigma_{\mu \alpha \dalpha}\sigma^{\mu}_{\beta \dbeta}=2 \vep_{\alpha \beta}\vep_{\dalpha\dbeta}
 \\&
-\epsilon_{\dbeta\dalpha}\bsigma^{\mu \dalpha\alpha}=\epsilon_{\dbeta\dalpha}\epsilon^{\dalpha\dgamma}\epsilon^{\alpha \gamma}\sigma^{\mu}_{\gamma \dgamma}=\epsilon^{\alpha \gamma}\sigma^{\mu}_{\gamma \dbeta}
+\vep_{\dbeta\dalpha}\bsigma^{\mu \dalpha\alpha}=\vep_{\dbeta\dalpha}\vep^{\dalpha\dgamma}\vep^{\alpha \gamma}\sigma^{\mu}_{\gamma \dgamma}=\vep^{\alpha \gamma}\sigma^{\mu}_{\gamma \dbeta}
 \\&
-\bsigma_{\mu}{}^{\dalpha\alpha}\bsigma^{\mu \dbeta\beta}=2 \epsilon^{\alpha \beta}\epsilon^{\dalpha\dbeta}
+\bsigma_{\mu}{}^{\dalpha\alpha}\bsigma^{\mu \dbeta\beta}=2 \vep^{\alpha \beta}\vep^{\dalpha\dbeta}
 \\&
-\epsilon_{\beta \alpha}\bsigma^{\mu \dalpha\alpha}=\epsilon_{\beta \alpha}\epsilon^{\dalpha\dgamma}\epsilon^{\alpha \gamma}\sigma^{\mu}_{\gamma \dgamma}=\epsilon^{\dalpha\dgamma}\sigma^{\mu}_{\beta \dgamma}
+\vep_{\beta \alpha}\bsigma^{\mu \dalpha\alpha}=\vep_{\beta \alpha}\vep^{\dalpha\dgamma}\vep^{\alpha \gamma}\sigma^{\mu}_{\gamma \dgamma}=\vep^{\dalpha\dgamma}\sigma^{\mu}_{\beta \dgamma}
 \\&
 \Tr\left(\sigma^{\mu \nu}\right)=0
 \\&
 \Tr\left(\bsigma^{\mu \nu}\right)=0
 \\&
-\Tr\left(\sigma^{\mu \nu}\sigma^{\rho \sigma}\right)=\tfrac{1}{2} \left(\eta^{\mu \rho}\eta^{\nu \sigma}-\eta^{\mu \sigma}\eta^{\nu \rho}\right)-\tfrac{1}{2} \ii \epsilon^{\mu \nu \rho \sigma}
+\Tr\left(\sigma^{\mu \nu}\sigma^{\rho \sigma}\right)=\tfrac{1}{2} \left(\eta^{\mu \rho}\eta^{\nu \sigma}-\eta^{\mu \sigma}\eta^{\nu \rho}\right)-\tfrac{1}{2} \ii \vep^{\mu \nu \rho \sigma}
 \\&
 \bsigma^{\mu \nu}=-\bsigma^{\nu \mu}
 \\&
 \sigma^{\mu \nu}=-\sigma^{\nu \mu}
 \\&
-\Tr\left(\bsigma^{\mu \nu}\bsigma^{\rho \sigma}\right)=\tfrac{1}{2} \ii \epsilon^{\mu \nu \rho \sigma}+\tfrac{1}{2} \left(\eta^{\mu \rho}\eta^{\nu \sigma}-\eta^{\mu \sigma}\eta^{\nu \rho}\right)
+\Tr\left(\bsigma^{\mu \nu}\bsigma^{\rho \sigma}\right)=\tfrac{1}{2} \ii \vep^{\mu \nu \rho \sigma}+\tfrac{1}{2} \left(\eta^{\mu \rho}\eta^{\nu \sigma}-\eta^{\mu \sigma}\eta^{\nu \rho}\right)
 \\&
-\sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\epsilon_{\beta \gamma}=\sigma^{\mu \nu}{}_{\gamma}{}^{\beta}\epsilon_{\beta \alpha}
+\sigma^{\mu \nu}{}_{\alpha}{}^{\beta}\vep_{\beta \gamma}=\sigma^{\mu \nu}{}_{\gamma}{}^{\beta}\vep_{\beta \alpha}
 \\&
-\sigma^{\mu}_{\alpha \dalpha}\sigma^{\nu}_{\beta \dbeta}-\sigma^{\nu}_{\alpha \dalpha}\sigma^{\mu}_{\beta \dbeta}=-2 \ii \epsilon_{\dalpha\dgamma}\bsigma^{\mu \nu \dgamma}{}_{\dbeta}\epsilon_{\alpha \beta}-2 \ii \sigma^{\mu \nu}{}_{\alpha}{}^{\gamma}\epsilon_{\gamma \beta}\epsilon_{\dalpha\dbeta}
+\sigma^{\mu}_{\alpha \dalpha}\sigma^{\nu}_{\beta \dbeta}-\sigma^{\nu}_{\alpha \dalpha}\sigma^{\mu}_{\beta \dbeta}=-2 \ii \vep_{\dalpha\dgamma}\bsigma^{\mu \nu \dgamma}{}_{\dbeta}\vep_{\alpha \beta}-2 \ii \sigma^{\mu \nu}{}_{\alpha}{}^{\gamma}\vep_{\gamma \beta}\vep_{\dalpha\dbeta}
 \\&
-\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\epsilon^{\dbeta\dgamma}=\bsigma^{\mu \nu \dgamma}{}_{\dbeta}\epsilon^{\dbeta\dalpha}
+\bsigma^{\mu \nu \dalpha}{}_{\dbeta}\vep^{\dbeta\dgamma}=\bsigma^{\mu \nu \dgamma}{}_{\dbeta}\vep^{\dbeta\dalpha}
 \\&
-\sigma^{\mu}_{\alpha \dalpha}\sigma^{\nu}_{\beta \dbeta}+\sigma^{\nu}_{\alpha \dalpha}\sigma^{\mu}_{\beta \dbeta}=4 \sigma^{\rho \mu}{}_{\alpha}{}^{\gamma}\epsilon_{\gamma \beta}\epsilon_{\dalpha\dgamma}\bsigma^{\sigma \nu \dgamma}{}_{\dbeta}\eta_{\rho \sigma}+\epsilon_{\alpha \beta}\epsilon_{\dalpha\dbeta}\eta^{\mu \nu}
+\sigma^{\mu}_{\alpha \dalpha}\sigma^{\nu}_{\beta \dbeta}+\sigma^{\nu}_{\alpha \dalpha}\sigma^{\mu}_{\beta \dbeta}=4 \sigma^{\rho \mu}{}_{\alpha}{}^{\gamma}\vep_{\gamma \beta}\vep_{\dalpha\dgamma}\bsigma^{\sigma \nu \dgamma}{}_{\dbeta}\eta_{\rho \sigma}+\vep_{\alpha \beta}\vep_{\dalpha\dbeta}\eta^{\mu \nu}
 \\&
-\bsigma_{\rho \sigma}\epsilon^{\mu \nu \rho \sigma}=-2 \ii \bsigma^{\mu \nu}
+\bsigma_{\rho \sigma}\vep^{\mu \nu \rho \sigma}=-2 \ii \bsigma^{\mu \nu}
 \\&
-\bsigma^{\mu \dalpha\alpha}\bsigma^{\nu \dbeta\beta}-\bsigma^{\nu \dalpha\alpha}\bsigma^{\mu \dbeta\beta}=-2 \ii \bsigma^{\mu \nu \dalpha}{}_{\dgamma}\epsilon^{\dgamma\dbeta}\epsilon^{\alpha \beta}-2 \ii \epsilon^{\alpha \gamma}\sigma^{\mu \nu}{}_{\gamma}{}^{\beta}\epsilon^{\dalpha\dbeta}
+\bsigma^{\mu \dalpha\alpha}\bsigma^{\nu \dbeta\beta}-\bsigma^{\nu \dalpha\alpha}\bsigma^{\mu \dbeta\beta}=-2 \ii \bsigma^{\mu \nu \dalpha}{}_{\dgamma}\vep^{\dgamma\dbeta}\vep^{\alpha \beta}-2 \ii \vep^{\alpha \gamma}\sigma^{\mu \nu}{}_{\gamma}{}^{\beta}\vep^{\dalpha\dbeta}
 \\&
-\sigma_{\rho \sigma}\epsilon^{\mu \nu \rho \sigma}=2 \ii \sigma^{\mu \nu}
+\sigma_{\rho \sigma}\vep^{\mu \nu \rho \sigma}=2 \ii \sigma^{\mu \nu}
 \\&
-\bsigma^{\mu \dalpha\alpha}\bsigma^{\nu \dbeta\beta}+\bsigma^{\nu \dalpha\alpha}\bsigma^{\mu \dbeta\beta}=4 \epsilon^{\alpha \gamma}\sigma^{\sigma \nu}{}_{\gamma}{}^{\beta}\bsigma^{\rho \mu \dalpha}{}_{\dgamma}\epsilon^{\dgamma\dbeta}\eta_{\rho \sigma}+\epsilon^{\alpha \beta}\epsilon^{\dalpha\dbeta}\eta^{\mu \nu}
+\bsigma^{\mu \dalpha\alpha}\bsigma^{\nu \dbeta\beta}+\bsigma^{\nu \dalpha\alpha}\bsigma^{\mu \dbeta\beta}=4 \vep^{\alpha \gamma}\sigma^{\sigma \nu}{}_{\gamma}{}^{\beta}\bsigma^{\rho \mu \dalpha}{}_{\dgamma}\vep^{\dgamma\dbeta}\eta_{\rho \sigma}+\vep^{\alpha \beta}\vep^{\dalpha\dbeta}\eta^{\mu \nu}
 \\&
 (\bar{\xi}\bsigma^{\mu}\chi)=-(\chi \sigma^{\mu}\bar{\xi})
 \\&
