@@ -1,5 +1,5 @@
 %#!lualatex
-% Time-stamp: <2025-02-10 09:14:14>
+% Time-stamp: <2025-06-20 16:24:02>
 \documentclass[10pt]{CheatSheet}
 \usepackage{subfiles,tensor}
 \usepackage[inline,shortlabels]{enumitem}
@@ -60,6 +60,7 @@
  % tex.print(string.sub(\luastring{#1}, 1, 5) == "PDG20" and "\\bibitemPDG[#1]" or "\\bibitemGeneral")}{#1}}
 \makeatother
 
+\newcommand*\tpdd[1][]{\qopname\relax o{\ifx\\#1\\{(2\pi)\mathrm{\delta}}\else{(2\pi)^{#1}\mathrm{\delta}^{(#1)}}\fi}}
 \newcommand*\diracdeltabar[1][]{\qopname\relax o{\ifx\\#1\\\overline{\mathrm{2\pi\delta}}\else\overline{\mathrm{2\pi\delta}^{(#1)}}\fi}}
 
 

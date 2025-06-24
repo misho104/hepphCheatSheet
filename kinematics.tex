@@ -4,25 +4,20 @@
 
 \summarystyle
 \section{Kinematics}
-\vspace{-1.5em}
-\begin{lalignat*}{2}
-\llabel{Notation here:}
-p_i^\mu=\pmat{p^0_i\\\vc p_i},
-\quad \tilde p_i=\norm{\vc p_i},
-\quad E_i=\sqrt{\tilde p_i^2+m_i^2}\text{~(on-shell fixed)},
-\quad Q_i=p_i^2=p^\mu_i p_{i \mu}.
-\\&&&
-\diracdeltabar[4]\left(P^\mu-p^\mu\right)\coloneq(2\pi)^4\diracdelta[4]\left(P^\mu-p^\mu\right)
-\\&&&
-\diracdeltabar\left((p^0)^2-E_p^2\right)\coloneq(2\pi)\diracdelta\left((p^0)^2-\vnorm{p}^2-m^2\right)\Theta\left(p^0\right)
-\\&&&\text{K\"all\'en function}\quad
-\Kallen(x,y,z) = x^2+y^2+z^2-2xy-2yz-2zx = (x-y-z)^2-4yz
-\\&&&\text{LIPS}\quad
+This section uses the following notation:
+\begin{align*}
+&p_i^\mu=\pmat{p^0_i\\\vc p_i}\text{~or~}\pmat{E_i\\\vc p_i}~\text{with $E_i=\sqrt{\|\vc p_i\|^2+m_i^2}$ implying on-shell and $p^0_i$ implying general values},\\
+&q_i = \|\vc p_i^\mu\|,\quad s_i = p_i^\mu p_{i\mu}, \quad s_{ij}=(p_i+p_j)^2,\quad s_{ijk}=(p_i+p_j+p_k)^2,~~\cdots;
+\\&\text{K\"all\'en function}\quad
+\Kallen(x,y,z) = x^2+y^2+z^2-2xy-2yz-2zx = (x-y-z)^2-4yz.
+\\&\text{LIPS}\quad
 \dd\Pi = \ddP{p}\frac{1}{2E_{p}}
-       = \frac{\dd p^0\dd^3\vc p}{(2\pi)^4}\diracdeltabar\left((p^0)^2-E_p^2\right)
-\\&&&\phantom{\text{LIPS}}\quad
-  \overline{\dd\Pi^{(n)}} \coloneq  {\dd\Pi_1\cdots\dd\Pi_n\,\diracdeltabar[4]\left(P^\mu-\sum p_n^\mu\right)}
-\end{lalignat*}
+       = \frac{\dd p^0\dd^3\vc p}{(2\pi)^4}\diracdeltabar(p^0;E_p)
+;\qquad
+\diracdeltabar(p^0;E_p)\coloneq\tpdd((p^0)^2-\vnorm{p}^2-m^2)\Theta(p^0),
+\\&\phantom{\text{LIPS}}\quad
+  \overline{\dd\Pi^{(n)}}(P;p_i,\dots,p_n) \coloneq  {\dd\Pi_1\cdots\dd\Pi_n\,\tpdd[4]\left(P^\mu-\sum p_i^\mu\right)}.
+\end{align*}
 
 \paragraph{Decay rate and cross section}  ($\mathcal M$ has a mass dimension of $4-N\w i-N\w f$.)
 \begin{lalignat}{2}
@@ -95,10 +90,10 @@ Decay rates and 2-to-2 cross sections are
 \noindent
 For collisions with the same mass $(m_A,m_A)\to (m_1,m_1)$:
 \begin{alignat*}{2}
-t &= m_A^2+m_1^2 - s/2+2\tilde k\tilde p\cos\theta,\qquad
-&\tilde k&={\sqrt{s/4-m_A^2}},\\
-u &= m_A^2+m_1^2 - s/2-2\tilde k\tilde p\cos\theta,
-&\tilde p&={\sqrt{s/4-m_1^2}}.
+t &= m_A^2+m_1^2 - s/2+2\|\vc k\|\|\vc p\|\cos\theta,\qquad
+&\|\vc k\|&={\sqrt{s/4-m_A^2}},\\
+u &= m_A^2+m_1^2 - s/2-2\|\vc k\|\|\vc p\|\cos\theta,
+&\|\vc p\|&={\sqrt{s/4-m_1^2}}.
 \end{alignat*}
 
 \begin{wrapfigure}[2]{r}{12em}\vspace{-2em}
@@ -108,19 +103,20 @@ u &= m_A^2+m_1^2 - s/2-2\tilde k\tilde p\cos\theta,
 \noindent
 For collisions of massless initial particles $(0,0)\to (m_1,m_2)$:
 \begin{alignat*}{2}
- t &= (m_1^2+m_2^2-s)/2+\tilde p\sqrt{s}\cos\theta,\qquad
-&\tilde p&=(\sqrt{s}/2)\Kallen[1/2](1,m_1^2/s,m_2^2/s),\\
- u &= (m_1^2+m_2^2-s)/2-\tilde p\sqrt{s}\cos\theta.
+ t &= (m_1^2+m_2^2-s)/2+\|\vc p\|\sqrt{s}\cos\theta,\qquad
+&\|\vc p\|&=(\sqrt{s}/2)\Kallen[1/2](1,m_1^2/s,m_2^2/s),\\
+ u &= (m_1^2+m_2^2-s)/2-\|\vc p\|\sqrt{s}\cos\theta.
 \end{alignat*}
 
-\paragraph{Phase-space reduction} With $Q'=p'^\mu p'_\mu$,
+\paragraph{Phase-space reduction} With $s'\w{min}=(m_{n+1}+\cdots+m_{n+m})^2$ and $s'\w{max}=(\sqrt{P^2}-m_1-\cdots-m_n)^2$,
 \begin{equation}
   \overline{\dd\Pi^{(n+m)}}(P;\,p_1,\dots,p_{n+m})
-  =
-  \overline{\dd\Pi^{(n)}}(p';\,p_1,\dots,p_n)\,
-  \overline{\dd\Pi^{(m+1)}}(P;\,p',p_{n+1},\dots,p_{n+m})\frac{1}{2\pi}\dd Q'
+  =\int_{s'\w{min}}^{s'\w{max}}\frac{\dd s'}{2\pi}
+  \,\overline{\dd\Pi^{(n+1)}}(P;\,p',p_{1},\dots,p_{n})
+  \,\overline{\dd\Pi^{(m)}}(p';\,p_{n+1},\dots,p_{n+m}),
   \label{eq:psreduction}
 \end{equation}
+where the two LIPSes are to be evaluated with a constraint $p'^\mu p'_\mu=s'$.
 
 \paragraph{Three-body final state} Mandelstam-like variables can be defined, for $P\to(p_1,p_2,p_3)$, as
 \begin{equation*}
@@ -150,9 +146,9 @@ Lorentz-invariant phase space:
 \begin{align}
   \dd\Pi
    = \ddP{p}\frac{1}{2E_{p}}
-   = \ddP{p}\frac{1}{2\sqrt{m^2+\tilde p^2}}
-   = \frac{\dd p_0\dd^3\vc p}{(2\pi)^4}2\pi\diracdelta(p_0^2-\tilde p^2-m^2)\Theta(p^0)
-   \equiv \frac{\dd p_0\dd^3\vc p}{(2\pi)^4}\diracdeltabar(p_0^2-E_p^2)
+   = \ddP{p}\frac{1}{2\sqrt{m^2+\|\vc p\|^2}}
+   = \frac{\dd p_0\dd^3\vc p}{(2\pi)^4}2\pi\diracdelta(p_0^2-\|\vc p\|^2-m^2)\Theta(p^0)
+   \equiv \frac{\dd p_0\dd^3\vc p}{(2\pi)^4}\diracdeltabar(p_0;E_p)
 \end{align}
 K\"all\'en function:
 \begin{align*}
@@ -166,125 +162,23 @@ K\"all\'en function:
 = (1+\alpha_1+\alpha_2)(1-\alpha_1-\alpha_2)(1+\alpha_1-\alpha_2)(1-\alpha_1+\alpha_2).
 \end{align*}
 \begin{alignat*}{2}
-&\Kallen[1/2]\left(s;m_1^2, m_2^2\right) = s\Kallen[1/2]\left(1;\frac{m_1^2}{s}, \frac{m_2^2}{s}\right);&
+&s\Kallen[1/2]\left(1,\frac{m_1^2}{s}, \frac{m_2^2}{s}\right) = \Kallen[1/2]\left(s,m_1^2, m_2^2\right);&
 \qquad
-&\Kallen[1/2]\left(1;\frac{m^2}{s},\frac{m^2}{s}\right)
+&\Kallen[1/2]\left(1,\frac{m^2}{s},\frac{m^2}{s}\right)
 = \sqrt{1-\frac{4 m^2}{s}},\\
-&\Kallen[1/2]\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right)
+&\Kallen[1/2]\left(1,\frac{m_1^2}{s},\frac{m_2^2}{s}\right)
 = \sqrt{1-\frac{2 (m_1^2+m_2^2)}{s}+\frac{(m_1^2-m_2^2)^2}{s^2}},&
-&\Kallen[1/2]\left(1;\frac{m_1^2}{s},0\right)
+&\Kallen[1/2]\left(1,\frac{m_1^2}{s},0\right)
 = \frac{s-m_1^2}{s}.
 \end{alignat*}
-\paragraph{Two-body phase space}
-If $f(p_1^\mu,p_2^\mu)$ is Lorentz invariant, $f\equiv f(p_1^2,p_2^2,p_1^\mu p_{2\mu})\equiv f(\tilde p_1,\tilde p_2,\cos\theta_{12})$.
-Meanwhile,
-\begin{equation}
- \dd\Pi_1\dd\Pi_2
-=
-\ddP{p_1}\,\,\ddP{p_2}\frac{1}{2E_12E_2}
-=
-\frac{(4\pi)\dd\tilde p_1\,\tilde p_1^2}{(2\pi)^3}
-\frac{(2\pi)\dd\tilde p_2\,\tilde p_2^2\,\dd\cos\theta_{12}}{(2\pi)^3}\frac{1}{2E_12E_2}
-=
-\frac{\dd E_+\dd E_- \dd s}{128\pi^4}
-\end{equation}
-with the replacement of the variables
-\begin{align*}
-& E_\pm = E_1\pm E_2,
-\qquad
-s=(p_1+p_2)^2=m_1^2 + m_2^2 + 2E_1E_2 - 2\tilde p_1 \tilde p_2\cos\theta_{12};\\
-&
-\left|\frac{\dd(E_+,E_-,s)}{\dd(\tilde p_1,\tilde  p_2, \cos\theta_{12})}\right|=\frac{4\tilde p_1^2\tilde p_2^2}{E_1E_2},
-\qquad
-\left|\frac{\dd(E_1,E_2,s)}{\dd(\tilde p_1,\tilde  p_2, \cos\theta_{12})}\right|=\frac{2\tilde p_1^2\tilde p_2^2}{E_1E_2}.
-\end{align*}
-Therefore, 
-\begin{equation}
- \int\dd\Pi_1\dd\Pi_2
-=
-\frac{1}{128\pi^4}
-\int_{(m_1+m_2)^2}^\infty\dd s
-\int_{\sqrt{s}}^\infty\dd E_+
-\int\w{min}^{\mathrm{max}}\dd E_-,
-\end{equation}
-where the boundary of $E_-$ is given by
-\begin{align*}
- &\cos\theta_{12}=\frac{E_+^2-E_-^2+2 \left(m_1^2+m_2^2-s\right)}{\sqrt{(E_++E_-)^2-4 m_1^2}\sqrt{(E_+-E_-)^2-4 m_2^2}} \in [-1,1]\\
- &\therefore\quad
-\left|E_- - \frac{m_1^2-m_2^2}{s}E_+\right| 
-\le
-\sqrt{E_+^2-s}\cdot\Kallen[1/2]\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right).
-\end{align*}
 
-\paragraph{Two-body phase space with momentum conservation}
-We consider general two-body phase-space integrals,
-\begin{equation}
- \overline{\dd\Pi^{(2)}}\times I
-   = \dd\Pi_1\dd\Pi_2\,\diracdeltabar[4](P^\mu-p_1^\mu-p_2^\mu)\times I
-   =\frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}\frac{\dd^3{\vc p_2}}{2E_2}\diracdelta[4](P^\mu-p_1^\mu-p_2^\mu)\times I
-\end{equation}
-with $I$ being the integrand, $P^\mu=(E_0, \vc P_0)$, and $S_0=E_0^2-\tilde P_0^2$, assuming $S_0>0$. First, with carrying out $\vc p_2$ integral,
-
-\begin{align}
- \overline{\dd\Pi^{(2)}}\times I
-  &= \frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}{\dd^4 p_2^\mu}
-  \diracdelta((p_2^0)^2-\|\vc p_2\|^2-m_2^2)\Theta(p_2^0)
-  \diracdelta[4](P^\mu-p_1^\mu-p_2^\mu)\times I
-  \\&=
-   \frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}
-  \diracdelta((E_0-E_1)^2-\|\vc P_0-\vc p_1\|^2-m_2^2)\Theta(E_0-E_1)\times I
-  \\&=
-   \frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}
-  \diracdelta(S_0-2E_0E_1+2\vc P_0\cdot\vc p_1+m_1^2-m_2^2)\Theta(E_0-E_1)\times I
-  \\&=
-   \frac{\tilde p_1\dd E_1\dd\cos\theta\dd\phi}{8\pi^2}
-  \diracdelta(S_0-2E_0E_1+2\tilde P_0\tilde p_1\cos\theta+m_1^2-m_2^2)\Theta(E_0-E_1)\times I~\Big|_{\tilde p_1=(E_1^2-m_1^2)^{1/2}}.
-\end{align}
-
-
-Now, we continue for a constant $I$.  If $\tilde P_0=0$, then $\sqrt {S_0}=E_0$ and
-\begin{equation}
- \overline{\dd\Pi^{(2)}}
-  =
-   \frac{(E_1^2-m_1^2)^{1/2}\dd E_1}{2\pi}
-  \diracdelta(2\sqrt{S_0}\mathcal E-2E_0E_1)\Theta(E_0-E_1)
-  =
-   \frac{\phi}{4\pi\sqrt{S_0}}
-\end{equation}
-to recover the CM result with the constants
-\begin{equation}
-  \mathcal E=\frac{S_0+m_1^2-m_2^2}{2\sqrt{S_0}},\qquad
-  \phi=\frac{\Kallen[1/2](S_0,m_1^2,m_2^2)}{2\sqrt{S_0}}=\sqrt{\mathcal E^2-m_1^2}.
-\end{equation}
-
-Because the result is Lorentz scalar, the result is unchanged even if $\tilde P_0\neq 0$ as we explicitly check by integrating $\cos\theta$; the integration gives the Heaviside function and
-\begin{align}
- \overline{\dd\Pi^{(2)}}
-&=
-   \frac{1}{8\pi\tilde P_0}\int_{m_1}^{E_0}{\dd E_1}\,
-  \Theta\left(-1<c(E_1)<1\right);\qquad
-  c(E_1)\coloneq \frac{E_0E_1-\sqrt{S_0}\mathcal E}{\tilde P_0(E_1^2-m_1^2)^{1/2}}.
-\end{align}
-There,
-\begin{align}
-  &E_{\text{1; max}}=\frac{E_0\mathcal E+\tilde P_0\phi}{\sqrt {S_0}}
-  \quad\iff\quad
-\tilde p_1=\frac{\tilde P_0\mathcal E+E_0\phi}{\sqrt{S_0}}
-  \quad\then c=+1,
-\\&
-  E_{\text{1; min}}=\frac{E_0\mathcal E-\tilde P_0\phi}{\sqrt {S_0}}
-  \quad\iff\quad
-\tilde p_1=\left|\frac{\tilde P_0\mathcal E-E_0\phi}{\sqrt{S_0}}\right|
-  \quad\then c = \sign(\tilde P_0\mathcal E-E_0\phi).
-\end{align}
-If $\tilde P_0\mathcal E-E_0\phi<0$, the first derivative $c'(E_1)$ cannot be zero between $E_{\text{1; min}}$ and $E_{\text{1; max}}$, so $c(E_1)$ is monotonically increasing and $E_1$ and $\cos\theta$ are in one-to-one correspondence. Meanwhile, if $\tilde P_0\mathcal E-E_0\phi>0$, then $c(E_1)$ has a minimum
-\begin{equation}
-  c\w{min}=c\left(\frac{E_0m_1^2}{S_0\mathcal E}\right)
-  = \frac{\sqrt{E_0^2 m_1^2-S \mathcal E^2}}{\tilde P_0 m_1}=\sqrt{1-\frac{S \phi ^2}{m_1^2\tilde P_0^2}}.
-\end{equation}
-In any cases, all $E_1$ between them are allowed, and we evaluate $\overline{\dd\Pi^{(2)}}
-=
-   (E_{\text{1; max}}-E_{\text{1; min}})/8\pi\tilde P_0=\phi/4\pi\sqrt{S_0}$ as expected.
+\paragraph{On-shell particles}
+The following equations hold for momenta $p_i^\mu$ with $p_i^\mu p_{i\mu}=m_i^2\ge 0$ and $p_i^0\ge 0$:
+\begin{alignat}{2}\begin{split}
+&(p_1+p_2+\cdots+p_n)^2\ge(m_1+m_2+\cdots+m_n)^2,\\
+&(p_1-p_2-\cdots-p_n)^2\le(m_1-m_2-\cdots-m_n)^2.
+\end{split}\label{eq:onshell-limit}
+\end{alignat}
 
 
 \subsection{Decay rate and Cross section}
@@ -335,14 +229,156 @@ where $v\w{rel}$ is the actual relative velocity
 
 
 
+\subsection{Two-body phase space}
+Since any Lorentz-invariant function $f(p_1^\mu,p_2^\mu)$ can be written in terms of $q_1$, $q_2$, and $\cos\theta_{12}$, it is convenient to evaluate
+\begin{equation}
+ \dd\Pi_1\dd\Pi_2
+=
+\ddP{p_1}\ddP{p_2}\frac{1}{2E_12E_2}
+=
+\frac{4\pi q_1^2\,\dd q_1\,\cdot 2\pi q_2^2\,\dd q_2\,\dd\cos\theta_{12}}{(2\pi)^6}
+\frac{1}{2E_12E_2}
+=
+\frac{\dd E_+\dd E_- \dd s}{128\pi^4}
+\end{equation}
+with the replacement of the variables
+\begin{align*}
+& E_\pm = E_1\pm E_2,
+\qquad
+s=(p_1+p_2)^2=m_1^2 + m_2^2 + 2E_1E_2 - 2q_1 q_2\cos\theta_{12};\\
+&
+\left|\frac{\dd(E_+,E_-,s)}{\dd(q_1, q_2, \cos\theta_{12})}\right|=\frac{4q_1^2q_2^2}{E_1E_2},
+\qquad
+\left|\frac{\dd(E_1,E_2,s)}{\dd(q_1, q_2, \cos\theta_{12})}\right|=\frac{2q_1^2q_2^2}{E_1E_2}.
+\end{align*}
+Therefore, the two-body phase space integral (without momentum conservation) is given by
+\begin{equation}
+ \int\dd\Pi_1\dd\Pi_2
+=
+\frac{1}{128\pi^4}
+\int_{(m_1+m_2)^2}^\infty\dd s
+\int_{\sqrt{s}}^\infty\dd E_+
+\int\w{min}^{\mathrm{max}}\dd E_-,
+\end{equation}
+where the boundary of $E_-$ is given by
+\begin{align*}
+ &\cos\theta_{12}=\frac{E_+^2-E_-^2+2 \left(m_1^2+m_2^2-s\right)}{\sqrt{(E_++E_-)^2-4 m_1^2}\sqrt{(E_+-E_-)^2-4 m_2^2}} \in [-1,1]\\
+ &\therefore\quad
+\left|E_- - \frac{m_1^2-m_2^2}{s}E_+\right| 
+\le
+\sqrt{E_+^2-s}\cdot\Kallen[1/2]\left(1;\frac{m_1^2}{s},\frac{m_2^2}{s}\right).
+\end{align*}
+
+\paragraph{With momentum conservation}
+Assume the total momentum is fixed by $P^\mu=(E_0, \vc P_0)$, where $S_0=E_0^2-Q_0^2>0$, as
+\begin{equation}
+ \overline{\dd\Pi^{(2)}}\times I
+   = \dd\Pi_1\dd\Pi_2\,\tpdd[4](P^\mu-p_1^\mu-p_2^\mu)\times I
+   =\frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}\frac{\dd^3{\vc p_2}}{2E_2}\diracdelta[4](P^\mu-p_1^\mu-p_2^\mu)\times I
+\end{equation}
+with $I$ being the integrand. Here, $S_0>0$ and $p^\mu_i p_{i\mu}\ge 0$ are assumed.\footnote{%
+Here, $p_1^\mu$ and $p_2^\mu$ are primarily the four momenta of on-shell particles, but we can generalize the discussion to any four momenta with $p_i^\mu p_{i\mu}\ge 0$, such as the sum of two or more momenta of on-shell particles.}
+It is then evaluated by
+\begin{align}
+ \overline{\dd\Pi^{(2)}}\times I
+  &= \frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}{\dd^4 p_2^\mu}
+  \diracdelta((p_2^0)^2-q_2^2-m_2^2)\Theta(p_2^0)
+  \diracdelta[4](P^\mu-p_1^\mu-p_2^\mu)\times I
+  \\&=
+   \frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}
+  \diracdelta((E_0-E_1)^2-\|\vc P_0-\vc p_1\|^2-m_2^2)\Theta(E_0-E_1)\times I
+  \\&=
+   \frac{1}{(2\pi)^2}\frac{\dd^3{\vc p_1}}{2E_1}
+  \diracdelta(S_0-2E_0E_1+2\vc P_0\cdot\vc p_1+m_1^2-m_2^2)\Theta(E_0-E_1)\times I
+  \\&=
+   \frac{q_1\dd E_1\dd\cos\theta\dd\phi}{8\pi^2}
+  \diracdelta(S_0-2E_0E_1+2Q_0q_1\cos\theta+m_1^2-m_2^2)\Theta(E_0-E_1)\times I~\Big|_{q_1=(E_1^2-m_1^2)^{1/2}}.
+\end{align}
+The following variables are of use, which physically means the energy and momentum of the particles in their center-of-mass frame:
+\begin{equation}
+  \mathcal E_1=\frac{S_0+m_1^2-m_2^2}{2\sqrt{S_0}},\qquad
+  \mathcal E_2=\frac{S_0-m_1^2+m_2^2}{2\sqrt{S_0}},\qquad
+  \phi=\frac{\sqrt S_0}{2}\Kallen[1/2]\left(1,\frac{m_1^2}{S_0},\frac{m_2^2}{S_0}\right).
+\end{equation}
+Here,  $\mathcal E_i^2-\phi_i^2=m_i^2$, $(\mathcal E_1+\mathcal E_2)^2=S_0$, and $E_0\ge \sqrt{S_0}\ge \mathcal E_i\ge m_i$. Then
+\begin{align}
+ \overline{\dd\Pi^{(2)}}\times I
+  &=
+   \frac{q_1\dd E_1\dd\cos\theta\dd\phi}{8\pi^2}
+  \diracdelta(2\sqrt{S_0}\mathcal E_1-2E_0E_1+2Q_0q_1\cos\theta)\Theta(E_0-E_1)\times I~\Big|_{q_1=(E_1^2-m_1^2)^{1/2}}.
+\end{align}
+
+
+Here, notice that, if the integrand $I$ is a Lorentz scalar, the result is also a Lorentz scalar and independent under Lorentz transformation, so we can set $\vc P_0=\vc 0$. Explicitly, if the integrand $I$ is a constant,
+\begin{equation}
+ \overline{\dd\Pi^{(2)}}\Big|_{\vc P_0=\vc 0}
+  =
+   \frac{(E_1^2-m_1^2)^{1/2}\dd E_1}{2\pi}
+  \diracdelta(2\sqrt{S_0}\mathcal E_1-2E_0E_1)\Theta(E_0-E_1)
+  =
+   \frac{\phi}{4\pi\sqrt{S_0}}.
+\end{equation}
+However, we can proceed with general $\vc P_0$, which is useful to verify the Lorentz invariance but also for general $I$:
+\begin{align}
+ \overline{\dd\Pi^{(2)}}
+  &= \frac{\dd E_1\dd\cos\theta\dd\phi}{16\pi^2 Q_0}
+  \diracdelta\left(\cos\theta-\frac{E_0E_1-\sqrt{S_0}\mathcal E_1}{Q_0(E_1^2-m_1^2)^{1/2}}\right)\Theta(E_0-E_1)
+\\&=
+   \frac{1}{8\pi Q_0}\int_{m_1}^{E_0}{\dd E_1}\,
+  \Theta\left(-1\le c(E_1)\le1\right);\qquad
+  c(E_1)\coloneq \frac{E_0E_1-\sqrt{S_0}\mathcal E_1}{Q_0(E_1^2-m_1^2)^{1/2}}.
+\end{align}
+Here, $|c(x)|=1$ has two solutions $x_\pm=(E_0\mathcal E_1\pm Q_0\phi)/\sqrt{S_0}$, which correspond to\footnote{%
+  Notice that $E_{\text{1; min}}^2-m_1^2=(Q_0\mathcal E_1-E_0\phi)^2/S_0>0$
+  and
+$E_0-E_{\text{1; max}}=(E_0^2m_2^2+S_0\phi^2)/(\sqrt{S_0}(E_0\mathcal E_2+Q_0\phi))>0$.
+}
+\begin{equation}
+  E_{\text{1; max}}=\frac{E_0\mathcal E_1+Q_0\phi}{\sqrt {S_0}},\quad
+  q_{\text{1; max}}=\frac{Q_0\mathcal E_1+E_0\phi}{\sqrt{S_0}};\qquad
+  E_{\text{1; min}}=\frac{E_0\mathcal E_1-Q_0\phi}{\sqrt {S_0}},\quad
+  q_{\text{1; min}}=\frac{\left|Q_0\mathcal E_1-E_0\phi\right|}{\sqrt{S_0}}.
+\end{equation}
+Meanwhile, $c'(x)$ becomes zero at $x_0=(E_0 m_1^2)/(\sqrt {S_0}E_1)$, where $\sign(x_0-x_-)=\sign(Q_0 \mathcal E_1-E_0\phi)$.
+Therefore,
+\begin{itemize}
+  \item if $Q_0 \mathcal E_1<E_0\phi$, $c(x)$ is monotonically increasing from $c(x_-)=-1$ to $c(x_+)=+1$.
+  \item if $Q_0 \mathcal E_1>E_0\phi$, $c(x)$ has a minimum $\displaystyle c(x_0)=\frac{\sqrt{Q_0^2\mathcal E_1^2-E_0^2\phi^2}}{Q_0m_1}$ and $c(x_-)=c(x_+)=+1$.
+\end{itemize}
+In either cases, the Heaviside function becomes unity between $E_{\text{1; min}}$ and $E_{\text{1; max}}$, i.e.,
+\begin{equation}
+ \overline{\dd\Pi^{(2)}}
+= \frac{1}{8\pi Q_0}\int_{m_1}^{E_0}{\dd E_1}\,
+  \Theta\left(-1\le c(E_1)\le1\right)
+= \frac{1}{8\pi Q_0}\int_{E_{\text{1; min}}}^{E_{\text{1; max}}}{\dd E_1}
+= \frac{\phi}{4\pi \sqrt{S_0}}.
+\end{equation}
+This discussion can be applied to general integrands. Schematically, we can evaluate the integral as
+\begin{align}
+ \overline{\dd\Pi^{(2)}}\times I
+  &=\frac{1}{8\pi Q_0}
+   \int_{m_1}^{E^0}{\dd E_1}{\dd\cos\theta}\cdot
+  \diracdelta\left(\cos\theta-\frac{E_0E_1-\sqrt{S_0}\mathcal E_1}{Q_0(E_1^2-m_1^2)^{1/2}}\right)
+  \times \left(\frac{\dd\phi}{2\pi} I\right)~\Bigg|_{\text{$p_2^\mu$ and $q_1$ being fixed}}
+  \\
+  &=\frac{1}{8\pi Q_0}
+   \int_{E_{\text{1; min}}}^{E_{\text{1; max}}}{\dd E_1}
+  \times \left(\frac{\dd\phi}{2\pi} I\right)~\Bigg|_{\cos\theta=c(E_1);~~\text{$p_2^\mu$ and $q_1$ being fixed}}
+\label{eq:twobody-direct}
+\end{align}
+for most cases.
+
+
+
+
 \subsection{More than two bodies}
 The phase-space reduction formula \eqref{eq:psreduction} is proved by, with $p_{a,\dots,b}=\sum_{i=a}^b p_i$, (cf.~Ref.~\cite{Hitoshi233B})
 \begin{align*}
   \overline{\dd\Pi^{(n+m)}}%(P;\,p_1,\dots,p_{n+m})
   &=\left[
-    \ddP{p'}\frac{\dd p'^0}{2\pi}\diracdeltabar[4]\left(p'^\mu-p_{1,\dots,n}^\mu\right)
+    \ddP{p'}\frac{\dd p'^0}{2\pi}\tpdd[4]\left(p'^\mu-p_{1,\dots,n}^\mu\right)
   \right]
-  \dd\Pi_1\cdots\dd\Pi_{n+m}\,\diracdeltabar[4]\left(P^\mu-p_{1,\dots,n+m}^\mu\right)
+  \dd\Pi_1\cdots\dd\Pi_{n+m}\,\tpdd[4]\left(P^\mu-p_{1,\dots,n+m}^\mu\right)
 \\ &=    \left[
     \overline{\dd\Pi^{(n)}}(p';\,p_1,\dots,p_n)\,
     \overline{\dd\Pi^{(m+1)}}(P;\,p',p_{n+1},\dots,p_{n+m})\,
@@ -351,75 +387,69 @@ The phase-space reduction formula \eqref{eq:psreduction} is proved by, with $p_{
 \\ &=    \left[
     \overline{\dd\Pi^{(n)}}(p';\,p_1,\dots,p_n)\,
     \overline{\dd\Pi^{(m+1)}}(P;\,p',p_{n+1},\dots,p_{n+m})\,
-  \right]_{p'^\mu p'_\mu=Q'\text{~:~fixed}}
-    \frac{\dd Q'}{2\pi}.
+  \right]_{p'^\mu p'_\mu=s'\text{~:~fixed}}
+    \frac{\dd s'}{2\pi},
 \end{align*}
+where the range of $\dd s'$ is limited to, due to Eq.~\eqref{eq:onshell-limit},
+\[
+(m_1+m_2+\cdots+m_n)^2\le s'\le (\sqrt{P^2}-m_{n+1}-\cdots-m_{n+m})^2.
+\]
 
-\pagebreak[3]
 
-The phase-space integral of massless $n$-body particles over a constant is obtained by, as we can set $P^\mu=\spmat{\sqrt{s}\\\vc 0}$,
+For a constant integrand and massless particles, the phase-space integral is obtained by, since we can set $P^\mu=\spmat{\sqrt{S_0}\\\vc 0}$,
 \begin{align}
-\int1\,\overline{\dd\Pi^{(n)}}(s)
-&= \frac{\dd Q'}{2\pi}
-  \overline{\dd\Pi^{(2)}}(P;\,p',p_{n})\,
+\int1\,\overline{\dd\Pi^{(n)}}(S_0)
+&= \frac{\dd s'}{2\pi}
+  \overline{\dd\Pi^{(2)}}(P_0;\,p',p_{n})\,
   \overline{\dd\Pi^{(n-1)}}(p';\,p_1,\dots,p_{n-1})
-\notag\\&= \frac{\dd Q'}{2\pi}
-  \frac{\tilde p'}{4\pi P^0}
-  a_{n-1}Q'^{n-3}
-= \frac{\dd Q'}{2\pi}
-  \frac{s-Q'}{8\pi{s}}
-  a_{n-1}Q'^{n-3}
-= \frac{a_{n-1}}{(4\pi)^2(n-1)(n-2)}s^{n-2}
-\notag\\&\therefore\quad
+= \int_0^{S_0}\frac{\dd s'}{2\pi}
+\frac{\Kallen[1/2](1,s'/S_0,0)}{8\pi}
+  (a_{n-1}s'^{n-3})
+\notag\\&
+= \frac{a_{n-1}}{(4\pi)^2(n-1)(n-2)}S_0^{n-2}
+\qquad\therefore\quad
 \int1\,\overline{\dd\Pi^{(n)}}=
-  \frac{1}{2(4\pi)^{2n-3}}\frac{s^{n-2}}{(n-1)!(n-2)!}
+  \frac{1}{2(4\pi)^{2n-3}}\frac{S_0^{n-2}}{(n-1)!(n-2)!}
 \end{align}
 where the fact is used that $\overline{\dd\Pi^{(n)}}(s)=a_n\times s^{n-2}$ with $a_n$ being a constant.
 
-
 \paragraph{Three-body: spherically-symmetric cases}
-The three-body phase space integral is reduced as
+For spherically-symmetric (as well as Lorentz invariant) integrand, we evaluate the three-body phase space at the center-of-mass frame as
 \begin{align}
-  &\overline{\dd\Pi^{(3)}}
-  =\frac{\dd Q_{23}}{2\pi}
-  \overline{\dd\Pi^{(2)}}(P;\,p_1,p_{23})
-  \overline{\dd\Pi^{(2)}}(p_{23};\,p_2,p_3),
-\\&
-\qquad\overline{\dd\Pi^{(2)}}(p_{23};\,p_2,p_3)=
-\frac{\dd\cos\theta_{2}}{8\pi}
-\frac{\tilde p_{2}^2}{E_{23}\tilde p_2 - \tilde p_{23}E_2\cos\theta_2};
+  \overline{\dd\Pi^{(3)}}_{\text{sph-sym}}
+  &=\frac{\dd s_{23}}{2\pi}
+  \overline{\dd\Pi^{(2)}}(P_0;\,p_1,p_{23})
+  \overline{\dd\Pi^{(2)}}(p_{23};\,p_2,p_3)
 \\
-&
-\qquad\tilde p_2=\frac{(Q_{23}+m_2^2-m_3^2)\tilde p_{23}\cos\theta_2
- + E_{23}\sqrt{\Kallen(Q_{23},m_2^2,m_3^2)-4m_2^2\tilde p_{23}^2 \sin^2\theta_2}
-}{2(Q_{23}+\tilde p_{23}^2\sin^2\theta_2)},
+  &=\frac{\dd s_{23}}{2\pi}\cdot
+   \frac{q_1\dd E_1\dd\cos\theta\dd\phi}{8\pi^2}
+  \diracdelta(2\sqrt{S_0}\mathcal E_1-2E_0E_1)\Theta(E_0-E_1)\cdot
+  \frac{1}{8\pi q_{23}}\dd E_3\frac{\dd\phi_{2,3}}{2\pi}
+\\
+  &=\frac{\dd s_{23}}{2\pi}\cdot
+   \frac{q_1\dd E_1}{4\pi \sqrt{S_0}}
+  \diracdelta(E_1-\mathcal E_1)\cdot
+  \frac{1}{8\pi q_{23}}\dd E_3,
 \end{align}
-where $\theta_2$ is the angle between $\vc p_{23}$ and $\vc p_2$ (in the lab frame).
-If the matrix element to integrate is spherically symmetric, so as $\overline{\dd\Pi^{(2)}}(p_{23};p_2,p_3)|\mathcal M|^2$, i.e., it is independent of the angle of $\vc p_{23}$. Then one can simply evaluate  $\int\dd^3\vc p_{23}$, which leads to, in the center-of-mass frame,
-\begin{equation}
-\overline{\dd\Pi^3}_{\text{sph.\ sym.}}(\sqrt{s}, \vc 0)
+where angular integrals are carried out naively and $\mathcal E_1=(S_0+m_1^2-s_{23})/2\sqrt{S_0}$. As $q_1=q_{23}$ and $s_{12}=S_0+m_3^2-2E_3\sqrt{S_0}$,
+\begin{align}
+  \overline{\dd\Pi^{(3)}}_{\text{sph-sym}}
+  &=\frac{\dd s_{23}\dd E_3}{64\pi^3\sqrt{S_0}}
+  =\frac{1}{128\pi^3S_0}
+\int_{(m_2+m_3)^2}^{(\sqrt{s}-m_1)^2}\dd s_{23}\int\dd s_{12},
+\end{align}
+which is equal to the PDG-Eq.~(47.23)\cite{PDG2018}. The second integral is to be evaluated between
+\begin{align}
+&(E_3)_{\text{max}}^{\text{min}} =
+\frac{E_{23}\mathcal E_{3;23}\mp q_{23}\phi_{23}}{\sqrt{s_{23}}}
 =
-\frac{\dd s_{23}\dd\cos\theta_{2}}{64\pi^3}
-\frac{p_1}{\sqrt s}
-\frac{p_{2}^2}{p_2\sqrt{s_{23}+p_1^2} - p_1\sqrt{p_2^2+m_2^2}\cos\theta_2}\Big|_{
- p_1^2=\lambda(s,m_1^2,s_{23})/4s
-}
-= \frac{s}{128\pi^3}\dd x_1\dd x_2,
-\end{equation}
-where we defined $x_i\coloneq {2E_i}/{\sqrt s}$. Noting that $s_{23}=s+m_1^2-2E_1\sqrt{s}=s(1-x_1)+m_1^2$ etc., 
-\begin{equation}
- \overline{\dd\Pi^3}_{\text{sph.\ sym.}}(\sqrt{s}, \vc 0)
-=
-\frac{1}{128\pi^3}\frac{1}{s}
-\int_{(m_2+m_3)^2}^{(\sqrt{s}-m_1)^2}\dd s_{23}\int\dd s_{13};
-\end{equation}
-\begin{equation}
- (s_{13})^{\text{max}}_{\text{min}} =
-\frac{(s+m_3^2-m_1^2-m_2^2)^2}{4s_{23}}
--\frac{1}{4s_{23}}
-\left[\Kallen[1/2](s,m_1^2,s_{23})\mp\Kallen[1/2](s_{23},m_2^2,m_3^2)\right]^2.
-\end{equation}
-This is equal to the PDG-Eq.~(47.23)\cite{PDG2018}.
+\frac{(S_0+s_{23}-m_1^2)(s_{23}-m_2^2+m_3^2)\mp\Kallen[1/2](S_0,m_1^2,m_2^2) \Kallen[1/2](s_{23},m_2^2,m_3^2)}{4\sqrt{S_0}s_{23}},
+\\&\text{i.e.,}\quad
+(s_{12})_{\text{min}}^{\text{max}} =
+\frac{(S_0+m_2^2-m_1^2-m_3^2)^2-\left[
+\Kallen[1/2](S_0,m_1^2,m_2^2) \mp \Kallen[1/2](s_{23},m_2^2,m_3^2)
+\right]^2}{4s_{23}}.
+\end{align}
 
 
 \subsection{Two-body decay of boosted particles}
