@@ -1,4 +1,4 @@
-% Time-Stamp: <2022-05-16 15:23:42>
+% Time-Stamp: <2025-09-10 14:08:10>
 
 
 \documentclass[CheatSheet]{subfiles}
@@ -124,20 +124,92 @@ The Christofffel symbol, Riemann tensor, Ricci tensor, and Ricci scalar are give
 
 
 \subsection{Particle cosmology}
-The particle number density, pressure, and energy density are calculated from distribution functions:
+\subsubsection{Particle distribution and density}
+In kinematic equilibrium, the particle number density, energy density, and pressure (i.e., (momentum)$\times$(flux per time) against a ``wall'') are calculated from distributions
 \begin{alignat}{3}
  f\w{MB}(\vc k)&=\frac{g}{\ee^{(E-\mu)/T}},\qquad&
  f\w{BE}(\vc k)&=\frac{g}{\ee^{(E-\mu)/T}-1},\qquad&
- f\w{FD}(\vc k)&=\frac{g}{\ee^{(E-\mu)/T}+1};
+ f\w{FD}(\vc k)&=\frac{g}{\ee^{(E-\mu)/T}+1},
 \end{alignat}
 \begin{alignat}{3}
  n   &=\int\ddP{k}f(\vc k),\qquad&
  \rho&=\int\ddP{k}Ef(\vc k),\qquad&
  p   &=\int\ddP{k}k_zv_z f(\vc k)
-      =\int\ddP{k}\frac{k^2\cos^2\theta}{E} f(\vc k).
+      =\int\ddP{k}\frac{k^2\cos^2\theta}{E} f(\vc k),
 \end{alignat}
-Note the pressure is (momentum)$\times$(flux per time) on a ``wall''; assuming MB, $p=\rho/3$ for $m\ll T$ and $p=T\rho/m$ for $m\gg T$.
+where we, in principle, take $\mu<m$ for Bose--Einstein statistics.
+It is also useful to define the difference of particle and antiparticle number densities, assuming their chemical potential is opposite in sign:
+\begin{equation}
+  n_\Delta \deq n_+ - n_- = \int\ddP{k}\Bigl[f(\vc k,\mu) - f(\vc k,-\mu)\Bigr].
+\end{equation}
 
+For Maxwell--Boltzmann (MB) distribution, they are given explicitly by, with $\nu\deq \mu/T$ and $x\deq m/T$,
+\begin{equation}
+  n\w{MB} = \frac{gT^3\ee^{\nu}}{2\pi^2}x^2K_2(x),\quad
+  %n\w{\Delta;MB} = g\sinh{\nu}\cdot\frac{T^3}{\pi^2}x^2K_2(x),\quad
+  \rho\w{MB} = \left(3+\frac{xK_1(x)}{K_2(x)}\right)T n\w{MB},\quad
+  p\w{MB} = T n\w{MB},
+\end{equation}
+which reduce in special cases to
+\begin{align}
+  &\text{[massless: $m\ll T$]}
+  &&n\w{MB} = \frac{gT^3\ee^{\nu}}{\pi^2}\left(1-\frac14 x^2+\Order(x^4)\right),\quad
+  \rho\w{MB} = 3Tn\w{MB}\left(1+\frac16x^2+\Order(x^4)\right),
+\\&\text{[low-temperature: $m\gg T$]}
+  &&n\w{MB} \approx \ee^{(\mu-m)/T}\left({\frac{m T}{2\pi}}\right)^{3/2},\quad
+  \rho\w{MB} \approx \left(m+\frac32T\right)n\w{MB}.
+\end{align}
+
+\pagebreak
+
+For Fermi--Dirac or Bose--Einstein distributions, the results are not expressed analytically, even with $\mu=0$. Namely,
+\begin{equation}
+  n=\int_m^\infty\frac{\dd E}{2\pi^2}\frac{gE\sqrt{E^2-m^2}}{\ee^{(E-\mu)/T}\pm1},
+  \quad
+  \rho=\int_m^\infty\frac{\dd E}{2\pi^2}\frac{gE^2\sqrt{E^2-m^2}}{\ee^{(E-\mu)/T}\pm1},
+  \quad
+  p=\frac13\int_m^\infty\frac{\dd E}{2\pi^2}\frac{g(E^2-m^2)^{3/2}}{\ee^{(E-\mu)/T}\pm1}.
+\end{equation}
+Analytical expressions are available for the massless limit as
+\begin{align}
+    &\text{[massless: $m\ll T$]}
+  &&
+  n\w{FD}    = \frac{g L_3^-}{\pi^2}+\Order(x),\quad
+  \rho\w{FD} = \frac{3g L_4^-}{\pi^2}+\Order(x^2),\quad
+  p\w{FD}    = \frac{g L_4^-}{\pi^2}+\Order(x^2),\\
+   &\text{[massless: $m\ll T$; $\mu<0$]}
+  &&
+  n\w{BE}    = \frac{g L_3^+}{\pi^2}+\Order(x),\quad
+  \rho\w{BE} = \frac{3g L_4^+}{\pi^2}+\Order(x^2),\quad
+  p\w{BE}    = \frac{g L_4^+}{\pi^2}+\Order(x^2),
+\end{align}
+where $L^\pm_n=\pm\mathop{\text{\texttt{PolyLog}}}(n,\pm\ee^{\mu/T})$.
+Note we may need thermal masses for proper discussion, especially for the Bose--Einstein case, which is well-defined only for $\mu<m$.
+
+The difference $n_\Delta$ can be expressed under the assumption $\mu/T\ll1$:
+\begin{align}
+ &\text{[near equilibrium: $\mu\ll T$]}
+  &&
+ (n_\Delta{})^{\mathrm{BE}}_{\mathrm{FD}}
+ =\int_{m}^\infty
+ \frac{\dd E}{\pi^2} \frac{gE\sqrt{E^2-m^2}\ee^{E/T}}{(\ee^{E/T}\mp1)^2}\frac{\mu}{T}
+ +\Order\left(\frac{\mu^3}{T^3}\right)
+ =g\mu T^2\xi_\mp(x)
+ +\Order\left(\frac{\mu^3}{T^3}\right),
+\end{align}
+where $\displaystyle
+ \xi_\mp(x)\deq \int_{x}^\infty\frac{k\ee^{k}\sqrt{k^2-x^2}\,\dd k}{(\ee^{k}\mp1)^2\pi^2}
+$ can be calculated numerically and remain finite.
+For fermions,
+\begin{align}
+ \text{[$\mu\ll T$, $m\ll T$]}\qquad
+ (n_\Delta{})_{\mathrm{FD}} = g\mu\left[\frac{T^2}{6} - \frac{m^2}{4\pi^2}
+ +\Order\left(\frac{m^4}{T^4}\right)\right]
+ +\Order\left(\frac{\mu^2}{T^2}\right).
+\end{align}
+For Bose--Einstein case, it results in $\xi_-(0)=1/3$ and hence $n_{\Delta;\mathrm{BE}}\questeq g\mu T^2/3$ with no divergence, but we may discuss it is invalid because of the implicit assumption $\mu<m$.
+
+\subsubsection{Thermal average of cross section and decay rate}
 A thermal average of a cross section $\sigma(s)$ is schematically given by
 \begin{equation}
  \mean{\sigma v}_{AB\to12\cdots n}(T)
