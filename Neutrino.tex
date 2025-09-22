@@ -137,14 +137,25 @@ where $Y_e$ comes from the charged lepton mass diagonalization, while $X$ is a u
 
 
 \paragraph{Connection of the above two models}
-If we set $M_N =0$ in the Type-I see-saw ($n\w{RHN}=3$), the AT-diagonalization becomes
+If we set $M_N =0$ in the Type-I see-saw ($n\w{RHN}=3$), AT-diagonalization results in 
 \begin{align}
 \tilde M = \frac12\pmat{0 & (U_nM\w{D}\wdiag V_n^\dagger)^\TT \\ U_nM\w{D}\wdiag V_n^\dagger & 0},\quad
   \tilde R=\pmat{V_n^* & \ii V_n^* \\ U_n & -\ii U_n},\quad
-  \tilde M\wdiag=\pmat{M\w{D}\wdiag & 0 \\ 0 & M\w{D}\wdiag}.
+  \tilde M\wdiag=\pmat{M\w{D}\wdiag & 0 \\ 0 & M\w{D}\wdiag}
 \end{align}
-As three pairs of degenerate Weyl fermions form three Dirac neutrinos, the Dirac neutrino model is reproduced as expected.
+and we have three pairs of degenerate Weyl fermions, i.e., three Dirac neutrinos, which is equivalent to the Dirac neutrino model.
 
+\subsection{Weinberg Operator}
+The neutrino masses are often described by the Weinberg operator~\cite{Weinberg:1979sa}, which is obtained by integrating out the right-handed neutrinos. It is given by, usually with the convention $C_{ij}=C_{ji}$ because of $(L_i H)(L_j H)=(L_j H)(L_i H)$,
+\begin{equation}
+  \mathcal L\ni \frac{C_{ij}}{2}(L_i H)(L_j H)+\text{H.c.}
+  \equiv
+  \frac{C_{ij}}{2}\epsilon^{ab}\epsilon^{cd}(L_i^a H^b)^\alpha(L_j^c H^d)_\alpha+\text{H.c.}
+  \leadsto
+  \frac{C_{ij}}{2}\mean{H^0}^2(\nu_i\nu_j)+\text{H.c.}
+\end{equation}
+The (Majorana) mass matrix is thus given by $C_{ij}\mean{H^0}^2=C_{ij}v^2/2$ with $v=246\GeV$.
+The overall sign is unphysical here but may appear in the PMNS matrix.
 
 \subsection{Neutrino mixings}
 Experiments have revealed that the upper-left $3\times3$ submatrix is close to a unitary matrix, which we call ``the PMNS matrix'' $U\w{PMNS}$.
