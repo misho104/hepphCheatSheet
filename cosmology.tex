@@ -1,4 +1,4 @@
-% Time-Stamp: <2026-01-10 20:15:08>
+% Time-Stamp: <2026-01-14 01:49:16>
 
 
 \documentclass[CheatSheet]{subfiles}
@@ -84,8 +84,10 @@ FLRW metric can have several forms. For $\{K>0,K=0,K<0\}$,
 &\dd\Omega &= \dd\theta^2+\sin^2\theta\dd\phi^2,
 \\&= \dd t^2-a^2(t)\left[\dd\vc r^2 + \frac{K(\vc r\cdot\dd\vc r)^2}{1-K\|\vc r\|^2}\right]
 &\vc r&=(r\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\phi)
+\label{eq:FLRW2}
 \\&= \dd t^2-\left[\frac{a(t)}{1 + (K/4)\rho^2}\right]^2(\dd\rho^2 + \rho^2\dd\Omega)
      &\rho&=R_0 \tilde \rho:=\frac{2r}{1+\sqrt{1-Kr^2}}=\frac{2\tilde r R_0}{1+\sqrt{1-\tilde K\tilde r^2}}
+\label{eq:FLRW3}
 \\&= \dd t^2-\left[\frac{R(t)}{1 + (\tilde K/4){\tilde\rho}^2}\right]^2(\dd{\tilde\rho}^2 + {\tilde\rho}^2\dd\Omega)
 \\
 &=
@@ -108,7 +110,7 @@ Explicitly, $\chi$ is given by
   = 2R_0\left\{\tan^{-1}\frac{\tilde \rho}{2}, \frac{\tilde\rho}{2},\tanh^{-1}\frac{\tilde \rho}{2}\right\}.
 \end{equation}
 
-The Christofffel symbol, Riemann tensor, Ricci tensor, and Ricci scalar are given by
+The Christoffel symbol, Riemann tensor, Ricci tensor, and Ricci scalar are given by
 \begin{align*}
  \tensor{\Gamma}{^n_i_j} &= \frac{g^{nk}}{2}(g_{jk,i}+g_{ik,j}-g_{ij,k}),
  &\tensor{R}{_i_j_k^l} &=
@@ -119,10 +121,37 @@ The Christofffel symbol, Riemann tensor, Ricci tensor, and Ricci scalar are give
 & {R}_{ij}&=\tensor{R}{_i_k_j^k},
 & R &= g^{ij}R_{ij}.
 \end{align*}
-\footnotetext{Overall sign is convention-dependent.}
-
-
-
+\footnotetext{Overall sign is convention-dependent.}%
+%
+We can obtain their explicit forms for the FLRW metric from, for example, Eq.~\eqref{eq:FLRW2} or \eqref{eq:FLRW3}, where $g_{00}=1$, $g_{0i}=g_{i0}=0$, and others depend on the choice of spatial coordinates.
+Christoffel symbols are given by (for $a,b,c=1,2,3$)
+\begin{equation}
+  \tensor{\Gamma}{^0_{ab}}=\frac{-\dot a}{a}\tilde g_{ab},\quad
+  \tensor{\Gamma}{^0_{00}}=\tensor{\Gamma}{^0_{0b}}=0,\quad
+  \tensor{\Gamma}{^c_{00}}=0,\quad
+  \tensor{\Gamma}{^c_{b0}}=\tensor{\Gamma}{^c_{0b}}=\frac{\dot a}{a}\delta^c_b;
+  \quad
+  \tensor{\Gamma}{^c_{ab}}\text{: coordinate dependent.}
+\end{equation}
+The Riemann tensor is given by, for both choices of the spacial coordinates,
+\begin{equation}
+  \tensor{R}{_{ijk}^l}=
+    \frac{K+\dot a^2}{a^2} \left(g_{ik}\delta_j^l-g_{jk}\delta_i^l\right)
+  + \frac{K+\dot a^2-a\ddot a}{a^2}\left(
+  \delta_i^l \delta_{j=k=0}
+  -\delta_j^l \delta_{i=k=0}
+  +g_{jk} \delta_{i=l=0}
+  -g_{ik} \delta_{j=l=0}
+  \right)
+\end{equation}
+and hence (for $a,b=1,2,3$)
+\begin{equation}
+  \tensor{R}{_{00}}=
+    \frac{3\ddot a}{a},\quad
+  \tensor{R}{_{ab}}=
+    \frac{2K+2\dot a^2+a \ddot a}{a^2} g_{ab},\quad
+  R = \frac{6(K+\dot a^2+a \ddot a)}{a^2}.
+\end{equation}
 \subsection{Particle cosmology}
 \subsubsection{Particle distribution and density}
 In kinematic equilibrium, the particle number density, energy density, and pressure (i.e., (momentum)$\times$(flux per time) against a ``wall'') are calculated from distributions
@@ -142,34 +171,105 @@ It is also useful to define the difference of particle and antiparticle number d
 \begin{equation}
   n_\Delta \deq n_+ - n_- = \int\ddP{k}\Bigl[f(\vc k,\mu) - f(\vc k,-\mu)\Bigr].
 \end{equation}
-
-For Maxwell--Boltzmann (MB) distribution, they are given explicitly by, with $\nu\deq \mu/T$ and $x\deq m/T$,
+\paragraph{Maxwell–Boltzmann}
+For Maxwell--Boltzmann (MB) distribution, they are given explicitly by, with $\mu\deq \mu/T$ (understood) and $a\deq m/T$,
 \begin{equation}
-  n\w{MB} = \frac{gT^3\ee^{\nu}}{2\pi^2}x^2K_2(x),\quad
+  n\w{MB} = \frac{gT^3\ee^{\mu}}{2\pi^2}a^2K_2(a),\quad
   %n\w{\Delta;MB} = g\sinh{\nu}\cdot\frac{T^3}{\pi^2}x^2K_2(x),\quad
-  \rho\w{MB} = \left(3+\frac{xK_1(x)}{K_2(x)}\right)T n\w{MB},\quad
-  p\w{MB} = T n\w{MB},
+  \rho\w{MB} = \left(3+\frac{aK_1(a)}{K_2(a)}\right)T n\w{MB},\quad
+  p\w{MB} = T n\w{MB}.
 \end{equation}
-which reduce in special cases to
+In special cases,
 \begin{align}
   &\text{[massless: $m\ll T$]}
-  &&n\w{MB} = \frac{gT^3\ee^{\nu}}{\pi^2}\left(1-\frac14 x^2+\Order(x^4)\right),\quad
-  \rho\w{MB} = 3Tn\w{MB}\left(1+\frac16x^2+\Order(x^4)\right),
+  &&n\w{MB} = \frac{gT^3\ee^{\mu}}{\pi^2}\left(1-\frac14a^2+\Order(a^4)\right),&&
+  \rho\w{MB} = 3Tn\w{MB}\left(1+\frac16a^2+\Order(a^4)\right),
 \\&\text{[low-temperature: $m\gg T$]}
-  &&n\w{MB} \approx \ee^{(\mu-m)/T}\left({\frac{m T}{2\pi}}\right)^{3/2},\quad
+  &&n\w{MB} \approx \ee^{(\mu-m)/T}\left({\frac{m T}{2\pi}}\right)^{3/2},&&
   \rho\w{MB} \approx \left(m+\frac32T\right)n\w{MB}.
 \end{align}
 
-\pagebreak
+\paragraph{Bose–Einstein and Fermi–Dirac}
+
 
 For Fermi--Dirac or Bose--Einstein distributions, the results are not expressed analytically, even with $\mu=0$. Namely,
+with $a=m/T$, $\mu=\mu/T$ (understood), and $\eta=\mu-a$,
+\begin{align}
+  &
+  n^{\mathrm{BE}}_{\mathrm{FD}}
+  = \int\frac{\dd^3\vc k}{(2\pi)^3}\frac{g}{\ee^{(E-\mu)/T}\mp1}
+  = \frac{gT^3}{2\pi^2}\int_a^\infty\dd x\frac{x\sqrt{x^2-a^2}}{\ee^{x-\mu}\mp1}
+  = \frac{gT^3}{2\pi^2}\int_0^\infty\dd x\frac{(x+a)\sqrt{x^2+2ax}}{\ee^{x-\eta}\mp1},
+\\&
+  \rho^{\mathrm{BE}}_{\mathrm{FD}}
+  = \int\frac{\dd^3\vc k}{(2\pi)^3}\frac{gE}{\ee^{(E-\mu)/T}\mp1}
+  = \frac{gT^4}{2\pi^2}\int_a^\infty\dd x\frac{x^2\sqrt{x^2-a^2}}{\ee^{x-\mu}\mp1}
+  = \frac{gT^4}{2\pi^2}\int_0^\infty\dd x\frac{(x+a)^2\sqrt{x^2+2ax}}{\ee^{x-\eta}\mp1},
+\\&
+  p^{\mathrm{BE}}_{\mathrm{FD}}
+  = \int\ddP{k}\frac{gk^2\cos^2\theta/E}{\ee^{(E-\mu)/T}\mp1}
+  = \frac{gT^4}{6\pi^2}\int_a^\infty\dd x\frac{(x^2-a^2)^{3/2}}{\ee^{x-\mu}\mp1}
+  = \frac{gT^4}{6\pi^2}\int_0^\infty\dd x\frac{(x^2+2ax)^{3/2}}{\ee^{x-\eta}\mp1}.
+\end{align}
+One method to evaluate these integrals is to utilize the expansion formula,
 \begin{equation}
-  n=\int_m^\infty\frac{\dd E}{2\pi^2}\frac{gE\sqrt{E^2-m^2}}{\ee^{(E-\mu)/T}\pm1},
-  \quad
-  \rho=\int_m^\infty\frac{\dd E}{2\pi^2}\frac{gE^2\sqrt{E^2-m^2}}{\ee^{(E-\mu)/T}\pm1},
-  \quad
-  p=\frac13\int_m^\infty\frac{\dd E}{2\pi^2}\frac{g(E^2-m^2)^{3/2}}{\ee^{(E-\mu)/T}\pm1}.
+  \frac{1 - \ee^{-Nx}}{\ee^x\mp1}=\sum_{n=1}^N (\pm1)^{n+1}\ee^{-nx},\quad
+  \frac{1 - \ee^{+Nx}}{\ee^x\mp1}=\sum_{n=1}^N (-1)(\pm1)^{n}\ee^{(n-1)x},
 \end{equation}
+where the former (latter) should be used for $x>0$ ($x<0$). Namely, if $\mu<a$,
+\begin{equation}
+  \int_a^\infty\dd x\frac{x\sqrt{x^2-a^2}}{\ee^{x-\mu}\mp1}
+=\sum_{n=1}^\infty (\pm1)^{n+1} \int_a^\infty\dd x\,{x\sqrt{x^2-a^2}} \ee^{-n(x-\mu)}
+=\sum_{n=1}^\infty (\pm1)^{n+1}\frac{a^2K_2(a n)}{n}\ee^{\mu  n},
+\end{equation}
+If $\mu<0$, we can use polylogarithm
+\begin{equation}
+  \mathop{\mathrm{Li}_s}(z) \deq \sum_{n=1}^\infty \frac{z^n}{n^s} \quad (|z|<1);\qquad
+  \mathop{\mathrm{Li}_1}(z) = -\log(1-z)
+\end{equation}
+to evaluate the series expansion
+\begin{equation}
+   n^{\mathrm{BE}}_{\mathrm{FD}}\Big|_{\mu<0}
+   = \frac{gT^3}{2\pi^2}\sum_{n=1}^N (\pm1)^{n+1}\left(\frac{2}{n^3}-\frac{a^2}{2n}+\Order(a^4)\right)\ee^{\mu  n}
+   = \frac{gT^3}{2\pi^2}\left(\pm2\mathop{\mathrm{Li}_3}(\pm\ee^\mu)\mp\frac{a^2}{2}\mathop{\mathrm{Li}_1}(\pm\ee^\mu)\right).
+\end{equation}
+However, this method does not work for $\mu>0$.
+
+If we are interested in the asymmetry, at $\Order(\mu)$,
+\begin{equation}
+  (n_\Delta)^{\mathrm{BE}}_{\mathrm{FD}}
+  \approx
+  \frac{gT^3}{2\pi^2}\cdot2\mu\int_a^\infty\dd x
+  \frac{\ee^x x\sqrt{x^2-a^2}}{\left(\ee^x\mp1\right)^2}
+  =
+  \frac{gT^3}{2\pi^2}\cdot2\mu\int_a^\infty\dd x
+  \frac{2 x^2- a^2}{\left(e^x\mp1\right) \sqrt{x^2-a^2}},
+\end{equation}
+which are often compared with $n^{\mathrm{eq}}\deq n|_{\mu=0}$. Namely,
+\begin{equation}
+  \frac{1}{\mu}\left(\frac{n_\Delta}{n^{\mathrm{eq}}}\right){}^{\mathrm{BE}}_{\mathrm{FD}}
+  =
+  \frac{\displaystyle
+  \int_a^\infty\!\!
+  \frac{(4 x^2-2a^2)\dd x}{\left(e^x\mp1\right) \sqrt{x^2-a^2}}
+  }{
+  \displaystyle\int_a^\infty\!\!\dd x\frac{x\sqrt{x^2-a^2}}{\ee^x\mp1}
+  }
+=  \frac{\displaystyle
+  \int_0^\infty\!\!
+  \frac{(4x^2+8ax+2a^2)\dd x}{\left(e^{x+a}\mp1\right) \sqrt{x^2+2ax}}
+  }{
+  \displaystyle\int_0^\infty\!\!\dd x\frac{(x+a)\sqrt{x^2+2ax}}{\ee^{x+a}\mp1}
+  }
+=\frac{\pi ^2}{3 \zeta_3}\times\begin{cases}\displaystyle
+1-\frac{6 a}{\pi^2}+\Order(a^2)\\\displaystyle
+\frac23 + \left(\frac{\log4}{9\zeta_3}-\frac{2}{\pi ^2}\right)a^2 + \Order(a^3).
+\end{cases}
+\end{equation}
+
+
+\TODO{merge the above (new) with the below (old)}
+
 Analytical expressions are available for the massless limit as
 \begin{align}
     &\text{[massless: $m\ll T$]}
@@ -230,10 +330,10 @@ The entropy density is given by\TODO{write the derivation}
 \end{equation}
 Adiabatic expansion leads to the conservation of entropy per comoving volume,
 \begin{equation}
-  sa^3=\frac{2\pi^2}{45}g_{\ast s}(aT_\gamma)^3=\text{const.};
+  sa^3=\frac{2\pi^2}{45}g_{\ast s}(aT_\gamma)^3=\text{const.},
   \qquad
   \frac{\dot s}{s} = -3\frac{\dot a}{a},\quad
-  \diff{T_\gamma}{t} = -\left(\frac{\dot a}{a} + \frac{\dot g_{\ast s}}{3g_{\ast s}}\right)T_\gamma;\quad
+  \diff{T_\gamma}{t} = -\left(\frac{\dot a}{a} + \frac{\dot g_{\ast s}}{3g_{\ast s}}\right)T_\gamma.\quad
 \end{equation}
 We define $H\deq \dot a/a$ as the Hubble parameter.
 
@@ -349,7 +449,7 @@ with $H=\dot a/a$. The last equations are usually of use; as a general expressio
 \end{equation}
 where, in case identical particles are appearing in the initial or final states, additional factors need to be introduced in the phase space integral, statistical factors, and overall multipliers of the collision term.
 
-The next step is typically to normalize the LHS by the entropy density $s$ or the photon number density $n_\gamma$.
+The next step is typically to normalize the LHS by the entropy density $s$ or the photon number density $n_\gamma$:
 \begin{alignat}{2}
   &Y\deq \frac{n}{s},\quad&&
   \dot n+3Hn
@@ -361,7 +461,7 @@ The next step is typically to normalize the LHS by the entropy density $s$ or th
   = zHn_\gamma\cdot
   \frac{\dd \eta/\dd z-(\eta/g_{\ast s})(\dd{g_{\ast s}}/\dd z)}{1-(z/3g_{\ast s})(\dd{g_{\ast s}}/\dd z)},
 \end{alignat}
-where the latter case uses $z\deq \frac{\Lambda}{T_\gamma}$ with an arbitrary scale $\Lambda$.
+where the latter case introduces $z\deq {\Lambda}/{T_\gamma}$ with an arbitrary scale $\Lambda$.
 If one utilizes the Maxwell--Boltzmann approximation, the RHS is evaluated by introducing the equilibrium number density, $n^{\text{eq}} = n|_{\mu=0}$, so that $n_{\text{MB}} = \ee^{\mu/T} n^{\text{eq}}_{\text{MB}}$:
 \begin{equation}
   \dot n_A + 3Hn_A
@@ -379,97 +479,21 @@ If one utilizes the Maxwell--Boltzmann approximation, the RHS is evaluated by in
 \right)\w{MB}\cdot\gamma^{\text{EQ}}.
 \end{equation}
 Otherwise, we can consider the time evolution of the asymmetry $n_\Delta\deq n_+ - n_-$ and evaluate only the first order term in $\mu$, assuming $|\mu|\ll T$ and ignoring the final state factors:
-\begin{align}
-  \dot n_A + 3Hn_A&\stackrel{\phi=1}{\approx}
+\begin{equation}
+  \dot n_A + 3Hn_A \stackrel{\phi=1}{\approx}
   \int\dd \Pi^{\text{in}}\overline{\dd\Pi^{\text{out}}}
   \ee^{-E\w{in}/T}\left(
   \ee^{(\mu_C+\mu_D)/T}
   -\ee^{(\mu_A+\mu_B)/T}
   \right)\sum|\mathcal M|^2
-\\&\approx\frac{\mu_C+\mu_D-\mu_A-\mu_B}{T}
-  \int\dd \Pi^{\text{in}}\overline{\dd\Pi^{\text{out}}}\ee^{-E\w{in}/T}\sum|\mathcal M|^2
-\end{align}
-and one may replace $\mu/T$ by 
-\begin{equation}
-  \frac{\mu}{T} \leadsto \frac{n_\Delta}{n^{\text{eq}}}\cdot\frac{3\zeta_3}{\pi^2}\times\text{$1$ ($3/2)$} = 0.365~(0.548)\times\frac{n_\Delta}{n^{\text{eq}}}\quad\text{for a boson (fermion)},
+\approx\frac{\mu_C+\mu_D-\mu_A-\mu_B}{T}\gamma^{\text{eq}}
 \end{equation}
-but this is only 30\% different from the Maxwell-Boltzmann approximation, $\mu/T\approx 0.5n_\Delta/n^{\text{eq}}$.
+and one may replace $\mu/T$ by
+\begin{equation}
+  \frac{\mu}{T} =\frac{n_\Delta}{n^{\text{eq}}}\cdot\frac{3\zeta_3}{\pi^2}\times\text{$1$ ($3/2)$} = 0.365~(0.548)\times\frac{n_\Delta}{n^{\text{eq}}}\quad\text{for a boson (fermion)},
+\end{equation}
+but this is only 30\% different from the equation for the Maxwell-Boltzmann distribution, $\mu/T=0.5n_\Delta/n^{\text{eq}}$, and thus it seems straightforward, for most cases, to use the Maxwell--Boltzmann approximation from the beginning.
 
-
-\subsection{Analytic approach toward Fermi-Dirac and Bose-Einstein integrals}
-With $a=m/T$, $\mu=\mu/T$ (understood), and $\eta=\mu-a$,
-\begin{align}
-  &
-  n^{\mathrm{BE}}_{\mathrm{FD}}
-  = \int\frac{\dd^3\vc k}{(2\pi)^3}\frac{g}{\ee^{(E-\mu)/T}\mp1}
-  = \frac{gT^3}{2\pi^2}\int_a^\infty\dd x\frac{x\sqrt{x^2-a^2}}{\ee^{x-\mu}\mp1}
-  = \frac{gT^3}{2\pi^2}\int_0^\infty\dd x\frac{(x+a)\sqrt{x^2+2ax}}{\ee^{x-\eta}\mp1},
-\\&
-  \rho^{\mathrm{BE}}_{\mathrm{FD}}
-  = \int\frac{\dd^3\vc k}{(2\pi)^3}\frac{gE}{\ee^{(E-\mu)/T}\mp1}
-  = \frac{gT^4}{2\pi^2}\int_a^\infty\dd x\frac{x^2\sqrt{x^2-a^2}}{\ee^{x-\mu}\mp1}
-  = \frac{gT^4}{2\pi^2}\int_0^\infty\dd x\frac{(x+a)^2\sqrt{x^2+2ax}}{\ee^{x-\eta}\mp1},
-\\&
-  p^{\mathrm{BE}}_{\mathrm{FD}}
-  = \int\ddP{k}\frac{gk^2\cos^2\theta/E}{\ee^{(E-\mu)/T}\mp1}
-  = \frac{gT^4}{6\pi^2}\int_a^\infty\dd x\frac{(x^2-a^2)^{3/2}}{\ee^{x-\mu}\mp1}
-  = \frac{gT^4}{6\pi^2}\int_0^\infty\dd x\frac{(x^2+2ax)^{3/2}}{\ee^{x-\eta}\mp1}.
-\end{align}
-One method to evaluate these integrals is to utilize the expansion formula,
-\begin{equation}
-  \frac{1 - \ee^{-Nx}}{\ee^x\mp1}=\sum_{n=1}^N (\pm1)^{n+1}\ee^{-nx},\quad
-  \frac{1 - \ee^{+Nx}}{\ee^x\mp1}=\sum_{n=1}^N (-1)(\pm1)^{n}\ee^{(n-1)x},
-\end{equation}
-where the former (latter) should be used for $x>0$ ($x<0$). Namely, if $\mu<a$,
-\begin{equation}
-  \int_a^\infty\dd x\frac{x\sqrt{x^2-a^2}}{\ee^{x-\mu}\mp1}
-=\sum_{n=1}^\infty (\pm1)^{n+1} \int_a^\infty\dd x\,{x\sqrt{x^2-a^2}} \ee^{-n(x-\mu)}
-=\sum_{n=1}^\infty (\pm1)^{n+1}\frac{a^2K_2(a n)}{n}\ee^{\mu  n},
-\end{equation}
-If $\mu<0$, we can use polylogarithm
-\begin{equation}
-  \mathop{\mathrm{Li}_s}(z) \deq \sum_{n=1}^\infty \frac{z^n}{n^s} \quad (|z|<1);\qquad
-  \mathop{\mathrm{Li}_1}(z) = -\log(1-z)
-\end{equation}
-to evaluate the series expansion
-\begin{equation}
-   n^{\mathrm{BE}}_{\mathrm{FD}}\Big|_{\mu<0}
-   = \frac{gT^3}{2\pi^2}\sum_{n=1}^N (\pm1)^{n+1}\left(\frac{2}{n^3}-\frac{a^2}{2n}+\Order(a^4)\right)\ee^{\mu  n}
-   = \frac{gT^3}{2\pi^2}\left(\pm2\mathop{\mathrm{Li}_3}(\pm\ee^\mu)\mp\frac{a^2}{2}\mathop{\mathrm{Li}_1}(\pm\ee^\mu)\right).
-\end{equation}
-However, this method does not work for $\mu>0$.
-
-If we are interested in the asymmetry, at $\Order(\mu)$,
-\begin{equation}
-  (n_\Delta)^{\mathrm{BE}}_{\mathrm{FD}}
-  \approx
-  \frac{gT^3}{2\pi^2}\cdot2\mu\int_a^\infty\dd x
-  \frac{\ee^x x\sqrt{x^2-a^2}}{\left(\ee^x\mp1\right)^2}
-  =
-  \frac{gT^3}{2\pi^2}\cdot2\mu\int_a^\infty\dd x
-  \frac{2 x^2- a^2}{\left(e^x\mp1\right) \sqrt{x^2-a^2}},
-\end{equation}
-which are often compared with $n^{\mathrm{eq}}\deq n|_{\mu=0}$. Namely,
-\begin{equation}
-  \frac{1}{\mu}\left(\frac{n_\Delta}{n^{\mathrm{eq}}}\right){}^{\mathrm{BE}}_{\mathrm{FD}}
-  =
-  \frac{\displaystyle
-  \int_a^\infty\!\!
-  \frac{(4 x^2-2a^2)\dd x}{\left(e^x\mp1\right) \sqrt{x^2-a^2}}
-  }{
-  \displaystyle\int_a^\infty\!\!\dd x\frac{x\sqrt{x^2-a^2}}{\ee^x\mp1}
-  }
-=  \frac{\displaystyle
-  \int_0^\infty\!\!
-  \frac{(4x^2+8ax+2a^2)\dd x}{\left(e^{x+a}\mp1\right) \sqrt{x^2+2ax}}
-  }{
-  \displaystyle\int_0^\infty\!\!\dd x\frac{(x+a)\sqrt{x^2+2ax}}{\ee^{x+a}\mp1}
-  }
-=\frac{\pi ^2}{3 \zeta_3}\times\begin{cases}\displaystyle
-1-\frac{6 a}{\pi^2}+\Order(a^2)\\\displaystyle
-\frac23 + \left(\frac{\log4}{9\zeta_3}-\frac{2}{\pi ^2}\right)a^2 + \Order(a^3).
-\end{cases}
-\end{equation}
 
 
 \end{document}
